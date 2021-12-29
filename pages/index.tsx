@@ -1,12 +1,11 @@
 import { Logo } from "components/Logo"
 import { Button } from "components/Button"
-import { Github } from "components/Github"
+
 
 export default function Home() {
   return (
-    <div className='bg-white'>
-      <Github target='_blank' />
-      <div className='max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8'>
+    <div>
+      <div className='bg-white max-w-screen-xl mx-auto text-center pt-28 pb-12 px-4 sm:px-6 lg:py-16 lg:px-8'>
         <div className='flex justify-center'>
           <Logo itHovers href='/' />
         </div>
@@ -15,8 +14,15 @@ export default function Home() {
           Ready to dive in?
           <br />
           Start building something amazing.
+         
         </h2>
+        <a href="/about">about</a><br/>
+        <a href="/about/team">about/ team</a><br/>
+        <a href="/careers">careers</a><br/>
+        <a href="/insights">insights</a><br/>
+
         <div className='mt-8 flex justify-center'>
+       
           <Button>Get started</Button>
           <Button isVariant className='ml-3'>
             Learn more
