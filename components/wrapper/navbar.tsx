@@ -10,7 +10,7 @@ const Navbar = ({  }) => {
 
   const Logo = () => (
     <div className="flex items-center flex-shrink-0 text-black ml-6 lg:mr-5">
-      <span className="font-semibold text-xl tracking-tight">NAVA</span>
+      <a href={"/"}> <span className="font-semibold text-xl tracking-tight">NAVA</span></a>
     </div>
   );
 
