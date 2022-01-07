@@ -53,3 +53,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 //NODE_OPTIONS=--openssl-legacy-provider
 
 https://github.com/dazuaz/nextjs-tailwindcss-storybook-typescript
+https://github.com/whitep4nth3r/nextjs-contentful-blog-starter
+
+//https://betterprogramming.pub/create-a-blog-app-with-nextjs-and-contentful-api-7927af49b3b
+//https://github.com/remarkjs/react-markdown
+
+https://stackoverflow.com/questions/54083103/contentful-documenttohtmlstring-doesnt-include-embedded-image-in-rich-text
