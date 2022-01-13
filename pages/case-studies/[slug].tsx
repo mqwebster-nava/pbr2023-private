@@ -13,9 +13,12 @@ import { BLOCKS } from '@contentful/rich-text-types';
 //import { getPostBySlug} from '@/lib/api'
 //import Post, {toPost} from "@/models/PostModel"
 
+
+
+
   export default function CaseStudyPost({post, morePosts, preview }) {
     // const router = useRouter()
-
+    console.log("post")
 
     // if (!router.isFallback && !post?.path) {
     //   return <ErrorPage statusCode={404} />
@@ -55,10 +58,10 @@ import { BLOCKS } from '@contentful/rich-text-types';
 
 export async function getStaticPaths({ params, preview = null }) {
 
-    const paths = [{ params: { slug:"/case-studies/test" } }]
+    const paths = [{ params: { slug:"test"  } }]
     return {
       paths,
-      fallback: "blocking",
+      fallback: false
     }
 }
 
@@ -83,13 +86,13 @@ export async function getStaticProps({ params, preview = false }) {
   };
 }
 
-// export async function getStaticPaths() {
-//     return null;
-//     //const post = await getPostBySlug("test");
-//     //console.log(post);
+// // export async function getStaticPaths() {
+// //     return null;
+// //     //const post = await getPostBySlug("test");
+// //     //console.log(post);
 
-//     // return {
-//     //     paths: [ `/case-studies/${post.path}`],
-//     //     fallback: true,
-//     // }
-// }
+// //     // return {
+// //     //     paths: [ `/case-studies/${post.path}`],
+// //     //     fallback: true,
+// //     // }
+// // }

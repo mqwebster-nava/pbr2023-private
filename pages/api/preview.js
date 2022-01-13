@@ -31,7 +31,7 @@ export default async function preview(req, res) {
   let redirectPrefix = "";
 
   switch (req.query.contentType) {
-    case "caseStudy":
+    case "post":
       redirectPrefix = "/case-studies/";
       preview = await ContentfulApi.getPostBySlug(req.query.slug, {
         preview: true,
