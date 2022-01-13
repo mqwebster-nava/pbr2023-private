@@ -21,24 +21,24 @@ import ErrorPage from 'next/error'
 
 
 
-export async function getStaticProps({ params, preview = null }) {
-  //const post = await getPostBySlug("test");
-//   return {
-//     props: {
-//       preview,
-//       post: post,
-//     },
-//   }
-    return {};
-}
+// export async function getStaticProps({ params, preview = null }) {
+//   //const post = await getPostBySlug("test");
+// //   return {
+// //     props: {
+// //       preview,
+// //       post: post,
+// //     },
+// //   }
+//     return {};
+// }
 
-export async function getStaticPaths() {
-    return null;
-    //const post = await getPostBySlug("test");
-    //console.log(post);
+// export async function getStaticPaths() {
+//     return null;
+//     //const post = await getPostBySlug("test");
+//     //console.log(post);
 
-    // return {
-    //     paths: [ `/case-studies/${post.path}`],
-    //     fallback: true,
-    // }
-}
+//     // return {
+//     //     paths: [ `/case-studies/${post.path}`],
+//     //     fallback: true,
+//     // }
+// }
