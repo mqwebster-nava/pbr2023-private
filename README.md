@@ -50,12 +50,40 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-//NODE_OPTIONS=--openssl-legacy-provider
+## Notes
+
+Articles Pages (ex /Case-Studies/[slug].js) pull in the Post Data from the CMS (/api/contentful-api),
+structures it using the Post Model () ??, and is formatted using the Post Template, which has component parts( such as header )
+
+Contentful Questions
+1. How do I set up the fragments for the GraphQL stuff
+2. How should I set up the queries?
+3. Should I use lists or models for things like tags and content types
+
+If I did everything programatically, I could auto-generate most of pages but would have less custom views
+
+/types/insights
+/types/case-studies
+/types/news
+/types/toolkits
+/types/careers
+...
+
+/authors/steve-lund
+...
+
+/tags/program-outcome
+...
+
+Content
+/library/equitable-research-recruitment
+...
+## Resources
 
 https://github.com/dazuaz/nextjs-tailwindcss-storybook-typescript
 https://github.com/whitep4nth3r/nextjs-contentful-blog-starter
 
-//https://betterprogramming.pub/create-a-blog-app-with-nextjs-and-contentful-api-7927af49b3b
-//https://github.com/remarkjs/react-markdown
+https://betterprogramming.pub/create-a-blog-app-with-nextjs-and-contentful-api-7927af49b3b
+https://github.com/remarkjs/react-markdown
 
 https://stackoverflow.com/questions/54083103/contentful-documenttohtmlstring-doesnt-include-embedded-image-in-rich-text

@@ -9,7 +9,8 @@
     "tailwind-storybook": "postcss ./styles/tailwind.css -o ./public/storybook/tailwind.storybook.css",
     "tailwind-storybook-build": "NODE_ENV=production postcss ./styles/tailwind.css -o ./storybook-static/storybook/tailwind.storybook.css",
     "storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook && npm run tailwind-storybook-build"
+    "build-storybook": "build-storybook && npm run tailwind-storybook-build",
+    "chromatic": "npx chromatic --project-token=5e72f01a7a18"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.11.0",
@@ -29,6 +30,7 @@
     "@storybook/react": "^6.2.9",
     "@types/react": "^17.0.11",
     "autoprefixer": "^10.2.6",
+    "chromatic": "^6.3.4",
     "classnames": "^2.3.1",
     "postcss": "^8.3.5",
     "postcss-cli": "^9.0.2",
