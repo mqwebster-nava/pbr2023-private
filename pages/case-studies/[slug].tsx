@@ -1,64 +1,21 @@
-
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-
 import ContentfulApi from "lib/contentful";
-
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import ReactMarkdown from 'react-markdown';
-import { BLOCKS } from '@contentful/rich-text-types';
-
-
-//import { getPostBySlug} from '@/lib/api'
-//import Post, {toPost} from "@/models/PostModel"
-
+import PostTemplate from "components/templates/PostTemplate";
 
 
 
   export default function CaseStudyPost({post, morePosts, preview }) {
-    // const router = useRouter()
-    console.log("post")
-
-    // if (!router.isFallback && !post?.path) {
-    //   return <ErrorPage statusCode={404} />
-    // }
-
-    console.log(post.body)
-
-    const getImg= (data:any) => {
-
-      const id = data.target.sys.id;
-      const assets = post.body.links.assets.block;
-      const asset = assets.find(element => element.sys.id === id);
-      return (`<img src="${asset.url}" height="${asset.height}" width="${asset.width}" alt="${asset.description}"/>`);
-    
-    }
-
-    const options = {
-      renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data)
-              // `<img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/>`,
-      },
-    };
-   const doc = post.body.json;
-   // @ts-ignore
-   const renderedDoc = documentToHtmlString(doc, options);
-
+    console.log(post);
     return (
-      <div className="mx-6">
-         <div dangerouslySetInnerHTML={{__html: renderedDoc}} />
-        {/* <ReactMarkdown>{post.body2}</ReactMarkdown> */}
-      </div>
+      <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
   }
 
 
-
-
 export async function getStaticPaths({ params, preview = null }) {
-
-    const paths = [{ params: { slug:"test"  } }]
+    const paths = [{ params: { slug:"supporting-veterans-with-virtual-tele-hearings"  } }]
+    // TODO this is where we get all the Case Studies Slugs 
+    // getPostSlugsByContentType
     return {
       paths,
       fallback: false
