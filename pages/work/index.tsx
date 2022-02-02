@@ -5,8 +5,7 @@ export default function Work() {
         <b> <h1>Work </h1></b>
          <a href="/work/case-studies">Case Studies</a> <br />
          <ul>
-           <li> <a href="/case-studies/test">Test</a></li>
-           <li> <a href="/case-studies/shaping-policy-with-design-practices">Shaping policy with design practices</a></li>
+           <li> <a href="/case-studies/supporting-veterans-with-virtual-tele-hearings">Supporting Veterans With Virtual Tele-Hearings</a></li>
          </ul>
        </div>  );
 }
