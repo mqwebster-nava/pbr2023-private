@@ -1,48 +1,53 @@
 import ContentfulApi from "lib/contentful";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import PostTemplate from "components/templates/PostTemplate";
 
 
 // List of posts filtered by a specific tag
   export default function FilteredByTagPage({tag, posts}) {
-    
     return (
-        // Header with the name of the tag
-        // List of cards with post info and links to the posts
+      <div>
+     <h1>Tags: {tag}</h1>
+    <div>{posts.map((post)=>
+       <div>
+         <h3>{post.title}</h3>
+         <p>{post.shortSummary}</p>
+       </div>
+     )}
+     </div> 
+     </div>
     );
   }
 
 
+  const allTagsSlugIdPair = {
+      "human-centered-design" :"Human-Centered Design",
+      "veterans":"Veterans",
+      "continuous-improvement":"Continuous Improvement",
+      "crisis-response":"Crisis Response",
+      "user-experience-research": "User Experience Research",
+      "program-outcomes":"Program Outcomes",
+      "healthcare":"Healthcare",
+      "adapting-to-change":"Adapting To Change",
+      "policy":"Policy"
+  }
+
+  // Gets all of the tags that are used in the content and creates a page for each one
 export async function getStaticPaths({ params, preview = null }) {
-    // human centered design
-    // crisis response
-    // veterans
-    const allTags = [
-        {
-            "name": "Human Centered Design",
-            "slug":"human-centered-design"
-        }
-    ]
-    // TODO this is where we get all the Case Studies Slugs 
-    // getPostSlugsByContentType
+    const paths = Object.keys(allTagsSlugIdPair).map((slug)=>{ return {params: {  slug } }});
     return {
-      allTags,
+      paths,
       fallback: false
     }
 }
 
+
+// Calls the contentful API to get posts for each tag.
 export async function getStaticProps({ params, preview = false }) {
-
+  const tag = allTagsSlugIdPair[params.slug];
     // This returns a list of posts summaries to be displayed in cards
-  const posts = await ContentfulApi.getPostsByTag(params.name);
-
-  // Add this with fallback: "blocking"
-  // So that if we do not have a post on production,
-  // the 404 is served
-
+  const posts = await ContentfulApi.getPostsByTag(tag);
   return {
     props: {
-      tag: params.name,
+      tag,
       posts
     },
   };

@@ -1,11 +1,11 @@
 import ContentfulApi from "lib/contentful";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
 import PostTemplate from "components/templates/PostTemplate";
 
 
 
   export default function CaseStudyPost({post, morePosts, preview }) {
-    console.log(post);
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
@@ -13,7 +13,12 @@ import PostTemplate from "components/templates/PostTemplate";
 
 
 export async function getStaticPaths({ params, preview = null }) {
-    const paths = [{ params: { slug:"supporting-veterans-with-virtual-tele-hearings"  } }]
+  const postSlugs = await ContentfulApi.getAllPostSlugs("Case Study");
+
+  const paths = postSlugs.map((slug) => {
+    return { params: { slug } };
+  });
+
     // TODO this is where we get all the Case Studies Slugs 
     // getPostSlugsByContentType
     return {
