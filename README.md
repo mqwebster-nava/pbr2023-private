@@ -50,6 +50,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
+
+
 ## Notes
 
 Articles Pages (ex /Case-Studies/[slug].js) pull in the Post Data from the CMS (/api/contentful-api),
@@ -74,10 +76,6 @@ If I did everything programatically, I could auto-generate most of pages but wou
 
 /tags/program-outcome
 ...
-
-Content
-/library/equitable-research-recruitment
-...
 ## Resources
 
 https://github.com/dazuaz/nextjs-tailwindcss-storybook-typescript
@@ -87,3 +85,9 @@ https://betterprogramming.pub/create-a-blog-app-with-nextjs-and-contentful-api-7
 https://github.com/remarkjs/react-markdown
 
 https://stackoverflow.com/questions/54083103/contentful-documenttohtmlstring-doesnt-include-embedded-image-in-rich-text
+
+
+---
+Look into Twin 
+
+-https://github.com/ben-rogerson/twin.macro#installation 
