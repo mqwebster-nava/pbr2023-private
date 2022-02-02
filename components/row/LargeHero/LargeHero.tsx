@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+
 import Image from 'next/image'
 
 import illustration from 'public/images/careers-illustration.png'
@@ -66,27 +66,5 @@ const LargeHero = ({ title }:  LargeHeroInterface) => {
       </div>
   );
 };
-
-const ContentStyle = styled.div`
-  //position: relative;
-  .img-div {
-    z-index: -1;
-    position: absolute;
-  }
-
-  .content-div {
-    padding-top: 160px;
-    padding-bottom: 100px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .content-text {
-      padding-bottom: 20px;
-    }
-  }
-
-`;
-
 export default LargeHero;
 
