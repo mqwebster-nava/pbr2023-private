@@ -27,7 +27,6 @@ const LargeHero = ({ title, subtitle, colorTheme, ctaBody, ctaButtonPath, ctaBut
         'blue': blueIllustration,
         'green': greenIllustration,
         'orange': orangeIllustration,
-    
     }
     const illustration = illustrations[colorTheme];
 

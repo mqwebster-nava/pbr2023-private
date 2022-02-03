@@ -3,6 +3,7 @@ module.exports = {
     // this formats supports both next and storybook
     tailwindcss: {},
     //autoprefixer: {},
+    
   },
   
 }

@@ -9,15 +9,34 @@ export default {
 }
 
 
-export const Grid = () => {
 
-
-    const Box = () => (<div className="h-screen bg-red-200 ">1</div>)
-    
-    return (<div className="grid gap-4 grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 w-full">
-                {Array(12).fill(0).map((r)=>  (<Box/>))}
-            </div>);
+export const TextSize = ()=>{
+  return (<div>
+    <p className="text-xs ">text-xs</p>
+    <p className="text-xs ">The quick brown fox ...</p>
+    <p className="text-xs ">text-sm</p>
+    <p className="text-sm ">The quick brown fox ...</p>
+    <p className="text-xs ">text-base</p>
+    <p className="text-base ">The quick brown fox ...</p>
+    <p className="text-lg ">text-base</p>
+    <p className="text-lg ">The quick brown fox ...</p>
+    <p className="text-xl ">text-base</p>
+    <p className="text-xl ">The quick brown fox ...</p>
+    <p className="text-2xl ">text-base</p>
+    <p className="text-2xl ">The quick brown fox ...</p>
+    <p className="text-3xl ">text-base</p>
+    <p className="text-3xl ">The quick brown fox ...</p>
+    <p className="text-4xl ">The quick brown fox ...</p>
+    <p className="text-5xl ">The quick brown fox ...</p>
+    <p className="text-6xl ">The quick brown fox ...</p>
+    <p className="text-7xl ">The quick brown fox ...</p>
+    <p className="text-8xl ">The quick brown fox ...</p>
+    <p className="text-9xl ">The quick brown fox ...</p>
+</div>);
 }
+
+
+
 
 export const Sizing = ()=>{
     return (<div>
@@ -202,20 +221,14 @@ export const Shadows = ()=>{
 
 
 
-export const TextSize = ()=>{
-  return (<div>
-    <p className="text-xs ">The quick brown fox ...</p>
-    <p className="text-sm ">The quick brown fox ...</p>
-    <p className="text-base ">The quick brown fox ...</p>
-    <p className="text-lg ">The quick brown fox ...</p>
-    <p className="text-xl ">The quick brown fox ...</p>
-    <p className="text-2xl ">The quick brown fox ...</p>
-    <p className="text-3xl ">The quick brown fox ...</p>
-    <p className="text-4xl ">The quick brown fox ...</p>
-    <p className="text-5xl ">The quick brown fox ...</p>
-    <p className="text-6xl ">The quick brown fox ...</p>
-    <p className="text-7xl ">The quick brown fox ...</p>
-    <p className="text-8xl ">The quick brown fox ...</p>
-    <p className="text-9xl ">The quick brown fox ...</p>
-</div>);
-}
+
+
+// export const Grid = () => {
+
+
+//   const Box = () => (<div className="h-screen bg-red-200 ">1</div>)
+  
+//   return (<div className="grid gap-4 grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 w-full">
+//               {Array(12).fill(0).map((r)=>  (<Box/>))}
+//           </div>);
+// }
