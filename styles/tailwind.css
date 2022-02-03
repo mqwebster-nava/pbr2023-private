@@ -5,14 +5,14 @@
 
 @font-face {
     font-family: "GTAmerica";
-    src: url("/fonts/Gt-America-Font/GT America Regular/GT America Regular.ttf");
+    src: url("/fonts/GT-America/GT-America-Regular.ttf");
     font-style: normal;
     font-weight: 400;
     font-display: swap;
   }
 @font-face {
     font-family: "GTAmerica";
-    src: url("/fonts/Gt-America-Font/GT America Bold/GT America Bold.ttf");
+    src: url("/fonts/GT-America/GT-America-Bold.ttf");
     font-style: bold;
     font-weight: 600;
     font-display: swap;
@@ -24,8 +24,18 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Source Serif Pro";
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+
 html{
     font-size:16px;
+    font-family: "GTAmerica";
 }
 h2{
     font-size: larger;

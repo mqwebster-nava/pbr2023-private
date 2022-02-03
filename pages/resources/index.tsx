@@ -1,8 +1,9 @@
+
 import LargeHero from "components/row/LargeHero/LargeHero";
-export default function Mission() {
+export default function Resources() {
     return ( <div> 
          <LargeHero 
-      title={"Mission"} 
+      title={"Resources"} 
       subtitle={"Come help us build the services of a better future for millions of people."} 
       colorTheme={"blue"} 
       ctaTitle={"Join a thoughtful, mission-oriented team"} 
@@ -10,7 +11,6 @@ export default function Mission() {
       ctaButtonText={"View Open Roles"}
       ctaButtonPath={""}
     />
-        <p>Objective: Differentiate Nava as a mission-driven, public benefit corporation in the government contracting space</p>
-        </div>  );
+    </div>  );
 }
   
