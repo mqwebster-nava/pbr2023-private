@@ -3,11 +3,16 @@ import {
   SectionHeader,
   LeftRepeater,
   RightRepeater,
+  ThreeColumnGrid
 } from "components/row/index";
+import {
+  ListCard
+} from "components/atom/index";
 import Image from "next/image";
 import careersImg1 from "public/images/careers-presentation-img.png";
 import careersImg2 from "public/images/careers-outdoor.png";
 import careersImg3 from "public/images/careers-couch.png";
+import careersImg4 from "public/images/careers-team.png";
 
 export default function Careers() {
   const colorTheme = "pink";
@@ -26,7 +31,7 @@ export default function Careers() {
         ctaButtonText={"View Open Roles"}
         ctaButtonPath={""}
       />
-      <hr/>
+      <hr />
       <SectionHeader
         title={"Work on projects with a positive impact"}
         colorTheme={colorTheme}
@@ -36,7 +41,7 @@ export default function Careers() {
         and federal agencies. We help them improve how people apply for
         benefits, navigate their healthcare, and much more.
       </SectionHeader>
-      <hr/>
+      <hr />
       <LeftRepeater
         title={"Nava is a public benefit corporation"}
         buttonText={"Learn about our mission"}
@@ -46,7 +51,7 @@ export default function Careers() {
         This means we’re accountable to our social mission: to make it easier
         for people to access social safety net programs.
       </LeftRepeater>
-      <hr/>
+      <hr />
       <RightRepeater
         title={"Our values guide how we serve the public"}
         image={careersImg3}
@@ -54,7 +59,7 @@ export default function Careers() {
         Every day we make countless decisions that inform our ability to improve
         how government serves everyone, and we don’t take that lightly.
       </RightRepeater>
-      <hr/>
+      <hr />
       <LeftRepeater
         title={"Our teams must reflect the communities we serve"}
         buttonText={"Learn about our mission"}
@@ -65,7 +70,7 @@ export default function Careers() {
         ethnicity in the US by comprising majority Black, Indigenous, and People
         of Color.
       </LeftRepeater>
-      <hr/>
+      <hr />
       <SectionHeader
         title={"Focus on your future, too"}
         colorTheme={colorTheme}
@@ -75,9 +80,44 @@ export default function Careers() {
         and flexible work and leave policies so that you can take care of
         yourself and your loved ones when you need to.
       </SectionHeader>
-      <hr/>
-      <div className="mx-3xl w-full">
-        <Image className={`w-screen object-cover`} src={careersImg2}></Image>
+      <hr />
+      <ThreeColumnGrid>
+       <ListCard
+       colorTheme={colorTheme}
+        title={"Generous health benefits"}
+        items={[
+          "Highly competitive medical, dental and vision benefits",
+          "Unlimited sick time",
+          "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
+          "Life insurance and short- and long-term disability"
+        ]}
+       />
+       <ListCard
+       colorTheme={colorTheme}
+        title={"Competitive compensation"}
+        items={[
+          "Highly competitive medical, dental and vision benefits",
+          "Unlimited sick time",
+          "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
+          "Life insurance and short- and long-term disability"
+        ]}
+       />
+       <ListCard
+       colorTheme={colorTheme}
+        title={"Room for personal growth"}
+        items={[
+          "Highly competitive medical, dental and vision benefits",
+          "Unlimited sick time",
+          "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
+          "Life insurance and short- and long-term disability"
+        ]}
+       />
+      </ThreeColumnGrid>
+      <div className="mx-3xl my-xl">
+        <Image 
+        className="max-w-full"
+        src={careersImg4} 
+        ></Image>
       </div>
     </div>
   );
