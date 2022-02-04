@@ -1,5 +1,8 @@
 
 import LargeHero from "./LargeHero/LargeHero";
-//import Navbar from "./navbar";
+import SectionHeader from "./SectionHeader/SectionHeader";
+import LeftRepeater from "./LeftRepeater/LeftRepeater";
+import RightRepeater from "./RightRepeater/RightRepeater";
 
-export {LargeHero};
+
+export {LargeHero, SectionHeader, LeftRepeater, RightRepeater};

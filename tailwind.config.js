@@ -22,6 +22,9 @@ module.exports = {
         // => @media (min-width: 992px) { ... }
       },
       colors: {
+        grey:{
+          "base": "#3D4551"
+        },
         pink: {
           'dark':'#5B0462',
           'base': '#B14092',

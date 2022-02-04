@@ -1,5 +1,5 @@
 import LeftRepeater from './LeftRepeater'
-import type { RepeaterProps } from './LeftRepeater'
+//import type { RepeaterProps } from './LeftRepeater'
 import type { Story, Meta } from '@storybook/react/types-6-0'
 
 export default {
@@ -8,8 +8,8 @@ export default {
 } as Meta
 
 
-const Template: Story<RepeaterProps> = (args) => <LeftRepeater {...args}>Default Repeater</LeftRepeater>
+//const Template: Story<RepeaterProps> = (args) => <LeftRepeater {...args}>Default Repeater</LeftRepeater>
 
-export const Primary: Story<RepeaterProps> = Template.bind({})
+//export const Primary: Story<RepeaterProps> = Template.bind({})
 
 
