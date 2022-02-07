@@ -152,7 +152,7 @@ const MobileNavBar = ({ NavData }) => {
       className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
                     ${
                       isShowingMenu
-                        ? "pb-14 g-opacity-90 bg-blue"
+                        ? "pb-14 g-opacity-90 bg-navy"
                         : "bg-opacity-50 bg-green"
                     }`}
     >

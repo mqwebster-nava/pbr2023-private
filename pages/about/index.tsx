@@ -4,7 +4,7 @@ export default function About() {
        <LargeHero 
       title={"About"} 
       subtitle={"Come help us build the services of a better future for millions of people."} 
-      colorTheme={"pink"} 
+      colorTheme={"plum"} 
       ctaTitle={"Join a thoughtful, mission-oriented team"} 
       ctaBody={"Nava positively transforms the technology that helps millions of people access public services. We are a professional services company that works alongside our government clients to help them better serve their communities."} 
       ctaButtonText={"View Open Roles"}

@@ -1,10 +1,12 @@
 import Image from "next/image";
-
+import { Button } from "../../atom/Button/Button";
 export interface LeftRepeaterInterface {
   title: string;
   image: StaticImageData;
+  colorTheme: string;
   buttonText?: string;
   buttonPath?: string;
+  isStorybook?:boolean;
 }
 
 const LeftRepeater: React.FC<LeftRepeaterInterface> = ({
@@ -12,17 +14,25 @@ const LeftRepeater: React.FC<LeftRepeaterInterface> = ({
   image,
   buttonPath,
   buttonText,
+  colorTheme,
   children,
+  isStorybook
 }) => {
+
   return (
     <div className={"mx-3xl my-2xl"}>
-    <div className={`w-full flex`}>
-      <div className={`w-1/3 `}>
-        <Image src={image} />
+    <div className={`w-full flex flex-col md:flex-row`}>
+      <div className={`w-full md:w-1/3 `}>
+       { isStorybook ? <Image height={"300px"} width={"300px"} src={image} /> :
+            <Image src={image} />
+        }
       </div>
-      <div className={`w-2/3 ml-xl`}>
+      <div className={`w-full md:w-2/3 md:ml-xl flex justify-between flex-col`}>
+        <div>
         <h3 className={`font-sans text-xl `}>{title} </h3>
         <p className={`font-sans pt-lg text-xl text-grey-base`}>{children}</p>
+        </div>
+        {buttonText && <Button colorTheme={colorTheme} href={buttonPath}>{buttonText}</Button> }
       </div>
     </div>
     </div>

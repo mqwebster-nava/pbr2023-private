@@ -14,10 +14,10 @@ export interface ThreeColumnGridInterface {
      console.log(count);
       return ( 
        <div className="mx-3xl my-2xl">
-       <div className={`w-full flex`}>
-            <div className="w-1/3"> {childrenArray[0]} </div>
-            <div className="w-1/3"> {childrenArray[1]} </div>
-            <div className="w-1/3"> {childrenArray[2]} </div>
+       <div className={`w-full flex md:flex-row flex-col`}>
+            <div className="w-full md:w-1/3"> {childrenArray[0]} </div>
+            <div className="w-full md:w-1/3"> {childrenArray[1]} </div>
+            <div className="w-full md:w-1/3"> {childrenArray[2]} </div>
         </div> 
         
       </div>

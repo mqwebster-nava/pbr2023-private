@@ -12,25 +12,31 @@ export default {
 
 export const TextSize = ()=>{
   return (<div>
-    <p className="text-xs ">text-xs</p>
+    <p className="text-xs ">text extra small</p>
     <p className="text-xs ">The quick brown fox ...</p>
-    <p className="text-xs ">text-sm</p>
+    <p className="text-xs pt-lg">text small</p>
     <p className="text-sm ">The quick brown fox ...</p>
-    <p className="text-xs ">text-base</p>
+    <p className="text-xs pt-lg">text base</p>
     <p className="text-base ">The quick brown fox ...</p>
-    <p className="text-lg ">text-base</p>
+    <p className="text-xs pt-lg">text large</p>
     <p className="text-lg ">The quick brown fox ...</p>
-    <p className="text-xl ">text-base</p>
+    <p className="text-xs pt-lg ">text xl</p>
     <p className="text-xl ">The quick brown fox ...</p>
-    <p className="text-2xl ">text-base</p>
+    <p className="text-xs pt-lg ">text 2xl</p>
     <p className="text-2xl ">The quick brown fox ...</p>
-    <p className="text-3xl ">text-base</p>
+    <p className="text-xs pt-lg ">text 3xl</p>
     <p className="text-3xl ">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 4xl</p>
     <p className="text-4xl ">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 5xl</p>
     <p className="text-5xl ">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 6xl</p>
     <p className="text-6xl ">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 7xl</p>
     <p className="text-7xl ">The quick brown fox ...</p>
-    <p className="text-8xl ">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 8xl</p>
+    <p className="text-8xl">The quick brown fox ...</p>
+    <p className="text-xs pt-lg ">text 9xl</p>
     <p className="text-9xl ">The quick brown fox ...</p>
 </div>);
 }
@@ -43,43 +49,43 @@ export const Sizing = ()=>{
     <ul className="space-y-4 p-10">
         <li>
             <ul>w-64</ul>
-            <div className="w-64 h-3 bg-green-500"></div>
+            <div className="w-64 h-3 bg-sage-500"></div>
         </li>
         <li>
         <ul>w-56</ul>
-            <div className="w-56 h-3 bg-green-500"></div>
+            <div className="w-56 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-48</ul>
-            <div className="w-48 h-3 bg-green-500"></div>
+            <div className="w-48 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-40</ul>
-            <div className="w-40 h-3 bg-green-500"></div>
+            <div className="w-40 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-32</ul>
-            <div className="w-32 h-3 bg-green-500"></div>
+            <div className="w-32 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-24</ul>
-            <div className="w-24 h-3 bg-green-500"></div>
+            <div className="w-24 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-20</ul>
-            <div className="w-20 h-3 bg-green-500"></div>
+            <div className="w-20 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-16</ul>
-            <div className="w-16 h-3 bg-green-500"></div>
+            <div className="w-16 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-12</ul>
-            <div className="w-12 h-3 bg-green-500"></div>
+            <div className="w-12 h-3 bg-sage-500"></div>
         </li>
         <li>
             <ul>w-10</ul>
-            <div className="w-10 h-3 bg-green-500"></div>
+            <div className="w-10 h-3 bg-sage-500"></div>
         </li>
         </ul>
 
@@ -122,33 +128,33 @@ export const Color = ()=>{
     </ul>
   </li>
   <li>
-  <ul>bg-green-500</ul>
+  <ul>bg-sage-500</ul>
     <ul className="grid grid-cols-10 h-7">
-      <li className="bg-green-500-50"></li>
-      <li className="bg-green-500-100"></li>
-      <li className="bg-green-500-200"></li>
-      <li className="bg-green-500-300"></li>
-      <li className="bg-green-500-400"></li>
-      <li className="bg-green-500-500"></li>
-      <li className="bg-green-500-600"></li>
-      <li className="bg-green-500-700"></li>
-      <li className="bg-green-500-800"></li>
-      <li className="bg-green-500-900"></li>
+      <li className="bg-sage-500-50"></li>
+      <li className="bg-sage-500-100"></li>
+      <li className="bg-sage-500-200"></li>
+      <li className="bg-sage-500-300"></li>
+      <li className="bg-sage-500-400"></li>
+      <li className="bg-sage-500-500"></li>
+      <li className="bg-sage-500-600"></li>
+      <li className="bg-sage-500-700"></li>
+      <li className="bg-sage-500-800"></li>
+      <li className="bg-sage-500-900"></li>
     </ul>
   </li>
   <li>
-  <ul>bg-blue</ul>
+  <ul>bg-navy</ul>
     <ul className="grid grid-cols-10 h-7">
-      <li className="bg-blue-50"></li>
-      <li className="bg-blue-100"></li>
-      <li className="bg-blue-200"></li>
-      <li className="bg-blue-300"></li>
-      <li className="bg-blue-400"></li>
-      <li className="bg-blue-500"></li>
-      <li className="bg-blue-600"></li>
-      <li className="bg-blue-700"></li>
-      <li className="bg-blue-800"></li>
-      <li className="bg-blue-900"></li>
+      <li className="bg-navy-50"></li>
+      <li className="bg-navy-100"></li>
+      <li className="bg-navy-200"></li>
+      <li className="bg-navy-300"></li>
+      <li className="bg-navy-400"></li>
+      <li className="bg-navy-500"></li>
+      <li className="bg-navy-600"></li>
+      <li className="bg-navy-700"></li>
+      <li className="bg-navy-800"></li>
+      <li className="bg-navy-900"></li>
     </ul>
   </li>
   <li>
@@ -161,24 +167,24 @@ export const Color = ()=>{
       <li className="bg-purple-400"></li>
       <li className="bg-purple-500"></li>
       <li className="bg-purple-600"></li>
-      <li className="bg-green-500"></li>
+      <li className="bg-sage-500"></li>
       <li className="bg-purple-800"></li>
       <li className="bg-purple-900"></li>
     </ul>
   </li>
   <li>
-  <ul>bg-pink</ul>
+  <ul>bg-plum</ul>
     <ul className="grid grid-cols-10 h-7">
-      <li className="bg-pink-50"></li>
-      <li className="bg-pink-100"></li>
-      <li className="bg-pink-200"></li>
-      <li className="bg-pink-300"></li>
-      <li className="bg-pink-400"></li>
-      <li className="bg-pink-500"></li>
-      <li className="bg-pink-600"></li>
-      <li className="bg-pink-700"></li>
-      <li className="bg-pink-800"></li>
-      <li className="bg-pink-900"></li>
+      <li className="bg-plum-50"></li>
+      <li className="bg-plum-100"></li>
+      <li className="bg-plum-200"></li>
+      <li className="bg-plum-300"></li>
+      <li className="bg-plum-400"></li>
+      <li className="bg-plum-500"></li>
+      <li className="bg-plum-600"></li>
+      <li className="bg-plum-700"></li>
+      <li className="bg-plum-800"></li>
+      <li className="bg-plum-900"></li>
     </ul>
   </li>
 </ul>

@@ -14,7 +14,7 @@ export interface ListCardInterface {
        <div className="p-md">
            <h4 className={`font-bold font-sans text-${colorTheme}-dark mb-md`}>{title}</h4>
            <ul className="list-disc">
-               {items.map((item)=><li className="font-sans text-sm">{item}</li>)}
+               {items.map((item)=><li key={item.length} className="font-sans text-sm">{item}</li>)}
            </ul>
       </div>
     );
