@@ -2609,3 +2609,50 @@ info => Using default Webpack4 setup
 <s> [webpack.Progress] 92% additional asset processing PersistentChildCompilerSingletonPlugin
 <s> [webpack.Progress] 92% chunk asset optimization
 <s> [webpack.Progress] 92% chunk asset optimization TerserPlugin
+<s> [webpack.Progress] 93% after chunk asset optimization
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 0.809ab1c8.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 1.27e46ccf.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 2.af7b2c8a.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 3.8bb2173c.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin main.3904c16c.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin runtime~main.32163363.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin vendors~main.dc6e49b0.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 7.073f229a.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 8.91de97de.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 9.40ec65d6.iframe.bundle.js generate SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin resolve sources
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 0.809ab1c8.iframe.bundle.js attach SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 1.27e46ccf.iframe.bundle.js attach SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin vendors~main.dc6e49b0.iframe.bundle.js attach SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin 8.91de97de.iframe.bundle.js attach SourceMap
+<s> [webpack.Progress] 93% after chunk asset optimization SourceMapDevToolPlugin
+<s> [webpack.Progress] 93% asset optimization
+<s> [webpack.Progress] 94% after asset optimization
+<s> [webpack.Progress] 94% after seal
+<s> [webpack.Progress] 95% emitting
+<s> [webpack.Progress] 95% emitting HtmlWebpackPlugin
+<s> [webpack.Progress] 98% after emitting
+<s> [webpack.Progress] 98% after emitting SizeLimitsPlugin
+<s> [webpack.Progress] 100% 
+
+info => Preview built (9.64 s)
+WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+WARN This can impact web performance.
+WARN Assets: 
+WARN   0.809ab1c8.iframe.bundle.js (607 KiB)
+WARN   vendors~main.dc6e49b0.iframe.bundle.js (1.55 MiB)
+WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+WARN Entrypoints:
+WARN   main (1.6 MiB)
+WARN       runtime~main.32163363.iframe.bundle.js
+WARN       vendors~main.dc6e49b0.iframe.bundle.js
+WARN       main.3904c16c.iframe.bundle.js
+WARN 
+info => Manager built (9.95 s)
+info => Output directory: /Users/connorshannon/Desktop/Development/nava-website-2/storybook-static
+
+warn - The `purge`/`content` options have changed in Tailwind CSS v3.0.
+warn - Update your configuration file to eliminate this warning.
+warn - https://tailwindcss.com/docs/upgrade-guide#configure-content-sources
