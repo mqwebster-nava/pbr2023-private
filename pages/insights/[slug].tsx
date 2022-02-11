@@ -3,7 +3,7 @@ import PostTemplate from "components/templates/PostTemplate";
 
 
 
-  export default function CaseStudyPost({post, morePosts, preview }) {
+  export default function InsightPost({post, morePosts, preview }) {
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
@@ -11,11 +11,12 @@ import PostTemplate from "components/templates/PostTemplate";
 
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllPostSlugs("Case Study");
+  const postSlugs = await ContentfulApi.getAllPostSlugs("Insight");
 
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };
   });
+  
 
     return {
       paths,

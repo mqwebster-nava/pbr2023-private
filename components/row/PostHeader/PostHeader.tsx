@@ -7,7 +7,7 @@ interface PostHeaderProps {
   }
   
 const PostHeader = ({ title, long_summary, lead_image, content_type }:PostHeaderProps)=> {
-    console.log(long_summary)
+    
     return ( 
     <div className="w-screen h-96 bg-sage-400"> 
         <h3> {content_type&&"CONTENT TYPE"}</h3>

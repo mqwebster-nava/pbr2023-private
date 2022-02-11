@@ -105,7 +105,7 @@ const DesktopNavBar = ({ NavData }) => {
           <NavLink2 href="/about">About</NavLink2>
           <NavLink2 href="/careers">Careers</NavLink2>
           <NavLink2 href="/mission">Mission</NavLink2>
-          <NavLink2 href="/resources">Resources</NavLink2>
+          <NavLink2 href="/insights">Insights</NavLink2>
         </div>
       </div>
     </nav>

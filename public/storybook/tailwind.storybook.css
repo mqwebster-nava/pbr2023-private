@@ -602,6 +602,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(91 4 98 / var(--tw-bg-opacity));
 }
+.bg-plum-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 142 193 / var(--tw-bg-opacity));
+}
 .bg-purple-base {
   --tw-bg-opacity: 1;
   background-color: rgb(166 70 183 / var(--tw-bg-opacity));
@@ -609,6 +613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-purple-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(71 19 133 / var(--tw-bg-opacity));
+}
+.bg-purple-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 75 178 / var(--tw-bg-opacity));
 }
 .bg-navy-base {
   --tw-bg-opacity: 1;
@@ -618,6 +626,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(10 5 57 / var(--tw-bg-opacity));
 }
+.bg-navy-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(142 146 174 / var(--tw-bg-opacity));
+}
 .bg-gold-base {
   --tw-bg-opacity: 1;
   background-color: rgb(248 183 18 / var(--tw-bg-opacity));
@@ -626,6 +638,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(243 113 0 / var(--tw-bg-opacity));
 }
+.bg-gold-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 228 81 / var(--tw-bg-opacity));
+}
 .bg-sage-base {
   --tw-bg-opacity: 1;
   background-color: rgb(8 165 136 / var(--tw-bg-opacity));
@@ -633,6 +649,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-sage-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(0 76 49 / var(--tw-bg-opacity));
+}
+.bg-sage-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(146 199 181 / var(--tw-bg-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -713,8 +733,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-serif {
   font-family: Source Serif Pro, serif;
 }
-.text-3xl {
-  font-size: 1.875rem;
+.text-xs {
+  font-size: .75rem;
+}
+.text-sm {
+  font-size: .875rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -722,18 +745,35 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-xl {
   font-size: 1.25rem;
 }
-.text-base {
-  font-size: 1rem;
+.text-2xl {
+  font-size: 1.5rem;
 }
-.text-sm {
-  font-size: .875rem;
+.text-3xl {
+  font-size: 1.875rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
 }
 .text-5xl {
   font-size: 60px;
   line-height: 70px;
 }
-.text-2xl {
-  font-size: 1.5rem;
+.text-6xl {
+  font-size: 90px;
+  line-height: 110px;
+}
+.text-7xl {
+  font-size: 110px;
+}
+.text-8xl {
+  font-size: 150px;
+}
+.text-9xl {
+  font-size: 200px;
+  line-height: 190px;
+}
+.text-base {
+  font-size: 1rem;
 }
 .font-extrabold {
   font-weight: 800;
@@ -1104,5 +1144,6 @@ h3{
 
   .lg\:text-9xl {
     font-size: 200px;
+    line-height: 190px;
   }
 }

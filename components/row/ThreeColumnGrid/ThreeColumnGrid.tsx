@@ -11,7 +11,7 @@ export interface ThreeColumnGridInterface {
      
      const childrenArray = Children.toArray(children);
      const count = childrenArray.length;
-     console.log(count);
+    
       return ( 
        <div className="mx-3xl my-2xl">
        <div className={`w-full flex md:flex-row flex-col`}>

@@ -4,15 +4,14 @@ import ContentCard from "components/atom/ContentCard/ContentCard";
 
 
 
-export default function CaseStudies({posts}) {
-   // console.log(posts)
+export default function Toolkits({posts}) {
     return ( <div> 
-        <h1>Case Studies </h1>
-        <CardsGrid title={"Case Studies"} >
+        <h1>Toolkits </h1>
+        <CardsGrid title={"Toolkits"} >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 
-                  path={`/case-studies/${post.slug}`}>
+                  path={`/toolkits/${post.slug}`}>
                       {post.shortSummary}
                   </ContentCard>))
             }
@@ -24,7 +23,7 @@ export default function CaseStudies({posts}) {
 
 
 export async function getStaticProps(context) {
-    const posts = await ContentfulApi.getPostsByContentType("Case Study");
+    const posts = await ContentfulApi.getPostsByContentType("Toolkit");
     
     return {
       props: {
