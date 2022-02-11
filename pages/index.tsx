@@ -1,5 +1,5 @@
 import { Logo } from "components/Logo"
-import { Button } from "components/Button"
+import { Button } from "components/atom/Button/Button"
 
 
 export default function Home() {

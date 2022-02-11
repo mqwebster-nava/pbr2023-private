@@ -1,6 +1,6 @@
 
 const Footer = () =>{
-    return (<div className={"bg-nava_green-dark flex gap-10 text-white px-10 py-24 "}>
+    return (<div className={"bg-nava_sage-dark flex gap-10 text-white px-10 py-24 "}>
         <div className="md:w-1/4">
             <ul>
                 <li>Careers</li>

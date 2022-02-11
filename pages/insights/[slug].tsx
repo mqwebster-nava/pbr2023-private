@@ -1,44 +1,46 @@
+import ContentfulApi from "lib/contentful";
+import PostTemplate from "components/templates/PostTemplate";
 
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-//import { getPostBySlug} from '@/lib/api'
-//import Post, {toPost} from "@/models/PostModel"
 
-  export default function InsightsPost({post, morePosts, preview }) {
-    //const router = useRouter()
 
-    // if (!router.isFallback && !post?.path) {
-    //   return <ErrorPage statusCode={404} />
-    // }
-  
+  export default function InsightPost({post, morePosts, preview }) {
     return (
-      <div>
-        Post
-      </div>
+      <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
   }
 
 
+export async function getStaticPaths({ params, preview = null }) {
+  const postSlugs = await ContentfulApi.getAllPostSlugs("Insight");
 
+  const paths = postSlugs.map((slug) => {
+    return { params: { slug } };
+  });
+  
 
-// export async function getStaticProps({ params, preview = null }) {
-//   //const post = await getPostBySlug("test");
-// //   return {
-// //     props: {
-// //       preview,
-// //       post: post,
-// //     },
-// //   }
-//     return {};
-// }
+    return {
+      paths,
+      fallback: false
+    }
+}
 
-// export async function getStaticPaths() {
-//     return null;
-//     //const post = await getPostBySlug("test");
-//     //console.log(post);
+export async function getStaticProps({ params, preview = false }) {
+  const post = await ContentfulApi.getPostBySlug(params.slug, {
+    preview: preview,
+  });
 
-//     // return {
-//     //     paths: [ `/case-studies/${post.path}`],
-//     //     fallback: true,
-//     // }
-// }
+  // Add this with fallback: "blocking"
+  // So that if we do not have a post on production,
+  // the 404 is served
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: {
+      preview,
+      post,
+    },
+  };
+}

@@ -29,6 +29,7 @@ const NavData = [
   },
 ];
 
+
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
   const screenSize = useWindowSize();
@@ -37,6 +38,7 @@ const Navbar = ({}) => {
   return isMobile ? (
     <MobileNavBar NavData={NavData} />
   ) : (
+
     <DesktopNavBar NavData={NavData} />
   );
 };
@@ -45,7 +47,7 @@ const Logo = () => (
   <div className="flex items-center flex-shrink-0 text-black ml-6 md:mr-5">
     <a href={"/"}>
       {" "}
-      <span className="font-semibold text-xl tracking-tight">NAVA</span>
+      <span className="font-semibold font-sans text-xl tracking-tight">NAVA</span>
     </a>
   </div>
 );
@@ -56,7 +58,7 @@ const NavLink = (props) => {
       href={props.href}
       className="block md:inline-block h-12 hover:bg-green-500 hover:text-white text-black  px-4 cursor-pointer"
     >
-      <p className="navbar-text py-2">{props.children}</p>
+      <p className="navbar-text py-2 font-sans">{props.children}</p>
     </a>
   );
 };
@@ -67,12 +69,56 @@ const IndentedNavLink = (props) => {
       href={props.href}
       className="block md:inline-block h-12  hover:bg-green px-4 cursor-pointer"
     >
-      <p className="block navbar-text text-black hover:text-green-300 py-2 pl-5">
+      <p className="block navbar-text font-sans text-black hover:text-green-300 py-2 pl-5">
         {props.children}
       </p>
     </a>
   );
 };
+
+
+const DesktopNavBar = ({ NavData }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const NavLink2 = (props) => {
+    return (
+      <a
+        onMouseEnter={()=>setShowMenu(true)}
+        href={props.href}
+        className="block md:inline-block h-12 hover:bg-green-500 hover:text-white text-black  px-4 cursor-pointer"
+      >
+        <p className="navbar-text py-2 font-sans">{props.children}</p>
+      </a>
+    );
+  };
+  return (
+    <div className="relative">
+    <nav
+      className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
+                     bg-opacity-50 bg-green-300"`}
+      onMouseEnter={()=>setShowMenu(false)}
+    >
+      <Logo />
+      <div className="flex-grow flex items-center w-auto ">
+        <div className="flex-grow">
+          <NavLink2 href="/work" >Work </NavLink2>
+          <NavLink2 href="/about">About</NavLink2>
+          <NavLink2 href="/careers">Careers</NavLink2>
+          <NavLink2 href="/mission">Mission</NavLink2>
+          <NavLink2 href="/insights">Insights</NavLink2>
+        </div>
+      </div>
+    </nav>
+    {/* {showMenu && 
+      <div className={`absolute top-2xl left-0 w-screen h-screen bg-purple-base`}
+      >
+      </div>
+      } */}
+    </div>
+  );
+};
+
+
 
 const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
@@ -106,7 +152,7 @@ const MobileNavBar = ({ NavData }) => {
       className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
                     ${
                       isShowingMenu
-                        ? "pb-14 g-opacity-90 bg-blue"
+                        ? "pb-14 g-opacity-90 bg-navy"
                         : "bg-opacity-50 bg-green"
                     }`}
     >
@@ -122,26 +168,6 @@ const MobileNavBar = ({ NavData }) => {
         </button>
       </div>
       {isShowingMenu && <NavLinksMobile />}
-    </nav>
-  );
-};
-
-const DesktopNavBar = ({ NavData }) => {
-  return (
-    <nav
-      className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
-                     bg-opacity-50 bg-green-300"`}
-    >
-      <Logo />
-      <div className="flex-grow flex items-center w-auto ">
-        <div className="flex-grow">
-          <NavLink href="/work">Work </NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/careers">Careers</NavLink>
-          <NavLink href="/mission">Mission</NavLink>
-          <NavLink href="/insights">Insights</NavLink>
-        </div>
-      </div>
     </nav>
   );
 };

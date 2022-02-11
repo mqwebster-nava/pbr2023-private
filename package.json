@@ -15,7 +15,6 @@
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.11.0",
     "@contentful/rich-text-react-renderer": "^15.11.0",
-    "@emotion/styled": "^11.6.0",
     "contentful": "^9.1.5",
     "next": "^12.0.4",
     "react": "^17.0.2",
@@ -24,19 +23,19 @@
     "yarn": "^1.22.17"
   },
   "devDependencies": {
-    "@next/plugin-storybook": "^12.0.4",
+    "@next/plugin-storybook": "^12.0.10",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@types/react": "^17.0.11",
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.4.2",
     "chromatic": "^6.3.4",
     "classnames": "^2.3.1",
-    "postcss": "^8.3.5",
+    "postcss": "^8.4.6",
     "postcss-cli": "^9.0.2",
     "react-is": "^17.0.2",
-    "tailwindcss": "^2.2.0",
+    "tailwindcss": "^3.0.18",
     "typescript": "^4.3.4"
   }
 }

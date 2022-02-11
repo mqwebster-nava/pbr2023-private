@@ -1,19 +1,23 @@
 import ContentfulApi from "lib/contentful";
+import CardsGrid from "components/row/CardsGrid/CardsGrid";
+import ContentCard from "components/atom/ContentCard/ContentCard";
 
 
 
 export default function CaseStudies({posts}) {
-    console.log(posts)
+   // console.log(posts)
     return ( <div> 
         <h1>Case Studies </h1>
-        {posts.map((post)=>{
-            return (
-            <a href={`/case-studies/${post.slug}`}>
-                <h3>{post.title}</h3>
-                 <p>{post.shortSummary}</p>
-            </a>
-        )
-        })}
+        <CardsGrid title={"Case Studies"} >
+          {
+          posts.map((post) =>( <ContentCard 
+                  title={post.title} 
+                  path={`/case-studies/${post.slug}`}>
+                      {post.shortSummary}
+                  </ContentCard>))
+            }
+
+        </CardsGrid>
 
     </div>  );
 }

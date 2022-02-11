@@ -1,6 +1,4 @@
 import ContentfulApi from "lib/contentful";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
 import PostTemplate from "components/templates/PostTemplate";
 
 
@@ -19,8 +17,6 @@ export async function getStaticPaths({ params, preview = null }) {
     return { params: { slug } };
   });
 
-    // TODO this is where we get all the Case Studies Slugs 
-    // getPostSlugsByContentType
     return {
       paths,
       fallback: false
@@ -47,14 +43,3 @@ export async function getStaticProps({ params, preview = false }) {
     },
   };
 }
-
-// // export async function getStaticPaths() {
-// //     return null;
-// //     //const post = await getPostBySlug("test");
-// //     //console.log(post);
-
-// //     // return {
-// //     //     paths: [ `/case-studies/${post.path}`],
-// //     //     fallback: true,
-// //     // }
-// // }
