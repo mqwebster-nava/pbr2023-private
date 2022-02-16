@@ -15,6 +15,7 @@ import careersImg3 from "public/images/careers-couch.png";
 import careersImg4 from "public/images/careers-team.png";
 
 export default function Careers() {
+  
   const colorTheme = "purple";
   return (
     <div>
