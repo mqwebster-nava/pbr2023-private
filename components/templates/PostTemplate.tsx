@@ -29,7 +29,7 @@ import {allTagsSlugIdPair} from "utils/utils"
  
     return (
       <div >
-        <PostHeader title={post.title} long_summary={post.long_summary} content_type={'Case Study'}/>
+        <PostHeader title={post.title} long_summary={post.longSummary??post.shortSummary} content_type={post.contentType}/>
         <div className={"px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg my-2xl flex"}>
           <div className={"w-2/3 pr-md"}>
             {documentToReactComponents(doc, options)}
