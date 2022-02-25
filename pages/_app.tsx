@@ -1,3 +1,4 @@
+
 import "../styles/tailwind.css"
 import type { AppProps /*, AppContext */ } from "next/app"
 import {Navbar, Footer}from "components/wrapper/index"

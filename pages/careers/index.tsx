@@ -13,8 +13,19 @@ import careersImg1 from "public/images/careers-presentation-img.png";
 import careersImg2 from "public/images/careers-outdoor.png";
 import careersImg3 from "public/images/careers-couch.png";
 import careersImg4 from "public/images/careers-team.png";
+//https://www.digitalocean.com/community/tutorials/react-axios-react
+
+/*
+In the open positions page, we are getting Nava's open positions from Lever's API,
+since all the roles are updated there.
+
+We use axios to call the api at page load and display them in groupings.
+
+*/
+
 
 export default function Careers() {
+
   
   const colorTheme = "purple";
   return (
@@ -36,6 +47,7 @@ export default function Careers() {
         and federal agencies. We help them improve how people apply for
         benefits, navigate their healthcare, and much more.
       </SectionHeader>
+    
       <hr />
       <LeftRepeater
         title={"Nava is a public benefit corporation"}
