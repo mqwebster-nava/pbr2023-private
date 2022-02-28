@@ -5,20 +5,63 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 //import ReactMarkdown from 'react-markdown';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import PostHeader from 'components/row/PostHeader/PostHeader';
-import {allTagsSlugIdPair} from "utils/utils";
-import { useEffect, useState } from "react";
-import AnchorLink from "components/templates/AnchorLink";
- 
+import ArticleInfoComponent from './ArticleInfoComponent';
+import SideNavComponent from './SideNavComponent';
+import { useLayoutEffect, useRef, useState } from "react";
+
+ import {sortDocIntoH2Sections} from "utils/postUtils";
+
+
 export default function PostTemplate({post, morePosts, preview }) {
   // need to deconstruct post 
   const doc = post.body.json;
+  let h2Sections = sortDocIntoH2Sections(doc);
+  let refs = {};
+  h2Sections.forEach(
+    (h2)=> h2.ref = useRef()
+  );
+  const [activeSection,setActiveSection] = useState(null);
+
+
+  const callbackFunction = (entries) => {
+    let newActiveSection = activeSection;
+   // Need to deal with a range of edge cases
+    entries.forEach((entry)=>{
+      if(entry.isIntersecting ) newActiveSection = entry.target.id;
+     
+    });
+    if (newActiveSection!=activeSection) setActiveSection(newActiveSection);
+    return null;
+  }
+
+  useLayoutEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold:0.2
+    }
+    const observer = new IntersectionObserver(callbackFunction, options)
+    h2Sections.forEach(
+      (h2)=> {
+        if (h2.ref.current) observer.observe(h2.ref.current)
+      }
+    );
   
-   const getImg= (data:any) => {
+    return () => {
+      h2Sections.forEach(
+        (h2)=> {
+          if (h2.ref.current) observer.unobserve(h2.ref.current)
+        }
+      );
+    }
+  })
+
+  const getImg= (data:any) => {
       const id = data.target.sys.id;
       const assets = post.body.links.assets.block;
       const asset = assets.find(element => element.sys.id === id);
       return (<Image src={asset.url} height={asset.height} width={asset.width} alt={asset.description}/>);
-    }
+  }
 // TODO Where should I do the rendering for this post
     const options = {
       renderMark: {
@@ -30,7 +73,7 @@ export default function PostTemplate({post, morePosts, preview }) {
         [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-black font-sans py-md text-base">{children}</p>,
         [BLOCKS.HEADING_1]: (node, children) => <p className="text-3xl font-bold font-sans pt-md">{children}</p>,
         [BLOCKS.HEADING_2]: (node, children) =>{
-          return ( <h2 id={children[0]} className="text-2xl font-bold font-sans pt-md">{children}</h2>)
+          return ( <h2 className="text-2xl font-bold font-sans pt-md">{children}</h2>)
         },
         [BLOCKS.HEADING_3]: (node, children) => <p className="text-xl font-bold font-sans">{children}</p>,
         [BLOCKS.HEADING_4]: (node, children) => <p className="text-blue-500">{children}</p>,
@@ -42,45 +85,6 @@ export default function PostTemplate({post, morePosts, preview }) {
         [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data)
       },
   };
- 
-
-
- 
-const ArticleInfoComponent = () =>{
-  return (<div>
-    <p>Date: ______</p>
-            <div>
-              <h3>Authors</h3>
-              {post.authorsCollection.items.map((author)=>(
-              <div id={author.name}>
-                <p><a className="text-blue-700 underline" href={`/authors/${author.slug}`}>{author.name}</a></p>
-                <p>{author.role}</p>
-              </div>
-              ))}
-            </div>
-            <div>
-            <h3>Tags</h3>
-            {post.contentTags && post.contentTags.map((tag)=>{
-              return (
-                <p id={tag}><a className="text-blue-700 underline" href={`/tags/${allTagsSlugIdPair.revGet(tag)}`}>{tag}</a></p>
-              )})}
-            </div>
-  </div>)
-}
-const SideNavComponent = () =>{
-  const headers = doc.content.filter(node => node.nodeType=="heading-2").map(node=>node.content[0].value);
-  console.log(headers);
-  return ( 
-  <div className="mt-md  p-lg sticky top-48 border-2 w-fit">
-    <h3>On This Page</h3>
-    {
-        headers.map((header)=>{
-          return ( <p className="font-sans text-blue-500 hover:text-blue-900"><AnchorLink href={`#${header}`}>{header}</AnchorLink> </p>)
-        })
-    }
-  </div>
-  )
-}
 
     return (
       <div >
@@ -88,12 +92,18 @@ const SideNavComponent = () =>{
         <div className={"px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg my-2xl flex"}>
         {/* Article Body Section  */}
         <div id="article" className="w-2/3 pr-2">
-            {documentToReactComponents(doc, options)}
+         { h2Sections.map((section)=>
+         <div id={section.title} ref={section.ref}>
+            {documentToReactComponents(section.doc, options)}
+         </div>
+         )} 
           </div>
           {/* Article Sidebar Section  */}
           <div className={"w-1/3"}>
-            <ArticleInfoComponent/>
-            <SideNavComponent/>
+            <ArticleInfoComponent post={post}/>
+            <SideNavComponent 
+              h2Sections={h2Sections} 
+              activeSection={activeSection}/>
           </div>
         </div>
       </div>

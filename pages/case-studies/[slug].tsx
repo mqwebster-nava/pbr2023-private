@@ -1,5 +1,5 @@
 import ContentfulApi from "lib/contentful";
-import PostTemplate from "components/templates/PostTemplate";
+import PostTemplate from "components/templates/PostTemplate/PostTemplate";
 
 
 
