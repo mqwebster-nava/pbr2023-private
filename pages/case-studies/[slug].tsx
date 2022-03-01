@@ -1,14 +1,15 @@
 import ContentfulApi from "lib/contentful";
 import PostTemplate from "components/templates/PostTemplate/PostTemplate";
+import { FullPostInterface } from "lib/data_models";
+import { PostPageProps } from "utils/postUtils";
 
 
-
-  export default function CaseStudyPost({post, morePosts, preview }) {
+const CaseStudyPost= ({post, morePosts, preview }: PostPageProps )=> {
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
   }
-
+export default CaseStudyPost;
 
 export async function getStaticPaths({ params, preview = null }) {
   const postSlugs = await ContentfulApi.getAllPostSlugs("Case Study");
@@ -24,7 +25,7 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const post = await ContentfulApi.getPostBySlug(params.slug, {
+  const post:FullPostInterface = await ContentfulApi.getPostBySlug(params.slug, {
     preview: preview,
   });
 

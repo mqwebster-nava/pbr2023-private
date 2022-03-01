@@ -7,12 +7,13 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import PostHeader from 'components/row/PostHeader/PostHeader';
 import ArticleInfoComponent from './ArticleInfoComponent';
 import SideNavComponent from './SideNavComponent';
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
- import {sortDocIntoH2Sections} from "utils/postUtils";
+import {PostPageProps, sortDocIntoH2Sections} from "utils/postUtils";
 
 
-export default function PostTemplate({post, morePosts, preview }) {
+
+export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
   // need to deconstruct post 
   const doc = post.body.json;
   let h2Sections = sortDocIntoH2Sections(doc);
@@ -34,7 +35,7 @@ export default function PostTemplate({post, morePosts, preview }) {
     return null;
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const options = {
       root: null,
       rootMargin: "0px",
@@ -88,7 +89,7 @@ export default function PostTemplate({post, morePosts, preview }) {
 
     return (
       <div >
-        <PostHeader title={post.title} long_summary={post.longSummary??post.shortSummary} content_type={post.contentType}/>
+        <PostHeader title={post.title} longSummary={post.longSummary} contentType={post.contentType}/>
         <div className={"px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg my-2xl flex"}>
         {/* Article Body Section  */}
         <div id="article" className="w-2/3 pr-2">

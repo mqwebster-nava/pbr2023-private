@@ -11,6 +11,16 @@
  *
  */
 
+import { 
+  AUTHOR_ALL_FIELDS,
+  POST_ALL_FIELDS, 
+  POST_CORE_FIELDS,
+  BasicPostInterface,
+  FullPostInterface,
+  AuthorPostInterface
+
+} from "./data_models";
+
 /*
 For building post pages
   getPostSlugs() - used to get a list of slugs to build out pages / might need to be specific to content type
@@ -30,23 +40,20 @@ const defaultOptions = {
   preview: false,
 };
 
-const CORE_POST_FIELDS = `
-    sys {
-      id
+const formatPosts = (posts) =>{
+  return posts.map((post)=>{
+    const newPost: BasicPostInterface = {
+      id: post.sys.id,
+      contentTags:post.contentTags,
+      slug: post.slug,
+      title: post.title,
+      date: post.date,
+      contentType: post.contentType,
+      shortSummary: post.shortSummary
     }
-    date
-    title
-    slug
-    contentType
-    shortSummary
-    contentTags
-    promoImage {
-      sys {
-        id
-      }
-      url
-    }
-`;
+    return newPost;
+  })
+}
 
 
 
@@ -60,44 +67,40 @@ export default class ContentfulApi {
       postCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
         total
         items {
-          ${CORE_POST_FIELDS}
-          longSummary
-          authorsCollection {
-            items {
-              name
-              role
-              bio
-              slug
-            }
-          } 
-          
-          body {
-            json
-            links {
-              assets {
-                block {
-                  sys {
-                    id
-                  }
-                  url
-                  title
-                  width
-                  height
-                  description
-                }
-              }
-            }
-          }
+          ${POST_ALL_FIELDS}
         }
       }
     }`;
-
     const response = await this.callContentful(query, variables, options);
-    const post = response.data.postCollection.items
+    const posts = response.data.postCollection.items
       ? response.data.postCollection.items
       : [];
-    return post.pop();
+    const post =  posts.pop();
+    console.log(post);
+    const formattedPost: FullPostInterface = {
+      id: post.sys.id,
+      slug: post.slug,
+      title: post.title,
+      contentTags:post.contentTags,
+      longSummary: post.longSummary,
+      authors: post.authorsCollection?.items?.map((author)=>{
+        const formattedAuthor: AuthorPostInterface ={
+          name: author.name,
+          slug: author.slug,
+          bio: author.bio,
+          role: author.role
+        }
+        return formattedAuthor;
+      }),
+      body: post.body,
+      date: post.date,
+      contentType: post.contentType,
+      shortSummary: post.shortSummary
+    }
+    console.log(formattedPost);
+    return formattedPost;
   }
+
 
   static async getPostsByTag(tag, options = defaultOptions) {
     const variables = { tag, };
@@ -107,14 +110,15 @@ export default class ContentfulApi {
       postCollection(limit: 20,  where: { contentTags_contains_all:[$tag] } ) 
       {
         items {
-          ${CORE_POST_FIELDS}
+          ${POST_CORE_FIELDS}
         }
       }
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    const posts = response.data.postCollection.items
-    return posts;
+    const posts = response.data.postCollection.items;
+    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+    return formattedPosts;
   }
 
 
@@ -126,14 +130,16 @@ export default class ContentfulApi {
       postCollection(limit: 20,  where: { contentType: $contentType } ) 
       {
         items {
-          ${CORE_POST_FIELDS}
+          ${POST_CORE_FIELDS}
         }
       }
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    const posts = response.data.postCollection.items
-    return posts;
+    const posts = response.data.postCollection.items;
+    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+  
+    return formattedPosts;
   }
 
   static async getPostsByAuthor(slug, options = defaultOptions) {
@@ -143,27 +149,14 @@ export default class ContentfulApi {
     {
       authorCollection(limit: 20, where: { slug: $slug }) {
         items{
-          name
-          role
-          bio
-          linkedFrom {
-            postCollection{
-              items{
-                ${CORE_POST_FIELDS}
-              }
-            }
-          }
+          ${AUTHOR_ALL_FIELDS}
       
         }
       }    
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    
-    //const  author = response.data.authorCollection.items[0];
     const author = response.data.authorCollection.items[0]
-  
-
     return author;
   }
 /**

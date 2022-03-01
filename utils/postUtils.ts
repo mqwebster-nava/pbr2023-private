@@ -4,6 +4,17 @@
 This returns the article as a list of sections, which can more easily be used with the 
 intercept observer.
 */
+
+import { FullPostInterface } from "lib/data_models";
+
+
+export interface PostPageProps   {
+    post:FullPostInterface,
+    morePosts:any,
+    preview:boolean
+  }
+  
+
 export function sortDocIntoH2Sections(doc){
     let buffer = [];
     let sections = [];

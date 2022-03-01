@@ -1,11 +1,18 @@
 import ContentfulApi from "lib/contentful";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
+import { BasicPostInterface } from "lib/data_models";
 
 
 
-export default function CaseStudies({posts}) {
-   // console.log(posts)
+export interface CaseStudiesProps   {
+    tag:string,
+    posts:Array<BasicPostInterface>,
+  }
+
+  
+export default function CaseStudies({posts}:CaseStudiesProps) {
+   console.log(posts)
     return ( <div> 
         <h1>Case Studies </h1>
         <CardsGrid title={"Case Studies"} >
@@ -24,7 +31,7 @@ export default function CaseStudies({posts}) {
 
 
 export async function getStaticProps(context) {
-    const posts = await ContentfulApi.getPostsByContentType("Case Study");
+    const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByContentType("Case Study");
     
     return {
       props: {

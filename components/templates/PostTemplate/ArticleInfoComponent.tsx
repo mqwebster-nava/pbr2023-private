@@ -1,11 +1,16 @@
+import { FullPostInterface } from "lib/data_models";
 import {allTagsSlugIdPair} from "utils/utils";
 
-const ArticleInfoComponent = ({post}) =>{
+interface ArticleInfoComponentProps{
+    post: FullPostInterface
+}
+
+const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
     return (<div>
       <p>Date: ______</p>
               <div>
                 <h3>Authors</h3>
-                {post.authorsCollection.items.map((author)=>(
+                {post.authors.map((author)=>(
                 <div id={author.name}>
                   <p><a className="text-blue-700 underline" href={`/authors/${author.slug}`}>{author.name}</a></p>
                   <p>{author.role}</p>
