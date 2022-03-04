@@ -1,11 +1,12 @@
 
 export interface ButtonProps   {
   href: string;
-  colorTheme: string;
+  colorTheme?: string;
   isVariant?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, href, colorTheme, isVariant, ...rest }) => {
+  if(!colorTheme)colorTheme="sage";
   return (
     <div className={``} {...rest}>
       <a
@@ -20,3 +21,5 @@ export const Button: React.FC<ButtonProps> = ({ children, href, colorTheme, isVa
     </div>
   )
 }
+
+//bg-${colorTheme}-dark hover:bg-${colorTheme}-base`

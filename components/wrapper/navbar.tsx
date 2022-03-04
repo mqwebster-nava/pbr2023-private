@@ -29,7 +29,6 @@ const NavData = [
   },
 ];
 
-
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
   const screenSize = useWindowSize();
@@ -38,7 +37,6 @@ const Navbar = ({}) => {
   return isMobile ? (
     <MobileNavBar NavData={NavData} />
   ) : (
-
     <DesktopNavBar NavData={NavData} />
   );
 };
@@ -47,7 +45,9 @@ const Logo = () => (
   <div className="flex items-center flex-shrink-0 text-black ml-6 md:mr-5">
     <a href={"/"}>
       {" "}
-      <span className="font-semibold font-sans text-xl tracking-tight">NAVA</span>
+      <span className="font-semibold font-sans text-xl tracking-tight">
+        NAVA
+      </span>
     </a>
   </div>
 );
@@ -76,14 +76,13 @@ const IndentedNavLink = (props) => {
   );
 };
 
-
 const DesktopNavBar = ({ NavData }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const NavLink2 = (props) => {
     return (
       <a
-        onMouseEnter={()=>setShowMenu(true)}
+        onMouseEnter={() => setShowMenu(true)}
         href={props.href}
         className="block md:inline-block h-12 hover:bg-green-500 hover:text-white text-black  px-4 cursor-pointer"
       >
@@ -93,23 +92,32 @@ const DesktopNavBar = ({ NavData }) => {
   };
   return (
     <div className="relative">
-    <nav
-      className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
+      <nav
+        className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
                      bg-opacity-50 bg-green-300"`}
-      onMouseEnter={()=>setShowMenu(false)}
-    >
-      <Logo />
-      <div className="flex-grow flex items-center w-auto ">
-        <div className="flex-grow">
-          <NavLink2 href="/work" >Work </NavLink2>
-          <NavLink2 href="/about">About</NavLink2>
-          <NavLink2 href="/careers">Careers</NavLink2>
-          <NavLink2 href="/mission">Mission</NavLink2>
-          <NavLink2 href="/insights">Insights</NavLink2>
+        onMouseEnter={() => setShowMenu(false)}
+      >
+        <Logo />
+        <div className="flex-grow flex items-center w-auto ">
+          <div className="flex-grow">
+            <div className="relative inline-block">
+              <button className="bg-green-700 text-white p-sm">Dropdown</button>
+              <div className="hidden absolute bg-green-600 min-w-16 z-1">
+                <a href="#" className="text-black block">Link 1</a>
+                <a href="# "className="text-black block">Link 2</a>
+                <a href="#" className="text-black block">Link 3</a>
+              </div>
+            </div>
+            
+            <NavLink2 href="/work">Work </NavLink2>
+            <NavLink2 href="/about">About</NavLink2>
+            <NavLink2 href="/careers">Careers</NavLink2>
+            <NavLink2 href="/mission">Mission</NavLink2>
+            <NavLink2 href="/insights">Insights</NavLink2>
+          </div>
         </div>
-      </div>
-    </nav>
-    {/* {showMenu && 
+      </nav>
+      {/* {showMenu && 
       <div className={`absolute top-2xl left-0 w-screen h-screen bg-purple-base`}
       >
       </div>
@@ -117,8 +125,6 @@ const DesktopNavBar = ({ NavData }) => {
     </div>
   );
 };
-
-
 
 const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
@@ -135,7 +141,7 @@ const MobileNavBar = ({ NavData }) => {
         <NavLink href="/about">About</NavLink>
         <IndentedNavLink href="/about/team">Team</IndentedNavLink>
         <IndentedNavLink>News</IndentedNavLink>
-        <IndentedNavLink>Contact</IndentedNavLink>
+        <IndentedNavLink href="/about/contact">Contact</IndentedNavLink>
         <NavLink href="/careers">Careers</NavLink>
         <IndentedNavLink href="/careers/working-at-nava">
           Working At Nava

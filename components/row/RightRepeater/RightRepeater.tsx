@@ -16,8 +16,8 @@ export interface RightRepeaterInterface {
        <div className={`w-full flex flex-col-reverse md:flex-row`}>
             <div className="w-full md:w-1/3 pr-xl flex justify-between flex-col"> 
                 <div className="">
-                    <h3 className="font-sans text-xl">{title} </h3>
-                    <p className={`font-sans pt-lg text-xl text-grey-base`}>{children}</p>
+                    <h3 className="font-sans text-lg">{title} </h3>
+                    <p className={`font-sans pt-lg text-base text-grey-base`}>{children}</p>
                 </div>
                 {buttonText && <Button href={buttonPath} colorTheme={colorTheme}>{buttonText}</Button>}
             </div>

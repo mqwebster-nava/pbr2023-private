@@ -1,7 +1,6 @@
 import { Logo } from "components/Logo"
 import { Button } from "components/atom/Button/Button"
 
-
 export default function Home() {
   return (
     <div>

@@ -11,8 +11,6 @@ import { useEffect, useRef, useState } from "react";
 
 import {PostPageProps, sortDocIntoH2Sections} from "utils/postUtils";
 
-
-
 export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
   // need to deconstruct post 
   const doc = post.body.json;
@@ -28,7 +26,7 @@ export default function PostTemplate({post, morePosts, preview }:PostPageProps) 
     let newActiveSection = activeSection;
    // Need to deal with a range of edge cases
     entries.forEach((entry)=>{
-      if(entry.isIntersecting ) newActiveSection = entry.target.id;
+      if(entry.intersectionRatio > 0 ) newActiveSection = entry.target.id;
      
     });
     if (newActiveSection!=activeSection) setActiveSection(newActiveSection);
@@ -55,7 +53,7 @@ export default function PostTemplate({post, morePosts, preview }:PostPageProps) 
         }
       );
     }
-  })
+  });
 
   const getImg= (data:any) => {
       const id = data.target.sys.id;
@@ -88,7 +86,7 @@ export default function PostTemplate({post, morePosts, preview }:PostPageProps) 
   };
 
     return (
-      <div >
+      < >
         <PostHeader title={post.title} longSummary={post.longSummary} contentType={post.contentType}/>
         <div className={"px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg my-2xl flex"}>
         {/* Article Body Section  */}
@@ -107,7 +105,7 @@ export default function PostTemplate({post, morePosts, preview }:PostPageProps) 
               activeSection={activeSection}/>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

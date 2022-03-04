@@ -1,6 +1,8 @@
 module.exports = {
-  content: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./styles/**/*.{js,jsx,ts,tsx}"],
-
+  content: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./styles/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
+  plugins: [
+    require('flowbite/plugin')
+],
   theme: {
     extend: {
       fontFamily: {
@@ -9,20 +11,19 @@ module.exports = {
         'body': ['GTAmerica']
       },
       fontSize:{
-        'xs': '.75rem',
-        'sm': '.875rem',
-        'tiny': '.875rem',
-        'base': '1rem',
-        'lg': '1.125rem',
-        'xl': '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '1.875rem',
-        '4xl': '2.25rem',
-        '5xl': ['60px', '70px'], 
-        '6xl': ['90px', '110px'],
-        '7xl': '110px',
-        '8xl': '150px',
-        '9xl':['200px','190px']
+        'xs': '12px', // .65rem
+        'sm': '14px', // 0.8
+        'base': '18px', // 1rem
+        'lg': '22px',//1.25rem
+        'xl': '28px', //1.5rem
+        '2xl': '36px', 
+        '3xl': '44px',
+        '4xl': '55px',
+        '5xl': ['66px', '80px'], 
+        // '6xl': ['90px', '110px'],
+        // '7xl': '110px',
+        // '8xl': '150px',
+        // '9xl':['200px','190px']
       },
       screens: {
         'sm': '480px',
