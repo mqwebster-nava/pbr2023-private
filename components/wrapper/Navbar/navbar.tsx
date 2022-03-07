@@ -57,7 +57,7 @@ const NavData = [
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
   const screenSize = useWindowSize();
-  const isMobile: Boolean = !screenSize.includes("lg");
+  const isMobile: Boolean = !screenSize.includes("xl");
   //console.log(screenSize, isMobile);
   return isMobile ? (
     <MobileNavBar NavData={NavData} />
@@ -97,7 +97,7 @@ const DesktopNavBar = ({ NavData }) => {
             );
           })}
 
-          <button className="font-sans mx-md px-md border-2">Get In Touch</button>
+          <a href="/contact"className="font-sans mx-md px-md border-2">Get In Touch</a>
         </div>
         </div>
       </nav>
@@ -116,20 +116,18 @@ const MobileNavBar = ({ NavData }) => {
         <IndentedNavLink href="/work/case-studies">
           Case Studies
         </IndentedNavLink>
-        <IndentedNavLink>Toolkits</IndentedNavLink>
-        <IndentedNavLink>Public benefit reports</IndentedNavLink>
-        <NavLink href="/about">About</NavLink>
+        <IndentedNavLink href="/toolkits">Toolkits</IndentedNavLink>
         <IndentedNavLink href="/about/team">Team</IndentedNavLink>
         <IndentedNavLink>News</IndentedNavLink>
-        <IndentedNavLink href="/about/contact">Contact</IndentedNavLink>
+        <IndentedNavLink href="/contact">Contact</IndentedNavLink>
         <NavLink href="/careers">Careers</NavLink>
-        <IndentedNavLink href="/careers/working-at-nava">
+        <IndentedNavLink href="/working-at-nava">
           Working At Nava
         </IndentedNavLink>
-        <IndentedNavLink href="/careers/open-roles">Open Roles</IndentedNavLink>
+        <IndentedNavLink href="/open-roles">Open Roles</IndentedNavLink>
         <NavLink href="/mission">Mission</NavLink>
-        <IndentedNavLink href="/mission/values">Values</IndentedNavLink>
-        <IndentedNavLink href="/mission/impact">Impact</IndentedNavLink>
+        <IndentedNavLink href="/values">Values</IndentedNavLink>
+        <IndentedNavLink href="/impact">Impact</IndentedNavLink>
       </div>
     </div>
   );
