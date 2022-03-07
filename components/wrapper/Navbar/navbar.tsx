@@ -75,10 +75,12 @@ const DesktopNavBar = ({ NavData }) => {
   return (
     <div className="relative ">
       <nav
-        className={`absolute w-full z-10 flex flex-wrap mt-md items-center justify-between 
-                     bg-opacity-50 px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg "`}
+        className={`absolute w-full z-10 bg-opacity-50 "`}
         onMouseEnter={() => setShowMenu(false)}
       >
+        <div className="flex flex-wrap mt-md items-center justify-between 
+                      px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg">
+
         <Logo />
         <div className=" flex items-center w-auto ">
           {NavData.map((navSection) => {
@@ -97,7 +99,9 @@ const DesktopNavBar = ({ NavData }) => {
 
           <button className="font-sans mx-md px-md border-2">Get In Touch</button>
         </div>
+        </div>
       </nav>
+
     </div>
   );
 };
@@ -131,7 +135,7 @@ const MobileNavBar = ({ NavData }) => {
   );
   return (
     <nav
-      className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between 
+      className={`absolute w-full z-10 flex flex-wrap bg-green  items-center justify-between  px-3xl
                     ${
                       isShowingMenu
                         ? "pb-14 g-opacity-90 bg-navy"
@@ -139,7 +143,7 @@ const MobileNavBar = ({ NavData }) => {
                     }`}
     >
       <Logo />
-      <div className="block">
+      <div className="block ">
         <button
           onClick={() => {
             setIsShowingMenu(!isShowingMenu);
