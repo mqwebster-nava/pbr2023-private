@@ -10,11 +10,8 @@ const CardsGrid: React.FC<CardsGridInterface> = ({
   children,
 }) => {
   return (
-    <div className="m-3xl flex flex-wrap ">
-      {Children.toArray(children).map((child)=>(
-      <div className="m-md">{child}</div>
-      ))
-      }
+    <div className="responsive-container flex flex-wrap gap-md">
+      {children}
     </div>
   );
 };

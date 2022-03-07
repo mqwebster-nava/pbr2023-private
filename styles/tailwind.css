@@ -37,12 +37,9 @@ html{
     font-size:18px;
     font-family: "GTAmerica";
 }
-h2{
-    font-size: larger;
-    font-weight: bold;  
-}
 
-h3{
-    font-size: large;
-    font-weight: bold;  
-}
+@layer components {
+    .responsive-container {
+      @apply px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg py-2xl;
+    }
+  }

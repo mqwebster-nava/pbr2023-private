@@ -10,13 +10,11 @@ interface ContentBlockInterface {
   
   const ContentBlockText: React.FC<ContentBlockInterface> = ({ title,  children}) => {
       return ( 
-       <div className="mx-3xl my-2xl">
-       <div className={`w-full `}>
+       <div className="responsive-container">
+       <div className={`w-full lg:w-2/3`}>
         
                     {title && <h3 className="font-sans text-lg">{title} </h3> }
                     <p className={`font-sans pt-lg text-base text-grey-base mb-md`}>{children}</p>
-            
-              
             </div>
         </div> 
         );

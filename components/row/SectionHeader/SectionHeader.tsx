@@ -31,7 +31,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
   };
 
   return (
-    <div className="m-3xl">
+    <div className="responsive-container">
       <TitleBlock />
       <BodyBlock />
     </div>

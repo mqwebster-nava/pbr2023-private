@@ -8,7 +8,7 @@ import ContentBlockLinkToPage from "./Placeholder/ContentBlockLinkToPage";
 import ContentBlockText from "./Placeholder/ContentBlockText";
 import ContentBlockArticleList from "./Placeholder/ContentBlockArticlesList";
 import Newsletter from "./Placeholder/NewsletterComponent";
-
+import PageCTASection from "./Placeholder/PageCTASection";
 export {
   LargeHero,
   SectionHeader,
@@ -19,5 +19,6 @@ export {
   ContentBlockLinkToPage,
   ContentBlockText,
   ContentBlockArticleList,
-  Newsletter
+  Newsletter,
+  PageCTASection
 };

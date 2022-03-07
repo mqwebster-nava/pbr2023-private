@@ -4,7 +4,8 @@ import {
     ContentBlockText,
     PlaceholderPageHeader,
     ContentBlockArticleList,
-    Newsletter
+    Newsletter,
+    PageCTASection
   } from "components/row/index";
   import { ContentCard } from "components/atom/index";
   // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
@@ -87,6 +88,9 @@ import {
             Nava helps build infrastructure that’s easy for teams to use so they can dramatically scale their work while minimizing cost and effort. 
         </ContentBlockText>
 
+<PageCTASection title="Get In Touch" buttonPath="/contact" buttonText="contact us">
+Tell us about your challenges and ideas.
+</PageCTASection>
       </div>
     );
   }
