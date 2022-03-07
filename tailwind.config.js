@@ -2,7 +2,7 @@ module.exports = {
   content: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./styles/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
   plugins: [
     require('flowbite/plugin')
-],
+  ],
   theme: {
     extend: {
       fontFamily: {

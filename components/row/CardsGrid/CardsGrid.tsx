@@ -2,11 +2,11 @@
 import { Children } from "react";
 // TODO move as much to tailwind
 export interface CardsGridInterface {
-  title: string;
+
 }
 
 const CardsGrid: React.FC<CardsGridInterface> = ({
-  title,
+
   children,
 }) => {
   return (
