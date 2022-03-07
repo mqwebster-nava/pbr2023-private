@@ -8,7 +8,7 @@ export default function AuthorPosts({ posts, name, role, bio }) {
     <div>
       <div>
         <h1 className="mx-3xl my-2xl">Author: {name}</h1>
-        <CardsGrid title={"Author Posts"}>
+        <CardsGrid >
           {posts.map((post) => (
             <ContentCard title={post.title} path={getContentUrl(post.contentType, post.slug)}>
               {post.shortSummary}
