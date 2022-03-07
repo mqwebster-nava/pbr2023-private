@@ -35,7 +35,8 @@ export function sortDocIntoH2Sections(doc){
      return {
        title: titles[i],
        doc: {...doc, content:section},
-       ref:null
+       ref:null,
+       
       }
     });
     return  output;
