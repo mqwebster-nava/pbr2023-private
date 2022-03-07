@@ -5,7 +5,7 @@ import { PostPageProps } from "utils/postUtils";
 
 
 
-  export default function ToolkitPost({post, morePosts, preview }:PostPageProps) {
+  export default function NewsPost({post, morePosts, preview }:PostPageProps) {
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
@@ -13,7 +13,7 @@ import { PostPageProps } from "utils/postUtils";
 
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllPostSlugs("Toolkit");
+  const postSlugs = await ContentfulApi.getAllPostSlugs("News");
 
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };

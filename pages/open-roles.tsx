@@ -1,7 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {
+  SectionHeader,
+  ContentBlockLinkToPage,
+  ContentBlockText,
+  PlaceholderPageHeader,
+  ContentBlockArticleList,
+  Newsletter,
+} from "components/row/index";
 //https://www.digitalocean.com/community/tutorials/react-axios-react
-
+import AnchorLink from "components/templates/PostTemplate/AnchorLink"
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -44,22 +52,39 @@ export default function OpenRoles() {
   }, []);
 
   return (
-    <div className="mx-3xl my-2xl">
-      <h1>Careers / Open Positions </h1>
+    
+    <>
+     <PlaceholderPageHeader
+        title={"Open Roles"}
+        subtitle={"Find the right opportunity to make a positive impact for you"}
+      />
+      <hr />
+     <div className="mx-3xl my-2xl min-h-screen">
+      {departments.map((d) =>(
+      <p className={`font-sans text-blue-500 hover:text-blue-900 `}>
+            <AnchorLink href={`#${d.title}`}>{d.title} ({d.postings.length})</AnchorLink>
+          </p>
+          ))
+      }
+      
       {departments.map((d) => {
         return (
-          <div>
-            <h2>{d.title}</h2>
+          <a id={`${d.title}`}>
+            <h2 className="font-sans text-lg font-bold mt-lg">{d.title}</h2>
+            <hr/>
             {d.postings.map((posting) => {
               return (
-                <div key={`${posting.id}`}>
-                  <p>{posting.title}</p>
-                </div>
+                <a key={`${posting.id}`} className="hover:text-indigo-400" href={`${posting.hostedUrl}`}>
+                  <p className="font-sans py-md">{posting.title}</p>
+                </a>
               );
             })}
-          </div>
+            <div className="py-md"></div>
+          </a>
         );
       })}
     </div>
+    <Newsletter/>
+    </>
   );
 }

@@ -1,13 +1,25 @@
 import ContentfulApi from "lib/contentful";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
-
+import {
+    SectionHeader,
+    ContentBlockLinkToPage,
+    ContentBlockText,
+    PlaceholderPageHeader,
+    ContentBlockArticleList,
+    Newsletter,
+  } from "components/row/index";
+  
 
 
 export default function Toolkits({posts}) {
     return ( <div> 
-        <h1>Toolkits </h1>
-        <CardsGrid title={"Toolkits"} >
+       <PlaceholderPageHeader
+        title={"Toolkits"}
+        subtitle={"Apply human-centered and agile practices to your program"}
+      />
+      <hr />
+        <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 

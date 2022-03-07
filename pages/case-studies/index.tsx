@@ -2,7 +2,14 @@ import ContentfulApi from "lib/contentful";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { BasicPostInterface } from "lib/data_models";
-
+import {
+  SectionHeader,
+  ContentBlockLinkToPage,
+  ContentBlockText,
+  PlaceholderPageHeader,
+  ContentBlockArticleList,
+  Newsletter,
+} from "components/row/index";
 
 
 export interface CaseStudiesProps   {
@@ -12,10 +19,15 @@ export interface CaseStudiesProps   {
 
   
 export default function CaseStudies({posts}:CaseStudiesProps) {
-   console.log(posts)
-    return ( <div> 
-        <h1>Case Studies </h1>
-        <CardsGrid title={"Case Studies"} >
+    return ( 
+    <div> 
+    
+      <PlaceholderPageHeader
+        title={"Case Studies"}
+        subtitle={"Learn about Nava’s approach and results"}
+      />
+      <hr />
+        <CardsGrid >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 

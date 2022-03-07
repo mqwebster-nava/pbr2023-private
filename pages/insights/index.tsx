@@ -3,20 +3,28 @@ import ContentfulApi from "lib/contentful";
 import LargeHero from "components/row/LargeHero/LargeHero";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
+import {
+  SectionHeader,
+  ContentBlockLinkToPage,
+  ContentBlockText,
+  PlaceholderPageHeader,
+  ContentBlockArticleList,
+  Newsletter,
+} from "components/row/index";
+
+
 
 export default function Insights({posts}) {
     
     
     return ( <div> 
-         <LargeHero 
-      title={"Insights"} 
-      subtitle={"Come help us build the services of a better future for millions of people."} 
-      colorTheme={"navy"} 
-
-    />
+       <PlaceholderPageHeader
+        title={"Insights"}
+        subtitle={"Learn about building critical digital services alongside us"}
+      />
+       
     <div> 
-        <h1>Insights </h1>
-        <CardsGrid title={"Insights"} >
+        <CardsGrid>
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 

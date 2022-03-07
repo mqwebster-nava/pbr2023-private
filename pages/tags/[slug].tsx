@@ -14,7 +14,7 @@ export interface FilteredByTagPageProps   {
     return (
       <div>
      <h1 className="mx-3xl">Tags: {tag}</h1>
-     <CardsGrid title={"Insights"} >
+     <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 
