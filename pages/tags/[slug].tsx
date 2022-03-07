@@ -2,13 +2,19 @@ import ContentfulApi from "lib/contentful";
 import {allTagsSlugIdPair, getContentUrl} from "utils/utils"
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
+import { BasicPostInterface } from "lib/data_models";
+
+export interface FilteredByTagPageProps   {
+  tag:string,
+  posts:Array<BasicPostInterface>,
+}
 
 // List of posts filtered by a specific tag
-  export default function FilteredByTagPage({tag, posts}) {
+  export default function FilteredByTagPage({tag, posts}:FilteredByTagPageProps) {
     return (
       <div>
      <h1 className="mx-3xl">Tags: {tag}</h1>
-     <CardsGrid title={"Insights"} >
+     <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 
@@ -37,9 +43,9 @@ export async function getStaticPaths({ params, preview = null }) {
 
 // Calls the contentful API to get posts for each tag.
 export async function getStaticProps({ params, preview = false }) {
-  const tag = allTagsSlugIdPair.get(params.slug);
+  const tag:string = allTagsSlugIdPair.get(params.slug);
     // This returns a list of posts summaries to be displayed in cards
-  const posts = await ContentfulApi.getPostsByTag(tag);
+  const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByTag(tag);
   return {
     props: {
       tag,

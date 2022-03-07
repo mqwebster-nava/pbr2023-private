@@ -29,8 +29,8 @@ const LeftRepeater: React.FC<LeftRepeaterInterface> = ({
       </div>
       <div className={`w-full md:w-2/3 md:ml-xl flex justify-between flex-col`}>
         <div>
-        <h3 className={`font-sans text-xl `}>{title} </h3>
-        <p className={`font-sans pt-lg text-xl text-grey-base`}>{children}</p>
+        <h3 className={`font-sans text-lg `}>{title} </h3>
+        <p className={`font-sans pt-lg text-base text-grey-base`}>{children}</p>
         </div>
         {buttonText && <Button colorTheme={colorTheme} href={buttonPath}>{buttonText}</Button> }
       </div>

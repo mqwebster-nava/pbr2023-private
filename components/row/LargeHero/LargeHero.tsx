@@ -33,7 +33,7 @@ const LargeHero = ({ title, subtitle, colorTheme, isStorybook}:  LargeHeroInterf
     const TitleBlock = ()=>{
         return (
         <div className="w-full mt-xl mb-4xl ml-3xl">
-            <h1 className={`font-sans text-${colorTheme}-base lg:text-9xl md:text-8xl sm:text-7xl text-5xl font-black`}>{title}</h1>
+            <h1 className={`font-sans text-${colorTheme}-base lg:text-4xl text-3xl font-black`}>{title}</h1>
         </div>
         )
     }
@@ -41,7 +41,7 @@ const LargeHero = ({ title, subtitle, colorTheme, isStorybook}:  LargeHeroInterf
         return (
         <div className="w-full flex flex-wrap">
             <div className="w-full md:w-1/3 mb-xl"> 
-                <p className={`font-serif  text-${colorTheme}-dark text-2xl mr-xl max-w-2xl ml-3xl`}> {subtitle} </p>
+                <p className={`font-sans  font-black text-black text-xl mr-xl max-w-2xl ml-3xl`}> {subtitle} </p>
             </div>
             <div className="w-1/2 md:w-1/3 flex justify-end">
                {
@@ -56,10 +56,10 @@ const LargeHero = ({ title, subtitle, colorTheme, isStorybook}:  LargeHeroInterf
     }
 
   return (
-    <div className="">
+    <>
      <TitleBlock/>
      <SubtitleImageColorBlock/>
-    </div>
+    </>
   );
 };
 export default LargeHero;

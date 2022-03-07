@@ -1,3 +1,4 @@
+
 /**
  * This class constructs GraphQL queries for blog posts, page content and other data
  * and calls out to the Contentful GraphQL API.
@@ -10,6 +11,16 @@
  *
  */
 
+import { 
+  AUTHOR_ALL_FIELDS,
+  POST_ALL_FIELDS, 
+  POST_CORE_FIELDS,
+  BasicPostInterface,
+  FullPostInterface,
+  AuthorPostInterface
+
+} from "./data_models";
+
 /*
 For building post pages
   getPostSlugs() - used to get a list of slugs to build out pages / might need to be specific to content type
@@ -21,12 +32,6 @@ For building "library" pages(pages with lists of related content)
     getPostSummariesByAuthor(authorId) - gets a filtered list of posts by author
  
 
-
-
-    getAllTags() 
-    getPostSlugsByTags() - used to get a list of slugs to build out pages
-
-
  */
 
 // When I'd need the posts -- basic - all posts of kind, full post data, related posts
@@ -35,62 +40,67 @@ const defaultOptions = {
   preview: false,
 };
 
-// const author = `
-// `
+const formatPosts = (posts) =>{
+  return posts.map((post)=>{
+    const newPost: BasicPostInterface = {
+      id: post.sys.id,
+      contentTags:post.contentTags,
+      slug: post.slug,
+      title: post.title,
+      date: post.date,
+      contentType: post.contentType,
+      shortSummary: post.shortSummary
+    }
+    return newPost;
+  })
+}
 
-// 
+
+
 
 export default class ContentfulApi {
+
+
   static async getPostBySlug(slug, options = defaultOptions) {
     const variables = { slug, preview: options.preview };
     const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
       postCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
         total
         items {
-          sys {
-            id
-          }
-          date
-          title
-          contentType
-          slug
-          contentTags
-          authorsCollection {
-            items {
-              name
-              role
-              bio
-              slug
-            }
-          } 
-          
-          body {
-            json
-            links {
-              assets {
-                block {
-                  sys {
-                    id
-                  }
-                  url
-                  title
-                  width
-                  height
-                  description
-                }
-              }
-            }
-          }
+          ${POST_ALL_FIELDS}
         }
       }
     }`;
-
     const response = await this.callContentful(query, variables, options);
-    const post = response.data.postCollection.items
+    const posts = response.data.postCollection.items
       ? response.data.postCollection.items
       : [];
-    return post.pop();
+    const post =  posts.pop();
+    console.log(post);
+    const formattedPost: FullPostInterface = {
+      id: post.sys.id,
+      slug: post.slug,
+      title: post.title,
+      contentTags:post.contentTags,
+      longSummary: post.longSummary,
+      authors: post.authorsCollection?.items?.map((author)=>{
+        const formattedAuthor: AuthorPostInterface ={
+          name: author.name,
+          slug: author.slug,
+          bio: author.bio,
+          role: author.role
+        }
+        return formattedAuthor;
+      }),
+      body: post.body,
+      date: post.date,
+      contentType: post.contentType,
+      shortSummary: post.shortSummary
+    }
+    console.log(formattedPost);
+    return formattedPost;
   }
+
 
   static async getPostsByTag(tag, options = defaultOptions) {
     const variables = { tag, };
@@ -100,60 +110,36 @@ export default class ContentfulApi {
       postCollection(limit: 20,  where: { contentTags_contains_all:[$tag] } ) 
       {
         items {
-          sys {
-            id
-          }
-          date
-          title
-          slug
-          contentType
-          shortSummary
-          contentTags
-          promoImage {
-            sys {
-              id
-            }
-            url
-          }
+          ${POST_CORE_FIELDS}
         }
       }
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    const posts = response.data.postCollection.items
-    return posts;
+    const posts = response.data.postCollection.items;
+    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+    return formattedPosts;
   }
 
 
   static async getPostsByContentType(contentType, options = defaultOptions) {
     const variables = {contentType };
-    const query = `query GetPostsByContentType($contentType: String!)
+    const query = `
+    query GetPostsByContentType($contentType: String!)
     {
       postCollection(limit: 20,  where: { contentType: $contentType } ) 
       {
         items {
-          sys {
-            id
-          }
-          date
-          title
-          slug
-          contentType
-          shortSummary
-          contentTags
-          promoImage {
-            sys {
-              id
-            }
-            url
-          }
+          ${POST_CORE_FIELDS}
         }
       }
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    const posts = response.data.postCollection.items
-    return posts;
+    const posts = response.data.postCollection.items;
+    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+  
+    return formattedPosts;
   }
 
   static async getPostsByAuthor(slug, options = defaultOptions) {
@@ -163,41 +149,14 @@ export default class ContentfulApi {
     {
       authorCollection(limit: 20, where: { slug: $slug }) {
         items{
-          name
-          role
-          bio
-          linkedFrom {
-            postCollection{
-              items{
-                 sys {
-                id
-              }
-              date
-              title
-              slug
-              contentType
-              shortSummary
-              contentTags
-              promoImage {
-                sys {
-                  id
-                }
-                url
-              }
-              }
-            }
-          }
+          ${AUTHOR_ALL_FIELDS}
       
         }
       }    
     }
   `;
     const response = await this.callContentful(query, variables, options);
-    
-    //const  author = response.data.authorCollection.items[0];
     const author = response.data.authorCollection.items[0]
-  
-
     return author;
   }
 /**
@@ -262,6 +221,7 @@ static async getAllAuthorSlugs() {
    *
    * param: query (string)
    */
+ 
   static async callContentful(query, variables = {}, options = defaultOptions) {
     const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 

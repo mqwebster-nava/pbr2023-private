@@ -3,17 +3,15 @@ import PostTemplate from "components/templates/PostTemplate/PostTemplate";
 import { FullPostInterface } from "lib/data_models";
 import { PostPageProps } from "utils/postUtils";
 
-
-
-  export default function ToolkitPost({post, morePosts, preview }:PostPageProps) {
+export default function WorkingAtNavaPost({post, morePosts, preview }:PostPageProps) {
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
-  }
+}
 
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllPostSlugs("Toolkit");
+  const postSlugs = await ContentfulApi.getAllPostSlugs("Working at Nava");
 
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };

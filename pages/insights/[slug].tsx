@@ -1,9 +1,11 @@
 import ContentfulApi from "lib/contentful";
-import PostTemplate from "components/templates/PostTemplate";
+import PostTemplate from "components/templates/PostTemplate/PostTemplate";
+import { FullPostInterface } from "lib/data_models";
+import { PostPageProps } from "utils/postUtils";
 
 
 
-  export default function InsightPost({post, morePosts, preview }) {
+export default function InsightPost({post, morePosts, preview }:PostPageProps) {
     return (
       <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
     );
@@ -25,7 +27,7 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const post = await ContentfulApi.getPostBySlug(params.slug, {
+  const post:FullPostInterface = await ContentfulApi.getPostBySlug(params.slug, {
     preview: preview,
   });
 

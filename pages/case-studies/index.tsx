@@ -1,8 +1,7 @@
-
 import ContentfulApi from "lib/contentful";
-import LargeHero from "components/row/LargeHero/LargeHero";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
+import { BasicPostInterface } from "lib/data_models";
 import {
   SectionHeader,
   ContentBlockLinkToPage,
@@ -13,37 +12,38 @@ import {
 } from "components/row/index";
 
 
+export interface CaseStudiesProps   {
+    tag:string,
+    posts:Array<BasicPostInterface>,
+  }
 
-export default function Insights({posts}) {
-    
-    
-    return ( <div> 
-       <PlaceholderPageHeader
-        title={"Insights"}
-        subtitle={"Learn about building critical digital services alongside us"}
-      />
-       
+  
+export default function CaseStudies({posts}:CaseStudiesProps) {
+    return ( 
     <div> 
-        <CardsGrid>
+    
+      <PlaceholderPageHeader
+        title={"Case Studies"}
+        subtitle={"Learn about Nava’s approach and results"}
+      />
+      <hr />
+        <CardsGrid >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 
-                  path={`/insights/${post.slug}`}>
+                  path={`/case-studies/${post.slug}`}>
                       {post.shortSummary}
                   </ContentCard>))
             }
 
         </CardsGrid>
-        
-
-    </div> 
 
     </div>  );
 }
-  
+
 
 export async function getStaticProps(context) {
-    const posts = await ContentfulApi.getPostsByContentType("Insight");
+    const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByContentType("Case Study");
     
     return {
       props: {

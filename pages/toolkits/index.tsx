@@ -1,18 +1,29 @@
 import ContentfulApi from "lib/contentful";
 import CardsGrid from "components/row/CardsGrid/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
+import {
+    SectionHeader,
+    ContentBlockLinkToPage,
+    ContentBlockText,
+    PlaceholderPageHeader,
+    ContentBlockArticleList,
+    Newsletter,
+  } from "components/row/index";
+  
 
 
-
-export default function CaseStudies({posts}) {
-   // console.log(posts)
+export default function Toolkits({posts}) {
     return ( <div> 
-        <h1>Case Studies </h1>
-        <CardsGrid title={"Case Studies"} >
+       <PlaceholderPageHeader
+        title={"Toolkits"}
+        subtitle={"Apply human-centered and agile practices to your program"}
+      />
+      <hr />
+        <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
                   title={post.title} 
-                  path={`/case-studies/${post.slug}`}>
+                  path={`/toolkits/${post.slug}`}>
                       {post.shortSummary}
                   </ContentCard>))
             }
@@ -24,7 +35,7 @@ export default function CaseStudies({posts}) {
 
 
 export async function getStaticProps(context) {
-    const posts = await ContentfulApi.getPostsByContentType("Case Study");
+    const posts = await ContentfulApi.getPostsByContentType("Toolkit");
     
     return {
       props: {
