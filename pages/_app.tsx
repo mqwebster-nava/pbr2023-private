@@ -6,7 +6,7 @@ import {Navbar, Footer}from "components/wrapper/index"
 function MyApp({ Component, pageProps }: AppProps) {
   return <div className="flex flex-col h-screen">
     <Navbar/>
-    <div className="pt-16 flex-grow">
+    <div className="flex-grow">
    <Component {...pageProps}/>
    </div>
   <Footer/>

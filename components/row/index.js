@@ -5,7 +5,7 @@ import RightRepeater from "./RightRepeater/RightRepeater";
 import ThreeColumnGrid from "./ThreeColumnGrid/ThreeColumnGrid";
 import PlaceholderPageHeader from "./Placeholder/PageHeader";
 import ContentBlockLinkToPage from "./Placeholder/ContentBlockLinkToPage";
-import ContentBlockText from "./Placeholder/ContentBlockText";
+import ContentBlockText, {ContentBlockText2} from "./Placeholder/ContentBlockText";
 import ContentBlockArticleList from "./Placeholder/ContentBlockArticlesList";
 import Newsletter from "./Placeholder/NewsletterComponent";
 import PageCTASection from "./Placeholder/PageCTASection";
@@ -20,5 +20,6 @@ export {
   ContentBlockText,
   ContentBlockArticleList,
   Newsletter,
-  PageCTASection
+  PageCTASection,
+  ContentBlockText2
 };

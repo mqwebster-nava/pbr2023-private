@@ -16,11 +16,11 @@ const PostHeader = ({
 }: PostHeaderProps) => {
   return (
     <div>
-      <div className="bg-sage-dark w-screen ">
-        <div className=" py-xl px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg ">
-          <h3 className="font-sans font-light text-white"> {contentType}</h3>
-          <h1 className="font-sans text-4xl font-black text-white"> {title}</h1>
-          <p className="font-sans font-light pt-lg text-white">
+      <div className="bg-gray-300 w-screen ">
+        <div className=" py-4xl px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg ">
+          <h3 className="pt-2xl font-sans font-light text-black"> {contentType}</h3>
+          <h1 className="font-sans text-4xl font-black text-black"> {title}</h1>
+          <p className="font-sans font-light pt-lg text-black">
             {longSummary}
           </p>
         </div>

@@ -2,6 +2,7 @@ import {
     SectionHeader,
     ContentBlockLinkToPage,
     ContentBlockText,
+    ContentBlockText2,
     PlaceholderPageHeader,
     ContentBlockArticleList,
     Newsletter,
@@ -76,17 +77,17 @@ import {
           Nava partners with agencies at the federal, state, and local level. Deep work in specific programs like SNAP, TK is bolstered by broad...
         </SectionHeader>
         <hr />
-        <ContentBlockText title={"Integrated benefits"}>
+        <ContentBlockText2 title={"Integrated benefits"}>
         Nava works with states across the country to build an equitable social safety net that’s easy for everyone to use.
-        </ContentBlockText>
+        </ContentBlockText2>
         <hr />
-        <ContentBlockText title={"Unemployment insurance"}>
+        <ContentBlockText2 title={"Unemployment insurance"}>
             TK copy about Nava’s expertise in UI delivery.
-        </ContentBlockText>
+        </ContentBlockText2>
         <hr />
-        <ContentBlockText title={"Human-centered cloud infrastructure"}>
+        <ContentBlockText2 title={"Human-centered cloud infrastructure"}>
             Nava helps build infrastructure that’s easy for teams to use so they can dramatically scale their work while minimizing cost and effort. 
-        </ContentBlockText>
+        </ContentBlockText2>
 
 <PageCTASection title="Get In Touch" buttonPath="/contact" buttonText="contact us">
 Tell us about your challenges and ideas.

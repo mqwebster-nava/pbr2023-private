@@ -1,25 +1,53 @@
 
 const Footer = () =>{
-    return (<div className={"bg-navy-dark flex gap-10 text-white px-10 py-16 "}>
-        <div className="md:w-1/4 font-sans">
+    return (<div className={"bg-navy-dark "}>
+        <div className="responsive-nav pb-md">
+
+        <hr className="h-2 bg-navy-light"/>
+        <div className="flex flex-wrap text-white  my-16 ">
+        <div className="md:w-1/3 font-sans">
+           
+        </div>
+        <div className=" w-1/2 md:w-1/6 font-sans py-sm">
+           
+                <h4 className="font-bold">Mission</h4>
+                <a href={"/impact"}>Impact </a><br/>
+                <a>Values</a><br/>
+         
+          
+        </div>
+        <div className="w-1/2 md:w-1/6 font-sans py-sm">
             <ul>
-                <li>Careers</li>
-                <li>Team </li>
+                <li className="font-bold">Work</li>
+                <li>Services </li>
                 <li>Case studies</li>
-                <li>Services</li>
-                <li>Press</li>
-                <li>Blog</li>
+                <li>Toolkits</li>
             </ul>
         </div>
-        <div className="md:flex-grow font-sans"> 
-               <h4 className="pb-3 text-lg font-bold">Contact Us</h4>
-               <p className="text-base">We’d love to talk to you if you’re facing similar challenges at any level of government, or if you’d just like to say hi at hello@navapbc.com.<br/>Nava is a public benefit corporation that is headquartered in Washington, DC with offices in San Francisco and New York.</p>
+        <div className="w-1/2 md:w-1/6 font-sans py-sm">
+        <ul>
+                <li className="font-bold">About</li>
+                <li>Our Story</li>
+                <li>Our People</li>
+                <li>Diversity, Equity, & Inclusion</li>
+                <li>News</li>
+            </ul>
         </div>
-        <div className="md:flex-grow font-sans"> 
-        <h4 className="pb-3 text-lg font-bold">Stay Up to Date</h4>
-        <p className="text-base"> Sign up for our newsletter for occasional emails where we share our experiences working with government systems and structures as we learn and grow.</p>
+        <div className="w-1/2 md:w-1/6 font-sans py-sm">
+           <ul>
+                <li className="font-bold">Career</li>
+                <li>Working At Nava </li>
+                <li>Open roles</li>
+            </ul>
         </div>
-            
+       
+        </div>
+        <hr className=" bg-white"/>
+        <div>
+           <p className="text-white font-sans text-xs">©2021 NavaPBC. All rights reserved.</p>
+        </div>
+
+        </div>
     </div>
     )
 }

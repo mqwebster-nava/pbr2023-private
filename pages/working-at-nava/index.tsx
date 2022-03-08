@@ -6,6 +6,7 @@ import {
   ThreeColumnGrid,
   ContentBlockLinkToPage,
   ContentBlockText,
+  ContentBlockText2,
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
@@ -86,7 +87,7 @@ export default function Careers() {
         yourself and your loved ones when you need to.
       </SectionHeader>
       <hr />
-      <ContentBlockText title={"Generous health benefits"}>
+      <ContentBlockText2 title={"Generous health benefits"}>
         <ul className="list-disc">
           {[
             "Highly competitive medical, dental and vision benefits",
@@ -99,9 +100,9 @@ export default function Careers() {
             </li>
           ))}
         </ul>
-      </ContentBlockText>
+      </ContentBlockText2>
       <hr />
-      <ContentBlockText title={"Competitive compensation"}>
+      <ContentBlockText2 title={"Competitive compensation"}>
         <ul className="list-disc">
           {[
             "Highly competitive medical, dental and vision benefits",
@@ -114,9 +115,9 @@ export default function Careers() {
             </li>
           ))}
         </ul>
-      </ContentBlockText>
+      </ContentBlockText2>
       <hr />
-      <ContentBlockText title={"Room for personal growth"}>
+      <ContentBlockText2 title={"Room for personal growth"}>
         <ul className="list-disc">
           {[
             "Highly competitive medical, dental and vision benefits",
@@ -129,7 +130,7 @@ export default function Careers() {
             </li>
           ))}
         </ul>
-      </ContentBlockText>
+      </ContentBlockText2>
       <hr />
       <SectionHeader
         title={"Learn more about working at Nava"}
