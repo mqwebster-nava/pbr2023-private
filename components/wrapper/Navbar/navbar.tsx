@@ -166,7 +166,7 @@ const DropdownNavItem = (props) => {
   return (
     <a
       href={props.href}
-      className="text-black block font-sans hover:bg-sage-base py-sm px-lg"
+      className="text-black block font-sans hover:bg-sage-base hover:text-white py-sm px-lg"
     >
       {props.children}
     </a>
@@ -175,7 +175,7 @@ const DropdownNavItem = (props) => {
 
 const NavButton = (props) => {
   return (
-    <div className="relative inline-block  hover:bg-green-500 hover:text-white text-black  px-sm cursor-pointer">
+    <div className="relative inline-block hover:underline text-black  px-sm cursor-pointer">
       <a
         className=" text-black p-sm font-sans flex 
           items-center"

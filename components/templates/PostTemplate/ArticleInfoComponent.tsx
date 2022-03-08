@@ -6,8 +6,15 @@ interface ArticleInfoComponentProps{
 }
 
 const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+  const date = new Date(post.date);
+  const dateStr = monthNames[date.getMonth()]  +' ' + date.getDate()+ ', '+date.getFullYear();
+
     return (<>
-      <p className="font-sans pb-md">Date: ______</p>
+      <p className="font-sans pb-md font-bold">{dateStr}</p>
       <div className="font-sans md:block flex justify-between mb-lg">
               <div>
                 <h3>Authors</h3>
@@ -22,7 +29,7 @@ const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
               <h3>Tags</h3>
               {post.contentTags && post.contentTags.map((tag)=>{
                 return (
-                  <p id={tag}><a className="text-blue-700 underline text-base" href={`/tags/${allTagsSlugIdPair.revGet(tag)}`}>{tag}</a></p>
+                  <p id={tag}><a className="text-sage-dark hover:text-sage-base underline text-base" href={`/tags/${allTagsSlugIdPair.revGet(tag)}`}>{tag}</a></p>
                 )})}
               </div>
         </div>

@@ -16,7 +16,7 @@ const PostHeader = ({
 }: PostHeaderProps) => {
   return (
     <div>
-      <div className="bg-gray-300 w-screen ">
+      <div className="bg-gray-300 w-screen pb-4xl">
         <div className=" py-4xl px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg ">
           <h3 className="pt-2xl font-sans font-light text-black"> {contentType}</h3>
           <h1 className="font-sans text-4xl font-black text-black"> {title}</h1>
@@ -25,7 +25,7 @@ const PostHeader = ({
           </p>
         </div>
       </div>
-      <div className="max-h-64 overflow-clip"> 
+      <div className=" max-h-96 overflow-clip xl:mx-auto xl:max-w-screen-lg -mt-4xl"> 
         <Image className="max-w-full max-h-16" src={filler}></Image>
       </div>
     </div>

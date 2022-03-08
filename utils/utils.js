@@ -29,11 +29,13 @@ class TwoWayMap {
 
 
 export const allTagsSlugIdPair = new TwoWayMap({
+    "a-day-at-nava":"Day At Nava",
     "accessibility-and-equity":"Accessibility and Equity",
     "adapting-to-change":"Adapting To Change",
     "agile-development":"Agile Development",
     "apis-and-documentation":"APIs and Documentation",
     "backend-engineering":"Backend Engineering",
+    "careers":"Careers",
     "content-strategy": "Content Strategy",
     "continuous-improvement":"Continuous Improvement",
     "crisis-response":"Crisis Response",
@@ -48,4 +50,5 @@ export const allTagsSlugIdPair = new TwoWayMap({
     "unemployment-insurance":"Unemployment Insurance",
     "user-experience-research": "User Experience Research",
     "veterans":"Veterans",
+    "what-were-learning":"What We’re Learning"
 });

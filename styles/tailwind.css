@@ -39,6 +39,7 @@ html{
 }
 
 @layer components {
+   
     .responsive-nav {
         @apply px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
     }

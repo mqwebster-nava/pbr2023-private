@@ -5,7 +5,7 @@ const DropdownNavButton = (props) => {
   
     return (
       <div
-        className="relative inline-block  hover:bg-gray-200 hover:text-white hover:underline text-black  px-2 cursor-pointer"
+        className="relative inline-block  hover:bg-gray-200 text-black  px-2 cursor-pointer"
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={() => setShowMenu(false)}
       >

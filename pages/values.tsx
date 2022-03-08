@@ -14,7 +14,6 @@ import React from "react";
 
 export default function Values() {
   const colorTheme = "purple";
-
   return (
     <div>
       <PlaceholderPageHeader

@@ -14,6 +14,7 @@
   export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
     // need to deconstruct post 
     const doc = post.body.json;
+   
     let h2Sections = sortDocIntoH2Sections(doc);
     let refs = {};
     h2Sections.forEach(
@@ -28,8 +29,8 @@
       let newActiveSection = activeSection;
      // Need to deal with a range of edge cases
       entries.forEach((entry)=>{
-        console.log("run");
-        console.log(entry);
+        //console.log("run");
+       // console.log(entry);
         if(entry.isIntersecting) {
           newActiveSection = entry.target.id;
         }
@@ -51,7 +52,7 @@
         threshold:0.2
       }
       
-        console.log("useEffect");
+      //  console.log("useEffect");
   
       
       const observer = new IntersectionObserver(callbackFunction, options)
@@ -107,9 +108,9 @@
       return (
         < >
           <PostHeader title={post.title} longSummary={post.longSummary} contentType={post.contentType}/>
-          <div className={"px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg my-2xl flex md:flex-row flex-col-reverse "}>
+          <div className={"responsive-container flex md:flex-row flex-col-reverse "}>
           {/* Article Body Section  */}
-          <div id="article" className="w-full md:w-2/3 pr-2">
+          <div id="article" className="w-full md:w-2/3 pr-lg">
            { h2Sections.map((section)=>
            <div id={section.title} ref={section.ref}>
               {documentToReactComponents(section.doc, options)}
@@ -117,7 +118,7 @@
            )} 
             </div>
             {/* Article Sidebar Section  */}
-            <div className={"w-full md:w-1/3"}>
+            <div className={"w-full md:w-1/3 pt-md"}>
               <ArticleInfoComponent post={post}/>
               <SideNavComponent 
                 h2Sections={h2Sections} 
