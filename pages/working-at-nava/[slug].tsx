@@ -1,6 +1,6 @@
 import ContentfulApi from "lib/contentful";
 import PostTemplate from "components/templates/PostTemplate/PostTemplate";
-import { FullPostInterface } from "lib/data_models";
+import { FullPostInterface, BasicPostInterface } from "lib/data_models";
 import { PostPageProps } from "utils/postUtils";
 
 export default function WorkingAtNavaPost({post, morePosts, preview }:PostPageProps) {
@@ -24,9 +24,12 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const post: FullPostInterface = await ContentfulApi.getPostBySlug(params.slug, {
+  const res = await ContentfulApi.getPostBySlug(params.slug, {
     preview: preview,
   });
+  const post: FullPostInterface = res.post;
+  const morePosts: Array<BasicPostInterface> = res.morePosts;
+
   
   if (!post) {
     return {
@@ -37,6 +40,7 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       preview,
       post,
+      morePosts
     },
   };
 }

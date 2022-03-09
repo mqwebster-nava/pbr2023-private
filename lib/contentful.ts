@@ -61,6 +61,8 @@ const formatPosts = (posts) =>{
 export default class ContentfulApi {
 
 
+
+  
   static async getPostBySlug(slug, options = defaultOptions) {
     const variables = { slug, preview: options.preview };
     const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
@@ -71,12 +73,13 @@ export default class ContentfulApi {
         }
       }
     }`;
+    
+
     const response = await this.callContentful(query, variables, options);
     const posts = response.data.postCollection.items
       ? response.data.postCollection.items
       : [];
     const post =  posts.pop();
-    console.log(post);
     const formattedPost: FullPostInterface = {
       id: post.sys.id,
       slug: post.slug,
@@ -97,8 +100,38 @@ export default class ContentfulApi {
       contentType: post.contentType,
       shortSummary: post.shortSummary
     }
-    console.log(formattedPost);
-    return formattedPost;
+   
+    const morePosts = await this.getMorePosts(formattedPost, options);
+
+    return {
+      post:formattedPost,
+      morePosts
+    };
+  }
+
+
+  static async getMorePosts( post: FullPostInterface, options = defaultOptions) {
+    const variables = { slug:post.slug, preview: options.preview };
+    
+    const query = `query GetMorePosts($slug: String!, $preview: Boolean!) {
+      postCollection(where: { slug_not_in: [ $slug ] }, preview: $preview) {
+        total
+        items {
+          ${POST_CORE_FIELDS}
+        }
+      }
+    }`;
+    const response = await this.callContentful(query, variables, options);
+   
+    const posts = response.data.postCollection.items
+      ? response.data.postCollection.items
+      : [];
+    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+    // Filter tags
+    const filteredPosts: Array<BasicPostInterface> 
+        = formattedPosts.filter((_post)=> _post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
+
+    return filteredPosts;
   }
 
 

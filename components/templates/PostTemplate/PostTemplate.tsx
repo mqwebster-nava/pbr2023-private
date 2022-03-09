@@ -8,13 +8,16 @@
   import ArticleInfoComponent from './ArticleInfoComponent';
   import SideNavComponent from './SideNavComponent';
   import { useEffect, useRef, useState } from "react";
-  
+  import { ContentBlockArticleList } from 'components/row';
   import {PostPageProps, sortDocIntoH2Sections} from "utils/postUtils";
+  import { BasicPostInterface } from 'lib/data_models';
+import { ContentCard } from 'components/atom';
+import { getContentUrl } from 'utils/utils';
   
+
   export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
     // need to deconstruct post 
     const doc = post.body.json;
-   
     let h2Sections = sortDocIntoH2Sections(doc);
     let refs = {};
     h2Sections.forEach(
@@ -71,8 +74,6 @@
           }
         );
         }
-      
-    
     });
   
     const getImg= (data:any) => {
@@ -125,6 +126,14 @@
                 activeSection={activeSection}/>
             </div>
           </div>
+          <ContentBlockArticleList
+            title={"More From Nava"}>
+              {morePosts.map((_post)=>
+              <ContentCard title={_post.title} path={getContentUrl(_post.contentType, _post.slug)}>
+                {_post.shortSummary}
+              </ContentCard>)}
+
+          </ContentBlockArticleList>
         </>
       );
     }

@@ -4,7 +4,9 @@ export function getContentUrl(contentType, slug){
     const contentMap ={
         "Insight": "insights",
         "Case Study": "case-studies",
-        "Toolkit":"toolkits"
+        "Toolkit":"toolkits",
+        "Working at Nava":"working-at-nava",
+        "News":"news"
     }
     const contentPart = contentMap[contentType];
     return `/${contentPart}/${slug}`;

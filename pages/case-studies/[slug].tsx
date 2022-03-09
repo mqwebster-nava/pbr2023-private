@@ -1,6 +1,6 @@
 import ContentfulApi from "lib/contentful";
 import PostTemplate from "components/templates/PostTemplate/PostTemplate";
-import { FullPostInterface } from "lib/data_models";
+import { FullPostInterface, BasicPostInterface} from "lib/data_models";
 import { PostPageProps } from "utils/postUtils";
 
 
@@ -25,9 +25,11 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const post:FullPostInterface = await ContentfulApi.getPostBySlug(params.slug, {
+  const res = await ContentfulApi.getPostBySlug(params.slug, {
     preview: preview,
   });
+  const post: FullPostInterface = res.post;
+  const morePosts: Array<BasicPostInterface> = res.morePosts;
 
   // Add this with fallback: "blocking"
   // So that if we do not have a post on production,
@@ -41,6 +43,7 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       preview,
       post,
+      morePosts
     },
   };
 }
