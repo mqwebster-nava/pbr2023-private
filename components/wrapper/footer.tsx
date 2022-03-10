@@ -39,7 +39,7 @@ const FooterSiteSection = ({navDataSection}) => (
   <div className="py-sm">
     <h4 className="font-bold">{navDataSection.title}</h4>
     {navDataSection.subpages.map((subpage)=>(
-        <a className="block hover:underline"
+        <a className="block hover:underline" id={subpage.title}
         href={`${subpage.slug}`}>{subpage.title}</a>
     ))}
   </div>

@@ -23,7 +23,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
   };
   const BodyBlock = () => {
     return (
-      <div className={`flex justify-end`}>
+      <div className={`flex `}>
 
         <div className={`md:w-2/3 text-xl md:text-2xl font-serif text-black`}>{children}</div>
       </div>
