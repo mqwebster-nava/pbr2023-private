@@ -21,7 +21,7 @@ const PlaceholderPageHeader = ({ title, subtitle}:  LargeHeroInterface) => {
 
   return (
     <div className="bg-gray-100 min-h-[50vh]">
-      <div className="responsive-container">
+      <div className="responsive-container py-2xl">
 
     
      <TitleBlock/>

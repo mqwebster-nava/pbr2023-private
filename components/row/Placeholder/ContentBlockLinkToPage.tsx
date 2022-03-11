@@ -11,7 +11,7 @@ interface ContentBlockInterface {
   
   const ContentBlockLinkToPage: React.FC<ContentBlockInterface> = ({ title,  buttonPath, buttonText, children}) => {
       return ( 
-       <div className="responsive-container">
+       <div className="responsive-container py-2xl">
        <div className={`w-full lg:w-2/3`}>
         
                     <h3 className="font-sans text-lg font-bold">{title} </h3>

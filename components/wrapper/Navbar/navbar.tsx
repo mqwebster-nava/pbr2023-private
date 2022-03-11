@@ -75,7 +75,7 @@ const DesktopNavBar = ({ NavData }) => {
         className={`absolute w-full z-10 bg-opacity-50 "`}
         onMouseEnter={() => setShowMenu(false)}
       >
-        <div className=" responsive-nav pt-lg flex flex-wrap items-center justify-between">
+        <div className=" responsive-container pt-lg flex flex-wrap items-center justify-between">
           <Logo />
           <div className=" flex items-center w-auto ">
             {NavData.map((navSection) => {
@@ -141,7 +141,7 @@ const MobileNavBar = ({ NavData }) => {
       <nav
         className={`absolute w-full z-10`}
       >
-        <div className="responsive-nav  flex flex-wrap bg-green  items-center justify-between">
+        <div className="responsive-container flex flex-wrap bg-green  items-center justify-between">
           <Logo />
           <div className="block ">
             <button

@@ -25,13 +25,13 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
     return (
       <div className={`flex `}>
 
-        <div className={`md:w-2/3 text-xl md:text-2xl font-serif text-black`}>{children}</div>
+        <div className={`md:w-2/3 text-lg md:text-xl font-serif text-black`}>{children}</div>
       </div>
     );
   };
 
   return (
-    <div className="responsive-container">
+    <div className="responsive-container py-2xl">
       <TitleBlock />
       <BodyBlock />
     </div>

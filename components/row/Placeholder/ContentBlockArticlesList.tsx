@@ -15,7 +15,7 @@ interface ContentBlockInterface {
     const childrenArray = Children.toArray(children);
 
     return ( 
-       <div className="responsive-container">
+       <div className="responsive-container py-2xl">
        <div className={`w-full `}>
         
                   {title &&  <h3 className="font-sans text-lg font-bold">{title} </h3> }

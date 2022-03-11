@@ -48,7 +48,7 @@ const FooterSiteSection = ({navDataSection}) => (
 const Footer = () => {
   return (
     <div className={"bg-navy-dark "}>
-      <div className="responsive-nav pb-md">
+      <div className="responsive-container pb-md">
         <hr className="h-2 bg-navy-light" />
         <div className="flex flex-wrap text-white  my-16 ">
           <div className="md:w-1/3 font-sans"></div>

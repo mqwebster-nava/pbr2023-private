@@ -13,7 +13,7 @@
   import { BasicPostInterface } from 'lib/data_models';
 import { ContentCard } from 'components/atom';
 import { getContentUrl } from 'utils/utils';
-  
+import { icolor } from "utils/theme";
 
   export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
     // need to deconstruct post 
@@ -90,17 +90,17 @@ import { getContentUrl } from 'utils/utils';
           [MARKS.UNDERLINE]: text => <span className="text-blue-500 font-bold">{text}</span>,
         },
         renderNode: {
-          [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-black font-sans py-md text-base">{children}</p>,
+          [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-black font-serif py-md text-base">{children}</p>,
           [BLOCKS.HEADING_1]: (node, children) => <p className="text-3xl font-bold font-sans pt-md">{children}</p>,
           [BLOCKS.HEADING_2]: (node, children) =>{
-            return ( <h2 className="text-2xl font-bold font-sans pt-md">{children}</h2>)
+            return ( <h2 className="text-2xl font-bold font-serif pt-md">{children}</h2>)
           },
           [BLOCKS.HEADING_3]: (node, children) => <p className="text-xl font-bold font-sans">{children}</p>,
-          [BLOCKS.HEADING_4]: (node, children) => <p className="text-blue-500">{children}</p>,
+          [BLOCKS.HEADING_4]: (node, children) => <p className="">{children}</p>,
           [BLOCKS.UL_LIST]: (node, children) => <ul className="list-disc ml-2xl">{children}</ul>,
           [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
-          [INLINES.HYPERLINK]:(node, children) => ( <a className="text-sage-dark hover:text-sage-base underline"href={node.data.uri}  target="_blank"  >{children}</a>
+          [INLINES.HYPERLINK]:(node, children) => ( <a className={`text-${icolor}-dark hover:text-${icolor}-base underline`} href={node.data.uri}  target="_blank"  >{children}</a>
           ),
           [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data)
         },
@@ -109,7 +109,7 @@ import { getContentUrl } from 'utils/utils';
       return (
         < >
           <PostHeader title={post.title} longSummary={post.longSummary} contentType={post.contentType}/>
-          <div className={"responsive-container flex md:flex-row flex-col-reverse "}>
+          <div className={"responsive-container py-2xl flex md:flex-row flex-col-reverse "}>
           {/* Article Body Section  */}
           <div id="article" className="w-full md:w-2/3 pr-lg">
            { h2Sections.map((section)=>
