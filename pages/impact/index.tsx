@@ -5,7 +5,7 @@ import {
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/row/index";
+} from "components/blocks";
 import { ContentCard } from "components/atom/index";
 import React from "react";
 // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
@@ -23,7 +23,6 @@ export default function Impact() {
       <hr />
       <SectionHeader
         title={"Delivering on our promise to the public"}
-        colorTheme={colorTheme}
       >
       As a public benefit corporation, Nava has a fiduciary duty to our mission. We’re responsible to ourselves and the public for ensuring that critical public services are simple, effective, and accessible to all. 
       </SectionHeader>
@@ -51,7 +50,6 @@ export default function Impact() {
     
       <SectionHeader
         title={"Tracking the impact of our work"}
-        colorTheme={colorTheme}
       >
         While we keep our eyes on the horizon, our annual reports help keep us accountable in the near term.
       </SectionHeader>

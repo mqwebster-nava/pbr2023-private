@@ -11,15 +11,17 @@
  *
  */
 
+import { PAGE_FIELDS } from "./page_data_models";
 import { 
   AUTHOR_ALL_FIELDS,
   POST_ALL_FIELDS, 
   POST_CORE_FIELDS,
   BasicPostInterface,
   FullPostInterface,
-  AuthorPostInterface
+  AuthorPostInterface,
+  ContentfulImageAsset
 
-} from "./data_models";
+} from "./post_data_models";
 
 /*
 For building post pages
@@ -40,8 +42,22 @@ const defaultOptions = {
   preview: false,
 };
 
+const formatImageAsset = (imgData) => {
+  if(!imgData) return null;
+
+  const imgAsset: ContentfulImageAsset =  {
+    id: imgData.sys.id,
+    url: imgData.url,
+    title:imgData.title,
+    description:imgData.description,
+    width:imgData.width,
+    height:imgData.height
+  } 
+  return imgAsset;
+}
 const formatPosts = (posts) =>{
   return posts.map((post)=>{
+    console.log(post)
     const newPost: BasicPostInterface = {
       id: post.sys.id,
       contentTags:post.contentTags,
@@ -49,8 +65,10 @@ const formatPosts = (posts) =>{
       title: post.title,
       date: post.date,
       contentType: post.contentType,
-      shortSummary: post.shortSummary
+      shortSummary: post.shortSummary,
+      promoImage: formatImageAsset(post.promoImage)
     }
+    console.log("NEW",newPost);
     return newPost;
   })
 }
@@ -60,7 +78,23 @@ const formatPosts = (posts) =>{
 
 export default class ContentfulApi {
 
+  static async getPageBySlug(slug, options = defaultOptions) {
+    const variables = { slug, preview: options.preview };
+    const query = `query GetPageBySlug($slug: String!, $preview: Boolean!) {
+      pageContentCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+        total
+        items {
+          ${PAGE_FIELDS}
+        }
+      }
+    }`;
 
+    const response = await this.callContentful(query, variables, options);
+    if(!response.data.pageContentCollection.items) return null;
+    const page = response.data.pageContentCollection.items.pop();
+    
+    return  page;
+  }
 
   
   static async getPostBySlug(slug, options = defaultOptions) {
@@ -76,10 +110,8 @@ export default class ContentfulApi {
     
 
     const response = await this.callContentful(query, variables, options);
-    const posts = response.data.postCollection.items
-      ? response.data.postCollection.items
-      : [];
-    const post =  posts.pop();
+    if(!response.data.postCollection.items) return null;
+    const post =  response.data.postCollection.items.pop();
     const formattedPost: FullPostInterface = {
       id: post.sys.id,
       slug: post.slug,
@@ -98,7 +130,8 @@ export default class ContentfulApi {
       body: post.body,
       date: post.date,
       contentType: post.contentType,
-      shortSummary: post.shortSummary
+      shortSummary: post.shortSummary,
+      promoImage: formatImageAsset(post.promoImage)
     }
    
     const morePosts = await this.getMorePosts(formattedPost, options);
@@ -177,7 +210,7 @@ export default class ContentfulApi {
 
   static async getPostsByAuthor(slug, options = defaultOptions) {
     const variables = {slug };
-    console.log(slug);
+  //  console.log(slug);
     const query = `query GetPostsByAuthor($slug: String!)
     {
       authorCollection(limit: 20, where: { slug: $slug }) {

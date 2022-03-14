@@ -14,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({ children, href, colorTheme, isVa
         type='button'
         className={
           `font-sans inline-flex items-center justify-center px-sm py-sm border border-transparent text-base leading-6 font-medium rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out flex-col
-          text-white bg-grey-base hover:bg-${colorTheme}-base`
+          text-white bg-grey-base hover:bg-${colorTheme}-base cursor-pointer`
         }>
         {children}
       </a>

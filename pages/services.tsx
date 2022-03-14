@@ -6,8 +6,8 @@ import {
     PlaceholderPageHeader,
     ContentBlockArticleList,
     Newsletter,
-    PageCTASection
-  } from "components/row/index";
+    CTABlock
+  } from "components/blocks";
   import { ContentCard } from "components/atom/index";
   // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
 
@@ -24,7 +24,6 @@ import {
         <hr />
         <SectionHeader
           title={"Work with Nava"}
-          colorTheme={colorTheme}
         >
          Since 2013, government agencies have trusted Nava with their most critical digital services projects. 
         </SectionHeader>
@@ -72,7 +71,6 @@ import {
         <hr />
         <SectionHeader
           title={"Gain experienced partners"}
-          colorTheme={colorTheme}
         >
           Nava partners with agencies at the federal, state, and local level. Deep work in specific programs like SNAP, TK is bolstered by broad...
         </SectionHeader>
@@ -89,9 +87,9 @@ import {
             Nava helps build infrastructure that’s easy for teams to use so they can dramatically scale their work while minimizing cost and effort. 
         </ContentBlockText2>
 
-<PageCTASection title="Get In Touch" buttonPath="/contact" buttonText="contact us">
+<CTABlock title="Get In Touch" buttonPath="/contact" buttonText="contact us">
 Tell us about your challenges and ideas.
-</PageCTASection>
+</CTABlock>
       </div>
     );
   }

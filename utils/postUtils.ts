@@ -5,7 +5,7 @@ This returns the article as a list of sections, which can more easily be used wi
 intercept observer.
 */
 
-import { BasicPostInterface, FullPostInterface } from "lib/data_models";
+import { BasicPostInterface, FullPostInterface } from "lib/post_data_models";
 
 
 export interface PostPageProps   {

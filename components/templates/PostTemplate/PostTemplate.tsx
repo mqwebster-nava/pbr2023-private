@@ -8,9 +8,9 @@
   import ArticleInfoComponent from './ArticleInfoComponent';
   import SideNavComponent from './SideNavComponent';
   import { useEffect, useRef, useState } from "react";
-  import { ContentBlockArticleList } from 'components/row';
+  import { ContentBlockArticleList } from 'components/blocks';
   import {PostPageProps, sortDocIntoH2Sections} from "utils/postUtils";
-  import { BasicPostInterface } from 'lib/data_models';
+  import { BasicPostInterface } from 'lib/post_data_models';
 import { ContentCard } from 'components/atom';
 import { getContentUrl } from 'utils/utils';
 import { icolor } from "utils/theme";
@@ -85,9 +85,9 @@ import { icolor } from "utils/theme";
   // TODO Where should I do the rendering for this post
       const options = {
         renderMark: {
-          [MARKS.BOLD]: text => <span className="text-blue-500 font-bold ">{text}</span>,
-          [MARKS.ITALIC]: text => <span className="italic font-sans">{text}</span>,
-          [MARKS.UNDERLINE]: text => <span className="text-blue-500 font-bold">{text}</span>,
+          [MARKS.BOLD]: text => <span className=" font-bold ">{text}</span>,
+          [MARKS.ITALIC]: text => <span className="italic ">{text}</span>,
+          [MARKS.UNDERLINE]: text => <span className=" underline">{text}</span>,
         },
         renderNode: {
           [BLOCKS.PARAGRAPH]: (node, children) => <p className="text-black font-serif py-md text-base">{children}</p>,

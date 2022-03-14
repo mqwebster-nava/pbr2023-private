@@ -1,7 +1,7 @@
 import ContentfulApi from "lib/contentful";
-import CardsGrid from "components/row/CardsGrid/CardsGrid";
+import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
-import { BasicPostInterface } from "lib/data_models";
+import { BasicPostInterface } from "lib/post_data_models";
 import {
   SectionHeader,
   ContentBlockLinkToPage,
@@ -9,7 +9,7 @@ import {
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/row/index";
+} from "components/blocks";
 
 
 export interface CaseStudiesProps   {

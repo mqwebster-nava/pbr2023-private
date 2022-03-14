@@ -1,6 +1,6 @@
 import ContentfulApi from "lib/contentful";
 import PostTemplate from "components/templates/PostTemplate/PostTemplate";
-import { FullPostInterface, BasicPostInterface } from "lib/data_models";
+import { FullPostInterface, BasicPostInterface } from "lib/post_data_models";
 import { PostPageProps } from "utils/postUtils";
 
 
@@ -30,6 +30,7 @@ export async function getStaticProps({ params, preview = false }) {
   const res = await ContentfulApi.getPostBySlug(params.slug, {
     preview: preview,
   });
+  //console.log(JSON.stringify(res));
   const post: FullPostInterface = res.post;
   const morePosts: Array<BasicPostInterface> = res.morePosts;
 

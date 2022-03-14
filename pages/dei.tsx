@@ -5,7 +5,7 @@ import {
     PlaceholderPageHeader,
     ContentBlockArticleList,
     Newsletter,
-  } from "components/row/index";
+  } from 'components/blocks';
   import { ContentCard } from "components/atom/index";
   import React from "react";
   // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#

@@ -31,7 +31,13 @@
     font-weight: 400;
     font-display: swap;
 }
-
+@font-face {
+    font-family: "Source Serif Pro";
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Light.ttf");
+    font-style: light;
+    font-weight: 200;
+    font-display: swap;
+}
 
 html{
     font-size:18px;
@@ -41,7 +47,7 @@ html{
 @layer components {
    
     .responsive-container {
-      @apply px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
+      @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
     }
 
   }

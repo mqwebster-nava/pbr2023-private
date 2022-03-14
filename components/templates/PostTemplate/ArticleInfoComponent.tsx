@@ -1,4 +1,4 @@
-import { FullPostInterface } from "lib/data_models";
+import { FullPostInterface } from "lib/post_data_models";
 import {allTagsSlugIdPair} from "utils/utils";
 import { icolor } from "utils/theme";
 

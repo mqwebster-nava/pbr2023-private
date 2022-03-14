@@ -4,7 +4,7 @@ import type { ButtonProps } from './Button'
 import type { Story, Meta } from '@storybook/react/types-6-0'
 
 export default {
-  title: 'Brand/Button',
+  title: 'Atoms/Button',
   component: Button,
 } as Meta
 

@@ -26,7 +26,7 @@ const PostHeader = ({
         </div>
       </div>
       <div className=" max-h-96 overflow-clip xl:mx-auto xl:max-w-screen-lg -mt-[160px]"> 
-        <Image className="max-w-full max-h-16" src={filler}></Image>
+        <Image className="w-full  min-h-16 object-cover" src={filler}></Image>
       </div>
     </div>
   );

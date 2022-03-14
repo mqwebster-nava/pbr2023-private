@@ -1,22 +1,43 @@
-import {
-  SectionHeader,
-  ContentBlockLinkToPage,
-  ContentBlockText,
-  ContentBlockText2,
-  PlaceholderPageHeader,
-  ContentBlockArticleList,
-  Newsletter,
-} from "components/row/index";
-import { ContentCard } from "components/atom/index";
+// import {
+//   SectionHeader,
+//   ContentBlockLinkToPage,
+//   ContentBlockText,
+//   ContentBlockText2,
+//   PlaceholderPageHeader,
+//   ContentBlockArticleList,
+//   Newsletter,
+// } from "components/blocks";
+// import { ContentCard } from "components/atom/index";
 import React from "react";
+import ContentfulApi from "lib/contentful";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
 
 
-export default function Values() {
-  const colorTheme = "purple";
+export default function Values(props) {
   return (
-    <div>
-      <PlaceholderPageHeader
+    <>
+    <PageTemplate page={props.page} preview={false}/>
+  
+    </>
+  );
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  const res = await ContentfulApi.getPageBySlug("/values", {
+    preview: preview,
+  });
+
+ return {
+   props:
+   {
+     page:res
+   }
+ };
+}
+
+
+    /* <PlaceholderPageHeader
         title={"Values"}
         subtitle={"Our values shape our culture and ability to achieve our mission"}
       />
@@ -84,8 +105,4 @@ reflect the diverse communities we serve across the US.
           >Diversity, Equity, and Inclusion report</a></p>
       </ContentBlockText>
      
-      <Newsletter/>
-    </div>
-  );
-}
-
+      <Newsletter/> */

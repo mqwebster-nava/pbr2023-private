@@ -36,7 +36,8 @@ module.exports = {
         purple: {
           'dark':'#471385',
           'base': '#A646B7',
-          "light":'#9B4BB2'
+          "light":'#9B4BB2',
+          "lightest":"#F5E4F0"
         },
         plum: {
           'dark':'#5B0462',
@@ -60,6 +61,9 @@ module.exports = {
         },
         
 
+      },
+      height: {
+        '128': '32rem',
       },
       spacing: {
         sm: '8px',

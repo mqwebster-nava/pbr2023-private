@@ -3,18 +3,21 @@ import {
   SectionHeader,
   LeftRepeater,
   RightRepeater,
-  ThreeColumnGrid,
   ContentBlockLinkToPage,
   ContentBlockText,
   ContentBlockText2,
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/row/index";
+  QuoteBlock,
+} from "components/blocks";
+//import careerImg from ""
 import { ContentCard } from "components/atom/index";
-import CardsGrid from "components/row/CardsGrid/CardsGrid";
+import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import React from "react";
-// import careersImg1 from "public/images/careers-presentation-img.png";
+import careersImg1 from "public/images/careers-presentation-img.png";
+import careersImg from "public/images/careers.jpg";
+import careersImg2 from "public/images/careers2.jpg";
 // import careersImg2 from "public/images/careers-outdoor.png";
 // import careersImg3 from "public/images/careers-couch.png";
 // import careersImg4 from "public/images/careers-team.png";
@@ -39,7 +42,6 @@ export default function Careers() {
       <hr />
       <SectionHeader
         title={"Work on projects with a positive impact"}
-        colorTheme={colorTheme}
       >
         Nava positively transforms the technology that helps people access
         public benefits. As a client services company, are clients are states
@@ -48,38 +50,45 @@ export default function Careers() {
       </SectionHeader>
 
       <hr />
-      <ContentBlockLinkToPage
+      <RightRepeater
         title={"Nava is a public benefit corporation"}
         buttonText={"Learn about our mission"}
-        buttonPath={"/mission"}
-      >
+        buttonPath={"/mission"} 
+        image={careersImg} 
+        >
         This means we’re accountable to our social mission: to make it easier
         for people to access social safety net programs.
-      </ContentBlockLinkToPage>
+      </RightRepeater>
       <hr />
       <ContentBlockLinkToPage
         title={"Our values guide how we serve the public"}
         buttonPath={"/mission/values"}
         buttonText="See our values"
+               
       >
         Every day we make countless decisions that inform our ability to improve
         how government serves everyone, and we don’t take that lightly.
       </ContentBlockLinkToPage>
 
       <hr />
-      <ContentBlockLinkToPage
+      <RightRepeater
         title={"Our teams must reflect the communities we serve"}
         buttonText={"Read our DE&I report"}
         buttonPath={"/mission"}
+        image={careersImg2}
       >
         By 2025, we hope Nava better matches the representation of race and
         ethnicity in the US by comprising majority Black, Indigenous, and People
         of Color.
-      </ContentBlockLinkToPage>
+      </RightRepeater>
       <hr />
+      <QuoteBlock 
+        content={"Knowing that my work directly impacts real people who are navigating life milestones and facing challenges is fulfilling."} 
+        author={"Martelle Esposito"} 
+        authorRole={"Senior Program Strategist"}
+      />
       <SectionHeader
         title={"Focus on your future, too"}
-        colorTheme={colorTheme}
       >
         We offer excellent compensation and benefits because we value our
         peoples’ health, futures, and lives outside of work. Nava has generous
@@ -134,7 +143,6 @@ export default function Careers() {
       <hr />
       <SectionHeader
         title={"Learn more about working at Nava"}
-        colorTheme={colorTheme}
       >
         See what an average day at Nava looks like for people in different
         roles, what kinds of things we’re learning about, and how our interview
@@ -191,6 +199,11 @@ export default function Careers() {
         </ContentCard>
       </ContentBlockArticleList>
       <hr />
+      <QuoteBlock 
+        content={"The government is responsible for serving the entire nation, and it’s rewarding to play a role in improving how they deliver their services. These improvements impact the lives and well-being of many people across the nation, especially those in vulnerable populations."} 
+        author={"Mohib Rizvi"} 
+        authorRole={"Security Engineer"}
+      />
       <ContentBlockArticleList
         title={"Interviewing at Nava"}
         buttonText={"Read more"}

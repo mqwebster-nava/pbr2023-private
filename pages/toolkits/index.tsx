@@ -1,5 +1,5 @@
 import ContentfulApi from "lib/contentful";
-import CardsGrid from "components/row/CardsGrid/CardsGrid";
+import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import {
     SectionHeader,
@@ -8,7 +8,7 @@ import {
     PlaceholderPageHeader,
     ContentBlockArticleList,
     Newsletter,
-  } from "components/row/index";
+  } from "components/blocks";
   
 
 

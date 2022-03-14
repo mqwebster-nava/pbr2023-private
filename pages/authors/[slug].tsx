@@ -1,6 +1,6 @@
 import ContentfulApi from "lib/contentful";
-import LargeHero from "components/row/LargeHero/LargeHero";
-import CardsGrid from "components/row/CardsGrid/CardsGrid";
+import LargeHero from "components/blocks/PageHeader/LargeHero";
+import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { getContentUrl } from "utils/utils";
 export default function AuthorPosts({ posts, name, role, bio }) {

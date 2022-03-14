@@ -7,7 +7,7 @@ import {
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/row/index";
+} from "components/blocks";
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/templates/PostTemplate/AnchorLink"
 /*

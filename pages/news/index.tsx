@@ -5,7 +5,7 @@ import {
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/row/index";
+} from "components/blocks";
 
 
 import { ContentCard } from "components/atom/index";
