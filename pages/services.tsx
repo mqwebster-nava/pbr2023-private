@@ -87,7 +87,7 @@ import {
             Nava helps build infrastructure that’s easy for teams to use so they can dramatically scale their work while minimizing cost and effort. 
         </ContentBlockText2>
 
-<CTABlock title="Get In Touch" buttonPath="/contact" buttonText="contact us">
+<CTABlock title="Get In Touch" buttonPath="/contact" buttonText="contact us" type="default">
 Tell us about your challenges and ideas.
 </CTABlock>
       </div>
