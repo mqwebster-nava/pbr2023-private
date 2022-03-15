@@ -86,8 +86,10 @@ https://github.com/remarkjs/react-markdown
 
 https://stackoverflow.com/questions/54083103/contentful-documenttohtmlstring-doesnt-include-embedded-image-in-rich-text
 
+https://www.react-reveal.com/examples/common/
 
----
-Look into Twin 
+https://storybook.js.org/tutorials/design-systems-for-developers/react/en/introduction/
 
--https://github.com/ben-rogerson/twin.macro#installation 
+https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/mdx.md
+
+https://nextjs.org/docs/api-reference/next/image#objectfit
