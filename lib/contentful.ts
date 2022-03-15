@@ -57,7 +57,6 @@ const formatImageAsset = (imgData) => {
 }
 const formatPosts = (posts) =>{
   return posts.map((post)=>{
-    console.log(post)
     const newPost: BasicPostInterface = {
       id: post.sys.id,
       contentTags:post.contentTags,
@@ -68,7 +67,6 @@ const formatPosts = (posts) =>{
       shortSummary: post.shortSummary,
       promoImage: formatImageAsset(post.promoImage)
     }
-    console.log("NEW",newPost);
     return newPost;
   })
 }
@@ -210,7 +208,6 @@ export default class ContentfulApi {
 
   static async getPostsByAuthor(slug, options = defaultOptions) {
     const variables = {slug };
-  //  console.log(slug);
     const query = `query GetPostsByAuthor($slug: String!)
     {
       authorCollection(limit: 20, where: { slug: $slug }) {
@@ -253,7 +250,6 @@ export default class ContentfulApi {
       }`;
 
   const response = await this.callContentful(query, variables);
- // console.log(response)
  
   const slugs = response.data.postCollection.items
     ? response.data.postCollection.items.map((item) => item.slug)
@@ -275,8 +271,7 @@ static async getAllAuthorSlugs() {
       }`;
 
   const response = await this.callContentful(query, variables);
-  //console.log(response)
- 
+
   const slugs = response.data.authorCollection.items
     ? response.data.authorCollection.items.map((item) => item.slug)
     : [];

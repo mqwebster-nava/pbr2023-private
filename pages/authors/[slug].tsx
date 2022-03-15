@@ -22,7 +22,6 @@ export default function AuthorPosts({ posts, name, role, bio }) {
 
 export async function getStaticPaths({ params, preview = null }) {
   const postSlugs = await ContentfulApi.getAllAuthorSlugs();
-  //console.log(postSlugs);
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };
   });
@@ -37,8 +36,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   const posts = author.linkedFrom.postCollection.items;
   const { name, role, bio } = author;
-  console.log(name, role, bio);
-  //console.log(posts);
+
   return {
     props: {
       posts,

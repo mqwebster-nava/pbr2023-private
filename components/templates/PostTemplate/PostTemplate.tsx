@@ -32,8 +32,6 @@ import { icolor } from "utils/theme";
       let newActiveSection = activeSection;
      // Need to deal with a range of edge cases
       entries.forEach((entry)=>{
-        //console.log("run");
-       // console.log(entry);
         if(entry.isIntersecting) {
           newActiveSection = entry.target.id;
         }
@@ -54,9 +52,6 @@ import { icolor } from "utils/theme";
         rootMargin: "0px",
         threshold:0.2
       }
-      
-      //  console.log("useEffect");
-  
       
       const observer = new IntersectionObserver(callbackFunction, options)
       

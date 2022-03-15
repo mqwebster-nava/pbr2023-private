@@ -11,10 +11,10 @@ export interface ContentCardInterface {
   
 const ContentCard: React.FC<ContentCardInterface> = (props) => {
   
-    if(props.promoImage)return <CardWithImage {...props}/>
+  if(props.promoImage)return <CardWithImage {...props}/>
    return <DefaultContentCard {...props} />
  
-  }
+}
 
 
 const DefaultContentCard: React.FC<ContentCardInterface> = ({

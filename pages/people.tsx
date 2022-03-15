@@ -32,9 +32,9 @@ import {
   }
   
   
-export async function getStaticProps({ params, preview = false }) {
-  const res = await ContentfulApi.getPageBySlug("/people", {
-    preview: preview,
-  });
- return null;
-}
+// export async function getStaticProps({ params, preview = false }) {
+//   const res = await ContentfulApi.getPageBySlug("/people", {
+//     preview: preview,
+//   });
+//  return null;
+// }

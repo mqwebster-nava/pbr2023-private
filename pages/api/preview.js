@@ -69,7 +69,7 @@ export default async function preview(req, res) {
    */
 
   const url = `${redirectPrefix}${preview.slug}`;
-console.log(preview);
+
   res.write(
     `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${url}" />
     <script>window.location.href = '${url}'</script>

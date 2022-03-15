@@ -58,7 +58,6 @@ const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
   const screenSize = useWindowSize();
   const isMobile: Boolean = !screenSize.includes("xl");
-  //console.log(screenSize, isMobile);
   return isMobile ? (
     <MobileNavBar NavData={NavData} />
   ) : (

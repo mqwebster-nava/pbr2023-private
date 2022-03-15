@@ -14,8 +14,7 @@ export interface Props   {
 
 
 export default function Insights({posts}:Props) {
-    //console.log(posts);
-    
+
     return ( <div> 
        <PlaceholderPageHeader
   
