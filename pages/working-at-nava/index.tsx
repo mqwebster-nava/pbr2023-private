@@ -16,7 +16,7 @@ import { ContentCard } from "components/atom/index";
 import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import React from "react";
 import careersImg1 from "public/images/careers-presentation-img.png";
-import careersImg from "public/images/careers.jpg";
+import careersImg from "public/images/careers-presentation-img.png";
 import careersImg2 from "public/images/careers2.jpg";
 // import careersImg2 from "public/images/careers-outdoor.png";
 // import careersImg3 from "public/images/careers-couch.png";
