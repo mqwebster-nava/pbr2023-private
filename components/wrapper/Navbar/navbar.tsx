@@ -1,3 +1,4 @@
+import { Button } from "components/atom";
 import { useState } from "react";
 import useWindowSize from "utils/windowSizeHook";
 import DropdownNavButton from "./DropdownNavButton";
@@ -93,10 +94,8 @@ const DesktopNavBar = ({ NavData }) => {
                 </DropdownNavButton>
               );
             })}
-
-            <a href="/contact" className="font-sans mx-md px-md border-2">
-              Get In Touch
-            </a>
+            <Button href="/contact"> Get In Touch </Button>
+            
           </div>
         </div>
       </nav>

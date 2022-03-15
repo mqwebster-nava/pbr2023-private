@@ -72,8 +72,8 @@ module.exports = {
         xl: '24px',
         '2xl': '32px',
         '3xl':'48px',
-        '4xl':'72px'
-
+        '4xl':'72px',
+        '5xl': '128px',
       }
     },
   },

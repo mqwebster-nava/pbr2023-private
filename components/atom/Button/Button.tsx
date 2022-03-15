@@ -9,16 +9,20 @@ export const Button: React.FC<ButtonProps> = ({ children, href,  isVariant, ...r
   return (
     <div className={``} {...rest}>
       <a
-      href={href}
+        href={href}
         type='button'
         className={
-          `font-sans inline-flex items-center justify-center px-sm py-sm border border-transparent text-base leading-6 font-medium rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out flex-col
-          text-white bg-grey-base hover:bg-${icolor}-base cursor-pointer`
+          `font-sans uppercase 
+          inline-flex items-center justify-center 
+          px-md py-sm 
+          text-sm leading-6 font-medium  
+          transition duration-150 ease-in-out flex-col
+          text-${icolor}-dark border border-${icolor}-dark 
+          hover:text-white hover:bg-${icolor}-dark 
+          cursor-pointer`
         }>
         {children}
       </a>
     </div>
   )
 }
-
-//bg-${colorTheme}-dark hover:bg-${colorTheme}-base`
