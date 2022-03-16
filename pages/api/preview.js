@@ -4,6 +4,16 @@
 
 import ContentfulApi from "lib/contentful";
 
+const contentTypesMap = {
+  "Case Study": "/case-studies/",
+  "Insight": "/insights/",
+  "News": "/news/",
+  "Toolkit": "/toolkits/",
+  "Working at Nava": "/working-at-nava/"
+}
+
+
+
 export default async function preview(req, res) {
   /*
    * Check for the secret and query parameters.
@@ -18,6 +28,7 @@ export default async function preview(req, res) {
    * http://localhost:3000/api/preview?secret={SECRET}&slug={entry.fields.slug}&contentType=pageContent
    *
    */
+  console.log(req.query);
   if (
     req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET ||
     !req.query.slug ||
@@ -28,15 +39,22 @@ export default async function preview(req, res) {
 
   // Fetch the page or blog content by slug using the Contentful Preview API.
   let preview = null;
-  let redirectPrefix = "";
+  let redirectUrl = "/";
   if(req.query.type=="post" && req.query.contentType){
     preview = await ContentfulApi.getPostBySlug(req.query.slug, {
       preview: true,
     });
+    let redirectPrefix = contentTypesMap[req.query.contentType] ;
+    redirectUrl = `${redirectPrefix}${preview.post.slug}`;
 
-    redirectPrefix = "/case-studies/";
   }
-
+  if (req.query.type=="page"){
+    preview = await ContentfulApi.getPageBySlug(req.query.slug, {
+      preview: true,
+    });
+    console.log(preview);
+    redirectUrl = `${preview.slug}`;
+  }
   // Prevent Next.js preview mode from being enabled if the content doesn't exist.
   if (!preview) {
     return res.status(401).json({ message: "Invalid slug Preview" });
@@ -48,11 +66,10 @@ export default async function preview(req, res) {
    * We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities.
    */
 
-  const url = `${redirectPrefix}${preview.post.slug}`;
-
+  
   res.write(
-    `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${url}" />
-    <script>window.location.href = '${url}'</script>
+    `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${redirectUrl}" />
+    <script>window.location.href = '${redirectUrl}'</script>
     </head>`,
   );
   res.end();
