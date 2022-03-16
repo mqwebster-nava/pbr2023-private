@@ -25,15 +25,15 @@
 }
 
 @font-face {
-    font-family: "Source Serif Pro";
-    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf");
+    font-family: "Freight Text Pro";
+    src: url("/fonts/Freight_Text_Pro/freigtexprobook-webfont.woff2");
     font-style: normal;
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
-    font-family: "Source Serif Pro";
-    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Light.ttf");
+    font-family: "Freight Text Pro";
+    src: url("/fonts/Freight_Text_Pro/freigtexprolk-webfont.woff2");
     font-style: light;
     font-weight: 200;
     font-display: swap;

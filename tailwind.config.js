@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['GTAmerica', 'sans-serif'], 
-        'serif': ['Source Serif Pro', 'serif'],
+        'serif': ['Freight Text Pro', 'serif'],
         'body': ['GTAmerica']
       },
       fontSize:{
