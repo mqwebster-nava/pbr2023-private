@@ -133,7 +133,6 @@ export default class ContentfulApi {
     }
    
     const morePosts = await this.getMorePosts(formattedPost, options);
-
     return {
       post:formattedPost,
       morePosts
@@ -143,7 +142,6 @@ export default class ContentfulApi {
 
   static async getMorePosts( post: FullPostInterface, options = defaultOptions) {
     const variables = { slug:post.slug, preview: options.preview };
-    
     const query = `query GetMorePosts($slug: String!, $preview: Boolean!) {
       postCollection(where: { slug_not_in: [ $slug ] }, preview: $preview) {
         total
@@ -153,14 +151,13 @@ export default class ContentfulApi {
       }
     }`;
     const response = await this.callContentful(query, variables, options);
-   
     const posts = response.data.postCollection.items
       ? response.data.postCollection.items
       : [];
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
     // Filter tags
     const filteredPosts: Array<BasicPostInterface> 
-        = formattedPosts.filter((_post)=> _post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
+        = formattedPosts.filter((_post)=> _post.contentTags&&_post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
 
     return filteredPosts;
   }

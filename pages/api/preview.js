@@ -21,7 +21,7 @@ export default async function preview(req, res) {
   if (
     req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET ||
     !req.query.slug ||
-    !req.query.contentType
+    !req.query.type
   ) {
     return res.status(401).json({ message: "Invalid options" });
   }
@@ -29,38 +29,18 @@ export default async function preview(req, res) {
   // Fetch the page or blog content by slug using the Contentful Preview API.
   let preview = null;
   let redirectPrefix = "";
+  if(req.query.type=="post" && req.query.contentType){
+    preview = await ContentfulApi.getPostBySlug(req.query.slug, {
+      preview: true,
+    });
 
-  switch (req.query.contentType) {
-    case "post":
-      redirectPrefix = "/case-studies/";
-      preview = await ContentfulApi.getPostBySlug(req.query.slug, {
-        preview: true,
-      });
-      break;
-    // case "pageContent":
-    //   preview = await ContentfulApi.getPageContentBySlug(req.query.slug, {
-    //     preview: true,
-    //   });
-    //   break;
-    default:
-      preview = null;
+    redirectPrefix = "/case-studies/";
   }
 
   // Prevent Next.js preview mode from being enabled if the content doesn't exist.
   if (!preview) {
-    return res.status(401).json({ message: "Invalid slug" });
+    return res.status(401).json({ message: "Invalid slug Preview" });
   }
-
-  /**
-   * res.setPreviewData({}) sets some cookies on the browser
-   * which turns on the preview mode. Any requests to Next.js
-   * containing these cookies will be considered as the preview
-   * mode, and the behavior for statically generated pages
-   * will change.
-   *
-   * To end Next.js preview mode, navigate to /api/endpreview.
-   */
-
   res.setPreviewData({});
 
   /*
@@ -68,7 +48,7 @@ export default async function preview(req, res) {
    * We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities.
    */
 
-  const url = `${redirectPrefix}${preview.slug}`;
+  const url = `${redirectPrefix}${preview.post.slug}`;
 
   res.write(
     `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${url}" />
