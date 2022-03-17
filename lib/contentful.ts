@@ -11,7 +11,7 @@
  *
  */
 
-import { PAGE_FIELDS } from "./page_data_models";
+import { PageInterface, PAGE_FIELDS } from "./page_data_models";
 import { 
   AUTHOR_ALL_FIELDS,
   POST_ALL_FIELDS, 
@@ -90,8 +90,16 @@ export default class ContentfulApi {
     const response = await this.callContentful(query, variables, options);
     if(!response.data.pageContentCollection.items) return null;
     const page = response.data.pageContentCollection.items.pop();
-    
-    return  page;
+   
+    const formattedPage: PageInterface = {
+      id: page.sys.id,
+      slug: page.slug,
+      title: page.title,
+      pageHeader: page.pageHeader,
+      contentBlocks: page.contentCollection.items,
+      description: page.description
+    }
+    return  formattedPage;
   }
 
   
@@ -157,7 +165,9 @@ export default class ContentfulApi {
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
     // Filter tags
     const filteredPosts: Array<BasicPostInterface> 
-        = formattedPosts.filter((_post)=> _post.contentTags&&_post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
+        =  post.contentTags 
+        ? formattedPosts.filter((_post)=> _post.contentTags &&_post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
+        : formattedPosts.sort(() => Math.random() - 0.5).slice(0,3);
 
     return filteredPosts;
   }

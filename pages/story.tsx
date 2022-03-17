@@ -1,26 +1,24 @@
 
-import {
-    SectionHeader,
-    PlaceholderPageHeader,
-    Newsletter,
-  } from "components/blocks";
-  import { ContentCard } from "components/atom/index";
-  import React from "react";
-  // https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
-  
-  
-  export default function Story() {
+import ContentfulApi from "lib/contentful";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import { PageInterface } from "lib/page_data_models";
+import { PageProps } from "utils/pageUtils";
+// https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
 
-    return (
-      <div>
-        <PlaceholderPageHeader
-          title={"Our Story"}
-          subtitle={"[Placeholder text]"}
-        />
-        <hr />
-       
-      </div>
-    );
-  }
-  
-  
+
+
+export default function Story({page, preview}:PageProps ) {
+  return page? (<PageTemplate page={page} preview={preview}/>): <div>Error</div>
+  ;
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  const res: PageInterface = await ContentfulApi.getPageBySlug("/story", {
+    preview: preview,
+  });
+ return {
+   props:
+   { page:res }
+ };
+}
+

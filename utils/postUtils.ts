@@ -1,5 +1,3 @@
-
-
 /*
 This returns the article as a list of sections, which can more easily be used with the 
 intercept observer.

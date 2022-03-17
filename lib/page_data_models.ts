@@ -12,8 +12,9 @@ export interface PageComponentInterface {
   componentType: string;
 }
 export interface PageHeaderInterface {
-  name: string;
+  
   title: string;
+  subtitle:string;
 }
 
 export interface PageInterface {
@@ -21,6 +22,8 @@ export interface PageInterface {
   slug: string;
   title: string;
   description: string;
+  pageHeader: PageHeaderInterface;
+  contentBlocks: any;
 }
 
 export const PAGE_HEADER_FIELDS = `
@@ -39,7 +42,7 @@ const CONTENT_BLOCK_TEXT = `
 const CONTENT_BLOCK_ARTICLE_LIST = `
     title
     body
-    postsCollection{
+    postsCollection(limit: 10) {
         items{
             ${POST_CORE_FIELDS}
         }
@@ -60,7 +63,6 @@ const QUOTE_BLOCK = `
     authorRole
 `;
 
-
 export const PAGE_FIELDS = `
     sys {
       id
@@ -71,33 +73,28 @@ export const PAGE_FIELDS = `
     pageHeader {
         ${PAGE_HEADER_FIELDS}
     }
-    body {
-        json
-        links {
-            entries {
-                block {
-                    sys {
-                        id
-                    }
-                    __typename
-                    ... on SectionHeader {
-                        ${SECTION_HEADER_FIELDS}
-                    }
-                    ... on SectionContentBlockText {
-                        ${CONTENT_BLOCK_TEXT}
-                    }
-                    ... on ContentBlockArticleList {
-                        ${CONTENT_BLOCK_ARTICLE_LIST}
-                    }
-                    ... on SectionCtaBlock {
-                        ${CTA_BLOCK}
-                    }
-                    ... on QuoteBlock {
-                        ${QUOTE_BLOCK}
-                    }
-
-                }
-            } 
+    contentCollection {
+        items {
+            __typename
+            ... on SectionHeader {
+                ${SECTION_HEADER_FIELDS}
+            }
+            ... on SectionContentBlockText {
+                ${CONTENT_BLOCK_TEXT}
+            }
+         
+            ... on SectionCtaBlock {
+                ${CTA_BLOCK}
+            }
+            ... on QuoteBlock {
+                ${QUOTE_BLOCK}
+            }
+          
         }
     }
 `;
+
+   // ... on ContentBlockArticleList {
+            //     ${CONTENT_BLOCK_ARTICLE_LIST}
+            // }
+            
