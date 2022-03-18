@@ -60,7 +60,7 @@ const CONTENT_BLOCK_LINK_TO_PAGE = `
 const CONTENT_BLOCK_ARTICLE_LIST = `
     title
     body
-    postsCollection {
+    postsCollection(limit:10) {
         items{
             ${POST_CORE_FIELDS}
         }
@@ -103,7 +103,9 @@ export const PAGE_FIELDS = `
             ... on ContentBlockLinkToPage{
                 ${CONTENT_BLOCK_LINK_TO_PAGE}
             }
-            
+            ... on ContentBlockArticleList {
+                ${CONTENT_BLOCK_ARTICLE_LIST}
+            }
             ... on SectionCtaBlock {
                 ${CTA_BLOCK}
             }

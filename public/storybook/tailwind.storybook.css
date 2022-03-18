@@ -1554,10 +1554,6 @@ input:checked + .toggle-bg {
   --tw-text-opacity: 1;
   color: rgb(63 131 248 / var(--tw-text-opacity));
 }
-.text-blue-900 {
-  --tw-text-opacity: 1;
-  color: rgb(35 56 118 / var(--tw-text-opacity));
-}
 .text-sage-dark {
   --tw-text-opacity: 1;
   color: rgb(0 76 49 / var(--tw-text-opacity));
@@ -1765,11 +1761,6 @@ html{
 .hover\:text-blue-900:hover {
   --tw-text-opacity: 1;
   color: rgb(35 56 118 / var(--tw-text-opacity));
-}
-
-.hover\:text-indigo-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(141 162 251 / var(--tw-text-opacity));
 }
 
 .hover\:text-white:hover {
