@@ -39,10 +39,28 @@ const CONTENT_BLOCK_TEXT = `
     title
     body
 `;
+const CONTENT_BLOCK_LINK_TO_PAGE = `
+    title
+    buttonText
+    buttonPath
+    type
+    body
+    image {
+        sys {
+          id
+        }
+        url
+        width
+        height
+        title
+        description
+    }
+
+`;
 const CONTENT_BLOCK_ARTICLE_LIST = `
     title
     body
-    postsCollection(limit: 10) {
+    postsCollection {
         items{
             ${POST_CORE_FIELDS}
         }
@@ -82,7 +100,10 @@ export const PAGE_FIELDS = `
             ... on SectionContentBlockText {
                 ${CONTENT_BLOCK_TEXT}
             }
-         
+            ... on ContentBlockLinkToPage{
+                ${CONTENT_BLOCK_LINK_TO_PAGE}
+            }
+            
             ... on SectionCtaBlock {
                 ${CTA_BLOCK}
             }

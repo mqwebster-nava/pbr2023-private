@@ -10,6 +10,7 @@ import {
 } from "components/blocks";
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/templates/PostTemplate/AnchorLink"
+import { LinkText } from "components/atom/LinkText/LinkText";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -74,9 +75,9 @@ export default function OpenRoles() {
             <hr/>
             {d.postings.map((posting) => {
               return (
-                <a key={`${posting.id}`} className="hover:text-indigo-400" href={`${posting.hostedUrl}`}>
-                  <p className="font-sans py-md">{posting.title}</p>
-                </a>
+                <p className="font-sans py-md" key={`${posting.id}`} >
+                  <LinkText href={`${posting.hostedUrl}`}>{posting.title}</LinkText>
+                </p>
               );
             })}
             <div className="py-md"></div>

@@ -2,6 +2,7 @@ import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageProps } from "utils/pageUtils";
 import { PageInterface } from "lib/page_data_models";
+//https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
 export default function People({ page, preview }: PageProps) {
   return page ? (

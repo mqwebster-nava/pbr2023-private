@@ -31,9 +31,6 @@ export async function getStaticProps({ params, preview = false }) {
   const post: FullPostInterface = res.post;
   const morePosts: Array<BasicPostInterface> = res.morePosts;
 
-  // Add this with fallback: "blocking"
-  // So that if we do not have a post on production,
-  // the 404 is served
   if (!post) {
     return {
       notFound: true,

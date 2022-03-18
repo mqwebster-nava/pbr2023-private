@@ -6,6 +6,7 @@ export interface ButtonProps   {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, href,  isVariant, ...rest }) => {
+
   return (
     <div className={``} {...rest}>
       <a
@@ -17,8 +18,8 @@ export const Button: React.FC<ButtonProps> = ({ children, href,  isVariant, ...r
           px-md py-sm 
           text-sm leading-6 font-medium  
           transition duration-150 ease-in-out flex-col
-          text-${icolor}-dark border border-${icolor}-dark 
-          hover:text-white hover:bg-${icolor}-dark 
+          text-sage-dark border border-sage-dark hover:bg-sage-dark 
+          hover:text-white 
           cursor-pointer`
         }>
         {children}

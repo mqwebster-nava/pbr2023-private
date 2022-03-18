@@ -10,10 +10,9 @@
   import { useEffect, useRef, useState } from "react";
   import { ContentBlockArticleList } from 'components/blocks';
   import {PostPageProps, sortDocIntoH2Sections} from "utils/postUtils";
-  import { BasicPostInterface } from 'lib/post_data_models';
 import { ContentCard } from 'components/atom';
 import { getContentUrl } from 'utils/utils';
-import { icolor } from "utils/theme";
+import { LinkText } from 'components/atom/LinkText/LinkText';
 
   export default function PostTemplate({post, morePosts, preview }:PostPageProps) {
     // need to deconstruct post 
@@ -95,8 +94,7 @@ import { icolor } from "utils/theme";
           [BLOCKS.UL_LIST]: (node, children) => <ul className="list-disc ml-2xl">{children}</ul>,
           [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
-          [INLINES.HYPERLINK]:(node, children) => ( <a className={`text-${icolor}-dark hover:text-${icolor}-base underline`} href={node.data.uri}  target="_blank"  >{children}</a>
-          ),
+          [INLINES.HYPERLINK]:(node, children) => ( <LinkText href={node.data.uri}>{children}</LinkText> ),
           [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data)
         },
     };

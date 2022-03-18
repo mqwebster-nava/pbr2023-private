@@ -15,7 +15,7 @@ export const parameters = {
   //layout: 'fullscreen',
   options: {
     storySort: {
-      order: ['Design System','Styles', 'Atoms','Blocks', 'Templates'],
+      order: ['Design System','Styles', 'Atoms','Wrappers','Blocks', 'Templates'],
     },  
   },
 };
