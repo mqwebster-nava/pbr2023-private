@@ -12,7 +12,7 @@ Object.defineProperty(NextImage, "default", {
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  //layout: 'fullscreen',
+  layout: 'fullscreen',
   options: {
     storySort: {
       order: ['Design System','Styles', 'Atoms','Wrappers','Blocks', 'Templates'],
