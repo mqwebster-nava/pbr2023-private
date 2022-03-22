@@ -22,8 +22,8 @@ interface ContentBlockInterface {
                   {body && <p className={`font-sans pt-lg text-base text-grey-base mb-md`}>{body}</p> }
                     <div className={`w-full flex  items-stretch md:flex-row flex-col gap-8 my-3xl `}>
             <div className="w-full md:w-1/3 self-stretch"> {childrenArray[0]} </div>
-            <div className="w-full md:w-1/3 self-stretch"> {childrenArray[1]} </div>
-            <div className="w-full md:w-1/3 self-stretch"> {childrenArray[2]} </div>
+            <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>1 && childrenArray[1]} </div>
+            <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>2 && childrenArray[2]} </div>
         </div> 
                     
                 {buttonText && <Button href={buttonPath} >{buttonText}</Button>}

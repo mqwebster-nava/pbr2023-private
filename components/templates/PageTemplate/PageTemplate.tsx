@@ -22,9 +22,9 @@ export default function PageTemplate({ page, preview }: PageProps) {
       // todo add styling here for markdown
       components={{
         // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
-        em: ({node, ...props}) => <i style={{color: 'red'}} {...props} />
+        ul: ({node, ...props}) => <ul className="list-disc" {...props} />
       }}/> )
-  }
+  } 
   
   
   const getComponent = (entry: any) => {
@@ -69,8 +69,9 @@ export default function PageTemplate({ page, preview }: PageProps) {
       case "ContentBlockArticleList":
         return (
         <ContentBlockArticleList title={entry.title} body={entry.body}>
-          {entry.posts.map((post)=>{
+          {entry.postsCollection.items.map((post)=>{
             return (<ContentCard
+            key={post.title}
               title={post.title}
               path={getContentUrl(post.contentType, post.slug)}
             >
