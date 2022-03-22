@@ -12,8 +12,6 @@ import React from "react";
 
 
 export default function Impact() {
-  const colorTheme = "purple";
-
   return (
     <div>
       <PlaceholderPageHeader
