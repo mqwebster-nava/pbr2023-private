@@ -88,6 +88,7 @@ export default class ContentfulApi {
     }`;
 
     const response = await this.callContentful(query, variables, options);
+ 
     if(!response.data.pageContentCollection.items) return null;
     const page = response.data.pageContentCollection.items.pop();
    
