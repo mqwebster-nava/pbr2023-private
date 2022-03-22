@@ -11,7 +11,7 @@ const SideNavComponent = ({h2Sections, activeSection}) => {
         let header = section.title;
         let isActive = activeSection === header;
         return (
-          <p className={`font-sans text-${icolor}-dark hover:text-${icolor}-base ${isActive&&"font-bold"}`}>
+          <p className={`font-sans text-sage-dark hover:text-sage-base ${isActive&&"font-bold"}`}>
             <AnchorLink href={`#${header}`}>{header}</AnchorLink>
           </p>
         );

@@ -1,77 +1,129 @@
 module.exports = {
-  content: ["./pages/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./styles/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
-  plugins: [
-    require('flowbite/plugin')
+  content: [
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./styles/**/*.{js,jsx,ts,tsx}",
   ],
+  plugins: [],
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['GTAmerica', 'sans-serif'], 
-        'serif': ['Freight Text Pro', 'serif'],
-        'body': ['GTAmerica']
+        sans: ["GTAmerica", "sans-serif"],
+        serif: ["Freight Text Pro", "serif"],
+        body: ["GTAmerica"],
       },
-      fontSize:{
-        'xs': '12px', // .65rem
-        'sm': ['14px', '20.2px'], // 0.8
-        'base': ['18px','25.2px'], // 1rem
-        'lg': ['22px','33px'],//1.25rem
-        'xl': ['28px', '39.2px'], //1.5rem
-        '2xl': ['34px', '47.6px'],
-        '3xl': ['44px', '61.6px'],
-        '4xl': ['54px', '67.5px'],
-
+      fontSize: {
+        xs: "12px", // .65rem
+        sm: ["14px", "20.2px"], // 0.8
+        base: ["18px", "25.2px"], // 1rem
+        lg: ["22px", "33px"], //1.25rem
+        xl: ["28px", "39.2px"], //1.5rem
+        "2xl": ["34px", "47.6px"],
+        "3xl": ["44px", "61.6px"],
+        "4xl": ["54px", "67.5px"],
       },
       screens: {
-        'sm': '480px',
+        sm: "480px",
         // => @media (min-width: 992px) { ... }
       },
       colors: {
-        grey:{
-          "base": "#3D4551"
+        grey: {
+          base: "#3D4551",
         },
         purple: {
-          'dark':'#471385',
-          'base': '#A646B7',
-          "light":'#9B4BB2',
-          "lightest":"#F5E4F0"
+          50: "#f5e4f0",
+          lightest: "#F5E4F0",
+          100: "#dfbde5",
+          200: "#cb92d5",
+          light: "#9B4BB2",
+          300: "#b666c4",
+          400: "#a646b7",
+          base: "#A646B7",
+          500: "#9626aa",
+          600: "#8823a4",
+          700: "#761e9c",
+          800: "#651a94",
+          900: "#471385",
+          dark: "#471385",
         },
         plum: {
-          'dark':'#5B0462',
-          'base': '#B14092',
-          'light':'#CE8EC1'
+          light: "#CE8EC1",
+          50: "#f5e4f0",
+          100: "#e8bada",
+          200: "#d98bc3",
+          300: "#c85aab",
+          400: "#b14092",
+          base: "#B14092",
+          500: "#a11e83",
+          600: "#95197f",
+          700: "#851178",
+          800: "#760c71",
+          900: "#5b0462",
+          dark: "#5B0462",
         },
-        navy:{
-          'dark':'#0A0539',
-          'base': '#282E6C',
-          'light': "#8E92AE"
+        gold: {
+          
+         
+          light: "#F6E451",
+          base: "#F8B712",
+          50: "#fefce7",
+          100: "#fcf7c4",
+          200: "#faf19e",
+          300: "#f9ec78",
+          400: "#f8e85d",
+          500: "#f8e21a",
+          600: "#fad01a",
+          700: "#f8b712",
+          800: "#f69f09",
+          900: "#f37100",
+          dark: "#F37100",
         },
-        gold:{
-          'dark':'#F37100',
-          'base': '#F8B712',
-          'light':"#F6E451"
+        navy: {
+          dark: "#0A0539",
+          base: "#282E6C",
+          light: "#8E92AE",
+          50: "#e3e4ec",
+          100: "#b9bcd1",
+          200: "#8d91b2",
+          300: "#636893",
+          400: "#464a7f",
+          500: "#282e6c",
+          600: "#232965",
+          700: "#1b205a",
+          800: "#14184e",
+          900: "#0a0539",
         },
-        sage:{
-          'dark':'#004C31',
-          'base': '#08A588',
-          'light':'#92C7B5'
+       
+        sage: {
+          dark: "#004C31",
+          base: "#08A588",
+          light: "#92C7B5",
+          50: "#e0f2ed",
+          100: "#b3dfd2",
+          200: "#83cab6",
+          300: "#53b599",
+          400: "#08a588",
+          500: "#199573",
+          600: "#158867",
+          700: "#107859",
+          800: "#08684b",
+          900: "#004c31",
         },
-        
-
       },
       height: {
-        '128': '32rem',
+        128: "32rem",
       },
       spacing: {
-        sm: '8px',
-        md: '12px',
-        lg: '16px',
-        xl: '24px',
-        '2xl': '32px',
-        '3xl':'48px',
-        '4xl':'72px',
-        '5xl': '128px',
-      }
+        sm: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "24px",
+        "2xl": "32px",
+        "3xl": "48px",
+        "4xl": "72px",
+        "5xl": "128px",
+      },
     },
   },
   variants: {},
-}
+};
