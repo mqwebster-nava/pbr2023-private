@@ -40,7 +40,6 @@ export default function Insights({posts}:Props) {
 
 export async function getStaticProps(context) {
     const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByContentType("Insight");
-    
     return {
       props: {
           posts
