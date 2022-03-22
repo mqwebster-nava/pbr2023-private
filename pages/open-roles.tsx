@@ -62,7 +62,7 @@ export default function OpenRoles() {
       <hr />
      <div className="responsive-container py-2xl min-h-screen">
       {departments.map((d) =>(
-      <p className={`font-sans text-blue-500 hover:text-blue-900 `}>
+      <p className={`font-sans text-sage-500 hover:text-sage-900 `}>
             <AnchorLink href={`#${d.title}`}>{d.title} ({d.postings.length})</AnchorLink>
           </p>
           ))

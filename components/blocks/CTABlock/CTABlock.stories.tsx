@@ -4,7 +4,7 @@ import  CTABlock from './CTABlock';
 import { Button } from 'components/atom/Button/Button';
 export default {
 
-  title: 'Blocks / CTA Block / Default',
+  title: 'Blocks / Core Blocks / CTA Block',
   component: CTABlock,
 } as ComponentMeta<typeof CTABlock>;
 
@@ -12,10 +12,15 @@ export default {
 const Template: ComponentStory<typeof CTABlock> = (args) => <CTABlock {...args} />;
 
 export const Primary = Template.bind({});
+export const Newsletter = Template.bind({});
 
 Primary.args = {
-    title: "Careers",
-    buttonText: "button text",
-    buttonPath:"/",
+    title: "Get In Touch",
+    buttonText: "Contact us",
+    buttonPath:"/contact",
     children: "test test test"
 };
+
+Newsletter.args = {
+    type:"Newsletter"
+}

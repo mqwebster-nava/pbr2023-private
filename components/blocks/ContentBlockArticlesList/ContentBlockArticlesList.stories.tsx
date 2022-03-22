@@ -7,7 +7,7 @@ export default {
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Blocks / Content Block Article List',
+  title: 'Blocks / Core Blocks / Content Block Article List',
   component: ContentBlockArticleList,
 } as ComponentMeta<typeof ContentBlockArticleList>;
 

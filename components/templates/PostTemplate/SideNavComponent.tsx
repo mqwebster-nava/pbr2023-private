@@ -1,8 +1,7 @@
 import AnchorLink from "components/templates/PostTemplate/AnchorLink";
 import { icolor } from "utils/theme";
 const SideNavComponent = ({h2Sections, activeSection}) => {
-  //const headers = doc.content.filter(node => node.nodeType=="heading-2").map(node=>node.content[0].value);
- 
+
  
   return (
     <div className="mt-md  p-lg sticky top-48 border-2 w-fit hidden md:block">

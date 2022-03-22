@@ -1,7 +1,4 @@
-import Image from "next/image";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-//import ReactMarkdown from 'react-markdown';
-import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
+
 import {
   SectionHeader,
   ContentBlockText2,
@@ -9,13 +6,27 @@ import {
   CTABlock,
   ContentBlockLinkToPage,
   QuoteBlock,
+  ContentBlockArticleList 
 } from "components/blocks";
 import Fade from "react-reveal/Fade";
 import { PageProps } from "utils/pageUtils";
-
+import ReactMarkdown from 'react-markdown'
+import { ContentCard } from "components/atom";
+import { getContentUrl } from "utils/utils";
 export default function PageTemplate({ page, preview }: PageProps) {
   // need to deconstruct post
   // const doc = page.body ? page.body.json : null;
+  const MarkdownComponent = ({content}) => {
+    return ( < ReactMarkdown 
+      children={content}
+      // todo add styling here for markdown
+      components={{
+        // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
+        em: ({node, ...props}) => <i style={{color: 'red'}} {...props} />
+      }}/> )
+  }
+  
+  
   const getComponent = (entry: any) => {
     const typename = entry.__typename;
     switch (typename) {
@@ -27,7 +38,7 @@ export default function PageTemplate({ page, preview }: PageProps) {
         //todo render in markdown
         return (
           <ContentBlockText2 title={entry.title}>
-            {entry.body}
+            <MarkdownComponent content={entry.body}/>
           </ContentBlockText2>
         );
       case "SectionCtaBlock":
@@ -38,13 +49,13 @@ export default function PageTemplate({ page, preview }: PageProps) {
             buttonPath={entry.buttonPath}
             type={entry.type}
           >
-            {entry.body}
+             <MarkdownComponent content={entry.body}/>
           </CTABlock>
         );
       case "ContentBlockLinkToPage":
         return (
           <ContentBlockLinkToPage title={entry.title} buttonText={entry.buttonText} buttonPath={entry.buttonPath}>
-            {entry.body}
+            <MarkdownComponent content={entry.body}/>
           </ContentBlockLinkToPage>
         );
       case "QuoteBlock":
@@ -56,7 +67,17 @@ export default function PageTemplate({ page, preview }: PageProps) {
           ></QuoteBlock>
         );
       case "ContentBlockArticleList":
-        return null;
+        return (
+        <ContentBlockArticleList title={entry.title} body={entry.body}>
+          {entry.posts.map((post)=>{
+            return (<ContentCard
+              title={post.title}
+              path={getContentUrl(post.contentType, post.slug)}
+            >
+              {post.shortSummary}
+            </ContentCard>)
+          })}
+        </ContentBlockArticleList>);
     }
     return <div></div>;
   };

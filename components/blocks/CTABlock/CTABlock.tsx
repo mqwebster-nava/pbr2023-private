@@ -15,6 +15,8 @@ interface CTABlockInterface {
       if(props.type ==="Newsletter") return (<Newsletter></Newsletter>);
       return (<DefaultCTABlock {...props}></DefaultCTABlock>);
   }
+
+  
   const DefaultCTABlock: React.FC<CTABlockInterface> = ({ title,  buttonPath, buttonText, children}) => {
     return ( 
       <div className = "bg-gray-400 w-full">

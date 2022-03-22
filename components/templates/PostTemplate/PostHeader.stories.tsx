@@ -7,7 +7,7 @@ export default {
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Post Blocks / Post Header',
+  title: 'Blocks / Article Blocks / Post Header',
   component: PostHeader,
 } as ComponentMeta<typeof PostHeader>;
 

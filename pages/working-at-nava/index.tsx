@@ -24,9 +24,7 @@ import careersImg2 from "public/images/careers2.jpg";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
-
 We use axios to call the api at page load and display them in groupings.
-
 */
 
 export default function Careers() {
@@ -62,7 +60,6 @@ export default function Careers() {
         title={"Our values guide how we serve the public"}
         buttonPath={"/mission/values"}
         buttonText="See our values"
-               
       >
         Every day we make countless decisions that inform our ability to improve
         how government serves everyone, and we don’t take that lightly.

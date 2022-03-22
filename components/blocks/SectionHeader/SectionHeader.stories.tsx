@@ -9,7 +9,7 @@ import  SectionHeader, {SectionHeaderInterface } from './SectionHeader';
 
 export default {
   
-  title: 'Blocks / Section Header',
+  title: 'Blocks / Core Blocks / Section Header',
   component: SectionHeader,
 } as ComponentMeta<typeof SectionHeader>;
 

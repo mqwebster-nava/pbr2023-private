@@ -1,6 +1,5 @@
 
   import Image from 'next/image';
-  //import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
   import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
   //import ReactMarkdown from 'react-markdown';
   import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
