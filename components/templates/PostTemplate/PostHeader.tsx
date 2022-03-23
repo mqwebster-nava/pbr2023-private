@@ -8,6 +8,11 @@ interface PostHeaderProps {
   contentType: string; // todo make this a type?
 }
 
+
+const myLoader = ({ src, width, quality }) => {
+  return `https://example.com/${src}?w=${width || 500}&q=${quality || 75}`
+}
+
 const PostHeader = ({
   title,
   longSummary,
@@ -26,7 +31,12 @@ const PostHeader = ({
         </div>
       </div>
       <div className=" max-h-96 overflow-clip xl:mx-auto xl:max-w-screen-lg -mt-[160px]"> 
-        <Image className="w-full  min-h-16 object-cover" src={filler}></Image>
+        <Image 
+        className="w-full  min-h-16 object-cover" 
+        src={filler}
+        loading="eager"
+        placeholder="blur"
+        ></Image>
       </div>
     </div>
   );

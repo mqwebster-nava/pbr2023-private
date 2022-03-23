@@ -71,6 +71,7 @@ export default function PostTemplate({
         height={asset.height}
         width={asset.width}
         alt={asset.description}
+        loading="lazy"
       />
     );
   };
