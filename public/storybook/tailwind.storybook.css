@@ -1055,9 +1055,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
-.text-blue-500 {
+.text-sage-500 {
   --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
+  color: rgb(25 149 115 / var(--tw-text-opacity));
 }
 .text-sage-dark {
   --tw-text-opacity: 1;
@@ -1152,7 +1152,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.filter {
+.blur {
+  --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .transition {
@@ -1236,9 +1237,9 @@ html{
   background-color: rgb(8 165 136 / var(--tw-bg-opacity));
 }
 
-.hover\:text-blue-900:hover {
+.hover\:text-sage-900:hover {
   --tw-text-opacity: 1;
-  color: rgb(30 58 138 / var(--tw-text-opacity));
+  color: rgb(0 76 49 / var(--tw-text-opacity));
 }
 
 .hover\:text-white:hover {

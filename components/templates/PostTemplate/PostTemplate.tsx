@@ -74,6 +74,8 @@ export default function PostTemplate({
         width={asset.width}
         alt={asset.description}
         loading="lazy"
+        placeholder="blur"
+        blurDataURL={`/_next/image?url=${asset.url}&w=16&q=1`}
       />
     );
   };

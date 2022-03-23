@@ -147,7 +147,7 @@ const MobileNavBar = ({ NavData }) => {
               onClick={() => {
                 setIsShowingMenu(!isShowingMenu);
               }}
-              className="m-4 px-3 py-2 border rounded text-black hover:text-green-200 border-grey  hover:border-green-200"
+              className="m-4 px-3 py-2 border  font-sans rounded text-black hover:text-green-200 border-grey  hover:border-green-200"
             >
               Menu
             </button>
