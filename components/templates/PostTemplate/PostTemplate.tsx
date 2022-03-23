@@ -11,6 +11,8 @@ import { PostPageProps, sortDocIntoH2Sections } from "utils/postUtils";
 import { ContentCard } from "components/atom";
 import { getContentUrl } from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
+//https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
+
 
 export default function PostTemplate({
   post,
