@@ -37,4 +37,3 @@ yarn-error.log*
 .vercel
 
 # generated on build
-tailwind.storybook.css
