@@ -19,13 +19,13 @@ interface CTABlockInterface {
   
   const DefaultCTABlock: React.FC<CTABlockInterface> = ({ title,  buttonPath, buttonText, children}) => {
     return ( 
-      <div className = "bg-gray-400 w-full">
-     <div className="responsive-container py-2xl">
-     <div className={`w-full lg:w-2/3`}>
-                  <h3 className="font-sans text-lg">{title} </h3>
-                  <p className={`font-sans pt-lg text-base text-grey-base mb-lg`}>{children}</p>
+      <div className = " w-full">
+     <div className="responsive-container py-2xl bg-navy-500">
+     <div className={`w-full lg:w-2/3 px-lg text-white`}>
+                  <h3 className="font-sans text-lg ">{title} </h3>
+                  <p className={`font-sans pt-lg text-base  mb-lg`}>{children}</p>
           
-              {buttonText && <Button href={buttonPath} >{buttonText}</Button>}
+              {buttonText && <Button href={buttonPath} isVariant>{buttonText}</Button>}
           </div>
       </div> 
       </div>

@@ -18,9 +18,13 @@ export const Button: React.FC<ButtonProps> = ({ children, href,  isVariant, ...r
           px-md py-sm 
           text-sm leading-6 font-medium  
           transition duration-150 ease-in-out flex-col
-          text-sage-dark border border-sage-dark hover:bg-sage-dark 
-          hover:text-white 
-          cursor-pointer`
+          cursor-pointer
+          
+          ${isVariant ? 
+            "text-white bg-gold-900 hover:bg-gold-800 hover:text-white" 
+          : "text-gold-900 border border-gold-600 hover:bg-gold-900 hover:text-white"} 
+           `
+
         }>
         {children}
       </a>
