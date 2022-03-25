@@ -6,6 +6,6 @@ export interface  LinkTextProps  {
 
 export const LinkText: React.FC<LinkTextProps> = ({ children, href }) => {
   return (
-    <a className={`text-gold-dark hover:text-gold-base underline`} href={href}  target="_blank"  >{children}</a>
+    <a className={`text-sage-dark hover:text-sage-base underline`} href={href}  target="_blank"  >{children}</a>
   )
 }

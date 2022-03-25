@@ -67,39 +67,28 @@ const Navbar = ({}) => {
 };
 
 const DesktopNavBar = ({ NavData }) => {
-  const [showMenu, setShowMenu] = useState(false);
-
   return (
-   
-      <nav
-        className={`absolute w-full z-10 bg-opacity-50 "`}
-        onMouseEnter={() => setShowMenu(false)}
-      >
-        <div className=" responsive-container pt-lg flex flex-wrap items-center justify-between">
-          <Logo />
-          <div className=" flex items-center w-auto ">
-            {NavData.map((navSection) => {
-              return "slug" in navSection ? (
-                <NavButton slug={navSection.slug}>
-                  {" "}
-                  {navSection.title}
-                </NavButton>
-              ) : (
-                <DropdownNavButton title={navSection.title}>
-                  {navSection.subpages.map((navitem) => (
-                    <DropdownNavItem href={navitem.slug}>
-                      {navitem.title}
-                    </DropdownNavItem>
-                  ))}
-                </DropdownNavButton>
-              );
-            })}
-            
-            <Button href="/contact"> Get In Touch </Button>
-            
-          </div>
+    <nav className={`absolute  bg-white w-full z-10  "`}>
+      <div className=" responsive-container pt-lg   flex flex-wrap items-end justify-between">
+        <Logo />
+        <div className=" flex items-baseline w-auto">
+          {NavData.map((navSection) => {
+            return "slug" in navSection ? (
+              <NavButton slug={navSection.slug}> {navSection.title}</NavButton>
+            ) : (
+              <DropdownNavButton title={navSection.title}>
+                {navSection.subpages.map((navitem) => (
+                  <DropdownNavItem href={navitem.slug}>
+                    {navitem.title}
+                  </DropdownNavItem>
+                ))}
+              </DropdownNavButton>
+            );
+          })}
+          <Button href="/contact"> Get In Touch </Button>
         </div>
-      </nav>
+      </div>
+    </nav>
   );
 };
 
@@ -107,15 +96,15 @@ const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
   const NavLinksMobile = () => (
-    <div className="w-full flex flex-col items-start bg-gray-200">
-      <div className="pl-5">
+    <div className="responsive-container w-full flex flex-col items-start bg-sage-50">
+      <div className="py-lg">
         {NavData.map((navSection) => {
           return "slug" in navSection ? (
             <NavButton slug={navSection.slug}> {navSection.title}</NavButton>
           ) : (
             <div>
-              <div className="relative inline-block  text-black  px-sm cursor-pointer">
-                <h3 className=" text-black p-sm font-sans flex  items-center">
+              <div className="relative inline-block  text-navy-900  pr-sm   cursor-pointer">
+                <h3 className=" text-navy-900 pr-sm font-sans font-bold flex  items-center">
                   {navSection.title}
                 </h3>
               </div>
@@ -124,7 +113,7 @@ const MobileNavBar = ({ NavData }) => {
                   href={navitem.slug}
                   className="block hover:bg-green px-4 cursor-pointer"
                 >
-                  <p className="font-sans text-black hover:text-green-300 py-2 pl-5">
+                  <p className="font-sans text-navy-900 hover:text-sage-300 py-2 pl-5">
                     {navitem.title}
                   </p>
                 </a>
@@ -136,36 +125,40 @@ const MobileNavBar = ({ NavData }) => {
     </div>
   );
   return (
-  
-      <nav
-        className={`absolute w-full z-10`}
-      >
-        <div className="responsive-container flex flex-wrap bg-green  items-center justify-between">
-          <Logo />
-          <div className="block ">
-            <button
-              onClick={() => {
-                setIsShowingMenu(!isShowingMenu);
-              }}
-              className="m-4 px-3 py-2 border  font-sans rounded text-black hover:text-green-200 border-grey  hover:border-green-200"
+    <nav className={`absolute w-full z-10 bg-white`}>
+      <div className="responsive-container  pt-lg flex flex-wrap items-baseline justify-between">
+        <Logo />
+        <div className="block ">
+          <button
+            onClick={() => {
+              setIsShowingMenu(!isShowingMenu);
+            }}
+            className="   font-sans bg--200 text-navy-900 hover:text-sage-200 border-grey  "
+          >
+            <svg
+              height="32px"
+              id="Layer_1"
+              version="1.1"
+              viewBox="0 0 32 32"
+              width="32px"
             >
-              Menu
-            </button>
-          </div>
+              <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
+            </svg>
+          </button>
         </div>
-        {isShowingMenu && <NavLinksMobile />}
-      </nav>
+      </div>
+      {isShowingMenu && <NavLinksMobile />}
+    </nav>
   );
 };
 
 export default Navbar;
 
-
 const DropdownNavItem = (props) => {
   return (
     <a
       href={props.href}
-      className="text-black block font-sans hover:bg-sage-base hover:text-white py-sm px-lg"
+      className="text-navy-900 border-b-2 border-black block pb-sm font-sans hover:bg-navy-50   pr-sm"
     >
       {props.children}
     </a>
@@ -174,10 +167,13 @@ const DropdownNavItem = (props) => {
 
 const NavButton = (props) => {
   return (
-    <div className="relative inline-block hover:underline text-black  px-sm cursor-pointer">
+    <div className="relative font-bold inline-block  text-navy-900  cursor-pointer w-28">
       <a
-        className=" text-black p-sm font-sans flex 
-          items-center"
+        className=" 
+        text-navy-900 pt-md font-sans flex
+        mt-sm 
+        hover:border-b-sage-900 border-b-8 border-transparent
+          "
         href={props.slug}
       >
         {props.children}

@@ -5,13 +5,15 @@ const DropdownNavButton = (props) => {
   
     return (
       <div
-        className="relative inline-block  hover:bg-gray-200 text-black  px-2 cursor-pointer"
+        className="relative inline-block cursor-pointer w-28"
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={() => setShowMenu(false)}
       >
         <a
-          className=" text-black font-sans p-sm flex 
-            items-center"
+          className=" 
+            text-navy-900 font-bold font-sans 
+            pt-md  flex  
+            "
         >
           {props.title}
   
@@ -33,7 +35,8 @@ const DropdownNavButton = (props) => {
         </a>
   
         {showMenu && (
-          <div className="absolute left-0 bg-gray-200 min-w-64 w-32 z-1">
+          <div className="absolute left-0 top-[38px] bg-white  w-28 z-1">
+            <hr className="h-2 bg-sage-900 "></hr>
             {props.children}
           </div>
         )}

@@ -53,14 +53,14 @@ const FooterSiteSection = ({navDataSection}) => (
 const Footer = () => {
   return (
     <div className={"bg-plum-900 "}>
-      <hr className="h-4 bg-plum-400"></hr>
+     
       <div className="responsive-container pb-md">
         <div className="flex">
-          <Image src={brandTerrain} height={50} width={50}></Image>
-          <Image src={brandDirection} height={50} width={50}></Image>
+          <Image src={brandTerrain} height={100} width={100}></Image>
+          <Image src={brandDirection} height={100} width={100}></Image>
 
         </div>
-        <div className="flex flex-wrap text-white  my-16 ">
+        <div className="flex flex-wrap text-white  my-xl ">
           <div className="md:w-1/3 font-sans">
             <Image src={logo} ></Image>
           </div>

@@ -13,8 +13,8 @@ const PlaceholderPageHeader = ({ title, subtitle}:  LargeHeroInterface) => {
     const TitleBlock = ()=>{
         return (
         <div className="pb-4xl pt-5xl mb-4xl">
-            <h1 className={`font-sans text-black text-base font-black`}>{title}</h1>
-            <h2 className={`font-sans text-black lg:text-4xl text-3xl font-black mr-xl`}>{subtitle}</h2>
+            <h1 className={`font-sans text-navy-900 text-base font-black`}>{title}</h1>
+            <h2 className={`font-sans text-navy-900 lg:text-4xl text-3xl font-black mr-xl`}>{subtitle}</h2>
         </div>
         )
     }

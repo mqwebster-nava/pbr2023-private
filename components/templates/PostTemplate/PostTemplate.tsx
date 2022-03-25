@@ -88,7 +88,7 @@ export default function PostTemplate({
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className="text-black font-serif py-md text-base">{children}</p>
+        <p className="text-navy-900 font-serif py-md text-base">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
         <p className="text-3xl font-bold font-sans pt-md">{children}</p>
