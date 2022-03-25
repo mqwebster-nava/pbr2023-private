@@ -19,6 +19,15 @@ Desktop Menu
 
 const NavData = [
   {
+    title: "About",
+    subpages: [
+      { title: "Nava's story", slug: "/story" },
+      { title: "Our people", slug: "/people" },
+      { title: "Diversity, equity, and inclusion", slug: "/dei" },
+      { title: "News", slug: "/news" },
+    ],
+  },
+  {
     title: "Mission",
     subpages: [
       { title: "Impact", slug: "/impact" },
@@ -34,24 +43,16 @@ const NavData = [
     ],
   },
   {
-    title: "Insights",
-    slug: "/insights",
-  },
-  {
     title: "Careers",
     subpages: [
       { title: "Working at Nava", slug: "/working-at-nava" },
       { title: "Open roles", slug: "/open-roles" },
     ],
   },
+ 
   {
-    title: "About",
-    subpages: [
-      { title: "Nava's story", slug: "/story" },
-      { title: "Our people", slug: "/people" },
-      { title: "Diversity, equity, and inclusion", slug: "/dei" },
-      { title: "News", slug: "/news" },
-    ],
+    title: "Insights",
+    slug: "/insights",
   },
 ];
 
