@@ -25,7 +25,7 @@ interface CTABlockInterface {
                   <h3 className="font-sans text-lg ">{title} </h3>
                   <p className={`font-sans pt-lg text-base  mb-lg`}>{children}</p>
           
-              {buttonText && <Button href={buttonPath} isVariant>{buttonText}</Button>}
+              {buttonText && <Button href={buttonPath} variant="black">{buttonText}</Button>}
           </div>
       </div> 
       </div>

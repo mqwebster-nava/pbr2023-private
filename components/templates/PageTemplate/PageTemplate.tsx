@@ -32,7 +32,10 @@ export default function PageTemplate({ page, preview }: PageProps) {
     switch (typename) {
       case "SectionHeader":
         return (
-          <SectionHeader title={entry.title}>{entry.subtitle}</SectionHeader>
+          <SectionHeader 
+          title={entry.title}>
+            {entry.subtitle}
+        </SectionHeader>
         );
       case "SectionContentBlockText":
         //todo render in markdown
@@ -88,6 +91,7 @@ export default function PageTemplate({ page, preview }: PageProps) {
       <PlaceholderPageHeader
         title={page.pageHeader.title}
         subtitle={page.pageHeader.subtitle}
+        backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
       />
       {page.contentBlocks.map((block) => (
         <Fade bottom>{getComponent(block)}</Fade>

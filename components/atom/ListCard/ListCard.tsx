@@ -4,15 +4,14 @@
 export interface ListCardInterface {
     title:String;
     items: Array<String>;
-    colorTheme: String;
 }
   
   
-  const ListCard = ({ title, colorTheme, items}: ListCardInterface) => {
+  const ListCard = ({ title, items}: ListCardInterface) => {
      
       return ( 
        <div className="p-md">
-           <h4 className={`font-bold font-sans text-${colorTheme}-dark mb-md`}>{title}</h4>
+           <h4 className={`font-bold font-sans text-navy-dark mb-md`}>{title}</h4>
            <ul className="list-disc">
                {items.map((item)=><li key={item.length} className="font-sans text-sm">{item}</li>)}
            </ul>

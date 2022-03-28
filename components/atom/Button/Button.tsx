@@ -1,8 +1,10 @@
-import { icolor } from "utils/theme";
+
+type Variant = "default" | "outlined" | "black";
+
 
 export interface ButtonProps {
   href: string;
-  isVariant?: boolean;
+  variant?: Variant;
 }
 
 // TODO button 
@@ -11,11 +13,9 @@ export interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   children,
   href,
-  isVariant,
+  variant,
   ...rest
 }) => {
-
-  
   return (
     <div className={``} {...rest}>
       <a
@@ -28,11 +28,13 @@ export const Button: React.FC<ButtonProps> = ({
           text-base leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
-          ${isVariant ?
+          ${variant=="black" ?
+          "text-white bg-black hover:bg-white hover:text-black"
+         :
+          variant=="outlined" ?
             "text-black border hover:bg-sage-900 hover:text-white"
-          : "text-white  bg-sage-base  hover:bg-sage-900  "}
+          : "text-white  bg-sage-base  hover:bg-sage-900" }
            `
-
         }>
         {children}
       </a>

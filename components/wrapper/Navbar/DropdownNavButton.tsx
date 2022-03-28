@@ -5,7 +5,7 @@ const DropdownNavButton = (props) => {
   
     return (
       <div
-        className="relative inline-block cursor-pointer w-28"
+        className="relative inline-block cursor-pointer pr-3xl"
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={() => setShowMenu(false)}
       >
@@ -35,7 +35,7 @@ const DropdownNavButton = (props) => {
         </a>
   
         {showMenu && (
-          <div className="absolute left-0 top-[38px] bg-white  w-28 z-1">
+          <div className="absolute left-0 top-[38px] bg-white z-1 w-full">
             <hr className="h-2 bg-sage-900 "></hr>
             {props.children}
           </div>

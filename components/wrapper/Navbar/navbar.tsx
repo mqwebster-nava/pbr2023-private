@@ -1,60 +1,11 @@
 import { Button } from "components/atom";
-import { useState } from "react";
+import React, { useState } from "react";
 import useWindowSize from "utils/windowSizeHook";
 import DropdownNavButton from "./DropdownNavButton";
+import DropdownNavItem from "./DropdownNavItem";
+import NavButton from "./NavButton";
 import Logo from "./Logo";
-/*
-1. Splitting up moble, hamburger menu nav and desktop nav
-
-2. Creating dropdown buttons
-- How to position it?
-
-3. Making navbar programmatic
-
-Mobile Menu 
-
-Desktop Menu
-- Dropdown element
-*/
-
-const NavData = [
-  {
-    title: "About",
-    subpages: [
-      { title: "Nava's story", slug: "/story" },
-      { title: "Our people", slug: "/people" },
-      { title: "Diversity, equity, and inclusion", slug: "/dei" },
-      { title: "News", slug: "/news" },
-    ],
-  },
-  {
-    title: "Mission",
-    subpages: [
-      { title: "Impact", slug: "/impact" },
-      { title: "Values", slug: "/values" },
-    ],
-  },
-  {
-    title: "Work",
-    subpages: [
-      { title: "Services", slug: "/services" },
-      { title: "Case studies", slug: "/case-studies" },
-      { title: "Toolkits", slug: "/toolkits" },
-    ],
-  },
-  {
-    title: "Careers",
-    subpages: [
-      { title: "Working at Nava", slug: "/working-at-nava" },
-      { title: "Open roles", slug: "/open-roles" },
-    ],
-  },
- 
-  {
-    title: "Insights",
-    slug: "/insights",
-  },
-];
+import NavData from "./navbar_data";
 
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
@@ -69,8 +20,8 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <nav className={`absolute  bg-white w-full z-10  "`}>
-      <div className=" responsive-container pt-lg   flex flex-wrap items-end justify-between">
+    <nav className={`absolute  bg-white w-full z-20  "`}>
+      <div className=" responsive-container   flex flex-wrap items-end justify-between">
         <Logo />
         <div className=" flex items-baseline w-auto">
           {NavData.map((navSection) => {
@@ -154,31 +105,3 @@ const MobileNavBar = ({ NavData }) => {
 };
 
 export default Navbar;
-
-const DropdownNavItem = (props) => {
-  return (
-    <a
-      href={props.href}
-      className="text-navy-900 border-b-2 border-black block pb-sm font-sans hover:bg-navy-50   pr-sm"
-    >
-      {props.children}
-    </a>
-  );
-};
-
-const NavButton = (props) => {
-  return (
-    <div className="relative font-bold inline-block  text-navy-900  cursor-pointer w-28">
-      <a
-        className=" 
-        text-navy-900 pt-md font-sans flex
-        mt-sm 
-        hover:border-b-sage-900 border-b-8 border-transparent
-          "
-        href={props.slug}
-      >
-        {props.children}
-      </a>
-    </div>
-  );
-};

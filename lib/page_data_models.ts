@@ -15,6 +15,8 @@ export interface PageHeaderInterface {
   
   title: string;
   subtitle:string;
+  backgroundImage:any;
+
 }
 
 export interface PageInterface {
@@ -29,6 +31,16 @@ export interface PageInterface {
 export const PAGE_HEADER_FIELDS = `
     title
     subtitle
+    backgroundImage {
+        sys {
+          id
+        }
+        url
+        width
+        height
+        title
+        description
+    }
 `;
 
 const SECTION_HEADER_FIELDS = `

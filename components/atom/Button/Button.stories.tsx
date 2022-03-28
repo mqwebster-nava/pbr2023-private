@@ -12,8 +12,13 @@ const Template: Story<ButtonProps> = (args) => <Button {...args}>Default Button<
 
 export const Primary: Story<ButtonProps> = Template.bind({})
 
-export const Variant: Story<ButtonProps> = Template.bind({})
+export const Outlined: Story<ButtonProps> = Template.bind({})
 
-Variant.args = {
-  isVariant: true,
+export const Black: Story<ButtonProps> = Template.bind({})
+
+Outlined.args = {
+  variant: 'outlined',
+}
+Black.args = {
+  variant:"black"
 }
