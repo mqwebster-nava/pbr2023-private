@@ -61,7 +61,7 @@ const Footer = () => {
 
         </div>
         <div className="flex flex-wrap text-white  my-xl ">
-          <div className="md:w-1/3 font-sans">
+          <div className="w-full md:w-1/3 font-sans">
             <Image src={logo} ></Image>
           </div>
 
