@@ -40,28 +40,29 @@ const PlaceholderPageHeader = ({
   };
 
   return (
-    <div className={` min-h-[80vh] bg-navy-900 relative`}>
+    <div className={` relative
+    ${backgroundImage ? "min-h-[80vh]" : "bg-navy-900 min-h-[60vh]" }`}>
       <div className={`
       responsive-container z-10
-      ${textLocation=="bottom" ? "absolute bottom-0" : "relative pt-4xl"}
+      ${textLocation=="bottom" ? "absolute bottom-0 left-0 right-0" : "relative pt-4xl"}
         
       `}>
         <TitleBlock />
       </div> 
       {brandElements=="bottom" ?
-       <div className={`responsive-container z-10 absolute bottom-0 flex`}>
-          <Image src={brandTerrain} height={100} width={100}></Image>
-          <Image src={brandDirection} height={100} width={100}></Image>
+       <div className={`responsive-container z-10 absolute bottom-0  left-0 right-0 flex`}>
+          <Image src={brandTerrain} height={96} width={96}></Image>
+          <Image src={brandDirection} height={96} width={96}></Image>
        </div> : brandElements=="top" ?
-        <div className={`responsive-container absolute top-0 z-10 flex`}>
-        <Image src={brandTerrain} height={100} width={100}></Image>
-        <Image src={brandDirection} height={100} width={100}></Image>
+        <div className={`responsive-container absolute top-0  left-0 right-0 z-10 flex`}>
+        <Image src={brandTerrain} height={96} width={96}></Image>
+        <Image src={brandDirection} height={96} width={96}></Image>
      </div> : null
     }
       {backgroundImage && (
       
        <Image 
-       className="brightness-50 object-fill"
+       className="brightness-50 object-fill " //blur-xs
         src={backgroundImage.url} 
         layout="fill"
         objectFit="cover"></Image>

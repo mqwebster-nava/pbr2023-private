@@ -7,6 +7,9 @@ module.exports = {
   plugins: [],
   theme: {
     extend: {
+      blur: {
+        xs: '2px',
+      },
       fontFamily: {
         sans: ["GTAmerica", "sans-serif"],
         serif: ["Freight Text Pro", "serif"],
