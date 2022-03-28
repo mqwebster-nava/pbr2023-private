@@ -20,7 +20,7 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <nav className={`absolute  bg-white w-full z-20  "`}>
+    <nav className={`  bg-white w-full z-20  "`}>
       <div className=" responsive-container   flex flex-wrap items-end justify-between">
         <Logo />
         <div className=" flex items-baseline w-auto">
@@ -77,7 +77,7 @@ const MobileNavBar = ({ NavData }) => {
     </div>
   );
   return (
-    <nav className={`absolute w-full z-10 bg-white`}>
+    <nav className={` w-full z-10 bg-white`}>
       <div className="responsive-container  pt-lg flex flex-wrap items-baseline justify-between">
         <Logo />
         <div className="block ">

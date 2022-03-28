@@ -91,6 +91,8 @@ export default function PageTemplate({ page, preview }: PageProps) {
       <PlaceholderPageHeader
         title={page.pageHeader.title}
         subtitle={page.pageHeader.subtitle}
+        brandElements="top"
+        textLocation="bottom"
         backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
       />
       {page.contentBlocks.map((block) => (

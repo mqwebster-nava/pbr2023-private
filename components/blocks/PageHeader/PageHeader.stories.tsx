@@ -16,10 +16,42 @@ const Template: ComponentStory<typeof PageHeader> = (args) => <PageHeader {...ar
 
 export const Primary = Template.bind({});
 
+export const Second = Template.bind({});
+
+export const Image = Template.bind({});
+
 Primary.args = {
     title: "Careers",
     subtitle: "Come help us build the services of a better future for millions of people.",
+    textLocation: "top",
+    brandElements: "bottom"
 };
+
+Second.args = {
+  title: "Careers",
+  subtitle: "Come help us build the services of a better future for millions of people.",
+  backgroundImage: "",
+  textLocation: "bottom",
+  brandElements: "top"
+};
+
+Image.args = {
+  title: "Careers",
+  subtitle: "Come help us build the services of a better future for millions of people.",
+  backgroundImage: {
+    description: "",
+    height: 4480,
+    sys: {id: '3ij9n5sQgDhoKdRpiAvphl'},
+    title: "Test Image",
+    url: "https://images.ctfassets.net/t2ekr6eg3fr3/3ij9n5sQgDhoKdRpiAvphl/bbf96df3225ac63c10bf232420ee20f6/pexels-rodnae-productions-7468198.jpg",
+    width: 6720,
+  },
+  textLocation: "bottom",
+  brandElements: "top"
+};
+
+
+
 
 
 // import React from 'react';

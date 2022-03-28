@@ -464,6 +464,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: -webkit-sticky;
   position: sticky;
 }
+.bottom-0 {
+  bottom: 0px;
+}
+.top-0 {
+  top: 0px;
+}
 .top-48 {
   top: 12rem;
 }
@@ -475,6 +481,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .z-10 {
   z-index: 10;
+}
+.z-20 {
+  z-index: 20;
 }
 .my-2xl {
   margin-top: 32px;
@@ -601,6 +610,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .min-h-full {
   min-height: 100%;
+}
+.min-h-\[80vh\] {
+  min-height: 80vh;
 }
 .w-full {
   width: 100%;
@@ -1118,6 +1130,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-sm {
   padding-top: 8px;
 }
+.pb-2xl {
+  padding-bottom: 32px;
+}
+.pt-4xl {
+  padding-top: 72px;
+}
 .pr-md {
   padding-right: 12px;
 }
@@ -1367,6 +1385,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
+.brightness-50 {
+  --tw-brightness: brightness(.5);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1583,6 +1605,11 @@ html{
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:text-3xl {
+    font-size: 44px;
+    line-height: 61.6px;
   }
 
   .md\:text-2xl {

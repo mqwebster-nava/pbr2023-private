@@ -1,26 +1,37 @@
-// TODO move as much to tailwind
+import Image from "next/image";
+import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg"
+import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg"
+
+type Variant = "default" | "image" | "image-pattern" | "black";
+type TextLocation = "top" | "bottom" ;
+type BrandElements = "none" | "top" | "bottom" | "left";
 interface LargeHeroInterface {
   title: string;
   subtitle: string;
   backgroundImage?: any;
+  variant?: Variant;
+  textLocation?: TextLocation;
+  brandElements?: BrandElements;
+
 }
-import Image from "next/image";
 
 const PlaceholderPageHeader = ({
   title,
   subtitle,
   backgroundImage,
+  textLocation,
+  brandElements
 }: LargeHeroInterface) => {
-  //backgroundImage
+  if(backgroundImage) console.log(backgroundImage);
 
   const TitleBlock = () => {
     return (
-      <div className={`pb-4xl  mb-4xl ${backgroundImage ? "text-white pt-[60vh]":"text-navy-900 pt-5xl"}`}>
+      <div className={`pb-2xl text-white `}>
         <h1 className={`font-sans  text-base font-black`}>
           {title}
         </h1>
         <h2
-          className={`font-sans  lg:text-4xl text-3xl font-black mr-xl`}
+          className={`font-sans  lg:text-4xl md:text-3xl text-2xl font-black mr-xl `}
         >
           {subtitle}
         </h2>
@@ -29,14 +40,28 @@ const PlaceholderPageHeader = ({
   };
 
   return (
-    <div className={` min-h-[100vh] bg-gray-100 `}>
-      <div className="responsive-container py-2xl relative z-10">
+    <div className={` min-h-[80vh] bg-navy-900 relative`}>
+      <div className={`
+      responsive-container z-10
+      ${textLocation=="bottom" ? "absolute bottom-0" : "relative pt-4xl"}
+        
+      `}>
         <TitleBlock />
       </div> 
+      {brandElements=="bottom" ?
+       <div className={`responsive-container z-10 absolute bottom-0 flex`}>
+          <Image src={brandTerrain} height={100} width={100}></Image>
+          <Image src={brandDirection} height={100} width={100}></Image>
+       </div> : brandElements=="top" ?
+        <div className={`responsive-container absolute top-0 z-10 flex`}>
+        <Image src={brandTerrain} height={100} width={100}></Image>
+        <Image src={brandDirection} height={100} width={100}></Image>
+     </div> : null
+    }
       {backgroundImage && (
       
        <Image 
-       className="brightness-50 blur-sm"
+       className="brightness-50 object-fill"
         src={backgroundImage.url} 
         layout="fill"
         objectFit="cover"></Image>
