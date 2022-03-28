@@ -7,19 +7,7 @@ export default {
 };
 
 export const Color = () => {
-  const colors = ["purple", "plum", "gold", "navy", "sage"];
-  const shades = [
-    "50",
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ];
+
   return (
     <div>
       <div className="space-y-2 p-10">
@@ -89,7 +77,19 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-900">900</div>
           </div>
-        
+          <div>Gray</div>
+          <div className="h-48 flex ">
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-50 ">50</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-100">100</div>
+            <div style={{ width: "100px", height: "100px" }}  className="bg-gray-200">200</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-300">300</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-400">400</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-500">500</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-600">600</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-800">800</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gray-900">900</div>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@ export const Color = () => {
 export const TextColor = () => {
   return (
     <div>
-      <p className="text-purple-base">Purple</p>
+      <p className="text-navy-base">Primary Text Color</p>
       <p className="text-purple-dark">Purple</p>
       <p className="text-plum-base">Plum</p>
       <p className="text-plum-dark">Plum</p>
@@ -113,49 +113,40 @@ export const TextColor = () => {
   );
 };
 
-export const AllColors = () => {
-  return (
-    <div>
-      <p className="text-purple-50 ">Purple</p>
-      <p className="text-purple-100">Purple</p>
-      <p className="text-purple-200">Purple</p>
-      <p className="text-purple-300">Purple</p>
-      <p className="text-purple-400">Purple</p>
-      <p className="text-purple-500">Purple</p>
-      <p className="text-purple-600">Purple</p>
-      <p className="text-purple-700">Purple</p>
-      <p className="text-purple-800">Purple</p>
-      <p className="text-purple-900">Purple</p>
+// export const AllColors = () => {
+//   return (
+//     <div>
+//       <p className="text-purple-50 ">Purple</p>
+//       <p className="text-purple-100">Purple</p>
+//       <p className="text-purple-200">Purple</p>
+//       <p className="text-purple-300">Purple</p>
+//       <p className="text-purple-400">Purple</p>
+//       <p className="text-purple-500">Purple</p>
+//       <p className="text-purple-600">Purple</p>
+//       <p className="text-purple-700">Purple</p>
+//       <p className="text-purple-800">Purple</p>
+//       <p className="text-purple-900">Purple</p>
 
-      <p className="text-purple-50">Purple</p>
-      <p className="text-purple-100">Purple</p>
-      <p className="text-purple-200">Purple</p>
-      <p className="text-purple-300">Purple</p>
-      <p className="text-purple-400">Purple</p>
-      <p className="text-purple-500">Purple</p>
-      <p className="text-purple-600">Purple</p>
-      <p className="text-purple-700">Purple</p>
-      <p className="text-purple-800">Purple</p>
-      <p className="text-purple-900">Purple</p>
+//       <p className="text-purple-50">Purple</p>
+//       <p className="text-purple-100">Purple</p>
+//       <p className="text-purple-200">Purple</p>
+//       <p className="text-purple-300">Purple</p>
+//       <p className="text-purple-400">Purple</p>
+//       <p className="text-purple-500">Purple</p>
+//       <p className="text-purple-600">Purple</p>
+//       <p className="text-purple-700">Purple</p>
+//       <p className="text-purple-800">Purple</p>
+//       <p className="text-purple-900">Purple</p>
 
-      <p className="text-purple-dark">Purple</p>
-      <p className="text-plum-base">Plum</p>
-      <p className="text-plum-dark">Plum</p>
-      <p className="text-gold-base">Gold</p>
-      <p className="text-gold-dark">Gold</p>
-      <p className="text-navy-base">Navy</p>
-      <p className="text-navy-dark">Navy</p>
-      <p className="text-sage-base">Sage</p>
-      <p className="text-sage-dark">Sage</p>
-    </div>
-  );
-};
-
-// export const Grid = () => {
-
-//   const Box = () => (<div className="h-screen bg-red-200 ">1</div>)
-
-//   return (<div className="grid gap-4 grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 w-full">
-//               {Array(12).fill(0).map((r)=>  (<Box/>))}
-//           </div>);
-// }
+//       <p className="text-purple-dark">Purple</p>
+//       <p className="text-plum-base">Plum</p>
+//       <p className="text-plum-dark">Plum</p>
+//       <p className="text-gold-base">Gold</p>
+//       <p className="text-gold-dark">Gold</p>
+//       <p className="text-navy-base">Navy</p>
+//       <p className="text-navy-dark">Navy</p>
+//       <p className="text-sage-base">Sage</p>
+//       <p className="text-sage-dark">Sage</p>
+//     </div>
+//   );
+// };

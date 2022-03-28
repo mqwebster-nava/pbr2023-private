@@ -22,43 +22,70 @@ const PlaceholderPageHeader = ({
   textLocation,
   brandElements
 }: LargeHeroInterface) => {
-  if(backgroundImage) console.log(backgroundImage);
+  return backgroundImage ?
+   <ImagePageHeader title={title} subtitle={subtitle} backgroundImage={backgroundImage}/> 
+   : <DefaultPageHeader title={title} subtitle={subtitle}/> 
+};
 
-  const TitleBlock = () => {
-    return (
-      <div className={`pb-2xl text-white `}>
-        <h1 className={`font-sans  text-base font-black`}>
-          {title}
-        </h1>
-        <h2
-          className={`font-sans  lg:text-4xl md:text-3xl text-2xl font-black mr-xl `}
-        >
-          {subtitle}
-        </h2>
-      </div>
-    );
-  };
 
+const TitleBlock = ({title, subtitle, textColor}) => {
   return (
-    <div className={` relative
-    ${backgroundImage ? "min-h-[80vh]" : "bg-navy-900 min-h-[60vh]" }`}>
+    <div className={`pb-2xl ${textColor} `}>
+      <h1 className={`font-sans  text-base font-black`}>
+        {title}
+      </h1>
+      <h2
+        className={`font-sans  lg:text-4xl md:text-3xl text-2xl sm:pr-xl pr-0 md:pr-4xl font-black mr-xl `}
+      >
+        {subtitle}
+      </h2>
+    </div>
+  );
+};
+const DefaultPageHeader = ({
+  title,
+  subtitle,
+  textLocation,
+}: LargeHeroInterface) => {
+  return (
+    <div className={` relative bg-navy-900 min-h-[60vh]`}>
       <div className={`
-      responsive-container z-10
-      ${textLocation=="bottom" ? "absolute bottom-0 left-0 right-0" : "relative pt-4xl"}
-        
-      `}>
-        <TitleBlock />
+      responsive-container z-10 relative pt-4xl`}>
+        <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
+       <div className="h-[96px]"></div>
       </div> 
-      {brandElements=="bottom" ?
-       <div className={`responsive-container z-10 absolute bottom-0  left-0 right-0 flex`}>
+      <div className={`responsive-container absolute bottom-0 right-0 left-0 flex `}>
           <Image src={brandTerrain} height={96} width={96}></Image>
           <Image src={brandDirection} height={96} width={96}></Image>
-       </div> : brandElements=="top" ?
-        <div className={`responsive-container absolute top-0  left-0 right-0 z-10 flex`}>
+       </div> 
+     
+      
+    </div>
+  );
+};
+
+
+
+const ImagePageHeader = ({
+  title,
+  subtitle,
+  backgroundImage,
+  textLocation,
+  brandElements
+}: LargeHeroInterface) => {
+ 
+  return (
+  
+    <div className={` relative min-h-[70vh] `}>
+      <div className={`
+      responsive-container z-10 absolute bottom-0 left-0 right-0 `}>
+        <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
+      </div> 
+      <div className={`responsive-container absolute top-0 left-0 right-0 z-10 flex`}>
         <Image src={brandTerrain} height={96} width={96}></Image>
         <Image src={brandDirection} height={96} width={96}></Image>
-     </div> : null
-    }
+      </div> 
+    
       {backgroundImage && (
       
        <Image 

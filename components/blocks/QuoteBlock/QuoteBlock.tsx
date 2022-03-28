@@ -1,35 +1,38 @@
 import Image from "next/image";
-import purpleIllustration from '../../../public/images/illistration-1.png'
+import goldIllustration from '../../../public/images/illistration-1.png'
 
+type QuoteBaseColor = "gold" |"purple";
 interface QuoteBlockInterface {
   content: String;
   author: String;
   authorRole: String;
   isStorybook?:boolean;
+  color?: QuoteBaseColor;
 }
 
 const QuoteBlock: React.FC<QuoteBlockInterface> = ({
   content,
   author,
   authorRole,
-  isStorybook
+  isStorybook,
+  color
 }) => {
+  const baseColor = color ? color : "gold";
   return (
-    <div className="bg-purple-lightest">
+    <div className={`bg-${baseColor}-50`}>
       <div className="responsive-container py-2xl flex flex-wrap">
         <div className={`w-full lg:w-1/2 flex`}>
             <div className="pr-md">
-            <p className={`font-serif pt-lg text-xl  text-purple-base mb-md`}>
+            <p className={`font-serif pt-lg text-xl  text-${baseColor}-700 mb-md`}>
                 {content}
             </p>
-            <p className="font-bold text-purple-base font-sans pt-lg">{author},<br/>{authorRole}</p>
+            <p className={`font-bold text-${baseColor}-700 font-sans pt-lg`}>{author},<br/>{authorRole}</p>
           </div>
-          <div className=" bg-purple-dark w-1 h-full hidden lg:block"></div>
+          <div className={`bg-${baseColor}-800 w-1 h-full hidden lg:block`}></div>
         </div>
         <div className={`w-full lg:w-1/2`}>
-        {(isStorybook)? <Image height={"400px"} width={"400px"} className="max-w-full mix-blend-multiply" src={purpleIllustration} alt="me" />
-                 : 
-            <Image src={purpleIllustration} className="mix-blend-multiply" />}
+      {/* //  {(isStorybook)? <Image height={"400px"} width={"400px"} className="max-w-full mix-blend-multiply" src={goldIllustration} alt="me" />            :  */}
+            <Image src={goldIllustration} className="mix-blend-multiply" />
         </div>
       </div>
     </div>

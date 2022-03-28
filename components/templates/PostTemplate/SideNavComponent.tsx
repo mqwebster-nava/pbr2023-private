@@ -4,8 +4,9 @@ const SideNavComponent = ({h2Sections, activeSection}) => {
 
  
   return (
-    <div className="mt-md  p-lg sticky top-48 border-2 w-fit hidden md:block">
-      <h3 className="font-sans">On This Page</h3>
+    <div className="mt-md  p-lg sticky top-48 border-2 w-full max-w-[240px]  hidden md:block bg-white">
+      <h3 className="font-sans font-bold">On This Page</h3>
+      <hr/>
       {h2Sections.map((section) => {
         let header = section.title;
         let isActive = activeSection === header;

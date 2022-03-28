@@ -2,12 +2,7 @@ import ContentfulApi from "lib/contentful";
 import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import {
-    SectionHeader,
-    ContentBlockLinkToPage,
-    ContentBlockText,
     PlaceholderPageHeader,
-    ContentBlockArticleList,
-    Newsletter,
   } from "components/blocks";
   
 

@@ -23,24 +23,19 @@ import {
 
 } from "./post_data_models";
 
-/*
-For building post pages
-  getPostSlugs() - used to get a list of slugs to build out pages / might need to be specific to content type
-  getPostBySlug() 
- 
 
-For building "library" pages(pages with lists of related content)
-    getAllAuthors() - gets authors from author collection
-    getPostSummariesByAuthor(authorId) - gets a filtered list of posts by author
- 
 
- */
 
-// When I'd need the posts -- basic - all posts of kind, full post data, related posts
 
+
+
+// When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
+// Preview is used to render previews of the page within the contentful interface.
 const defaultOptions = {
   preview: false,
 };
+
+
 
 const formatImageAsset = (imgData) => {
   if(!imgData) return null;
@@ -148,7 +143,9 @@ export default class ContentfulApi {
     };
   }
 
-
+/*
+This gets 3 posts that have similar tags to the post the user is currently reading 
+*/
   static async getMorePosts( post: FullPostInterface, options = defaultOptions) {
     const variables = { slug:post.slug, preview: options.preview };
     const query = `query GetMorePosts($slug: String!, $preview: Boolean!) {
@@ -164,7 +161,7 @@ export default class ContentfulApi {
       ? response.data.postCollection.items
       : [];
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
-    // Filter tags
+    // Filter by tags -- if no matches then get 3 random posts
     const filteredPosts: Array<BasicPostInterface> 
         =  post.contentTags 
         ? formattedPosts.filter((_post)=> _post.contentTags &&_post.contentTags.some(element => post.contentTags.includes(element))).sort(() => Math.random() - 0.5).slice(0,3)
@@ -318,32 +315,3 @@ static async getAllAuthorSlugs() {
   }
 }
 
-
-/*
-Pros and Cons of Keeping every type of content under "Post"
-
-Pros
-- Can pull all pieces of content with a specific author or tag out with one query
-    - Toolkits, Insights, and Case Studies share many of the same tags and authors and we plan to have pages for these so that'd be a common call
-- Can easily transfer content from one type to another when needed
-    - This has happened fairly frequently for things like toolkits, insights, etc but 
-- Less complexity to deal with, since all posts need to be structured in the same way
-
-Cons
-- Can't show limited tags and fields that are only relavent for the post type
-- Can't require fields that are necessay for some types of content but not for others
-- Less flexibility to add specific fields to specific content types without it getting confusing.
-
-
--- could be changed in the future, would be slightly trickly (?)
-
-
-
-
-Tags being seperated - could be changed in the future
-
-
-
-
-
-*/
