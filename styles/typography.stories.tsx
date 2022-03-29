@@ -25,7 +25,6 @@ export const TextSize = () => {
       <p className="text-3xl">The quick brown fox ...</p>
       <p className="text-xs pt-md ">text 4xl / Preset 1</p>
       <p className="text-4xl">The quick brown fox ...</p>
-  
     </div>
   );
 };

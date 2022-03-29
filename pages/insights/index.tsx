@@ -14,7 +14,7 @@ export interface Props   {
 
 
 export default function Insights({posts}:Props) {
-
+ console.log(posts);
     return ( <div> 
        <PlaceholderPageHeader
   
@@ -45,4 +45,4 @@ export async function getStaticProps(context) {
           posts
       }, // will be passed to the page component as props
     }
-  }
+}

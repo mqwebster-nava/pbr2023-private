@@ -33,7 +33,7 @@
 }
 @font-face {
     font-family: "Freight Text Pro";
-    src: url("/fonts/Freight_Text_Pro/freigtexprolk-webfont.woff2");
+    src: url("/fonts/Freight_Text_Pro/freigtexprolig-webfont.woff2");
     font-style: light;
     font-weight: 200;
     font-display: swap;
@@ -50,4 +50,4 @@ html{
       @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
     }
 
-  }
+}
