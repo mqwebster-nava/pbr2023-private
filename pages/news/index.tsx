@@ -1,7 +1,4 @@
 import {
-  SectionHeader,
-  ContentBlockLinkToPage,
-  ContentBlockText,
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,

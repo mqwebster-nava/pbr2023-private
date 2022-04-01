@@ -30,9 +30,7 @@ module.exports = {
         // => @media (min-width: 992px) { ... }
       },
       colors: {
-        grey: {
-          base: "#3D4551",
-        },
+        
         purple: {
           50: "#f5e4f0",
           lightest: "#F5E4F0",
@@ -65,8 +63,6 @@ module.exports = {
           dark: "#5B0462",
         },
         gold: {
-          
-         
           light: "#F6E451",
           base: "#F8B712",
           50: "#fefce7",
@@ -111,6 +107,20 @@ module.exports = {
           700: "#107859",
           800: "#08684b",
           900: "#004c31",
+        },
+
+        gray: {
+         // base: "#3D4551",
+          50: "#f9fafb",
+          100: "#f3f4f6",
+          200: "#e5e7eb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+          500: "#6b7280",
+          600: "#4b5563",
+          700: "#374151",
+          800: "#1f2937",
+          900: "#111827",
         },
       },
       height: {

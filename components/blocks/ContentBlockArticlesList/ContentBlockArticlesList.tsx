@@ -19,7 +19,7 @@ interface ContentBlockInterface {
        <div className={`w-full `}>
         
                   {title &&  <h3 className="font-sans text-lg font-bold">{title} </h3> }
-                  {body && <p className={`font-sans pt-lg text-base text-grey-base mb-md`}>{body}</p> }
+                  {body && <p className={`font-sans pt-lg text-base text-gray-800 mb-md`}>{body}</p> }
                     <div className={`w-full flex  items-stretch md:flex-row flex-col gap-8 my-3xl `}>
             <div className="w-full md:w-1/3 self-stretch"> {childrenArray[0]} </div>
             <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>1 && childrenArray[1]} </div>

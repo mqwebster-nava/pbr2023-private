@@ -48,7 +48,7 @@ const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
   const NavLinksMobile = () => (
-    <div className="responsive-container w-full flex flex-col items-start bg-sage-50">
+    <div className="responsive-container w-full flex flex-row items-start bg-white">
       <div className="py-lg">
         {NavData.map((navSection) => {
           return "slug" in navSection ? (
@@ -77,7 +77,7 @@ const MobileNavBar = ({ NavData }) => {
     </div>
   );
   return (
-    <nav className={` w-full z-10 bg-white`}>
+    <nav className={` w-full z-10 bg-gray-100`}>
       <div className="responsive-container  pt-lg flex flex-wrap items-baseline justify-between">
         <Logo />
         <div className="block ">

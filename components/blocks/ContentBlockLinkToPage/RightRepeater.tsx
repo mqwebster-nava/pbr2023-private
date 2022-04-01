@@ -11,7 +11,7 @@ import { ContentBlockInterface } from "./ContentBlockLinkToPage";
             <div className="w-full md:w-1/3 pr-xl flex justify-between flex-col"> 
                 <div className="">
                     <h3 className="font-sans text-lg font-bold">{title} </h3>
-                    <p className={`font-sans pt-lg text-base text-grey-base mb-lg`}>{children}</p>
+                    <p className={`font-sans pt-lg text-base text-gray-800 mb-lg`}>{children}</p>
                 </div>
                 {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
             </div>

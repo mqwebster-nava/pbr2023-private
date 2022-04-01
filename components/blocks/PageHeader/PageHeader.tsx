@@ -31,7 +31,7 @@ const PlaceholderPageHeader = ({
 const TitleBlock = ({title, subtitle, textColor}) => {
   return (
     <div className={`pb-2xl ${textColor} `}>
-      <h1 className={`font-sans  text-base font-black`}>
+      <h1 className={`font-sans  text-base font-bold`}>
         {title}
       </h1>
       <h2
@@ -49,6 +49,7 @@ const DefaultPageHeader = ({
 }: LargeHeroInterface) => {
   return (
     <div className={` relative bg-navy-900 min-h-[60vh]`}>
+    
       <div className={`
       responsive-container z-10 relative pt-4xl`}>
         <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
@@ -58,8 +59,7 @@ const DefaultPageHeader = ({
           <Image src={brandTerrain} height={96} width={96}></Image>
           <Image src={brandDirection} height={96} width={96}></Image>
        </div> 
-     
-      
+       
     </div>
   );
 };
