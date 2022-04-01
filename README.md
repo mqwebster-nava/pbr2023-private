@@ -1,4 +1,30 @@
-## nextjs-tailwindcss-storybook-typescript
+## Set Up 
+
+- Clone Repo
+
+< Instructions >
+
+set node to latest stable version  
+- nvm install --lts
+ - nvm use --lts
+ 
+ if don't have yarn, install yarn
+ - npm install yarn 
+ 
+install packages
+- yarn install
+
+
+To run
+yarn develop
+
+To run storybook 
+- yarn run storybook
+
+
+ 
+** Add .env.example
+
 
 This package aims to be a flexible starting point if you want to use Nextjs, TailwindCSS, Storybook and TypeScript.
 
@@ -50,32 +76,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-
-
-## Notes
-
-Articles Pages (ex /Case-Studies/[slug].js) pull in the Post Data from the CMS (/api/contentful-api),
-structures it using the Post Model () ??, and is formatted using the Post Template, which has component parts( such as header )
-
-Contentful Questions
-1. How do I set up the fragments for the GraphQL stuff
-2. How should I set up the queries?
-3. Should I use lists or models for things like tags and content types
-
-If I did everything programatically, I could auto-generate most of pages but would have less custom views
-
-/types/insights
-/types/case-studies
-/types/news
-/types/toolkits
-/types/careers
-...
-
-/authors/steve-lund
-...
-
-/tags/program-outcome
-...
 ## Resources
 
 https://github.com/dazuaz/nextjs-tailwindcss-storybook-typescript
