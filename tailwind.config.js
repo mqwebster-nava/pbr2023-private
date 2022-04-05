@@ -28,9 +28,11 @@ module.exports = {
       screens: {
         sm: "480px",
         // => @media (min-width: 992px) { ... }
+        md: "768px",
+        // => @media (min-width: 768px) { ... }
       },
       colors: {
-        
+
         purple: {
           50: "#f5e4f0",
           lightest: "#F5E4F0",
@@ -92,7 +94,7 @@ module.exports = {
           800: "#14184e",
           900: "#0a0539",
         },
-       
+
         sage: {
           dark: "#004C31",
           base: "#08A588",
@@ -107,10 +109,11 @@ module.exports = {
           700: "#107859",
           800: "#08684b",
           900: "#004c31",
+          "pbc-2019": "#005753",
         },
 
         gray: {
-         // base: "#3D4551",
+          // base: "#3D4551",
           50: "#f9fafb",
           100: "#f3f4f6",
           200: "#e5e7eb",
@@ -122,6 +125,9 @@ module.exports = {
           800: "#1f2937",
           900: "#111827",
         },
+        ecru: {
+          "pbc-2019": "#F3EDE1"
+        }
       },
       height: {
         128: "32rem",

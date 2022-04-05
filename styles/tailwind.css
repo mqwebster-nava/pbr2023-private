@@ -2,55 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: "GTAmerica";
-    src: url("/fonts/GT-America/GT-America-Regular.ttf");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
+  font-family: "GTAmerica";
+  src: url("/fonts/GT-America/GT-America-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 @font-face {
-    font-family: "GTAmerica";
-    src: url("/fonts/GT-America/GT-America-Bold.ttf");
-    font-style: bold;
-    font-weight: 700;
-    font-display: swap;
+  font-family: "GTAmerica";
+  src: url("/fonts/GT-America/GT-America-Bold.ttf");
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
 }
 @font-face {
-    font-family: "GTAmerica";
-    src: url("/fonts/GT-America/GT-America-Black.otf");
-    font-weight: 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Freight Text Pro";
-    src: url("/fonts/Freight_Text_Pro/freigtexprobook-webfont.woff2");
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: "Freight Text Pro";
-    src: url("/fonts/Freight_Text_Pro/freigtexprolig-webfont.woff2");
-    font-style: light;
-    font-weight: 200;
-    font-display: swap;
+  font-family: "GTAmerica";
+  src: url("/fonts/GT-America/GT-America-Black.otf");
+  font-weight: 900;
+  font-display: swap;
 }
 
-html{
-    font-size:18px;
-    font-family: "GTAmerica";
+@font-face {
+  font-family: "Freight Text Pro";
+  src: url("/fonts/Freight_Text_Pro/freigtexprobook-webfont.woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Freight Text Pro";
+  src: url("/fonts/Freight_Text_Pro/freigtexprolig-webfont.woff2");
+  font-style: light;
+  font-weight: 200;
+  font-display: swap;
+}
+
+html {
+  font-size: 18px;
+  font-family: "GTAmerica";
 }
 
 @layer components {
-   
-    .responsive-container {
-      @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
-    }
-    .responsive-container-content {
-        @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
-      }
-
+  .responsive-container {
+    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
+  }
+  .responsive-container-content {
+    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
+  }
 }
