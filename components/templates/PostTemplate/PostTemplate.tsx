@@ -146,7 +146,8 @@ export default function PostTemplate({
       <ContentBlockArticleList title={"More From Nava"}>
         {morePosts.map((_post) => (
           <ContentCard
-            title={_post.title}
+          type={_post.contentType}
+          title={_post.title}
             path={getContentUrl(_post.contentType, _post.slug)}
           >
             {_post.shortSummary}

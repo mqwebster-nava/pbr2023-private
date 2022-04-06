@@ -17,6 +17,7 @@ export interface FilteredByTagPageProps   {
      <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
+            type={post.contentType}
                   title={post.title} 
                   path={getContentUrl(post.contentType, post.slug)}>
                       {post.shortSummary}

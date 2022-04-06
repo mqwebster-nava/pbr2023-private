@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
         className={
           `font-sans
           inline-flex items-center justify-center
-          px-sm py-sm 
+          px-sm py-sm  
           text-base leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer

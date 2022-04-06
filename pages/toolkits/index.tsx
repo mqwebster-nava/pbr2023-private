@@ -17,6 +17,7 @@ export default function Toolkits({posts}) {
         <CardsGrid  >
           {
           posts.map((post) =>( <ContentCard 
+            type={post.contentType}
                   title={post.title} 
                   path={`/toolkits/${post.slug}`}>
                       {post.shortSummary}

@@ -75,6 +75,7 @@ export default function PageTemplate({ page, preview }: PageProps) {
           {entry.postsCollection.items.map((post)=>{
             return (<ContentCard
             key={post.title}
+            type={post.contentType}
               title={post.title}
               path={getContentUrl(post.contentType, post.slug)}
             >

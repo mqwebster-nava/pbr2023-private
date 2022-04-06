@@ -9,7 +9,7 @@ import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArti
 import Newsletter from "./CTABlock/NewsletterBlock";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
-
+import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
 export {
   LargeHero,
   SectionHeader,
@@ -22,5 +22,6 @@ export {
   Newsletter,
   CTABlock,
   ContentBlockText2,
-  QuoteBlock
+  QuoteBlock,
+  FilteredPostsList
 };
