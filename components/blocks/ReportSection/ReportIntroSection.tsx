@@ -15,17 +15,18 @@ export interface ReportIntroSection {
   };
 }
 
-const ReportIntroSection: React.FC<ReportIntroSection> = ({
-  body,
-  isWhiteBG,
-  theme,
-}) => {
+const ReportIntroSection: React.FC<ReportIntroSection> = ({ body, theme }) => {
+  const hasWhiteBackground = theme.sage.background === undefined;
   return (
     <section className={`${theme.sage.background} py-2xl md:px-4xl`}>
       <div className="responsive-container-content">
-        <ReportContent content={body} isGreenBG={!isWhiteBG} theme={theme} />
+        <ReportContent
+          content={body}
+          isGreenBG={!hasWhiteBackground}
+          theme={theme}
+        />
       </div>
-      <Signatures isGreenBG={!isWhiteBG} />
+      <Signatures isGreenBG={!hasWhiteBackground} />
     </section>
   );
 };

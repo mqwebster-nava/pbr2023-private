@@ -12,7 +12,6 @@ module.exports = {
     "@storybook/addon-docs",
     "@storybook/addon-essentials",
   ],
-  staticDirs: ['../public'],
   features: {
     postcss: false,
   },

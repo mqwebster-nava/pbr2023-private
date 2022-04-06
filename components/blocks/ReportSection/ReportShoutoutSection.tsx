@@ -23,13 +23,14 @@ const ReportShoutoutSection: React.FC<ReportShoutoutSection> = ({
   lists = null,
   theme,
 }) => {
+  const hasListOfNames = lists && lists.length > 0;
   return (
     <section className="responsive-container-content py-2xl">
       <h2 className="text-3xl font-bold">{title}</h2>
       <div className="pb-xl">
         <ReportContent content={introduction} theme={theme} isGreenBG={false} />
       </div>
-      {lists && (
+      {hasListOfNames && (
         <Details summary="See all shoutouts">
           {lists.map((list, index) => (
             <ReportShoutoutColumns

@@ -82,7 +82,7 @@ export default function PBR2019({ report }) {
         altText="An illustration of people holding lines that spell out NAVA."
         pdfLink="/files/2019NavaPublicBenefitReport.pdf"
       />
-      <ReportIntroSection body={introduction} theme={theme} isWhiteBG={false} />
+      <ReportIntroSection body={introduction} theme={theme} />
       <ReportSections sections={sections} theme={theme} />
       <ReportShoutoutSection
         title={shoutouts.title}
