@@ -2,6 +2,7 @@
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { Button } from "components/atom";
 import { BasicPostInterface } from "lib/post_data_models";
+import { getContentUrl } from "utils/utils";
 
 
 interface PostListInterface {
@@ -41,7 +42,7 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
                 type={post.contentType}
                   title={post.title}
                   promoImage={post.promoImage}
-                  path={`/insights/${post.slug}`}
+                  path={getContentUrl(post.contentType, post.slug)}
                 >
                   {post.shortSummary}
                 </ContentCard>
