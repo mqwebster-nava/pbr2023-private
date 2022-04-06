@@ -7,7 +7,9 @@ export interface SignaturesProps {
   isGreenBG: boolean;
 }
 
-export const Signatures: React.FC<SignaturesProps> = ({ isGreenBG }) => {
+export const Signatures: React.FC<SignaturesProps> = ({
+  isGreenBG = false,
+}) => {
   const textColor = classNames({
     "text-sage-pbc-2019": isGreenBG,
     "text-navy-900": !isGreenBG,
