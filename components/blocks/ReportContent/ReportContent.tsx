@@ -37,35 +37,26 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           ></p>
         ),
         p: ({ node, ...props }) => (
-          <p
-            className={`${textColor} text-base font-sans py-md`}
-            {...props}
-          ></p>
+          <p className={`${textColor} text-base py-md`} {...props}></p>
         ),
         h1: ({ node, ...props }) => (
-          <p
-            className={`text-3xl font-bold font-sans pt-md ${textColor}`}
-            {...props}
-          ></p>
+          <p className={`text-3xl font-bold pt-md ${textColor}`} {...props}></p>
         ),
         h2: ({ node, ...props }) => (
           <h2
-            className={`text-3xl font-bold font-sans pt-md ${textColor}`}
+            className={`text-3xl font-bold pt-md ${textColor}`}
             {...props}
           ></h2>
         ),
         h3: ({ node, ...props }) => (
           <h3
             id={node.properties.id.toString()}
-            className={`text-xl font-bold font-sans pt-md ${textColor}`}
+            className={`text-xl font-bold pt-md ${textColor}`}
             {...props}
           ></h3>
         ),
         h4: ({ node, ...props }) => (
-          <h4
-            className={`text-xl font-sans pt-md ${textColor}`}
-            {...props}
-          ></h4>
+          <h4 className={`text-xl pt-md ${textColor}`} {...props}></h4>
         ),
         a: ({ node, ...props }) => (
           <LinkText href={props.href}>{props.children}</LinkText>
@@ -74,7 +65,7 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           <ul className="list-disc ml-2xl">{props.children}</ul>
         ),
         li: ({ node, ...props }) => (
-          <li className={`font-sans ${textColor}`}>{props.children}</li>
+          <li className={textColor}>{props.children}</li>
         ),
         ol: ({ node, ...props }) => <ol {...props}></ol>,
         img: ({ node, ...props }) => <img className="py-md" {...props}></img>,

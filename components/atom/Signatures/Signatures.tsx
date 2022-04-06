@@ -7,11 +7,9 @@ export interface SignaturesProps {
   isGreenBG: boolean;
 }
 
-export const Signatures: React.FC<SignaturesProps> = ({
-  isGreenBG = false,
-}) => {
+export const Signatures: React.FC<SignaturesProps> = ({ isGreenBG }) => {
   const textColor = classNames({
-    "text-sage-pbc-2019": isGreenBG,
+    "text-sage-pbr": isGreenBG,
     "text-navy-900": !isGreenBG,
   });
 
@@ -21,11 +19,11 @@ export const Signatures: React.FC<SignaturesProps> = ({
     >
       <div>
         <Image src={rohanSignature} layout="fixed" height="80" width="136" />
-        <p className="text-base font-sans py-md">Rohan Bhobe, CEO</p>
+        <p className="text-base py-md">Rohan Bhobe, CEO</p>
       </div>
       <div>
         <Image src={shaSignature} layout="fixed" height="80" width="165" />
-        <p className="text-base font-sans py-md">Sha Hwang, COO</p>
+        <p className="text-base py-md">Sha Hwang, COO</p>
       </div>
     </div>
   );

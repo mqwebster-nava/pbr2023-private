@@ -17,7 +17,7 @@ export interface ReportIntroSection {
 
 const ReportIntroSection: React.FC<ReportIntroSection> = ({
   body,
-  isWhiteBG = false,
+  isWhiteBG,
   theme,
 }) => {
   return (
