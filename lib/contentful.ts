@@ -193,10 +193,20 @@ This gets 3 posts that have similar tags to the post the user is currently readi
 
   static async getPostsByContentType(contentType, options = defaultOptions) {
     const variables = {contentType };
-    const query = `
-    query GetPostsByContentType($contentType: String!)
+    const query =( contentType==="Insights")? 
+    ` query GetAllPosts
     {
-      postCollection(limit: 20,  where: { contentType: $contentType } ) 
+      postCollection(limit: 100) 
+      {
+        items {
+          ${POST_CORE_FIELDS}
+        }
+      }
+    }
+    `:
+    ` query GetPostsByContentType($contentType: String!)
+    {
+      postCollection(limit: 100, where: { contentType: $contentType }  ) 
       {
         items {
           ${POST_CORE_FIELDS}

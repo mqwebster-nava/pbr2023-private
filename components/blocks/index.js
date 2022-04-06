@@ -17,6 +17,7 @@ import ReportShoutoutColumns from "./ReportSection/ReportShoutoutColumns";
 import ReportIntroSection from "./ReportSection/ReportIntroSection";
 import ReportHeaderHero from "./ReportHeader/ReportHeaderHero";
 import ReportHeaderTextOverlay from "./ReportHeader/ReportHeaderTextOverlay";
+import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
 
 export {
   LargeHero,
@@ -38,5 +39,6 @@ export {
   ReportShoutoutColumns,
   ReportIntroSection,
   ReportHeaderHero,
-  ReportHeaderTextOverlay
+  ReportHeaderTextOverlay,
+  FilteredPostsList,
 };

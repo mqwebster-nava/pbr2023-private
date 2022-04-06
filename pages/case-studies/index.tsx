@@ -3,12 +3,10 @@ import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { BasicPostInterface } from "lib/post_data_models";
 import {
-  SectionHeader,
-  ContentBlockLinkToPage,
-  ContentBlockText,
+
+  FilteredPostsList,
   PlaceholderPageHeader,
-  ContentBlockArticleList,
-  Newsletter,
+
 } from "components/blocks";
 
 
@@ -27,9 +25,26 @@ export default function CaseStudies({posts}:CaseStudiesProps) {
         subtitle={"Learn about Nava’s approach and results"}
       />
       <hr />
+      <FilteredPostsList 
+      title={"Continuous Improvement"}
+      max={3}
+      buttonText="Show more"
+      buttonPath="/tags/continuous-improvement"
+      posts={posts.filter((p) => p.contentTags?.includes("Continuous Improvement"))}>
+      </FilteredPostsList>
+       
+      <FilteredPostsList 
+      title={"Human-Centered Design"}
+      max={3}
+      buttonText="Show more"
+      buttonPath="/tags/human-centered-design"
+      posts={posts.filter((p) => p.contentTags?.includes("Human-Centered Design"))}>
+      </FilteredPostsList>
+       
         <CardsGrid >
           {
           posts.map((post) =>( <ContentCard 
+            type={post.contentType}
                   title={post.title} 
                   path={`/case-studies/${post.slug}`}>
                       {post.shortSummary}

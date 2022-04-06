@@ -93,3 +93,32 @@ https://storybook.js.org/tutorials/design-systems-for-developers/react/en/introd
 https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/mdx.md
 
 https://nextjs.org/docs/api-reference/next/image#objectfit
+
+
+
+Program Outcomes: 12
+Human-Centered Design: 11
+Scalable Solutions: 9
+A Day At Nava: 5
+User Experience Research: 5
+Continuous Improvement: 4
+Healthcare: 4
+Accessibility and Equity: 3
+Agile Development: 3
+Careers: 3
+Content Strategy: 3
+Adapting To Change: 2
+Backend Engineering: 2
+Crisis Response: 2
+Frontend Engineering: 1
+Integrated Benefits: 1
+Modernization: 1
+Policy: 1
+Product Management: 1
+Program Management: 1
+Reducing Risk: 1
+Unemployment Insurance: 0
+Veterans: 0
+What We’re Learning: 0
+APIs and Documentation: 0
+Cloud Infrastructure: 0

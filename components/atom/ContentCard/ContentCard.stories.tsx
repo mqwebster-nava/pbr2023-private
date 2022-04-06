@@ -15,12 +15,14 @@ export const WithImage = Template.bind({})
 
 Primary.args = {
     path:"/",
+    type:"Insight",
     title:"A day at Nava as an infrastructure engineer",
     children: "A day at Nava with Wei Leong, an infrastructure engineer working on the Medicare Payment System Modernization team."
 }
 
 WithImage.args = {
     path:"/",
+    type:"Insight",
     title:"A day at Nava as an infrastructure engineer",
     children: "A day at Nava with Wei Leong, an infrastructure engineer working on the Medicare Payment System Modernization team.",
     promoImage: {

@@ -17,15 +17,20 @@ const Template: ComponentStory<typeof ContentBlockArticleList> = (args) =>
 <ContentCard
           title={"A day at Nava as an infrastructure engineer"}
           path={"/"}
+          type="insight"
         >
           A day at Nava with Wei Leong, an infrastructure engineer working on
           the Medicare Payment System Modernization team.
         </ContentCard>
-        <ContentCard title={"A day at Nava as a program strategist"} path={"/"}>
+        <ContentCard title={"A day at Nava as a program strategist"} 
+        type={"insight"}
+        path={"/"}>
           A day at Nava with Martelle Esposito, a program strategist working on
           the Massachusetts Paid Family and Medical Leave team.
         </ContentCard>
-        <ContentCard title={"A day at Nava as a software engineer"} path={"/"}>
+        <ContentCard 
+        type={"insight"}
+        title={"A day at Nava as a software engineer"} path={"/"}>
           A day at Nava with Sharon Warner, a software engineer working on the
           Vermont Integrated Benefits team.
         </ContentCard>
