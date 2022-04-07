@@ -1,9 +1,9 @@
-
+import classNames from "classnames";
 type Variant = "default" | "outlined" | "black";
 
 
 export interface ButtonProps {
-  href: string;
+  href?: string;
   variant?: Variant;
 }
 
@@ -16,6 +16,13 @@ export const Button: React.FC<ButtonProps> = ({
   variant,
   ...rest
 }) => {
+
+  const variantStyles = classNames({
+    "text-white bg-black hover:bg-white hover:text-black": variant=="black",
+    "text-black border hover:bg-sage-900 hover:text-white": variant=="outlined",
+    "text-white  bg-sage-base  hover:bg-sage-900": variant=="default",
+  });
+
   return (
     <div className={``} {...rest}>
       <a
@@ -28,33 +35,10 @@ export const Button: React.FC<ButtonProps> = ({
           text-base leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
-          ${variant=="black" ?
-          "text-white bg-black hover:bg-white hover:text-black"
-         :
-          variant=="outlined" ?
-            "text-black border hover:bg-sage-900 hover:text-white"
-          : "text-white  bg-sage-base  hover:bg-sage-900" }
-           `
+          ${variantStyles}`
         }>
         {children}
       </a>
     </div>
   );
 };
-
-
-
-
-// <button
-// type="button"
-// className="
-// text-navy-900 font-sans text-base 
-// bg-gold-700 hover:bg-gold-800 
-// focus:outline-none focus:ring-4 
-// focus:ring-gold-300 font-medium 
-// rounded-sm  px-5 py-2.5 text-center 
-// mr-2 mb-2 
-// dark:bg-gold-600 dark:hover:bg-gold-700  dark:focus:ring-gold-800"
-// >
-// Get In Touch
-// </button>
