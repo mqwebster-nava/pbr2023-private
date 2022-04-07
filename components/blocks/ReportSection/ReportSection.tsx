@@ -1,25 +1,5 @@
 import { ReportContent } from "../";
-
-export interface ReportSectionInterface {
-  picture: string;
-  picture_position: string;
-  content: {
-    title: string;
-    introduction: string;
-    body: string;
-  };
-  isWhiteBG: boolean;
-  theme: {
-    sage: {
-      text: string;
-      background: string;
-    };
-    default: {
-      text: string;
-    };
-  };
-  isGreenBG: boolean;
-}
+import { ReportSectionInterface } from "lib/report_data_models";
 
 const ReportSection: React.FC<ReportSectionInterface> = ({
   picture,

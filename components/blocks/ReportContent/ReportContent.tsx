@@ -2,19 +2,7 @@ import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import { LinkText } from "../../atom";
-
-export interface ReportContentInterface {
-  content: string;
-  theme: {
-    sage: {
-      text: string;
-    };
-    default: {
-      text: string;
-    };
-  };
-  isGreenBG: boolean;
-}
+import { ReportContentInterface } from "lib/report_data_models";
 
 const ReportContent: React.FC<ReportContentInterface> = ({
   content,

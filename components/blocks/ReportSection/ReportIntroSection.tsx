@@ -1,19 +1,6 @@
 import { ReportContent } from "..";
 import { Signatures } from "../../atom";
-
-export interface ReportIntroSection {
-  body: string;
-  isWhiteBG: boolean;
-  theme: {
-    sage: {
-      text: string;
-      background: string;
-    };
-    default: {
-      text: string;
-    };
-  };
-}
+import { ReportIntroSection } from "lib/report_data_models";
 
 const ReportIntroSection: React.FC<ReportIntroSection> = ({ body, theme }) => {
   const hasWhiteBackground = theme.sage.background === undefined;

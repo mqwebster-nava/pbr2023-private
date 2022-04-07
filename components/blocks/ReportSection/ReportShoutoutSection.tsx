@@ -1,21 +1,7 @@
 import { ReportContent } from "..";
 import { Details } from "../../atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
-
-export interface ReportShoutoutSection {
-  title: string;
-  introduction: string;
-  lists: Array<object>;
-  theme: {
-    sage: {
-      text: string;
-      background: string;
-    };
-    default: {
-      text: string;
-    };
-  };
-}
+import { ReportShoutoutSection } from "lib/report_data_models";
 
 const ReportShoutoutSection: React.FC<ReportShoutoutSection> = ({
   title,
