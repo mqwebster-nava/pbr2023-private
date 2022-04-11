@@ -13,14 +13,15 @@ export interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   children,
   href,
-  variant,
+  variant="default",
   ...rest
 }) => {
+  console.log(variant)
 
   const variantStyles = classNames({
-    "text-white bg-black hover:bg-white hover:text-black": variant=="black",
-    "text-black border hover:bg-sage-900 hover:text-white": variant=="outlined",
-    "text-white  bg-sage-base  hover:bg-sage-900": variant=="default",
+    "text-white bg-black hover:bg-gray-200 hover:text-black": (variant=="black"),
+    "text-sage-600 border hover:bg-sage-50 ": (variant=="outlined"),
+    "text-white  bg-sage-base  hover:bg-sage-900": (variant==="default"),
   });
 
   return (
@@ -31,7 +32,8 @@ export const Button: React.FC<ButtonProps> = ({
         className={
           `font-sans
           inline-flex items-center justify-center
-          px-sm py-sm  
+          px-sm py-sm 
+          rounded
           text-base leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer

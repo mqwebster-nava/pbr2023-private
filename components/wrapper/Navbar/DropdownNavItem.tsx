@@ -4,7 +4,7 @@ const DropdownNavItem = (props) => {
     return (
       <a
         href={props.href}
-        className="text-navy-900 border-b-2 border-black block pb-sm font-sans hover:bg-navy-50   pr-sm"
+        className="text-navy-900 border-b-2 border-gray-300 block p-sm font-sans hover:bg-sage-50  "
       >
         {props.children}
       </a>

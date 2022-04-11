@@ -22,16 +22,13 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
   return (
     <a
       href={`${path}`}
-      className="block max-w-sm h-full bg-white  border border-gray-200 hover:bg-gray-100 rounded"
+      className="block max-w-sm h-full "
     >
       <div className="relative h-52 w-full mb-md bg-gold-400">
             
       </div>
-      <div className=" p-sm ">
-      <h6 className="mb-2 text-sm font-bold tracking-tight text-gray-900 font-sans">
-        {type}
-      </h6>
-      <h5 className="mb-2 text-base font-bold tracking-tight text-gray-900 font-sans">
+      <div className="">
+      <h5 className="mb-2 text-base font-bold tracking-tight text-gray-900 font-sans hover:text-sage-400">
         {title}
       </h5>
       <p className=" text-base font-sans text-gray-700 dark:text-gray-400">
