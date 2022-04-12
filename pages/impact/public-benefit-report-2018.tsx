@@ -60,7 +60,7 @@ export default function PBR2018({ report }) {
   };
 
   return (
-    <div>
+    <main>
       <ReportHeaderTextOverlay
         reportTheme={report_theme}
         title={title}
@@ -74,6 +74,6 @@ export default function PBR2018({ report }) {
         introduction={shoutouts.introduction}
         theme={theme}
       />
-    </div>
+    </main>
   );
 }
