@@ -13,7 +13,7 @@ export interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({
   children,
   href,
-  variant,
+  variant = "default",
   ...rest
 }) => {
 
@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
         type='button'
         className={
           `font-sans
-          inline-flex items-center justify-center
+          inline-flex items-center justify-center rounded-sm
           px-sm py-sm  
           text-base leading-6
           transition duration-150 ease-in-out flex-col
