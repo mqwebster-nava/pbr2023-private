@@ -28,11 +28,11 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           <p className={`${textColor} text-base py-md`} {...props}></p>
         ),
         h1: ({ node, ...props }) => (
-          <p className={`text-3xl font-bold pt-md ${textColor}`} {...props}></p>
+          <p className={`text-4xl font-bold pt-md ${textColor}`} {...props}></p>
         ),
         h2: ({ node, ...props }) => (
           <h2
-            className={`text-3xl font-bold pt-md ${textColor}`}
+            className={`text-4xl font-bold pt-md ${textColor}`}
             {...props}
           ></h2>
         ),

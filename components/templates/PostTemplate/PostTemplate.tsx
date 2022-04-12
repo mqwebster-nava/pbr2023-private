@@ -91,7 +91,7 @@ export default function PostTemplate({
         <p className="text-navy-900 font-serif py-md text-base">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
-        <p className="text-3xl font-bold font-sans pt-md">{children}</p>
+        <p className="text-4xl font-bold font-sans pt-md">{children}</p>
       ),
       [BLOCKS.HEADING_2]: (node, children) => {
         return (
