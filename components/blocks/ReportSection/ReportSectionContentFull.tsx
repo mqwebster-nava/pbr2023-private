@@ -31,7 +31,7 @@ const ReportSectionContentFull = ({
   });
 
   return (
-    <section className={`${backgroundClass} py-2xl`}>
+    <div className={`${backgroundClass} py-2xl`}>
       {metrics && <ReportMetrics metrics={metrics} />}
       <div className="responsive-container grid grid-cols-1 md:grid-cols-2">
         <div className="">
@@ -52,7 +52,7 @@ const ReportSectionContentFull = ({
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -6,11 +6,11 @@ import VASectionCover from "../../public/images/pbrs/nava-VA-2200x700-hi-res.jpg
 import CASectionCover from "../../public/images/pbrs/nava-cali-2200x700-hi-res.jpg";
 import MedicareSectionCover from "../../public/images/pbrs/nava-medicare-2200x700-hi-res.jpg";
 import CloudSectionCover from "../../public/images/pbrs/nava-cloud-2200x700-hi-res.jpg";
-import { Signatures } from "components/atom";
+import { PullQuote, Signatures } from "components/atom";
 import React from "react";
 import {
   ReportHeaderNavy,
-  ReportSectionHeaderNavy,
+  ReportSections,
   ReportSideMenu,
   ReportSectionContentFull,
 } from "components/blocks";
@@ -79,6 +79,7 @@ export default function PBR2020({ report }) {
     <div>
       <ReportSideMenu links={menuLinks} />
       <main className="bg-white pb-2xl">
+        <PullQuote>HELLO</PullQuote>
         <ReportHeaderNavy title={report.title} />
         <Image
           alt={report.image_alt_text}
@@ -94,25 +95,7 @@ export default function PBR2020({ report }) {
         <div className="bg-sage-pbr-2018 pb-4xl">
           <Signatures fullList asContainer />
         </div>
-        {reportSections.map((section, index) => (
-          <div key={`section_${index}`}>
-            <ReportSectionHeaderNavy
-              title={section.title}
-              titleId={section.titleId}
-              introduction={section.intro}
-            />
-            <Image
-              alt={section.imageAltText}
-              src={section.image}
-              layout="responsive"
-            />
-            <ReportSectionContentFull
-              body={section.body}
-              background={section.background}
-              metrics={section.metrics}
-            />
-          </div>
-        ))}
+        <ReportSections sections={reportSections} stacked />
         <ReportSectionContentFull
           title={report.section_five.title}
           body={report.section_five.body}

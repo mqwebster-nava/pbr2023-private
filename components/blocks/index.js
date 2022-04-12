@@ -11,6 +11,7 @@ import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
 import ReportContent from "./ReportContent/ReportContent";
 import ReportSection from "./ReportSection/ReportSection.tsx";
+import ReportSectionStacked from "./ReportSection/ReportSectionStacked.tsx"
 import ReportSections from "./ReportSection/ReportSections";
 import ReportShoutoutSection from "./ReportSection/ReportShoutoutSection";
 import ReportShoutoutColumns from "./ReportSection/ReportShoutoutColumns";
@@ -38,6 +39,7 @@ export {
   QuoteBlock,
   ReportContent,
   ReportSection,
+  ReportSectionStacked,
   ReportSections,
   ReportShoutoutSection,
   ReportShoutoutColumns,

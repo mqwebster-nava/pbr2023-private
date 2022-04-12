@@ -1,7 +1,7 @@
 import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
-import { LinkText } from "../../atom";
+import { BlockQuote, LinkText, PullQuote } from "../../atom";
 import { ReportContentInterface } from "lib/report_data_models";
 
 const defaultTheme = {
@@ -95,22 +95,16 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           ></h4>
         ),
         blockquote: ({ node, ...props }) => {
+          // By default, we use the pull quote style. In markdown,
+          // the ">>" symbols designate a blockquote. This logic
+          // differentiates between ">" and ">>".
           const content = props.children[1]["props"].children;
           const isPullQuote = content && content.length === 1;
-          if (isPullQuote) {
-            return (
-              <blockquote className="py-xl text-sage-pbr before:content-none">
-                <img src="/images/pbrs/quote_mark.svg" alt="" />
-                {props.children}
-              </blockquote>
-            );
-          } else {
-            return (
-              <blockquote className="py-0 pl-[18px] mt-[40px] mr-0 mb-[40px] -ml-[22px] border-l-[5px] border-sage-pbr-2020-light text-sage-pbr before:content-none">
-                {content[1].props.children}
-              </blockquote>
-            );
-          }
+          return isPullQuote ? (
+            <PullQuote>{props.children}</PullQuote>
+          ) : (
+            <BlockQuote>{content[1].props.children}</BlockQuote>
+          );
         },
         a: ({ node, ...props }) => (
           <LinkText href={props.href}>{props.children}</LinkText>
