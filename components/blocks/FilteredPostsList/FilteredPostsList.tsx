@@ -12,6 +12,8 @@ interface PostListInterface {
   posts: Array<BasicPostInterface>;
   body?: string;
   max?: number; 
+  // Cycling through colors
+  cycleNum?: number; 
 }
 
 const FilteredPostsList: React.FC<PostListInterface> = ({
@@ -20,6 +22,7 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
     posts,
     buttonPath,
     buttonText,
+    cycleNum=Math.floor(Math.random() * 4),
     children,
     max,
   }) => {
@@ -29,25 +32,27 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
         <div className={`w-full`}>
           {title && <h3 className="font-sans text-lg font-bold">{title} </h3>}
           {body && (
-            <p className={`font-sans pt-lg text-base text-gray-800 mb-md`}>
+            <p className={`font-sans pt-lg text-base text-gray-800 mb-sm`}>
               {body}
             </p>
           )}
           <div
             className={`w-full flex  flex-wrap md:flex-row flex-col  my-2xl -mx-md`}
           >
-            {posts.slice(0, max).map((post) => (
-              <div className=" w-full md:w-1/2 lg:w-1/3 p-md self-stretch">
+            {posts.slice(0, max).map((post) =>{
+            if(!post.promoImage) cycleNum+=1;
+            return ( <div className=" w-full md:w-1/2 lg:w-1/3 p-md self-stretch">
                 <ContentCard
                 type={post.contentType}
                   title={post.title}
                   promoImage={post.promoImage}
                   path={getContentUrl(post.contentType, post.slug)}
+                  cycleNum={cycleNum}
                 >
                   {post.shortSummary}
                 </ContentCard>
               </div>
-            ))}
+  )})}
           </div>
           {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
         </div>
