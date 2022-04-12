@@ -16,7 +16,6 @@ export const Button: React.FC<ButtonProps> = ({
   variant="default",
   ...rest
 }) => {
-  console.log(variant)
 
   const variantStyles = classNames({
     "text-white bg-black hover:bg-gray-200 hover:text-black": (variant=="black"),
@@ -33,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
           `font-sans
           inline-flex items-center justify-center
           px-sm py-sm 
-          rounded
+          rounded-sm
           text-base leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
