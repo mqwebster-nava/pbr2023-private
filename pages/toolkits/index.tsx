@@ -3,6 +3,7 @@ import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import {
     PlaceholderPageHeader,
+    FilteredPostsList
   } from "components/blocks";
   
 
@@ -14,18 +15,14 @@ export default function Toolkits({posts}) {
         subtitle={"Apply human-centered and agile practices to your program"}
       />
       <hr />
-        <CardsGrid  >
-          {
-          posts.map((post) =>( <ContentCard 
-            type={post.contentType}
-                  title={post.title} 
-                  path={`/toolkits/${post.slug}`}>
-                      {post.shortSummary}
-                  </ContentCard>))
-            }
-
-        </CardsGrid>
-
+      <FilteredPostsList
+          title={"Latest"}
+          body={
+            "Nava’s been a trusted government partner since we helped fix HealthCare.gov in 2013. See what we’ve been up to recently."
+          }
+          posts={posts}
+        >
+        </FilteredPostsList>
     </div>  );
 }
 

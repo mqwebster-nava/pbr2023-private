@@ -33,15 +33,22 @@ export default function CaseStudies({posts}:CaseStudiesProps) {
       posts={posts.filter((p) => p.contentTags?.includes("Continuous Improvement"))}>
       </FilteredPostsList>
        
+      {/* <FilteredPostsList 
+      title={"Human-Centered Design"}
+      max={20}
+      buttonText="Show more"
+      buttonPath="/tags/human-centered-design"
+      posts={posts.filter((p) => p.contentTags?.includes("Human-Centered Design"))}>
+      </FilteredPostsList> */}
       <FilteredPostsList 
       title={"Human-Centered Design"}
-      max={3}
+      max={20}
       buttonText="Show more"
       buttonPath="/tags/human-centered-design"
       posts={posts.filter((p) => p.contentTags?.includes("Human-Centered Design"))}>
       </FilteredPostsList>
        
-        <CardsGrid >
+        {/* <CardsGrid >
           {
           posts.map((post) =>( <ContentCard 
             type={post.contentType}
@@ -51,7 +58,7 @@ export default function CaseStudies({posts}:CaseStudiesProps) {
                   </ContentCard>))
             }
 
-        </CardsGrid>
+        </CardsGrid> */}
 
     </div>  );
 }
