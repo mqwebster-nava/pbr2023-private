@@ -79,7 +79,6 @@ export default function PBR2020({ report }) {
     <div>
       <ReportSideMenu links={menuLinks} />
       <main className="bg-white pb-2xl">
-        <PullQuote>HELLO</PullQuote>
         <ReportHeaderNavy title={report.title} />
         <Image
           alt={report.image_alt_text}
