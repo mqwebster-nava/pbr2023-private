@@ -12,7 +12,7 @@ const LargeTextCard: React.FC<ContentCardInterface> = ({
         className="block  h-[460px] w-full bg-navy-700 hover:bg-sage-400"
       >
     
-        <div className="px-lg pt-xl">
+        <div className="p-lg">
         <h6 className="mb-2 text-base font-bold  text-white font-sans ">
           How to
         </h6>

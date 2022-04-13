@@ -31,9 +31,9 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
     return (
       <div className="responsive-container py-xl">
         <div className={`w-full`}>
-          {title && <h3 className="font-sans text-lg font-bold">{title} </h3>}
+          {title && <h3 className="font-sans text-4xl  font-bold">{title} </h3>}
           {body && (
-            <p className={`font-sans pt-lg text-base text-gray-800 mb-sm`}>
+            <p className={`font-sans pt-lg text-xl text-gray-600 mb-sm`}>
               {body}
             </p>
           )}
@@ -42,7 +42,7 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
           >
             {posts.slice(0, max).map((post) =>{
             if(!post.promoImage) cycleNum+=1;
-            return ( <div className=" w-full max-w-[450px] self-stretch ">
+            return ( <div className=" w-full max-w-[400px] self-stretch ">
                 <ContentCard
                 type={post.contentType}
                   title={post.title}

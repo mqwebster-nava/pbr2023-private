@@ -7,7 +7,7 @@ import {
   ReportShoutoutSection,
 } from "components/blocks";
 
-import { getPublicBenefitReportByYear } from "../../lib/public-benefit-reports";
+import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
 
 export async function getStaticProps() {
   const report = getPublicBenefitReportByYear(2019);
@@ -75,7 +75,7 @@ export default function PBR2019({ report }) {
   };
 
   return (
-    <div>
+    <main>
       <ReportHeaderHero
         title={title}
         banner="/images/pbrs/2019-head.png"
@@ -90,6 +90,6 @@ export default function PBR2019({ report }) {
         lists={shoutoutLists}
         theme={theme}
       />
-    </div>
+    </main>
   );
 }
