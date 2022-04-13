@@ -35,7 +35,7 @@ const DropdownNavButton = (props) => {
         </a>
   
         {showMenu && (
-          <div className="absolute left-0 top-[38px] bg-white z-1 w-full">
+          <div className="absolute left-0 top-[48px] bg-white z-1 w-full">
             <hr className="h-2 bg-sage-base "></hr>
             {props.children}
           </div>

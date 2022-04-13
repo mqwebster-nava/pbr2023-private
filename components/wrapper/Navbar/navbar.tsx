@@ -20,8 +20,8 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <nav className={`bg-gray-100 w-full z-20 py-sm "`}>
-      <div className=" responsive-container   flex flex-wrap items-end justify-between">
+    <nav className={`bg-gray-100 w-full z-20 pt-sm "`}>
+      <div className=" responsive-container   flex flex-wrap items-center justify-between">
         <Logo />
         <div className=" flex items-baseline w-auto">
           {NavData.map((navSection) => {
