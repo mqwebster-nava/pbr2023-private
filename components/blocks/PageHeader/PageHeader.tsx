@@ -76,25 +76,31 @@ const ImagePageHeader = ({
  
   return (
   
-    <div className={` relative min-h-[70vh] `}>
+    <div className={`bg-navy-900 relative min-h-[80vh] `}>
       <div className={`
-      responsive-container z-10 absolute bottom-0 left-0 right-0 `}>
+      responsive-container z-10 relative pt-4xl `}> 
+      {/* //absolute bottom-0 left-0 right-0  */}
         <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
       </div> 
-      <div className={`responsive-container absolute top-0 left-0 right-0 z-10 flex`}>
+     
+      {backgroundImage && (
+      
+       <Image 
+       quality={30}
+       className="brightness-50 opacity-80 object-fill "
+        src={backgroundImage.url} 
+        layout="fill"
+        objectFit="cover"
+        priority
+        ></Image>
+        
+      )}
+       <div className={`responsive-container absolute bottom-0 right-0 left-0 flex`}> 
+      {/* //absolute top-0 left-0 right-0 z-10 flex */}
         <Image src={brandTerrain} height={96} width={96}></Image>
         <Image src={brandDirection} height={96} width={96}></Image>
       </div> 
     
-      {backgroundImage && (
-      
-       <Image 
-       className="brightness-50 object-fill " //blur-xs
-        src={backgroundImage.url} 
-        layout="fill"
-        objectFit="cover"></Image>
-        
-      )}
     </div>
   );
 };

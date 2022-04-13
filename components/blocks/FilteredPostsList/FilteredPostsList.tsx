@@ -26,12 +26,11 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
     children,
     max,
   }) => {
-    console.log(buttonPath, max)
     max = max ?? 6;
     return (
       <div className="responsive-container py-xl">
         <div className={`w-full`}>
-          {title && <h3 className="font-sans text-4xl  font-bold">{title} </h3>}
+          {title && <h3 className="font-sans text-3xl md:text-4xl  font-bold">{title} </h3>}
           {body && (
             <p className={`font-sans pt-lg text-xl text-gray-600 mb-sm`}>
               {body}
