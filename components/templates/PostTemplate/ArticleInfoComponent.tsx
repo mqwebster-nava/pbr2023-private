@@ -23,7 +23,7 @@ const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
                 {post.authors.map((author)=>(
                 <div id={author.name} className="pb-sm ">
                   <p>
-                    <LinkText  href={`/authors/${author.slug}`}>{author.name}</LinkText></p>
+                    <LinkText href={`/authors/${author.slug}`}>{author.name}</LinkText></p>
                   <p className="text-sm">{author.role}</p>
                 </div>
                 ))}
