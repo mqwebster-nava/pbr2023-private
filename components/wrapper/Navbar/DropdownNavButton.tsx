@@ -12,7 +12,7 @@ const DropdownNavButton = (props) => {
         <a
           className=" 
             text-navy-900 font-bold font-sans 
-            pt-md  flex  
+            pt-md pb-sm flex  
             "
         >
           {props.title}
