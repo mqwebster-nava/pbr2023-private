@@ -37,6 +37,7 @@ const DesktopNavBar = ({ NavData }) => {
               </DropdownNavButton>
             );
           })}
+          <div className="pl-sm"></div>
           <Button href="/contact"> Get In Touch </Button>
         </div>
       </div>
