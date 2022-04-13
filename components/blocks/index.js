@@ -22,6 +22,7 @@ import ReportHeaderNavy from "./ReportHeader/ReportHeaderNavy";
 import ReportSectionHeaderNavy from "./ReportSection/ReportHeaderSectionNavy";
 import ReportSectionContentFull from "./ReportSection/ReportSectionContentFull";
 import ReportSideMenu from "./ReportSideMenu/ReportSideMenu";
+import ResponsiveContainer from "./ResponsiveContainer/ResponsiveContainer";
 import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
 
 export {
@@ -50,5 +51,6 @@ export {
   ReportSectionHeaderNavy,
   ReportSideMenu,
   ReportSectionContentFull,
+  ResponsiveContainer,
   FilteredPostsList,
 };

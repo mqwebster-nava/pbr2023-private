@@ -92,7 +92,7 @@ export default function PBR2020({ report }) {
           background="sea-foam"
         />
         <div className="bg-sage-pbr-2018 pb-4xl">
-          <Signatures fullList asContainer />
+          <Signatures fullList margin="mx-0" />
         </div>
         <ReportSections sections={reportSections} stacked />
         <ReportSectionContentFull
