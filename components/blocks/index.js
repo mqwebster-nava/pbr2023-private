@@ -10,13 +10,18 @@ import Newsletter from "./CTABlock/NewsletterBlock";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
 import ReportContent from "./ReportContent/ReportContent";
-import ReportSection from "./ReportSection/ReportSection";
+import ReportSection from "./ReportSection/ReportSection.tsx";
+import ReportSectionStacked from "./ReportSection/ReportSectionStacked.tsx"
 import ReportSections from "./ReportSection/ReportSections";
 import ReportShoutoutSection from "./ReportSection/ReportShoutoutSection";
 import ReportShoutoutColumns from "./ReportSection/ReportShoutoutColumns";
 import ReportIntroSection from "./ReportSection/ReportIntroSection";
 import ReportHeaderHero from "./ReportHeader/ReportHeaderHero";
 import ReportHeaderTextOverlay from "./ReportHeader/ReportHeaderTextOverlay";
+import ReportHeaderNavy from "./ReportHeader/ReportHeaderNavy";
+import ReportSectionHeaderNavy from "./ReportSection/ReportHeaderSectionNavy";
+import ReportSectionContentFull from "./ReportSection/ReportSectionContentFull";
+import ReportSideMenu from "./ReportSideMenu/ReportSideMenu";
 import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
 
 export {
@@ -34,11 +39,16 @@ export {
   QuoteBlock,
   ReportContent,
   ReportSection,
+  ReportSectionStacked,
   ReportSections,
   ReportShoutoutSection,
   ReportShoutoutColumns,
   ReportIntroSection,
   ReportHeaderHero,
   ReportHeaderTextOverlay,
+  ReportHeaderNavy,
+  ReportSectionHeaderNavy,
+  ReportSideMenu,
+  ReportSectionContentFull,
   FilteredPostsList,
 };

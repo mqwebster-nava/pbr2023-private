@@ -9,10 +9,16 @@ export interface ReportThemeInterface {
   };
 }
 
+type Size = "small" | "medium" | "large";
 export interface ReportContentInterface {
   content: string;
-  theme: ReportThemeInterface;
-  isGreenBG: boolean;
+  theme?: ReportThemeInterface;
+  isGreenBG?: boolean;
+  headerSize?: Size;
+  headerColor?: {
+    [HeaderTagName: string]: String;
+  };
+  paragraphSize?: Size;
 }
 
 export interface ReportIntroSection {
