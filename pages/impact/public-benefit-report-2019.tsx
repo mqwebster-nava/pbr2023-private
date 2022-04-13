@@ -7,7 +7,7 @@ import {
   ReportShoutoutSection,
 } from "components/blocks";
 
-import { getPublicBenefitReportByYear } from "../../lib/public-benefit-reports";
+import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
 
 export async function getStaticProps() {
   const report = getPublicBenefitReportByYear(2019);

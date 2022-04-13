@@ -1,5 +1,5 @@
 // https://www.navapbc.com/public-benefit-reports/2020/
-import { getPublicBenefitReportByYear } from "../../lib/public-benefit-reports";
+import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
 import Image from "next/image";
 import Nava2020Cover from "../../public/images/pbrs/nava-cover-2200x700-teal-2020.jpg";
 import VASectionCover from "../../public/images/pbrs/nava-VA-2200x700-hi-res.jpg";
