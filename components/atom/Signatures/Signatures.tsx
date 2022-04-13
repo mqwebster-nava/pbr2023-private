@@ -9,39 +9,39 @@ export interface SignaturesProps {
   asContainer?: boolean;
 }
 
+const fullListOfSignatures = [
+  {
+    name: "Rohan Bhobe",
+    titleAbbreviation: "CEO",
+    title: "Chief Executive Officer",
+    image: rohanSignature,
+    width: 136,
+  },
+  {
+    name: "Sha Hwang",
+    titleAbbreviation: "COO",
+    title: "Chief Operating Officer",
+    image: shaSignature,
+    width: 158,
+  },
+  {
+    name: "Jodi Leo",
+    titleAbbreviation: "CDO",
+    title: "Chief Delivery Officer",
+    image: jodiSignature,
+    width: 150,
+  },
+];
+
 export const Signatures: React.FC<SignaturesProps> = ({
-  isGreenBG = false,
+  isGreenBG,
   fullList = false,
   asContainer = false,
 }) => {
   const textColor = classNames({
-    "text-sage-pbr": isGreenBG,
-    "text-navy-900": !isGreenBG,
+    "text-sage-pbr": isGreenBG === true,
+    "text-navy-900": isGreenBG === false,
   });
-
-  const fullListOfSignatures = [
-    {
-      name: "Rohan Bhobe",
-      titleAbbreviation: "CEO",
-      title: "Chief Executive Officer",
-      image: rohanSignature,
-      width: 136,
-    },
-    {
-      name: "Sha Hwang",
-      titleAbbreviation: "COO",
-      title: "Chief Operating Officer",
-      image: shaSignature,
-      width: 158,
-    },
-    {
-      name: "Jodi Leo",
-      titleAbbreviation: "CDO",
-      title: "Chief Delivery Officer",
-      image: jodiSignature,
-      width: 150,
-    },
-  ];
 
   const signatures = fullList
     ? fullListOfSignatures
