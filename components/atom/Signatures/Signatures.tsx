@@ -6,7 +6,7 @@ import jodiSignature from "/public/images/pbrs/jodi-signature.png";
 export interface SignaturesProps {
   isGreenBG?: boolean;
   fullList?: boolean;
-  asContainer: boolean;
+  asContainer?: boolean;
 }
 
 export const Signatures: React.FC<SignaturesProps> = ({

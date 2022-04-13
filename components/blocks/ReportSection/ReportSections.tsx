@@ -1,7 +1,7 @@
 import ReportSection from "./ReportSection";
 import ReportSectionStacked from "./ReportSectionStacked";
 
-const ReportSections = ({ sections, theme, stacked = false }) => {
+const ReportSections = ({ sections, theme = null, stacked = false }) => {
   return sections.map((section, index) => {
     return stacked ? (
       <ReportSectionStacked key={index} {...section} />
