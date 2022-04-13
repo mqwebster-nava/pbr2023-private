@@ -6,7 +6,7 @@ import VASectionCover from "../../public/images/pbrs/nava-VA-2200x700-hi-res.jpg
 import CASectionCover from "../../public/images/pbrs/nava-cali-2200x700-hi-res.jpg";
 import MedicareSectionCover from "../../public/images/pbrs/nava-medicare-2200x700-hi-res.jpg";
 import CloudSectionCover from "../../public/images/pbrs/nava-cloud-2200x700-hi-res.jpg";
-import { PullQuote, Signatures } from "components/atom";
+import { Signatures } from "components/atom";
 import React from "react";
 import {
   ReportHeaderNavy,
