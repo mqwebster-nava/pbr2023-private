@@ -58,6 +58,7 @@ const formatPosts = (posts) =>{
       slug: post.slug,
       title: post.title,
       date: post.date,
+      clientName: post.clientName,
       contentType: post.contentType,
       shortSummary: post.shortSummary,
       promoImage: formatImageAsset(post.promoImage)
@@ -119,7 +120,9 @@ export default class ContentfulApi {
       slug: post.slug,
       title: post.title,
       contentTags:post.contentTags,
+      clientName: post.clientName,
       longSummary: post.longSummary,
+      hideSideNav:post.hideSideNav,
       authors: post.authorsCollection?.items?.map((author)=>{
         const formattedAuthor: AuthorPostInterface ={
           name: author.name,

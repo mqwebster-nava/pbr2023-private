@@ -11,7 +11,6 @@ export default function Insights({ posts }: Props) {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-
   // For seeing how many tags each content type has
   // let tags = {};
   // const p2 = posts.filter((p)=>p.contentType=="Case Study")

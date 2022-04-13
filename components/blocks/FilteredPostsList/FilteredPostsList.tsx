@@ -55,7 +55,7 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
   )})}
           </div>
           
-          {buttonText && 
+          {buttonText && posts.length>max && 
            <div className="flex justify-end">
             <LinkText href={buttonPath}>{buttonText}</LinkText>
             </div>}
