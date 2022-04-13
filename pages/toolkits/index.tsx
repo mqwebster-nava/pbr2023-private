@@ -5,16 +5,14 @@ import {
     PlaceholderPageHeader,
     FilteredPostsList
   } from "components/blocks";
-  
+import { PageInterface } from "lib/page_data_models";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
 
-export default function Toolkits({posts}) {
-    return ( <div> 
-       <PlaceholderPageHeader
-        title={"Toolkits"}
-        subtitle={"Apply human-centered and agile practices to your program"}
-      />
-      <hr />
+export default function Toolkits({posts, page, preview}) {
+ 
+    return page? (
+    <PageTemplate page={page} preview={preview}>
       <FilteredPostsList
           title={"Latest"}
           body={
@@ -23,16 +21,21 @@ export default function Toolkits({posts}) {
           posts={posts}
         >
         </FilteredPostsList>
-    </div>  );
+    </PageTemplate>): <div>Error</div>
+
 }
 
 
-export async function getStaticProps(context) {
+export async function getStaticProps({ params, preview = false }) {
     const posts = await ContentfulApi.getPostsByContentType("Toolkit");
-    
+    const page: PageInterface = await ContentfulApi.getPageBySlug("/toolkits", {
+      preview: preview,
+    });
     return {
       props: {
-          posts
+          posts,
+          page,
+          preview
       }, // will be passed to the page component as props
     }
   }

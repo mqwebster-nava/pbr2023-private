@@ -8,25 +8,22 @@ import {
   PlaceholderPageHeader,
 
 } from "components/blocks";
+import { PageInterface } from "lib/page_data_models";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
 
-export interface CaseStudiesProps   {
-    tag:string,
-    posts:Array<BasicPostInterface>,
-  }
+// export interface CaseStudiesProps   {
+//     tag:string,
+//     posts:Array<BasicPostInterface>,
+//   }
 
   
-export default function CaseStudies({posts}:CaseStudiesProps) {
+export default function CaseStudies({posts, page, preview}) {
   
-  console.log(posts);
-  return ( 
-    <div> 
+  return page? ( 
+    <PageTemplate page={page} preview={preview}>
     
-      <PlaceholderPageHeader
-        title={"Case Studies"}
-        subtitle={"Learn about Nava’s approach and results"}
-      />
-    
+  
       <FilteredPostsList 
       title={"State of Vermont"}
       max={3}
@@ -61,15 +58,18 @@ export default function CaseStudies({posts}:CaseStudiesProps) {
       max={20}
       posts={posts}>
       </FilteredPostsList>
-    </div>  );
+      </PageTemplate>):<div>Error</div>;
 }
 
 
-export async function getStaticProps(context) {
+export async function getStaticProps({ params, preview = false }) {
     const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByContentType("Case Study");
-    
+    const page: PageInterface = await ContentfulApi.getPageBySlug("/case-studies", {
+      preview: preview,
+    });
     return {
       props: {
+          page,
           posts
       }, // will be passed to the page component as props
     }
