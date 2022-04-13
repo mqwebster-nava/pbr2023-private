@@ -58,4 +58,14 @@ html {
   .responsive-container-content {
     @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
   }
+  .nava-h1 {
+
+  }
+  .nava-h2 {
+
+  }
+  .nava-h3 {
+    
+  }
+
 }

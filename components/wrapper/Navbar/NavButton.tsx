@@ -6,7 +6,8 @@ const NavButton = (props) => {
           className="  w-full
           text-navy-900 pt-md font-sans flex
           mt-sm pr-3xl
-          hover:border-b-sage-900 border-b-8 border-transparent
+          pb-sm
+          hover:border-b-sage-base border-b-8 border-transparent
             "
           href={props.slug}
         >

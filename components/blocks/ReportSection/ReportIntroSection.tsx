@@ -1,8 +1,8 @@
 import { ReportContent } from "..";
 import { Signatures } from "../../atom";
-import { ReportIntroSection } from "lib/report_data_models";
+import { ReportIntroSectionInterface } from "lib/report_data_models";
 
-const ReportIntroSection: React.FC<ReportIntroSection> = ({ body, theme }) => {
+const ReportIntroSection: React.FC<ReportIntroSectionInterface> = ({ body, theme }) => {
   const hasWhiteBackground = theme.sage.background === undefined;
   return (
     <section className={`${theme.sage.background} py-2xl md:px-4xl`}>

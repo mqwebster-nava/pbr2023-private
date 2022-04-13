@@ -35,7 +35,7 @@ const TitleBlock = ({title, subtitle, textColor}) => {
         {title}
       </h1>
       <h2
-        className={`font-sans  lg:text-4xl md:text-3xl text-2xl sm:pr-xl pr-0 md:pr-4xl font-black mr-xl `}
+        className={`font-sans  lg:text-6xl md:text-4xl text-2xl sm:pr-xl pr-0 md:pr-4xl font-black mr-xl `}
       >
         {subtitle}
       </h2>

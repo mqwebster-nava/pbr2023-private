@@ -17,42 +17,50 @@ export interface CaseStudiesProps   {
 
   
 export default function CaseStudies({posts}:CaseStudiesProps) {
-    return ( 
+  
+  console.log(posts);
+  return ( 
     <div> 
     
       <PlaceholderPageHeader
         title={"Case Studies"}
         subtitle={"Learn about Nava’s approach and results"}
       />
-      <hr />
+    
       <FilteredPostsList 
-      title={"Continuous Improvement"}
+      title={"State of Vermont"}
       max={3}
       buttonText="Show more"
       buttonPath="/tags/continuous-improvement"
-      posts={posts.filter((p) => p.contentTags?.includes("Continuous Improvement"))}>
+      posts={posts.filter((p) => p.clientName=="State of Vermont")}>
+      </FilteredPostsList>
+      <FilteredPostsList 
+      title={"Centers for Medicare & Medicaid Services"}
+      max={3}
+      buttonText="Show more"
+      buttonPath="/tags/continuous-improvement"
+      posts={posts.filter((p) => p.clientName=="Centers for Medicare & Medicaid Services")}>
+      </FilteredPostsList>
+      <FilteredPostsList 
+      title={"State of California"}
+      max={3}
+      buttonText="Show more"
+      buttonPath="/tags/continuous-improvement"
+      posts={posts.filter((p) => p.clientName=="State of California")}>
+      </FilteredPostsList>
+      <FilteredPostsList 
+      title={"U.S. Department of Veterans Affairs"}
+      max={3}
+      buttonText="Show more"
+      buttonPath="/tags/continuous-improvement"
+      posts={posts.filter((p) => p.clientName=="U.S. Department of Veterans Affairs")}>
       </FilteredPostsList>
        
       <FilteredPostsList 
-      title={"Human-Centered Design"}
-      max={3}
-      buttonText="Show more"
-      buttonPath="/tags/human-centered-design"
-      posts={posts.filter((p) => p.contentTags?.includes("Human-Centered Design"))}>
+      title={"All"}
+      max={20}
+      posts={posts}>
       </FilteredPostsList>
-       
-        <CardsGrid >
-          {
-          posts.map((post) =>( <ContentCard 
-            type={post.contentType}
-                  title={post.title} 
-                  path={`/case-studies/${post.slug}`}>
-                      {post.shortSummary}
-                  </ContentCard>))
-            }
-
-        </CardsGrid>
-
     </div>  );
 }
 

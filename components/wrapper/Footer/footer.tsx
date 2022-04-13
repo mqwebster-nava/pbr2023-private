@@ -52,7 +52,7 @@ const FooterSiteSection = ({navDataSection}) => (
 
 const Footer = () => {
   return (
-    <div className={"bg-plum-900 "}>
+    <div className={"bg-navy-900 "}>
      
       <div className="responsive-container pb-md">
         <div className="flex">

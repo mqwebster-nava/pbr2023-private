@@ -12,7 +12,7 @@ const DropdownNavButton = (props) => {
         <a
           className=" 
             text-navy-900 font-bold font-sans 
-            pt-md  flex  
+            pt-md pb-sm flex  
             "
         >
           {props.title}
@@ -35,8 +35,8 @@ const DropdownNavButton = (props) => {
         </a>
   
         {showMenu && (
-          <div className="absolute left-0 top-[38px] bg-white z-1 w-full">
-            <hr className="h-2 bg-sage-900 "></hr>
+          <div className="absolute left-0 top-[48px] bg-white z-1 w-full">
+            <hr className="h-2 bg-sage-base "></hr>
             {props.children}
           </div>
         )}

@@ -15,12 +15,14 @@ export interface BasicPostInterface{
     title:string;
     date:string;
     contentType:string;
+    clientName:string;
     contentTags:Array<string>;
     shortSummary:string;
     promoImage:ContentfulImageAsset;
 }
 export interface FullPostInterface extends BasicPostInterface{
     longSummary:string;
+    hideSideNav:boolean;
     authors:Array<AuthorPostInterface>;
     body:any;
 }
@@ -44,6 +46,7 @@ export const POST_CORE_FIELDS = `
     contentType
     shortSummary
     contentTags
+    clientName
     promoImage {
       sys {
         id
@@ -74,6 +77,7 @@ export const AUTHOR_ALL_FIELDS =`
 export const POST_ALL_FIELDS = `
     ${POST_CORE_FIELDS}
     longSummary
+    hideSideNav
     authorsCollection {
         items {
             ${AUTHOR_CORE_FIELDS}

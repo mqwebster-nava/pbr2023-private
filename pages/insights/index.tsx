@@ -10,18 +10,16 @@ export default function Insights({ posts }: Props) {
   posts = posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  console.log(posts.length);
 
-  let tags = {};
-  const p2 = posts.filter((p)=>p.contentType=="Case Study")
-  console.log(p2.length);
-  p2.forEach((post)=>{
-    post.contentTags?.forEach((tag)=>{
-      if(tag in tags) tags[tag]+=1;
-      else tags[tag]=1;
-    });
-  });
-  console.log(tags);
+  // For seeing how many tags each content type has
+  // let tags = {};
+  // const p2 = posts.filter((p)=>p.contentType=="Case Study")
+  // p2.forEach((post)=>{
+  //   post.contentTags?.forEach((tag)=>{
+  //     if(tag in tags) tags[tag]+=1;
+  //     else tags[tag]=1;
+  //   });
+  // });
 
   return (
     <div>
@@ -39,22 +37,19 @@ export default function Insights({ posts }: Props) {
           posts={posts.slice(0, 3)}
         >
         </FilteredPostsList>
-
         <FilteredPostsList
           title={"On healthcare"}
           posts={posts.filter((p) => p.contentTags?.includes("Healthcare"))}
+          
         >
         </FilteredPostsList>
         <FilteredPostsList
           title={"Envisioning the future of WIC"}
-          posts={[]}
+          max={20}
+          posts={posts}
         >
         </FilteredPostsList>
-        <FilteredPostsList
-          title={"On Veterans’ services"}
-          posts={posts.filter((p) => p.contentTags?.includes("Veterans"))}
-        >
-        </FilteredPostsList>
+       
     
          </div>
     </div>
