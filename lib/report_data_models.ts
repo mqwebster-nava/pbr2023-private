@@ -15,7 +15,7 @@ export interface ReportContentInterface {
   isGreenBG: boolean;
 }
 
-export interface ReportIntroSection {
+export interface ReportIntroSectionInterface {
   body: string;
   theme: ReportThemeInterface;
   isWhiteBG: boolean;
@@ -34,7 +34,7 @@ export interface ReportSectionInterface {
   isGreenBG: boolean;
 }
 
-export interface ReportShoutoutSection {
+export interface ReportShoutoutSectionInterface {
   title: string;
   introduction: string;
   lists: Array<object>;

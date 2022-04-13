@@ -542,17 +542,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-lg {
   margin-top: 16px;
 }
-.mr-2 {
-  margin-right: 0.5rem;
+.mb-md {
+  margin-bottom: 12px;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mb-md {
-  margin-bottom: 12px;
-}
 .mb-lg {
   margin-bottom: 16px;
+}
+.mb-sm {
+  margin-bottom: 8px;
 }
 .mt-xl {
   margin-top: 24px;
@@ -617,11 +617,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
-.h-64 {
-  height: 16rem;
-}
 .h-52 {
   height: 13rem;
+}
+.h-\[460px\] {
+  height: 460px;
+}
+.h-56 {
+  height: 14rem;
 }
 .h-\[96px\] {
   height: 96px;
@@ -655,6 +658,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .min-h-\[70vh\] {
   min-height: 70vh;
+}
+.w-\[331px\] {
+  width: 331px;
 }
 .w-full {
   width: 100%;
@@ -706,6 +712,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-screen-xl {
   max-width: 1280px;
+}
+.max-w-\[331px\] {
+  max-width: 331px;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -828,20 +837,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-b-8 {
   border-bottom-width: 8px;
 }
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-}
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
-.border-black {
+.border-gray-300 {
   --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 .border-transparent {
   border-color: transparent;
+}
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .bg-gray-100 {
   --tw-bg-opacity: 1;
@@ -1094,10 +1103,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(8 165 136 / var(--tw-bg-opacity));
 }
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
 .bg-ecru-pbr-2019 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 237 225 / var(--tw-bg-opacity));
@@ -1105,6 +1110,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-navy-pbr-2018 {
   --tw-bg-opacity: 1;
   background-color: rgb(8 46 76 / var(--tw-bg-opacity));
+}
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .bg-red-200 {
   --tw-bg-opacity: 1;
@@ -1118,12 +1127,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   -o-object-fit: fill;
      object-fit: fill;
 }
-.p-6 {
-  padding: 1.5rem;
-}
-.p-sm {
-  padding: 8px;
-}
 .p-md {
   padding: 12px;
 }
@@ -1132,6 +1135,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-lg {
   padding: 16px;
+}
+.p-sm {
+  padding: 8px;
 }
 .p-10 {
   padding: 2.5rem;
@@ -1169,18 +1175,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 8px;
   padding-bottom: 8px;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-.py-2\.5 {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-}
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
 .px-lg {
   padding-left: 16px;
   padding-right: 16px;
@@ -1205,6 +1199,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 72px;
   padding-bottom: 72px;
 }
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 .pt-3xl {
   padding-top: 48px;
 }
@@ -1228,6 +1226,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-12 {
   padding-bottom: 3rem;
+}
+.pt-xl {
+  padding-top: 24px;
 }
 .pt-2xl {
   padding-top: 32px;
@@ -1275,11 +1276,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: Freight Text Pro, serif;
 }
 .text-xl {
-  font-size: 28px;
-  line-height: 39.2px;
+  font-size: 24px;
 }
 .text-xs {
-  font-size: 12px;
+  font-size: 11px;
 }
 .text-sm {
   font-size: 14px;
@@ -1294,20 +1294,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 33px;
 }
 .text-2xl {
-  font-size: 34px;
-  line-height: 47.6px;
+  font-size: 28px;
 }
 .text-3xl {
-  font-size: 44px;
-  line-height: 61.6px;
+  font-size: 32px;
 }
 .text-4xl {
-  font-size: 54px;
-  line-height: 67.5px;
+  font-size: 38px;
+  line-height: 47.6px;
 }
 .text-5xl {
-  font-size: 3rem;
-  line-height: 1;
+  font-size: 44px;
+}
+.text-6xl {
+  font-size: 54px;
 }
 .font-black {
   font-weight: 900;
@@ -1320,9 +1320,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .font-extrabold {
   font-weight: 800;
-}
-.font-medium {
-  font-weight: 500;
 }
 .font-semibold {
   font-weight: 600;
@@ -1359,9 +1356,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.text-black {
+.text-sage-600 {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(21 136 103 / var(--tw-text-opacity));
 }
 .text-gray-700 {
   --tw-text-opacity: 1;
@@ -1374,6 +1371,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-navy-dark {
   --tw-text-opacity: 1;
   color: rgb(10 5 57 / var(--tw-text-opacity));
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .text-gray-800 {
   --tw-text-opacity: 1;
@@ -1553,14 +1554,19 @@ html {
   font-family: "GTAmerica";
 }
 
-.hover\:border-b-sage-900:hover {
+.hover\:border-b-sage-base:hover {
   --tw-border-opacity: 1;
-  border-bottom-color: rgb(0 76 49 / var(--tw-border-opacity));
+  border-bottom-color: rgb(8 165 136 / var(--tw-border-opacity));
 }
 
-.hover\:bg-white:hover {
+.hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-sage-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 242 237 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-sage-900:hover {
@@ -1568,19 +1574,9 @@ html {
   background-color: rgb(0 76 49 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gold-800:hover {
+.hover\:bg-sage-400:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(246 159 9 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-gray-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-navy-50:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(227 228 236 / var(--tw-bg-opacity));
+  background-color: rgb(8 165 136 / var(--tw-bg-opacity));
 }
 
 .hover\:text-sage-500:hover {
@@ -1591,11 +1587,6 @@ html {
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.hover\:text-white:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:text-sage-base:hover {
@@ -1618,42 +1609,21 @@ html {
           text-decoration-line: underline;
 }
 
-.focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+.group:hover .group-hover\:text-sage-400 {
+  --tw-text-opacity: 1;
+  color: rgb(8 165 136 / var(--tw-text-opacity));
 }
 
-.focus\:ring-4:focus {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
-.focus\:ring-gold-300:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(249 236 120 / var(--tw-ring-opacity));
+.group:hover .group-hover\:brightness-75 {
+  --tw-brightness: brightness(.75);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @media (prefers-color-scheme: dark) {
 
-  .dark\:bg-gold-600 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(250 208 26 / var(--tw-bg-opacity));
-  }
-
   .dark\:text-gray-400 {
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity));
-  }
-
-  .dark\:hover\:bg-gold-700:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(248 183 18 / var(--tw-bg-opacity));
-  }
-
-  .dark\:focus\:ring-gold-800:focus {
-    --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(246 159 9 / var(--tw-ring-opacity));
   }
 }
 
@@ -1672,9 +1642,8 @@ html {
     padding-right: 24px;
   }
 
-  .sm\:text-4xl {
+  .sm\:text-6xl {
     font-size: 54px;
-    line-height: 67.5px;
   }
 
   .sm\:leading-10 {
@@ -1737,19 +1706,17 @@ html {
     padding-right: 72px;
   }
 
-  .md\:text-3xl {
-    font-size: 44px;
-    line-height: 61.6px;
-  }
-
-  .md\:text-2xl {
-    font-size: 34px;
+  .md\:text-4xl {
+    font-size: 38px;
     line-height: 47.6px;
   }
 
-  .md\:text-xl {
+  .md\:text-2xl {
     font-size: 28px;
-    line-height: 39.2px;
+  }
+
+  .md\:text-xl {
+    font-size: 24px;
   }
 }
 
@@ -1789,9 +1756,8 @@ html {
     padding-right: 2rem;
   }
 
-  .lg\:text-4xl {
+  .lg\:text-6xl {
     font-size: 54px;
-    line-height: 67.5px;
   }
 }
 

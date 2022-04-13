@@ -7,9 +7,14 @@ export default {
   component: ContentCard,
 } as ComponentMeta<typeof ContentCard>;
 
-const Template: ComponentStory<typeof ContentCard> = (args) => <ContentCard {...args} />;
+const Template: ComponentStory<typeof ContentCard> = (args) => 
+<div className="max-w-[331px] w-[331px] p-md">
+  <ContentCard {...args} />
+  </div>;
 
 export const Primary = Template.bind({})
+
+export const withLargeText = Template.bind({})
 
 export const WithImage = Template.bind({})
 
@@ -19,6 +24,14 @@ Primary.args = {
     title:"A day at Nava as an infrastructure engineer",
     children: "A day at Nava with Wei Leong, an infrastructure engineer working on the Medicare Payment System Modernization team."
 }
+withLargeText.args = {
+  path:"/",
+  type:"Toolkit",
+  title:"Plain language templates for user research",
+  children: "Using plain language is essential to protecting privacy and getting informed consent in user research."
+}
+
+
 
 WithImage.args = {
     path:"/",

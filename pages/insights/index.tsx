@@ -11,14 +11,16 @@ export default function Insights({ posts }: Props) {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  let tags = {};
-  const p2 = posts.filter((p)=>p.contentType=="Case Study")
-  p2.forEach((post)=>{
-    post.contentTags?.forEach((tag)=>{
-      if(tag in tags) tags[tag]+=1;
-      else tags[tag]=1;
-    });
-  });
+
+  // For seeing how many tags each content type has
+  // let tags = {};
+  // const p2 = posts.filter((p)=>p.contentType=="Case Study")
+  // p2.forEach((post)=>{
+  //   post.contentTags?.forEach((tag)=>{
+  //     if(tag in tags) tags[tag]+=1;
+  //     else tags[tag]=1;
+  //   });
+  // });
 
   return (
     <div>

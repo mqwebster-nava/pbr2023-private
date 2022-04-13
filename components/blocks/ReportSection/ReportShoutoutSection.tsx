@@ -1,9 +1,9 @@
 import { ReportContent } from "..";
 import { Details } from "../../atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
-import { ReportShoutoutSection } from "lib/report_data_models";
+import { ReportShoutoutSectionInterface } from "lib/report_data_models";
 
-const ReportShoutoutSection: React.FC<ReportShoutoutSection> = ({
+const ReportShoutoutSection: React.FC<ReportShoutoutSectionInterface> = ({
   title,
   introduction,
   lists = null,

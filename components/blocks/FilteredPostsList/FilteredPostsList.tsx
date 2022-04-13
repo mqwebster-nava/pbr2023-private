@@ -1,6 +1,6 @@
 
 import ContentCard from "components/atom/ContentCard/ContentCard";
-import { Button } from "components/atom";
+import { Button, LinkText } from "components/atom";
 import { BasicPostInterface } from "lib/post_data_models";
 import { getContentUrl } from "utils/utils";
 
@@ -37,11 +37,11 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
             </p>
           )}
           <div
-            className={`w-full flex  flex-wrap md:flex-row flex-col  my-2xl -mx-md`}
+            className={`w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-x-lg gap-y-xl my-2xl`}
           >
             {posts.slice(0, max).map((post) =>{
             if(!post.promoImage) cycleNum+=1;
-            return ( <div className=" w-full md:w-1/2 lg:w-1/3 p-md self-stretch">
+            return ( <div className=" w-full self-stretch ">
                 <ContentCard
                 type={post.contentType}
                   title={post.title}
@@ -54,7 +54,11 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
               </div>
   )})}
           </div>
-          {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
+          
+          {buttonText && 
+           <div className="flex justify-end">
+            <LinkText href={buttonPath}>{buttonText}</LinkText>
+            </div>}
         </div>
       </div>
     );
