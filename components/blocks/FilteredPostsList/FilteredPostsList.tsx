@@ -20,12 +20,13 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
     title,
     body,
     posts,
-    buttonPath,
+    buttonPath = null,
     buttonText,
     cycleNum=Math.floor(Math.random() * 4),
     children,
     max,
   }) => {
+    console.log(buttonPath, max)
     max = max ?? 6;
     return (
       <div className="responsive-container py-xl">
@@ -55,9 +56,9 @@ const FilteredPostsList: React.FC<PostListInterface> = ({
   )})}
           </div>
           
-          {buttonText && posts.length>max && 
+          {buttonPath!=null && posts.length>max && 
            <div className="flex justify-end">
-            <LinkText href={buttonPath}>{buttonText}</LinkText>
+            <LinkText href={buttonPath}>Read more</LinkText>
             </div>}
         </div>
       </div>

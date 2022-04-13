@@ -1,7 +1,7 @@
 import ContentfulApi from "lib/contentful";
 import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
 import { BasicPostInterface } from "lib/post_data_models";
-
+import {allTagsSlugIdPair} from "utils/utils"
 export interface Props {
   posts: Array<BasicPostInterface>;
 }
@@ -10,6 +10,18 @@ export default function Insights({ posts }: Props) {
   posts = posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  const tags = [
+    "Human-Centered Design",
+    "Scalable Solutions",
+    "User Experience Research",
+    "Continuous Improvement",
+    "Healthcare",
+    "Accessibility and Equity",
+    "Agile Development",
+    "Content Strategy"
+  ]
+
 
   // For seeing how many tags each content type has
   // let tags = {};
@@ -29,26 +41,26 @@ export default function Insights({ posts }: Props) {
       />
 
       <div>
+        {tags.map((tag)=>{
+          const urlpart = allTagsSlugIdPair.revGet(tag);
+          return <FilteredPostsList
+            max={3}
+           title={tag}
+           buttonPath={`/tags/${urlpart}`}
+           posts={posts.filter((p) => p.contentTags?.includes(tag))}
+         />
+        })}
+
+        
         <FilteredPostsList
-          title={"Latest"}
-          body={
-            "Nava’s been a trusted government partner since we helped fix HealthCare.gov in 2013. See what we’ve been up to recently."
-          }
-          posts={posts.slice(0, 3)}
-        >
-        </FilteredPostsList>
-        <FilteredPostsList
-          title={"On healthcare"}
-          posts={posts.filter((p) => p.contentTags?.includes("Healthcare"))}
-          
-        >
-        </FilteredPostsList>
-        <FilteredPostsList
-          title={"Envisioning the future of WIC"}
-          max={20}
+           max={50}
+          title={"All"}
           posts={posts}
         >
         </FilteredPostsList>
+
+
+       
        
     
          </div>
