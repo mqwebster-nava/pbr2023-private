@@ -45,12 +45,17 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
       : cycleNum % 2 == 0
       ? brandTerrain2
       : brandTerrain3;
+
+    const opacity = classNames({
+        "opacity-50": promoImage==null,
+       
+    });
   return (
     <a href={`${path}`} className="group block h-full ">
       <div className={`${backgroundColor} relative h-52 w-full mb-md group-hover:brightness-75`}>
          <Image
           layout={"fill"}
-          className={`object-cover h-full w-full opacity-50 `}
+          className={`object-cover h-full w-full ${opacity}`}
           src={promoImage ? promoImage.url : pattern}
         ></Image> 
       </div>
