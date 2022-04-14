@@ -3,10 +3,11 @@ import classNames from "classnames";
 import rohanSignature from "/public/images/pbrs/rohan-signature.png";
 import shaSignature from "/public/images/pbrs/sha-signature.png";
 import jodiSignature from "/public/images/pbrs/jodi-signature.png";
+import ResponsiveContainer from "../../blocks/ResponsiveContainer/ResponsiveContainer";
 export interface SignaturesProps {
   isGreenBG?: boolean;
   fullList?: boolean;
-  asContainer?: boolean;
+  margin?: string;
 }
 
 const fullListOfSignatures = [
@@ -36,7 +37,7 @@ const fullListOfSignatures = [
 export const Signatures: React.FC<SignaturesProps> = ({
   isGreenBG,
   fullList = false,
-  asContainer = false,
+  margin = "",
 }) => {
   const textColor = classNames({
     "text-sage-pbr": isGreenBG === true,
@@ -48,11 +49,6 @@ export const Signatures: React.FC<SignaturesProps> = ({
     : fullListOfSignatures.slice(0, -1);
   const numberOfSignatures = signatures.length;
 
-  const container = classNames({
-    "responsive-container-content": asContainer === false,
-    "responsive-container": asContainer === true,
-  });
-
   const gridColumns = classNames({
     "grid-cols-1": true,
     "md:grid-cols-2": numberOfSignatures <= 2,
@@ -60,8 +56,8 @@ export const Signatures: React.FC<SignaturesProps> = ({
   });
 
   return (
-    <div className={`${container} py-xl`}>
-      <div className={`grid ${gridColumns} justify-items-left max-w-lg`}>
+    <ResponsiveContainer containerClass="py-xl" contentClass={margin}>
+      <div className={`grid ${gridColumns} max-w-lg`}>
         {signatures.map((signature, index) => (
           <div key={index}>
             <Image
@@ -76,6 +72,6 @@ export const Signatures: React.FC<SignaturesProps> = ({
           </div>
         ))}
       </div>
-    </div>
+    </ResponsiveContainer>
   );
 };

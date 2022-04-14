@@ -1,6 +1,6 @@
 const ReportSideMenu = ({ links }) => {
   return (
-    <aside className="bg-gray-100 fixed hidden md:block w-[300px] z-1 right-[10%] lg:right-[20%] top-[20%] p-4">
+    <aside className="bg-gray-100 fixed hidden md:block w-[300px] z-1 right-[10%] top-[20%] p-4">
       <ul>
         <span className="font-bold">On this page:</span>
         {links.map((link, index) => (
