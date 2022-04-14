@@ -94,9 +94,10 @@ const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
       <PlaceholderPageHeader
         title={page.pageHeader.title}
         subtitle={page.pageHeader.subtitle}
-        brandElements="top"
-        textLocation="bottom"
-        backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
+        bannerColor={page.pageHeader.bannerColor}
+        // brandElements="top"
+        // textLocation="bottom"
+        // backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
       />
       {page.contentBlocks.map((block) => (
        getComponent(block)
