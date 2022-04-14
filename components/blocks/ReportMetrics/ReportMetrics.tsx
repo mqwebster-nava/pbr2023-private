@@ -1,6 +1,8 @@
+import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
+
 export const ReportMetrics = ({ metrics }) => {
   return (
-    <div className="responsive-container mx-auto">
+    <ResponsiveContainer contentClass="mx-0">
       <p className="font-bold pb-2">At a glance</p>
       <div className="grid grid-cols-1 md:grid-cols-3 max-w-lg">
         {metrics.map((metric, index) => (
@@ -13,6 +15,6 @@ export const ReportMetrics = ({ metrics }) => {
           </div>
         ))}
       </div>
-    </div>
+    </ResponsiveContainer>
   );
 };
