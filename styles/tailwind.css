@@ -3,26 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "GTAmerica";
-  src: url("/fonts/GT-America/GT-America-Extended-Thin.otf");
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "GTAmerica";
-  src: url("/fonts/GT-America/GT America Regular.ttf");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
+    font-family: "GTAmerica";
+    src: url("/fonts/GT-America/GT America Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 @font-face {
-  font-family: "GTAmerica";
-  src: url("/fonts/GT-America/GT America Bold.ttf");
-  font-style: bold;
-  font-weight: 700;
-  font-display: swap;
+    font-family: "GTAmerica";
+    src: url("/fonts/GT-America/GT America Bold.ttf");
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
 }
 @font-face {
   font-family: "GTAmerica";
@@ -65,7 +57,6 @@ html {
 
   }
   .nava-h3 {
-    
   }
 
 }
