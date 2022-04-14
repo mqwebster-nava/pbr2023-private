@@ -99,12 +99,15 @@ const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
         backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
       />
       {page.contentBlocks.map((block) => (
-        <Fade bottom>{getComponent(block)}</Fade>
+       getComponent(block)
+        // <Fade bottom>{
+         
+        //   }</Fade>
       ))}
-       <Fade bottom >
+       {/* <Fade bottom > */}
          {children}
      
-    </Fade>
+    {/* </Fade> */}
     </>
   );
 }
