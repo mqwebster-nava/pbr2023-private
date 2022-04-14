@@ -3,6 +3,7 @@ import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageProps } from "utils/pageUtils";
 import { PageInterface } from "lib/page_data_models";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
+import { CTABlock, Newsletter } from "components/blocks";
 
 export default function Home({ page, preview }) {
   return page ? (
@@ -23,6 +24,8 @@ export default function Home({ page, preview }) {
       }>
         An API standard would unlock digital tools and catalyze WIC’s ability to evolve and grow.
       </HighlightedCard>
+      
+      <Newsletter></Newsletter>
     </PageTemplate>
   ) : (
     <div>Error</div>
