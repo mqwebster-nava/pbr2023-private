@@ -25,6 +25,7 @@ const PlaceholderPageHeader = ({
   // textLocation,
   // brandElements
 }: PageHeaderInterface) => {
+  bannerColor = bannerColor ?? "navy";
   return  <DefaultPageHeader title={title} subtitle={subtitle} bannerColor={bannerColor}/>
 };
 
@@ -49,6 +50,7 @@ const DefaultPageHeader = ({
  // textLocation,
   bannerColor,
 }: PageHeaderInterface) => {
+  console.log(bannerColor)
   return (
     <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`}>
       <div className={`
