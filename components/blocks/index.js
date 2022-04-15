@@ -27,6 +27,7 @@ import ResponsiveContainer from "./ResponsiveContainer/ResponsiveContainer";
 import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
 import { PercentBarChart } from "./Chart/PercentBarChart";
 import { PercentSquareChart } from "./Chart/PercentSquareChart";
+import { PercentSquareChartFixed } from "./Chart/PercentSquareChartFixed";
 import { FilterControl } from "./Chart/FilterControl";
 export {
   LargeHero,
@@ -59,5 +60,6 @@ export {
   FilteredPostsList,
   PercentBarChart,
   PercentSquareChart,
+  PercentSquareChartFixed,
   FilterControl,
 };
