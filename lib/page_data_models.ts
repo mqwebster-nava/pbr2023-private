@@ -4,6 +4,7 @@ Post gets taken in by the pages
 
 import { POST_CORE_FIELDS } from "./post_data_models";
 
+type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
 export interface PageComponentInterface {
   title: string;
   body: string;
@@ -13,9 +14,10 @@ export interface PageComponentInterface {
 }
 export interface PageHeaderInterface {
   
-  title: string;
-  subtitle:string;
-  backgroundImage:any;
+  title?: string;
+  subtitle?:string;
+  bannerColor?:BannerColor;
+  //backgroundImage:any;
 
 }
 
@@ -31,18 +33,19 @@ export interface PageInterface {
 export const PAGE_HEADER_FIELDS = `
     title
     subtitle
-    backgroundImage {
-        sys {
-          id
-        }
-        url
-        width
-        height
-        title
-        description
-    }
+    bannerColor
 `;
 
+// backgroundImage {
+//     sys {
+//       id
+//     }
+//     url
+//     width
+//     height
+//     title
+//     description
+// }
 const SECTION_HEADER_FIELDS = `
     title
     subtitle

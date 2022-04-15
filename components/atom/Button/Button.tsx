@@ -26,9 +26,10 @@ export const Button: React.FC<ButtonProps> = ({
     <div className={``} {...rest}>
       <a
         href={href}
-        type="button"
-        className={`font-sans
-          inline-flex items-center justify-center
+        type='button'
+        className={
+          `font-sans
+          inline-flex items-center justify-center rounded-sm
           px-sm py-sm  
           text-base leading-6
           transition duration-150 ease-in-out flex-col

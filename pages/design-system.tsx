@@ -417,6 +417,10 @@ export default function DesignSystem({ page, preview }: PageProps) {
             <p className="text-3xl">The quick brown fox ...</p>
             <p className="text-xs pt-md ">text 4xl / Preset 1</p>
             <p className="text-4xl">The quick brown fox ...</p>
+            <p className="text-xs pt-md ">text 5xl / Preset 2</p>
+            <p className="text-5xl">The quick brown fox ...</p>
+            <p className="text-xs pt-md ">text 6xl / Preset 1</p>
+            <p className="text-6xl">The quick brown fox ...</p>
           </div>
         </div>
       

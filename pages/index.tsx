@@ -1,13 +1,42 @@
+import ContentfulApi from "lib/contentful";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import { PageProps } from "utils/pageUtils";
+import { PageInterface } from "lib/page_data_models";
+import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
+import { CTABlock, Newsletter } from "components/blocks";
 
-export default function Home() {
-  return (
-    <>
-      <div className='max-w-screen-xl mx-auto text-center pt-28 pb-12 px-4 sm:px-6 lg:py-16 lg:px-8'>
-        <div className='h-10'></div>
-        <h2 className='text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10'>
-          Nava Home Page
-        </h2>
-      </div>
-    </>
-  )
+export default function Home({ page, preview }) {
+  return page ? (
+    <PageTemplate page={page} preview={preview} >
+
+<HighlightedCard 
+      title={"How APIs can help WIC better meet staff and participants’ needs"} 
+      path={"/" } 
+      type={"Insight"}
+     promoImage={ 
+      {
+        id: '5D9BooUBjHC6MYX45Xyk7T',
+        url: 'https://images.ctfassets.net/t2ekr6eg3fr3/6rpVAwgdjrrnR2OrgaHzrL/8a192fb130c0dba481ca54562deb022d/sample-feature.png?h=250',
+        title: 'How APIs can help WIC better meet staff and participants’ needs',
+        description: 'An API standard would unlock digital tools and catalyze WIC’s ability to evolve and grow.',
+        width: 1500,
+        height: 845}  
+      }>
+        An API standard would unlock digital tools and catalyze WIC’s ability to evolve and grow.
+      </HighlightedCard>
+      
+      <Newsletter></Newsletter>
+    </PageTemplate>
+  ) : (
+    <div>Error</div>
+  );
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  const res: PageInterface = await ContentfulApi.getPageBySlug("/", {
+    preview: preview,
+  });
+  return {
+    props: { page: res },
+  };
 }

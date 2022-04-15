@@ -3,6 +3,7 @@ import {allTagsSlugIdPair, getContentUrl} from "utils/utils"
 import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { BasicPostInterface } from "lib/post_data_models";
+import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
 
 export interface FilteredByTagPageProps   {
   tag:string,
@@ -13,19 +14,11 @@ export interface FilteredByTagPageProps   {
   export default function FilteredByTagPage({tag, posts}:FilteredByTagPageProps) {
     return (
       <div>
-     <h1 className="mx-3xl">Tags: {tag}</h1>
-     <CardsGrid  >
-          {
-          posts.map((post) =>( <ContentCard 
-            type={post.contentType}
-                  title={post.title} 
-                  path={getContentUrl(post.contentType, post.slug)}>
-                      {post.shortSummary}
-                  </ContentCard>))
-            }
-
-        </CardsGrid>
- 
+      <PlaceholderPageHeader title={"tag"} subtitle={tag}/>
+     <FilteredPostsList
+        max={50}
+        posts={posts}
+      ></FilteredPostsList>
      </div>
     );
   }

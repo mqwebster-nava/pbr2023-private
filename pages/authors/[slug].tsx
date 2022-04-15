@@ -3,21 +3,16 @@ import LargeHero from "components/blocks/PageHeader/LargeHero";
 import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { getContentUrl } from "utils/utils";
+import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
+
 export default function AuthorPosts({ posts, name, role, bio }) {
   return (
     <div>
-      <div>
-        <h1 className="mx-3xl my-2xl">Author: {name}</h1>
-        <CardsGrid >
-          {posts.map((post) => (
-            <ContentCard 
-            type={post.contentType}
-            title={post.title} path={getContentUrl(post.contentType, post.slug)}>
-              {post.shortSummary}
-            </ContentCard>
-          ))}
-        </CardsGrid>
-      </div>
+      <PlaceholderPageHeader title={"Author"} subtitle={name}/>
+     <FilteredPostsList
+        max={50}
+        posts={posts}
+      ></FilteredPostsList>
     </div>
   );
 }

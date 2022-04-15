@@ -28,7 +28,6 @@ export default async function preview(req, res) {
    * http://localhost:3000/api/preview?secret={SECRET}&slug={entry.fields.slug}&contentType=pageContent
    *
    */
-  console.log(req.query);
   if (
     req.query.secret !== process.env.CONTENTFUL_PREVIEW_SECRET ||
     !req.query.slug ||
@@ -52,7 +51,6 @@ export default async function preview(req, res) {
     preview = await ContentfulApi.getPageBySlug(req.query.slug, {
       preview: true,
     });
-    console.log(preview);
     redirectUrl = `${preview.slug}`;
   }
   // Prevent Next.js preview mode from being enabled if the content doesn't exist.

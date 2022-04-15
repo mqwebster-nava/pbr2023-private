@@ -13,7 +13,9 @@ import { PageProps } from "utils/pageUtils";
 import ReactMarkdown from 'react-markdown'
 import { ContentCard } from "components/atom";
 import { getContentUrl } from "utils/utils";
-export default function PageTemplate({ page, preview }: PageProps) {
+import { Children } from "react";
+
+const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
   // need to deconstruct post
   // const doc = page.body ? page.body.json : null;
   const MarkdownComponent = ({content}) => {
@@ -92,13 +94,24 @@ export default function PageTemplate({ page, preview }: PageProps) {
       <PlaceholderPageHeader
         title={page.pageHeader.title}
         subtitle={page.pageHeader.subtitle}
-        brandElements="top"
-        textLocation="bottom"
-        backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
+        bannerColor={page.pageHeader.bannerColor}
+        // brandElements="top"
+        // textLocation="bottom"
+        // backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
       />
       {page.contentBlocks.map((block) => (
-        <Fade bottom>{getComponent(block)}</Fade>
+       getComponent(block)
+        // <Fade bottom>{
+         
+        //   }</Fade>
       ))}
+       {/* <Fade bottom > */}
+         {children}
+     
+    {/* </Fade> */}
     </>
   );
 }
+// {/* {children&& Children.map(children, (child) => ( {child}))} */
+
+export default PageTemplate;

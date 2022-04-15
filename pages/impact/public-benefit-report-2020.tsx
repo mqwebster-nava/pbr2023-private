@@ -91,8 +91,8 @@ export default function PBR2020({ report }) {
           body={report.intro.body}
           background="sea-foam"
         />
-        <div className="bg-sea-foam-base pb-4xl">
-          <Signatures isGreenBG={false} />
+        <div className="bg-sage-pbr-2018 pb-4xl">
+          <Signatures fullList margin="mx-0" />
         </div>
         <ReportSections sections={reportSections} stacked />
         <ReportSectionContentFull

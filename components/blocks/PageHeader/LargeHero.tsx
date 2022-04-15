@@ -33,7 +33,7 @@ const LargeHero = ({ title, subtitle, colorTheme, isStorybook}:  LargeHeroInterf
     const TitleBlock = ()=>{
         return (
         <div className="w-full mt-xl mb-4xl ml-3xl">
-            <h1 className={`font-sans text-${colorTheme}-base lg:text-4xl text-3xl font-black`}>{title}</h1>
+            <h1 className={`font-sans text-${colorTheme}-base lg:text-6xl text-4xl font-black`}>{title}</h1>
         </div>
         )
     }
