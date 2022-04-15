@@ -59,3 +59,20 @@ html {
     @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
   }
 }
+
+.rainbow-gradient {
+  background-image: linear-gradient(
+    to right,
+    #de4535,
+    #e6993f,
+    #fcf050,
+    #72b656,
+    #0386cf,
+    #b12fa7,
+    #000002,
+    #875525,
+    #8abde6,
+    #e99cbd,
+    #ffffff
+  );
+}

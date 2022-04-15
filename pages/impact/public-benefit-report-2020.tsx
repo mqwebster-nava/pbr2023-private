@@ -1,5 +1,5 @@
 // https://www.navapbc.com/public-benefit-reports/2020/
-import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
+import { getMarkdownByFilename } from "../../lib/markdown";
 import Image from "next/image";
 import Nava2020Cover from "../../public/images/pbrs/nava-cover-2200x700-teal-2020.jpg";
 import VASectionCover from "../../public/images/pbrs/nava-VA-2200x700-hi-res.jpg";
@@ -16,7 +16,7 @@ import {
 } from "components/blocks";
 
 export async function getStaticProps() {
-  const report = getPublicBenefitReportByYear(2020);
+  const report = getMarkdownByFilename("public-benefit-reports", 2020);
   return {
     props: {
       report,
@@ -79,7 +79,7 @@ export default function PBR2020({ report }) {
     <div>
       <ReportSideMenu links={menuLinks} />
       <main className="bg-white pb-2xl">
-        <ReportHeaderNavy title={report.title} />
+        <ReportHeaderNavy title={report.title} maxWidth="max-w-xl" />
         <Image
           alt={report.image_alt_text}
           src={Nava2020Cover}
@@ -91,8 +91,8 @@ export default function PBR2020({ report }) {
           body={report.intro.body}
           background="sea-foam"
         />
-        <div className="bg-sage-pbr-2018 pb-4xl">
-          <Signatures fullList asContainer />
+        <div className="bg-sea-foam-base pb-4xl">
+          <Signatures isGreenBG={false} />
         </div>
         <ReportSections sections={reportSections} stacked />
         <ReportSectionContentFull

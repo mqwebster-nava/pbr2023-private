@@ -32,7 +32,16 @@ module.exports = {
         // => @media (min-width: 768px) { ... }
       },
       colors: {
-
+        brown: {
+          base: "#966023",
+          lightest: "#D4BEA5",
+          light: "#B4650D",
+          dark: "#442502",
+        },
+        green: {
+          base: "#259B62",
+          light: "#25F15E"
+        },
         purple: {
           50: "#f5e4f0",
           lightest: "#F5E4F0",
@@ -49,6 +58,10 @@ module.exports = {
           900: "#471385",
           dark: "#471385",
         },
+        pink: {
+          base: "#C4148A",
+          light: "#E01A9F"
+        },
         plum: {
           light: "#CE8EC1",
           50: "#f5e4f0",
@@ -64,6 +77,11 @@ module.exports = {
           900: "#5b0462",
           dark: "#5B0462",
         },
+        orange: {
+          light: "#F4F3F2",
+          dark: "#CE7205",
+          darkest: "#ff8c00"
+        },
         gold: {
           light: "#F6E451",
           base: "#F8B712",
@@ -78,6 +96,12 @@ module.exports = {
           800: "#f69f09",
           900: "#f37100",
           dark: "#F37100",
+        },
+        blue: {
+          lightest: "#4FB9F3",
+          light: "#E7F3FA",
+          dark: "#0386CF",
+          darker: "#c75a00"
         },
         navy: {
           dark: "#0A0539",
@@ -95,8 +119,13 @@ module.exports = {
           900: "#0a0539",
           "pbr-2018": "#082e4c",
           "pbr-2020": "#001045",
+          "dei": "#041638"
         },
 
+        "sea-foam": {
+          "light": "#e7f9f8",
+          "base": "#d9ecec"
+        },
         sage: {
           dark: "#004C31",
           base: "#08A588",
@@ -112,9 +141,9 @@ module.exports = {
           800: "#08684b",
           900: "#004c31",
           "pbr": "#005753",
-          "pbr-2018": "#d9ecec",
           "pbr-2020": "#01AEA7",
-          "pbr-2020-light": "#00847f"
+          "pbr-2020-light": "#00847f",
+          "dei": "#019892"
         },
 
         gray: {
@@ -129,6 +158,7 @@ module.exports = {
           700: "#374151",
           800: "#1f2937",
           900: "#111827",
+
         },
         ecru: {
           "pbr-2019": "#F3EDE1"
