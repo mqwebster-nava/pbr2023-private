@@ -7,9 +7,9 @@ import {
   ContentBlockLinkToPage,
   QuoteBlock,
   ContentBlockArticleList 
-} from "components/blocks";
+} from "components/blocks_core";
 import Fade from "react-reveal/Fade";
-import { PageProps } from "utils/pageUtils";
+import { PageProps } from "models/page_models";
 import ReactMarkdown from 'react-markdown'
 import { ContentCard } from "components/atom";
 import { getContentUrl } from "utils/utils";

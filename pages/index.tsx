@@ -1,9 +1,9 @@
 import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageProps } from "utils/pageUtils";
+import { PageProps } from "models/page_models";
 import { PageInterface } from "lib/page_data_models";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
-import { CTABlock, Newsletter } from "components/blocks";
+import { CTABlock, Newsletter } from "components/blocks_core";
 
 export default function Home({ page, preview }) {
   return page ? (

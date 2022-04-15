@@ -3,7 +3,7 @@ import classNames from "classnames";
 import rohanSignature from "/public/images/pbrs/rohan-signature.png";
 import shaSignature from "/public/images/pbrs/sha-signature.png";
 import jodiSignature from "/public/images/pbrs/jodi-signature.png";
-import ResponsiveContainer from "../../blocks/ResponsiveContainer/ResponsiveContainer";
+import ResponsiveContainer from "../../blocks_core/ResponsiveContainer/ResponsiveContainer";
 export interface SignaturesProps {
   isGreenBG?: boolean;
   fullList?: boolean;

@@ -1,5 +1,5 @@
 import ContentfulApi from "lib/contentful";
-import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
+import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks_core";
 import { BasicPostInterface } from "lib/post_data_models";
 import { allTagsSlugIdPair } from "utils/utils";
 import { PageInterface } from "lib/page_data_models";

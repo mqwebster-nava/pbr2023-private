@@ -2,7 +2,7 @@
 import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageInterface } from "lib/page_data_models";
-import { PageProps } from "utils/pageUtils";
+import { PageProps } from "models/page_models";
 //https://docs.google.com/document/d/1SWVZyiBQ0xPpmFcVuZFwyqtYOQlV5ujWZejTJ4d8Cs4/edit#
 
 

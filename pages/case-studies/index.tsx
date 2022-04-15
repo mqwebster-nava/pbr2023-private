@@ -1,5 +1,5 @@
 import ContentfulApi from "lib/contentful";
-import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
+import CardsGrid from "components/blocks_core/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { BasicPostInterface } from "lib/post_data_models";
 import {
@@ -7,7 +7,7 @@ import {
   FilteredPostsList,
   PlaceholderPageHeader,
 
-} from "components/blocks";
+} from "components/blocks_core";
 import { PageInterface } from "lib/page_data_models";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 

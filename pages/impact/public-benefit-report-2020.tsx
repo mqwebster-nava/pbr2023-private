@@ -13,7 +13,7 @@ import {
   ReportSections,
   ReportSideMenu,
   ReportSectionContentFull,
-} from "components/blocks";
+} from "components/blocks_core";
 
 export async function getStaticProps() {
   const report = getPublicBenefitReportByYear(2020);

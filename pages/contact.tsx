@@ -1,4 +1,4 @@
-import PlaceholderPageHeader from "components/blocks/PageHeader/PageHeader";
+import PlaceholderPageHeader from "components/blocks_core/PageHeader/PageHeader";
 
 export default function Contact() {
   return (

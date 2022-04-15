@@ -1,9 +1,9 @@
 import ContentfulApi from "lib/contentful";
 import {allTagsSlugIdPair, getContentUrl} from "utils/utils"
-import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
+import CardsGrid from "components/blocks_core/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { BasicPostInterface } from "lib/post_data_models";
-import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
+import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks_core";
 
 export interface FilteredByTagPageProps   {
   tag:string,

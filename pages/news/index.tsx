@@ -2,7 +2,7 @@ import {
   PlaceholderPageHeader,
   ContentBlockArticleList,
   Newsletter,
-} from "components/blocks";
+} from "components/blocks_core";
 
 
 import { ContentCard } from "components/atom/index";

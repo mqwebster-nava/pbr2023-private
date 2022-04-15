@@ -1,7 +1,7 @@
 import ContentfulApi from "lib/contentful";
 import PostTemplate from "components/templates/PostTemplate/PostTemplate";
 import { FullPostInterface, BasicPostInterface } from "lib/post_data_models";
-import { PostPageProps } from "utils/postUtils";
+import { PostPageProps } from "models/post_model";
 
 
 

@@ -1,9 +1,9 @@
 import ContentfulApi from "lib/contentful";
-import LargeHero from "components/blocks/PageHeader/LargeHero";
-import CardsGrid from "components/blocks/ContentBlockArticlesList/CardsGrid";
+import LargeHero from "components/blocks_core/PageHeader/LargeHero";
+import CardsGrid from "components/blocks_core/ContentBlockArticlesList/CardsGrid";
 import ContentCard from "components/atom/ContentCard/ContentCard";
 import { getContentUrl } from "utils/utils";
-import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks";
+import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks_core";
 
 export default function AuthorPosts({ posts, name, role, bio }) {
   return (

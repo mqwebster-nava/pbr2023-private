@@ -1,8 +1,8 @@
 import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageProps } from "utils/pageUtils";
+import { PageProps } from "models/page_models";
 import { PageInterface } from "lib/page_data_models";
-import { PlaceholderPageHeader } from "components/blocks";
+import { PlaceholderPageHeader } from "components/blocks_core";
 import { ContentCard, Button, LinkText } from "components/atom";
 //https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
