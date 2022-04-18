@@ -2,23 +2,23 @@
 
 import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "lib/page_data_models";
-import { PageProps } from "models/page_models";
+import { PageInterface } from "models/page_models";
+
 //https://docs.google.com/document/d/1RG_J13eS5MM4QMLvgjK4xSr7CrJWomsKtxLDHjcttTw/edit#
 
 
 
-export default function Impact({page, preview}:PageProps ) {
-  return (<PageTemplate page={page} preview={preview}/>);
+export default function Impact(props:PageInterface ) {
+  return (<PageTemplate {...props} />);
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const res: PageInterface = await ContentfulApi.getPageBySlug("/impact", {
+  const res: PageInterface = await ContentfulApi.getPageBySlug(
+   { slug:"/impact", 
     preview: preview,
   });
  return {
-   props:
-   { page:res }
+   props:res
  };
 }
 
@@ -27,7 +27,7 @@ export async function getStaticProps({ params, preview = false }) {
 //   SectionHeader,
 //   ContentBlockLinkToPage,
 //   ContentBlockText,
-//   PlaceholderPageHeader,
+//   PageHeader,
 //   ContentBlockArticleList,
 //   Newsletter,
 // } from "components/blocks";
@@ -39,7 +39,7 @@ export async function getStaticProps({ params, preview = false }) {
 // export default function Impact() {
 //   return (
 //     <div>
-//       <PlaceholderPageHeader
+//       <PageHeader
 //         title={"Impact"}
 //         subtitle={"Nava’s mission is to make government services simple, effective, and accessible to all"}
 //       />

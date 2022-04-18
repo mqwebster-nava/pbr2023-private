@@ -1,19 +1,13 @@
 import ContentfulApi from "lib/contentful";
-import LargeHero from "components/blocks_core/PageHeader/LargeHero";
-import CardsGrid from "components/blocks_core/ContentBlockArticlesList/CardsGrid";
-import ContentCard from "components/atom/ContentCard/ContentCard";
-import { getContentUrl } from "utils/utils";
-import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks_core";
+import { PageInterface } from "models/page_models";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
-export default function AuthorPosts({ posts, name, role, bio }) {
+
+// TODO connect to page template
+
+export default function AuthorPosts(props:PageInterface) { //{ posts, name, role, bio }
   return (
-    <div>
-      <PlaceholderPageHeader title={"Author"} subtitle={name}/>
-     <FilteredPostsList
-        max={50}
-        posts={posts}
-      ></FilteredPostsList>
-    </div>
+    <PageTemplate { ...props}></PageTemplate>
   );
 }
 
@@ -29,17 +23,9 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const author = await ContentfulApi.getPostsByAuthor(params.slug);
-
-  const posts = author.linkedFrom.postCollection.items;
-  const { name, role, bio } = author;
+  const page : PageInterface = await ContentfulApi.getPageBySlug({slug:params.slug, variant:"author", preview });
 
   return {
-    props: {
-      posts,
-      name,
-      role,
-      bio,
-    },
+    props: page,
   };
 }

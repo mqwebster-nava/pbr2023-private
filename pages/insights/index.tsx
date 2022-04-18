@@ -1,33 +1,30 @@
 import ContentfulApi from "lib/contentful";
-import { FilteredPostsList, PlaceholderPageHeader } from "components/blocks_core";
-import { BasicPostInterface } from "lib/post_data_models";
-import { allTagsSlugIdPair } from "utils/utils";
-import { PageInterface } from "lib/page_data_models";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
+import { PageInterface } from "models/page_models";
 
-export interface Props {
-  posts: Array<BasicPostInterface>;
-}
+// export interface Props {
+//   posts: Array<BasicPostInterface>;
+// }
 
-export default function Insights({ posts, page, preview }) {
-  posts = posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+export default function Insights(props:PageInterface) {
+  // posts = posts.sort(
+  //   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  // );
 
-  const tags = [
-    "Human-Centered Design",
-    "Scalable Solutions",
-    "User Experience Research",
-    "Continuous Improvement",
-    "Healthcare",
-    "Accessibility and Equity",
-    "Agile Development",
-    "Content Strategy",
-  ];
+  // const tags = [
+  //   "Human-Centered Design",
+  //   "Scalable Solutions",
+  //   "User Experience Research",
+  //   "Continuous Improvement",
+  //   "Healthcare",
+  //   "Accessibility and Equity",
+  //   "Agile Development",
+  //   "Content Strategy",
+  // ];
 
-  return page ? (
-    <PageTemplate page={page} preview={preview}>
+  return props ? (
+    <PageTemplate {...props}>
       <HighlightedCard 
       title={"How APIs can help WIC better meet staff and participants’ needs"} 
       path={"/" } 
@@ -43,7 +40,7 @@ export default function Insights({ posts, page, preview }) {
       }>
         An API standard would unlock digital tools and catalyze WIC’s ability to evolve and grow.
       </HighlightedCard>
-      {tags.map((tag) => {
+      {/* {tags.map((tag) => {
         const urlpart = allTagsSlugIdPair.revGet(tag);
         return (
           <FilteredPostsList
@@ -53,7 +50,7 @@ export default function Insights({ posts, page, preview }) {
             posts={posts.filter((p) => p.contentTags?.includes(tag))}
           />
         );
-      })}
+      })} */}
       {/* <FilteredPostsList
         max={50}
         title={"All"}
@@ -66,16 +63,16 @@ export default function Insights({ posts, page, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const posts: Array<BasicPostInterface> =
-    await ContentfulApi.getPostsByContentType("Insights");
-  const page: PageInterface = await ContentfulApi.getPageBySlug("/insights", {
+  // const posts: Array<BasicPostInterface> =
+  //   await ContentfulApi.getPostsByContentType("Insights");
+
+  const page: PageInterface = await ContentfulApi.getPageBySlug(
+    {slug: "/insights", 
     preview: preview,
   });
   return {
-    props: {
-      posts,
-      page,
-    }, // will be passed to the page component as props
+    props:  page,
+     // will be passed to the page component as props
   };
 }
 

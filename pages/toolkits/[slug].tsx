@@ -1,13 +1,11 @@
 import ContentfulApi from "lib/contentful";
-import PostTemplate from "components/templates/PostTemplate/PostTemplate";
-import { FullPostInterface, BasicPostInterface } from "lib/post_data_models";
-import { PostPageProps } from "models/post_model";
+import { PageInterface } from "models/page_models";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
 
 
-  export default function ToolkitPost({post, morePosts, preview }:PostPageProps) {
-    return (
-      <PostTemplate post={post} morePosts={morePosts} preview={preview}></PostTemplate>
+export default function ToolkitPost(props:PageInterface) {
+    return ( <PageTemplate {...props} ></PageTemplate>
     );
   }
 
@@ -26,23 +24,12 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const res = await ContentfulApi.getPostBySlug(params.slug, {
+  const res = await ContentfulApi.getPageBySlug({
+    slug:params.slug,
     preview: preview,
+    variant:"post"
   });
-  const post: FullPostInterface = res.post;
-  const morePosts: Array<BasicPostInterface> = res.morePosts;
-
-  
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
   return {
-    props: {
-      preview,
-      post,
-      morePosts
-    },
-  };
+    props: res
+  }
 }
