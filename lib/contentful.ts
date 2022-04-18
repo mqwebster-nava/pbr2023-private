@@ -11,35 +11,18 @@
  *
  */
 
-import { PageInterface, PAGE_FIELDS } from "./page_data_models";
+import { PageInterface } from "models/page_models";
+import { AuthorPostInterface, BasicPostInterface, FullPostInterface } from "models/post_model";
+import { formatPage } from "utils/page_utils";
+import { formatFullPost, formatImageAsset, formatPosts } from "utils/post_utils";
+import { allTagsSlugIdPair } from "utils/utils";
+import { PAGE_FIELDS } from "./page_data_models";
 import { 
   AUTHOR_ALL_FIELDS,
   POST_ALL_FIELDS, 
   POST_CORE_FIELDS,
-  BasicPostInterface,
-  FullPostInterface,
-  AuthorPostInterface,
-  ContentfulImageAsset
 
 } from "./post_data_models";
-
-
-/*
-- Database Query
-
--  Data Model Interfaces
-
-- Component Interfaces 
-    - PageInterface
-          - Page Interface Data
-          - Preview
-          - List of Post 
-
-*/
-
-
-
-
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.
@@ -47,13 +30,123 @@ const defaultOptions = {
   preview: false,
 };
 
+type PageVariant = "default" | "post" | "tags" | "author";
+
+export interface PageQueryInterface {
+  slug: string;
+  variant?: PageVariant;
+  preview?: boolean;
+}
 
 
 
 export default class ContentfulApi {
+  /*
+  Want this to handle the logic
 
-  static async getPageBySlug(slug, options = defaultOptions) {
-    const variables = { slug, preview: options.preview };
+  - If post
+    - Create a Page interface with Post Header, Post Body, and (More from Nava)
+  - If list page (article or tag)
+    - Create a content block with all of the relatent cards
+  */
+  static async getPageBySlug({slug, variant="default", preview =false}:PageQueryInterface) {
+
+   // If it is a default page, then there should be a corresponding Page Content model in 
+    // Contentful with page info
+    // ex /impact has all the impact content
+    if(variant=="default"){
+      return await this.getPageDataBySlug({slug,preview });
+    }
+   
+    // If it is a post, we create the page interface data from the post content
+    if(variant=="post"){
+      // Get the post data
+      const res = await this.getPostBySlug(slug);
+      const post:FullPostInterface = res.post;
+      const formattedPage: PageInterface = {
+        id: post.id,
+        slug: post.slug,
+        title: post.title,
+        pageHeader: {
+          title: post.title,
+          subtitle:post.longSummary,
+          variant:"post",
+        },
+        contentBlocks: [
+          // Post body block
+          {
+            __typename:"PostBody",
+            body: post.body,
+            contentTags: post.contentTags,
+            authors: post.authors,
+            date: post.date
+          },
+          // more posts block
+          {
+            __typename:"ContentBlockArticleList",
+            title:"More from Nava",
+            postsCollection:{
+              items: res.morePosts
+            }
+          }
+        ],
+        description:post.shortSummary,
+     }
+     return formattedPage;
+    }
+
+    if (variant=="author"){
+      const author = await this.getPostsByAuthor(slug);
+      const formattedPage: PageInterface = {
+        id: slug,
+        slug: slug,
+        title: author.name,
+        description:author.bio,
+        pageHeader: {
+          title: author.name,
+          subtitle:author.role,
+        },
+        contentBlocks: [
+          // more posts block
+          {
+            __typename:"ContentBlockArticleList",
+            postsCollection:{
+              items: author.linkedFrom.postCollection.items
+            }
+          }
+        ], 
+     }
+     return formattedPage;
+    }
+
+    if (variant=="tags"){
+      const tagName:string = allTagsSlugIdPair.get(slug);
+      const posts:Array<BasicPostInterface> = await this.getPostsByTag(tagName);
+    
+      const formattedPage: PageInterface = {
+        id: slug,
+        slug: slug,
+        title: tagName,
+        description:`Posts related to ${tagName}`,
+        pageHeader: {
+          title: tagName,
+          subtitle: tagName,
+        },
+        contentBlocks: [
+          {
+            __typename:"ContentBlockArticleList",
+            postsCollection:{
+              items: posts
+            }
+          }
+        ],
+     }
+     return formattedPage;
+    }
+  }
+
+  private static async getPageDataBySlug({slug, preview =false}:PageQueryInterface) {
+    const variables = { slug, preview  };
     const query = `query GetPageBySlug($slug: String!, $preview: Boolean!) {
       pageContentCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
         total
@@ -62,25 +155,18 @@ export default class ContentfulApi {
         }
       }
     }`;
-
-    const response = await this.callContentful(query, variables, options);
+    const response = await this.callContentful(query, variables, {preview});
  
     if(!response.data.pageContentCollection.items) return null;
     const page = response.data.pageContentCollection.items.pop();
-   
-    const formattedPage: PageInterface = {
-      id: page.sys.id,
-      slug: page.slug,
-      title: page.title,
-      pageHeader: page.pageHeader,
-      contentBlocks: page.contentCollection.items,
-      description: page.description
-    }
+    const formattedPage:PageInterface = formatPage(page);
+  
     return  formattedPage;
   }
 
+
   
-  static async getPostBySlug(slug, options = defaultOptions) {
+  private static async getPostBySlug(slug, options = defaultOptions) {
     const variables = { slug, preview: options.preview };
     const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
       postCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
@@ -90,35 +176,11 @@ export default class ContentfulApi {
         }
       }
     }`;
-    
-
+   
     const response = await this.callContentful(query, variables, options);
     if(!response.data.postCollection.items) return null;
     const post =  response.data.postCollection.items.pop();
-    const formattedPost: FullPostInterface = {
-      id: post.sys.id,
-      slug: post.slug,
-      title: post.title,
-      contentTags:post.contentTags,
-      clientName: post.clientName,
-      longSummary: post.longSummary,
-      hideSideNav:post.hideSideNav,
-      authors: post.authorsCollection?.items?.map((author)=>{
-        const formattedAuthor: AuthorPostInterface ={
-          name: author.name,
-          slug: author.slug,
-          bio: author.bio,
-          role: author.role
-        }
-        return formattedAuthor;
-      }),
-      body: post.body,
-      date: post.date,
-      contentType: post.contentType,
-      shortSummary: post.shortSummary,
-      promoImage: formatImageAsset(post.promoImage)
-    }
-   
+    const formattedPost = formatFullPost(post);
     const morePosts = await this.getMorePosts(formattedPost, options);
     return {
       post:formattedPost,
@@ -129,7 +191,7 @@ export default class ContentfulApi {
 /*
 This gets 3 posts that have similar tags to the post the user is currently reading 
 */
-  static async getMorePosts( post: FullPostInterface, options = defaultOptions) {
+private static async getMorePosts( post: FullPostInterface, options = defaultOptions) {
     const variables = { slug:post.slug, preview: options.preview };
     const query = `query GetMorePosts($slug: String!, $preview: Boolean!) {
       postCollection(where: { slug_not_in: [ $slug ] }, preview: $preview) {
@@ -154,9 +216,8 @@ This gets 3 posts that have similar tags to the post the user is currently readi
   }
 
 
-  static async getPostsByTag(tag, options = defaultOptions) {
+  private static async getPostsByTag(tag, options = defaultOptions) {
     const variables = { tag, };
-
     const query = `query GetPostsByTag($tag: String!)
     {
       postCollection(limit: 20,  where: { contentTags_contains_all:[$tag] } ) 
@@ -174,7 +235,7 @@ This gets 3 posts that have similar tags to the post the user is currently readi
   }
 
 
-  static async getPostsByContentType(contentType, options = defaultOptions) {
+  private static async getPostsByContentType(contentType, options = defaultOptions) {
     const variables = {contentType };
     const query =( contentType==="Insights")? 
     ` query GetAllPosts
@@ -200,11 +261,11 @@ This gets 3 posts that have similar tags to the post the user is currently readi
     const response = await this.callContentful(query, variables, options);
     const posts = response.data.postCollection.items;
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
-  
     return formattedPosts;
   }
 
-  static async getPostsByAuthor(slug, options = defaultOptions) {
+
+  private static async getPostsByAuthor(slug, options = defaultOptions) {
     const variables = {slug };
     const query = `query GetPostsByAuthor($slug: String!)
     {

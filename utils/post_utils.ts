@@ -1,4 +1,4 @@
-import { BasicPostInterface, ContentfulImageAsset } from "../models/post_model";
+import { AuthorPostInterface, BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "../models/post_model";
 
 
 
@@ -15,6 +15,7 @@ const formatImageAsset = (imgData) => {
     } 
     return imgAsset;
   }
+
   const formatPosts = (posts) =>{
     return posts.map((post)=>{
       const newPost: BasicPostInterface = {
@@ -32,5 +33,33 @@ const formatImageAsset = (imgData) => {
     })
   }
   
+
+  const formatFullPost = (post) =>{
+    const formattedPost: FullPostInterface = {
+      id: post.sys.id,
+      slug: post.slug,
+      title: post.title,
+      contentTags:post.contentTags,
+      clientName: post.clientName,
+      longSummary: post.longSummary,
+      hideSideNav:post.hideSideNav,
+      authors: post.authorsCollection?.items?.map((author)=>{
+        const formattedAuthor: AuthorPostInterface ={
+          name: author.name,
+          slug: author.slug,
+          bio: author.bio,
+          role: author.role
+        }
+        return formattedAuthor;
+      }),
+      body: post.body,
+      date: post.date,
+      contentType: post.contentType,
+      shortSummary: post.shortSummary,
+      promoImage: formatImageAsset(post.promoImage)
+    }
+    return formattedPost;
+  }
   
-  
+  export {formatImageAsset, formatPosts, formatFullPost}
+

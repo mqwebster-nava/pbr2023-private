@@ -1,18 +1,26 @@
+import {ContentfulImageAsset} from "./post_model";
+
+/*
+This contains all the interfaces for page level data
+
+*/
+
+
 
 type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
-export interface PageComponentInterface {
-  title: string;
-  body: string;
-  buttonText?: string;
-  buttonUrl?: string;
-  componentType: string;
-}
+type PageHeaderVariant = "default" | "post";
+
 export interface PageHeaderInterface {
-  
   title?: string;
   subtitle?:string;
   bannerColor?:BannerColor;
-  //backgroundImage:any;
+  variant?: PageHeaderVariant;
+  backgroundImage?:ContentfulImageAsset;
+}
+export interface PostHeaderInterface extends PageHeaderInterface  {
+  longSummary: string;
+  leadImage?: string; // todo make a model for assets
+  contentType: string; // todo make this a type?
 }
 
 export interface PageInterface {
@@ -22,9 +30,5 @@ export interface PageInterface {
   description: string;
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
-}
-
-export interface PageProps   {
-    page:PageInterface,
-    preview:boolean
+  preview?: boolean;
 }
