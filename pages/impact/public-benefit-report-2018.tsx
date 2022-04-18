@@ -5,7 +5,7 @@ import {
   ReportSections,
   ReportShoutoutSection,
   ReportIntroSection,
-} from "components/blocks_core";
+} from "components/blocks";
 import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
 
 export async function getStaticProps() {

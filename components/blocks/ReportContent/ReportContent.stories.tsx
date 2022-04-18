@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportContent from "./ReportContent";
 
 export default {
-  title: "Blocks / Core Blocks / Report Content",
+  title: "Blocks /  Report Content",
   component: ReportContent,
   isGreenBG: {
     options: [true, false],

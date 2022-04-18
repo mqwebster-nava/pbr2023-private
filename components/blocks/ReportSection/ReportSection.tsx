@@ -1,5 +1,5 @@
-import { ReportContent } from "../";
-import { ReportSectionInterface } from "lib/report_data_models";
+import { ReportContent } from "../../../components/blocks";
+import { ReportSectionInterface } from "models/report_data_models";
 
 const ReportSection: React.FC<ReportSectionInterface> = ({
   picture,

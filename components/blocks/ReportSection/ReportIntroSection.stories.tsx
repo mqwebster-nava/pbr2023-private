@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportIntroSection from "./ReportIntroSection";
 
 export default {
-  title: "Blocks / Core Blocks / Report Section",
+  title: "Blocks /  Report Section",
   component: ReportIntroSection,
 } as ComponentMeta<typeof ReportIntroSection>;
 

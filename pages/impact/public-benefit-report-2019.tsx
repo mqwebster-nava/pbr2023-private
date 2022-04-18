@@ -5,7 +5,7 @@ import {
   ReportIntroSection,
   ReportSections,
   ReportShoutoutSection,
-} from "components/blocks_core";
+} from "components/blocks";
 
 import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
 

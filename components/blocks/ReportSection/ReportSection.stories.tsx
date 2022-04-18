@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportSection from "./ReportSection";
 
 export default {
-  title: "Blocks / Core Blocks / Report Section",
+  title: "Blocks /  Report Section",
   component: ReportSection,
   picture_position: {
     options: ["left", "right"],
