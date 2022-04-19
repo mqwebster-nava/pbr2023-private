@@ -26,7 +26,7 @@ const ReportSectionContentFull = ({
   metrics = null,
 }) => {
   const backgroundClass = classNames({
-    "bg-sage-pbr-2018": background === "sea-foam",
+    "bg-sea-foam-base": background === "sea-foam",
     "bg-navy-pbr-2020": background === "navy",
     "bg-white": background === "white",
   });

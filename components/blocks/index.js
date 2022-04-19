@@ -22,9 +22,13 @@ import ReportHeaderNavy from "./ReportHeader/ReportHeaderNavy";
 import ReportSectionHeaderNavy from "./ReportSection/ReportHeaderSectionNavy";
 import ReportSectionContentFull from "./ReportSection/ReportSectionContentFull";
 import ReportSideMenu from "./ReportSideMenu/ReportSideMenu";
+import { ResourceGroups } from "./ResourceGroupBlock/ResourceGroups";
 import ResponsiveContainer from "./ResponsiveContainer/ResponsiveContainer";
 import FilteredPostsList from "./FilteredPostsList/FilteredPostsList";
-
+import { PercentBarChart } from "./Chart/PercentBarChart";
+import { PercentSquareChart } from "./Chart/PercentSquareChart";
+import { PercentSquareChartFixed } from "./Chart/PercentSquareChartFixed";
+import { FilterControl } from "./Chart/FilterControl";
 export {
   LargeHero,
   SectionHeader,
@@ -51,6 +55,11 @@ export {
   ReportSectionHeaderNavy,
   ReportSideMenu,
   ReportSectionContentFull,
+  ResourceGroups,
   ResponsiveContainer,
   FilteredPostsList,
+  PercentBarChart,
+  PercentSquareChart,
+  PercentSquareChartFixed,
+  FilterControl,
 };

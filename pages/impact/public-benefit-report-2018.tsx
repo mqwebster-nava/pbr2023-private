@@ -6,10 +6,10 @@ import {
   ReportShoutoutSection,
   ReportIntroSection,
 } from "components/blocks";
-import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
+import { getMarkdownByFilename } from "../../lib/markdown";
 
 export async function getStaticProps() {
-  const report = getPublicBenefitReportByYear(2018);
+  const report = getMarkdownByFilename("public-benefit-reports", 2018);
   return {
     props: {
       report,
@@ -51,7 +51,7 @@ export default function PBR2018({ report }) {
 
   const theme = {
     sage: {
-      background: "bg-sage-pbr-2018",
+      background: "bg-sea-foam-base",
       text: "text-sage-pbr",
     },
     default: {

@@ -7,10 +7,10 @@ import {
   ReportShoutoutSection,
 } from "components/blocks";
 
-import { getPublicBenefitReportByYear } from "../../lib/public_benefit_reports";
+import { getMarkdownByFilename } from "../../lib/markdown";
 
 export async function getStaticProps() {
-  const report = getPublicBenefitReportByYear(2019);
+  const report = getMarkdownByFilename("public-benefit-reports", 2019);
   return {
     props: {
       report,
