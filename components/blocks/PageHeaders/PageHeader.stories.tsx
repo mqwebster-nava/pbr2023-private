@@ -7,7 +7,7 @@ export default {
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
   * to learn how to generate automatic titles
   */
-  title: 'Blocks / Core Blocks / Page Header',
+  title: 'Blocks / Page Header /  Page Header',
   component: PageHeader,
 } as ComponentMeta<typeof PageHeader>;
 

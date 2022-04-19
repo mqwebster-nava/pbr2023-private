@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportHeaderTextOverlay from "./ReportHeaderTextOverlay";
 
 export default {
-  title: "Blocks / Core Blocks / Report Header / Text Overlay",
+  title: "Blocks /  Report Header / Text Overlay",
   component: ReportHeaderTextOverlay,
 } as ComponentMeta<typeof ReportHeaderTextOverlay>;
 

@@ -1,8 +1,8 @@
-import AnchorLink from "components/templates/PostTemplate/AnchorLink";
-import { icolor } from "utils/theme";
+import AnchorLink from "components/atom/AnchorLink/AnchorLink";
+
+
 const SideNavComponent = ({h2Sections, activeSection}) => {
 
- 
   return (
     <div className="mt-md  p-lg sticky top-48 border-2 w-full max-w-[240px]  hidden md:block bg-white">
       <h3 className="font-sans font-bold">On This Page</h3>

@@ -2,7 +2,7 @@ import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import { BlockQuote, LinkText, PullQuote } from "../../atom";
-import { ReportContentInterface } from "lib/report_data_models";
+import { ReportContentInterface } from "models/report_data_models";
 
 const defaultTheme = {
   sage: {

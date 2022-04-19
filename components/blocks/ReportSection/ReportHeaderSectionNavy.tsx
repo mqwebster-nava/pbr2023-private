@@ -1,5 +1,5 @@
 import { TealBar } from "components/atom";
-import { ResponsiveContainer } from "..";
+import { ResponsiveContainer } from "../../../components/blocks";
 
 const ReportSectionHeaderNavy = ({ title, titleId = null, introduction }) => {
   return (

@@ -4,13 +4,16 @@ import {
   SectionHeader,
   ContentBlockLinkToPage,
   ContentBlockText,
-  PlaceholderPageHeader,
+  PageHeader,
   ContentBlockArticleList,
   Newsletter,
 } from "components/blocks";
 //https://www.digitalocean.com/community/tutorials/react-axios-react
-import AnchorLink from "components/templates/PostTemplate/AnchorLink"
+import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import { PageInterface } from "models/page_models";
+import ContentfulApi from "lib/contentful";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -29,7 +32,7 @@ interface JobGroupInterface {
   postings: Array<JobPostingInterface>;
 }
 
-export default function OpenRoles() {
+export default function OpenRoles(props:PageInterface) {
   const leverURL = "https://api.lever.co/v0/postings/nava?mode=json&group=team";
   const [departments, setDepartments] = useState<Array<JobGroupInterface>>([]);
 
@@ -53,13 +56,7 @@ export default function OpenRoles() {
   }, []);
 
   return (
-    
-    <>
-     <PlaceholderPageHeader
-        title={"Open Roles"}
-        subtitle={"Find the right opportunity to make a positive impact for you"}
-      />
-      <hr />
+    <PageTemplate {...props}>
      <div className="responsive-container py-2xl min-h-screen">
       {departments.map((d) =>(
       <p className={`font-sans text-sage-900 hover:text-sage-500 `}>
@@ -86,6 +83,18 @@ export default function OpenRoles() {
       })}
     </div>
     <Newsletter/>
-    </>
+    </PageTemplate>
   );
+}
+
+
+export async function getStaticProps({ params, preview = false }) {
+  const res: PageInterface = 
+    await ContentfulApi.getPageBySlug({
+      slug:"/", 
+      preview: preview,
+    });
+  return {
+    props: res,
+  };
 }

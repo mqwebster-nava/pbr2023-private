@@ -1,26 +1,32 @@
+
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 //import ReactMarkdown from 'react-markdown';
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
-import PostHeader from "components/templates/PostTemplate/PostHeader";
 import ArticleInfoComponent from "./ArticleInfoComponent";
 import SideNavComponent from "./SideNavComponent";
-import { useEffect, useRef, useState } from "react";
-import { ContentBlockArticleList } from "components/blocks";
-import { PostPageProps, sortDocIntoH2Sections } from "utils/postUtils";
-import { ContentCard } from "components/atom";
-import { getContentUrl } from "utils/utils";
+import React, { useEffect, useRef, useState } from "react";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import { sortDocIntoH2Sections } from "utils/page_utils";
+import { AuthorPostInterface } from "models/post_model";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 
+export interface PostBodyInterface {
+    body: any;
+    contentTags: Array<String>
+    authors: Array<AuthorPostInterface>;
+    date:String;
+}
 
-export default function PostTemplate({
-  post,
-  morePosts,
-  preview,
-}: PostPageProps) {
+
+export default function PostBody({
+    body,
+    contentTags,
+    authors,
+    date
+}: PostBodyInterface) {
   // need to deconstruct post
-  const doc = post.body.json;
+  const doc = body.json;
   let h2Sections = sortDocIntoH2Sections(doc);
   let refs = {};
   h2Sections.forEach((h2) => (h2.ref = useRef()));
@@ -65,7 +71,7 @@ export default function PostTemplate({
 
   const getImg = (data: any) => {
     const id = data.target.sys.id;
-    const assets = post.body.links.assets.block;
+    const assets = body.links.assets.block;
     const asset = assets.find((element) => element.sys.id === id);
     return (
       <Image
@@ -116,17 +122,12 @@ export default function PostTemplate({
 
   return (
     <>
-      <PostHeader
-        title={post.title}
-        longSummary={post.longSummary}
-        contentType={post.contentType}
-      />
+      
       <div
         className={
           "responsive-container py-2xl flex md:flex-row flex-col-reverse "
         }
       >
-        {/* Article Body Section  */}
         <div id="article" className="w-full md:w-2/3 pr-lg">
           {h2Sections.map((section) => (
             <div id={section.title} ref={section.ref}>
@@ -136,24 +137,17 @@ export default function PostTemplate({
         </div>
         {/* Article Sidebar Section  */}
         <div className={"w-full md:w-1/3 pt-md"}>
-          <ArticleInfoComponent post={post} />
+          <ArticleInfoComponent 
+            authors={authors}
+            date={date}
+            contentTags={contentTags}
+          />
           <SideNavComponent
             h2Sections={h2Sections}
             activeSection={activeSection}
           />
         </div>
       </div>
-      <ContentBlockArticleList title={"More From Nava"}>
-        {morePosts.map((_post) => (
-          <ContentCard
-          type={_post.contentType}
-          title={_post.title}
-            path={getContentUrl(_post.contentType, _post.slug)}
-          >
-            {_post.shortSummary}
-          </ContentCard>
-        ))}
-      </ContentBlockArticleList>
     </>
   );
 }

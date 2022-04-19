@@ -6,6 +6,48 @@ export default {
   argTypes: { onClick: { action: "clicked" } },
 };
 
+
+export const Typescale= () => {
+  return (
+    <div className="font-sans">
+      <hr/>
+      <p className="text-xs pt-md ">Header 1</p>
+      <p className="text-6xl font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Header 2</p>
+      <p className="text-5xl font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Header 3</p>
+      <p className="text-4xl font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Header 4</p>
+      <p className="text-2xl font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Header 5</p>
+      <p className="text-xl font-bold">The quick brown fox ...</p>
+      <hr/>
+      <p className="text-xs pt-md ">Subheader 1</p>
+      <p className="text-2xl">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Subheader 1 Bold</p>
+      <p className="text-2xl font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Subheader 2</p>
+      <p className="text-xl">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">Subheader 2 Bold</p>
+      <p className="text-xl font-bold">The quick brown fox ...</p>
+      <hr/>
+      <p className="text-xs pt-md">Large Body</p>
+      <p className="text-lg">The quick brown fox ...</p>
+      <p className="text-xs pt-md">Body</p>
+      <p className="text-base">The quick brown fox ...</p>
+      <p className="text-xs pt-md">Body Bold</p>
+      <p className="text-base font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md">Small</p>
+      <p className="text-sm font-bold">The quick brown fox ...</p>
+      <p className="text-xs pt-md">Small bold</p>
+      <p className="text-sm font-bold">The quick brown fox ...</p>
+      <p className="text-xs ">Extra small </p>
+      <p className="text-xs">The quick brown fox ...</p>
+
+    </div>
+  );
+};
+
 export const TextSize = () => {
   return (
     <div className="font-sans">
@@ -22,8 +64,12 @@ export const TextSize = () => {
       <p className="text-xs pt-md ">text 2xl / Preset 3</p>
       <p className="text-2xl">The quick brown fox ...</p>
       <p className="text-xs pt-md ">text 3xl / Preset 2</p>
+      <p className="text-3xl">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">text 4xl / Preset 2</p>
       <p className="text-4xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 4xl / Preset 1</p>
+      <p className="text-xs pt-md ">text 5xl / Preset 2</p>
+      <p className="text-5xl">The quick brown fox ...</p>
+      <p className="text-xs pt-md ">text 6xl / Preset 1</p>
       <p className="text-6xl">The quick brown fox ...</p>
     </div>
   );

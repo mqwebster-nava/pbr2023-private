@@ -1,13 +1,12 @@
 import ContentfulApi from "lib/contentful";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageProps } from "utils/pageUtils";
-import { PageInterface } from "lib/page_data_models";
+import { PageInterface } from "models/page_models";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
 import { CTABlock, Newsletter } from "components/blocks";
 
-export default function Home({ page, preview }) {
-  return page ? (
-    <PageTemplate page={page} preview={preview} >
+export default function Home(props:PageInterface) {
+  return props ? (
+    <PageTemplate {...props}>
 
 <HighlightedCard 
       title={"How APIs can help WIC better meet staff and participants’ needs"} 
@@ -33,10 +32,12 @@ export default function Home({ page, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const res: PageInterface = await ContentfulApi.getPageBySlug("/", {
-    preview: preview,
-  });
+  const res: PageInterface = 
+    await ContentfulApi.getPageBySlug({
+      slug:"/", 
+      preview: preview,
+    });
   return {
-    props: { page: res },
+    props: res,
   };
 }

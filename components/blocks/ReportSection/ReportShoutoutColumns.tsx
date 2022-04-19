@@ -1,4 +1,4 @@
-import { ReportContent } from "..";
+import { ReportContent } from "../../../components/blocks";
 
 const ReportShoutoutColumns = ({ list, theme }) => {
   const { title, one, two, three } = list;

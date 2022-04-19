@@ -37,4 +37,4 @@ class AnchorLink extends Component {
   }
 }
 
-export default AnchorLink
+export default AnchorLink;

@@ -1,5 +1,5 @@
 
-import  ContentCard, {ContentCardInterface} from './ContentCard';
+import  ContentCard from './ContentCard';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {

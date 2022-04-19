@@ -1,32 +1,25 @@
-import { PageHeaderInterface } from "lib/page_data_models";
+
+import { PageHeaderInterface } from "models/page_models";
 import Image from "next/image";
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg"
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg"
+import PostHeader from "./PostHeader";
 
 type Variant = "default" | "image" | "image-pattern" | "black";
 type TextLocation = "top" | "bottom" ;
 type BrandElements = "none" | "top" | "bottom" | "left";
 
-// interface LargeHeroInterface {
-//   title: string;
-//   subtitle: string;
-//   backgroundImage?: any;
-//   bannerColor?: BannerColor;
-//   variant?: Variant;
-//   textLocation?: TextLocation;
-//   brandElements?: BrandElements;
-// }
 
-const PlaceholderPageHeader = ({
+
+const PageHeader = ({
   title,
   subtitle,
   bannerColor = "navy",
-  // backgroundImage,
-  // textLocation,
-  // brandElements
+  variant="default"
 }: PageHeaderInterface) => {
   bannerColor = bannerColor ?? "navy";
-  return  <DefaultPageHeader title={title} subtitle={subtitle} bannerColor={bannerColor}/>
+  return  variant=="post"? (<PostHeader title={title} longSummary={subtitle} contentType={""}></PostHeader>):
+  (<DefaultPageHeader title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
 };
 
 
@@ -50,7 +43,6 @@ const DefaultPageHeader = ({
  // textLocation,
   bannerColor,
 }: PageHeaderInterface) => {
-  console.log(bannerColor)
   return (
     <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`}>
       <div className={`
@@ -107,4 +99,4 @@ const DefaultPageHeader = ({
 //     </div>
 //   );
 // };
-export default PlaceholderPageHeader;
+export default PageHeader;

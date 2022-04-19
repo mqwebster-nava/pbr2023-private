@@ -1,18 +1,26 @@
+
+
 /*
 This returns the article as a list of sections, which can more easily be used with the 
 intercept observer.
 */
 
-import { BasicPostInterface, FullPostInterface } from "lib/post_data_models";
+import { PageInterface } from "models/page_models";
 
 
-export interface PostPageProps   {
-    post:FullPostInterface,
-    morePosts:Array<BasicPostInterface>,
-    preview:boolean
-  }
+export function formatPage(page){
+    
+    const formattedPage: PageInterface = {
+        id: page.sys.id,
+        slug: page.slug,
+        title: page.title,
+        pageHeader: page.pageHeader,
+        contentBlocks: page.contentCollection.items,
+        description: page.description,
   
-
+    }
+    return formattedPage;
+}
 export function sortDocIntoH2Sections(doc){
     let buffer = [];
     let sections = [];

@@ -4,7 +4,7 @@ import  CTABlock from './CTABlock';
 import { Button } from 'components/atom/Button/Button';
 export default {
 
-  title: 'Blocks / Core Blocks / CTA Block',
+  title: 'Blocks /  CTA Block',
   component: CTABlock,
 } as ComponentMeta<typeof CTABlock>;
 

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportHeaderHero from "./ReportHeaderHero";
 
 export default {
-  title: "Blocks / Core Blocks / Report Header / Hero",
+  title: "Blocks /  Report Header / Hero",
   component: ReportHeaderHero,
 } as ComponentMeta<typeof ReportHeaderHero>;
 

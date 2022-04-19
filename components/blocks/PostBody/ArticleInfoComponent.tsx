@@ -1,26 +1,29 @@
-import { FullPostInterface } from "lib/post_data_models";
+
 import {allTagsSlugIdPair} from "utils/utils";
-import { icolor } from "utils/theme";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import { AuthorPostInterface } from "models/post_model";
 
 interface ArticleInfoComponentProps{
-    post: FullPostInterface
+    date: String;
+    authors: Array<AuthorPostInterface>;
+    contentTags: Array<String>;
+
 }
 
-const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
+const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentProps) =>{
 
   const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
   ];
-  const date = new Date(post.date);
-  const dateStr = monthNames[date.getMonth()]  +' ' + date.getDate()+ ', '+date.getFullYear();
+  const fmtdate = new Date(`${date}`);
+  const dateStr = monthNames[fmtdate.getMonth()]  +' ' + fmtdate.getDate()+ ', '+fmtdate.getFullYear();
 
     return (<>
       <p className="font-sans pb-md font-bold">{dateStr}</p>
       <div className="font-sans md:block flex justify-between mb-lg">
               <div>
                 <h3 className="font-bold">Authors</h3>
-                {post.authors.map((author)=>(
+                {authors.map((author)=>(
                 <div id={author.name} className="pb-sm ">
                   <p>
                     <LinkText href={`/authors/${author.slug}`}>{author.name}</LinkText></p>
@@ -30,9 +33,9 @@ const ArticleInfoComponent = ({post}:ArticleInfoComponentProps) =>{
               </div>
               <div>
               <h3 className="font-bold">Tags</h3>
-              {post.contentTags && post.contentTags.map((tag)=>{
+              {contentTags && contentTags.map((tag)=>{
                 return (
-                  <p id={tag}>
+                  <p id={`${tag}`}>
                     <LinkText  href={`/tags/${allTagsSlugIdPair.revGet(tag)}`}>{tag}</LinkText>
                   </p>
                 )})}

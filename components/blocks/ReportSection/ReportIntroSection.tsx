@@ -1,6 +1,6 @@
-import { ReportContent, ResponsiveContainer } from "..";
-import { Signatures } from "../../atom";
-import { ReportIntroSectionInterface } from "lib/report_data_models";
+import { ReportContent, ResponsiveContainer } from "../../../components/blocks";
+import { Signatures } from "../../../components/atom";
+import { ReportIntroSectionInterface } from "models/report_data_models";
 
 const ReportIntroSection: React.FC<ReportIntroSectionInterface> = ({ body, theme }) => {
   const hasWhiteBackground = theme.sage.background === undefined;

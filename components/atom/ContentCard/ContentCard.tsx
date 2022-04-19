@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { ContentfulImageAsset } from "lib/post_data_models";
 //import CardWithImage from "./CardWithImage";
 import HighlightedCard from "./HighlightedCard";
 import LargeTextCard from "./LargeTextCard";
@@ -9,15 +8,9 @@ import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White
 import brandTerrain1 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain1-Medium-White-V01@4x 1.png";
 import brandTerrain2 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain2-Medium-White-V01@4x 1.png";
 import brandTerrain3 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.png";
+import { ContentCardInterface } from "models/component_models";
 
-export interface ContentCardInterface {
-  title: String;
-  path: String;
-  type: String;
-  isHighlighted?: Boolean;
-  promoImage?: ContentfulImageAsset;
-  cycleNum?: number;
-}
+
 
 const ContentCard: React.FC<ContentCardInterface> = (props) => {
   if (props.isHighlighted) return <HighlightedCard {...props} />;

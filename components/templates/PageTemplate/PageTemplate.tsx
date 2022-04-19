@@ -2,20 +2,26 @@
 import {
   SectionHeader,
   ContentBlockText2,
-  PlaceholderPageHeader,
+  PageHeader,
   CTABlock,
   ContentBlockLinkToPage,
   QuoteBlock,
   ContentBlockArticleList 
 } from "components/blocks";
-import Fade from "react-reveal/Fade";
-import { PageProps } from "utils/pageUtils";
+import { PageInterface } from "models/page_models";
 import ReactMarkdown from 'react-markdown'
-import { ContentCard } from "components/atom";
-import { getContentUrl } from "utils/utils";
-import { Children } from "react";
+import PostBody from "components/blocks/PostBody/PostBody";
 
-const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
+const PageTemplate: React.FC<PageInterface> = ({ 
+  id,
+  slug,
+  title,
+  description,
+  pageHeader,
+  contentBlocks,
+  preview= false,
+  children
+})=> {
   // need to deconstruct post
   // const doc = page.body ? page.body.json : null;
   const MarkdownComponent = ({content}) => {
@@ -25,7 +31,7 @@ const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
       components={{
         // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
         ul: ({node, ...props}) => <ul className="list-disc" {...props} />
-      }}/> )
+      }}/> );
   } 
   
   
@@ -73,45 +79,46 @@ const PageTemplate: React.FC<PageProps> = ({ page, preview, children})=> {
         );
       case "ContentBlockArticleList":
         return (
-        <ContentBlockArticleList title={entry.title} body={entry.body}>
-          {entry.postsCollection.items.map((post)=>{
-            return (<ContentCard
-            key={post.title}
-            type={post.contentType}
-              title={post.title}
-              path={getContentUrl(post.contentType, post.slug)}
-            >
-              {post.shortSummary}
-            </ContentCard>)
-          })}
+        <ContentBlockArticleList 
+        title={entry.title} 
+        body={entry.body}
+        posts={entry.postsCollection.items}
+        >
         </ContentBlockArticleList>);
+      case "PostBody":
+        return (
+          <PostBody 
+            body={entry.body} 
+            contentTags={entry.contentTags} 
+            authors={entry.authors} 
+            date={entry.date} />);
     }
     return <div></div>;
   };
-
   return (
     <>
-      <PlaceholderPageHeader
-        title={page.pageHeader.title}
-        subtitle={page.pageHeader.subtitle}
-        bannerColor={page.pageHeader.bannerColor}
-        // brandElements="top"
-        // textLocation="bottom"
-        // backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    
+      <PageHeader
+        title={pageHeader.title}
+        subtitle={pageHeader.subtitle}
+        bannerColor={pageHeader.bannerColor}
+        variant={pageHeader.variant}
+  
       />
-      {page.contentBlocks.map((block) => (
+      {contentBlocks.map((block) => (
        getComponent(block)
-        // <Fade bottom>{
-         
-        //   }</Fade>
       ))}
        {/* <Fade bottom > */}
          {children}
-     
     {/* </Fade> */}
     </>
   );
 }
-// {/* {children&& Children.map(children, (child) => ( {child}))} */
 
 export default PageTemplate;
+
+
+// {/* {children&& Children.map(children, (child) => ( {child}))} */
+
+// brandElements="top"
+        // textLocation="bottom"
+        // backgroundImage={("backgroundImage" in page.pageHeader)? page.pageHeader.backgroundImage : null}    

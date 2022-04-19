@@ -4,31 +4,6 @@ Post gets taken in by the pages
 
 import { POST_CORE_FIELDS } from "./post_data_models";
 
-type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
-export interface PageComponentInterface {
-  title: string;
-  body: string;
-  buttonText?: string;
-  buttonUrl?: string;
-  componentType: string;
-}
-export interface PageHeaderInterface {
-  
-  title?: string;
-  subtitle?:string;
-  bannerColor?:BannerColor;
-  //backgroundImage:any;
-
-}
-
-export interface PageInterface {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  pageHeader: PageHeaderInterface;
-  contentBlocks: any;
-}
 
 export const PAGE_HEADER_FIELDS = `
     title
@@ -36,16 +11,6 @@ export const PAGE_HEADER_FIELDS = `
     bannerColor
 `;
 
-// backgroundImage {
-//     sys {
-//       id
-//     }
-//     url
-//     width
-//     height
-//     title
-//     description
-// }
 const SECTION_HEADER_FIELDS = `
     title
     subtitle
@@ -70,7 +35,6 @@ const CONTENT_BLOCK_LINK_TO_PAGE = `
         title
         description
     }
-
 `;
 const CONTENT_BLOCK_ARTICLE_LIST = `
     title
@@ -90,11 +54,14 @@ const CTA_BLOCK = `
     buttonPath
 `;
 
+
+
 const QUOTE_BLOCK = `
     body
     authorName
     authorRole
 `;
+
 
 export const PAGE_FIELDS = `
     sys {
@@ -132,6 +99,17 @@ export const PAGE_FIELDS = `
     }
 `;
 
+
+// backgroundImage {
+//     sys {
+//       id
+//     }
+//     url
+//     width
+//     height
+//     title
+//     description
+// }
    // ... on ContentBlockArticleList {
             //     ${CONTENT_BLOCK_ARTICLE_LIST}
             // }

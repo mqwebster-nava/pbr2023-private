@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { ReportContent } from "..";
-import { Button } from "../../atom";
+import { ReportContent } from "../../../components/blocks";
+import { Button } from "../../../components/atom";
 import { ReportMetrics } from "../ReportMetrics/ReportMetrics";
 import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
 
