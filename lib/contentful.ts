@@ -41,14 +41,7 @@ export interface PageQueryInterface {
 
 
 export default class ContentfulApi {
-  /*
-  Want this to handle the logic
-
-  - If post
-    - Create a Page interface with Post Header, Post Body, and (More from Nava)
-  - If list page (article or tag)
-    - Create a content block with all of the relatent cards
-  */
+ 
   static async getPageBySlug({slug, variant="default", preview =false}:PageQueryInterface) {
 
    // If it is a default page, then there should be a corresponding Page Content model in 
@@ -107,7 +100,6 @@ export default class ContentfulApi {
           subtitle:author.role,
         },
         contentBlocks: [
-          // more posts block
           {
             __typename:"ContentBlockArticleList",
             postsCollection:{
