@@ -57,7 +57,7 @@ interface ContentBlockInterface {
           
           {buttonPath!=null && posts.length>max && 
            <div className="flex justify-end">
-            <LinkText href={buttonPath}>Read more</LinkText>
+            <LinkText href={buttonPath} variant="large arrow">Read more</LinkText>
             </div>}
         </div>
       </div>

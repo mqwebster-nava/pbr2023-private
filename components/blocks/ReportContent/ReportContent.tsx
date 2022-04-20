@@ -107,7 +107,7 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           );
         },
         a: ({ node, ...props }) => (
-          <LinkText href={props.href}>{props.children}</LinkText>
+          <LinkText href={props.href} variant={"underlined"}>{props.children}</LinkText>
         ),
         ul: ({ node, ...props }) => (
           <ul className="list-disc ml-2xl">{props.children}</ul>

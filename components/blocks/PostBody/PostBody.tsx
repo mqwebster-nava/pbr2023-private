@@ -114,7 +114,7 @@ export default function PostBody({
       [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
       [INLINES.HYPERLINK]: (node, children) => (
-        <LinkText href={node.data.uri}>{children}</LinkText>
+        <LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText>
       ),
       [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data),
     },

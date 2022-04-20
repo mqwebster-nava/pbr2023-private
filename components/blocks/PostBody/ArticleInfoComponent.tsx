@@ -26,7 +26,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
                 {authors.map((author)=>(
                 <div id={author.name} className="pb-sm ">
                   <p>
-                    <LinkText href={`/authors/${author.slug}`}>{author.name}</LinkText></p>
+                    <LinkText href={`/authors/${author.slug}`} variant={"underlined"}>{author.name}</LinkText></p>
                   <p className="text-sm">{author.role}</p>
                 </div>
                 ))}
@@ -36,7 +36,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
               {contentTags && contentTags.map((tag)=>{
                 return (
                   <p id={`${tag}`}>
-                    <LinkText  href={`/tags/${allTagsSlugIdPair.revGet(tag)}`}>{tag}</LinkText>
+                    <LinkText  href={`/tags/${allTagsSlugIdPair.revGet(tag)}`} variant={"underlined"}>{tag}</LinkText>
                   </p>
                 )})}
               </div>

@@ -73,7 +73,7 @@ export default function OpenRoles(props:PageInterface) {
             {d.postings.map((posting) => {
               return (
                 <p className="font-sans py-md" key={`${posting.id}`} >
-                  <LinkText href={`${posting.hostedUrl}`}>{posting.title}</LinkText>
+                  <LinkText href={`${posting.hostedUrl}`} variant="underlined">{posting.title}</LinkText>
                 </p>
               );
             })}

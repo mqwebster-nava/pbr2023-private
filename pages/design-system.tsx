@@ -480,9 +480,12 @@ export default function DesignSystem(props: PageInterface) {
             </Button>
           </div>
         </div>
-        <div>
-          <h3 className="font-sans pb-sm pt-lg">Link Text</h3>
-          <LinkText href="/">Example Link Text</LinkText>
+        <div className="flex flex-col gap-sm" >
+          <h3 className="font-sans pb-sm pt-lg font-bold">Link Text</h3>
+          <LinkText href="/" variant="default">Default Link Text</LinkText> 
+          <LinkText href="/" variant="underlined">Underlined Link Text</LinkText>
+          <LinkText href="/" variant="arrow">Arrow Link Text</LinkText>
+          <LinkText href="/" variant="large arrow">Large Arrow Link Text</LinkText>
         </div>
         <div>
           <h3 className="font-sans pb-sm pt-lg">Content Card</h3>
