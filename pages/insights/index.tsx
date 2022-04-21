@@ -1,7 +1,7 @@
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 
 // export interface Props {
 //   posts: Array<BasicPostInterface>;
@@ -66,7 +66,7 @@ export async function getStaticProps({ params, preview = false }) {
   // const posts: Array<BasicPostInterface> =
   //   await ContentfulApi.getPostsByContentType("Insights");
 
-  const page: PageInterface = await ContentfulApi.getPageBySlug(
+  const page: PageInterface = await getPageDataFromContentful(
     {slug: "/insights", 
     preview: preview,
   });

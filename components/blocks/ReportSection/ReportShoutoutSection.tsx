@@ -1,7 +1,17 @@
 import { ReportContent } from "../../../components/blocks";
 import { Details } from "../../../components/atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
-import { ReportShoutoutSectionInterface } from "models/report_data_models";
+import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+
+
+export interface ReportShoutoutSectionInterface {
+  title: string;
+  introduction: string;
+  lists: Array<object>;
+  theme: ReportThemeInterface;
+}
+
+
 
 const ReportShoutoutSection: React.FC<ReportShoutoutSectionInterface> = ({
   title,

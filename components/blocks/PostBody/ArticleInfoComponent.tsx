@@ -1,7 +1,7 @@
 
 import {allTagsSlugIdPair} from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import { AuthorPostInterface } from "models/post_model";
+import { AuthorPostInterface } from "shared_interfaces/post_interface";
 
 interface ArticleInfoComponentProps{
     date: String;

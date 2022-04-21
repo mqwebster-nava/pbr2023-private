@@ -1,6 +1,6 @@
 
-import { ContentCardInterface } from "models/component_models";
 import Image from "next/image";
+import { ContentCardInterface } from "./ContentCard";
 
 const HighlightedCard: React.FC<ContentCardInterface> = ({
   title,

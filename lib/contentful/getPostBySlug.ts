@@ -1,0 +1,27 @@
+import callContentful, { defaultOptions } from "lib/contentful/callContentful";
+import { POST_ALL_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
+import { formatFullPost } from "lib/post_utils";
+import getMorePosts from "./getMorePosts";
+
+
+export default async function getPostBySlug(slug, options=defaultOptions) {
+    const variables = { slug, preview: options.preview };
+    const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
+      postCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+        total
+        items {
+          ${POST_ALL_FIELDS}
+        }
+      }
+    }`;
+   
+    const response = await callContentful(query, variables, options);
+    if(!response.data.postCollection.items) return null;
+    const post =  response.data.postCollection.items.pop();
+    const formattedPost = formatFullPost(post);
+    const morePosts = await getMorePosts(formattedPost, options);
+    return {
+      post:formattedPost,
+      morePosts
+    };
+  }

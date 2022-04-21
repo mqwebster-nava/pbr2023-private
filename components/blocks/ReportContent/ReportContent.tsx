@@ -2,7 +2,20 @@ import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import { BlockQuote, LinkText, PullQuote } from "../../atom";
-import { ReportContentInterface } from "models/report_data_models";
+import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+
+type Size = "small" | "medium" | "large";
+export interface ReportContentInterface {
+  content: string;
+  theme?: ReportThemeInterface;
+  isGreenBG?: boolean;
+  headerSize?: Size;
+  headerColor?: {
+    [HeaderTagName: string]: String;
+  };
+  paragraphSize?: Size;
+}
+
 
 const defaultTheme = {
   sage: {

@@ -66,7 +66,6 @@ export const POST_ALL_FIELDS = `
           }
         }
       }
-
 `;
 
 

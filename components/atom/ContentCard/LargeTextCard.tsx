@@ -1,5 +1,4 @@
-import { ContentCardInterface } from "models/component_models";
-
+import { ContentCardInterface } from "./ContentCard";
 
 const LargeTextCard: React.FC<ContentCardInterface> = ({
     title,

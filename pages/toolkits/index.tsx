@@ -1,5 +1,5 @@
-import ContentfulApi from "lib/contentful";
-import { PageInterface } from "models/page_models";
+import { getPageDataFromContentful } from "lib/api";
+import { PageInterface } from "shared_interfaces/page_interface";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
 
@@ -11,7 +11,7 @@ export default function Toolkits(props: PageInterface) {
 
 export async function getStaticProps({ params, preview = false }) {
     //const posts = await ContentfulApi.getPostsByContentType("Toolkit");
-    const page: PageInterface = await ContentfulApi.getPageBySlug(
+    const page: PageInterface = await getPageDataFromContentful(
       {slug:"/toolkits",
       preview: preview,
     });

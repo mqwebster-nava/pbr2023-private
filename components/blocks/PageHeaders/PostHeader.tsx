@@ -1,8 +1,13 @@
-import { PostHeaderInterface } from "models/page_models";
+
 import Image from "next/image";
 import filler from "public/images/filler-image.png";
+import { PageHeaderInterface } from "./PageHeader";
 
-
+export interface PostHeaderInterface extends PageHeaderInterface  {
+  longSummary: string;
+  leadImage?: string; // todo make a model for assets
+  contentType: string; // todo make this a type?
+}
 
 const PostHeader = ({
   title,

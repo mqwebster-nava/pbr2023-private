@@ -1,7 +1,7 @@
 
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 //https://docs.google.com/document/d/1SWVZyiBQ0xPpmFcVuZFwyqtYOQlV5ujWZejTJ4d8Cs4/edit#
 
 export default function Story(props:PageInterface ) {
@@ -10,7 +10,7 @@ export default function Story(props:PageInterface ) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const res: PageInterface = await ContentfulApi.getPageBySlug({
+  const res: PageInterface = await getPageDataFromContentful({
     slug:"/story",
     preview: preview,
   });

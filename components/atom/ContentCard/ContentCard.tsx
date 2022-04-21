@@ -8,7 +8,7 @@ import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White
 import brandTerrain1 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain1-Medium-White-V01@4x 1.png";
 import brandTerrain2 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain2-Medium-White-V01@4x 1.png";
 import brandTerrain3 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.png";
-import { ContentfulImageAsset } from "models/post_model";
+import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 export interface ContentCardInterface {
   title: String;

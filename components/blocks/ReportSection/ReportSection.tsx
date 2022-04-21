@@ -1,5 +1,20 @@
 import { ReportContent } from "../../../components/blocks";
-import { ReportSectionInterface } from "models/report_data_models";
+import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+
+
+export interface ReportSectionInterface {
+  picture: string;
+  picture_position: string;
+  content: {
+    title: string;
+    introduction: string;
+    body: string;
+  };
+  isWhiteBG: boolean;
+  theme: ReportThemeInterface;
+  isGreenBG: boolean;
+}
+
 
 const ReportSection: React.FC<ReportSectionInterface> = ({
   picture,

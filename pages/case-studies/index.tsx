@@ -1,6 +1,6 @@
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 
 
 
@@ -12,7 +12,7 @@ export default function CaseStudies(props:PageInterface) {
 
 export async function getStaticProps({ params, preview = false }) {
     //const posts: Array<BasicPostInterface> = await ContentfulApi.getPostsByContentType("Case Study");
-    const page: PageInterface = await ContentfulApi.getPageBySlug({
+    const page: PageInterface = await getPageDataFromContentful({
       slug:"/case-studies", 
       preview: preview,
     });

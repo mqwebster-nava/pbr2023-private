@@ -1,7 +1,4 @@
 
-import Image from "next/image";
-import { Button } from "../../atom/Button/Button";
-import React, { Children } from "react";
 import { getContentUrl } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
 
@@ -27,6 +24,7 @@ interface ContentBlockInterface {
     children,
     
   }) => {
+    posts = posts.filter((post)=>post!=null);
     return (
       <div className="responsive-container py-xl">
         <div className={`w-full`}>

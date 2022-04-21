@@ -1,6 +1,12 @@
 import { ReportContent, ResponsiveContainer } from "../../../components/blocks";
 import { Signatures } from "../../../components/atom";
-import { ReportIntroSectionInterface } from "models/report_data_models";
+import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+
+export interface ReportIntroSectionInterface {
+  body: string;
+  theme: ReportThemeInterface;
+  isWhiteBG: boolean;
+}
 
 const ReportIntroSection: React.FC<ReportIntroSectionInterface> = ({ body, theme }) => {
   const hasWhiteBackground = theme.sage.background === undefined;

@@ -1,4 +1,4 @@
-import { AuthorPostInterface, BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "../models/post_model";
+import { AuthorPostInterface, BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "../shared_interfaces/post_interface";
 
 
 
@@ -27,7 +27,7 @@ const formatImageAsset = (imgData) => {
         clientName: post.clientName,
         contentType: post.contentType,
         shortSummary: post.shortSummary,
-        promoImage: formatImageAsset(post.promoImage)
+        promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null
       }
       return newPost;
     })
@@ -35,6 +35,7 @@ const formatImageAsset = (imgData) => {
   
 
   const formatFullPost = (post) =>{
+   
     const formattedPost: FullPostInterface = {
       id: post.sys.id,
       slug: post.slug,
@@ -56,7 +57,7 @@ const formatImageAsset = (imgData) => {
       date: post.date,
       contentType: post.contentType,
       shortSummary: post.shortSummary,
-      promoImage: formatImageAsset(post.promoImage)
+      promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null
     }
     return formattedPost;
   }

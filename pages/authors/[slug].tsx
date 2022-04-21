@@ -1,6 +1,7 @@
-import ContentfulApi from "lib/contentful";
-import { PageInterface } from "models/page_models";
+import { getPageDataFromContentful } from "lib/api";
+import { PageInterface } from "shared_interfaces/page_interface";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import getAllAuthorSlugs from "lib/contentful/getAllAuthorSlugs";
 
 
 // TODO connect to page template
@@ -12,7 +13,7 @@ export default function AuthorPosts(props:PageInterface) { //{ posts, name, role
 }
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllAuthorSlugs();
+  const postSlugs = await getAllAuthorSlugs();
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };
   });
@@ -23,7 +24,7 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const page : PageInterface = await ContentfulApi.getPageBySlug({slug:params.slug, variant:"author", preview });
+  const page : PageInterface = await getPageDataFromContentful({slug:params.slug, variant:"author", preview });
 
   return {
     props: page,

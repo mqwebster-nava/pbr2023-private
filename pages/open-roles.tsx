@@ -11,8 +11,8 @@ import {
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import { PageInterface } from "models/page_models";
-import ContentfulApi from "lib/contentful";
+import { PageInterface } from "shared_interfaces/page_interface";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
@@ -90,7 +90,7 @@ export default function OpenRoles(props:PageInterface) {
 
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = 
-    await ContentfulApi.getPageBySlug({
+    await getPageDataFromContentful({
       slug:"/", 
       preview: preview,
     });

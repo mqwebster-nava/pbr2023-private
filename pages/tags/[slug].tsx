@@ -1,6 +1,6 @@
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import {allTagsSlugIdPair, getContentUrl} from "utils/utils"
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
 
@@ -21,7 +21,7 @@ export async function getStaticPaths({ params, preview = null }) {
 
 // Calls the contentful API to get posts for each tag.
 export async function getStaticProps({ params, preview = false }) {
-  const page : PageInterface = await ContentfulApi.getPageBySlug({slug:params.slug, variant:"tags", preview });
+  const page : PageInterface = await getPageDataFromContentful({slug:params.slug, variant:"tags", preview });
   return {
     props: page,
   };

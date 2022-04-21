@@ -1,6 +1,7 @@
-import ContentfulApi from "lib/contentful";
-import { PageInterface } from "models/page_models";
+import { getPageDataFromContentful } from "lib/api";
+import { PageInterface } from "shared_interfaces/page_interface";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import getAllPostSlugs from "lib/contentful/getAllPostSlugs";
 
 
 export default function NewsPost(props:PageInterface) {
@@ -9,7 +10,7 @@ export default function NewsPost(props:PageInterface) {
 
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllPostSlugs("News");
+  const postSlugs = await getAllPostSlugs("News");
 
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };
@@ -22,7 +23,7 @@ export async function getStaticPaths({ params, preview = null }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const res = await ContentfulApi.getPageBySlug({
+  const res = await getPageDataFromContentful({
     slug:params.slug,
     preview: preview,
     variant:"post"

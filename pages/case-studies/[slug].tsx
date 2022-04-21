@@ -1,6 +1,7 @@
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
+import getAllPostSlugs from "lib/contentful/getAllPostSlugs";
 
 const CaseStudyPost= (props: PageInterface)=> {
     return (
@@ -10,7 +11,7 @@ const CaseStudyPost= (props: PageInterface)=> {
 export default CaseStudyPost;
 
 export async function getStaticPaths({ params, preview = null }) {
-  const postSlugs = await ContentfulApi.getAllPostSlugs("Case Study");
+  const postSlugs = await getAllPostSlugs("Case Study");
 
   const paths = postSlugs.map((slug) => {
     return { params: { slug } };
@@ -24,7 +25,7 @@ export async function getStaticPaths({ params, preview = null }) {
 
 export async function getStaticProps({ params, preview = false }) {
   
-  const res = await ContentfulApi.getPageBySlug({
+  const res = await getPageDataFromContentful({
     slug:params.slug,
     preview: preview,
     variant:"post"

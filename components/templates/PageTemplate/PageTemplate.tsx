@@ -8,7 +8,7 @@ import {
   QuoteBlock,
   ContentBlockArticleList 
 } from "components/blocks";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 import ReactMarkdown from 'react-markdown'
 import PostBody from "components/blocks/PostBody/PostBody";
 

@@ -1,15 +1,23 @@
 
-import { PageHeaderInterface } from "models/page_models";
+import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg"
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg"
 import PostHeader from "./PostHeader";
 
-type Variant = "default" | "image" | "image-pattern" | "black";
-type TextLocation = "top" | "bottom" ;
-type BrandElements = "none" | "top" | "bottom" | "left";
+// type Variant = "default" | "image" | "image-pattern" | "black";
+// type TextLocation = "top" | "bottom" ;
+// type BrandElements = "none" | "top" | "bottom" | "left";
+type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
+type PageHeaderVariant = "default" | "post";
 
-
+export interface PageHeaderInterface {
+  title?: string;
+  subtitle?:string;
+  bannerColor?:BannerColor;
+  variant?: PageHeaderVariant;
+  backgroundImage?:ContentfulImageAsset;
+}
 
 const PageHeader = ({
   title,

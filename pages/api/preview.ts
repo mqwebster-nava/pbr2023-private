@@ -2,7 +2,9 @@
  * https://nextjs.org/docs/advanced-features/preview-mode
  */
 
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
+import getPostBySlug from "lib/contentful/getPostBySlug";
+
 
 const contentTypesMap = {
   "Case Study": "/case-studies/",
@@ -40,7 +42,7 @@ export default async function preview(req, res) {
   let preview = null;
   let redirectUrl = "/";
   if(req.query.type=="post" && req.query.contentType){
-    preview = await ContentfulApi.getPostBySlug(req.query.slug, {
+    preview = await getPostBySlug(req.query.slug, {
       preview: true,
     });
     let redirectPrefix = contentTypesMap[req.query.contentType] ;
@@ -48,7 +50,7 @@ export default async function preview(req, res) {
 
   }
   if (req.query.type=="page"){
-    preview = await ContentfulApi.getPageBySlug(req.query.slug, {
+    preview = await getPageDataFromContentful({slug:req.query.slug, 
       preview: true,
     });
     redirectUrl = `${preview.slug}`;

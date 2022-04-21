@@ -1,6 +1,6 @@
-import ContentfulApi from "lib/contentful";
+import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "models/page_models";
+import { PageInterface } from "shared_interfaces/page_interface";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
 import { CTABlock, Newsletter } from "components/blocks";
 
@@ -33,7 +33,7 @@ export default function Home(props:PageInterface) {
 
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = 
-    await ContentfulApi.getPageBySlug({
+    await getPageDataFromContentful({
       slug:"/", 
       preview: preview,
     });
