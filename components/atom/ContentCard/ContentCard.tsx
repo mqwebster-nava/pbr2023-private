@@ -46,23 +46,25 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
       ? brandTerrain2
       : brandTerrain3;
 
-    const opacity = classNames({
-        "opacity-50": promoImage==null,
-       
-    });
+  const opacity = classNames({
+    "opacity-50": promoImage == null,
+  });
   return (
     <a href={`${path}`} className="group block h-full ">
-      <div className={`${backgroundColor} relative h-52 w-full mb-md group-hover:brightness-75`}>
-         <Image
+      <div
+        className={`${backgroundColor} relative h-52 w-full mb-md group-hover:brightness-75`}
+      >
+        <Image
           layout={"fill"}
           className={`object-cover h-full w-full ${opacity}`}
           src={promoImage ? promoImage.url : pattern}
-        ></Image> 
+          alt=""
+        ></Image>
       </div>
       <div className="">
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
+        <h4 className="mb-2 text-xl font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
           {title}
-        </h5>
+        </h4>
         <p className=" text-base font-sans text-gray-700 dark:text-gray-400">
           {children}
         </p>

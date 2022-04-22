@@ -1,8 +1,7 @@
-
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
-import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg"
-import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg"
+import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
+import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
 import PostHeader from "./PostHeader";
 
 // type Variant = "default" | "image" | "image-pattern" | "black";
@@ -13,30 +12,38 @@ type PageHeaderVariant = "default" | "post";
 
 export interface PageHeaderInterface {
   title?: string;
-  subtitle?:string;
-  bannerColor?:BannerColor;
+  subtitle?: string;
+  bannerColor?: BannerColor;
   variant?: PageHeaderVariant;
-  backgroundImage?:ContentfulImageAsset;
+  backgroundImage?: ContentfulImageAsset;
 }
 
 const PageHeader = ({
   title,
   subtitle,
   bannerColor = "navy",
-  variant="default"
+  variant = "default",
 }: PageHeaderInterface) => {
   bannerColor = bannerColor ?? "navy";
-  return  variant=="post"? (<PostHeader title={title} longSummary={subtitle} contentType={""}></PostHeader>):
-  (<DefaultPageHeader title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
+  return variant == "post" ? (
+    <PostHeader
+      title={title}
+      longSummary={subtitle}
+      contentType={""}
+    ></PostHeader>
+  ) : (
+    <DefaultPageHeader
+      title={title}
+      subtitle={subtitle}
+      bannerColor={bannerColor}
+    />
+  );
 };
 
-
-const TitleBlock = ({title, subtitle, textColor}) => {
+const TitleBlock = ({ title, subtitle, textColor }) => {
   return (
     <div className={`pb-2xl ${textColor} `}>
-      <h1 className={`font-sans  text-base font-bold`}>
-        {title}
-      </h1>
+      <h1 className={`font-sans  text-base font-bold`}>{title}</h1>
       <h2
         className={`font-sans  lg:text-6xl text-5xl sm:pr-xl pr-0 md:pr-4xl font-black mr-xl `}
       >
@@ -48,26 +55,31 @@ const TitleBlock = ({title, subtitle, textColor}) => {
 const DefaultPageHeader = ({
   title,
   subtitle,
- // textLocation,
+  // textLocation,
   bannerColor,
 }: PageHeaderInterface) => {
   return (
     <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`}>
-      <div className={`
-      responsive-container z-10 relative pt-4xl`}>
-        <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
-       <div className="h-[96px]"></div>
+      <div
+        className={`
+      responsive-container z-10 relative pt-4xl`}
+      >
+        <TitleBlock
+          title={title}
+          subtitle={subtitle}
+          textColor={"text-white"}
+        />
+        <div className="h-[96px]"></div>
       </div>
-      <div className={`responsive-container absolute bottom-0 right-0 left-0 flex `}>
-          <Image src={brandTerrain} height={96} width={96}></Image>
-          <Image src={brandDirection} height={96} width={96}></Image>
-       </div>
-
+      <div
+        className={`responsive-container absolute bottom-0 right-0 left-0 flex `}
+      >
+        <Image src={brandTerrain} height={96} width={96} alt="" />
+        <Image src={brandDirection} height={96} width={96} alt="" />
+      </div>
     </div>
   );
 };
-
-
 
 // const ImagePageHeader = ({
 //   title,
