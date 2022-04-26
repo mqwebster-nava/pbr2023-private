@@ -21,7 +21,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
 
   return (
     <a
-      className={`group text-black hover:text-sage-base flex items-center gap-sm ${variantStyles}`}
+      className={`group text-black hover:text-sage-base inline-flex items-center gap-sm ${variantStyles}`}
       href={href}
       target={target}
     >
