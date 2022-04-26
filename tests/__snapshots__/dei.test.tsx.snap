@@ -87,6 +87,7 @@ exports[`DEI page matches snapshot 1`] = `
               </p>
             </div>
             <img
+              alt=""
               class="max-h-[450px] md:scale-[1.4]"
               src="/images/dei/side_illustration.png"
               width="138px"
@@ -1520,10 +1521,13 @@ exports[`DEI page matches snapshot 1`] = `
         <div
           class="my-xl "
         >
-          <p>
+          <label
+            for="newsletter-sign-up"
+          >
             email
-          </p>
+          </label>
           <input
+            id="newsletter-sign-up"
             type="text"
           />
           <br />

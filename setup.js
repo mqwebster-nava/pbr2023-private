@@ -1,4 +1,3 @@
 require("@testing-library/jest-dom/extend-expect");
-import React from "react";
-
-global.React = React;
+const react = require('react')
+global.React = react;

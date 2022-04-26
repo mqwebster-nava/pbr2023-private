@@ -78,6 +78,7 @@ export default function DEI({ reportData }) {
               src="/images/dei/side_illustration.png"
               width="138px"
               className="max-h-[450px] md:scale-[1.4]"
+              alt=""
             />
           </div>
         </ResponsiveContainer>

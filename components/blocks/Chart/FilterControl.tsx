@@ -48,7 +48,6 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
           value={checkboxValue}
           label={checkboxLabel}
           handleClick={handleCheckboxClick}
-          // handleClick={() => setMultiSelected(!multiSelected)}
         />
       )}
       {children}

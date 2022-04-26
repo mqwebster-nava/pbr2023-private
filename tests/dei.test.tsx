@@ -3,7 +3,7 @@
  */
 import DEI from "../pages/dei";
 import { render } from "@testing-library/react";
-import React from "react";
+import { axe, toHaveNoViolations } from "jest-axe";
 
 const test = {
   content: {
@@ -424,5 +424,13 @@ describe("DEI page", () => {
     const { asFragment } = render(<DEI reportData={test} />);
 
     expect(asFragment(<DEI reportData={test} />)).toMatchSnapshot();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<DEI reportData={test} />);
+
+    const results = await axe(container);
+    expect.extend(toHaveNoViolations);
+    expect(results).toHaveNoViolations();
   });
 });
