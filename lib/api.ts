@@ -58,7 +58,6 @@ export async function getPageDataFromContentful({slug, variant="default", previe
         const formattedPage: PageInterface = formatPostPage(post, morePosts); 
         return formattedPage;
        }catch (e){
-           console.log(e);
            return null;
        }
      }

@@ -14,13 +14,23 @@ import {
   ReportSideMenu,
   ReportSectionContentFull,
 } from "components/blocks";
+import { PageInterface } from "shared_interfaces/page_interface";
 
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2020);
+  const formattedPage: PageInterface = {
+    id: "public-benefit-reports",
+    slug: "public-benefit-reports",
+    title: "",
+    description:"description",
+    socialImage: null,
+    pageHeader: null,
+    contentBlocks: [
+      report
+    ], 
+ }
   return {
-    props: {
-      report,
-    },
+    props: formattedPage,
   };
 }
 
@@ -70,7 +80,8 @@ const createSection = (report, index) => {
   };
 };
 
-export default function PBR2020({ report }) {
+export default function PBR2020(props:PageInterface) {
+  const report = props.contentBlocks[0];
   const reportSections = [...new Array(4)].map((_, index) =>
     createSection(report, index)
   );

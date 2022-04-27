@@ -16,6 +16,7 @@ const defaultSocialImage: ContentfulImageAsset = {
   title: 'Purple Nava Logo',
   description: 'A logo to act as a placeholder for the social image'
 }
+export {defaultSocialImage};
 
 export function formatPage(page){
     const formattedPage: PageInterface = {
@@ -37,7 +38,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     id: post.id,
     slug: post.slug,
     title: post.title,
-    socialImage: post.promoImage ?? defaultSocialImage,
+    socialImage: liftData(post.promoImage)?? defaultSocialImage,
     pageHeader: {
       id: `${post.id}-header`,
       title: post.title,
@@ -76,6 +77,7 @@ export function formatAuthorPage(slug, author){
     slug: slug,
     title: author.name,
     description:author.bio,
+    socialImage: defaultSocialImage,
     pageHeader: {
       id: `${slug}-header`,
       title: author.name,
@@ -100,6 +102,7 @@ export function formatTagsPage(slug, tagName, posts){
     id: slug,
     slug: slug,
     title: tagName,
+    socialImage: defaultSocialImage,
     description:`Posts related to ${tagName}`,
     pageHeader: {
       id: `${slug}-header`,

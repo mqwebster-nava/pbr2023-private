@@ -28,7 +28,6 @@ export function getContentUrl(contentType, slug){
 }
 
 export function liftData(data){
-    console.log(data);
     if(!data) return data;
     
     let newData = data;
