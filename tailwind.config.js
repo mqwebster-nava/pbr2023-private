@@ -28,7 +28,7 @@ module.exports = {
         "6xl": ["54px","66px"]//["54px", "67.5px"],
       },
       screens: {
-        sm: "480px",
+        sm: "540px",
         // => @media (min-width: 992px) { ... }
         md: "768px",
         // => @media (min-width: 768px) { ... }
