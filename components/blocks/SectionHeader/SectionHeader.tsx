@@ -1,12 +1,16 @@
+import { MarkdownComponent } from "utils/utils";
+
 // TODO move as much to tailwind
 export interface SectionHeaderInterface {
   title: string;
   id: string;
+  subtitle?:string;
 }
 
 const LargeHero: React.FC<SectionHeaderInterface> = ({
   id,
   title,
+  subtitle,
   children,
 }) => {
   const TitleBlock = () => {
@@ -25,7 +29,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
     return (
       <div className={`flex justify-end`}>
 
-        <div className={`md:w-2/3 text-lg md:text-xl font-serif text-navy-900`}>{children}</div>
+        <div className={`md:w-2/3 text-lg md:text-xl font-serif text-navy-900`}>{<MarkdownComponent content={subtitle}/>}</div>
       </div>
     );
   };

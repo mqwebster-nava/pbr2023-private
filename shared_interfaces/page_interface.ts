@@ -11,7 +11,8 @@ export interface PageInterface {
   slug: string;
   title: string;
   description: string;
+  socialImage?: ContentfulImageAsset;
+  preview?: boolean;
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
-  preview?: boolean;
 }
