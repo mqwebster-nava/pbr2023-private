@@ -51,16 +51,16 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
        
     });
   return (
-    <a href={`${path}`} className="group block h-full ">
-      <div className={`${backgroundColor} relative h-52 w-full mb-md group-hover:brightness-75`}>
+    <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full ">
+      <div className={`${backgroundColor} relative h-52  w-full sm:h-36 sm:w-1/3 md:w-full md:h-52 group-hover:brightness-75`}>
          <Image
           layout={"fill"}
           className={`object-cover h-full w-full ${opacity}`}
           src={promoImage ? promoImage.url : pattern}
         ></Image> 
       </div>
-      <div className="">
-        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
+      <div className="w-full sm:w-2/3 md:w-full">
+        <h5 className="mb-2 text-lg xl:text-xl font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
           {title}
         </h5>
         <p className=" text-base font-sans text-gray-700 dark:text-gray-400">

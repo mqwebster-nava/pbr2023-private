@@ -3,6 +3,7 @@ import { getContentUrl } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
 
 interface ContentBlockInterface {
+     id:string;
      title?: string;
      buttonText?:string;
      buttonPath?:string;
@@ -14,6 +15,7 @@ interface ContentBlockInterface {
   
   
   const ContentBlockArticleList: React.FC<ContentBlockInterface> = ({ 
+    id,
     title,  
     body, 
     posts,
@@ -26,7 +28,7 @@ interface ContentBlockInterface {
   }) => {
     posts = posts.filter((post)=>post!=null);
     return (
-      <div className="responsive-container py-xl">
+      <div className="responsive-container py-xl" key={id}>
         <div className={`w-full`}>
           {title && <h3 className="font-sans text-3xl md:text-4xl  font-bold">{title} </h3>}
           {body && (
@@ -35,11 +37,11 @@ interface ContentBlockInterface {
             </p>
           )}
           <div
-            className={`w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-x-lg gap-y-xl my-2xl`}
+            className={`w-full grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-x-lg gap-y-xl my-2xl`}
           >
             {posts.slice(0, max).map((post) =>{
             if(!post.promoImage) cycleNum+=1;
-            return ( <div className=" w-full max-w-[400px] self-stretch ">
+            return ( <div className=" w-full lg:max-w-[400px] self-stretch ">
                 <ContentCard
                 type={post.contentType}
                   title={post.title}
