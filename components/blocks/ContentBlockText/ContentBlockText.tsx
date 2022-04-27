@@ -1,4 +1,3 @@
-import { generateKey } from "utils/utils";
 
 interface ContentBlockInterface {
     title?: string;

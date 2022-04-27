@@ -41,8 +41,9 @@ interface ContentBlockInterface {
           >
             {posts.slice(0, max).map((post) =>{
             if(!post.promoImage) cycleNum+=1;
-            return ( <div className=" w-full lg:max-w-[400px] self-stretch ">
+            return ( <div className=" w-full lg:max-w-[400px] self-stretch " key={post.id}>
                 <ContentCard
+
                 type={post.contentType}
                   title={post.title}
                   promoImage={post.promoImage}
