@@ -10,13 +10,14 @@ export interface PostHeaderInterface extends PageHeaderInterface  {
 }
 
 const PostHeader = ({
+  id,
   title,
   longSummary,
   leadImage,
   contentType,
 }: PostHeaderInterface) => {
   return (
-    <div>
+    <div key={id}>
       <div className="bg-gray-300 w-screen pb-[160px] pt-2xl ">
         <div className=" py-4xl px-3xl xl:px-0 xl:mx-auto xl:max-w-screen-lg ">
           <h3 className="pt-2xl font-sans font-light text-navy-900"> {contentType}</h3>

@@ -4,9 +4,9 @@ import { Button } from "../../atom/Button/Button";
 import { ContentBlockInterface } from "./ContentBlockLinkToPage";
 
   
-  const RightRepeater: React.FC<ContentBlockInterface> = ({ title, image, buttonPath, buttonText,isStorybook, children}) => {
+  const RightRepeater: React.FC<ContentBlockInterface> = ({ id, title, image, buttonPath, buttonText,isStorybook, children}) => {
       return ( 
-       <div className="responsive-container py-2xl">
+       <div className="responsive-container py-2xl" key={id}>
        <div className={`w-full flex flex-col-reverse md:flex-row`}>
             <div className="w-full md:w-1/3 pr-xl flex justify-between flex-col"> 
                 <div className="">

@@ -12,6 +12,7 @@ type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
 type PageHeaderVariant = "default" | "post";
 
 export interface PageHeaderInterface {
+  id:string;
   title?: string;
   subtitle?:string;
   bannerColor?:BannerColor;
@@ -20,14 +21,15 @@ export interface PageHeaderInterface {
 }
 
 const PageHeader = ({
+  id,
   title,
   subtitle,
   bannerColor = "navy",
   variant="default"
 }: PageHeaderInterface) => {
   bannerColor = bannerColor ?? "navy";
-  return  variant=="post"? (<PostHeader title={title} longSummary={subtitle} contentType={""}></PostHeader>):
-  (<DefaultPageHeader title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
+  return  variant=="post"? (<PostHeader id={id} title={title} longSummary={subtitle} contentType={""}></PostHeader>):
+  (<DefaultPageHeader id={id}title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
 };
 
 
@@ -46,13 +48,14 @@ const TitleBlock = ({title, subtitle, textColor}) => {
   );
 };
 const DefaultPageHeader = ({
+  id,
   title,
   subtitle,
  // textLocation,
   bannerColor,
 }: PageHeaderInterface) => {
   return (
-    <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`}>
+    <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`} key={id}>
       <div className={`
       responsive-container z-10 relative pt-4xl`}>
         <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />

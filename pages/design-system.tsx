@@ -10,6 +10,7 @@ export default function DesignSystem(props: PageInterface) {
   return page ? (
     <div>
       <PageHeader
+        id={"page-header"}
         title={"Design System"}
         subtitle={"Design System of navapbc.com"}
       ></PageHeader>

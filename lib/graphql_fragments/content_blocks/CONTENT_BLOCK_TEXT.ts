@@ -1,6 +1,9 @@
 
 
 const CONTENT_BLOCK_TEXT = `
+sys {
+    id
+}
 title
 body
 `;

@@ -15,7 +15,10 @@ export function formatPage(page){
         id: page.sys.id,
         slug: page.slug,
         title: page.title,
-        pageHeader: page.pageHeader,
+        pageHeader: {
+          id:page.pageHeader.sys.id,
+          ...page.pageHeader
+        },
         contentBlocks: page.contentCollection.items,
         description: page.description,
     }
@@ -29,6 +32,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     slug: post.slug,
     title: post.title,
     pageHeader: {
+      id: `${post.id}-header`,
       title: post.title,
       subtitle:post.longSummary,
       variant:"post",
@@ -38,6 +42,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       // Post body block
       {
         __typename:"PostBody",
+        sys:{id: `${post.id}-body`},
         body: post.body,
         contentTags: post.contentTags,
         authors: post.authors,
@@ -46,6 +51,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       // more posts block
       {
         __typename:"ContentBlockArticleList",
+        sys:{id: `${post.id}-more-posts`},
         title:"More from Nava",
         postsCollection:{
           items: morePosts
@@ -66,12 +72,14 @@ export function formatAuthorPage(slug, author){
     title: author.name,
     description:author.bio,
     pageHeader: {
+      id: `${slug}-header`,
       title: author.name,
       subtitle:author.role,
     },
     contentBlocks: [
       {
         __typename:"ContentBlockArticleList",
+        sys:{id: `${slug}-posts`},
         postsCollection:{
           items: author.linkedFrom.postCollection.items
         }
@@ -90,12 +98,14 @@ export function formatTagsPage(slug, tagName, posts){
     title: tagName,
     description:`Posts related to ${tagName}`,
     pageHeader: {
+      id: `${slug}-header`,
       title: tagName,
       subtitle: tagName,
     },
     contentBlocks: [
       {
         __typename:"ContentBlockArticleList",
+        sys:{ id: `${slug}-posts`},
         postsCollection:{
           items: posts
         }

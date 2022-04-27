@@ -3,14 +3,16 @@ import goldIllustration from '../../../public/images/illistration-1.png'
 
 type QuoteBaseColor = "gold" |"purple";
 interface QuoteBlockInterface {
-  content: String;
-  author: String;
-  authorRole: String;
+  id:string;
+  content: string;
+  author: string;
+  authorRole: string;
   isStorybook?:boolean;
   color?: QuoteBaseColor;
 }
 
 const QuoteBlock: React.FC<QuoteBlockInterface> = ({
+  id,
   content,
   author,
   authorRole,
@@ -19,7 +21,7 @@ const QuoteBlock: React.FC<QuoteBlockInterface> = ({
 }) => {
   const baseColor = color ? color : "gold";
   return (
-    <div className={`bg-${baseColor}-50`}>
+    <div className={`bg-${baseColor}-50`} key={id}>
       <div className="responsive-container py-2xl flex flex-wrap">
         <div className={`w-full lg:w-1/2 flex`}>
             <div className="pr-md">

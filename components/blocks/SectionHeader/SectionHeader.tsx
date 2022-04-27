@@ -1,9 +1,11 @@
 // TODO move as much to tailwind
 export interface SectionHeaderInterface {
   title: string;
+  id: string;
 }
 
 const LargeHero: React.FC<SectionHeaderInterface> = ({
+  id,
   title,
   children,
 }) => {
@@ -29,7 +31,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
   };
 
   return (
-    <div className="responsive-container py-2xl">
+    <div className="responsive-container py-2xl" key={id}>
       <TitleBlock />
       <BodyBlock />
     </div>

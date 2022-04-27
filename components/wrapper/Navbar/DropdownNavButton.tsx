@@ -5,6 +5,7 @@ const DropdownNavButton = (props) => {
   
     return (
       <div
+        key={props.title}
         className="relative inline-block cursor-pointer pr-3xl"
         onMouseEnter={() => setShowMenu(true)}
         onMouseLeave={() => setShowMenu(false)}

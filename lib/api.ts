@@ -59,19 +59,7 @@ export async function getPageDataFromContentful({slug, variant="default", previe
         return formattedPage;
        }catch (e){
            console.log(e);
-        const formattedPage: PageInterface =  {
-            id: 'error',
-            slug:slug,
-            title:"ERROR",
-            pageHeader: {
-              title:"ERROR",
-              subtitle:"ERROR",
-            },
-            description:"ERROR",
-            contentBlocks: [
-            ],
-         }
-           return formattedPage;
+           return null;
        }
        
        

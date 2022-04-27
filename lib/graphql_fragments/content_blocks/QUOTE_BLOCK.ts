@@ -1,6 +1,9 @@
 const QUOTE_BLOCK = `
-    body
-    authorName
-    authorRole
+sys {
+    id
+  }
+body
+authorName
+authorRole
 `;
 export default QUOTE_BLOCK;

@@ -3,6 +3,7 @@ import { Button } from "../../atom/Button/Button";
 import { ContentBlockInterface } from "./ContentBlockLinkToPage";
 
 const LeftRepeater: React.FC<ContentBlockInterface> = ({
+  id,
   title,
   image,
   buttonPath,
@@ -12,7 +13,7 @@ const LeftRepeater: React.FC<ContentBlockInterface> = ({
 }) => {
 
   return (
-    <div className={"responsive-container py-2xl"}>
+    <div className={"responsive-container py-2xl"} key={id}>
     <div className={`w-full flex flex-col md:flex-row`}>
       <div className={`w-full md:w-2/3 `}>
        { isStorybook ? <Image height={"300px"} width={"300px"} src={image} /> :

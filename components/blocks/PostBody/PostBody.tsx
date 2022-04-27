@@ -11,18 +11,22 @@ import { AuthorPostInterface } from "shared_interfaces/post_interface";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 
 export interface PostBodyInterface {
+    id:string;
     body: any;
-    contentTags: Array<String>
+    contentTags: Array<string>
     authors: Array<AuthorPostInterface>;
-    date:String;
+    date:string;
+    hideSideNav?: boolean;
 }
 
 
 export default function PostBody({
+    id,
     body,
     contentTags,
     authors,
-    date
+    date,
+    hideSideNav=false
 }: PostBodyInterface) {
   // need to deconstruct post
   const doc = body.json;
@@ -120,9 +124,9 @@ export default function PostBody({
   };
 
   return (
-    <>
-      
+
       <div
+        key={id}
         className={
           "responsive-container py-2xl flex md:flex-row flex-col-reverse "
         }
@@ -141,13 +145,13 @@ export default function PostBody({
             date={date}
             contentTags={contentTags}
           />
+          {!hideSideNav && 
           <SideNavComponent
             h2Sections={h2Sections}
             activeSection={activeSection}
-          />
+          />}
         </div>
       </div>
-    </>
   );
 }
 

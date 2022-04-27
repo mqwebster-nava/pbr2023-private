@@ -3,6 +3,7 @@ import { Button } from "../../atom/Button/Button";
 import Newsletter from "./NewsletterBlock";
 
 interface CTABlockInterface {
+    id:string;
     title: string;
     buttonText:string;
     buttonPath:string;
@@ -16,9 +17,9 @@ interface CTABlockInterface {
   }
 
   
-  const DefaultCTABlock: React.FC<CTABlockInterface> = ({ title,  buttonPath, buttonText, children}) => {
+  const DefaultCTABlock: React.FC<CTABlockInterface> = ({ id, title,  buttonPath, buttonText, children}) => {
     return ( 
-      <div className = " w-full">
+      <div className = " w-full" key={id}>
      <div className="responsive-container py-2xl bg-navy-500">
      <div className={`w-full lg:w-2/3 px-lg text-white`}>
                   <h3 className="font-sans text-lg ">{title} </h3>

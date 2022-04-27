@@ -6,6 +6,7 @@ import RightRepeater from "./RightRepeater";
 type ContentBlockType = "default" | "left repeater" | "right repeater";
 
 export interface ContentBlockInterface {
+    id:string;
     title: string;
     buttonText:string; 
     buttonPath:string;
@@ -20,9 +21,9 @@ export interface ContentBlockInterface {
     return <DefaultContentBlockLinkToPage {...props}  />
     
   }
-const DefaultContentBlockLinkToPage: React.FC<ContentBlockInterface> = ({ title, type, buttonPath, buttonText, children}) =>{
+const DefaultContentBlockLinkToPage: React.FC<ContentBlockInterface> = ({id, title, type, buttonPath, buttonText, children}) =>{
 return ( 
-    <div className="responsive-container py-2xl">
+    <div className="responsive-container py-2xl" key={id}>
     <div className={`w-full lg:w-2/3`}>
      
                  <h3 className="font-sans text-lg font-bold">{title} </h3>

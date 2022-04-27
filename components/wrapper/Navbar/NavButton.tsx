@@ -1,7 +1,7 @@
 
 const NavButton = (props) => {
     return (
-      <div className="relative font-bold inline-block  text-navy-900  cursor-pointer ">
+      <div key={props.slug} className="relative font-bold inline-block  text-navy-900  cursor-pointer ">
         <a
           className="  w-full
           text-navy-900 pt-md font-sans flex
