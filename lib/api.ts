@@ -61,8 +61,6 @@ export async function getPageDataFromContentful({slug, variant="default", previe
            console.log(e);
            return null;
        }
-       
-       
      }
  
      if (variant=="author"){
