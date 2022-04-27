@@ -1,14 +1,18 @@
-import {
-  SectionHeader,
-  ContentBlockText,
-  PageHeader,
-  CTABlock,
-  ContentBlockLinkToPage,
-  QuoteBlock,
-  ContentBlockArticleList,
-} from "components/blocks";
+
+import dynamic from "next/dynamic";
+
+
+const ContentBlockLinkToPage = dynamic(() => import("components/blocks/ContentBlockLinkToPage/ContentBlockLinkToPage"));
+const QuoteBlock= dynamic(() => import("components/blocks/QuoteBlock/QuoteBlock"));
+const ContentBlockArticleList= dynamic(() => import("components/blocks/ContentBlockArticlesList/ContentBlockArticlesList"));
+const CTABlock= dynamic(() => import("components/blocks/CTABlock/CTABlock"));
+const PageHeader= dynamic(() => import("components/blocks/PageHeaders/PageHeader"));
+const ContentBlockText= dynamic(() => import("components/blocks/ContentBlockText/ContentBlockText"));
+const SectionHeader = dynamic(() => import("components/blocks/SectionHeader/SectionHeader"));
+const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
+
+
 import { PageInterface } from "shared_interfaces/page_interface";
-import PostBody from "components/blocks/PostBody/PostBody";
 
 const PageTemplate: React.FC<PageInterface> = ({
   id,
