@@ -7,18 +7,16 @@ interface QuoteBlockInterface {
   content: string;
   author: string;
   authorRole: string;
-  isStorybook?:boolean;
   color?: QuoteBaseColor;
 }
 
-const QuoteBlock: React.FC<QuoteBlockInterface> = ({
+const QuoteBlock = ({
   id,
   content,
   author,
   authorRole,
-  isStorybook,
   color
-}) => {
+}:QuoteBlockInterface) => {
   const baseColor = color ? color : "gold";
   return (
     <div className={`bg-${baseColor}-50`} key={id}>

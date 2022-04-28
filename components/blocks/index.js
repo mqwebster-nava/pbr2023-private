@@ -4,7 +4,7 @@ import LeftRepeater from "./ContentBlockLinkToPage/LeftRepeater";
 import RightRepeater from "./ContentBlockLinkToPage/RightRepeater";
 import PageHeader from "./PageHeaders/PageHeader";
 import ContentBlockLinkToPage from "./ContentBlockLinkToPage/ContentBlockLinkToPage";
-import ContentBlockText, { ContentBlockText2 } from "./ContentBlockText/ContentBlockText";
+import ContentBlockText from "./ContentBlockText/ContentBlockText";
 import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArticlesList";
 import Newsletter from "./CTABlock/NewsletterBlock";
 import CTABlock from "./CTABlock/CTABlock";
@@ -38,7 +38,6 @@ export {
   ContentBlockArticleList,
   Newsletter,
   CTABlock,
-  ContentBlockText2,
   QuoteBlock,
   ReportContent,
   ReportSection,

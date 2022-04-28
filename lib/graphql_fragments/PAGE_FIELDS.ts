@@ -24,6 +24,16 @@ sys {
 title
 description
 slug
+socialImage {
+    sys {
+      id
+    }
+    url
+    width
+    height
+    title
+    description
+}
 pageHeader {
     ${PAGE_HEADER_FIELDS}
 }

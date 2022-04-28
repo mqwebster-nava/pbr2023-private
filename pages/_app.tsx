@@ -1,16 +1,36 @@
+import "../styles/tailwind.css";
+import type { AppProps /*, AppContext */ } from "next/app";
+import { Navbar, Footer } from "components/wrapper/index";
+import Head from "next/head";
+import { PageInterface } from "shared_interfaces/page_interface";
 
-import "../styles/tailwind.css"
-import type { AppProps /*, AppContext */ } from "next/app"
-import {Navbar, Footer}from "components/wrapper/index"
+const debugUrl = "http://localhost:3000/";
+const baseUrl = "https://nava-website-2.vercel.app/";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <div className="flex flex-col h-screen ">
-    <Navbar/>
-    <div className="flex-grow  ">
-   <Component {...pageProps}/>
-   </div>
-  <Footer/>
-   </div>
+  const pageData: PageInterface = pageProps;
+  // TODO need to get the url from the slug and page interface data
+  return (
+    <div>
+      <Head>
+        <title>{pageData.title ?? ""}</title>
+        <meta property="og:type" content="website" />
+        {pageData.title && <meta property="og:title" content={pageData.title} /> }
+        {pageData.description && <meta name="twitter:card" content={pageData.description} /> }
+        {pageData.description &&<meta property="og:description" content={pageData.description } />}
+        {pageData.socialImage && (
+          <meta property="og:image" content={pageData.socialImage.url} />
+        )}
+      </Head>
+      <div className="flex flex-col h-screen ">
+        <Navbar />
+        <div className="flex-grow  ">
+          <Component {...pageProps} />
+        </div>
+        <Footer/>
+      </div>
+    </div>
+  );
 }
 
 export default MyApp;

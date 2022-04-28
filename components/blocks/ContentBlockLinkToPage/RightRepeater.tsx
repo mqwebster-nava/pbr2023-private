@@ -4,14 +4,14 @@ import { Button } from "../../atom/Button/Button";
 import { ContentBlockInterface } from "./ContentBlockLinkToPage";
 
   
-  const RightRepeater: React.FC<ContentBlockInterface> = ({ id, title, image, buttonPath, buttonText,isStorybook, children}) => {
+  const RightRepeater = ({ id, title, image,body, buttonPath, buttonText,isStorybook }:ContentBlockInterface) => {
       return ( 
        <div className="responsive-container py-2xl" key={id}>
        <div className={`w-full flex flex-col-reverse md:flex-row`}>
             <div className="w-full md:w-1/3 pr-xl flex justify-between flex-col"> 
                 <div className="">
                     <h3 className="font-sans text-lg font-bold">{title} </h3>
-                    <p className={`font-sans pt-lg text-base text-gray-800 mb-lg`}>{children}</p>
+                    <p className={`font-sans pt-lg text-base text-gray-800 mb-lg`}>{body}</p>
                 </div>
                 {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
             </div>

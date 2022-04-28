@@ -14,7 +14,7 @@ interface ContentBlockInterface {
 }
   
   
-  const ContentBlockArticleList: React.FC<ContentBlockInterface> = ({ 
+  const ContentBlockArticleList = ({ 
     id,
     title,  
     body, 
@@ -23,9 +23,7 @@ interface ContentBlockInterface {
     buttonText, 
     cycleNum =Math.floor(Math.random() * 4),
     max = 6,
-    children,
-    
-  }) => {
+  }: ContentBlockInterface) => {
     posts = posts.filter((post)=>post!=null);
     return (
       <div className="responsive-container py-xl" key={id}>

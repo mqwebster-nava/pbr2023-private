@@ -1,5 +1,20 @@
 
 
+import ReactMarkdown from "react-markdown";
+
+export function MarkdownComponent({ content }) {
+    return (
+      <ReactMarkdown
+        children={content}
+        // todo add styling here for markdown
+        components={{
+          ul: ({ node, ...props }) => <ul className="list-disc" {...props} />,
+        }}
+      />
+    );
+  };
+
+
 export function getContentUrl(contentType, slug){
     const contentMap ={
         "Insight": "insights",
@@ -10,6 +25,25 @@ export function getContentUrl(contentType, slug){
     }
     const contentPart = contentMap[contentType];
     return `/${contentPart}/${slug}`;
+}
+
+export function liftData(data){
+    if(!data) return data;
+    
+    let newData = data;
+    if ("sys" in data && "id" in data["sys"]){
+        newData = {
+            id:data.sys.id,
+            ...data
+        }
+    }
+    if( "postsCollection" in data && "items" in data.postsCollection){
+        newData = {
+            ...newData,
+            posts:data.postsCollection.items.map((item)=>liftData(item))
+        }
+    }
+    return newData;
 }
 
 

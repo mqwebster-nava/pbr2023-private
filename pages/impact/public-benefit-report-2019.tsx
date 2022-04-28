@@ -8,17 +8,28 @@ import {
 } from "components/blocks";
 
 import { getMarkdownByFilename } from "../../lib/markdown";
+import { PageInterface } from "shared_interfaces/page_interface";
 
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2019);
+  const formattedPage: PageInterface = {
+    id: "public-benefit-reports",
+    slug: "public-benefit-reports",
+    title: "",
+    description:"description",
+    socialImage: null,
+    pageHeader: null,
+    contentBlocks: [
+      report
+    ], 
+ }
   return {
-    props: {
-      report,
-    },
+    props: formattedPage,
   };
 }
 
-export default function PBR2019({ report }) {
+export default function PBR2019(props:PageInterface) {
+  const report = props.contentBlocks[0];
   const {
     title,
     introduction,

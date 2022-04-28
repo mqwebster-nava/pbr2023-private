@@ -6,20 +6,26 @@ intercept observer.
 */
 
 import { PageInterface } from "shared_interfaces/page_interface";
-import { BasicPostInterface, FullPostInterface } from "shared_interfaces/post_interface";
-
+import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
+import { liftData } from "utils/utils";
+const defaultSocialImage: ContentfulImageAsset = {
+  id: '6f9PYC9LuxyTeGpAQ0A4Ea',
+  url: 'https://images.ctfassets.net/t2ekr6eg3fr3/6f9PYC9LuxyTeGpAQ0A4Ea/3792ece63db1863f5754a373b770f731/purple-nava.png',
+  width: 760,
+  height: 380,
+  title: 'Purple Nava Logo',
+  description: 'A logo to act as a placeholder for the social image'
+}
+export {defaultSocialImage};
 
 export function formatPage(page){
-    
     const formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,
         title: page.title,
-        pageHeader: {
-          id:page.pageHeader.sys.id,
-          ...page.pageHeader
-        },
-        contentBlocks: page.contentCollection.items,
+        socialImage: liftData(page.socialImage) ?? defaultSocialImage,
+        pageHeader:liftData(page.pageHeader),
+        contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
     }
     return formattedPage; 
@@ -27,10 +33,12 @@ export function formatPage(page){
 
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
 
+
   const formattedPage: PageInterface =  {
     id: post.id,
     slug: post.slug,
     title: post.title,
+    socialImage: liftData(post.promoImage)?? defaultSocialImage,
     pageHeader: {
       id: `${post.id}-header`,
       title: post.title,
@@ -42,7 +50,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       // Post body block
       {
         __typename:"PostBody",
-        sys:{id: `${post.id}-body`},
+        id: `${post.id}-body`,
         body: post.body,
         contentTags: post.contentTags,
         authors: post.authors,
@@ -51,11 +59,9 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       // more posts block
       {
         __typename:"ContentBlockArticleList",
-        sys:{id: `${post.id}-more-posts`},
+        id: `${post.id}-more-posts`,
         title:"More from Nava",
-        postsCollection:{
-          items: morePosts
-        }
+        posts: morePosts
       }
     ],
  }
@@ -71,6 +77,7 @@ export function formatAuthorPage(slug, author){
     slug: slug,
     title: author.name,
     description:author.bio,
+    socialImage: defaultSocialImage,
     pageHeader: {
       id: `${slug}-header`,
       title: author.name,
@@ -79,10 +86,9 @@ export function formatAuthorPage(slug, author){
     contentBlocks: [
       {
         __typename:"ContentBlockArticleList",
-        sys:{id: `${slug}-posts`},
-        postsCollection:{
-          items: author.linkedFrom.postCollection.items
-        }
+        id: `${slug}-posts`,
+        posts: author.linkedFrom.postCollection.items
+        
       }
     ], 
  }
@@ -96,6 +102,7 @@ export function formatTagsPage(slug, tagName, posts){
     id: slug,
     slug: slug,
     title: tagName,
+    socialImage: defaultSocialImage,
     description:`Posts related to ${tagName}`,
     pageHeader: {
       id: `${slug}-header`,
@@ -105,10 +112,8 @@ export function formatTagsPage(slug, tagName, posts){
     contentBlocks: [
       {
         __typename:"ContentBlockArticleList",
-        sys:{ id: `${slug}-posts`},
-        postsCollection:{
-          items: posts
-        }
+        id: `${slug}-posts`,
+        posts: posts
       }
     ],
  }
