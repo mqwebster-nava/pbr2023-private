@@ -4,7 +4,7 @@ import ReportSection from "./ReportSection";
 export default {
   title: "Blocks /  Report Section",
   component: ReportSection,
-  picture_position: {
+  picturePosition: {
     options: ["left", "right"],
     control: { type: "radio" },
   },
@@ -46,12 +46,12 @@ LeftPicturePosition.args = {
   ...defaultArgs,
   isWhiteBG: true,
   picture: "/images/pbrs/2019-1.png",
-  picture_position: "left",
+  picturePosition: "left",
 };
 
 RightPicturePosition.args = {
   ...defaultArgs,
   isWhiteBG: false,
   picture: "/images/pbrs/2019-2.png",
-  picture_position: "right",
+  picturePosition: "right",
 };

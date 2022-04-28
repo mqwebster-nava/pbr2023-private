@@ -42,19 +42,22 @@ export default function PBR2018(props:PageInterface ) {
   const sections = [
     {
       picture: "/images/pbrs/2018-1.png",
-      picture_position: "left",
+      picturePosition: "left",
+      pictureAltText: "",
       isWhiteBG: true,
       content: section_one,
     },
     {
       picture: "/images/pbrs/2018-2.png",
-      picture_position: "right",
+      picturePosition: "right",
+      pictureAltText: "",
       isWhiteBG: false,
       content: section_two,
     },
     {
       picture: "/images/pbrs/2018-3.png",
-      picture_position: "left",
+      picturePosition: "left",
+      pictureAltText: "",
       isWhiteBG: true,
       content: section_three,
     },

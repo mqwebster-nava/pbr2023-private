@@ -1,10 +1,10 @@
 import { ReportContent } from "../../../components/blocks";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 
-
 export interface ReportSectionInterface {
   picture: string;
-  picture_position: string;
+  picturePosition: string;
+  pictureAltText: string;
   content: {
     title: string;
     introduction: string;
@@ -15,10 +15,10 @@ export interface ReportSectionInterface {
   isGreenBG: boolean;
 }
 
-
 const ReportSection: React.FC<ReportSectionInterface> = ({
   picture,
-  picture_position = "right",
+  picturePosition = "right",
+  pictureAltText,
   content,
   isWhiteBG,
   theme,
@@ -34,10 +34,14 @@ const ReportSection: React.FC<ReportSectionInterface> = ({
           isGreenBG={!isWhiteBG}
           theme={theme}
         />
-        <img src={picture} className="md:hidden block w-full" />
+        <img
+          src={picture}
+          className="md:hidden block w-full"
+          alt={pictureAltText}
+        />
       </div>
       <div className="grid md:grid-cols-2">
-        {picture_position === "right" && (
+        {picturePosition === "right" && (
           <div className="p-2xl">
             <ReportContent
               content={body}
@@ -53,7 +57,7 @@ const ReportSection: React.FC<ReportSectionInterface> = ({
             backgroundSize: "cover",
           }}
         />
-        {picture_position === "left" && (
+        {picturePosition === "left" && (
           <div className="p-2xl">
             <ReportContent
               content={body}
