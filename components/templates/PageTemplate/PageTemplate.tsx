@@ -15,23 +15,15 @@ const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 import { PageInterface } from "shared_interfaces/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
-  id,
-  slug,
-  title,
-  description,
   pageHeader,
   contentBlocks,
-  preview = false,
   children,
 }) => {
-  // need to deconstruct post
-  // const doc = page.body ? page.body.json : null;
-
 
   const getComponent = (entry: any) => {
     const typename = entry.__typename;
     const componentMap = {
-      "SectionHeader": (entry)=>(<SectionHeader {...entry}></SectionHeader>),
+      "SectionHeader": (entry)=>(<SectionHeader {...entry}/>),
       "SectionContentBlockText": ()=> <ContentBlockText {...entry}/>,
       "SectionCtaBlock": ()=> <CTABlock {...entry}/>,
       "ContentBlockLinkToPage": ()=> <ContentBlockLinkToPage {...entry} />,

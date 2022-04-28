@@ -17,13 +17,13 @@ export interface ContentBlockInterface {
     isStorybook?:boolean;
   }
   
-  const ContentBlockLinkToPage: React.FC<ContentBlockInterface> = (props) => {
+  const ContentBlockLinkToPage = (props:ContentBlockInterface) => {
     if(props.type==="left repeater")return <LeftRepeater {...props} />
     if(props.type==="right repeater")return <RightRepeater {...props} ></RightRepeater>
     return <DefaultContentBlockLinkToPage {...props}  />
     
   }
-const DefaultContentBlockLinkToPage: React.FC<ContentBlockInterface> = ({id, title, body, type, buttonPath, buttonText, children}) =>{
+const DefaultContentBlockLinkToPage: React.FC<ContentBlockInterface> = ({id, title, body, type, buttonPath, buttonText}) =>{
 return ( 
     <div className="responsive-container py-2xl" key={id}>
     <div className={`w-full lg:w-2/3`}>
@@ -36,4 +36,5 @@ return (
      </div> 
      );
 }
-  export default ContentBlockLinkToPage;
+
+export default ContentBlockLinkToPage;

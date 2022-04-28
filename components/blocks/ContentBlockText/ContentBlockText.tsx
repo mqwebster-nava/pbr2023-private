@@ -9,15 +9,17 @@ interface ContentBlockInterface {
   
 
 
-  export const ContentBlockText: React.FC<ContentBlockInterface> = ({id, title, body, children}) => {
+  export const ContentBlockText = ({id, title, body}:ContentBlockInterface) => {
     return ( 
-     <div className="responsive-container py-2xl block md:flex">
+     <div className="responsive-container py-2xl block md:flex" key={id}>
           {title && <h3 className="font-sans text-lg font-bold md:w-1/3 w-full pt-sm">{title} </h3> }
           <p className=" md:w-2/3 pt-sm w-full font-sans text-base text-gray-800 mb-md">{ <MarkdownComponent content={body} />}</p>
       </div> 
       );
 }
-    
+
+  export default ContentBlockText;
+      
 
   // const ContentBlockText: React.FC<ContentBlockInterface> = ({ id, title, type, body, children}) => {
       
@@ -37,5 +39,3 @@ interface ContentBlockInterface {
   //       </div> 
   //       );
   // }
-
-  export default ContentBlockText;

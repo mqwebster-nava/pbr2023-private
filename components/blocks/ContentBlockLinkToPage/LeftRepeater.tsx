@@ -5,12 +5,12 @@ import { ContentBlockInterface } from "./ContentBlockLinkToPage";
 const LeftRepeater: React.FC<ContentBlockInterface> = ({
   id,
   title,
+  body,
   image,
   buttonPath,
   buttonText,
-  children,
   isStorybook
-}) => {
+}:ContentBlockInterface) => {
 
   return (
     <div className={"responsive-container py-2xl"} key={id}>
@@ -23,7 +23,7 @@ const LeftRepeater: React.FC<ContentBlockInterface> = ({
       <div className={`w-full md:w-1/3 md:ml-xl flex justify-between flex-col`}>
         <div>
         <h3 className={`font-sans text-lg font-bold `}>{title} </h3>
-        <p className={`font-sans pt-lg text-base text-gray-800`}>{children}</p>
+        <p className={`font-sans pt-lg text-base text-gray-800`}>{body}</p>
         </div>
         {buttonText && <Button  href={buttonPath}>{buttonText}</Button> }
       </div>
