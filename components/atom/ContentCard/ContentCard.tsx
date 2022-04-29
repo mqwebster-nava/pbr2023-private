@@ -45,16 +45,14 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
       : cycleNum % 2 == 0
       ? brandTerrain2
       : brandTerrain3;
-
-  const opacity = classNames({
-    "opacity-50": promoImage == null,
-  });
   return (
     <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full ">
-      <div className={`${backgroundColor} relative h-52  w-full sm:h-36 sm:w-1/3 md:w-full md:h-52 group-hover:brightness-75`}>
+      <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
          <Image
-          layout={"fill"}
-          className={`object-cover h-full w-full ${opacity}`}
+          layout="responsive"
+          width={16}
+          height={9}
+          className={`${backgroundColor} object-cover w-full `}
           src={promoImage ? promoImage.url : pattern}
           alt=""
         ></Image>
