@@ -6,6 +6,7 @@ import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
 import PAGE_HEADER_FIELDS from "./content_blocks/PAGE_HEADER_FIELDS";
 import QUOTE_BLOCK from "./content_blocks/QUOTE_BLOCK";
 import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
+import { IMAGE_FIELDS } from "./IMAGE_FIELDS";
 
 /*
 The page fields should contain metadata about the page as 
@@ -25,14 +26,7 @@ title
 description
 slug
 socialImage {
-    sys {
-      id
-    }
-    url
-    width
-    height
-    title
-    description
+    ${IMAGE_FIELDS}
 }
 pageHeader {
     ${PAGE_HEADER_FIELDS}

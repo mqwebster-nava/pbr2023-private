@@ -23,6 +23,7 @@ export interface FullPostInterface extends BasicPostInterface{
     hideSideNav:boolean;
     authors:Array<AuthorPostInterface>;
     body:any;
+    leadImage:ContentfulImageAsset;
 }
 
 export interface AuthorPostInterface{
