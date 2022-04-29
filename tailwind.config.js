@@ -40,6 +40,7 @@ module.exports = {
           light: "#B4650D",
           dark: "#442502",
         },
+       
         green: {
           base: "#259B62",
           light: "#25F15E"
@@ -150,6 +151,7 @@ module.exports = {
 
         gray: {
           // base: "#3D4551",
+          base:"#333333",
           50: "#f9fafb",
           100: "#f3f4f6",
           200: "#e5e7eb",
