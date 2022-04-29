@@ -14,20 +14,23 @@ export interface PageHeaderInterface {
   id:string;
   title?: string;
   subtitle?: string;
+  body?: string;
   bannerColor?: BannerColor;
   variant?: PageHeaderVariant;
-  backgroundImage?: ContentfulImageAsset;
+  image?: ContentfulImageAsset;
 }
 
 const PageHeader = ({
   id,
   title,
   subtitle,
+  body="",
+  image,
   bannerColor = "navy",
   variant = "default",
 }: PageHeaderInterface) => {
   bannerColor = bannerColor ?? "navy";
-  return  variant=="post"? (<PostHeader id={id} title={title} longSummary={subtitle} contentType={""}></PostHeader>):
+  return  variant=="post"? (<PostHeader id={id} title={title} body={body} subtitle={subtitle} image={image}></PostHeader>):
   (<DefaultPageHeader id={id}title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
 };
 

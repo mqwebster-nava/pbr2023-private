@@ -42,7 +42,9 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     pageHeader: {
       id: `${post.id}-header`,
       title: post.title,
-      subtitle:post.longSummary,
+      subtitle:post.contentType,
+      body:post.longSummary,
+      image:  liftData(post.leadImage) ?? liftData(post.promoImage),
       variant:"post",
     },
     description:post.shortSummary,

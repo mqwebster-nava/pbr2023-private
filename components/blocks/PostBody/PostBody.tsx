@@ -97,20 +97,20 @@ export default function PostBody({
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className="text-navy-900 font-serif py-md text-base">{children}</p>
+        <p className="text-gray-base font-serif py-md text-lg">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
-        <p className="text-4xl font-bold font-sans pt-md">{children}</p>
+        <p className="text-4xl font-bold font-sans pt-lg">{children}</p>
       ),
       [BLOCKS.HEADING_2]: (node, children) => {
         return (
-          <h2 className="text-2xl font-bold font-serif pt-md">{children}</h2>
+          <h2 className="text-4xl font-bold font-sans pt-lg">{children}</h2>
         );
       },
       [BLOCKS.HEADING_3]: (node, children) => (
-        <p className="text-xl font-bold font-sans">{children}</p>
+        <p className="text-2xl font-bold font-sans pt-lg">{children}</p>
       ),
-      [BLOCKS.HEADING_4]: (node, children) => <p className="">{children}</p>,
+      [BLOCKS.HEADING_4]: (node, children) => <h4 className="text-xl font-bold font-sans pt-lg">{children}</h4>,
       [BLOCKS.UL_LIST]: (node, children) => (
         <ul className="list-disc ml-2xl">{children}</ul>
       ),
@@ -139,7 +139,7 @@ export default function PostBody({
           ))}
         </div>
         {/* Article Sidebar Section  */}
-        <div className={"w-full md:w-1/3 pt-md"}>
+        <div className={"w-full md:w-1/3 pt-md pl-xl"}>
           <ArticleInfoComponent 
             authors={authors}
             date={date}
