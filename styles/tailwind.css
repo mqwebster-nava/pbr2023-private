@@ -45,10 +45,10 @@ html {
 
 @layer components {
   .responsive-container {
-    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
+    @apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   }
   .responsive-container-content {
-    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
+    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-4xl;
   }
   .nava-h1 {
 
