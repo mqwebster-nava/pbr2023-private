@@ -29,7 +29,6 @@ export async function getStaticProps({ params, preview = false }) {
 //   ContentBlockText,
 //   PageHeader,
 //   ContentBlockArticleList,
-//   Newsletter,
 // } from "components/blocks";
 // import { ContentCard } from "components/atom/index";
 // import React from "react";
@@ -105,7 +104,6 @@ export async function getStaticProps({ params, preview = false }) {
 //         Read our 2018 Public Benefit Report
 //         </ContentCard>
 //       </ContentBlockArticleList>
-//       <Newsletter/>
 //     </div>
 //   );
 // }

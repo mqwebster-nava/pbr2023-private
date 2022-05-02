@@ -31,7 +31,6 @@ export async function getStaticProps({ params, preview = false }) {
 //   ContentBlockText2,
 //   PageHeader,
 //   ContentBlockArticleList,
-//   Newsletter,
 //   QuoteBlock,
 // } from "components/blocks";
 // //import careerImg from ""
@@ -246,7 +245,6 @@ export async function getStaticProps({ params, preview = false }) {
 //           Vermont Integrated Benefits team.
 //         </ContentCard>
 //       </ContentBlockArticleList>
-//       <Newsletter/>
 //     </div>
 //   );
 // }

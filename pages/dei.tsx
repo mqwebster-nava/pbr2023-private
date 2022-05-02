@@ -8,7 +8,6 @@ import {
 import { getMarkdownByFilename } from "../lib/markdown";
 import {
   ReportHeaderNavy,
-  Newsletter,
   PercentBarChart,
   ReportContent,
   ResourceGroups,
@@ -134,8 +133,6 @@ export default function DEI({
           <ResourceGroups groups={content.resources.groups} />
         </ResponsiveContainer>
       </section>
-
-      <Newsletter />
     </main>
   );
 }

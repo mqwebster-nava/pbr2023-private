@@ -1,13 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {
-  SectionHeader,
-  ContentBlockLinkToPage,
-  ContentBlockText,
-  PageHeader,
-  ContentBlockArticleList,
-  Newsletter,
-} from "components/blocks";
+
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
@@ -82,7 +75,6 @@ export default function OpenRoles(props:PageInterface) {
         );
       })}
     </div>
-    <Newsletter/>
     </PageTemplate>
   );
 }
