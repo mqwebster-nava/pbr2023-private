@@ -46,29 +46,31 @@ const NavaDigest = () => {
   return (
     <div className=" bg-sage-400 font-sans">
       <div className="responsive-container text-white pt-2xl">
-        <h3 className="font-sans text-3xl font-bold">Nava Digest</h3>
-
+       
         <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
-          <p className={`w-full md:w-1/2 font-sans mr-3xl text-base  mb-md`}>
+        <div className="w-full md:w-1/2 ">
+        <h3 className="font-sans text-5xl font-bold pb-lg">Nava Digest</h3>
+
+          <p className={`2 font-sans mr-3xl text-base  mb-md`}>
             Get Nava updates on new open roles, government partnerships,
             learnings, and news from the broader civic tech community.
           </p>
-          <div className="w-full md:w-1/2 ">
-            <label htmlFor="newsletter-sign-up" className="block">
-              email
-            </label>
+          </div>
+          <div className="w-full md:w-1/2 pt-md">
             <div className="flex gap-md w-full">
               <input
                 id="newsletter-sign-up"
                 type="text"
                 placeholder="Your email address"
-                className=" text-black w-full p-sm rounded-sm"
+                className=" text-black w-full p-md rounded-sm"
               />
               <Button href={null} variant="black">
-                {" "}
                 Subscribe{" "}
               </Button>
             </div>
+            <label htmlFor="newsletter-sign-up" className="block underline">
+            View past newsletters
+            </label>
           </div>
         </div>
         <div className="w-full flex justify-end">
