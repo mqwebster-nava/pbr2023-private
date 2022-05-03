@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 //import ReactMarkdown from 'react-markdown';
@@ -8,25 +7,25 @@ import SideNavComponent from "./SideNavComponent";
 import React, { useEffect, useRef, useState } from "react";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
+import quotemarks from "public/images/quote marks.png";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
-
+import AuthorFiller from "public/images/author-filler.png"
 export interface PostBodyInterface {
-    id:string;
-    body: any;
-    contentTags: Array<string>
-    authors: Array<AuthorPostInterface>;
-    date:string;
-    hideSideNav?: boolean;
+  id: string;
+  body: any;
+  contentTags: Array<string>;
+  authors: Array<AuthorPostInterface>;
+  date: string;
+  hideSideNav?: boolean;
 }
 
-
 export default function PostBody({
-    id,
-    body,
-    contentTags,
-    authors,
-    date,
-    hideSideNav=false
+  id,
+  body,
+  contentTags,
+  authors,
+  date,
+  hideSideNav = false,
 }: PostBodyInterface) {
   // need to deconstruct post
   const doc = body.json;
@@ -88,6 +87,14 @@ export default function PostBody({
       />
     );
   };
+  const BlockQuote = (node, children) => {
+    return (
+      <div className="bg-plum-50 p-2xl text-plum-900 text-2xl font-sans font-bold">
+        <Image src={quotemarks} height={37} width={68} alt={""} />
+        {children}
+      </div>
+    );
+  };
   // TODO Where should I do the rendering for this post
   const options = {
     renderMark: {
@@ -97,7 +104,7 @@ export default function PostBody({
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className="text-gray-base font-serif py-md text-lg">{children}</p>
+        <p className=" py-md ">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
         <p className="text-4xl font-bold font-sans pt-lg">{children}</p>
@@ -110,58 +117,98 @@ export default function PostBody({
       [BLOCKS.HEADING_3]: (node, children) => (
         <p className="text-2xl font-bold font-sans pt-lg">{children}</p>
       ),
-      [BLOCKS.HEADING_4]: (node, children) => <h4 className="text-xl font-bold font-sans pt-lg">{children}</h4>,
+      [BLOCKS.HEADING_4]: (node, children) => (
+        <h4 className="text-xl font-bold font-sans pt-lg">{children}</h4>
+      ),
+      [BLOCKS.QUOTE]: (node, children) => BlockQuote(node, children),
+
       [BLOCKS.UL_LIST]: (node, children) => (
         <ul className="list-disc ml-2xl">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
       [INLINES.HYPERLINK]: (node, children) => (
-        <LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText>
+        <LinkText href={node.data.uri} variant={"underlined"}>
+          {children}
+        </LinkText>
       ),
       [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data),
     },
   };
 
   return (
-
+    <div
+      key={id}
+      className={
+        "responsive-container py-2xl flex md:flex-row flex-col-reverse "
+      }
+    >
       <div
-        key={id}
-        className={
-          "responsive-container py-2xl flex md:flex-row flex-col-reverse "
-        }
+        id="article"
+        className="w-full md:w-2/3 pr-lg text-gray-base font-serif text-lg"
       >
-        <div id="article" className="w-full md:w-2/3 pr-lg">
-          {h2Sections.map((section) => (
-            <div id={section.title} ref={section.ref}>
-              {documentToReactComponents(section.doc, options)}
-            </div>
-          ))}
-        </div>
-        {/* Article Sidebar Section  */}
-        <div className={"w-full md:w-1/3 pt-md pl-xl"}>
-          <ArticleInfoComponent 
-            authors={authors}
-            date={date}
-            contentTags={contentTags}
-          />
-          {!hideSideNav && 
+        {h2Sections.map((section) => (
+          <div id={section.title} ref={section.ref}>
+            {documentToReactComponents(section.doc, options)}
+          </div>
+        ))}
+        {AuthorBios(authors)}
+      </div>
+      {/* Article Sidebar Section  */}
+      <div className={"w-full md:w-1/3 pt-md pl-xl"}>
+        <ArticleInfoComponent
+          authors={authors}
+          date={date}
+          contentTags={contentTags}
+        />
+        {!hideSideNav && (
           <SideNavComponent
             h2Sections={h2Sections}
             activeSection={activeSection}
-          />}
-        </div>
+          />
+        )}
       </div>
+    </div>
   );
 }
 
-export function sortDocIntoH2Sections(doc){
+const AuthorBios = (authors: Array<AuthorPostInterface>) => {
+console.log(authors);
+  return (
+    <div className="mt-xl font-sans">
+      <h5 className="font-bold text-base">Written By</h5>
+      <hr />
+      {authors.map((author) => ( 
+      <div className="flex w-full font-sans text-sm pt-md">
+          <div className="w-[125px]" >
+          <Image
+                src={AuthorFiller}
+                className="object-cover"
+                height={65}
+                width={65}
+                alt=""
+            />
+          </div>
+          <div className="pl-md w-[400px]">
+            <h5 className="font-bold">{author.name}</h5>
+            <h6>{author.role}</h6>
+          </div>
+          <div className="grow pl-md">
+          {author.bio}
+          </div>
+        </div>)
+      )}
+    </div>
+  );
+};
+
+export function sortDocIntoH2Sections(doc) {
   let buffer = [];
   let sections = [];
-  let titles = ["Intro"]
-  doc.content.forEach((node)=>{
+  let titles = ["Intro"];
+  doc.content.forEach((node) => {
     // if it is the end of 1 section
-    if(node.nodeType=="heading-2"){
+    if (node.nodeType == "heading-2") {
       sections.push(buffer);
       titles.push(node.content[0].value);
       buffer = [];
@@ -170,14 +217,13 @@ export function sortDocIntoH2Sections(doc){
   });
   sections.push(buffer);
   let i = -1;
-  let output = sections.map((section)=>{
-    i+=1;
-   return {
-     title: titles[i],
-     doc: {...doc, content:section},
-     ref:null,
-     
-    }
+  let output = sections.map((section) => {
+    i += 1;
+    return {
+      title: titles[i],
+      doc: { ...doc, content: section },
+      ref: null,
+    };
   });
-  return  output;
+  return output;
 }
