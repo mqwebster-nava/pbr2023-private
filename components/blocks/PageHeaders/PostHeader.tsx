@@ -31,7 +31,7 @@ const PostHeader = ({
           <h1 className="font-sans lg:text-6xl text-4xl font-black text-white">
             {title}
           </h1>
-          <p className="font-serif font-light pt-lg text-white">
+          <p className="font-serif font-light text-2xl pt-lg text-white">
             {body}
           </p>
         </div>

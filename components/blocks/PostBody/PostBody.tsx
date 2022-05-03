@@ -191,7 +191,7 @@ console.log(authors);
           </div>
           <div className="pl-md w-[400px]">
             <h5 className="font-bold">{author.name}</h5>
-            <h6>{author.role}</h6>
+            <h6 className="text-gray-600">{author.role}</h6>
           </div>
           <div className="grow pl-md">
           {author.bio}
