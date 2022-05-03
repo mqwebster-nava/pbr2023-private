@@ -2,16 +2,16 @@ import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
+import brandD2 from "public/images/brand-patterns/Nava-Brand Pattern-Direction1-Light-White-V01 1.png";
+import ill from "public/images/illo.png";
+
 import PostHeader from "./PostHeader";
 
-// type Variant = "default" | "image" | "image-pattern" | "black";
-// type TextLocation = "top" | "bottom" ;
-// type BrandElements = "none" | "top" | "bottom" | "left";
 type BannerColor = "plum" | "purple" | "navy" | "sage" | "gold";
 type PageHeaderVariant = "default" | "post";
 
 export interface PageHeaderInterface {
-  id:string;
+  id: string;
   title?: string;
   subtitle?: string;
   body?: string;
@@ -24,20 +24,36 @@ const PageHeader = ({
   id,
   title,
   subtitle,
-  body="",
+  body = "",
   image,
-  bannerColor = "navy",
+  bannerColor = "purple",
   variant = "default",
 }: PageHeaderInterface) => {
-  bannerColor = bannerColor ?? "navy";
-  return  variant=="post"? (<PostHeader id={id} title={title} body={body} subtitle={subtitle} image={image}></PostHeader>):
-  (<DefaultPageHeader id={id}title={title} subtitle={subtitle} bannerColor={bannerColor}/>)
+  bannerColor = bannerColor ?? "purple";
+  return variant == "post" ? (
+    <PostHeader
+      id={id}
+      title={title}
+      body={body}
+      subtitle={subtitle}
+      image={image}
+    ></PostHeader>
+  ) : (
+    <DefaultPageHeader
+      id={id}
+      title={title}
+      subtitle={subtitle}
+      bannerColor={bannerColor}
+    />
+  );
 };
 
 const TitleBlock = ({ title, subtitle, textColor }) => {
   return (
     <div className={`pb-2xl ${textColor} `}>
-      <h1 className={`font-sans  text-base font-bold`}>{title}</h1>
+      <h1 className={`font-sans lg:text-6xl text-5xl text-plum-200 font-bold`}>
+        {title}
+      </h1>
       <h2
         className={`font-sans  lg:text-6xl text-5xl sm:pr-xl pr-0 md:pr-4xl font-black mr-xl `}
       >
@@ -54,52 +70,64 @@ const DefaultPageHeader = ({
   bannerColor,
 }: PageHeaderInterface) => {
   return (
-    <div className={` relative bg-${bannerColor}-900 min-h-[70vh]`} key={id}>
-      <div className={`
-      responsive-container z-10 relative pt-4xl`}>
-        <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
-       <div className="h-[96px]"></div>
+    <div key={id}>
+      <div className={` relative bg-purple-900 min-h-[70vh] pb-[100px]`}>
+        <div
+          className={`
+      responsive-container z-10 relative pt-4xl`}
+        >
+          <TitleBlock
+            title={title}
+            subtitle={subtitle}
+            textColor={"text-white"}
+          />
+          <div className="h-[96px]"></div>
+        </div>
+      </div>
+      <div className="max-h-[618px] relative bg-plum-50 flex  overflow-clip xl:mx-auto 2xl:max-w-screen-xl -mt-5xl">
+        <div className="w-1/3 h-full ">
+          <div className="flex items-stretch">
+            <div className="bg-plum-800 max-h-5xl h-full text-[0px]">
+              <Image
+                src={brandDirection}
+                className="object-cover "
+                height={128}
+                width={128}
+                
+                alt=""
+              />
+            </div>
+            <div className="bg-plum-800 max-h-5xl h-full text-[0px]">
+              <Image
+                src={brandTerrain}
+                className="object-cover"
+                height={128}
+                width={128}
+                alt=""
+              />
+            </div>
+            <div className="bg-plum-200 max-h-5xl w-5xl"> </div>
+          </div>
+          <Image
+                src={brandD2}
+                className="object-cover"
+                height={256}
+                width={256}
+                alt=""
+            />
+        </div>
+        <div className="w-1/2 h-full  pr-xl pt-lg">
+          <Image
+            className=" object-cover"
+            src={ill}
+            width={1}
+            height={1}
+            layout="responsive"
+          ></Image>
+        </div>
       </div>
     </div>
   );
 };
 
-// const ImagePageHeader = ({
-//   title,
-//   subtitle,
-//   backgroundImage,
-//   textLocation,
-//   brandElements
-// }: PageHeaderInterface) => {
-
-//   return (
-
-//     <div className={`bg-navy-900 relative min-h-[80vh] `}>
-//       <div className={`
-//       responsive-container z-10 relative pt-4xl `}>
-//       {/* //absolute bottom-0 left-0 right-0  */}
-//         <TitleBlock title={title} subtitle={subtitle} textColor={"text-white"}  />
-//       </div>
-
-//       {backgroundImage && (
-
-//        <Image
-//        quality={30}
-//        className="brightness-50 opacity-80 object-fill "
-//         src={backgroundImage.url}
-//         layout="fill"
-//         objectFit="cover"
-//         priority
-//         ></Image>
-
-//       )}
-//        <div className={`responsive-container absolute bottom-0 right-0 left-0 flex`}>
-//       {/* //absolute top-0 left-0 right-0 z-10 flex */}
-//         <Image src={brandTerrain} height={96} width={96}></Image>
-//         <Image src={brandDirection} height={96} width={96}></Image>
-//       </div>
-
-//     </div>
-//   );
-// };
 export default PageHeader;
