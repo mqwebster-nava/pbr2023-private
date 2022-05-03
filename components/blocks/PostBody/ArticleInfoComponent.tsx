@@ -18,13 +18,14 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
   const fmtdate = new Date(`${date}`);
   const dateStr = monthNames[fmtdate.getMonth()]  +' ' + fmtdate.getDate()+ ', '+fmtdate.getFullYear();
 
-    return (<>
-      <p className="font-sans pb-md font-bold">{dateStr}</p>
+    return (<div className="text-sm">
+      <h3 className="font-bold">Published</h3>
+      <p className="font-sans pb-md">{dateStr}</p>
       <div className="font-sans md:block flex justify-between mb-lg">
               <div>
                 <h3 className="font-bold">Authors</h3>
                 {authors.map((author)=>(
-                <div id={author.name} className="pb-sm ">
+                <div id={author.name} className="pb-md ">
                   <p>
                     <LinkText href={`/authors/${author.slug}`} variant={"underlined"}>{author.name}</LinkText></p>
                   <p className="text-sm">{author.role}</p>
@@ -41,7 +42,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
                 )})}
               </div>
         </div>
-    </>)
+    </div>)
  }
 
 export default ArticleInfoComponent;
