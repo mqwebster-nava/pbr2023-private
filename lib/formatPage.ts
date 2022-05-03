@@ -58,13 +58,23 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         authors: post.authors,
         date: post.date
       },
+      {
+        __typename:"SectionCtaBlock",
+        id: `${post.id}-work`,
+        title:"Want to work with us?",
+        body:"Let’s make government services simple, effective, and accessible to all.",
+        buttonText:"Get in touch",
+        buttonPath:"/contact",
+      },
       // more posts block
       {
         __typename:"ContentBlockArticleList",
         id: `${post.id}-more-posts`,
         title:"More from Nava",
         posts: morePosts
-      }
+      },
+     
+
     ],
  }
  return formattedPage;
