@@ -1,18 +1,22 @@
 ## Set Up 
 
-- Clone Repo
+1. Clone the repo
 
-< Instructions >
-
-set node to latest stable version  
-- nvm install --lts
- - nvm use --lts
+1. Set node to latest stable version  
+```
+nvm install --lts
+nvm use --lts
+```
+Install yarn, if don't have it installed already
+```
+npm install yarn 
+```
  
- if don't have yarn, install yarn
- - npm install yarn 
- 
-install packages
-- yarn install
+install packages and run
+```
+yarn install
+yarn dev
+```
 
 
 To run
@@ -44,6 +48,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 ## Deploy on Vercel
+
+The site is hosted on vercel. The main branch corresponds to the production site. Every time a change in a branch is pushed to github, vercel will make a new preview link with the site.
+
+
+
+
+
+
+
 
 
 
