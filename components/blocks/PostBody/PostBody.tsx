@@ -173,7 +173,6 @@ export default function PostBody({
 }
 
 const AuthorBios = (authors: Array<AuthorPostInterface>) => {
-console.log(authors);
   return (
     <div className="mt-xl font-sans">
       <h5 className="font-bold text-base">Written By</h5>
