@@ -3,7 +3,7 @@ import { MarkdownComponent } from "utils/utils";
 
 // TODO move as much to tailwind
 
-type SectionColorVariant = "default" | "gold";
+export type SectionColorVariant = "default" | "gold";
 export interface SectionHeaderInterface {
   title: string;
   id: string;
@@ -60,7 +60,7 @@ const SectionHeader: React.FC<SectionHeaderInterface> = ({
 
   return (
     <div className={`${bg}`}>
-    <div className={`responsive-container py-2xl`} key={id}>
+    <div className={`responsive-container pt-4xl pb-2xl`} key={id}>
       <TitleBlock />
       <ColoredLine/>
       <BodyBlock />

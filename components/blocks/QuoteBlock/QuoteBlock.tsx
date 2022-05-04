@@ -21,7 +21,7 @@ const QuoteBlock = ({
 
   return (
     <div className={`bg-gold-700`} key={id}>
-      <div className="responsive-container py-2xl flex flex-wrap">
+      <div className="responsive-container py-4xl flex flex-wrap">
       <div className={`w-full lg:w-1/6`}>
          <Image src={QuotePattern} layout={"fixed"}></Image>
        </div>
