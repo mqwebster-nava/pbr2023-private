@@ -6,44 +6,48 @@ export default {
   argTypes: { onClick: { action: "clicked" } },
 };
 
+const dscale= 1.25, mscale = 1.1, droot=18, mroot=16;
+const fontHelper = (size) => {
+  let drem= 1; let mrem =1;
+  if( size > 6) {
+    drem = 1/(Math.pow(dscale,(size-6)));
+    mrem = 1/(Math.pow(mscale,(size-6)));
+  }else if (size<6){
+    drem = Math.pow(dscale,(6-size));
+    mrem = Math.pow(mscale,(6-size));
+  }
+  let m = mrem*mroot, t=mrem*droot, d=drem*droot;
+  return `desktop ${d} / tablet ${t} px /mobile ${m}px`;
+}
+
 
 export const Typescale= () => {
   return (
     <div className="font-sans">
       <hr/>
-      <p className="text-xs pt-md ">Header 1</p>
-      <p className="text-6xl font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Header 2</p>
-      <p className="text-5xl font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Header 3</p>
-      <p className="text-4xl font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Header 4</p>
-      <p className="text-2xl font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Header 5</p>
-      <p className="text-xl font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">{`Header 1 ${fontHelper(1)}`}</p>
+      <p className="type-preset-1 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Header 2</p>
+      <p className="type-preset-2 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Header 3</p>
+      <p className="type-preset-3 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Header 4</p>
+      <p className="type-preset-4 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Header 5</p>
+      <p className="type-preset-5 font-bold">The quick brown fox ...</p>
       <hr/>
-      <p className="text-xs pt-md ">Subheader 1</p>
-      <p className="text-2xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Subheader 1 Bold</p>
-      <p className="text-2xl font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Subheader 2</p>
-      <p className="text-xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">Subheader 2 Bold</p>
-      <p className="text-xl font-bold">The quick brown fox ...</p>
-      <hr/>
-      <p className="text-xs pt-md">Large Body</p>
-      <p className="text-lg">The quick brown fox ...</p>
-      <p className="text-xs pt-md">Body</p>
-      <p className="text-base">The quick brown fox ...</p>
-      <p className="text-xs pt-md">Body Bold</p>
-      <p className="text-base font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md">Small</p>
-      <p className="text-sm font-bold">The quick brown fox ...</p>
-      <p className="text-xs pt-md">Small bold</p>
-      <p className="text-sm font-bold">The quick brown fox ...</p>
-      <p className="text-xs ">Extra small </p>
-      <p className="text-xs">The quick brown fox ...</p>
-
+      <p className="type-preset-8 pt-md">Large Body</p>
+      <p className="type-preset-5">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md">Body</p>
+      <p className="type-preset-6">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md">Body Bold</p>
+      <p className="type-preset-6 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md">Small</p>
+      <p className="type-preset-7 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md">Small bold</p>
+      <p className="type-preset-7 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 ">Extra small </p>
+      <p className="type-preset-8">The quick brown fox ...</p>
     </div>
   );
 };
@@ -51,26 +55,22 @@ export const Typescale= () => {
 export const TextSize = () => {
   return (
     <div className="font-sans">
-      <p className="text-xs ">text extra small / Preset 8</p>
-      <p className="text-xs ">The quick brown fox ...</p>
-      <p className="text-xs pt-md">text small / Preset 7</p>
-      <p className="text-sm ">The quick brown fox ...</p>
-      <p className="text-xs pt-md">text base / Preset 6</p>
-      <p className="text-base ">The quick brown fox ...</p>
-      <p className="text-xs pt-md">text large / Preset 5</p>
-      <p className="text-lg ">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text xl / Preset 4</p>
-      <p className="text-xl ">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 2xl / Preset 3</p>
-      <p className="text-2xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 3xl / Preset 2</p>
-      <p className="text-3xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 4xl / Preset 2</p>
-      <p className="text-4xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 5xl / Preset 2</p>
-      <p className="text-5xl">The quick brown fox ...</p>
-      <p className="text-xs pt-md ">text 6xl / Preset 1</p>
-      <p className="text-6xl">The quick brown fox ...</p>
+       <p className="type-preset-8 pt-md ">Preset 1</p>
+      <p className="type-preset-1 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 2</p>
+      <p className="type-preset-2 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 3</p>
+      <p className="type-preset-3 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 4</p>
+      <p className="type-preset-4 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 5</p>
+      <p className="type-preset-5 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 6</p>
+      <p className="type-preset-6 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 7</p>
+      <p className="type-preset-7 font-bold">The quick brown fox ...</p>
+      <p className="type-preset-8 pt-md ">Preset 8</p>
+      <p className="type-preset-8 font-bold">The quick brown fox ...</p>
     </div>
   );
 };
@@ -78,28 +78,28 @@ export const TextSize = () => {
 
 export const FontFaces = () => {
     return (
-      <div className="flex gap-md">
-            <div className="font-sans text-base">
-                <p className="text-lg font-bold">GT America</p>
-                <p className="text-xs pt-md">light</p>
-                <p className="font-light">The quick brown fox ...</p>
-                <p className="text-xs pt-md">regular</p>
-                <p className="">The quick brown fox ...</p>
-                <p className="text-xs pt-md">bold</p>
-                <p className="font-bold ">The quick brown fox ...</p>
-                <p className="text-xs pt-md">black</p>
-                <p className="font-black ">The quick brown fox ...</p>
-            </div>
-            <div className="font-serif text-base">
-                <p className="text-lg font-bold">Freight Pro</p>
-                <p className="text-xs pt-md">light</p>
-                <p className="font-light">The quick brown fox ...</p>
-                <p className="text-xs pt-md">regular</p>
-                <p className="">The quick brown fox ...</p>
-                <p className="text-xs pt-md">italic</p>
-                <p className="italic ">The quick brown fox ...</p>
-            </div>
-        
-      </div>
+     
+        <div className="flex gap-md pb-2xl">
+          <div className="font-sans type-preset-6">
+            <p className="type-preset-5 font-bold">GT America</p>
+            <p className="type-preset-8 pt-md">light</p>
+            <p className="font-light">The quick brown fox ...</p>
+            <p className="type-preset-8 pt-md">regular</p>
+            <p className="">The quick brown fox ...</p>
+            <p className="type-preset-8 pt-md">bold</p>
+            <p className="font-bold ">The quick brown fox ...</p>
+            <p className="type-preset-8 pt-md">black</p>
+            <p className="font-black ">The quick brown fox ...</p>
+          </div>
+          <div className="font-serif type-preset-6">
+            <p className="type-preset-5 font-bold">Freight Pro</p>
+            <p className="type-preset-8 pt-md">light</p>
+            <p className="font-light">The quick brown fox ...</p>
+            <p className="type-preset-8 pt-md">regular</p>
+            <p className="">The quick brown fox ...</p>
+            <p className="type-preset-8 pt-md">italic</p>
+            <p className="italic ">The quick brown fox ...</p>
+          </div>
+        </div>
     );
   };
