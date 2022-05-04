@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
         href={href}
         type='button'
         className={
-          `font-sans font-bold h-[70px]
+          `font-sans font-bold md:h-[70px]
           inline-flex items-center justify-center rounded-sm
           px-xl py-sm  
           type-preset-6 leading-6
