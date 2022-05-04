@@ -5,6 +5,7 @@ import LeftRepeater from "./LeftRepeater";
 import RightRepeater from "./RightRepeater";
 type ContentBlockType = "default" | "left repeater" | "right repeater";
 import { MarkdownComponent } from "utils/utils";
+import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 export interface ContentBlockInterface {
     id:string;
@@ -13,7 +14,7 @@ export interface ContentBlockInterface {
     buttonText:string; 
     buttonPath:string;
     type?: ContentBlockType;
-    image?: StaticImageData;
+    image?: ContentfulImageAsset;
     isStorybook?:boolean;
   }
   

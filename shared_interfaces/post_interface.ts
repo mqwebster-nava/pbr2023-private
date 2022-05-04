@@ -2,8 +2,8 @@
 export interface ContentfulImageAsset{
   id:string;
   url:string;
-  width?:Number;
-  height?:Number;
+  width?:number;
+  height?:number;
   title?:string;
   description?:string;
 }
