@@ -41,7 +41,7 @@ const DefaultCTABlock: React.FC<CTABlockInterface> = ({
             {<MarkdownComponent content={body} />}
           </p>
           {buttonText && (
-            <Button href={buttonPath} variant="black">
+            <Button href={buttonPath} variant="white">
               {buttonText}
             </Button>
           )}

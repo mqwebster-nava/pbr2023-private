@@ -1,5 +1,5 @@
 import classNames from "classnames";
-type Variant = "default" | "outlined" | "black";
+type Variant = "default" | "outlined" | "white" | "dark";
 
 export interface ButtonProps {
   href?: string;
@@ -16,10 +16,12 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const variantStyles = classNames({
-    "text-white bg-black hover:bg-white hover:text-black": variant == "black",
-    "text-black border hover:bg-sage-900 hover:text-white":
+    "text-sage-600 bg-white hover:bg-sage-100": variant == "white",
+    "text-sage-600 border border-sage-600 hover:bg-sage-100":
       variant == "outlined",
     "text-white  bg-sage-base  hover:bg-sage-900": variant == "default",
+    "text-white  bg-sage-900  hover:bg-black": variant == "dark",
+
   });
 
   return (
@@ -28,9 +30,9 @@ export const Button: React.FC<ButtonProps> = ({
         href={href}
         type='button'
         className={
-          `font-sans
+          `font-sans font-bold h-[70px]
           inline-flex items-center justify-center rounded-sm
-          px-sm py-sm  
+          px-xl py-sm  
           type-preset-6 leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer

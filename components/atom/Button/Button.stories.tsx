@@ -7,7 +7,7 @@ export default {
   component: Button,
   argTypes: {
     variant: {
-      options: ['default', 'outlined',"black"],
+      options: ['default', 'outlined',"white", "dark"],
       control: { type: 'radio' },
     },
   },

@@ -475,8 +475,11 @@ export default function DesignSystem(props: PageInterface) {
             <Button href={"/"} variant="outlined">
               Outlined Button
             </Button>
-            <Button href={"/"} variant="black">
-              Black Button
+            <Button href={"/"} variant="white">
+              White Button
+            </Button>
+            <Button href={"/"} variant="dark">
+              Dark Button
             </Button>
           </div>
         </div>

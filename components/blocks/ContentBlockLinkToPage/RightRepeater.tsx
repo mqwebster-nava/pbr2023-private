@@ -13,7 +13,7 @@ import { ContentBlockInterface } from "./ContentBlockLinkToPage";
                     <h3 className="font-sans type-preset-5 font-bold">{title} </h3>
                     <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-lg`}>{body}</p>
                 </div>
-                {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
+                {buttonText && <Button href={buttonPath} variant="outlined">{buttonText}</Button>}
             </div>
             <div className="w-full md:w-2/3 relative "> 
                

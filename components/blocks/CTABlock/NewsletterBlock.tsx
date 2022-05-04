@@ -15,7 +15,7 @@ const Newsletter = () => {
           </label>
           <input id="newsletter-sign-up" type="text"></input>
         </div>
-        <Button href={null} variant="black">
+        <Button href={null} variant="dark">
           Subscribe
         </Button>
       </div>

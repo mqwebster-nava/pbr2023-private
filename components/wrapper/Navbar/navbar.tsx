@@ -39,7 +39,7 @@ const DesktopNavBar = ({ NavData }) => {
             );
           })}
           <div className="pl-sm"></div>
-          <Button href="/contact"> Get In Touch </Button>
+          <NavButton slug={"/contact"}> {"Get In Touch"}</NavButton>
         </div>
       </div>
     </nav>

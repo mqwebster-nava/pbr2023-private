@@ -25,7 +25,7 @@ const LeftRepeater: React.FC<ContentBlockInterface> = ({
         <h3 className={`font-sans type-preset-5 font-bold `}>{title} </h3>
         <p className={`font-sans pt-lg type-preset-6 text-gray-800`}>{body}</p>
         </div>
-        {buttonText && <Button  href={buttonPath}>{buttonText}</Button> }
+        {buttonText && <Button  href={buttonPath} variant="outlined">{buttonText}</Button> }
       </div>
     </div>
     </div>
