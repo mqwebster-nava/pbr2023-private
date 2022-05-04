@@ -6,6 +6,7 @@ sys {
 }
 title
 body
+variant
 `;
 
 export default CONTENT_BLOCK_TEXT;

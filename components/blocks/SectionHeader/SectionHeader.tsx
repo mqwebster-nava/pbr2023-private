@@ -1,44 +1,72 @@
+import classNames from "classnames";
 import { MarkdownComponent } from "utils/utils";
 
 // TODO move as much to tailwind
+
+type SectionColorVariant = "default" | "gold";
 export interface SectionHeaderInterface {
   title: string;
   id: string;
-  subtitle?:string;
+  subtitle?: string;
+  variant?: SectionColorVariant;
 }
 
-const LargeHero: React.FC<SectionHeaderInterface> = ({
+const SectionHeader: React.FC<SectionHeaderInterface> = ({
   id,
   title,
   subtitle,
   children,
+  variant = "default",
 }) => {
+  const bg = classNames({
+    "bg-gold-50": variant=="gold"
+  })
+
   const TitleBlock = () => {
     return (
-      <div className="lg:w-3/5 w-full">
+      <div className="lg:w-3/4 w-full">
         <h1
-          className={`w-full font-sans text-navy-900 type-preset-5 font-black mt-xl mb-3xl`}
+          className={`w-full font-sans text-navy-900 type-preset-2 font-black mt-xl mb-xl`}
         >
           {title}
         </h1>
-        <div className="w-full flex"></div>
       </div>
     );
   };
   const BodyBlock = () => {
     return (
-      <div className={`flex justify-end`}>
-
-        <div className={`md:w-2/3 type-preset-5  font-serif text-navy-900`}>{<MarkdownComponent content={subtitle}/>}</div>
+      <div className={`flex`}>
+        <div className={`md:w-3/4 type-preset-3  font-serif text-navy-900`}>
+          {<MarkdownComponent content={subtitle} />}
+        </div>
+      </div>
+    );
+  };
+  const ColoredLine = () => {
+    return variant == "gold" ? (
+      <div className="flex mb-xl">
+        <div className="bg-gold-900 h-[12px] w-[46px]"></div>
+        <div className="bg-gold-700 h-[12px] w-[46px]"></div>
+        <div className="bg-gold-500 h-[12px] w-[46px]"></div>
+      </div>
+    ) : (
+      <div className="flex mb-xl">
+        <div className="bg-purple-900 h-[12px] w-[46px]"></div>
+        <div className="bg-purple-500 h-[12px] w-[46px]"></div>
+        <div className="bg-purple-300 h-[12px] w-[46px]"></div>
       </div>
     );
   };
 
   return (
-    <div className="responsive-container py-2xl" key={id}>
+    <div className={`${bg}`}>
+    <div className={`responsive-container py-2xl`} key={id}>
       <TitleBlock />
+      <ColoredLine/>
       <BodyBlock />
     </div>
+    </div>
   );
+
 };
-export default LargeHero;
+export default SectionHeader;
