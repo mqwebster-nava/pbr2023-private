@@ -1,47 +1,44 @@
 import Image from "next/image";
-import goldIllustration from "../../../public/images/illistration-1.png";
+import QuotePattern from "public/images/pattern block.png";
 
 type QuoteBaseColor = "gold" | "purple";
 interface QuoteBlockInterface {
   id:string;
-  content: string;
-  author: string;
+ body: string;
+  authorName: string;
   authorRole: string;
   color?: QuoteBaseColor;
 }
 
 const QuoteBlock = ({
   id,
-  content,
-  author,
+ body,
+  authorName,
   authorRole,
   color
 }:QuoteBlockInterface) => {
   const baseColor = color ? color : "gold";
+
   return (
-    <div className={`bg-${baseColor}-50`} key={id}>
+    <div className={`bg-gold-700`} key={id}>
       <div className="responsive-container py-2xl flex flex-wrap">
-        <div className={`w-full lg:w-1/2 flex`}>
+      <div className={`w-full lg:w-1/6`}>
+         <Image src={QuotePattern} layout={"fixed"}></Image>
+       </div>
+        <div className={`w-full lg:w-5/6 flex`}>
           <div className="pr-md">
             <p
-              className={`font-serif pt-lg type-preset-5  text-${baseColor}-700 mb-md`}
+              className={`font-sans type-preset-3  text-white font-bold mb-md`}
             >
-              {content}
+              {body}
             </p>
-            <p className={`font-bold text-${baseColor}-700 font-sans pt-lg`}>
-              {author},<br />
-              {authorRole}
+            <p className={`font-serif type-preset-6 text-white pt-lg`}>
+              {authorName}, {authorRole}
             </p>
           </div>
-          <div
-            className={`bg-${baseColor}-800 w-1 h-full hidden lg:block`}
-          ></div>
+     
         </div>
-        <div className={`w-full lg:w-1/2`}>
-          {/* //  {(isStorybook)? <Image height={"400px"} width={"400px"} className="max-w-full mix-blend-multiply" src={goldIllustration} alt="me" />            :  */}
-          {/* TO DO: Add alt text for illustrations. */}
-          <Image src={goldIllustration} className="mix-blend-multiply" />
-        </div>
+        
       </div>
     </div>
   );
