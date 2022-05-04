@@ -24,7 +24,7 @@ const QuoteBlock = ({
         <div className={`w-full lg:w-1/2 flex`}>
           <div className="pr-md">
             <p
-              className={`font-serif pt-lg text-xl  text-${baseColor}-700 mb-md`}
+              className={`font-serif pt-lg type-preset-5  text-${baseColor}-700 mb-md`}
             >
               {content}
             </p>

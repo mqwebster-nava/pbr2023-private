@@ -35,7 +35,7 @@ const DefaultCTABlock: React.FC<CTABlockInterface> = ({
             layout="responsive"
           ></Image>
         </div>
-        <div className={`w-full lg:w-1/2 px-lg font-sans text-5xl font-bold`}>
+        <div className={`w-full lg:w-1/2 px-lg font-sans type-preset-2 font-bold`}>
           <h3 className="  text-sage-600">{title} </h3>
           <p className={`pt-lg  text-sage-900 mb-lg`}>
             {<MarkdownComponent content={body} />}

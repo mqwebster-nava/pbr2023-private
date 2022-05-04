@@ -18,7 +18,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
   const fmtdate = new Date(`${date}`);
   const dateStr = monthNames[fmtdate.getMonth()]  +' ' + fmtdate.getDate()+ ', '+fmtdate.getFullYear();
 
-    return (<div className="text-sm">
+    return (<div className="type-preset-7">
       <h3 className="font-bold">Published</h3>
       <p className="font-sans pb-md">{dateStr}</p>
       <div className="font-sans md:block flex justify-between mb-lg">
@@ -28,7 +28,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
                 <div id={author.name} className="pb-md ">
                   <p>
                     <LinkText href={`/authors/${author.slug}`} variant={"underlined"}>{author.name}</LinkText></p>
-                  <p className="text-sm">{author.role}</p>
+                  <p className="type-preset-7">{author.role}</p>
                 </div>
                 ))}
               </div>

@@ -4,7 +4,7 @@ import { ResponsiveContainer } from "components/blocks";
 export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
   return (
     <ResponsiveContainer contentClass="mx-0">
-      <h3 className="text-2xl font-black border-b-2 border-gray-300">
+      <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
         {title}
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-5 py-3xl">

@@ -57,7 +57,7 @@ export async function getStaticProps({ params, preview = false }) {
 //             "Make digital services more simple, effective, accessible, and equitable",
 //             "Continue to positively impact the communities we serve long after our contract ends"
 //           ].map((item) => (
-//             <li key={item.length} className="font-sans text-base">
+//             <li key={item.length} className="font-sans type-preset-6">
 //               {item}
 //             </li>
 //           ))}
@@ -84,7 +84,7 @@ export async function getStaticProps({ params, preview = false }) {
 //             "Program outcomes are effective for the beneficiary population",
 //             "Agency tech and ops are adaptable and resilient in a changing world"            
 //           ].map((item) => (
-//             <li key={item.length} className="font-sans text-base">
+//             <li key={item.length} className="font-sans type-preset-6">
 //               {item}
 //             </li>
 //           ))}

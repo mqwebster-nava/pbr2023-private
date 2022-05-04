@@ -14,9 +14,9 @@ const NavaDigest = () => {
       <div className="responsive-container text-white pt-2xl">
         <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
           <div className="w-full md:w-1/2 ">
-            <h3 className="font-sans text-5xl font-bold pb-lg">Nava Digest</h3>
+            <h3 className="font-sans type-preset-2 font-bold pb-lg">Nava Digest</h3>
 
-            <p className={`2 font-sans mr-3xl text-base  mb-md`}>
+            <p className={`2 font-sans mr-3xl type-preset-6  mb-md`}>
               Get Nava updates on new open roles, government partnerships,
               learnings, and news from the broader civic tech community.
             </p>

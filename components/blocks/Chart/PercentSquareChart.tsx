@@ -52,7 +52,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   return (
     <div>
       <ResponsiveContainer containerClass="pt-2xl" contentClass="mx-0">
-        <h3 className="text-2xl font-black border-b-2 border-gray-300">
+        <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
           {title}
         </h3>
         <p className="py-2xl">{content}</p>

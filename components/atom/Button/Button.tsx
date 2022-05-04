@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
           `font-sans
           inline-flex items-center justify-center rounded-sm
           px-sm py-sm  
-          text-base leading-6
+          type-preset-6 leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
           ${variantStyles}`}

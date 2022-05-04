@@ -12,13 +12,13 @@ const LargeTextCard: React.FC<ContentCardInterface> = ({
       >
     
         <div className="p-lg">
-        <h6 className="mb-2 text-base font-bold  text-white font-sans ">
+        <h6 className="mb-2 type-preset-6 font-bold  text-white font-sans ">
           How to
         </h6>
-        <h5 className=" text-2xl font-bold  text-white font-sans h-56">
+        <h5 className=" type-preset-4 font-bold  text-white font-sans h-56">
           {title}
         </h5>
-        <p className=" text-base font-sans text-white dark:text-gray-400">
+        <p className=" type-preset-6 font-sans text-white dark:text-gray-400">
           {children}
         </p>
         </div>

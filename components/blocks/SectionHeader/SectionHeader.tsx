@@ -17,7 +17,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
     return (
       <div className="lg:w-3/5 w-full">
         <h1
-          className={`w-full font-sans text-navy-900  md:text-2xl text-xl font-black mt-xl mb-3xl`}
+          className={`w-full font-sans text-navy-900 type-preset-5 font-black mt-xl mb-3xl`}
         >
           {title}
         </h1>
@@ -29,7 +29,7 @@ const LargeHero: React.FC<SectionHeaderInterface> = ({
     return (
       <div className={`flex justify-end`}>
 
-        <div className={`md:w-2/3 text-lg md:text-xl font-serif text-navy-900`}>{<MarkdownComponent content={subtitle}/>}</div>
+        <div className={`md:w-2/3 type-preset-5  font-serif text-navy-900`}>{<MarkdownComponent content={subtitle}/>}</div>
       </div>
     );
   };

@@ -22,8 +22,8 @@ const LeftRepeater: React.FC<ContentBlockInterface> = ({
       </div>
       <div className={`w-full md:w-1/3 md:ml-xl flex justify-between flex-col`}>
         <div>
-        <h3 className={`font-sans text-lg font-bold `}>{title} </h3>
-        <p className={`font-sans pt-lg text-base text-gray-800`}>{body}</p>
+        <h3 className={`font-sans type-preset-5 font-bold `}>{title} </h3>
+        <p className={`font-sans pt-lg type-preset-6 text-gray-800`}>{body}</p>
         </div>
         {buttonText && <Button  href={buttonPath}>{buttonText}</Button> }
       </div>

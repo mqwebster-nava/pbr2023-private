@@ -16,7 +16,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
 
   const variantStyles = classNames({
     underline: variant == "underlined",
-    "text-lg": variant == "large arrow",
+    "type-preset-5": variant == "large arrow",
   });
 
   return (

@@ -39,7 +39,7 @@ const ReportSectionContentFull = ({
         contentClass="pr-0"
       >
         {title && (
-          <h2 id={titleId} className="text-3xl font-bold">
+          <h2 id={titleId} className="type-preset-3 font-bold">
             {title}
           </h2>
         )}

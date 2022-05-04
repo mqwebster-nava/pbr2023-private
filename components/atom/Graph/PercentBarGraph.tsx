@@ -21,7 +21,7 @@ export const PercentBarGraph: React.FC<PercentBarGraphInterface> = ({
         className={`${insideBar} min-h-[inherit] px-2 py-4 text-white`}
         style={{ width: `${percent}%` }}
       >
-        <h2 className="text-3xl font-black inline-block">{percent}%</h2>
+        <h2 className="type-preset-3 font-black inline-block">{percent}%</h2>
         <p>{description}</p>
       </div>
     </div>

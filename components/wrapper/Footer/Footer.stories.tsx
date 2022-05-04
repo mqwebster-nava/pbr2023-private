@@ -1,6 +1,6 @@
 // Button.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  Footer from "./footer";
+import  Footer from "./Footer";
 
 export default {
   /* 👇 The title prop is optional.

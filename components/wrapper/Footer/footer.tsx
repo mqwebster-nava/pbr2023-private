@@ -23,7 +23,7 @@ const Footer = () => {
                 className=""
               />
             </div>
-            <div className="text-xl md:text-2xl text-white flex-1">
+            <div className="type-preset-5 text-white flex-1">
               We envision a world where our interactions with government are
               delightful and we are confident in government’s ability to achieve
               the goals we set for it.
@@ -38,10 +38,10 @@ const Footer = () => {
           <div
             className={"responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"}
           >
-            <p className="text-white font-sans text-xs">
+            <p className="text-white font-sans type-preset-8">
               ©2021 NavaPBC. All rights reserved.
             </p>
-            <div className="flex gap-2xl text-white font-bold text-base">
+            <div className="flex gap-2xl text-white font-bold type-preset-6">
               <a>Twitter</a>
               <a>Medium</a>
               <a>LinkedIn</a>

@@ -28,8 +28,8 @@ return (
     <div className="responsive-container py-2xl" key={id}>
     <div className={`w-full lg:w-2/3`}>
      
-                 <h3 className="font-sans text-lg font-bold">{title} </h3>
-                 <p className={`font-sans pt-lg text-base text-gray-800 mb-lg`}>{<MarkdownComponent content={body} />}</p>
+                 <h3 className="font-sans type-preset-5 font-bold">{title} </h3>
+                 <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-lg`}>{<MarkdownComponent content={body} />}</p>
          
              {buttonText && <Button href={buttonPath} >{buttonText}</Button>}
          </div>

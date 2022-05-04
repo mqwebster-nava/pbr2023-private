@@ -89,7 +89,7 @@ export default function PostBody({
   };
   const BlockQuote = (node, children) => {
     return (
-      <div className="bg-plum-50 p-2xl text-plum-900 text-2xl font-sans font-bold">
+      <div className="bg-plum-50 p-2xl text-plum-900 type-preset-4 font-sans font-bold">
         <Image src={quotemarks} height={37} width={68} alt={""} />
         {children}
       </div>
@@ -107,18 +107,18 @@ export default function PostBody({
         <p className=" py-md ">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
-        <p className="text-4xl font-bold font-sans pt-lg">{children}</p>
+        <p className="type-preset-3 font-bold font-sans pt-lg">{children}</p>
       ),
       [BLOCKS.HEADING_2]: (node, children) => {
         return (
-          <h2 className="text-4xl font-bold font-sans pt-lg">{children}</h2>
+          <h2 className="type-preset-3 font-bold font-sans pt-lg">{children}</h2>
         );
       },
       [BLOCKS.HEADING_3]: (node, children) => (
-        <p className="text-2xl font-bold font-sans pt-lg">{children}</p>
+        <p className="type-preset-4 font-bold font-sans pt-lg">{children}</p>
       ),
       [BLOCKS.HEADING_4]: (node, children) => (
-        <h4 className="text-xl font-bold font-sans pt-lg">{children}</h4>
+        <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
       ),
       [BLOCKS.QUOTE]: (node, children) => BlockQuote(node, children),
 
@@ -145,7 +145,7 @@ export default function PostBody({
     >
       <div
         id="article"
-        className="w-full md:w-2/3 pr-lg text-gray-base font-serif text-lg"
+        className="w-full md:w-2/3 pr-lg text-gray-base font-serif type-preset-5"
       >
         {h2Sections.map((section) => (
           <div id={section.title} ref={section.ref}>
@@ -175,10 +175,10 @@ export default function PostBody({
 const AuthorBios = (authors: Array<AuthorPostInterface>) => {
   return (
     <div className="mt-xl font-sans">
-      <h5 className="font-bold text-base">Written By</h5>
+      <h5 className="font-bold type-preset-6">Written By</h5>
       <hr />
       {authors.map((author) => ( 
-      <div className="flex w-full font-sans text-sm pt-md">
+      <div className="flex w-full font-sans type-preset-7 pt-md">
           <div className="w-[125px]" >
           <Image
                 src={AuthorFiller}

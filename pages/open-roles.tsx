@@ -61,7 +61,7 @@ export default function OpenRoles(props:PageInterface) {
       {departments.map((d) => {
         return (
           <a id={`${d.title}`}>
-            <h2 className="font-sans text-lg font-bold mt-lg">{d.title}</h2>
+            <h2 className="font-sans type-preset-5 font-bold mt-lg">{d.title}</h2>
             <hr/>
             {d.postings.map((posting) => {
               return (

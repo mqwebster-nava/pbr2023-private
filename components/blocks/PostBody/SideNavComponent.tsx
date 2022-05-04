@@ -7,7 +7,7 @@ const SideNavComponent = ({h2Sections, activeSection}) => {
 
 
   return (
-    <div className="mt-md text-sm  sticky top-48 w-full max-w-[240px]  hidden md:block ">
+    <div className="mt-md type-preset-7  sticky top-48 w-full max-w-[240px]  hidden md:block ">
       <h3 className="font-sans font-bold pb-sm">On this page</h3>
   
       {h2Sections.map((section) => {

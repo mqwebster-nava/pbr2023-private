@@ -28,9 +28,9 @@ interface ContentBlockInterface {
     return (
       <div className="responsive-container py-xl" key={id}>
         <div className={`w-full`}>
-          {title && <h3 className="font-sans text-3xl md:text-4xl  font-bold">{title} </h3>}
+          {title && <h3 className="font-sans type-preset-3  font-bold">{title} </h3>}
           {body && (
-            <p className={`font-sans pt-lg text-xl text-gray-600 mb-sm`}>
+            <p className={`font-sans pt-lg type-preset-5 text-gray-600 mb-sm`}>
               {body}
             </p>
           )}
@@ -73,8 +73,8 @@ interface ContentBlockInterface {
      <div className="responsive-container py-2xl">
      <div className={`w-full `}>
       
-                {title &&  <h3 className="font-sans text-lg font-bold">{title} </h3> }
-                {body && <p className={`font-sans pt-lg text-base text-gray-800 mb-md`}>{body}</p> }
+                {title &&  <h3 className="font-sans type-preset-5 font-bold">{title} </h3> }
+                {body && <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-md`}>{body}</p> }
                   <div className={`w-full flex  items-stretch md:flex-row flex-col gap-8 my-3xl `}>
           <div className="w-full md:w-1/3 self-stretch"> {childrenArray[0]} </div>
           <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>1 && childrenArray[1]} </div>

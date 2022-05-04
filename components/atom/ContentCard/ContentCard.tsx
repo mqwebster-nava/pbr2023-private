@@ -58,10 +58,10 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
         ></Image>
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
-        <h5 className="mb-2 text-lg xl:text-xl font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
+        <h5 className="mb-2 type-preset-5 font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
           {title}
         </h5>
-        <p className=" text-base font-sans text-gray-700 dark:text-gray-400">
+        <p className=" type-preset-6 font-sans text-gray-700 dark:text-gray-400">
           {children}
         </p>
       </div>

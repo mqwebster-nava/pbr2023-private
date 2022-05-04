@@ -10,8 +10,8 @@ import { ContentBlockInterface } from "./ContentBlockLinkToPage";
        <div className={`w-full flex flex-col-reverse md:flex-row`}>
             <div className="w-full md:w-1/3 pr-xl flex justify-between flex-col"> 
                 <div className="">
-                    <h3 className="font-sans text-lg font-bold">{title} </h3>
-                    <p className={`font-sans pt-lg text-base text-gray-800 mb-lg`}>{body}</p>
+                    <h3 className="font-sans type-preset-5 font-bold">{title} </h3>
+                    <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-lg`}>{body}</p>
                 </div>
                 {buttonText && <Button href={buttonPath}>{buttonText}</Button>}
             </div>
