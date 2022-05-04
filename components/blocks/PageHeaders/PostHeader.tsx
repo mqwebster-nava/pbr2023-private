@@ -5,6 +5,7 @@ import { PageHeaderInterface } from "./PageHeader";
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
 import brandD2 from "public/images/brand-patterns/Nava-Brand Pattern-Direction1-Light-White-V01 1.png";
+import ImagePatternBlock from "./ImagePatternBlock";
 
 // TO DO: Alt text for images.
 // export interface PostHeaderInterface extends PageHeaderInterface {
@@ -36,48 +37,9 @@ const PostHeader = ({
           </p>
         </div>
       </div>
-    {image &&
-      <div className="max-h-[600px] 
-      overflow-clip relative
-      xl:mx-auto xl:max-w-screen-xl 
-      -mt-5xl">
-       
-       
-        <Image
-          className="w-full min-h-16 object-cover"
-          src={image.url}
-          width={16}
-          height={9}
-          layout="responsive"
-        ></Image>
-         <div className="w-1/3 h-full absolute z-10 top-0 left-0">
-          <div className="flex items-stretch">
-            <div className="bg-plum-800 max-h-5xl h-full text-[0px]">
-              <Image
-                src={brandDirection}
-                className="object-cover "
-                height={128}
-                width={128}
-                
-                alt=""
-              />
-            </div>
-            <div className="bg-plum-800 max-h-5xl h-full text-[0px]">
-              <Image
-                src={brandTerrain}
-                className="object-cover"
-                height={128}
-                width={128}
-                alt=""
-              />
-            </div>
-            <div className="bg-plum-200 max-h-5xl w-5xl "> </div>
-          </div>
-        
-        </div>
-      </div>
-  }
+      {image && <ImagePatternBlock image={image} variant="image"></ImagePatternBlock>}
     </div>
   );
 };
 export default PostHeader;
+
