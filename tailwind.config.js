@@ -8,7 +8,11 @@ module.exports = {
   ],
   plugins: [],
   theme: {
+    
     extend: {
+      listStyleType: {
+        dash: 'square',
+      },
       blur: {
         xs: '2px',
       },
