@@ -18,7 +18,6 @@ const QuoteBlock = ({
   color
 }:QuoteBlockInterface) => {
   const baseColor = color ? color : "gold";
-
   return (
     <div className={`bg-gold-700`} key={id}>
       <div className="responsive-container py-4xl flex flex-wrap">
@@ -36,9 +35,7 @@ const QuoteBlock = ({
               {authorName}, {authorRole}
             </p>
           </div>
-     
         </div>
-        
       </div>
     </div>
   );
