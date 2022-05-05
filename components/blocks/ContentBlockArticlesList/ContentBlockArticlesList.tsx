@@ -1,8 +1,11 @@
 
 import { getContentUrl } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
+import classNames from "classnames";
 
-interface ContentBlockInterface {
+
+type ListVariant = "feature" | "default";
+interface ArticleListInterface {
      id:string;
      title?: string;
      buttonText?:string;
@@ -11,6 +14,7 @@ interface ContentBlockInterface {
      posts: any;
      cycleNum?:number;
      max?: number;
+     variant?: ListVariant;
 }
   
   
@@ -23,7 +27,16 @@ interface ContentBlockInterface {
     buttonText, 
     cycleNum =Math.floor(Math.random() * 4),
     max = 6,
-  }: ContentBlockInterface) => {
+    variant = "feature"
+    
+  }: ArticleListInterface) => {
+
+    const GridStyle = classNames({
+      "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": variant = "default",
+      "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": variant = "feature",
+    })
+
+
     posts = posts.filter((post)=>post!=null);
     return (
       <div className="responsive-container py-xl" key={id}>
@@ -35,14 +48,16 @@ interface ContentBlockInterface {
             </p>
           )}
           <div
-            className={`w-full grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-x-lg gap-y-xl my-2xl`}
+            className={`w-full ${GridStyle} gap-x-lg gap-y-xl my-2xl`}
           >
-            {posts.slice(0, max).map((post) =>{
+            {posts.slice(0, max).map((post, i) =>{
             if(!post.promoImage) cycleNum+=1;
-            return ( <div className=" w-full lg:max-w-[400px] self-stretch " key={post.id}>
+           
+            return ( <div className={`w-full self-stretch ${i==0 && "lg:col-span-2"}`} key={post.id}>
                 <ContentCard
-
-                type={post.contentType}
+                 variant = {(variant=="default" || i>3) ? "third" : i==0 ? "half" : "quarter" }
+                  kicker = {post.contentType=="Case Study" && post.clientName}
+                 type={post.contentType}
                   title={post.title}
                   promoImage={post.promoImage}
                   path={getContentUrl(post.contentType, post.slug)}
