@@ -81,6 +81,7 @@ export default function PostBody({
         height={asset.height}
         width={asset.width}
         alt={asset.description}
+        className={`shadow-lg shadow-gray-500 drop-shadow-md bg-gray-800`}
         loading="lazy"
         placeholder="blur"
         blurDataURL={`/_next/image?url=${asset.url}&w=16&q=1`}
@@ -89,7 +90,7 @@ export default function PostBody({
   };
   const BlockQuote = (node, children) => {
     return (
-      <div className="bg-plum-50 p-2xl text-plum-900 type-preset-4 font-sans font-bold">
+      <div className="bg-plum-50 my-xl p-2xl text-plum-900 type-preset-4 font-sans font-bold">
         <Image src={quotemarks} height={37} width={68} alt={""} />
         {children}
       </div>

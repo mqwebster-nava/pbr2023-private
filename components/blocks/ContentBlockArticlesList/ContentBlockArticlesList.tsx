@@ -41,6 +41,7 @@ interface ArticleListInterface {
     return (
       <div className="responsive-container py-xl" key={id}>
         <div className={`w-full`}>
+          <hr className={`pb-sm`}/>
           {title && <h3 className="font-sans type-preset-3  font-bold">{title} </h3>}
           {body && (
             <p className={`font-sans pt-lg type-preset-5 text-gray-600 mb-sm`}>

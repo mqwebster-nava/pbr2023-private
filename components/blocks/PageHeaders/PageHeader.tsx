@@ -61,7 +61,7 @@ const DefaultPageHeader = ({
 }: PageHeaderInterface) => {
   return (
     <div key={id}>
-      <div className={` relative bg-purple-900 min-h-[60vh] pb-[100px]`}>
+      <div className={` relative bg-purple-900 lg:min-h-[60vh] lg:pb-[100px]`}>
         <div
           className={`
       responsive-container z-10 relative pt-5xl`}
