@@ -64,14 +64,14 @@ const DefaultPageHeader = ({
       <div className={` relative bg-purple-900 lg:min-h-[60vh] lg:pb-[100px]`}>
         <div
           className={`
-      responsive-container z-10 relative pt-5xl`}
+      responsive-container z-10 relative pt-3xl md:pt-5xl`}
         >
           <TitleBlock
             title={title}
             subtitle={subtitle}
             textColor={"text-white"}
           />
-          <div className="lg:h-5xl"></div>
+          <div className="h-3xl md:h-5xl"></div>
         </div>
       </div>
       <ImagePatternBlock variant={"illustration"}/>
