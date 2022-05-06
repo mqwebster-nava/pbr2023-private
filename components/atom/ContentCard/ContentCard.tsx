@@ -13,19 +13,19 @@ import brandDirectional from "public/images/brand-patterns/Nava-Brand Pattern-Di
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 
-type CardVariant = "half" |"quarter" | "full" | "third";
+type CardSize = "half" |"quarter" | "full" | "third";
 export interface ContentCardInterface {
   title: string;
   path: string;
   type: string;
   kicker?:string;
-  variant?:CardVariant
+  size?:CardSize
   promoImage?: ContentfulImageAsset;
   cycleNum?: number;
 }
 
 const ContentCard: React.FC<ContentCardInterface> = (props) => {
-  if (props.variant=="full") return <HighlightedCard {...props} />;
+  if (props.size=="full") return <HighlightedCard {...props} />;
   //if (props.type === "Toolkit") return <LargeTextCard {...props} />;
   return <DefaultContentCard {...props} />;
 };
@@ -37,7 +37,7 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
   type,
   cycleNum = Math.floor(Math.random() * 4),
   children,
-  variant = "quarter",
+  size = "quarter",
   kicker
 }) => {
   console.log(type);
@@ -53,8 +53,8 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
   });
 
   const titleSize = classNames({
-    "type-preset-6": variant=="quarter" ||variant=="third",
-    "type-preset-4":  variant=="half",
+    "type-preset-6": size=="quarter" ||size=="third",
+    "type-preset-4":  size=="half",
    
   });
   const pattern =

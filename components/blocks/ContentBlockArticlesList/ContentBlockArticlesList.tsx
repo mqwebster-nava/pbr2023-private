@@ -56,7 +56,7 @@ interface ArticleListInterface {
            
             return ( <div className={`w-full self-stretch ${i==0 && "lg:col-span-2"}`} key={post.id}>
                 <ContentCard
-                 variant = {(variant=="default" || i>3) ? "third" : i==0 ? "half" : "quarter" }
+                 size = {(variant=="default" || i>3) ? "third" : i==0 ? "half" : "quarter" }
                   kicker = {post.contentType=="Case Study" && post.clientName}
                  type={post.contentType}
                   title={post.title}

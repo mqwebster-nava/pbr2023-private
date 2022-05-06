@@ -67,7 +67,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
               width={signature.width}
               alt={`Image of ${signature.name}'s signature`}
             />
-            <p className={`${textColor} type-preset-6 py-md`}>
+            <p className={`${textColor} type-preset-5 py-md`}>
               {signature.name}, {signature.titleAbbreviation}
             </p>
           </div>
