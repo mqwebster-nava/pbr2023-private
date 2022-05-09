@@ -27,7 +27,7 @@ const colors = {
 const GraphTooltip = ({ text, setRef, getProps, getArrowProps }) => {
   return (
     <div ref={setRef} {...getProps({ className: "tooltip-container" })}>
-      <p className="type-preset-7">{text}</p>
+      <p className="type-preset-6">{text}</p>
       <div {...getArrowProps({ className: "tooltip-arrow" })} />
     </div>
   );
@@ -94,7 +94,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
         )}
       </div>
       <p className="type-preset-4">{percent}%</p>
-      <p className="type-preset-7">{description}</p>
+      <p className="type-preset-6">{description}</p>
     </div>
   );
 };
