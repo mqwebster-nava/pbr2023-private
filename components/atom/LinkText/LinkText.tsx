@@ -27,7 +27,6 @@ export const LinkText: React.FC<LinkTextProps> = ({
     >
       {children}
       {(variant == "arrow" || variant == "large arrow") && (
-       
         <svg
           width="16"
           height="16"
@@ -39,10 +38,8 @@ export const LinkText: React.FC<LinkTextProps> = ({
             fillRule="evenodd"
             clipRule="evenodd"
             d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z"
-          
           />
         </svg>
-       
       )}
     </a>
   );

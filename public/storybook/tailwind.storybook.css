@@ -527,6 +527,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .left-0 {
   left: 0px;
 }
+.right-0 {
+  right: 0px;
+}
 .top-0 {
   top: 0px;
 }
@@ -709,6 +712,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-\[12px\] {
   height: 12px;
 }
+.h-\[10px\] {
+  height: 10px;
+}
 .h-2 {
   height: 0.5rem;
 }
@@ -753,8 +759,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: -moz-fit-content;
   width: fit-content;
 }
-.w-1\/2 {
-  width: 50%;
+.w-\[331px\] {
+  width: 331px;
+}
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .w-1\/3 {
   width: 33.333333%;
@@ -928,6 +939,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .self-stretch {
   align-self: stretch;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 .whitespace-nowrap {
   white-space: nowrap;
@@ -1263,6 +1277,34 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-sage-base {
   --tw-bg-opacity: 1;
   background-color: rgb(8 165 136 / var(--tw-bg-opacity));
+}
+.bg-sage-dei {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 152 146 / var(--tw-bg-opacity));
+}
+.bg-navy-dei {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 22 56 / var(--tw-bg-opacity));
+}
+.bg-sage-pbr-2020 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 174 167 / var(--tw-bg-opacity));
+}
+.bg-orange-dark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 114 5 / var(--tw-bg-opacity));
+}
+.bg-blue-dark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 134 207 / var(--tw-bg-opacity));
+}
+.bg-orange-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 243 242 / var(--tw-bg-opacity));
+}
+.bg-blue-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(231 243 250 / var(--tw-bg-opacity));
 }
 .bg-sage-dei {
   --tw-bg-opacity: 1;
@@ -1883,6 +1925,23 @@ body {
   );
 }
 
+.rainbow-gradient {
+  background-image: linear-gradient(
+    to right,
+    #de4535,
+    #e6993f,
+    #fcf050,
+    #72b656,
+    #0386cf,
+    #b12fa7,
+    #000002,
+    #875525,
+    #8abde6,
+    #e99cbd,
+    #ffffff
+  );
+}
+
 .before\:content-none::before {
   --tw-content: none;
   content: var(--tw-content);
@@ -2058,6 +2117,16 @@ body {
 
   .md\:w-1\/5 {
     width: 20%;
+  }
+
+  .md\:max-w-\[45\%\] {
+    max-width: 45%;
+  }
+
+  .md\:scale-\[1\.4\] {
+    --tw-scale-x: 1.4;
+    --tw-scale-y: 1.4;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .md\:max-w-\[45\%\] {

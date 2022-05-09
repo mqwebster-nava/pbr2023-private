@@ -1,0 +1,1555 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DEI page matches snapshot 1`] = `
+<DocumentFragment>
+  <main>
+    <section
+      class="bg-navy-pbr-2020 text-white relative z-3"
+    >
+      <div
+        class="responsive-container"
+      >
+        <div
+          class="responsive-container-content py-4xl mx-0 "
+        >
+          <h1
+            class="max-w-xl font-black text-6xl"
+          >
+            Diversity, equity, and inclusion at Nava
+          </h1>
+          <div
+            class="pt-2xl"
+          >
+            <hr
+              class="float-left border border-sage-pbr-2020"
+              style="width: 50px;"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-sea-foam-base py-4xl"
+    >
+      <div
+        class="responsive-container "
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 justify-items-center"
+          >
+            <div
+              class="w-full"
+            >
+              <p
+                class="text-xl text-sage-dark"
+              >
+                To build digital services that are simple, effective, and accessible to all, our teams must reflect the diverse communities we serve across the US.
+
+              </p>
+              <p
+                class=" text-base py-md"
+              >
+                Improving access to government services is essential to rebuilding trust in institutions, strengthening our democracy, and creating a more just society — especially for vulnerable populations.
+              </p>
+              
+
+              <p
+                class=" text-base py-md"
+              >
+                Our commitment to diversity, inclusion, and equity not only reflects our 
+                <a
+                  class="group text-black hover:text-sage-base items-center gap-sm underline"
+                  href="/values"
+                  target=""
+                >
+                  values
+                </a>
+                 as a 
+                <a
+                  class="group text-black hover:text-sage-base items-center gap-sm underline"
+                  href="/impact"
+                  target=""
+                >
+                  public benefit corporation
+                </a>
+                 but also enriches our ability to do this work. By striving to represent all of the people in the US, we’re better equipped to meet our social responsibility to all of the people we serve. And while we’ve made 
+                <a
+                  class="group text-black hover:text-sage-base items-center gap-sm underline"
+                  href="/impact/public-benefit-reports-2019"
+                  target=""
+                >
+                  progress
+                </a>
+                 in strengthening our team, we still have work to do.
+              </p>
+            </div>
+            <img
+              alt=""
+              class="max-h-[450px] md:scale-[1.4]"
+              src="/images/dei/side_illustration.png"
+              width="138px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-sea-foam-light py-4xl"
+    >
+      <div
+        class="responsive-container "
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <h2
+            class="text-3xl font-bold pt-md "
+            id="majority-bipoc-by-2025"
+            level="2"
+          >
+            Majority BIPOC by 2025
+          </h2>
+          
+
+          <p
+            class=" text-base py-md"
+          >
+            By 2025, we hope Nava better matches the representation of race and ethnicity in the US by comprising majority Black, Indigenous, and People of Color. To make progress towards that goal over the next year, our leadership team and employee resource groups are working together to build a process for identifying, prioritizing, and addressing inequities across the company.
+          </p>
+        </div>
+      </div>
+      <div
+        class="responsive-container "
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <p
+            class="font-bold py-md"
+          >
+            How we're doing in 2021
+          </p>
+          <div
+            class="min-h-[140px] w-full mb-xl bg-sea-foam-base"
+          >
+            <div
+              class="bg-sage-dei min-h-[inherit] px-2 py-4 text-white"
+              style="width: 49%;"
+            >
+              <h2
+                class="text-3xl font-black inline-block"
+              >
+                49%
+              </h2>
+              <p>
+                of all Nava staff are BIPOC
+              </p>
+            </div>
+          </div>
+          <div
+            class="min-h-[140px] w-full mb-xl bg-sea-foam-base"
+          >
+            <div
+              class="bg-navy-dei min-h-[inherit] px-2 py-4 text-white"
+              style="width: 56%;"
+            >
+              <h2
+                class="text-3xl font-black inline-block"
+              >
+                56%
+              </h2>
+              <p>
+                of Nava's executive team are BIPOC
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-white"
+    >
+      <div
+        class="responsive-container py-3xl"
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <h2
+            class="text-3xl font-bold pt-md "
+            id="explore-the-data"
+            level="2"
+          >
+            Explore the data
+          </h2>
+          
+
+          <p
+            class=" text-base py-md"
+          >
+            Numbers help us track progress but they don’t tell a complete story about the experiences, perspectives, and intersectional identities represented at Nava. To give a sense of how Nava grows and changes, we collect data annually. The way we collect and use data is anonymous, transparent, and consensual. Read more in our 
+            <a
+              class="group text-black hover:text-sage-base items-center gap-sm underline"
+              href="https://blog.navapbc.com/sharing-de-i-data-navas-methodology-27ca4dfc69f2"
+              target="_blank"
+            >
+              methodology post
+            </a>
+            .
+          </p>
+          
+
+          <p
+            class=" text-base py-md"
+          >
+            The data below was collected on February 5, 2021 and 83 percent of the team responded.
+          </p>
+          
+
+          <p
+            class=" text-base py-md"
+          >
+            To try and provide a more accurate representation of race, ethnicity, and gender, the survey allowed people to describe themselves in their own terms, choose more than one option, and/or decline to answer.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div
+          class="responsive-container pt-2xl"
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <h3
+              class="text-2xl font-black border-b-2 border-gray-300"
+            >
+              Race & ethnicity
+            </h3>
+            <p
+              class="py-2xl"
+            >
+              Because some people selected multiple options to describe their race and ethnicity,* the numbers below add up to more than 100 percent.**
+            </p>
+          </div>
+        </div>
+        <div
+          class="responsive-container "
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <p
+              class="font-black text-lg"
+            >
+              Filter by
+            </p>
+            <div
+              class="flex flex-wrap"
+            >
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      bg-sage-pbr-2020-light text-white
+    "
+                value="employee_percentage"
+              >
+                All Employees
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Individual_Contributor_percentage"
+              >
+                Individual Contributors
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Team_Lead_percentage"
+              >
+                Team Leads
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Manager_percentage"
+              >
+                Managers
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Director_percentage"
+              >
+                Directors
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="VP_percentage"
+              >
+                VP & C Suite
+              </button>
+              <p
+                class="block mt-lg"
+              >
+                175 respondents
+              </p>
+            </div>
+            <div
+              class="block"
+            >
+              <input
+                class="mr-2"
+                id="multiRacial"
+                name="multiRacial"
+                type="checkbox"
+                value="multiRacial"
+              />
+              <label
+                for="multiRacial"
+              >
+                Two or more races selected
+              </label>
+            </div>
+            <div
+              class="pt-3xl grid grid-cols-2 md:grid-cols-5"
+            >
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 2%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  2%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  African
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 11%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  11%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  African-American/Black
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 9%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  9%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Asian-American
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 7%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  7%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  East Asian
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 13%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  13%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Hispanic/Latinx
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 1%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  1%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Middle Eastern
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 1%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  1%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Native American/Alaska Native/First Nations
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 1%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  1%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Native Hawaiian/Pacific Islander
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 2%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  2%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Self-reported race/ethnicity
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 6%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  6%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  South Asian
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 5%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  5%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Southeast Asian
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 58%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  58%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  White/Caucasian
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 15%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  15%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  People who selected more than one race or ethnicity
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-sea-foam-base
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-sage-pbr-2020
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 49%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  49%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  BIPOC
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="responsive-container"
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <p
+              class="py-md "
+            >
+              * Self-reported identities include: Ashkenazi Jewish, Australasian, and Chicano.
+            </p>
+            <p
+              class="py-md font-bold"
+            >
+              ** Two percent prefer not to answer.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="responsive-container pt-2xl"
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <h3
+              class="text-2xl font-black border-b-2 border-gray-300"
+            >
+              Gender
+            </h3>
+            <p
+              class="py-2xl"
+            >
+              Because some people selected multiple options to describe their race and ethnicity,* the numbers below add up to more than 100 percent.**
+            </p>
+          </div>
+        </div>
+        <div
+          class="responsive-container "
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <p
+              class="font-black text-lg"
+            >
+              Filter by
+            </p>
+            <div
+              class="flex flex-wrap"
+            >
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      bg-orange-dark text-white
+    "
+                value="employee_percentage"
+              >
+                All Employees
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Individual_Contributor_percentage"
+              >
+                Individual Contributors
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Team_Lead_percentage"
+              >
+                Team Leads
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Manager_percentage"
+              >
+                Managers
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="Director_percentage"
+              >
+                Directors
+              </button>
+              <button
+                class="
+      w-fit
+      whitespace-nowrap
+      mt-2 mr-2 py-1 px-2 
+      border border-gray-400 rounded
+      hover:bg-gray-500 hover:text-white
+      
+    "
+                value="VP_percentage"
+              >
+                VP & C Suite
+              </button>
+              <p
+                class="block mt-lg"
+              >
+                175 respondents
+              </p>
+            </div>
+            <div
+              class="pt-3xl grid grid-cols-2 md:grid-cols-5"
+            >
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 48%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  48%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Female
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 3%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  3%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Genderqueer
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 47%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  47%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Male
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 3%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  3%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Nonbinary
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 1%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  1%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Transgender
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 1%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  1%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  Self-reported gender
+                </p>
+              </div>
+              <div
+                class="my-2 mr-2"
+              >
+                <div
+                  class="
+          h-[120px]
+          w-full
+          bg-orange-light
+          relative
+          hover:border border-gray-500
+        "
+                >
+                  <div
+                    class="
+            absolute bottom-0 left-0 
+            bg-orange-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                    style="height: 3%;"
+                  />
+                </div>
+                <p
+                  class="text-2xl"
+                >
+                  3%
+                </p>
+                <p
+                  class="text-sm"
+                >
+                  People who selected more than one gender identity
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="responsive-container"
+        >
+          <div
+            class="responsive-container-content mx-0"
+          >
+            <p
+              class="py-md "
+            >
+              * Self-reported identities include: Agender.
+            </p>
+            <p
+              class="py-md font-bold"
+            >
+              ** Two percent prefer not to answer.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="responsive-container "
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <h3
+            class="text-2xl font-black border-b-2 border-gray-300"
+          >
+            Additional Identities
+          </h3>
+          <div
+            class="grid grid-cols-2 md:grid-cols-5 py-3xl"
+          >
+            <div
+              class="my-2 mr-2"
+            >
+              <div
+                class="
+          h-[120px]
+          w-full
+          bg-blue-light
+          relative
+          
+        "
+              >
+                <div
+                  class="
+            absolute bottom-0 left-0 
+            bg-blue-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                  style="height: 25%;"
+                />
+              </div>
+              <p
+                class="text-2xl"
+              >
+                25%
+              </p>
+              <p
+                class="text-sm"
+              >
+                LGBTQIA+
+              </p>
+            </div>
+            <div
+              class="my-2 mr-2"
+            >
+              <div
+                class="
+          h-[120px]
+          w-full
+          bg-blue-light
+          relative
+          
+        "
+              >
+                <div
+                  class="
+            absolute bottom-0 left-0 
+            bg-blue-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                  style="height: 27%;"
+                />
+              </div>
+              <p
+                class="text-2xl"
+              >
+                27%
+              </p>
+              <p
+                class="text-sm"
+              >
+                First-generation college student
+              </p>
+            </div>
+            <div
+              class="my-2 mr-2"
+            >
+              <div
+                class="
+          h-[120px]
+          w-full
+          bg-blue-light
+          relative
+          
+        "
+              >
+                <div
+                  class="
+            absolute bottom-0 left-0 
+            bg-blue-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                  style="height: 30%;"
+                />
+              </div>
+              <p
+                class="text-2xl"
+              >
+                30%
+              </p>
+              <p
+                class="text-sm"
+              >
+                Caregiver
+              </p>
+            </div>
+            <div
+              class="my-2 mr-2"
+            >
+              <div
+                class="
+          h-[120px]
+          w-full
+          bg-blue-light
+          relative
+          
+        "
+              >
+                <div
+                  class="
+            absolute bottom-0 left-0 
+            bg-blue-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                  style="height: 10%;"
+                />
+              </div>
+              <p
+                class="text-2xl"
+              >
+                10%
+              </p>
+              <p
+                class="text-sm"
+              >
+                Have a disability
+              </p>
+            </div>
+            <div
+              class="my-2 mr-2"
+            >
+              <div
+                class="
+          h-[120px]
+          w-full
+          bg-blue-light
+          relative
+          
+        "
+              >
+                <div
+                  class="
+            absolute bottom-0 left-0 
+            bg-blue-dark
+            w-full 
+            transition-all ease-in-out duration-300
+          "
+                  style="height: 2%;"
+                />
+              </div>
+              <p
+                class="text-2xl"
+              >
+                2%
+              </p>
+              <p
+                class="text-sm"
+              >
+                Current or former members of the military
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="bg-sea-foam-base"
+    >
+      <div
+        class="responsive-container py-3xl"
+      >
+        <div
+          class="responsive-container-content mx-0"
+        >
+          <h2
+            class="text-3xl font-bold pt-md "
+            id="support--community"
+            level="2"
+          >
+            Support & community
+          </h2>
+          
+
+          <p
+            class=" text-base py-md"
+          >
+            To help create a welcoming environment where people feel respected and valued, Nava supports several affinity groups. Each Employee Resource Group (ERG) is created by employees to provide community, mentorship, and support. ERGs have annual budgets, organize internal and external activities, and ERG Leads meet monthly with the Executive team to track initiatives and discuss feedback. ERGs contribute to critical conversations about how we can grow as a public benefit corporation and a diverse, equitable, and inclusive workplace.
+          </p>
+          <div
+            class="flex flex-wrap"
+          >
+            <div
+              class="md:max-w-[45%] flex-grow flex flex-col items-stretch mt-4 mr-4"
+            >
+              <div
+                class="h-[10px] bg-gradient-to-r from-brown-dark via-brown-light to-brown-lightest"
+              />
+              <div
+                class="flex-grow flex flex-col items-stretch bg-white p-6"
+              >
+                <h2
+                  class="font-bold text-lg mb-lg text-brown-base"
+                >
+                  earthtones
+                </h2>
+                <p>
+                  The earthtones ERG aims to actively foster a culture which values the contributions of Nava’s Black employees in tangible ways, and celebrates the diverse perspectives and backgrounds they represent. The mission of the earthtones ERG is to focus on organizational issues impacting Black employees, to promote the recruitment, retention, and career mobility of Blacks working in tech at Nava, and beyond, and to use our influence to positively impact the greater Black community.
+
+                </p>
+              </div>
+            </div>
+            <div
+              class="md:max-w-[45%] flex-grow flex flex-col items-stretch mt-4 mr-4"
+            >
+              <div
+                class="h-[10px] bg-gradient-to-r from-green-base to-green-base"
+              />
+              <div
+                class="flex-grow flex flex-col items-stretch bg-white p-6"
+              >
+                <h2
+                  class="font-bold text-lg mb-lg text-green-base"
+                >
+                  Gender equity
+                </h2>
+                <p>
+                  Gender Equity is Nava’s ERG open to all women, genderqueer, agender, and non-binary employees at Nava. They strive to create spaces at Nava where members are empowered to build community, foster discussion, and promote inclusivity on all levels.
+
+                </p>
+              </div>
+            </div>
+            <div
+              class="md:max-w-[45%] flex-grow flex flex-col items-stretch mt-4 mr-4"
+            >
+              <div
+                class="h-[10px] bg-gradient-to-r from-blue-lightest via-pink-light to-green-light"
+              />
+              <div
+                class="flex-grow flex flex-col items-stretch bg-white p-6"
+              >
+                <h2
+                  class="font-bold text-lg mb-lg text-pink-base"
+                >
+                  Juntos
+                </h2>
+                <p>
+                  Juntos is a space for employees who have roots in the Latinx-Luso-Hispanic community. Their mission is to encourage and foster Latinx leadership within Nava, to create safe places for members to feel heard, and to educate allies about the Latinx experience.
+
+                </p>
+              </div>
+            </div>
+            <div
+              class="md:max-w-[45%] flex-grow flex flex-col items-stretch mt-4 mr-4"
+            >
+              <div
+                class="h-[10px] rainbow-gradient"
+              />
+              <div
+                class="flex-grow flex flex-col items-stretch bg-white p-6"
+              >
+                <h2
+                  class="font-bold text-lg mb-lg text-blue-dark"
+                >
+                  Kaleidoscope
+                </h2>
+                <p>
+                  Kaleidoscope celebrates, safeguards, and holds space for LGBTQIA+ people at Nava and beyond. Kaleidoscope members have created a safe place to form relationships with coworkers that are focused on community rather than exchange or development of economic value. Our awesome members include folks who identify as queer, gay, trans, non-binary, dyke, asexual, lesbian, femme, agender, genderqueer, and bi.
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class=" bg-navy-50 font-sans"
+    >
+      <div
+        class="responsive-container py-2xl text-black"
+      >
+        <h3
+          class="font-sans text-lg text-bold"
+        >
+          Get The Newsletter 
+        </h3>
+        <p
+          class="font-sans pt-lg text-base  mb-md"
+        >
+          Find out about open roles, new partnerships, and news from the broader civic tech community.
+        </p>
+        <div
+          class="my-xl "
+        >
+          <label
+            for="newsletter-sign-up"
+          >
+            email
+          </label>
+          <input
+            id="newsletter-sign-up"
+            type="text"
+          />
+          <br />
+        </div>
+        <div
+          class=""
+        >
+          <a
+            class="font-sans
+          inline-flex items-center justify-center rounded-sm
+          px-sm py-sm  
+          text-base leading-6
+          transition duration-150 ease-in-out flex-col
+          cursor-pointer
+          text-white bg-black hover:bg-white hover:text-black"
+            type="button"
+          >
+            Subscribe
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</DocumentFragment>
+`;

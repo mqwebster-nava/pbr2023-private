@@ -22,12 +22,14 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      overview,
-      categories,
-      race,
-      gender,
-      additionalIdentities,
-      content,
+      reportData: {
+        overview,
+        categories,
+        race,
+        gender,
+        additionalIdentities,
+        content,
+      },
     },
   };
 };
@@ -47,14 +49,9 @@ const createFilters = (dataKey, data, categories) => {
   return filters;
 };
 
-export default function DEI({
-  content,
-  overview,
-  categories,
-  race,
-  gender,
-  additionalIdentities,
-}) {
+export default function DEI({ reportData }) {
+  const { overview, categories, race, gender, additionalIdentities, content } =
+    reportData;
   const raceKey = "race";
   const raceFilters = createFilters(raceKey, race.statistics[0], categories);
 
@@ -80,6 +77,7 @@ export default function DEI({
               src="/images/dei/side_illustration.png"
               width="138px"
               className="max-h-[450px] md:scale-[1.4]"
+              alt=""
             />
           </div>
         </ResponsiveContainer>
