@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "styles/brand_patterns.stories.js", "components/templates/PageTemplate/PageTemplate.js"  ],
+, "styles/brand_patterns.stories.js", "components/templates/PageTemplate/PageTemplate.js", "components/blocks/PageHeaders/PostHeader.js"  ],
   "exclude": [
     "node_modules"
   ]
