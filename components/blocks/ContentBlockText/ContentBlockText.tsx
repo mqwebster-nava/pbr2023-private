@@ -1,20 +1,29 @@
+import classNames from "classnames";
 import { MarkdownComponent } from "utils/utils";
+import { SectionColorVariant } from "../SectionHeader/SectionHeader";
 
 interface ContentBlockInterface {
     id:string;
     title?: string;
     type?: string;
     body: any;
+    variant?: SectionColorVariant
   }
   
 
 
-  export const ContentBlockText = ({id, title, body}:ContentBlockInterface) => {
+  export const ContentBlockText = ({id, title, body, variant="default"}:ContentBlockInterface) => {
+    
+    const bg = classNames({
+      "bg-gold-50": variant=="gold"
+    })
     return ( 
+      <div className={bg}>
      <div className="responsive-container py-2xl block md:flex" key={id}>
-          {title && <h3 className="font-sans text-lg font-bold md:w-1/3 w-full pt-sm">{title} </h3> }
-          <p className=" md:w-2/3 pt-sm w-full font-sans text-base text-gray-800 mb-md">{ <MarkdownComponent content={body} />}</p>
+          {title && <h3 className="font-sans type-preset-3 font-bold md:w-1/3 w-full pt-sm">{title} </h3> }
+          <p className=" md:w-2/3 pt-sm w-full font-sans type-preset-5 text-gray-800 mb-md">{ <MarkdownComponent content={body} />}</p>
       </div> 
+      </div>
       );
 }
 
@@ -26,15 +35,15 @@ interface ContentBlockInterface {
   //   return (type==="2 column")?
   //   ( 
   //     <div className="responsive-container py-2xl block md:flex" key={title}>
-  //          {title && <h3 className="font-sans text-lg font-bold md:w-1/3 w-full pt-sm">{title} </h3> }
-  //          <p className=" md:w-2/3 pt-sm w-full font-sans text-base text-gray-800 mb-md">{children}</p>
+  //          {title && <h3 className="font-sans type-preset-5 font-bold md:w-1/3 w-full pt-sm">{title} </h3> }
+  //          <p className=" md:w-2/3 pt-sm w-full font-sans type-preset-6 text-gray-800 mb-md">{children}</p>
   //      </div> 
   //      )
   //   :( 
   //      <div className="responsive-container py-2xl" key={title}>
   //      <div className={`w-full lg:w-2/3`}>
-  //                   {title && <h3 className="font-sans font-bold text-lg">{title} </h3> }
-  //                   <p className={`font-sans pt-lg text-base text-gray-800 mb-md`}>{children}</p>
+  //                   {title && <h3 className="font-sans font-bold type-preset-5">{title} </h3> }
+  //                   <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-md`}>{children}</p>
   //           </div>
   //       </div> 
   //       );

@@ -52,25 +52,29 @@ export default function PBR2019(props:PageInterface) {
   const sections = [
     {
       picture: "/images/pbrs/2019-1.png",
-      picture_position: "left",
+      picturePosition: "left",
+      pictureAltText: "",
       isWhiteBG: true,
       content: section_one,
     },
     {
       picture: "/images/pbrs/2019-2.png",
-      picture_position: "right",
+      picturePosition: "right",
+      pictureAltText: "",
       isWhiteBG: false,
       content: section_two,
     },
     {
       picture: "/images/pbrs/2019-3.png",
-      picture_position: "left",
+      picturePosition: "left",
+      pictureAltText: "",
       isWhiteBG: true,
       content: section_three,
     },
     {
       picture: "/images/pbrs/2019-4.png",
-      picture_position: "right",
+      picturePosition: "right",
+      pictureAltText: "",
       content: section_four,
     },
   ];

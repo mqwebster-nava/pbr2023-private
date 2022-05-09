@@ -4,14 +4,14 @@
 
 @font-face {
     font-family: "GTAmerica";
-    src: url("/fonts/GT-America/GT America Regular.ttf");
+    src: url("/fonts/GT-America/GT-America-Light.otf");
     font-style: normal;
     font-weight: 400;
     font-display: swap;
 }
 @font-face {
     font-family: "GTAmerica";
-    src: url("/fonts/GT-America/GT America Bold.ttf");
+    src: url("/fonts/GT-America/GT-America-Bold.ttf");
     font-style: bold;
     font-weight: 700;
     font-display: swap;
@@ -41,24 +41,71 @@
 html {
   font-size: 18px;
   font-family: "GTAmerica";
+  --typescale: 1.25;
+  --base-font-size: 1rem;
+  --big-line-height:1.25;
+  --small-line-height:1.1;
+  --type-preset-1__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
+  --type-preset-2__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
+    --type-preset-3__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale));
+    --type-preset-4__fontSize: calc(1em * var(--typescale) * var(--typescale));
+    --type-preset-5__fontSize: calc(1em * var(--typescale));
+    --type-preset-6__fontSize: 1em;
+    --type-preset-7__fontSize: calc(1em / var(--typescale));
+    --type-preset-8__fontSize: calc(1em / var(--typescale) / var(--typescale));
+
+}
+body {
+  font-size: var(--base-font-size);
+  line-height: var(--big-line-height);
+  
+}
+@media (max-width: 768px) {
+  :root {
+    font-size:18px;
+    --typescale: 1.1;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size:16px;
+    --typescale: 1.1;
+  }
 }
 
 @layer components {
   .responsive-container {
-    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-screen-lg;
+    @apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   }
   .responsive-container-content {
-    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-3xl;
+    @apply px-xl md:px-4xl xl:px-0 xl:mx-auto xl:max-w-4xl;
   }
-  .nava-h1 {
-
+  .type-preset-1 {
+    font-size: var(--type-preset-1__fontSize);
   }
-  .nava-h2 {
-
+  .type-preset-2 {
+    font-size: var(--type-preset-2__fontSize);
   }
-  .nava-h3 {
+  .type-preset-3 {
+    font-size: var(--type-preset-3__fontSize);
   }
-
+  .type-preset-4 {
+    font-size: var(--type-preset-4__fontSize);
+  }
+  .type-preset-5 {
+    font-size: var(--type-preset-5__fontSize);
+  }
+  .type-preset-6 {
+    font-size: var(--type-preset-6__fontSize);
+  }
+  .type-preset-7 {
+    font-size: var(--type-preset-7__fontSize);
+  }
+  .type-preset-8 {
+    font-size: var(--type-preset-8__fontSize);
+  }
+  
 }
 
 .rainbow-gradient {

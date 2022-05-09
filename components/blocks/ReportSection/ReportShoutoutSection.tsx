@@ -22,7 +22,7 @@ const ReportShoutoutSection: React.FC<ReportShoutoutSectionInterface> = ({
   const hasListOfNames = lists && lists.length > 0;
   return (
     <section className="responsive-container-content py-2xl">
-      <h2 className="text-4xl font-bold">{title}</h2>
+      <h2 className="type-preset-3 font-bold">{title}</h2>
       <div className="pb-xl">
         <ReportContent content={introduction} theme={theme} isGreenBG={false} />
       </div>

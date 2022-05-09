@@ -2,8 +2,8 @@
 export interface ContentfulImageAsset{
   id:string;
   url:string;
-  width?:Number;
-  height?:Number;
+  width?:number;
+  height?:number;
   title?:string;
   description?:string;
 }
@@ -23,6 +23,7 @@ export interface FullPostInterface extends BasicPostInterface{
     hideSideNav:boolean;
     authors:Array<AuthorPostInterface>;
     body:any;
+    leadImage:ContentfulImageAsset;
 }
 
 export interface AuthorPostInterface{

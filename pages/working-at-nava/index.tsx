@@ -31,7 +31,6 @@ export async function getStaticProps({ params, preview = false }) {
 //   ContentBlockText2,
 //   PageHeader,
 //   ContentBlockArticleList,
-//   Newsletter,
 //   QuoteBlock,
 // } from "components/blocks";
 // //import careerImg from ""
@@ -122,7 +121,7 @@ export async function getStaticProps({ params, preview = false }) {
 //             "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
 //             "Life insurance and short- and long-term disability",
 //           ].map((item) => (
-//             <li key={item.length} className="font-sans text-base">
+//             <li key={item.length} className="font-sans type-preset-6">
 //               {item}
 //             </li>
 //           ))}
@@ -137,7 +136,7 @@ export async function getStaticProps({ params, preview = false }) {
 //             "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
 //             "Life insurance and short- and long-term disability",
 //           ].map((item) => (
-//             <li key={item.length} className="font-sans text-base">
+//             <li key={item.length} className="font-sans type-preset-6">
 //               {item}
 //             </li>
 //           ))}
@@ -152,7 +151,7 @@ export async function getStaticProps({ params, preview = false }) {
 //             "16 weeks of fully paid parental leave, including weekly meal deliveries, for eligible new birth, adoption, or foster parents",
 //             "Life insurance and short- and long-term disability",
 //           ].map((item) => (
-//             <li key={item.length} className="font-sans text-base">
+//             <li key={item.length} className="font-sans type-preset-6">
 //               {item}
 //             </li>
 //           ))}
@@ -246,7 +245,6 @@ export async function getStaticProps({ params, preview = false }) {
 //           Vermont Integrated Benefits team.
 //         </ContentCard>
 //       </ContentBlockArticleList>
-//       <Newsletter/>
 //     </div>
 //   );
 // }

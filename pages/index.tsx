@@ -2,7 +2,6 @@ import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageInterface } from "shared_interfaces/page_interface";
 import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
-import { CTABlock, Newsletter } from "components/blocks";
 
 export default function Home(props:PageInterface) {
   return props ? (
@@ -24,7 +23,6 @@ export default function Home(props:PageInterface) {
         An API standard would unlock digital tools and catalyze WIC’s ability to evolve and grow.
       </HighlightedCard>
       
-      <Newsletter></Newsletter>
     </PageTemplate>
   ) : (
     <div>Error</div>

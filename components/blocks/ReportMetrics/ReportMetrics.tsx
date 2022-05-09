@@ -10,8 +10,8 @@ export const ReportMetrics = ({ metrics }) => {
             key={`metric_${index}`}
             className="text-white p-2 mb-2 md:mr-2 bg-sage-pbr-2020-light border-t-[10px] border-sage-pbr"
           >
-            <p className="pb-md text-3xl font-thin ">{metric.number}</p>
-            <p className="font-light text-base">{metric.description}</p>
+            <p className="pb-md type-preset-3 font-thin ">{metric.number}</p>
+            <p className="font-light type-preset-6">{metric.description}</p>
           </div>
         ))}
       </div>

@@ -1,7 +1,6 @@
 // Button.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import  CTABlock from './CTABlock';
-import { Button } from 'components/atom/Button/Button';
 export default {
 
   title: 'Blocks /  CTA Block',

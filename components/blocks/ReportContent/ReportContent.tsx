@@ -47,16 +47,16 @@ const ReportContent: React.FC<ReportContentInterface> = ({
   const getHeaderSize = (node) => {
     const sizes = {
       medium: {
-        h1: "text-3xl",
-        h2: "text-3xl",
-        h3: "text-xl",
-        h4: "text-xl",
+        h1: "type-preset-3",
+        h2: "type-preset-3",
+        h3: "type-preset-4",
+        h4: "type-preset-5",
       },
       large: {
-        h1: "text-3xl",
-        h2: "text-3xl",
-        h3: "text-3xl",
-        h4: "text-xl",
+        h1: "type-preset-2",
+        h2: "type-preset-3",
+        h3: "type-preset-4",
+        h4: "type-preset-5",
       },
     };
     return sizes[headerSize][node.tagName];
@@ -69,12 +69,12 @@ const ReportContent: React.FC<ReportContentInterface> = ({
       components={{
         code: ({ node, ...props }) => (
           <p
-            className="text-navy-900 font-serif py-md text-base"
+            className="text-navy-900 font-serif py-md type-preset-5"
             {...props}
           ></p>
         ),
         p: ({ node, ...props }) => (
-          <p className={`${textColor} text-base py-md`} {...props}></p>
+          <p className={`${textColor} type-preset-5 py-md`} {...props}></p>
         ),
         h1: ({ node, ...props }) => (
           <p

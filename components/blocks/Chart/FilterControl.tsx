@@ -36,7 +36,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
 }) => {
   return (
     <ResponsiveContainer contentClass="mx-0">
-      <p className="font-black text-lg">Filter by</p>
+      <p className="font-black type-preset-5">Filter by</p>
       <FilterButtonGroup
         filters={filters}
         handleClick={handleFilterClick}

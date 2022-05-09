@@ -1,3 +1,5 @@
+
+
 module.exports = {
   content: [
     "./pages/**/*.{js,jsx,ts,tsx}",
@@ -6,7 +8,11 @@ module.exports = {
   ],
   plugins: [],
   theme: {
+    
     extend: {
+      listStyleType: {
+        dash: 'square',
+      },
       blur: {
         xs: '2px',
       },
@@ -28,22 +34,12 @@ module.exports = {
         "6xl": ["54px","66px"]//["54px", "67.5px"],
       },
       screens: {
-        sm: "540px",
-        // => @media (min-width: 992px) { ... }
+        sm: "540px",// => @media (min-width: 540px) { ... }
         md: "768px",
-        // => @media (min-width: 768px) { ... }
+        "2xl": "1440px" // => @media (min-width: 1440px) { ... }
       },
       colors: {
-        brown: {
-          base: "#966023",
-          lightest: "#D4BEA5",
-          light: "#B4650D",
-          dark: "#442502",
-        },
-        green: {
-          base: "#259B62",
-          light: "#25F15E"
-        },
+       
         purple: {
           50: "#f5e4f0",
           lightest: "#F5E4F0",
@@ -60,10 +56,7 @@ module.exports = {
           900: "#471385",
           dark: "#471385",
         },
-        pink: {
-          base: "#C4148A",
-          light: "#E01A9F"
-        },
+        
         plum: {
           light: "#CE8EC1",
           50: "#f5e4f0",
@@ -79,11 +72,7 @@ module.exports = {
           900: "#5b0462",
           dark: "#5B0462",
         },
-        orange: {
-          light: "#F4F3F2",
-          dark: "#CE7205",
-          darkest: "#ff8c00"
-        },
+        
         gold: {
           light: "#F6E451",
           base: "#F8B712",
@@ -99,12 +88,7 @@ module.exports = {
           900: "#f37100",
           dark: "#F37100",
         },
-        blue: {
-          lightest: "#4FB9F3",
-          light: "#E7F3FA",
-          dark: "#0386CF",
-          darker: "#c75a00"
-        },
+        
         navy: {
           dark: "#0A0539",
           base: "#282E6C",
@@ -122,11 +106,6 @@ module.exports = {
           "pbr-2018": "#082e4c",
           "pbr-2020": "#001045",
           "dei": "#041638"
-        },
-
-        "sea-foam": {
-          "light": "#e7f9f8",
-          "base": "#d9ecec"
         },
         sage: {
           dark: "#004C31",
@@ -150,6 +129,7 @@ module.exports = {
 
         gray: {
           // base: "#3D4551",
+          base:"#333333",
           50: "#f9fafb",
           100: "#f3f4f6",
           200: "#e5e7eb",
@@ -160,8 +140,39 @@ module.exports = {
           700: "#374151",
           800: "#1f2937",
           900: "#111827",
-
         },
+
+        pink: {
+          base: "#C4148A",
+          light: "#E01A9F"
+        },
+        orange: {
+          light: "#F4F3F2",
+          dark: "#CE7205",
+          darkest: "#ff8c00"
+        },
+        blue: {
+          lightest: "#4FB9F3",
+          light: "#E7F3FA",
+          dark: "#0386CF",
+          darker: "#c75a00"
+        },
+        brown: {
+          base: "#966023",
+          lightest: "#D4BEA5",
+          light: "#B4650D",
+          dark: "#442502",
+        },
+       
+        green: {
+          base: "#259B62",
+          light: "#25F15E"
+        },
+        "sea-foam": {
+          "light": "#e7f9f8",
+          "base": "#d9ecec"
+        },
+       
         ecru: {
           "pbr-2019": "#F3EDE1"
         }
@@ -170,10 +181,11 @@ module.exports = {
         128: "32rem",
       },
       spacing: {
+        xs:"4px",
         sm: "8px",
         md: "12px",
-        lg: "16px",
-        xl: "24px",
+        lg: "18px",
+        xl: "22px",
         "2xl": "32px",
         "3xl": "48px",
         "4xl": "72px",

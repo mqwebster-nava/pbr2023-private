@@ -8,9 +8,9 @@ const ReportHeaderTextOverlay = ({
   return (
     <section className="flex items-center justify-center bg-navy-pbr-2018">
       <div className="absolute text-center text-white z-10">
-        <h1 className="sm:text-5xl text-2xl font-bold py-lg">{reportTheme}</h1>
-        <h2 className="sm:text-2xl text-lg py-lg">{title}</h2>
-        <a className="sm:text-xl text-lg underline" href={pdfLink}>
+        <h1 className=" type-preset-4 font-bold py-lg">{reportTheme}</h1>
+        <h2 className="type-preset-5 py-lg">{title}</h2>
+        <a className="type-preset-5 underline" href={pdfLink}>
           View as PDF
         </a>
       </div>

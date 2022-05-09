@@ -2,6 +2,8 @@
 Post gets taken in by the pages
 */
 
+import { IMAGE_FIELDS } from "./IMAGE_FIELDS";
+
 export const POST_CORE_FIELDS = `
     sys {
       id
@@ -14,14 +16,10 @@ export const POST_CORE_FIELDS = `
     contentTags
     clientName
     promoImage {
-      sys {
-        id
-      }
-      url
-      width
-      height
-      title
-      description
+      ${IMAGE_FIELDS}
+    }
+    leadImage {
+      ${IMAGE_FIELDS}
     }
 `;
 export const AUTHOR_CORE_FIELDS =`
@@ -54,14 +52,7 @@ export const POST_ALL_FIELDS = `
         links {
           assets {
             block {
-              sys {
-                id
-              }
-              url
-              title
-              width
-              height
-              description
+              ${IMAGE_FIELDS}
             }
           }
         }
