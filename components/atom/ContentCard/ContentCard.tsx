@@ -40,7 +40,6 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
   size = "quarter",
   kicker
 }) => {
-  console.log(type);
 
   cycleNum = cycleNum % 4;
   let colors = ["purple", "plum", "sage", "gold"];
