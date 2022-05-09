@@ -41,11 +41,10 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     socialImage: liftData(post.promoImage)?? defaultSocialImage,
     pageHeader: {
       id: `${post.id}-header`,
-      title: post.title,
-      subtitle:post.contentType,
+      title:post.contentType ,
+      subtitle:post.title,
       body:post.longSummary,
       image:  liftData(post.leadImage) ?? liftData(post.promoImage),
-      variant:"post",
     },
     description:post.shortSummary,
     contentBlocks: [

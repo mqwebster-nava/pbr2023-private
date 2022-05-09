@@ -1,7 +1,5 @@
 import { PageQueryInterface } from "lib/api";
 import PAGE_FIELDS from "lib/graphql_fragments/PAGE_FIELDS";
-import { PageInterface } from "shared_interfaces/page_interface";
-import { formatPage } from "lib/formatPage";
 import callContentful from "./callContentful";
 
 
@@ -16,7 +14,6 @@ export default async function getPageDataBySlug({slug, preview =false}:PageQuery
       }
     }`;
     const response = await callContentful(query, variables, {preview});
- 
     if(!response.data.pageContentCollection.items) return null;
     const page = response.data.pageContentCollection.items.pop();
     return  page;
