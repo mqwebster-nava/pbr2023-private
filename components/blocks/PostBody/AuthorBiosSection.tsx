@@ -1,11 +1,14 @@
 
 import Image from "next/image";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
-
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorFiller from "public/images/author-filler.png"
 
-const AuthorBios = (authors: Array<AuthorPostInterface>) => {
+interface AuthorBioInterface {
+    authors: Array<AuthorPostInterface>
+}
+
+const AuthorBios = ({authors}:AuthorBioInterface) => {
     return (
       <div className="mt-xl font-sans">
         <h5 className="font-bold type-preset-6">Written By</h5>

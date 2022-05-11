@@ -527,9 +527,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .left-0 {
   left: 0px;
 }
-.right-0 {
-  right: 0px;
-}
 .top-0 {
   top: 0px;
 }
@@ -569,13 +566,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.my-xl {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
 .my-3xl {
   margin-top: 48px;
   margin-bottom: 48px;
+}
+.my-xl {
+  margin-top: 22px;
+  margin-bottom: 22px;
 }
 .mt-lg {
   margin-top: 18px;
@@ -619,11 +616,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mr-xl {
   margin-right: 22px;
 }
-.ml-2xl {
-  margin-left: 32px;
-}
 .mt-xl {
   margin-top: 22px;
+}
+.mt-sm {
+  margin-top: 8px;
+}
+.ml-2xl {
+  margin-left: 32px;
 }
 .mt-md {
   margin-top: 12px;
@@ -639,9 +639,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .ml-2 {
   margin-left: 0.5rem;
-}
-.mt-sm {
-  margin-top: 8px;
 }
 .block {
   display: block;
@@ -712,9 +709,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-\[12px\] {
   height: 12px;
 }
-.h-\[10px\] {
-  height: 10px;
-}
 .h-2 {
   height: 0.5rem;
 }
@@ -759,13 +753,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: -moz-fit-content;
   width: fit-content;
 }
-.w-\[331px\] {
-  width: 331px;
-}
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+.w-1\/2 {
+  width: 50%;
 }
 .w-1\/3 {
   width: 33.333333%;
@@ -853,6 +842,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .list-disc {
   list-style-type: disc;
+}
+.list-decimal {
+  list-style-type: decimal;
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -943,9 +935,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .whitespace-nowrap {
   white-space: nowrap;
 }
-.whitespace-nowrap {
-  white-space: nowrap;
-}
 .rounded {
   border-radius: 0.25rem;
 }
@@ -967,11 +956,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-b-2 {
   border-bottom-width: 2px;
 }
-.border-l-4 {
-  border-left-width: 4px;
-}
 .border-l-2 {
   border-left-width: 2px;
+}
+.border-l-\[20px\] {
+  border-left-width: 20px;
+}
+.border-l-4 {
+  border-left-width: 4px;
 }
 .border-t-\[10px\] {
   border-top-width: 10px;
@@ -1021,6 +1013,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+.border-l-black {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+.border-l-plum-50 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(245 228 240 / var(--tw-border-opacity));
 }
 .bg-sea-foam-base {
   --tw-bg-opacity: 1;
@@ -1306,34 +1306,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(231 243 250 / var(--tw-bg-opacity));
 }
-.bg-sage-dei {
-  --tw-bg-opacity: 1;
-  background-color: rgb(1 152 146 / var(--tw-bg-opacity));
-}
-.bg-navy-dei {
-  --tw-bg-opacity: 1;
-  background-color: rgb(4 22 56 / var(--tw-bg-opacity));
-}
-.bg-sage-pbr-2020 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(1 174 167 / var(--tw-bg-opacity));
-}
-.bg-orange-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(206 114 5 / var(--tw-bg-opacity));
-}
-.bg-blue-dark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(3 134 207 / var(--tw-bg-opacity));
-}
-.bg-orange-light {
-  --tw-bg-opacity: 1;
-  background-color: rgb(244 243 242 / var(--tw-bg-opacity));
-}
-.bg-blue-light {
-  --tw-bg-opacity: 1;
-  background-color: rgb(231 243 250 / var(--tw-bg-opacity));
-}
 .bg-sage-pbr-2020-light {
   --tw-bg-opacity: 1;
   background-color: rgb(0 132 127 / var(--tw-bg-opacity));
@@ -1400,6 +1372,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-2xl {
   padding: 32px;
 }
+.p-xl {
+  padding: 22px;
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -1414,9 +1389,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-10 {
   padding: 2.5rem;
-}
-.p-xl {
-  padding: 22px;
 }
 .p-3xl {
   padding: 48px;
@@ -1531,14 +1503,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-md {
   padding-bottom: 12px;
 }
+.pl-md {
+  padding-left: 12px;
+}
+.pt-xl {
+  padding-top: 22px;
+}
 .pr-lg {
   padding-right: 18px;
 }
 .pl-xl {
   padding-left: 22px;
-}
-.pl-md {
-  padding-left: 12px;
 }
 .pl-sm {
   padding-left: 8px;
@@ -1548,9 +1523,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-2 {
   padding-bottom: 0.5rem;
-}
-.pt-xl {
-  padding-top: 22px;
 }
 .pt-4xl {
   padding-top: 72px;
@@ -1662,9 +1634,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(217 139 195 / var(--tw-text-opacity));
 }
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
 .text-plum-900 {
   --tw-text-opacity: 1;
   color: rgb(91 4 98 / var(--tw-text-opacity));
+}
+.text-plum-400 {
+  --tw-text-opacity: 1;
+  color: rgb(177 64 146 / var(--tw-text-opacity));
 }
 .text-gray-base {
   --tw-text-opacity: 1;
@@ -1769,11 +1749,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .opacity-30 {
   opacity: 0.3;
 }
-.shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -1789,6 +1764,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1799,16 +1779,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-gray-500 {
-  --tw-shadow-color: #6b7280;
-  --tw-shadow: var(--tw-shadow-colored);
-}
 .blur {
   --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-.drop-shadow-md {
-  --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .filter {
@@ -1864,11 +1836,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Freight Text Pro";
   src: url("/fonts/Freight_Text_Pro/freigtexprolig-webfont.woff2");
   font-style: light;
   font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Freight Text Pro";
+  src: url("/fonts/Freight_Text_Pro/freigtexprobold-webfont.woff2");
+  font-style: bold;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -1906,23 +1887,6 @@ body {
     font-size:16px;
     --typescale: 1.1;
   }
-}
-
-.rainbow-gradient {
-  background-image: linear-gradient(
-    to right,
-    #de4535,
-    #e6993f,
-    #fcf050,
-    #72b656,
-    #0386cf,
-    #b12fa7,
-    #000002,
-    #875525,
-    #8abde6,
-    #e99cbd,
-    #ffffff
-  );
 }
 
 .rainbow-gradient {
@@ -2117,16 +2081,6 @@ body {
 
   .md\:w-1\/5 {
     width: 20%;
-  }
-
-  .md\:max-w-\[45\%\] {
-    max-width: 45%;
-  }
-
-  .md\:scale-\[1\.4\] {
-    --tw-scale-x: 1.4;
-    --tw-scale-y: 1.4;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .md\:max-w-\[45\%\] {

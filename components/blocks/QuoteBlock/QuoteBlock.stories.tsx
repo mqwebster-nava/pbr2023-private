@@ -23,9 +23,12 @@ const Template: ComponentStory<typeof QuoteBlock> = (args) => <QuoteBlock {...ar
 export const Primary = Template.bind({});
 
 Primary.args = {
-    color:'gold',
-    content: "The government is responsible for serving the entire nation, and it’s rewarding to play a role in improving how they deliver their services. These improvements impact the lives and well-being of many people across the nation, especially those in vulnerable populations.",
-    author:"Mohib Rizvi",
-    authorRole:"Security Engineer",
-   
+  "id": "2ABouXhtKfS5xn3Ch8hTUt",
+  "__typename": "QuoteBlock",
+  "sys": {
+      "id": "2ABouXhtKfS5xn3Ch8hTUt"
+  },
+  "body": "The government is responsible for serving the entire nation, and it’s rewarding to play a role in improving how they deliver their services. These improvements impact the lives and well-being of many people across the nation, especially those in vulnerable populations.",
+  "authorName": "Mohib Rizvi",
+  "authorRole": "Security Engineer"
 };

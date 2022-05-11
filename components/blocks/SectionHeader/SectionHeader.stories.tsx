@@ -17,9 +17,12 @@ const Template: ComponentStory<typeof SectionHeader> = (args) => <SectionHeader 
 export const Primary = Template.bind({});
 
 Primary.args = {
-    title:"Work on projects with a positive impact",
-    children: `Nava positively transforms the technology that helps people access
-    public benefits. As a client services company, are clients are states
-    and federal agencies. We help them improve how people apply for
-    benefits, navigate their healthcare, and much more.`
+  "id": "Rr7YiUoG2Ji0QxBG11h9h",
+  "__typename": "SectionHeader",
+  "sys": {
+      "id": "Rr7YiUoG2Ji0QxBG11h9h"
+  },
+  "title": "Work on projects with a positive impact",
+  "subtitle": "Nava positively transforms the technology that helps people access public benefits. As a client services company, are clients are states and federal agencies. We help them improve how people apply for benefits, navigate their healthcare, and much more.",
+  "variant": "default"
 };

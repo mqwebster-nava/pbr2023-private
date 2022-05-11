@@ -11,15 +11,12 @@ export default {
 const Template: ComponentStory<typeof CTABlock> = (args) => <CTABlock {...args} />;
 
 export const Primary = Template.bind({});
-export const Newsletter = Template.bind({});
 
 Primary.args = {
-    title: "Get In Touch",
-    buttonText: "Contact us",
-    buttonPath:"/contact",
-    children: "test test test"
+  "__typename": "SectionCtaBlock",
+  "id": "building-tech-power-your-mission-with-human-centered-agile-t-work",
+  "title": "Want to work with us?",
+  "body": "Let’s make government services simple, effective, and accessible to all.",
+  "buttonText": "Get in touch",
+  "buttonPath": "/contact"
 };
-
-Newsletter.args = {
-    type:"Newsletter"
-}

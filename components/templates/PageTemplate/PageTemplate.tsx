@@ -22,6 +22,7 @@ const PageTemplate: React.FC<PageInterface> = ({
 
   const getComponent = (entry: any) => {
     const typename = entry.__typename;
+    console.log(entry)
     const componentMap = {
       "SectionHeader": (entry)=>(<SectionHeader {...entry}/>),
       "SectionContentBlockText": ()=> <ContentBlockText {...entry}/>,

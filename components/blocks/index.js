@@ -6,7 +6,6 @@ import PageHeader from "./PageHeaders/PageHeader";
 import ContentBlockLinkToPage from "./ContentBlockLinkToPage/ContentBlockLinkToPage";
 import ContentBlockText from "./ContentBlockText/ContentBlockText";
 import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArticlesList";
-import Newsletter from "./CTABlock/NewsletterBlock";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
 import ReportContent from "./ReportContent/ReportContent";
@@ -36,7 +35,6 @@ export {
   ContentBlockLinkToPage,
   ContentBlockText,
   ContentBlockArticleList,
-  Newsletter,
   CTABlock,
   QuoteBlock,
   ReportContent,

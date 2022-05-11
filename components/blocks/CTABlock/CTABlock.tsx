@@ -1,5 +1,4 @@
 import { Button } from "../../atom/Button/Button";
-import Newsletter from "./NewsletterBlock";
 import { MarkdownComponent } from "utils/utils";
 import ill from "public/images/Illustrations-for-website-V019 1.png";
 import Image from "next/image";
@@ -13,7 +12,6 @@ interface CTABlockInterface {
 }
 
 const CTABlock: React.FC<CTABlockInterface> = (props) => {
-  if (props.type === "Newsletter") return <Newsletter></Newsletter>;
   return <DefaultCTABlock {...props}></DefaultCTABlock>;
 };
 

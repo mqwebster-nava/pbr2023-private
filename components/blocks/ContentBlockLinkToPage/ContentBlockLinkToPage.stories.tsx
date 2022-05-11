@@ -27,25 +27,54 @@ Primary.args = {
     buttonText:"Learn about our mission",
     buttonPath:"/mission",
     type:"default",
-    image:careersImg1,
-    isStorybook:true,
-    children: "This means we’re accountable to our social mission: to make it easier for people to access social safety net programs.",
+    body: "This means we’re accountable to our social mission: to make it easier for people to access social safety net programs.",
 };
+
 LeftRepeater.args = {
-    title:"Nava is a public benefit corporation",
-    buttonText:"Learn about our mission",
-    buttonPath:"/mission",
-    type:"left repeater",
-    image:careersImg1,
-    isStorybook:true,
-    children: "This means we’re accountable to our social mission: to make it easier for people to access social safety net programs.",
+    "id": "4E5WpGB5Ztj08FZYeF65V3",
+    "__typename": "ContentBlockLinkToPage",
+    "sys": {
+        "id": "4E5WpGB5Ztj08FZYeF65V3"
+    },
+    "title": "Nava is a public benefit corporation",
+    "buttonText": "Learn about our mission",
+    "buttonPath": "/mission",
+    "type": "left repeater",
+    "body": "This means we’re accountable to our social mission: to make it easier for people to access social safety net programs.",
+    "image": {
+        "sys": {
+            "id": "25rM4zPs2oPwiw4gzk8vwh"
+        },
+        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/25rM4zPs2oPwiw4gzk8vwh/61e5764a5367aa596a2fecf729c8cb5d/Image.png",
+        "width": 478,
+        "height": 495,
+        "title": "FILLER - Careers Repeater",
+        "description": ""
+    }
 };
+
+
+
 RightRepeater.args = {
-    title:"Nava is a public benefit corporation",
-    buttonText:"Learn about our mission",
-    buttonPath:"/mission",
-    type:"right repeater",
-    image:careersImg1,
-    isStorybook:true,
-    children: "This means we’re accountable to our social mission: to make it easier for people to access social safety net programs.",
+    "id": "5h54BsLO4F8IEMubmc7sHt",
+    "__typename": "ContentBlockLinkToPage",
+    "sys": {
+        "id": "5h54BsLO4F8IEMubmc7sHt"
+    },
+    "title": "Our values guide how we serve the public",
+    "buttonText": "See our values",
+    "buttonPath": "/mission/values",
+    "type": "right repeater",
+    "body": "Every day we make countless decisions that inform our ability to improve how government serves everyone, and we don’t take that lightly.",
+    "image": {
+        "sys": {
+            "id": "7cPDT7gCq60whFZacUFPEa"
+        },
+        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/7cPDT7gCq60whFZacUFPEa/61655929593d597fe7da19898c1bf0b0/career_filler.png",
+        "width": 478,
+        "height": 495,
+        "title": "FILLER Career Repeater 2",
+        "description": ""
+    }
+    
 };

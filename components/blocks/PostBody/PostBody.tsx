@@ -164,7 +164,7 @@ export default function PostBody({
             {documentToReactComponents(section.doc, options)}
           </div>
         ))}
-        {AuthorBios(authors)}
+        {<AuthorBios authors={authors}/>}
       </div>
       {/* Article Sidebar Section  */}
       <div className={"w-full md:w-1/3 pt-md pl-xl"}>
