@@ -7,9 +7,14 @@ import SideNavComponent from "./SideNavComponent";
 import React, { useEffect, useRef, useState } from "react";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
-import quotemarks from "public/images/quote marks.png";
+
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorFiller from "public/images/author-filler.png"
+import CaptionText from "./CaptionText";
+import { liftData } from "utils/utils";
+import PostBlockQuote from "./PostBlockQuote";
+import PostPullQuote from "./PostPullQuote";
+import AuthorBios from "./AuthorBiosSection";
 export interface PostBodyInterface {
   id: string;
   body: any;
@@ -76,26 +81,23 @@ export default function PostBody({
     const assets = body.links.assets.block;
     const asset = assets.find((element) => element.sys.id === id);
     return (
+      <div className="bg-gray-300 p-xl rounded ">
+
+     
       <Image
         src={asset.url}
         height={asset.height}
         width={asset.width}
         alt={asset.description}
-        className={`shadow-lg shadow-gray-500 drop-shadow-md bg-gray-800`}
+        className={``}
         loading="lazy"
         placeholder="blur"
         blurDataURL={`/_next/image?url=${asset.url}&w=16&q=1`}
       />
+       </div>
     );
   };
-  const BlockQuote = (node, children) => {
-    return (
-      <div className="bg-plum-50 my-xl p-2xl text-plum-900 type-preset-4 font-sans font-bold">
-        <Image src={quotemarks} height={37} width={68} alt={""} />
-        {children}
-      </div>
-    );
-  };
+
   // TODO Where should I do the rendering for this post
   const options = {
     renderMark: {
@@ -121,12 +123,9 @@ export default function PostBody({
       [BLOCKS.HEADING_4]: (node, children) => (
         <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
       ),
-      [BLOCKS.QUOTE]: (node, children) => BlockQuote(node, children),
-
-      [BLOCKS.UL_LIST]: (node, children) => (
-        <ul className="list-disc ml-2xl">{children}</ul>
-      ),
-      [BLOCKS.OL_LIST]: (node, children) => <ol className="">{children}</ol>,
+      [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children} isRichText={true}/>,
+      [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
+      [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
       [INLINES.HYPERLINK]: (node, children) => (
         <LinkText href={node.data.uri} variant={"underlined"}>
@@ -134,6 +133,18 @@ export default function PostBody({
         </LinkText>
       ),
       [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data),
+      [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+        const id = node.data.target.sys.id;
+        const entryBlocks = body.links.entries.block;
+        let blockData = entryBlocks.find((element) => element.sys.id === id);
+        blockData = liftData(blockData); // rises ID to top of map
+        const embeddedEntries = {
+          "CaptionText": (props)=><CaptionText {...props}/>,
+          "PostBlockQuote": (props)=><PostBlockQuote {...props}/>,
+          "PostPullQuote":(props)=><PostPullQuote {...props}/>
+        }
+         if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
+      },
     },
   };
 
@@ -172,35 +183,6 @@ export default function PostBody({
     </div>
   );
 }
-
-const AuthorBios = (authors: Array<AuthorPostInterface>) => {
-  return (
-    <div className="mt-xl font-sans">
-      <h5 className="font-bold type-preset-6">Written By</h5>
-      <hr />
-      {authors.map((author) => ( 
-      <div className="flex w-full font-sans type-preset-7 pt-md">
-          <div className="w-[125px]" >
-          <Image
-                src={AuthorFiller}
-                className="object-cover"
-                height={65}
-                width={65}
-                alt=""
-            />
-          </div>
-          <div className="pl-md w-[400px]">
-            <h5 className="font-bold">{author.name}</h5>
-            <h6 className="text-gray-600">{author.role}</h6>
-          </div>
-          <div className="grow pl-md">
-          {author.bio}
-          </div>
-        </div>)
-      )}
-    </div>
-  );
-};
 
 export function sortDocIntoH2Sections(doc) {
   let buffer = [];

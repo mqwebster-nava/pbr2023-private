@@ -1,5 +1,5 @@
 
-export const IMAGE_FIELDS = `
+const IMAGE_FIELDS = `
   sys {
     id
   }
@@ -9,3 +9,4 @@ export const IMAGE_FIELDS = `
   title
   description
 `;
+export default IMAGE_FIELDS;

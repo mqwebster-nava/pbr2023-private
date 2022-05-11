@@ -1,4 +1,4 @@
-import { IMAGE_FIELDS } from "../IMAGE_FIELDS";
+import IMAGE_FIELDS from "../IMAGE_FIELDS";
 
 const PAGE_HEADER_FIELDS = `
 sys {

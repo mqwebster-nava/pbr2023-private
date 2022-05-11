@@ -31,6 +31,7 @@ export interface AuthorPostInterface{
     slug:string;
     role?:string;
     bio?:string;
+    image?: ContentfulImageAsset;
     posts?:Array<BasicPostInterface>;
 }
 

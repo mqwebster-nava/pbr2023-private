@@ -49,7 +49,8 @@ const formatImageAsset = (imgData) => {
           name: author.name,
           slug: author.slug,
           bio: author.bio,
-          role: author.role
+          role: author.role,
+          image: formatImageAsset(author.image)
         }
         return formattedAuthor;
       }),
