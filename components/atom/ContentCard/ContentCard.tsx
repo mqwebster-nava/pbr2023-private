@@ -41,14 +41,13 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
   kicker
 }) => {
 
-  cycleNum = cycleNum % 4;
-  let colors = ["purple", "plum", "sage", "gold"];
+  cycleNum = cycleNum % 3;
+  let colors = ["purple", "plum", "gold"];
   let color = colors[cycleNum];
   const backgroundColor = classNames({
-    "bg-purple-800": cycleNum % 4 == 0,
-    "bg-plum-400": cycleNum % 4 == 1,
-    "bg-sage-800": cycleNum % 4 == 2,
-    "bg-gold-800": cycleNum % 4 == 3,
+    "bg-purple-800": cycleNum % 3 == 0,
+    "bg-plum-400": cycleNum % 3 == 1,
+    "bg-gold-800": cycleNum % 3 == 2,
   });
 
   const titleSize = classNames({
@@ -98,10 +97,11 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
     <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full ">
     
       <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
-      {kicker && <div className="uppercase type-preset-8">{kicker}</div>}
+     
         {promoImage? <ImageSquare/> : <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
+      {kicker && <div className="uppercase type-preset-8">{kicker}</div>}
         <h5 className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
           {title}
         </h5>
