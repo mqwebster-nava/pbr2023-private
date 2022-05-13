@@ -5,6 +5,7 @@ This returns the article as a list of sections, which can more easily be used wi
 intercept observer.
 */
 
+import { Title } from "@storybook/addon-docs";
 import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
 import { liftData } from "utils/utils";
@@ -96,10 +97,17 @@ export function formatAuthorPage(slug, author){
     },
     contentBlocks: [
       {
+        __typename:"ContentBlockLinkToPage",
+        id: `${slug}-bio`,
+        body:author.bio,
+        type: author.image ? "left repeater" : "default",
+        image: author.image ?? null
+      },
+      {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        posts: author.linkedFrom.postCollection.items
-        
+        posts: author.linkedFrom.postCollection.items,
+        title: `More by ${author.name}`
       }
     ], 
  }

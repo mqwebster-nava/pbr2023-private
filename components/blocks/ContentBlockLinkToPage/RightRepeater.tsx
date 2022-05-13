@@ -9,7 +9,7 @@ import { ContentBlockInterface } from "./ContentBlockLinkToPage";
        <div className="responsive-container py-2xl" key={id}>
        <div className={`w-full flex flex-col-reverse md:flex-row`}>
        <div className={`w-full md:w-1/2 md:ml-xl flex justify-center flex-col`}>
-        <h3 className={`font-sans type-preset-3 font-bold `}>{title} </h3>
+       {title &&  <h3 className={`font-sans type-preset-3 font-bold `}>{title} </h3>}
         <p className={`font-sans pt-lg type-preset-5 text-gray-800 pb-2xl`}>{body}</p>
         {buttonText && <Button  href={buttonPath} variant="outlined">{buttonText}</Button> }
       </div>

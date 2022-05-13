@@ -9,10 +9,10 @@ import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 export interface ContentBlockInterface {
     id:string;
-    title: string;
+    title?: string;
     body?:any;
-    buttonText:string; 
-    buttonPath:string;
+    buttonText?:string; 
+    buttonPath?:string;
     type?: ContentBlockType;
     image?: ContentfulImageAsset;
     isStorybook?:boolean;
