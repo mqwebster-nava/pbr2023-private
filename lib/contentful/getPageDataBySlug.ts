@@ -14,6 +14,7 @@ export default async function getPageDataBySlug({slug, preview =false}:PageQuery
       }
     }`;
     const response = await callContentful(query, variables, {preview});
+    console.log(response);
     if(!response.data.pageContentCollection.items) return null;
     const page = response.data.pageContentCollection.items.pop();
     return  page;

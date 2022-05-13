@@ -43,12 +43,15 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
 
   cycleNum = cycleNum % 3;
   let colors = ["purple", "plum", "gold"];
-  let color = colors[cycleNum];
-  const backgroundColor = classNames({
-    "bg-purple-800": cycleNum % 3 == 0,
-    "bg-plum-400": cycleNum % 3 == 1,
-    "bg-gold-800": cycleNum % 3 == 2,
-  });
+  let color = "navy"
+  //colors[cycleNum];
+  // const backgroundColor = classNames({
+  //   "bg-purple-800": cycleNum % 3 == 0,
+  //   "bg-plum-400": cycleNum % 3 == 1,
+  //   "bg-gold-800": cycleNum % 3 == 2,
+  // });
+  const backgroundColor = "bg-navy-700";
+
 
   const titleSize = classNames({
     "type-preset-6": size=="quarter" ||size=="third",
@@ -91,6 +94,14 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
     </div>)
   }
  
+  const ToolkitSquare = () => {
+    return ( <div
+      className={`bg-sage-200 aspect-[16/9] flex flex-col`}
+    >
+      
+    </div>)
+  }
+ 
 
 
   return (
@@ -98,7 +109,7 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
     
       <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
      
-        {promoImage? <ImageSquare/> : <PatternSquare/>}
+        {promoImage? <ImageSquare/> : type==="Toolkit"? <ToolkitSquare/>: <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
       {kicker && <div className="uppercase type-preset-8">{kicker}</div>}
