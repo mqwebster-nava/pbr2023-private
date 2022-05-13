@@ -46,7 +46,6 @@ export async function getPageDataFromContentful({slug, variant="default", previe
        const formattedPage: PageInterface = formatPage(page);
        return  formattedPage;
         
-      
      }
     
      // If it is a post, we create the page interface data from the post content

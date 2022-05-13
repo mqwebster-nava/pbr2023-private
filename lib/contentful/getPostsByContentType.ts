@@ -29,6 +29,10 @@ export default async function getPostsByContentType(contentType, options=default
     }
   `;
     const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const posts = response.data.postCollection.items;
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
     return formattedPosts;

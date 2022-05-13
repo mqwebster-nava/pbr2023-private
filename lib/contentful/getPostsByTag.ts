@@ -16,6 +16,10 @@ export default async function getPostsByTag(tag, options=defaultOptions) {
     }
   `;
     const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const posts = response.data.postCollection.items;
     // Format post can be a step where we check for errors
     const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);

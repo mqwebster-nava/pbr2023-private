@@ -15,7 +15,10 @@ export default async function getAllPostSlugs(contentType) {
         }`;
   
     const response = await callContentful(query, variables);
-   
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const slugs = response.data.postCollection.items
       ? response.data.postCollection.items.map((item) => item.slug)
       : [];

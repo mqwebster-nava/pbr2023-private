@@ -16,7 +16,10 @@ export default async function getAllAuthorSlugs() {
         }`;
   
     const response = await callContentful(query, variables);
-  
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const slugs = response.data.authorCollection.items
       ? response.data.authorCollection.items.map((item) => item.slug)
       : [];

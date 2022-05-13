@@ -17,6 +17,10 @@ export default async function getMorePosts( post: FullPostInterface, options=def
       }
     }`;
     const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const posts = response.data.postCollection.items
       ? response.data.postCollection.items
       : [];

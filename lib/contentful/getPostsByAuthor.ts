@@ -15,6 +15,10 @@ export default async function getPostsByAuthor(slug, options=defaultOptions) {
     }
   `;
     const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     const author = response.data.authorCollection.items[0]
     return author;
   }

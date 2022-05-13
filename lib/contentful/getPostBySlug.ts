@@ -16,6 +16,10 @@ export default async function getPostBySlug(slug, options=defaultOptions) {
     }`;
    
     const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
     if(!response.data.postCollection.items) return null;
     const post =  response.data.postCollection.items.pop();
     const formattedPost = formatFullPost(post);
