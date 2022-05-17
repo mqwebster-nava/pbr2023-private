@@ -19,9 +19,11 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
   const dateStr = monthNames[fmtdate.getMonth()]  +' ' + fmtdate.getDate()+ ', '+fmtdate.getFullYear();
 
     return (<div className="type-preset-7">
-      <h3 className="font-bold">Published</h3>
+       <div className="font-sans md:block flex justify-between mb-lg">
+     <div>
+     <h3 className="font-bold">Published</h3>
       <p className="font-sans pb-md">{dateStr}</p>
-      <div className="font-sans md:block flex justify-between mb-lg">
+     
               <div>
                 <h3 className="font-bold">Authors</h3>
                 {authors.map((author)=>(
@@ -31,6 +33,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
                   <p className="type-preset-7">{author.role}</p>
                 </div>
                 ))}
+              </div>
               </div>
               <div>
               <h3 className="font-bold">Tags</h3>
