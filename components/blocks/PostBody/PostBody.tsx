@@ -167,7 +167,7 @@ export default function PostBody({
         {<AuthorBios authors={authors}/>}
       </div>
       {/* Article Sidebar Section  */}
-      <div className={"w-full md:w-1/3 pt-md pl-xl"}>
+      <div className={"w-full md:w-1/3 pt-md md:pl-xl"}>
         <ArticleInfoComponent
           authors={authors}
           date={date}
