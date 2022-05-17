@@ -16,7 +16,7 @@ interface JobPostingInterface {
   applyUrl: string;
   hostedUrl: string;
   title: string;
-  location;
+  location: string;
 }
 interface JobGroupInterface {
   title: string;
@@ -39,7 +39,7 @@ export default function OpenRolesComponent() {
               title: posting.text,
               applyUrl: posting.applyUrl,
               hostedUrl: posting.hostedUrl,
-              location: posting.categories.location,
+              location: posting.categories.location ?? "Remote",
             };
           }),
         };
@@ -49,27 +49,42 @@ export default function OpenRolesComponent() {
   }, []);
 
   const DepartmentAnchors = () => {
+    let departmentsLen = Math.floor(departments.length / 3);
+    console.log(departmentsLen);
     let groups = [
-      departments.slice(0, 3),
-      departments.slice(3, 6),
-      departments.slice(6),
+      departments.slice(0, departmentsLen),
+      departments.slice(departmentsLen, 2 * departmentsLen),
+      departments.slice(2 * departmentsLen),
     ];
     return (
-      <div className="flex py-md">
-        {groups.map((deps) => (
-          <div className="w-1/3">
-            {deps.map((d) => (
-              <p
-                className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
-              >
-                <AnchorLink href={`#${d.title}`}>
-                  {d.title} ({d.postings.length})
-                </AnchorLink>
-              </p>
-            ))}
-          </div>
-        ))}
-      </div>
+      <>
+        <details className="block md:hidden py-md">
+          <summary>Show Teams</summary>
+
+          {departments.map((d) => (
+            <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}>
+              <AnchorLink href={`#${d.title}`}>
+                {d.title} ({d.postings.length})
+              </AnchorLink>
+            </p>
+          ))}
+        </details>
+        <div className="hidden md:flex py-md ">
+          {groups.map((deps) => (
+            <div className="w-1/3">
+              {deps.map((d) => (
+                <p
+                  className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+                >
+                  <AnchorLink href={`#${d.title}`}>
+                    {d.title} ({d.postings.length})
+                  </AnchorLink>
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+      </>
     );
   };
 
@@ -116,7 +131,7 @@ export default function OpenRolesComponent() {
                           </p>
                           <p>
                             <b>Location: </b>
-                            {posting.location}{" "}
+                            {posting.location}
                           </p>
                         </div>
                       </div>
