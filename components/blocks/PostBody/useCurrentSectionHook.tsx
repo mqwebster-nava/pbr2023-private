@@ -10,7 +10,6 @@ export default function useCurrentSectionHook(h2Sections) {
       if (h2.ref.current){
         h2.triggerTop = h2.ref.current.offsetTop - window.innerHeight/2;
         h2.triggerBottom = h2.triggerTop +  h2.ref.current.offsetHeight - 5;
-        console.log(h2.title, h2.triggerBottom, h2.triggerTop)
       }
     });
     const onScroll = () => {
@@ -20,7 +19,6 @@ export default function useCurrentSectionHook(h2Sections) {
           setActiveSection(h2.title); return;
         }
       });
-      console.log("scroll",window.pageYOffset);
     };
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
