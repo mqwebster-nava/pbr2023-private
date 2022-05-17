@@ -1,5 +1,7 @@
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
+import brandPatternNavy from "public/images/brand-patterns/patternblock-navy.png";
+import brandPatternPlum from "public/images/brand-patterns/brand-pattern-plum.png";
 import brandDefault from "public/images/header-pattern-block.png";
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
@@ -27,7 +29,7 @@ const defaultPattern: ContentfulImageAsset = {
 
 
 
-type PageHeaderVariant = "primary" | "secondary" | "home";
+type PageHeaderVariant = "Primary" | "Secondary" | "Home";
 
 export interface PageHeaderInterface {
   id: string;
@@ -46,9 +48,10 @@ const PageHeader = ({
   body = "",
   image,
   pattern,
-  variant = "primary",
+  variant = "Primary",
 }: PageHeaderInterface) => {
-  const bgColor =  "bg-purple-900"; //bg-purple-900
+  const bgColor =  variant=="Primary" ?"bg-purple-900" : "bg-navy-900"; //bg-purple-900
+  const textColor =  variant=="Primary" ?"text-plum-200" : "text-navy-200"; //bg-purple-900
   return (
     <div key={id}>
       <div className={` relative ${bgColor} `}>
@@ -60,7 +63,7 @@ const PageHeader = ({
             title={title}
             body={body}
             subtitle={subtitle}
-            textColor={"text-white"}
+            textColor={textColor}
           />
           {image && <div className="h-3xl"></div> }
 
@@ -82,8 +85,8 @@ export interface ImagePatternBlockInterface {
 
 const ImagePatternBlock = ({image=defaultIllustration, pattern=defaultPattern}:ImagePatternBlockInterface) =>{
   return  (
-      <div className=" relative responsive-container  aspect-video">
-          <div className="bg-purple-900 -mt-[3px] h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
+      <div className=" relative responsive-container  aspect-video -mb-[50px]">
+          <div className="bg-purple-900 -mt-[3px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
         <Image
           className="w-full object-cover "
           src={image.url}
@@ -108,28 +111,28 @@ const ImagePatternBlock = ({image=defaultIllustration, pattern=defaultPattern}:I
 const PatternBlock = ({bgColor}) => {
 return (
   <div className={`${bgColor}`}>
-    <div className="responsive-container">
-  <div className=" w-1/3">
+    <div className="responsive-container pt-3xl">
+  <div className=" w-1/4">
   <div className="flex items-stretch">
-    <div className="bg-plum-800 max-h-5xl h-full text-[0px]">
+    <div className="bg-navy-800 max-h-4xl h-full text-[0px]">
       <Image
         src={brandDirection}
         className="object-cover "
-        height={128}
-        width={128}
+        height={72}
+        width={72}
         alt=""
       />
     </div>
-    <div className="bg-plum-600 max-h-5xl h-full text-[0px]">
+    <div className="bg-navy-600 max-h-4xl h-full text-[0px]">
       <Image
         src={brandTerrain}
         className="object-cover"
-        height={128}
-        width={128}
+        height={72}
+        width={72}
         alt=""
       />
     </div>
-    <div className="bg-plum-200 max-h-5xl w-5xl "> </div>
+    <div className="bg-navy-200 max-h-4xl w-4xl "> </div>
   </div>
 </div>
 </div>
@@ -138,12 +141,12 @@ return (
 
 const TitleBlock = ({ title, subtitle, body, textColor }) => {
   return (
-    <div className={` ${textColor} `}>
-      <h1 className={`font-sans type-preset-1 text-plum-200 font-bold`}>
+    <div >
+      <h1 className={`font-sans type-preset-1  ${textColor} font-black`}>
         {title}
       </h1>
       <h2
-        className={`font-sans  type-preset-1 sm:pr-xl pr-0 md:pr-4xl font-black mr-xl pb-md`}
+        className={`text-white font-sans  type-preset-1 sm:pr-xl pr-0 md:pr-4xl font-black mr-xl pb-md`}
       >
         {subtitle}
       </h2>
