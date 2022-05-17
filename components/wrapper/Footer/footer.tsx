@@ -8,6 +8,8 @@ import NavaDigest from "./NavaDigest";
 
 
 const Footer = () => {
+  let currentYear =  new Date().getFullYear();
+
   return (
     <>
       <NavaDigest />
@@ -39,7 +41,7 @@ const Footer = () => {
             className={"responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"}
           >
             <p className="text-white font-sans type-preset-8">
-              ©2021 NavaPBC. All rights reserved.
+              {`©${currentYear} Nava PBC. All rights reserved`}
             </p>
             <div className="flex gap-2xl text-white font-bold type-preset-6">
               <a>Twitter</a>
