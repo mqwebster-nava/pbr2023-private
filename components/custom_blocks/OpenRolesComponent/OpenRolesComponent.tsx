@@ -50,7 +50,6 @@ export default function OpenRolesComponent() {
 
   const DepartmentAnchors = () => {
     let departmentsLen = Math.floor(departments.length / 3);
-    console.log(departmentsLen);
     let groups = [
       departments.slice(0, departmentsLen),
       departments.slice(departmentsLen, 2 * departmentsLen),
