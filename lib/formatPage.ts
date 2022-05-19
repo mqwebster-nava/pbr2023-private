@@ -33,8 +33,6 @@ export function formatPage(page){
 }
 
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
-
-
   const formattedPage: PageInterface =  {
     id: post.id,
     slug: post.slug,
@@ -56,7 +54,8 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         body: post.body,
         contentTags: post.contentTags,
         authors: post.authors,
-        date: post.date
+        date: post.date,
+        hideSideNav: post.hideSideNav
       },
       {
         __typename:"SectionCtaBlock",

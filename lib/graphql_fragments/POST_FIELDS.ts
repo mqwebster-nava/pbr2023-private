@@ -3,9 +3,11 @@ Post gets taken in by the pages
 */
 
 import IMAGE_FIELDS from "./IMAGE_FIELDS";
-import CAPTION_TEXT from "./post_blocks/CAPTION_TEXT";
+import POST_CAPTION_TEXT from "./post_blocks/POST_CAPTION_TEXT";
 import POST_BLOCK_QUOTE from "./post_blocks/POST_BLOCK_QUOTE";
+import POST_IMAGE from "./post_blocks/POST_IMAGE";
 import POST_PULL_QUOTE from "./post_blocks/POST_PULL_QUOTE";
+import POST_SUMMARY_SECTION from "./post_blocks/POST_SUMMARY_SECTION";
 
 export const POST_CORE_FIELDS = `
     sys {
@@ -66,13 +68,19 @@ export const POST_ALL_FIELDS = `
               }
               __typename
               ... on CaptionText {
-                ${CAPTION_TEXT}
+                ${POST_CAPTION_TEXT}
               }
               ... on PostBlockQuote {
                 ${POST_BLOCK_QUOTE}
               }
               ... on PostPullQuote {
                 ${POST_PULL_QUOTE}
+              }
+              ... on PostSummarySection {
+                ${POST_SUMMARY_SECTION}
+              }
+              ... on PostImage {
+                ${POST_IMAGE}
               }
             }
           }

@@ -8,7 +8,7 @@ export function MarkdownComponent({ content }) {
         children={content}
         // todo add styling here for markdown
         components={{
-          ul: ({ node, ...props }) => <ul className="list-disc list-inside" {...props} />,
+          ul: ({ node, ...props }) => <ul className="list-style" {...props} />,
         }}
       />
     );
