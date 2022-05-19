@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 //import ReactMarkdown from 'react-markdown';
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
@@ -16,6 +16,8 @@ import PostBlockQuote from "./PostBlockQuote";
 import PostPullQuote from "./PostPullQuote";
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
+import PostImage from "./PostImage";
+import PostSummarySection from "./PostSummarySection";
 export interface PostBodyInterface {
   id: string;
   body: any;
@@ -72,21 +74,8 @@ export default function PostBody({
     const id = data.target.sys.id;
     const assets = body.links.assets.block;
     const asset = assets.find((element) => element.sys.id === id);
-    return (
-      <div className="bg-gray-300 p-xl rounded ">
-     
-      <Image
-        src={asset.url}
-        height={asset.height}
-        width={asset.width}
-        alt={asset.description}
-        className={``}
-        loading="lazy"
-        placeholder="blur"
-        blurDataURL={`/_next/image?url=${asset.url}&w=16&q=1`}
-      />
-       </div>
-    );
+
+    
   };
 
   // TODO Where should I do the rendering for this post
@@ -98,7 +87,7 @@ export default function PostBody({
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <p className=" py-md ">{children}</p>
+        <p className=" py-md type-preset-5">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node, children) => (
         <p className="type-preset-3 font-bold font-sans pt-lg">{children}</p>
@@ -115,11 +104,16 @@ export default function PostBody({
         <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
       ),
       [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children} isRichText={true}/>,
-      [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
+      [BLOCKS.UL_LIST]: (node, children) => ( <ul className=" list-disc ml-2xl">{children}</ul> ),
       [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
       [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
-      [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data),
+      [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
+        const id = data.target.sys.id;
+        const assets = body.links.assets.block;
+        const asset = assets.find((element) => element.sys.id === id);
+        return <PostImage border={"gray"} image={asset}/>
+      },
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
         const id = node.data.target.sys.id;
         const entryBlocks = body.links.entries.block;
@@ -128,7 +122,9 @@ export default function PostBody({
         const embeddedEntries = {
           "CaptionText": (props)=><CaptionText {...props}/>,
           "PostBlockQuote": (props)=><PostBlockQuote {...props}/>,
-          "PostPullQuote":(props)=><PostPullQuote {...props}/>
+          "PostPullQuote":(props)=><PostPullQuote {...props}/>,
+          "PostImage": (props) => <PostImage {...props}/>,
+          "PostSummarySection": (props)=> <PostSummarySection {...props}/>
         }
          if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
       },
@@ -144,7 +140,7 @@ export default function PostBody({
     >
       <div
         id="article"
-        className="w-full md:w-2/3 pr-lg text-gray-base font-serif type-preset-5"
+        className="w-full md:w-2/3 pr-lg text-gray-base font-serif"
       >
         {h2Sections.map((section) => (
           <div id={section.title} ref={section.ref}>
