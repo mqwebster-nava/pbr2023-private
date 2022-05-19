@@ -7,7 +7,7 @@ import CASectionCover from "../../public/images/pbrs/nava-cali-2200x700-hi-res.j
 import MedicareSectionCover from "../../public/images/pbrs/nava-medicare-2200x700-hi-res.jpg";
 import CloudSectionCover from "../../public/images/pbrs/nava-cloud-2200x700-hi-res.jpg";
 import { Signatures } from "components/atom";
-import React from "react";
+import React, { useRef } from "react";
 import {
   ReportHeaderNavy,
   ReportSections,
@@ -15,24 +15,9 @@ import {
   ReportSectionContentFull,
 } from "components/blocks";
 import { PageInterface } from "shared_interfaces/page_interface";
+import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
 
-export async function getStaticProps() {
-  const report = getMarkdownByFilename("public-benefit-reports", 2020);
-  const formattedPage: PageInterface = {
-    id: "public-benefit-reports",
-    slug: "public-benefit-reports",
-    title: "",
-    description:"description",
-    socialImage: null,
-    pageHeader: null,
-    contentBlocks: [
-      report
-    ], 
- }
-  return {
-    props: formattedPage,
-  };
-}
+
 
 const sectionData = [
   {
@@ -77,6 +62,10 @@ const createSection = (report, index) => {
     metrics,
     body,
     background,
+   // TODO need way to create section refs and add them to the section
+    //ref:null,
+    //triggerTop: 9999,
+    //triggerBottom: 9999
   };
 };
 
@@ -85,10 +74,13 @@ export default function PBR2020(props:PageInterface) {
   const reportSections = [...new Array(4)].map((_, index) =>
     createSection(report, index)
   );
+  // TODO
+  //reportSections.forEach((h2) => (h2.ref = useRef()));
+  //const activeSection = useCurrentSectionHook(reportSections);
 
   return (
     <div>
-      <ReportSideMenu links={menuLinks} />
+      <ReportSideMenu links={menuLinks} activeSection={null} />
       <main className="bg-white pb-2xl">
         <ReportHeaderNavy title={report.title} maxWidth="max-w-xl" />
         <Image
@@ -116,4 +108,23 @@ export default function PBR2020(props:PageInterface) {
       </main>
     </div>
   );
+}
+
+
+export async function getStaticProps() {
+  const report = getMarkdownByFilename("public-benefit-reports", 2020);
+  const formattedPage: PageInterface = {
+    id: "public-benefit-reports",
+    slug: "public-benefit-reports",
+    title: "",
+    description:"description",
+    socialImage: null,
+    pageHeader: null,
+    contentBlocks: [
+      report
+    ], 
+ }
+  return {
+    props: formattedPage,
+  };
 }

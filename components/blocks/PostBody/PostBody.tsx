@@ -15,6 +15,7 @@ import { liftData } from "utils/utils";
 import PostBlockQuote from "./PostBlockQuote";
 import PostPullQuote from "./PostPullQuote";
 import AuthorBios from "./AuthorBiosSection";
+import useCurrentSectionHook from "./useCurrentSectionHook";
 export interface PostBodyInterface {
   id: string;
   body: any;
@@ -23,6 +24,7 @@ export interface PostBodyInterface {
   date: string;
   hideSideNav?: boolean;
 }
+
 
 export default function PostBody({
   id,
@@ -35,46 +37,36 @@ export default function PostBody({
   // need to deconstruct post
   const doc = body.json;
   let h2Sections = sortDocIntoH2Sections(doc);
-  let refs = {};
   h2Sections.forEach((h2) => (h2.ref = useRef()));
-  const [activeSection, setActiveSection] = useState(null);
-  const [interactionTime, setIntersectionTime] = useState(null);
+  const activeSection = useCurrentSectionHook(h2Sections);
 
-  const callbackFunction = (entries) => {
-    let newActiveSection = activeSection;
-    // Need to deal with a range of edge cases
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        newActiveSection = entry.target.id;
+  function sortDocIntoH2Sections(doc) {
+    let buffer = [];
+    let sections = [];
+    let titles = ["Intro"];
+    doc.content.forEach((node) => {
+      // if it is the end of 1 section
+      if (node.nodeType == "heading-2") {
+        sections.push(buffer);
+        titles.push(node.content[0].value);
+        buffer = [];
       }
-      // two different sections on the page
-
-      // Scrolling up logic
+      buffer.push(node);
     });
-    if (newActiveSection != activeSection) setActiveSection(newActiveSection);
-
-    return null;
-  };
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.2,
-    };
-
-    const observer = new IntersectionObserver(callbackFunction, options);
-
-    h2Sections.forEach((h2) => {
-      if (h2.ref.current) observer.observe(h2.ref.current);
+    sections.push(buffer);
+    let i = -1;
+    let output = sections.map((section) => {
+      i += 1;
+      return {
+        title: titles[i],
+        doc: { ...doc, content: section },
+        ref: null,
+        triggerTop: 9999,
+        triggerBottom: 9999,
+      };
     });
-
-    return () => {
-      h2Sections.forEach((h2) => {
-        if (h2.ref.current) observer.unobserve(h2.ref.current);
-      });
-    };
-  });
+    return output;
+  }
 
   const getImg = (data: any) => {
     const id = data.target.sys.id;
@@ -82,7 +74,6 @@ export default function PostBody({
     const asset = assets.find((element) => element.sys.id === id);
     return (
       <div className="bg-gray-300 p-xl rounded ">
-
      
       <Image
         src={asset.url}
@@ -127,11 +118,7 @@ export default function PostBody({
       [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
       [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
       [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
-      [INLINES.HYPERLINK]: (node, children) => (
-        <LinkText href={node.data.uri} variant={"underlined"}>
-          {children}
-        </LinkText>
-      ),
+      [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
       [BLOCKS.EMBEDDED_ASSET]: ({ data }) => getImg(data),
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
         const id = node.data.target.sys.id;
@@ -184,28 +171,3 @@ export default function PostBody({
   );
 }
 
-export function sortDocIntoH2Sections(doc) {
-  let buffer = [];
-  let sections = [];
-  let titles = ["Intro"];
-  doc.content.forEach((node) => {
-    // if it is the end of 1 section
-    if (node.nodeType == "heading-2") {
-      sections.push(buffer);
-      titles.push(node.content[0].value);
-      buffer = [];
-    }
-    buffer.push(node);
-  });
-  sections.push(buffer);
-  let i = -1;
-  let output = sections.map((section) => {
-    i += 1;
-    return {
-      title: titles[i],
-      doc: { ...doc, content: section },
-      ref: null,
-    };
-  });
-  return output;
-}
