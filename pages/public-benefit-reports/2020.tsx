@@ -46,8 +46,7 @@ const menuLinks = [
   ...sectionData,
 ];
 
-const sideNavRef = {
-  ref: useRef(),
+const sideNavRefProperties = {
   triggerTop: 9999,
   triggerBottom: 9999
 }
@@ -67,7 +66,8 @@ const createSection = (report, index) => {
     metrics,
     body,
     background,
-    ...sideNavRef
+    ref: useRef(),
+    ...sideNavRefProperties
   };
 };
 
@@ -80,7 +80,9 @@ export default function PBR2020(props: PageInterface) {
   const introSection = [
     {
       titleId: "intro",
-      ...sideNavRef
+      title: report.intro.title,
+      ref: useRef(),
+      ...sideNavRefProperties
     },
   ];
 
