@@ -1,5 +1,5 @@
 import { PercentBarGraph } from "components/atom";
-import { PercentBarGraphInterface } from "components/atom/Graph/PercentBarGraph";
+import { PercentBarGraphInterface } from "components/custom_blocks/DEICharts/Graph/PercentBarGraph";
 import { ResponsiveContainer } from "components/blocks";
 
 interface PercentBarChartInterface {

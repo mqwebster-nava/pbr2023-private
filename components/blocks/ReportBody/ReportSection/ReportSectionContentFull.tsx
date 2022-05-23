@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { ReportContent } from "../../../components/blocks";
-import { Button } from "../../../components/atom";
+import { ReportContent } from "../..";
+import { Button } from "../../../atom";
 import { ReportMetrics } from "../ReportMetrics/ReportMetrics";
-import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
+import ResponsiveContainer from "../../ResponsiveContainer/ResponsiveContainer";
 
 type Background = "sea-foam" | "navy" | "white";
 

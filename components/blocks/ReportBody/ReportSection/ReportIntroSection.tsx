@@ -1,5 +1,5 @@
-import { ReportContent, ResponsiveContainer } from "../../../components/blocks";
-import { Signatures } from "../../../components/atom";
+import { ReportContent, ResponsiveContainer } from "../..";
+import { Signatures } from "../../../atom";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 
 export interface ReportIntroSectionInterface {

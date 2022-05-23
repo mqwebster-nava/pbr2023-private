@@ -1,4 +1,4 @@
-import { ReportContent } from "../../../components/blocks";
+import { ReportContent } from "../..";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 
 export interface ReportSectionInterface {

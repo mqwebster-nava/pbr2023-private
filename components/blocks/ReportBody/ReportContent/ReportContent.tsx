@@ -1,7 +1,7 @@
 import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
-import { BlockQuote, LinkText, PullQuote } from "../../atom";
+import { BlockQuote, LinkText, PullQuote } from "../../../atom";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 
 type Size = "small" | "medium" | "large";

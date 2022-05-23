@@ -1,4 +1,4 @@
-import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
+import ResponsiveContainer from "../../ResponsiveContainer/ResponsiveContainer";
 
 export const ReportMetrics = ({ metrics }) => {
   return (
