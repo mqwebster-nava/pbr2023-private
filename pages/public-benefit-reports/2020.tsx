@@ -10,14 +10,13 @@ import { Signatures } from "components/atom";
 import React, { useRef } from "react";
 import {
   ReportHeaderNavy,
-  ReportSections,
   ReportSideMenu,
   ReportSectionContentFull,
 } from "components/blocks";
 import { PageInterface } from "shared_interfaces/page_interface";
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
-
-
+import ReportSectionStacked from "components/blocks/ReportSection/ReportSectionStacked";
+import ReportSection from "components/blocks/ReportSection/ReportSection";
 
 const sectionData = [
   {
@@ -47,6 +46,12 @@ const menuLinks = [
   ...sectionData,
 ];
 
+const sideNavRef = {
+  ref: useRef(),
+  triggerTop: 9999,
+  triggerBottom: 9999
+}
+
 const createSection = (report, index) => {
   const section = `section_${index + 1}`;
   const { title, intro, image_alt_text, metrics, body } = report[section];
@@ -62,25 +67,40 @@ const createSection = (report, index) => {
     metrics,
     body,
     background,
-   // TODO need way to create section refs and add them to the section
-    //ref:null,
-    //triggerTop: 9999,
-    //triggerBottom: 9999
+    ...sideNavRef
   };
 };
 
-export default function PBR2020(props:PageInterface) {
+export default function PBR2020(props: PageInterface) {
   const report = props.contentBlocks[0];
   const reportSections = [...new Array(4)].map((_, index) =>
     createSection(report, index)
   );
-  // TODO
-  //reportSections.forEach((h2) => (h2.ref = useRef()));
-  //const activeSection = useCurrentSectionHook(reportSections);
+
+  const introSection = [
+    {
+      titleId: "intro",
+      ...sideNavRef
+    },
+  ];
+
+  const allSections = introSection.concat(reportSections);
+  const activeSection = useCurrentSectionHook(allSections, true);
+
+  const reportSection = (section, index, stacked) => {
+    if(index === 0) return <ReportIntroSection title={report.intro.title} body={report.intro.body} />
+    // Leave out ref in passing props to components.
+    const props = (({ ref, ...o }) => o)(section)
+    return stacked ? (
+      <ReportSectionStacked key={index} {...props} />
+    ) : (
+      <ReportSection key={index} {...props} theme={null} />
+    );
+  };
 
   return (
     <div>
-      <ReportSideMenu links={menuLinks} activeSection={null} />
+      <ReportSideMenu links={menuLinks} activeSection={activeSection} />
       <main className="bg-white pb-2xl">
         <ReportHeaderNavy title={report.title} maxWidth="max-w-xl" />
         <Image
@@ -88,16 +108,12 @@ export default function PBR2020(props:PageInterface) {
           src={Nava2020Cover}
           layout="responsive"
         />
-        <ReportSectionContentFull
-          title={report.intro.title}
-          titleId="intro"
-          body={report.intro.body}
-          background="sea-foam"
-        />
-        <div className="bg-sage-pbr-2018 pb-4xl">
-          <Signatures fullList margin="mx-0" />
-        </div>
-        <ReportSections sections={reportSections} stacked />
+        {allSections.map((section, index) =>(
+            <div ref={section.ref} key={index}>
+              {reportSection(section, index, true)}
+            </div>
+          )
+        )}
         <ReportSectionContentFull
           title={report.section_five.title}
           body={report.section_five.body}
@@ -110,6 +126,19 @@ export default function PBR2020(props:PageInterface) {
   );
 }
 
+const ReportIntroSection = ({title, body}) => (
+  <>
+    <ReportSectionContentFull
+      title={title}
+      titleId="intro"
+      body={body}
+      background="sea-foam"
+    />
+    <div className="bg-sage-pbr-2018 pb-4xl">
+      <Signatures fullList margin="mx-0" />
+    </div>
+  </>
+);
 
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2020);
@@ -117,13 +146,11 @@ export async function getStaticProps() {
     id: "public-benefit-reports",
     slug: "public-benefit-reports",
     title: "",
-    description:"description",
+    description: "description",
     socialImage: null,
     pageHeader: null,
-    contentBlocks: [
-      report
-    ], 
- }
+    contentBlocks: [report],
+  };
   return {
     props: formattedPage,
   };

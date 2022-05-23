@@ -26,7 +26,7 @@ const ReportSection: React.FC<ReportSectionInterface> = ({
   const { title, introduction, body } = content;
 
   return (
-    <section className={`${!isWhiteBG ? theme.sage.background : ""}`}>
+    <section className={`${!isWhiteBG ? theme.sage.background : ""}`} >
       <div className="responsive-container-content py-4xl">
         <h2 className="type-preset-3 font-bold text-sage-pbr">{title}</h2>
         <ReportContent

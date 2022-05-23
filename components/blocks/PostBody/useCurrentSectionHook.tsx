@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useCurrentSectionHook(h2Sections) {
+export default function useCurrentSectionHook(h2Sections, useId = false) {
   
   const [activeSection, setActiveSection] = useState(null);
   
@@ -16,7 +16,7 @@ export default function useCurrentSectionHook(h2Sections) {
       const offset = window.pageYOffset;
       h2Sections.forEach((h2) => {
         if(offset>h2.triggerTop && offset<h2.triggerBottom && activeSection!=h2.title ){
-          setActiveSection(h2.title); return;
+          setActiveSection(useId ? h2.titleId : h2.title); return;
         }
       });
     };
