@@ -96,3 +96,13 @@ Please review `package.json` and make changes according to your needs
 "storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
 "build-storybook": "build-storybook && tailwind-storybook-build"
 ```
+
+## Approach to Component File Structure
+Any component row that’s only on a single page goes under custom_blocks. Component rows used throughout the site go in blocks.
+
+Any “atom” component used in only one component row, goes in the folder with that row. “Atom” components that are used across different rows go in the “atoms” folder.
+
+If any atom or row component becomes reusable, we switch its location to atoms or blocks, accordingly. 
+
+If any atom or row component feels redundant, we try to replace it with a core component.
+
