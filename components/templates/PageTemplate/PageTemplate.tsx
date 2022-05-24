@@ -1,4 +1,5 @@
 
+
 import dynamic from "next/dynamic";
 
 
@@ -10,7 +11,8 @@ const PageHeader= dynamic(() => import("components/blocks/PageHeaders/PageHeader
 const ContentBlockText= dynamic(() => import("components/blocks/ContentBlockText/ContentBlockText"));
 const SectionHeader = dynamic(() => import("components/blocks/SectionHeader/SectionHeader"));
 const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
-
+const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
+const TimelineSection = dynamic(() => import("components/custom_blocks/TimelineSection/TimelineSection"));
 
 import { PageInterface } from "shared_interfaces/page_interface";
 
@@ -29,6 +31,8 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ContentBlockLinkToPage": ()=> <ContentBlockLinkToPage {...entry} />,
       "QuoteBlock": ()=> <QuoteBlock {...entry}/>,
       "ContentBlockArticleList": ()=>  <ContentBlockArticleList {...entry} />,
+      "ImageGallery": ()=> <ImageGalleryBlock {...entry}/>,
+      "TimelineSection": () => <TimelineSection {...entry}/>,
       "PostBody":()=><PostBody {...entry}/>
     }
     return typename in componentMap ? componentMap[typename](entry) : <div></div>
