@@ -1,22 +1,15 @@
 
 //import ReactMarkdown from 'react-markdown';
-import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
+
 import ArticleInfoComponent from "./ArticleInfoComponent";
 import SideNavComponent from "./SideNavComponent";
 import React, { useEffect, useRef, useState } from "react";
-import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
 
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
-import AuthorFiller from "public/images/author-filler.png"
-import CaptionText from "./CaptionText";
-import { liftData } from "utils/utils";
-import PostBlockQuote from "./PostBlockQuote";
-import PostPullQuote from "./PostPullQuote";
+
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
-import PostImage from "./PostImage";
-import PostSummarySection from "./PostSummarySection";
 import PostContent from "./PostContent";
 export interface PostBodyInterface {
   id: string;
