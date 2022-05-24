@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 
 
-const ContentBlockLinkToPage = dynamic(() => import("components/blocks/ContentBlockLinkToPage/ContentBlockLinkToPage"));
+const ContentBlock = dynamic(() => import("components/blocks/ContentBlock/ContentBlock"));
 const QuoteBlock= dynamic(() => import("components/blocks/QuoteBlock/QuoteBlock"));
 const ContentBlockArticleList= dynamic(() => import("components/blocks/ContentBlockArticlesList/ContentBlockArticlesList"));
 const CTABlock= dynamic(() => import("components/blocks/CTABlock/CTABlock"));
@@ -26,7 +26,8 @@ const PageTemplate: React.FC<PageInterface> = ({
       "SectionHeader": (entry)=>(<SectionHeader {...entry}/>),
       "SectionContentBlockText": ()=> <ContentBlockText {...entry}/>,
       "SectionCtaBlock": ()=> <CTABlock {...entry}/>,
-      "ContentBlockLinkToPage": ()=> <ContentBlockLinkToPage {...entry} />,
+      "ContentBlock": ()=> <ContentBlock {...entry} />,
+      "ContentBlockLinkToPage": ()=> <ContentBlock {...entry} />,
       "QuoteBlock": ()=> <QuoteBlock {...entry}/>,
       "ContentBlockArticleList": ()=>  <ContentBlockArticleList {...entry} />,
       "PostBody":()=><PostBody {...entry}/>

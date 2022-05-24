@@ -1,6 +1,6 @@
 
 
-const CONTENT_BLOCK_LINK_TO_PAGE = `
+const CONTENT_BLOCK = `
 sys {
   id
 }
@@ -20,4 +20,4 @@ image {
     description
 }
 `;
-export default CONTENT_BLOCK_LINK_TO_PAGE;
+export default CONTENT_BLOCK;

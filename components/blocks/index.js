@@ -1,9 +1,9 @@
 
 import SectionHeader from "./SectionHeader/SectionHeader";
-import LeftRepeater from "./ContentBlockLinkToPage/LeftRepeater";
-import RightRepeater from "./ContentBlockLinkToPage/RightRepeater";
+import LeftRepeater from "./ContentBlock/LeftRepeater";
+import RightRepeater from "./ContentBlock/RightRepeater";
 import PageHeader from "./PageHeaders/PageHeader";
-import ContentBlockLinkToPage from "./ContentBlockLinkToPage/ContentBlockLinkToPage";
+import ContentBlock from "./ContentBlock/ContentBlock";
 import ContentBlockText from "./ContentBlockText/ContentBlockText";
 import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArticlesList";
 import CTABlock from "./CTABlock/CTABlock";
@@ -32,7 +32,7 @@ export {
   LeftRepeater,
   RightRepeater,
   PageHeader,
-  ContentBlockLinkToPage,
+  ContentBlock,
   ContentBlockText,
   ContentBlockArticleList,
   CTABlock,
