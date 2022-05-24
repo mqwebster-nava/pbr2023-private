@@ -2,34 +2,33 @@ import { Button } from "../../atom/Button/Button";
 import { MarkdownComponent } from "utils/utils";
 import ill from "public/images/Illustrations-for-website-V019 1.png";
 import Image from "next/image";
+import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 interface CTABlockInterface {
   id: string;
   title: string;
   body: any;
+  image: ContentfulImageAsset;
   buttonText: string;
   buttonPath: string;
   type: string;
 }
 
-const CTABlock: React.FC<CTABlockInterface> = (props) => {
-  return <DefaultCTABlock {...props}></DefaultCTABlock>;
-};
 
-const DefaultCTABlock: React.FC<CTABlockInterface> = ({
+const CTABlock = ({
   id,
   title,
   body,
+  image,
   buttonPath,
   buttonText,
-  children,
-}) => {
+}:CTABlockInterface) => {
   return (
     <div className=" w-full bg-sage-50 " key={id}>
       <div className="responsive-container flex items-center">
       <div className="w-1/2 max-h-[500px] max-w-[500px]">
           <Image
             className=" object-cover "
-            src={ill}
+            src={image?image.url:ill}
             layout="responsive"
           ></Image>
         </div>
