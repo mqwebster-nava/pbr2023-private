@@ -1,6 +1,6 @@
 
 import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_LIST";
-import CONTENT_BLOCK_LINK_TO_PAGE from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
+import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
 import CONTENT_BLOCK_TEXT from "./content_blocks/CONTENT_BLOCK_TEXT";
 import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
 import PAGE_HEADER_FIELDS from "./content_blocks/PAGE_HEADER_FIELDS";
@@ -40,8 +40,8 @@ contentCollection {
         ... on SectionContentBlockText {
             ${CONTENT_BLOCK_TEXT}
         }
-        ... on ContentBlockLinkToPage{
-            ${CONTENT_BLOCK_LINK_TO_PAGE}
+        ... on ContentBlockLinkToPage{ 
+            ${CONTENT_BLOCK}
         }
         ... on ContentBlockArticleList {
             ${CONTENT_BLOCK_ARTICLE_LIST}
