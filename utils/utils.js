@@ -45,46 +45,14 @@ export function liftData(data){
     }
     return newData;
 }
-
-
-class TwoWayMap {
-    constructor(map) {
-       this.map = map;
-       this.reverseMap = {};
-       for(const key in map) {
-          const value = map[key];
-          this.reverseMap[value] = key;   
-       }
-    }
-    getMap(){return this.map}
-    get(key) { return this.map[key]; }
-    revGet(key) { return this.reverseMap[key]; }
+// Slugify for turning tags into urls
+export function slugify(text) {
+    return text
+      .toString()                           // Cast to string (optional)
+      .normalize('NFKD')            // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+      .toLowerCase()                  // Convert the string to lowercase letters
+      .trim()                                  // Remove whitespace from both sides of a string (optional)
+      .replace(/\s+/g, '-')            // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
+      .replace(/\-\-+/g, '-');        // Replace multiple - with single -
 }
-
-// TODO
-
-
-export const allTagsSlugIdPair = new TwoWayMap({
-    "a-day-at-nava":"Day At Nava",
-    "accessibility-and-equity":"Accessibility and Equity",
-    "adapting-to-change":"Adapting To Change",
-    "agile-development":"Agile Development",
-    "apis-and-documentation":"APIs and Documentation",
-    "backend-engineering":"Backend Engineering",
-    "careers":"Careers",
-    "content-strategy": "Content Strategy",
-    "continuous-improvement":"Continuous Improvement",
-    "crisis-response":"Crisis Response",
-    "healthcare":"Healthcare",
-    "human-centered-design":"Human-Centered Design",
-    "integrated-benefits":"Integrated Benefits",
-    "modernization":"Modernization",
-    "policy":"Policy",
-    "product-management":"Product Management",
-    "program-outcomes":"Program Outcomes",
-    "scalable-solutions":"Scalable Solutions",
-    "unemployment-insurance":"Unemployment Insurance",
-    "user-experience-research": "User Experience Research",
-    "veterans":"Veterans",
-    "what-were-learning":"What We’re Learning"
-});
