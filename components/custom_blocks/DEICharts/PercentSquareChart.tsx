@@ -1,5 +1,5 @@
 import { PercentSquareGraph } from "components/atom";
-import { FilterControl, ResponsiveContainer } from "components/blocks";
+import { FilterControl} from "components/blocks";
 import React, { useState } from "react";
 
 interface CheckboxInterface {
@@ -50,13 +50,13 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   };
 
   return (
-    <div>
-      <ResponsiveContainer containerClass="pt-2xl" contentClass="mx-0">
+    <div className="responsive-container">
+      <div className="pt-2xl mx-0">
         <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
           {title}
         </h3>
         <p className="py-2xl">{content}</p>
-      </ResponsiveContainer>
+      </div>
 
       <FilterControl
         filters={dataFilters}
@@ -80,9 +80,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
           ))}
         </div>
       </FilterControl>
-
-      <div className="responsive-container">
-        <div className="responsive-container-content mx-0">
+        <div className="mx-0">
           {context.map((text, index) => (
             <p
               key={`chart_context_${index}`}
@@ -92,7 +90,6 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
             </p>
           ))}
         </div>
-      </div>
     </div>
   );
 };

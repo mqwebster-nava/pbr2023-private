@@ -63,7 +63,7 @@ const SectionHeader: React.FC<SectionHeaderInterface> = ({
     <div className={`responsive-container pt-4xl pb-2xl`} key={id}>
       <TitleBlock />
       <ColoredLine/>
-      <BodyBlock />
+      {subtitle && <BodyBlock />}
     </div>
     </div>
   );

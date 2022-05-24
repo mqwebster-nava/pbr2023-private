@@ -1,4 +1,4 @@
-import { ReportContent, ResponsiveContainer } from "../..";
+import { ReportContent } from "../..";
 import { Signatures } from "../../../atom";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 
@@ -11,15 +11,15 @@ export interface ReportIntroSectionInterface {
 const ReportIntroSection: React.FC<ReportIntroSectionInterface> = ({ body, theme }) => {
   const hasWhiteBackground = theme.sage.background === undefined;
   return (
-    <section className={`${theme.sage.background} py-2xl md:px-4xl`}>
-      <ResponsiveContainer>
+    <section className={`${theme.sage.background} py-2xl`}>
+      <div className="responsive-container-content">
         <ReportContent
           content={body}
           isGreenBG={!hasWhiteBackground}
           theme={theme}
         />
-      </ResponsiveContainer>
-      <Signatures isGreenBG={!hasWhiteBackground} />
+          <Signatures isGreenBG={!hasWhiteBackground} />
+      </div>
     </section>
   );
 };

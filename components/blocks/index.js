@@ -22,7 +22,6 @@ import ReportSectionHeaderNavy from "./ReportBody/ReportSection/ReportHeaderSect
 import ReportSectionContentFull from "./ReportBody/ReportSection/ReportSectionContentFull";
 import ReportSideMenu from "./ReportBody/ReportSideMenu/ReportSideMenu";
 import { ResourceGroups } from "../custom_blocks/DEIResourceGroupBlock/ResourceGroups";
-import ResponsiveContainer from "./ResponsiveContainer/ResponsiveContainer";
 import { PercentBarChart } from "../custom_blocks/DEICharts/PercentBarChart";
 import { PercentSquareChart } from "../custom_blocks/DEICharts/PercentSquareChart";
 import { PercentSquareChartFixed } from "../custom_blocks/DEICharts/PercentSquareChartFixed";
@@ -51,7 +50,6 @@ export {
   ReportSideMenu,
   ReportSectionContentFull,
   ResourceGroups,
-  ResponsiveContainer,
   PercentBarChart,
   PercentSquareChart,
   PercentSquareChartFixed,

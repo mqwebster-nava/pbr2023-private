@@ -12,7 +12,6 @@ import {
   ReportContent,
   ResourceGroups,
   PercentSquareChart,
-  ResponsiveContainer,
   PercentSquareChartFixed,
 } from "components/blocks";
 import React from "react";
@@ -67,7 +66,7 @@ export default function DEI({ reportData }) {
       <ReportHeaderNavy title={content.title} />
 
       <section className="bg-sea-foam-base py-4xl">
-        <ResponsiveContainer contentClass="mx-0">
+        <div className="responsive-container">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
             <div className="w-full">
               <p className="type-preset-5 text-sage-dark">{content.lead}</p>
@@ -80,23 +79,22 @@ export default function DEI({ reportData }) {
               alt=""
             />
           </div>
-        </ResponsiveContainer>
+        </div>
       </section>
 
       <section className="bg-sea-foam-light py-4xl">
-        <ResponsiveContainer contentClass="mx-0">
+        <div className="responsive-container">
           <ReportContent content={content.overview} />
-        </ResponsiveContainer>
-        <PercentBarChart
-          description="How we're doing in 2021"
-          graphs={overview}
-        />
+          <PercentBarChart
+            description="How we're doing in 2021"
+            graphs={overview}
+          />
+          </div>
       </section>
-
       <section className="bg-white">
-        <ResponsiveContainer containerClass="py-3xl" contentClass="mx-0">
+        <div className="responsive-container py-3xl">
           <ReportContent content={content.body} />
-        </ResponsiveContainer>
+        </div>
         <PercentSquareChart
           title={race.title}
           content={race.content}
@@ -126,10 +124,10 @@ export default function DEI({ reportData }) {
       </section>
 
       <section className="bg-sea-foam-base">
-        <ResponsiveContainer containerClass="py-3xl" contentClass="mx-0">
+        <div  className="responsive-container py-3xl">
           <ReportContent content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
-        </ResponsiveContainer>
+        </div>
       </section>
     </main>
   );

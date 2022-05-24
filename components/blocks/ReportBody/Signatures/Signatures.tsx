@@ -3,7 +3,6 @@ import classNames from "classnames";
 import rohanSignature from "/public/images/pbrs/rohan-signature.png";
 import shaSignature from "/public/images/pbrs/sha-signature.png";
 import jodiSignature from "/public/images/pbrs/jodi-signature.png";
-import ResponsiveContainer from "components/blocks/ResponsiveContainer/ResponsiveContainer";
 export interface SignaturesProps {
   isGreenBG?: boolean;
   fullList?: boolean;
@@ -56,7 +55,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
   });
 
   return (
-    <ResponsiveContainer containerClass="py-xl" contentClass={margin}>
+    <div className={`py-xl ${margin}`}>
       <div className={`grid ${gridColumns} max-w-lg`}>
         {signatures.map((signature, index) => (
           <div key={index}>
@@ -73,6 +72,6 @@ export const Signatures: React.FC<SignaturesProps> = ({
           </div>
         ))}
       </div>
-    </ResponsiveContainer>
+    </div>
   );
 };

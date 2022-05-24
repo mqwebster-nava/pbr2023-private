@@ -1,5 +1,4 @@
 import { CheckBox, PercentSquareGraph } from "components/atom";
-import { ResponsiveContainer } from "components/blocks";
 import { FilterButtonGroup } from "./FilterButtonGroup";
 
 export interface FilterInterface {
@@ -35,7 +34,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
   // multiKey,
 }) => {
   return (
-    <ResponsiveContainer contentClass="mx-0">
+    <div className="responsive-container">
       <p className="font-black type-preset-5">Filter by</p>
       <FilterButtonGroup
         filters={filters}
@@ -51,6 +50,6 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
         />
       )}
       {children}
-    </ResponsiveContainer>
+    </div>
   );
 };

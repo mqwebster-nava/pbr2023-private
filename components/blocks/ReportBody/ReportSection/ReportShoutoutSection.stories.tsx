@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ReportShoutoutSection from "./ReportShoutoutSection";
 
 export default {
-  title: "Blocks /  Report Section",
+  title: "Blocks / Report Body / Report Section",
   component: ReportShoutoutSection,
 } as ComponentMeta<typeof ReportShoutoutSection>;
 
