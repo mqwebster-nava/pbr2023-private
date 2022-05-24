@@ -13,7 +13,8 @@
 
  import { PageInterface } from "shared_interfaces/page_interface";
  import { BasicPostInterface } from "shared_interfaces/post_interface";
- import { allTagsSlugIdPair } from "utils/utils";
+ import {slugify } from "utils/utils";
+import getAllTags from "./contentful/getAllTags";
 import getPageDataBySlug from "./contentful/getPageDataBySlug";
 import getPostBySlug from "./contentful/getPostBySlug";
 import getPostsByAuthor from "./contentful/getPostsByAuthor";
@@ -68,9 +69,10 @@ export async function getPageDataFromContentful({slug, variant="default", previe
      }
  
      if (variant=="tags"){
-       const tagName:string = allTagsSlugIdPair.get(slug);
-       const posts:Array<BasicPostInterface> = await getPostsByTag(tagName);
-       const formattedPage: PageInterface = formatTagsPage(slug, tagName, posts);
+      const tags = await getAllTags();
+      const tagName = tags.find(tag => slugify(tag)===slug);
+      const posts:Array<BasicPostInterface> = await getPostsByTag(tagName);
+      const formattedPage: PageInterface = formatTagsPage(slug, tagName, posts);
       return formattedPage;
      }
 }

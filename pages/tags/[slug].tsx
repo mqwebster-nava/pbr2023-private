@@ -1,7 +1,9 @@
 import { getPageDataFromContentful } from "lib/api";
-import {allTagsSlugIdPair, getContentUrl} from "utils/utils"
 import { PageInterface } from "shared_interfaces/page_interface";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import getAllTags from "lib/contentful/getAllTags";
+import { slugify } from "utils/utils";
+// Here I want to get all content types
 
 
 // List of posts filtered by a specific tag
@@ -11,12 +13,14 @@ import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 
   // Gets all of the tags that are used in the content and creates a page for each one
 export async function getStaticPaths({ params, preview = null }) {
-    const paths = Object.keys(allTagsSlugIdPair.getMap()).map((slug)=>{ return {params: {  slug } }});
+  const tags = await getAllTags();
+  const paths = tags.map((tag)=>{ return {params: { slug:slugify(tag), tag } }});
     return {
       paths,
       fallback: false
     }
 }
+
 
 
 // Calls the contentful API to get posts for each tag.

@@ -1,5 +1,5 @@
 
-import {allTagsSlugIdPair} from "utils/utils";
+import {slugify} from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
 
@@ -40,7 +40,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
               {contentTags && contentTags.map((tag)=>{
                 return (
                   <p id={`${tag}`}>
-                    <LinkText  href={`/tags/${allTagsSlugIdPair.revGet(tag)}`} variant={"underlined"}>{tag}</LinkText>
+                    <LinkText  href={`/tags/${slugify(tag)}`} variant={"underlined"}>{tag}</LinkText>
                   </p>
                 )})}
               </div>
