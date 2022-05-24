@@ -85,7 +85,7 @@ export interface ImagePatternBlockInterface {
 
 const ImagePatternBlock = ({image=defaultIllustration, pattern=defaultPattern}:ImagePatternBlockInterface) =>{
   return  (
-      <div className=" relative responsive-container  aspect-video -mb-[50px]">
+      <div className=" relative responsive-container  aspect-video -mb-[50px] xl:mb-0">
           <div className="bg-purple-900 -mt-[3px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
         <Image
           className="w-full object-cover "
