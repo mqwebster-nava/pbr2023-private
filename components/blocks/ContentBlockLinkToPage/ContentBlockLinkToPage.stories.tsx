@@ -12,10 +12,16 @@ export default {
   */
   title: 'Blocks /  Content Block Link To Page',
   component: ContentBlockLinkToPage,
+  argTypes: {
+    type: {
+      options: ['default', 'right repeater', 'left repeater'],
+      control: { type: 'radio' },
+    },
+  },
 } as ComponentMeta<typeof ContentBlockLinkToPage>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ContentBlockLinkToPage> = (args) => <ContentBlockLinkToPage {...args} />;
+const Template: ComponentStory<typeof ContentBlockLinkToPage> = (args) => <ContentBlockLinkToPage id={"test"} {...args} />;
 
 export const Primary = Template.bind({});
 export const LeftRepeater = Template.bind({});
@@ -31,11 +37,6 @@ Primary.args = {
 };
 
 LeftRepeater.args = {
-    "id": "4E5WpGB5Ztj08FZYeF65V3",
-    "__typename": "ContentBlockLinkToPage",
-    "sys": {
-        "id": "4E5WpGB5Ztj08FZYeF65V3"
-    },
     "title": "Nava is a public benefit corporation",
     "buttonText": "Learn about our mission",
     "buttonPath": "/mission",
@@ -56,11 +57,6 @@ LeftRepeater.args = {
 
 
 RightRepeater.args = {
-    "id": "5h54BsLO4F8IEMubmc7sHt",
-    "__typename": "ContentBlockLinkToPage",
-    "sys": {
-        "id": "5h54BsLO4F8IEMubmc7sHt"
-    },
     "title": "Our values guide how we serve the public",
     "buttonText": "See our values",
     "buttonPath": "/mission/values",
