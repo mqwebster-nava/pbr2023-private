@@ -6,7 +6,6 @@ import VASectionCover from "../../public/images/pbrs/nava-VA-2200x700-hi-res.jpg
 import CASectionCover from "../../public/images/pbrs/nava-cali-2200x700-hi-res.jpg";
 import MedicareSectionCover from "../../public/images/pbrs/nava-medicare-2200x700-hi-res.jpg";
 import CloudSectionCover from "../../public/images/pbrs/nava-cloud-2200x700-hi-res.jpg";
-import { Signatures } from "components/atom";
 import React, { useRef } from "react";
 import {
   ReportHeaderNavy,
@@ -17,6 +16,7 @@ import { PageInterface } from "shared_interfaces/page_interface";
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
 import ReportSectionStacked from "components/blocks/ReportSection/ReportSectionStacked";
 import ReportSection from "components/blocks/ReportSection/ReportSection";
+import { ReportIntroSectionFull } from "components/blocks/ReportSection/ReportIntroSectionFull";
 
 const sectionData = [
   {
@@ -90,7 +90,7 @@ export default function PBR2020(props: PageInterface) {
   const activeSection = useCurrentSectionHook(allSections, true);
 
   const reportSection = (section, index, stacked) => {
-    if(index === 0) return <ReportIntroSection title={report.intro.title} body={report.intro.body} />
+    if(index === 0) return <ReportIntroSectionFull title={report.intro.title} body={report.intro.body} />
     // Leave out ref in passing props to components.
     const props = (({ ref, ...o }) => o)(section)
     return stacked ? (
@@ -128,19 +128,7 @@ export default function PBR2020(props: PageInterface) {
   );
 }
 
-const ReportIntroSection = ({title, body}) => (
-  <>
-    <ReportSectionContentFull
-      title={title}
-      titleId="intro"
-      body={body}
-      background="sea-foam"
-    />
-    <div className="bg-sage-pbr-2018 pb-4xl">
-      <Signatures fullList margin="mx-0" />
-    </div>
-  </>
-);
+
 
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2020);

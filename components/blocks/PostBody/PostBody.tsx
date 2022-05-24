@@ -61,6 +61,7 @@ export default function PostBody({
       i += 1;
       return {
         title: titles[i],
+        titleId: titles[i],
         doc: { ...doc, content: section },
         ref: null,
         triggerTop: 9999,
