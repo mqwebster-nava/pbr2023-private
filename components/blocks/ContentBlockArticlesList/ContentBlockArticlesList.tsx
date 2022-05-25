@@ -1,88 +1,79 @@
-
 import { getContentUrl } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
 import classNames from "classnames";
-
+import ContentGrid from "../ContentGrid/ContentGrid";
 
 type ListVariant = "feature" | "default";
 interface ArticleListInterface {
-     id:string;
-     title?: string;
-     buttonText?:string;
-     buttonPath?:string;
-     body?: string;
-     posts: any;
-     cycleNum?:number;
-     max?: number;
-     variant?: ListVariant;
+  id: string;
+  title?: string;
+  buttonText?: string;
+  buttonPath?: string;
+  body?: string;
+  posts: any;
+  cycleNum?: number;
+  max?: number;
+  variant?: ListVariant;
 }
-  
-  
-  const ContentBlockArticleList = ({ 
-    id,
-    title,  
-    body, 
-    posts,
-    buttonPath,
-    buttonText, 
-    cycleNum =Math.floor(Math.random() * 4),
-    max = 6,
-    variant = "feature"
-    
-  }: ArticleListInterface) => {
 
-    const GridStyle = classNames({
-      "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": variant = "default",
-      "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": variant = "feature",
-    })
+const ContentBlockArticleList = ({
+  id,
+  title,
+  body,
+  posts,
+  buttonPath,
+  buttonText,
+  cycleNum = Math.floor(Math.random() * 4),
+  max = 6,
+  variant = "feature",
+}: ArticleListInterface) => {
+  const GridStyle = classNames({
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (variant = "default"),
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (variant = "feature"),
+  });
 
-
-    posts = posts.filter((post)=>post!=null);
-    return (
+  posts = posts.filter((post) => post != null);
+  return (
+    <>
       <div className="responsive-container py-xl" key={id}>
-        <div className={`w-full`}>
-          <hr className={`pb-sm`}/>
-          {title && <h3 className="font-sans type-preset-3  font-bold">{title} </h3>}
-          {body && (
-            <p className={`font-sans pt-lg type-preset-5 text-gray-600 mb-sm`}>
-              {body}
-            </p>
-          )}
-          <div
-            className={`w-full ${GridStyle} gap-x-lg gap-y-xl my-2xl`}
-          >
-            {posts.slice(0, max).map((post, i) =>{
-            if(!post.promoImage) cycleNum+=1;
-           
-            return ( <div className={`w-full self-stretch ${i==0 && "lg:col-span-2"}`} key={post.id}>
-                <ContentCard
-                 size = {(variant=="default" || i>3) ? "third" : i==0 ? "half" : "quarter" }
-                  kicker = {post.contentType=="Case Study" && post.clientName}
-                 type={post.contentType}
-                  title={post.title}
-                  promoImage={post.promoImage}
-                  path={getContentUrl(post.contentType, post.slug)}
-                  cycleNum={cycleNum}
-                >
-                  {post.shortSummary}
-                </ContentCard>
-              </div>
-  )})}
+        <div className={`w-full border-t-2 pt-md flex justify-between`}>
+          <div>
+            {title && (
+              <h3 className="font-sans type-preset-3  font-bold">{title} </h3>
+            )}
+            {body && (
+              <p
+                className={`font-sans pt-lg type-preset-5 text-gray-600 mb-sm`}
+              >
+                {body}
+              </p>
+            )}
           </div>
-          
-          {buttonPath!=null && posts.length>max && 
-           <div className="flex justify-end">
-            <LinkText href={buttonPath} variant="large arrow">Read more</LinkText>
-            </div>}
+          <div>
+          {buttonPath != null && (
+       
+          <LinkText href={buttonPath} variant="large arrow">
+            Read more
+          </LinkText>
+      )}
+          </div>
         </div>
       </div>
-    );
-  }
-    
-  export default ContentBlockArticleList;
+      <ContentGrid
+        id={"id"}
+        items={posts}
+        contentType={"posts"}
+        variant={variant}
+        cycleNum={cycleNum}
+      />
+     
+    </>
+  );
+};
 
+export default ContentBlockArticleList;
 
-  /*
+/*
   const childrenArray = Children.toArray(children);
 
   return ( 
