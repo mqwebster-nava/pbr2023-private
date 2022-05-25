@@ -10,8 +10,11 @@ TODO finish properly connecting it to Mailchimp and adding error/success text
 */
 const NavaDigest = () => {
   return (
-    <div className=" bg-sage-400 font-sans">
-      <div className="responsive-container text-white pt-2xl">
+    <div className="pt-3xl relative">
+      
+    <div className="responsive-container z-10 relative">
+      <div className="bg-sage-400 font-sans  pt-2xl ">
+      <div className="font-sans text-white px-2xl">
         <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
           <div className="w-full md:w-1/2 ">
             <h3 className="font-sans type-preset-2 font-bold pb-lg">Nava Digest</h3>
@@ -67,11 +70,15 @@ const NavaDigest = () => {
             ></script>
           </div>
         </div>
+     </div>
         <div className="w-full flex justify-end">
-          <Image src={brandTerrain} height={100} width={100} alt="" />
-          <Image src={brandDirection} height={100} width={100} alt="" />
+          <Image src={brandTerrain} height={72} width={72} alt="" />
+          <Image src={brandDirection} height={72} width={72} alt="" />
         </div>
       </div>
+     
+    </div>
+    <div className="bg-navy-900 h-[200px] -z-10 -mt-[200px]"></div>
     </div>
   );
 };
