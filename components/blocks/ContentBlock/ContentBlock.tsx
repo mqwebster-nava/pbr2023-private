@@ -25,7 +25,8 @@ export interface ContentBlockInterface {
       "md:flex-row":
         type == "right repeater",
     });
-   
+    if(image==null){console.error("Content Block image cannot be null", title); return null;}
+
     return (
       <div className={"responsive-container py-2xl"} key={id}>
       <div className={`w-full flex flex-col justify-between ${direction}`}>

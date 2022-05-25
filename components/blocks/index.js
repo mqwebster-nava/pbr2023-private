@@ -1,7 +1,5 @@
 
 import SectionHeader from "./SectionHeader/SectionHeader";
-import LeftRepeater from "./ContentBlock/LeftRepeater";
-import RightRepeater from "./ContentBlock/RightRepeater";
 import PageHeader from "./PageHeaders/PageHeader";
 import ContentBlock from "./ContentBlock/ContentBlock";
 import ContentBlockText from "./ContentBlockText/ContentBlockText";
@@ -28,8 +26,6 @@ import { PercentSquareChartFixed } from "../custom_blocks/DEICharts/PercentSquar
 import { FilterControl } from "../custom_blocks/DEICharts/FilterControl";
 export {
   SectionHeader,
-  LeftRepeater,
-  RightRepeater,
   PageHeader,
   ContentBlock,
   ContentBlockText,
