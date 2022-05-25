@@ -3,9 +3,11 @@ import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_L
 import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
 import CONTENT_BLOCK_TEXT from "./content_blocks/CONTENT_BLOCK_TEXT";
 import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
+import IMAGE_GALLERY from "./content_blocks/IMAGE_GALLERY";
 import PAGE_HEADER_FIELDS from "./content_blocks/PAGE_HEADER_FIELDS";
 import QUOTE_BLOCK from "./content_blocks/QUOTE_BLOCK";
 import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
+import TIMELINE_SECTION from "./content_blocks/TIMELINE_SECTION";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 
 /*
@@ -31,7 +33,7 @@ socialImage {
 pageHeader {
     ${PAGE_HEADER_FIELDS}
 }
-contentCollection {
+contentCollection(limit:20) {
     items {
         __typename
         ... on SectionHeader {
@@ -52,7 +54,12 @@ contentCollection {
         ... on QuoteBlock {
             ${QUOTE_BLOCK}
         }
-      
+        ... on ImageGallery {
+            ${IMAGE_GALLERY}
+        }
+        ... on TimelineSection {
+            ${TIMELINE_SECTION}
+        }
     }
 }
 `;

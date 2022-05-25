@@ -3,7 +3,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import  ContentBlock  from './ContentBlock';
-import careersImg1 from "../../../public/images/careers-presentation-img.png";
 
 export default {
   /* 👇 The title prop is optional.

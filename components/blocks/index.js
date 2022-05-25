@@ -8,25 +8,24 @@ import ContentBlockText from "./ContentBlockText/ContentBlockText";
 import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArticlesList";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
-import ReportContent from "./ReportContent/ReportContent";
-import ReportSection from "./ReportSection/ReportSection.tsx";
-import ReportSectionStacked from "./ReportSection/ReportSectionStacked.tsx"
-import ReportSections from "./ReportSection/ReportSections";
-import ReportShoutoutSection from "./ReportSection/ReportShoutoutSection";
-import ReportShoutoutColumns from "./ReportSection/ReportShoutoutColumns";
-import ReportIntroSection from "./ReportSection/ReportIntroSection";
-import ReportHeaderHero from "./PageHeaders/ReportHeader/ReportHeaderHero";
-import ReportHeaderTextOverlay from "./PageHeaders/ReportHeader/ReportHeaderTextOverlay";
-import ReportHeaderNavy from "./PageHeaders/ReportHeader/ReportHeaderNavy";
-import ReportSectionHeaderNavy from "./ReportSection/ReportHeaderSectionNavy";
-import ReportSectionContentFull from "./ReportSection/ReportSectionContentFull";
-import ReportSideMenu from "./ReportSideMenu/ReportSideMenu";
-import { ResourceGroups } from "./ResourceGroupBlock/ResourceGroups";
-import ResponsiveContainer from "./ResponsiveContainer/ResponsiveContainer";
-import { PercentBarChart } from "./Chart/PercentBarChart";
-import { PercentSquareChart } from "./Chart/PercentSquareChart";
-import { PercentSquareChartFixed } from "./Chart/PercentSquareChartFixed";
-import { FilterControl } from "./Chart/FilterControl";
+import ReportContent from "./ReportBody/ReportContent/ReportContent";
+import ReportSection from "./ReportBody/ReportSection/ReportSection.tsx";
+import ReportSectionStacked from "./ReportBody/ReportSection/ReportSectionStacked.tsx"
+import ReportSections from "./ReportBody/ReportSection/ReportSections";
+import ReportShoutoutSection from "./ReportBody/ReportSection/ReportShoutoutSection";
+import ReportShoutoutColumns from "./ReportBody/ReportSection/ReportShoutoutColumns";
+import ReportIntroSection from "./ReportBody/ReportSection/ReportIntroSection";
+import ReportHeaderHero from "./ReportHeader/ReportHeaderHero";
+import ReportHeaderTextOverlay from "./ReportHeader/ReportHeaderTextOverlay";
+import ReportHeaderNavy from "./ReportHeader/ReportHeaderNavy";
+import ReportSectionHeaderNavy from "./ReportBody/ReportSection/ReportHeaderSectionNavy";
+import ReportSectionContentFull from "./ReportBody/ReportSection/ReportSectionContentFull";
+import ReportSideMenu from "./ReportBody/ReportSideMenu/ReportSideMenu";
+import { ResourceGroups } from "../custom_blocks/DEIResourceGroupBlock/ResourceGroups";
+import { PercentBarChart } from "../custom_blocks/DEICharts/PercentBarChart";
+import { PercentSquareChart } from "../custom_blocks/DEICharts/PercentSquareChart";
+import { PercentSquareChartFixed } from "../custom_blocks/DEICharts/PercentSquareChartFixed";
+import { FilterControl } from "../custom_blocks/DEICharts/FilterControl";
 export {
   SectionHeader,
   LeftRepeater,
@@ -51,7 +50,6 @@ export {
   ReportSideMenu,
   ReportSectionContentFull,
   ResourceGroups,
-  ResponsiveContainer,
   PercentBarChart,
   PercentSquareChart,
   PercentSquareChartFixed,
