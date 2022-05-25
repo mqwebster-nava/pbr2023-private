@@ -96,11 +96,9 @@ export function formatAuthorPage(slug, author){
     },
     contentBlocks: [
       {
-        __typename:"ContentBlock",
+        __typename:"AuthorBioBlock",
         id: `${slug}-bio`,
-        body:author.bio,
-        type: author.image ? "left repeater" : "default",
-        image: author.image ?? null
+        ...author
       },
       {
         __typename:"ContentBlockArticleList",
