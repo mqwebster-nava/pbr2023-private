@@ -73,17 +73,17 @@ export default function PostBody({
         "responsive-container py-2xl flex md:flex-row flex-col-reverse "
       }
     >
-      <div
+      <article
         id="article"
         className="w-full md:w-2/3 pr-lg text-gray-base font-serif"
       >
         {h2Sections.map((section) => (
-          <div id={section.title} ref={section.ref}>
+          <section id={section.title} ref={section.ref}>
             <PostContent docData={section.doc} docLinks={body.links} />
-          </div>
+          </section>
         ))}
         {<AuthorBios authors={authors}/>}
-      </div>
+      </article>
       {/* Article Sidebar Section  */}
       <div className={"w-full md:w-1/3 pt-md md:pl-xl"}>
         <ArticleInfoComponent
