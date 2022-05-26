@@ -13,7 +13,6 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   href,
   variant = "default",
-  ...rest
 }) => {
   const variantStyles = classNames({
     "text-sage-600 bg-white hover:bg-sage-100": variant == "white",
@@ -25,9 +24,9 @@ export const Button: React.FC<ButtonProps> = ({
   });
 
   return (
-    <div className={``} {...rest}>
-      <a
-        href={href}
+    <div>
+    <button 
+        onClick={()=> {location.href = href;}}
         type='button'
         className={
           `font-sans font-bold md:h-[70px]
@@ -39,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
           ${variantStyles}`}
       >
         {children}
-      </a>
-    </div>
+      </button>
+      </div>
   );
 };
