@@ -15,7 +15,7 @@ interface CTABlockInterface {
   image: ContentfulImageAsset;
   buttonText: string;
   buttonPath: string;
-  colorTheme: CTAColorTheme
+  colorTheme?: CTAColorTheme
 }
 
 
@@ -28,7 +28,6 @@ const CTABlock = ({
   buttonText,
   colorTheme="plum"
 }:CTABlockInterface) => {
-
   const bgColor= classNames({"bg-plum-50": colorTheme=="plum","bg-sage-50": colorTheme=="sage",})
   const headerColor= classNames({"text-plum-900": colorTheme=="plum","text-sage-900": colorTheme=="sage",})
   const subtitleColor= classNames({"text-plum-600": colorTheme=="plum","text-sage-600": colorTheme=="sage",})
@@ -38,7 +37,7 @@ const CTABlock = ({
 
   return (
     <div className={` w-full ${bgColor}`}  key={id}>
-      <div className={`responsive-container flex items-center flex-row-reverse ${layout}`} >
+      <div className={`responsive-container flex justify-start items-center ${layout}`} >
       <div className="w-1/2 max-h-[500px] max-w-[500px]">
           <Image
             src={img}

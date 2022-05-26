@@ -6,9 +6,9 @@ sys {
 }
 title
 body
-type
 buttonText
 buttonPath
+colorTheme
 `;
 
 export default CTA_BLOCK;
