@@ -25,7 +25,7 @@ const ReportSectionContentFull = ({
   metrics = null,
 }) => {
   const backgroundClass = classNames({
-    "bg-sea-foam-base": background === "sea-foam",
+    "bg-sage-50": background === "sea-foam",
     "bg-navy-pbr-2020": background === "navy",
     "bg-white": background === "white",
   });
@@ -34,9 +34,12 @@ const ReportSectionContentFull = ({
     <div className={`${backgroundClass} py-2xl`}>
       {metrics && <ReportMetrics metrics={metrics} />}
       <div
-        className="pr-0 grid grid-cols-1 md:grid-cols-2"
+        className="responsive-container"
        
       >
+        <div className="w-full md:w-2/3">
+
+       
         {title && (
           <h2 id={titleId} className="type-preset-3 font-bold">
             {title}
@@ -52,6 +55,7 @@ const ReportSectionContentFull = ({
             <Button href={buttonLink}>{buttonText}</Button>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <>
       <NavaDigest />
-      <div className={"bg-navy-900 "}>
+      <div className={"bg-navy-900 relative z-4"}>
         <div className="responsive-container py-2xl">
           <div className=" font-sans flex flex-col sm:flex-row sm:gap-4xl pb-xl">
             <div className={"pt-md"}>
