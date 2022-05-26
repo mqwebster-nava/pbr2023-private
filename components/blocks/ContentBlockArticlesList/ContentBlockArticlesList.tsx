@@ -1,9 +1,8 @@
 import { getContentUrl } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
 import classNames from "classnames";
-import ContentGrid from "../ContentGrid/ContentGrid";
+import ContentGrid, { ListLayout } from "../ContentGrid/ContentGrid";
 
-type ListVariant = "feature" | "default";
 interface ArticleListInterface {
   id: string;
   title?: string;
@@ -13,7 +12,7 @@ interface ArticleListInterface {
   posts: any;
   cycleNum?: number;
   max?: number;
-  variant?: ListVariant;
+  layout?: ListLayout;
 }
 
 const ContentBlockArticleList = ({
@@ -25,11 +24,11 @@ const ContentBlockArticleList = ({
   buttonText,
   cycleNum = Math.floor(Math.random() * 4),
   max = 6,
-  variant = "feature",
+  layout = "feature",
 }: ArticleListInterface) => {
   const GridStyle = classNames({
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (variant = "default"),
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (variant = "feature"),
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (layout= "default"),
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (layout= "feature"),
   });
 
   posts = posts.filter((post) => post != null);
@@ -63,7 +62,7 @@ const ContentBlockArticleList = ({
         id={"id"}
         items={posts}
         contentType={"posts"}
-        variant={variant}
+        layout={layout}
         cycleNum={cycleNum}
       />
      

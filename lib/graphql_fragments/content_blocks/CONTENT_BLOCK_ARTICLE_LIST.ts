@@ -1,3 +1,4 @@
+import CONTENT_CARD from "../cards/CONTENT_CARD";
 import { POST_CORE_FIELDS } from "../POST_FIELDS";
 
 
@@ -9,7 +10,13 @@ title
 body
 postsCollection(limit:10) {
     items{
-        ${POST_CORE_FIELDS}
+        __typename
+        ... on Post {
+            ${POST_CORE_FIELDS}
+        }
+        ... on ContentCard {
+            ${CONTENT_CARD}
+        }
     }
 }
 `;

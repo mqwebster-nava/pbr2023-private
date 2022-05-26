@@ -1,8 +1,8 @@
-
+import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 interface FeatureCardInterface {
     id?: string;
-    icon?: string; // TODO what to do with the icon selection (?),
+    icon?: ContentfulImageAsset; // TODO what to do with the icon selection (?),
     title: string;
     body: string;
 }

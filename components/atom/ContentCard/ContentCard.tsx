@@ -17,46 +17,36 @@ type CardSize = "half" |"quarter" | "full" | "third";
 export interface ContentCardInterface {
   title: string;
   path: string;
-  type: string;
+  summary?: any;
   kicker?:string;
   size?:CardSize
-  promoImage?: ContentfulImageAsset;
+  image?: ContentfulImageAsset;
   cycleNum?: number;
 }
 
-const ContentCard: React.FC<ContentCardInterface> = (props) => {
+const ContentCard = (props: ContentCardInterface) => {
   if (props.size=="full") return <HighlightedCard {...props} />;
   //if (props.type === "Toolkit") return <LargeTextCard {...props} />;
   return <DefaultContentCard {...props} />;
 };
 
-const DefaultContentCard: React.FC<ContentCardInterface> = ({
+const DefaultContentCard  = ({
   title,
   path,
-  promoImage = null,
-  type,
+  image = null,
   cycleNum = Math.floor(Math.random() * 4),
-  children,
+  summary,
   size = "quarter",
   kicker
-}) => {
+}: ContentCardInterface) => {
 
   cycleNum = cycleNum % 3;
-  let colors = ["purple", "plum", "gold"];
   let color = "navy"
-  //colors[cycleNum];
-  // const backgroundColor = classNames({
-  //   "bg-purple-800": cycleNum % 3 == 0,
-  //   "bg-plum-400": cycleNum % 3 == 1,
-  //   "bg-gold-800": cycleNum % 3 == 2,
-  // });
   const backgroundColor = "bg-navy-700";
-
 
   const titleSize = classNames({
     "type-preset-6": size=="quarter" ||size=="third",
     "type-preset-4":  size=="half",
-   
   });
   const pattern =
     cycleNum % 3 == 0
@@ -71,7 +61,7 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
       width={16}
       height={9}
       className={`${backgroundColor} object-cover w-full `}
-      src={promoImage ? promoImage.url : pattern}
+      src={image ? image.url : pattern}
       alt=""
     ></Image>)
   }
@@ -94,22 +84,11 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
     </div>)
   }
  
-  const ToolkitSquare = () => {
-    return ( <div
-      className={`bg-sage-200 aspect-[16/9] flex flex-col`}
-    >
-      
-    </div>)
-  }
- 
-
 
   return (
     <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full ">
-    
       <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
-     
-        {promoImage? <ImageSquare/> : type==="Toolkit"? <ToolkitSquare/>: <PatternSquare/>}
+        {image? <ImageSquare/> : <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
       {kicker && <div className="uppercase type-preset-8">{kicker}</div>}
@@ -117,13 +96,22 @@ const DefaultContentCard: React.FC<ContentCardInterface> = ({
           {title}
         </h5>
         <p className="type-preset-6 font-sans text-gray-700 dark:text-gray-400">
-          {children}
+          {summary}
         </p>
       </div>
     </a>
   );
 };
 
-
-
 export default ContentCard;
+
+
+  // const ToolkitSquare = () => {
+  //   return ( <div
+  //     className={`bg-sage-200 aspect-[16/9] flex flex-col`}
+  //   >
+      
+  //   </div>)
+  // }
+ 
+
