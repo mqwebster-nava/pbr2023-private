@@ -4,6 +4,7 @@ import { MarkdownComponent } from "utils/utils";
 import ill from "public/images/Illustrations-for-website-V019 1.png";
 import Image from "next/image";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import classNames from "classnames";
 
 
 type ImageGalleryColorTheme = "default"|"navy";
@@ -20,9 +21,14 @@ const ImageGalleryBlock  = ({
   image,
   colorTheme="default",
 }:ImageGalleryInterface) => {
+
+  const bgColor= classNames({
+    "bg-navy-900": colorTheme=="navy",
+  })
+
   return (
-    <div className=" w-full" key={id}>
-      <div className="responsive-container w-full">
+    <div className={`w-full ${bgColor}`} key={id}>
+      <div className="responsive-container w-full py-3xl">
           <Image
             className=""
             src={image.url}
