@@ -6,6 +6,8 @@ sys {
 }
 title
 subtitle
-variant
+colorTheme
+buttonPath
+buttonText
 `;
 export default SECTION_HEADER_FIELDS;

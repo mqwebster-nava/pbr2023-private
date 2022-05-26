@@ -1,32 +1,43 @@
 import classNames from "classnames";
+import { Button } from "components/atom";
+import ColorTheme from "shared_interfaces/ColorThemes";
 import { MarkdownComponent } from "utils/utils";
 
 // TODO move as much to tailwind
 
-export type SectionColorVariant = "default" | "gold";
+
 export interface SectionHeaderInterface {
   title: string;
   id: string;
   subtitle?: string;
-  variant?: SectionColorVariant;
+  colorTheme?: ColorTheme;
+  buttonText?: string;
+  buttonPath?: string;
 }
 
-const SectionHeader: React.FC<SectionHeaderInterface> = ({
+const SectionHeader = ({
   id,
   title,
   subtitle,
-  children,
-  variant = "default",
-}) => {
+  colorTheme="default",
+  buttonText,
+  buttonPath
+}:SectionHeaderInterface) => {
   const bg = classNames({
-    "bg-gold-50": variant=="gold"
+    "bg-gold-50": colorTheme=="gold",
+    "bg-sage-100": colorTheme=="sage",
+    "bg-navy-900": colorTheme=="navy",
+  });
+  const textColor = classNames({
+    "text-navy-900": colorTheme!="navy",
+    "text-white": colorTheme=="navy",
   })
 
   const TitleBlock = () => {
     return (
       <div className="lg:w-3/4 w-full">
         <h1
-          className={`w-full font-sans text-navy-900 type-preset-2 font-black mt-xl mb-xl`}
+          className={`w-full font-sans ${textColor} type-preset-2 font-black mt-xl mb-xl`}
         >
           {title}
         </h1>
@@ -36,14 +47,14 @@ const SectionHeader: React.FC<SectionHeaderInterface> = ({
   const BodyBlock = () => {
     return (
       <div className={`flex`}>
-        <div className={`md:w-3/4 type-preset-3  font-serif text-navy-900`}>
+        <div className={`md:w-3/4 type-preset-3  font-serif ${textColor}`}>
           {<MarkdownComponent content={subtitle} />}
         </div>
       </div>
     );
   };
   const ColoredLine = () => {
-    return variant == "gold" ? (
+    return colorTheme == "gold" ? (
       <div className="flex mb-xl">
         <div className="bg-gold-900 h-[12px] w-[46px]"></div>
         <div className="bg-gold-700 h-[12px] w-[46px]"></div>
@@ -64,6 +75,7 @@ const SectionHeader: React.FC<SectionHeaderInterface> = ({
       <TitleBlock />
       <ColoredLine/>
       {subtitle && <BodyBlock />}
+      {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>
     </div>
   );
