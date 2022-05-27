@@ -1,13 +1,13 @@
 import classNames from "classnames";
+import ColorTheme from "shared_interfaces/ColorThemes";
 import { MarkdownComponent } from "utils/utils";
-import { SectionColorVariant } from "../SectionHeader/SectionHeader";
 
 interface ContentBlockInterface {
     id:string;
     title?: string;
     type?: string;
     body: any;
-    variant?: SectionColorVariant
+    variant?: ColorTheme
   }
   
 

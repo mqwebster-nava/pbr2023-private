@@ -5,7 +5,7 @@ import { ContentCardInterface } from "./ContentCard";
 const HighlightedCard: React.FC<ContentCardInterface> = ({
   title,
   path,
-  promoImage,
+  image,
   children,
 }) => {
   return (
@@ -17,7 +17,7 @@ const HighlightedCard: React.FC<ContentCardInterface> = ({
           <Image
             layout={"fill"}
             className={`object-cover h-full w-full `}
-            src={promoImage.url}
+            src={image.url}
           ></Image>
         </div>
         <div className="">
