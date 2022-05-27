@@ -12,7 +12,7 @@ class AnchorLink extends Component {
   }
   smoothScroll(e) {
     e.preventDefault()
-    let offset = () => 0
+    let offset = () => 20
     if (typeof this.props.offset !== 'undefined') {
       if (!!(this.props.offset && this.props.offset.constructor && this.props.offset.apply)) {
         offset = this.props.offset
