@@ -1,6 +1,7 @@
 
 
 
+import ContentGrid from "components/blocks/ContentGrid/ContentGrid";
 import dynamic from "next/dynamic";
 
 
@@ -37,7 +38,8 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ImageGallery": ()=> <ImageGalleryBlock {...entry}/>,
       "TimelineSection": () => <TimelineSection {...entry}/>,
       "PostBody":()=><PostBody {...entry}/>,
-      "AuthorBioBlock":()=><AuthorBioBlock {...entry}/>
+      "AuthorBioBlock":()=><AuthorBioBlock {...entry}/>,
+      "ContentGridFeatureCards": ()=><ContentGrid {...entry} layout={"default"}  contentType={"feature cards"}/>
     }
     return typename in componentMap ? componentMap[typename](entry) : <div></div>
   };

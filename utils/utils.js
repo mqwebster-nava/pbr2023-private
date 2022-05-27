@@ -37,11 +37,19 @@ export function liftData(data){
             ...data
         }
     }
+    // For Article Post List component
     if( "postsCollection" in data && "items" in data.postsCollection){
         newData = {
             ...newData,
             posts:data.postsCollection.items.map((item)=>liftData(item))
         }
+    }
+
+    if( "featureCardsCollection" in data && "items" in data.featureCardsCollection){
+      newData = {
+          ...newData,
+          items:data.featureCardsCollection.items.map((item)=>liftData(item))
+      }
     }
     return newData;
 }

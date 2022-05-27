@@ -3,6 +3,8 @@ import { ContentCard, LinkText } from "components/atom";
 import classNames from "classnames";
 import FeatureCard from "components/atom/FeatureCard/FeatureCard";
 import LeadershipBioCard from "components/atom/LeadershipBioCard/LeadershipBioCard";
+import ColorTheme from "shared_interfaces/ColorThemes";
+import { Title } from "@storybook/addon-docs/node_modules/@storybook/components";
 
 /*
 Content Grid sets up the layout and background color 
@@ -19,6 +21,7 @@ interface ContentGridInterface {
   layout?: ListLayout;
   contentType?: ContentType;
   cycleNum?: number;
+  colorTheme?: ColorTheme;
 }
 
 const ContentGrid = ({
@@ -26,8 +29,15 @@ const ContentGrid = ({
   items,
   layout = "feature",
   contentType,
+  colorTheme= "default",
   cycleNum = Math.floor(Math.random() * 4),
 }: ContentGridInterface) => {
+  const bg = classNames({
+    "bg-gold-50": colorTheme=="gold",
+    "bg-sage-100": colorTheme=="sage",
+    "bg-navy-900": colorTheme=="navy",
+  });
+
   const GridStyle = classNames({
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": layout == "default",
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": layout == "feature",
@@ -35,6 +45,7 @@ const ContentGrid = ({
 
   items = items.filter((item) => item != null);
   return (
+    <div className={`${bg}`}>
     <div className="responsive-container py-xl" key={id}>
       <div className={`w-full`}>
         <div className={`w-full ${GridStyle} gap-x-lg gap-y-xl my-2xl`}>
@@ -84,6 +95,7 @@ const ContentGrid = ({
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

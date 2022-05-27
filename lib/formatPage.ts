@@ -5,7 +5,6 @@ This returns the article as a list of sections, which can more easily be used wi
 intercept observer.
 */
 
-import { Title } from "@storybook/addon-docs";
 import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
 import { liftData } from "utils/utils";
@@ -18,7 +17,6 @@ const defaultSocialImage: ContentfulImageAsset = {
   description: 'A logo to act as a placeholder for the social image'
 }
 export {defaultSocialImage};
-
 export function formatPage(page){
     const formattedPage: PageInterface = {
         id: page.sys.id,
@@ -41,6 +39,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     pageHeader: {
       id: `${post.id}-header`,
       title:post.contentType ,
+      variant:"Post",
       subtitle:post.title,
       body:post.longSummary,
       image:  liftData(post.leadImage) ?? liftData(post.promoImage),
@@ -91,6 +90,7 @@ export function formatAuthorPage(slug, author){
     socialImage: defaultSocialImage,
     pageHeader: {
       id: `${slug}-header`,
+      variant:"Secondary",
       title: author.name,
       subtitle:author.role,
     },
@@ -122,6 +122,7 @@ export function formatTagsPage(slug, tagName, posts){
     description:`Posts related to ${tagName}`,
     pageHeader: {
       id: `${slug}-header`,
+      variant:"Secondary",
       title: tagName,
       subtitle: tagName,
     },

@@ -2,6 +2,7 @@
 import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_LIST";
 import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
 import CONTENT_BLOCK_TEXT from "./content_blocks/CONTENT_BLOCK_TEXT";
+import CONTENT_GRID_FEATURE_CARDS from "./content_blocks/CONTENT_GRID_FEATURE_CARDS";
 import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
 import IMAGE_GALLERY from "./content_blocks/IMAGE_GALLERY";
 import PAGE_HEADER_FIELDS from "./content_blocks/PAGE_HEADER_FIELDS";
@@ -59,6 +60,9 @@ contentCollection(limit:20) {
         }
         ... on TimelineSection {
             ${TIMELINE_SECTION}
+        }
+        ... on ContentGridFeatureCards {
+            ${CONTENT_GRID_FEATURE_CARDS}
         }
     }
 }
