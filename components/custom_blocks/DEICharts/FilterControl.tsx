@@ -23,7 +23,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
   filters,
   // descriptionKey,
   // graphData,
-  theme = "teal",
+  theme = "sage",
   checkboxValue = "",
   checkboxLabel = "",
   selectedFilter,
@@ -34,7 +34,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
   // multiKey,
 }) => {
   return (
-    <div className="responsive-container">
+    <>
       <p className="font-black type-preset-5">Filter by</p>
       <FilterButtonGroup
         filters={filters}
@@ -50,6 +50,6 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
         />
       )}
       {children}
-    </div>
+    </>
   );
 };

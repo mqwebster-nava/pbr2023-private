@@ -65,7 +65,7 @@ export default function DEI({ reportData }) {
     <main>
       <ReportHeaderNavy title={content.title} />
 
-      <section className="bg-sea-foam-base py-4xl">
+      <section className="bg-sage-50 py-4xl">
         <div className="responsive-container">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
             <div className="w-full">
@@ -82,7 +82,7 @@ export default function DEI({ reportData }) {
         </div>
       </section>
 
-      <section className="bg-sea-foam-light py-4xl">
+      <section className="bg-sage-50 py-4xl">
         <div className="responsive-container">
           <ReportContent content={content.overview} />
           <PercentBarChart
@@ -114,16 +114,16 @@ export default function DEI({ reportData }) {
           dataKey={genderKey}
           dataFilters={genderFilters}
           context={[gender.selfReported, gender.noAnswer]}
-          theme="orange"
+          theme="gold"
         />
         <PercentSquareChartFixed
           title={additionalIdentities.title}
           stats={additionalIdentities.statistics}
-          theme="blue"
+          theme="purple"
         />
       </section>
 
-      <section className="bg-sea-foam-base">
+      <section className="bg-sage-50">
         <div  className="responsive-container py-3xl">
           <ReportContent content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />

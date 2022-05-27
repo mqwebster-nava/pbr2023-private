@@ -10,11 +10,11 @@ export const PercentBarChart: React.FC<PercentBarChartInterface> = ({
   graphs,
 }) => {
   return (
-    <div className="responsive-container">
+    <>
       <p className="font-bold py-md">{description}</p>
       {graphs.map((graph, index) => (
         <PercentBarGraph key={`percent_bar_graph_${index}`} {...graph} />
       ))}
-    </div>
+    </>
   );
 };

@@ -2,6 +2,7 @@ import { ReportContent } from "../..";
 import { Details } from "../../../atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 
 
 export interface ReportShoutoutSectionInterface {
@@ -21,7 +22,8 @@ const ReportShoutoutSection: React.FC<ReportShoutoutSectionInterface> = ({
 }) => {
   const hasListOfNames = lists && lists.length > 0;
   return (
-    <section className="responsive-container-content py-2xl">
+    <section >
+      <ResponsiveContentContainer padding={"py-2xl"} alignment="center">
       <h2 className="type-preset-3 font-bold">{title}</h2>
       <div className="pb-xl">
         <ReportContent content={introduction} theme={theme} isGreenBG={false} />
@@ -37,6 +39,7 @@ const ReportShoutoutSection: React.FC<ReportShoutoutSectionInterface> = ({
           ))}
         </Details>
       )}
+      </ResponsiveContentContainer>
     </section>
   );
 };

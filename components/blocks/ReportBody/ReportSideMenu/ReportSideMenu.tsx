@@ -1,3 +1,5 @@
+import AnchorLink from "components/atom/AnchorLink/AnchorLink";
+import React from "react";
 
 const ReportSideMenu = ({ links, activeSection }) => {
   return (
@@ -6,13 +8,14 @@ const ReportSideMenu = ({ links, activeSection }) => {
         <span className="font-bold">On this page:</span>
         {links.map((link, index) => {
          return (
-          <li key={`report_side_menu_${index}`} className="pt-xl">
-            <a
+          <li key={`report_side_menu_${index}`} className={`pt-xl text-sage-dark hover:text-sage-base ${activeSection === link.id ? "font-bold" : ""}`}>
+            {/* <a
               className={`text-sage-dark hover:text-sage-base ${activeSection === link.id ? "font-bold" : ""}`}
               href={`#${link.id}`}
             >
               {link.text}
-            </a>
+            </a> */}
+            <AnchorLink href={`#${link.id}`}>{link.text}</AnchorLink>
           </li>
         )})}
       </ul>

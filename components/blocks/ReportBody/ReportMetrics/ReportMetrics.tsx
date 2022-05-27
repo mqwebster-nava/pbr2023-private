@@ -7,7 +7,7 @@ export const ReportMetrics = ({ metrics }) => {
         {metrics.map((metric, index) => (
           <div
             key={`metric_${index}`}
-            className="text-white p-2 mb-2 md:mr-2 bg-sage-pbr-2020-light border-t-[10px] border-sage-pbr"
+            className="text-white p-2 mb-2 md:mr-2 bg-sage-700 border-t-[10px] border-sage-900"
           >
             <p className="pb-md type-preset-3 font-thin ">{metric.number}</p>
             <p className="font-light type-preset-6">{metric.description}</p>

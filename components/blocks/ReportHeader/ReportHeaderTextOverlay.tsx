@@ -6,7 +6,7 @@ const ReportHeaderTextOverlay = ({
   pdfLink,
 }) => {
   return (
-    <section className="flex items-center justify-center bg-navy-pbr-2018">
+    <section className="flex items-center justify-center bg-navy-500">
       <div className="absolute text-center text-white z-10">
         <h1 className=" type-preset-4 font-bold py-lg">{reportTheme}</h1>
         <h2 className="type-preset-5 py-lg">{title}</h2>

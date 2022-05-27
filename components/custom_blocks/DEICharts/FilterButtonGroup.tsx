@@ -1,4 +1,5 @@
-import { FilterButton } from "components/atom";
+
+import { FilterButton } from "./FilterButton/FilterButton";
 import { FilterInterface } from "./FilterControl";
 
 interface FilterButtonGroupInterface {

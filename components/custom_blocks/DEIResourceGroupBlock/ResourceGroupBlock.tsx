@@ -5,19 +5,19 @@ export interface ResourceGroupBlockInterface {
 
 const color = {
   earthtones: {
-    title: "text-brown-base",
-    bg: "bg-gradient-to-r from-brown-dark via-brown-light to-brown-lightest",
+    title: "text-dei-brown-base",
+    bg: "bg-gradient-to-r from-dei-brown-dark via-dei-brown-light to-dei-brown-lightest",
   },
   "Gender equity": {
-    title: "text-green-base",
-    bg: "bg-gradient-to-r from-green-base to-green-base",
+    title: "text-dei-green-base",
+    bg: "bg-gradient-to-r from-dei-green-base to-dei-green-base",
   },
   Juntos: {
-    title: "text-pink-base",
-    bg: "bg-gradient-to-r from-blue-lightest via-pink-light to-green-light",
+    title: "text-dei-pink-base",
+    bg: "bg-gradient-to-r from-dei-blue-lightest via-dei-pink-light to-dei-green-light",
   },
   Kaleidoscope: {
-    title: "text-blue-dark",
+    title: "text-dei-blue-dark",
     bg: "rainbow-gradient",
   },
 };

@@ -13,14 +13,14 @@ interface PercentSquareGraphInterface {
 
 const colors = {
   innerColor: {
-    teal: "bg-sage-pbr-2020",
-    orange: "bg-orange-dark",
-    blue: "bg-blue-dark",
+    sage: "bg-sage-400",
+    gold: "bg-gold-900",
+    purple: "bg-purple-900",
   },
   backgroundColor: {
-    teal: "bg-sea-foam-base",
-    orange: "bg-orange-light",
-    blue: "bg-blue-light",
+    sage: "bg-sage-50",
+    gold: "bg-gold-50",
+    purple: "bg-purple-50",
   },
 };
 
@@ -38,7 +38,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   multiPercent = null,
   description,
   category = "",
-  theme = "teal",
+  theme = "sage",
   showTooltip = true,
   fixed = false,
 }) => {

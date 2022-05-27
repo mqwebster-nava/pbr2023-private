@@ -26,7 +26,7 @@ const ReportSectionContentFull = ({
 }) => {
   const backgroundClass = classNames({
     "bg-sage-50": background === "sea-foam",
-    "bg-navy-pbr-2020": background === "navy",
+    "bg-navy-800": background === "navy",
     "bg-white": background === "white",
   });
 
@@ -48,7 +48,7 @@ const ReportSectionContentFull = ({
         <ReportContent
           content={body}
           headerSize="large"
-          headerColor={{ h3: "text-sage-pbr-2020-light" }}
+          headerColor={{ h3: "text-sage-800" }}
         />
         {buttonText && buttonLink && (
           <div className="py-md">
