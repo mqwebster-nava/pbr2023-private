@@ -9,5 +9,4 @@ import { Signatures } from "../blocks/ReportBody/Signatures/Signatures"
 import { TealBar } from "../blocks/ReportHeader/TealBar/TealBar";
 import { PercentSquareGraph } from "../custom_blocks/DEICharts/Graph/PercentSquareGraph";
 import { PercentBarGraph } from "../custom_blocks/DEICharts/Graph/PercentBarGraph";
-import { FilterButton } from "./FilterButton/FilterButton";
-export { CheckBox, ContentCard, BlockQuote, Button, Details, FilterButton, LinkText, TealBar, PercentBarGraph, PercentSquareGraph, PullQuote, Signatures };
+export { CheckBox, ContentCard, BlockQuote, Button, Details,  LinkText, TealBar, PercentBarGraph, PercentSquareGraph, PullQuote, Signatures };
