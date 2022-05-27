@@ -1,5 +1,3 @@
-
-
 module.exports = {
   content: [
     "./pages/**/*.{js,jsx,ts,tsx}",
@@ -8,13 +6,12 @@ module.exports = {
   ],
   plugins: [],
   theme: {
-    
     extend: {
       listStyleType: {
-        dash: 'square',
+        dash: "square",
       },
       blur: {
-        xs: '2px',
+        xs: "2px",
       },
       fontFamily: {
         sans: ["GTAmerica", "sans-serif"],
@@ -26,20 +23,19 @@ module.exports = {
         sm: ["14px", "20.2px"], // 0.8
         base: ["18px", "25.2px"], // 1rem
         lg: ["22px", "33px"], //1.25rem
-        xl: ["24px","32px"],//["24px", "39.2px"], //1.5rem
-        "2xl": "28px",//["px", "47.6px"],
-        "3xl": "32px",//["32px", "61.6px"],
+        xl: ["24px", "32px"], //["24px", "39.2px"], //1.5rem
+        "2xl": "28px", //["px", "47.6px"],
+        "3xl": "32px", //["32px", "61.6px"],
         "4xl": ["38px", "47.6px"],
-        "5xl": ["44px", "55px"],// ["44px", "67.5px"],
-        "6xl": ["54px","66px"]//["54px", "67.5px"],
+        "5xl": ["44px", "55px"], // ["44px", "67.5px"],
+        "6xl": ["54px", "66px"], //["54px", "67.5px"],
       },
       screens: {
-        sm: "540px",// => @media (min-width: 540px) { ... }
+        sm: "540px", // => @media (min-width: 540px) { ... }
         md: "768px",
-        "2xl": "1440px" // => @media (min-width: 1440px) { ... }
+        "2xl": "1440px", // => @media (min-width: 1440px) { ... }
       },
       colors: {
-       
         purple: {
           50: "#f5e4f0",
           lightest: "#F5E4F0",
@@ -56,7 +52,7 @@ module.exports = {
           900: "#471385",
           dark: "#471385",
         },
-        
+
         plum: {
           light: "#CE8EC1",
           50: "#f5e4f0",
@@ -72,7 +68,7 @@ module.exports = {
           900: "#5b0462",
           dark: "#5B0462",
         },
-        
+
         gold: {
           light: "#F6E451",
           base: "#F8B712",
@@ -88,7 +84,7 @@ module.exports = {
           900: "#f37100",
           dark: "#F37100",
         },
-        
+
         navy: {
           dark: "#0A0539",
           base: "#282E6C",
@@ -103,9 +99,6 @@ module.exports = {
           700: "#1b205a",
           800: "#14184e",
           900: "#0a0539",
-          "pbr-2018": "#082e4c",
-          "pbr-2020": "#001045",
-          "dei": "#041638"
         },
         sage: {
           dark: "#004C31",
@@ -121,15 +114,11 @@ module.exports = {
           700: "#107859",
           800: "#08684b",
           900: "#004c31",
-          "pbr": "#005753",
-          "pbr-2020": "#01AEA7",
-          "pbr-2020-light": "#00847f",
-          "dei": "#019892"
         },
 
         gray: {
           // base: "#3D4551",
-          base:"#333333",
+          base: "#333333",
           50: "#f9fafb",
           100: "#f3f4f6",
           200: "#e5e7eb",
@@ -141,47 +130,46 @@ module.exports = {
           800: "#1f2937",
           900: "#111827",
         },
-
-        pink: {
-          base: "#C4148A",
-          light: "#E01A9F"
+        dei: {
+          pink: {
+            base: "#C4148A",
+            light: "#E01A9F",
+          },
+          orange: {
+            light: "#F4F3F2",
+            dark: "#CE7205",
+            darkest: "#ff8c00",
+          },
+          blue: {
+            lightest: "#4FB9F3",
+            light: "#E7F3FA",
+            dark: "#0386CF",
+            darker: "#c75a00",
+          },
+          brown: {
+            base: "#966023",
+            lightest: "#D4BEA5",
+            light: "#B4650D",
+            dark: "#442502",
+          },
+          green: {
+            base: "#259B62",
+            light: "#25F15E",
+          },
         },
-        orange: {
-          light: "#F4F3F2",
-          dark: "#CE7205",
-          darkest: "#ff8c00"
-        },
-        blue: {
-          lightest: "#4FB9F3",
-          light: "#E7F3FA",
-          dark: "#0386CF",
-          darker: "#c75a00"
-        },
-        brown: {
-          base: "#966023",
-          lightest: "#D4BEA5",
-          light: "#B4650D",
-          dark: "#442502",
-        },
-       
-        green: {
-          base: "#259B62",
-          light: "#25F15E"
-        },
-        "sea-foam": {
-          "light": "#e7f9f8",
-          "base": "#d9ecec"
-        },
-       
-        ecru: {
-          "pbr-2019": "#F3EDE1"
+        pbr: {
+          ecru: {
+            "base": "#F3EDE1",
+          },
         }
+        
       },
+
       height: {
         128: "32rem",
       },
       spacing: {
-        xs:"4px",
+        xs: "4px",
         sm: "8px",
         md: "12px",
         lg: "18px",

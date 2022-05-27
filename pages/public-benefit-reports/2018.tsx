@@ -65,7 +65,7 @@ export default function PBR2018(props:PageInterface ) {
 
   const theme = {
     sage: {
-      background: "bg-sea-foam-base",
+      background: "bg-sage-50",
       text: "text-sage-pbr",
     },
     default: {
