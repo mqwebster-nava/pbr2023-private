@@ -493,7 +493,7 @@ export default function DesignSystem(props: PageInterface) {
         <div>
           <h3 className="font-sans pb-sm pt-lg">Content Card</h3>
           <div className="flex gap-4">
-            <ContentCard type={"Insight"} title={"Content Card"} path={"/"}>
+            {/* <ContentCard type={"Insight"} title={"Content Card"} path={"/"}>
               Example description for a content card
             </ContentCard>
             <ContentCard
@@ -506,7 +506,7 @@ export default function DesignSystem(props: PageInterface) {
               }}
             >
               Example description for a content card
-            </ContentCard>
+            </ContentCard> */}
           </div>
         </div>
 
