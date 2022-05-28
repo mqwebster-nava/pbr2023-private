@@ -4,9 +4,9 @@ import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
 
 interface ArticleInfoComponentProps{
-    date: String;
+    date: string;
     authors: Array<AuthorPostInterface>;
-    contentTags: Array<String>;
+    contentTags: Array<string>;
 
 }
 
@@ -27,7 +27,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
               <div>
                 <h3 className="font-bold">Authors</h3>
                 {authors.map((author)=>(
-                <div id={author.name} className="pb-md ">
+                <div id={author.name} className="pb-md " key={author.name}>
                   <p>
                     <LinkText href={`/authors/${author.slug}`} variant={"underlined"}>{author.name}</LinkText></p>
                   <p className="type-preset-7">{author.role}</p>
@@ -39,7 +39,7 @@ const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentP
               <h3 className="font-bold">Tags</h3>
               {contentTags && contentTags.map((tag)=>{
                 return (
-                  <p id={`${tag}`}>
+                  <p id={`${tag}`} key={tag}>
                     <LinkText  href={`/tags/${slugify(tag)}`} variant={"underlined"}>{tag}</LinkText>
                   </p>
                 )})}

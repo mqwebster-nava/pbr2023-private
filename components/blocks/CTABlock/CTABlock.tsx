@@ -36,7 +36,7 @@ const CTABlock = ({
   const img = colorTheme=="plum"?plumIll:sageIll;
 
   return (
-    <div className={` w-full ${bgColor}`}  key={id}>
+    <section className={` w-full ${bgColor}`}  key={id}>
       <div className={`responsive-container flex justify-start items-center ${layout}`} >
       <div className="w-1/2 max-h-[500px] max-w-[500px]">
           <Image
@@ -44,6 +44,7 @@ const CTABlock = ({
             layout="responsive"
             height={500}
             width={500}
+            alt="Illustration" // TODO add alt image names for the illustrations
           ></Image>
         </div>
         <div className={`w-full lg:w-1/2 px-lg py-lg`}>
@@ -57,7 +58,7 @@ const CTABlock = ({
         </div>
         
       </div>
-    </div>
+    </section>
   );
 };
 

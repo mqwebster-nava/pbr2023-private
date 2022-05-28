@@ -19,7 +19,7 @@ const defaultIllustration: ContentfulImageAsset = {
     width: ill.height,
     height: ill.height,
     title: 'Purple Nava Logo',
-    description: 'A logo to act as a placeholder for the social image'
+    description: 'A logo to act as a placeholder for the social image' // TODO create good descriptions
 }
 
 const defaultPattern: ContentfulImageAsset = {
@@ -35,13 +35,14 @@ const defaultPattern: ContentfulImageAsset = {
 const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern}:ImagePatternBlockInterface) =>{
     return  (
         <div className=" relative responsive-container  aspect-video -mb-[50px] xl:mb-0">
-            <div className="bg-purple-900 -mt-[3px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
+            <div className="bg-plum-900 -mt-[3px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
           <Image
             className="w-full object-cover "
             src={image.url}
             width={16}
             height={9}
             layout="responsive"
+            alt={image.description}
           ></Image>
            <div className="w-1/3 h-full absolute z-10 top-0 ">
            <Image
@@ -50,6 +51,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             width={4}
             height={4}
             layout="responsive"
+            alt={pattern.description??""}
           ></Image>
           </div>
         

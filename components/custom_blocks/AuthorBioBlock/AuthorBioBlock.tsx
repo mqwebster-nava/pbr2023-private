@@ -20,6 +20,7 @@ const AuthorBioBlock = ({bio, image, slug }:AuthorPostInterface) => {
                 width={350}
                 layout={"responsive"}
                 objectFit="cover"
+                alt={image.description}
             />
             }
             </div>

@@ -11,7 +11,7 @@ const Footer = () => {
   let currentYear =  new Date().getFullYear();
 
   return (
-    <>
+    <footer>
       <NavaDigest />
       <div className={"bg-navy-900 relative z-4"}>
         <div className="responsive-container py-2xl">
@@ -19,10 +19,11 @@ const Footer = () => {
             <div className={"pt-md"}>
               <Image
                 src={logo}
-                alt="Nava"
+                alt="Nava Logo"
                 height={109}
                 width={65}
                 className=""
+                
               />
             </div>
             <div className="type-preset-5 text-white flex-1">
@@ -31,10 +32,12 @@ const Footer = () => {
               the goals we set for it.
             </div>
           </div>
-          <div className="flex flex-wrap text-white  my-xl ">
-           {NavData.map((data)=><FooterSiteSection navDataSection={data}/>)}
+          <nav aria-label={"secondary"} className="flex flex-wrap text-white  my-xl ">
+           {NavData.map((data)=>
+           <FooterSiteSection  key={data.title} navDataSection={data}/>
+           )}
           
-          </div>
+          </nav>
         </div>
         <div className="bg-navy-600 py-xl">
           <div
@@ -51,7 +54,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 export default Footer;

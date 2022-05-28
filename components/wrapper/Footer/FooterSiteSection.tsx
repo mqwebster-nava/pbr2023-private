@@ -1,5 +1,5 @@
 const FooterSiteSection = ({ navDataSection }) => navDataSection.subpages?(
-    <div className="w-1/2 md:w-1/5 font-sans p-sm">
+    <div className="w-1/2 md:w-1/5 font-sans p-sm" key={navDataSection.title}>
       <h4 className="font-bold">{navDataSection.title}</h4>
       {navDataSection.subpages.map((subpage) => (
         <a
@@ -11,14 +11,14 @@ const FooterSiteSection = ({ navDataSection }) => navDataSection.subpages?(
         </a>
       ))}
     </div>
-  ): (<div className="w-1/2 md:w-1/5 font-sans p-sm">
+  ): (<div className="w-1/2 md:w-1/5 font-sans p-sm" key={navDataSection.title}>
   <a
     className="block hover:underline font-bold"
-    key={navDataSection.title}
     href={`${navDataSection.slug}`}
   >
     {navDataSection.title}
   </a>
-  </div>);
+  </div>
+  );
 
   export default FooterSiteSection;

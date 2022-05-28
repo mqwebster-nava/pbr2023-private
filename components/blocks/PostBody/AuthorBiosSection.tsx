@@ -14,14 +14,14 @@ const AuthorBios = ({authors}:AuthorBioInterface) => {
         <h5 className="font-bold type-preset-6">Written By</h5>
         <hr />
         {authors.map((author) => ( 
-        <div className="grid grid-cols-9 w-full font-sans type-preset-7 py-md">
+        <div className="grid grid-cols-9 w-full font-sans type-preset-7 py-md" key={author.name}>
             <div className="col-span-2 sm:col-span-1" >
             <Image
               src={author.image? author.image.url : AuthorFiller}
               className="object-cover"
               height={65}
               width={65}
-              alt=""
+              alt={author.image? author.image.description : "Nava Logo"} //TODO create alt text for nava logo
               />
             </div>
             <div className="sm:pl-md col-span-6 sm:col-span-3">

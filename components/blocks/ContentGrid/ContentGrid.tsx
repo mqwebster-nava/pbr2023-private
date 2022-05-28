@@ -22,6 +22,7 @@ interface ContentGridInterface {
   contentType?: ContentType;
   cycleNum?: number;
   colorTheme?: ColorTheme;
+  padding?:string;
 }
 
 const ContentGrid = ({
@@ -30,6 +31,7 @@ const ContentGrid = ({
   layout = "feature",
   contentType,
   colorTheme= "default",
+  padding="",
   cycleNum = Math.floor(Math.random() * 4),
 }: ContentGridInterface) => {
   const bg = classNames({
@@ -45,8 +47,8 @@ const ContentGrid = ({
 
   items = items.filter((item) => item != null);
   return (
-    <div className={`${bg}`}>
-    <div className="responsive-container py-xl" key={id}>
+    <section className={`${bg}`} key={id}>
+    <div className={`responsive-container ${padding}`} key={id}>
       <div className={`w-full`}>
         <div className={`w-full ${GridStyle} gap-x-lg gap-y-xl my-2xl`}>
           {items.map((item, i) => {
@@ -95,7 +97,7 @@ const ContentGrid = ({
         </div>
       </div>
     </div>
-  </div>
+  </section>
   );
 };
 

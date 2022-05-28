@@ -19,10 +19,10 @@ const QuoteBlock = ({
 }:QuoteBlockInterface) => {
   const baseColor = color ? color : "gold";
   return (
-    <div className={`bg-gold-700`} key={id}>
+    <q className={`bg-gold-700`} key={id}>
       <div className="responsive-container py-4xl flex flex-wrap">
       <div className={`w-full lg:w-1/6`}>
-         <Image src={QuotePattern} layout={"fixed"}></Image>
+         <Image src={QuotePattern} layout={"fixed"} alt="quotation marks"></Image>
        </div>
         <div className={`w-full lg:w-5/6 flex`}>
           <div className="pr-md">
@@ -37,7 +37,7 @@ const QuoteBlock = ({
           </div>
         </div>
       </div>
-    </div>
+    </q>
   );
 };
 

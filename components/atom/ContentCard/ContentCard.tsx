@@ -62,7 +62,7 @@ const DefaultContentCard  = ({
       height={9}
       className={`${backgroundColor} object-cover w-full `}
       src={image ? image.url : pattern}
-      alt=""
+      alt={image.description}
     ></Image>)
   }
   const PatternSquare = () => {
@@ -71,14 +71,14 @@ const DefaultContentCard  = ({
     >
       <div className={`bg-${color}-900 h-1/3 w-full flex justify-end`}>
         <div className=" h-full aspect-[1/1]">
-          <Image src={brandDirectional}/>
+          <Image src={brandDirectional} alt=""/>
         </div>
-        <div className={`bg-${color}-500 h-full aspect-[1/1]`}> <Image src={brandTerrain1}/></div>
+        <div className={`bg-${color}-500 h-full aspect-[1/1]`}> <Image src={brandTerrain1} alt=""/></div>
         <div className={`bg-${color}-200 h-full aspect-[1/1]`}></div>
       </div>
       <div className="flex h-2/3 justify-end">
         <div className={"h-full aspect-[1/1]"}>
-         <Image src={brandDirectional} className="object-cover"/>
+         <Image src={brandDirectional} className="object-cover" alt=""/>
          </div>
       </div>
     </div>)
@@ -95,7 +95,7 @@ const DefaultContentCard  = ({
         <h5 className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
           {title}
         </h5>
-        <p className="type-preset-6 font-sans text-gray-700 dark:text-gray-400">
+        <p className="type-preset-6 font-sans text-gray-700 ">
           {summary}
         </p>
       </div>

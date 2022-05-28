@@ -25,30 +25,31 @@ const PageTemplate: React.FC<PageInterface> = ({
   children,
 }) => {
 
-  const getComponent = (entry: any) => {
+  const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
-      "SectionHeader": (entry)=>(<SectionHeader {...entry}/>),
-      "SectionContentBlockText": ()=> <ContentBlockText {...entry}/>,
-      "SectionCtaBlock": ()=> <CTABlock {...entry}/>,
-      "ContentBlock": ()=> <ContentBlock {...entry} />,
-      "ContentBlockLinkToPage": ()=> <ContentBlock {...entry} />,
-      "QuoteBlock": ()=> <QuoteBlock {...entry}/>,
-      "ContentBlockArticleList": ()=>  <ContentBlockArticleList {...entry} />,
-      "ImageGallery": ()=> <ImageGalleryBlock {...entry}/>,
-      "TimelineSection": () => <TimelineSection {...entry}/>,
-      "PostBody":()=><PostBody {...entry}/>,
-      "AuthorBioBlock":()=><AuthorBioBlock {...entry}/>,
-      "ContentGridFeatureCards": ()=><ContentGrid {...entry} layout={"default"}  contentType={"feature cards"}/>
+      "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry}/>),
+      "SectionContentBlockText": ()=> <ContentBlockText key={index} {...entry}/>,
+      "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
+      "ContentBlock": ()=> <ContentBlock key={index} {...entry} />,
+      "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} />,
+      "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
+      "ContentBlockArticleList": ()=>  <ContentBlockArticleList key={index} {...entry} />,
+      "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry}/>,
+      "TimelineSection": () => <TimelineSection key={index} {...entry}/>,
+      "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
+      "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
+      "ContentGridFeatureCards": ()=><ContentGrid key={index} {...entry} layout={"default"}  padding="py-2xl" contentType={"feature cards"}/>
     }
     return typename in componentMap ? componentMap[typename](entry) : <div></div>
   };
   return (
-    <>
+    <main>
       <PageHeader {...pageHeader}/>
-      {contentBlocks.map((block) => getComponent(block))}
+      {contentBlocks.map((block,i) =>  getComponent(block,i))
+      }
       {children}
-    </>
+    </main>
   );
 };
 

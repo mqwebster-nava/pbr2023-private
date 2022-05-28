@@ -79,7 +79,7 @@ export default function PostBody({
         className="w-full md:w-2/3 pr-lg text-gray-base font-serif"
       >
         {h2Sections.map((section) => (
-          <section id={section.title} ref={section.ref}>
+          <section id={section.title} ref={section.ref} key={section.title}>
             <PostContent docData={section.doc} docLinks={body.links} />
           </section>
         ))}

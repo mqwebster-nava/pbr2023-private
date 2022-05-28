@@ -17,7 +17,7 @@ const LeadershipBioCard = ({
   return (
     <a className={""} href={`/authors/${slug}`}>
       <div>
-        <Image src={image.url}></Image>
+        <Image src={image.url} alt={image.description}></Image>
       </div>
 
       <div>

@@ -19,6 +19,7 @@ const formatImageAsset = (imgData) => {
   const formatPosts = (posts) =>{
     return posts.map((post)=>{
       const newPost: BasicPostInterface = {
+        __typename:"Post",
         id: post.sys.id,
         contentTags:post.contentTags,
         slug: post.slug,
@@ -37,6 +38,7 @@ const formatImageAsset = (imgData) => {
   const formatFullPost = (post) =>{
    
     const formattedPost: FullPostInterface = {
+      __typename:"Post",
       id: post.sys.id,
       slug: post.slug,
       title: post.title,

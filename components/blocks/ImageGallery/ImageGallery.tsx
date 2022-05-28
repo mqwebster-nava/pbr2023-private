@@ -35,6 +35,7 @@ const ImageGalleryBlock  = ({
             layout="responsive"
             height={image.height}
             width={image.width}
+            alt={image.description}
           ></Image>
       </div>
     </div>

@@ -30,11 +30,10 @@ const ContentBlockArticleList = ({
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (layout= "default"),
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (layout= "feature"),
   });
-
   posts = posts.filter((post) => post != null);
   return (
-    <>
-      <div className="responsive-container py-xl" key={id}>
+    <section key={id}>
+      <div className="responsive-container pt-xl" key={id}>
         <div className={`w-full border-t-2 pt-md flex justify-between`}>
           <div>
             {title && (
@@ -42,7 +41,7 @@ const ContentBlockArticleList = ({
             )}
             {body && (
               <p
-                className={`font-sans pt-lg type-preset-5 text-gray-600 mb-sm`}
+                className={`font-sans pt-lg type-preset-5 text-gray-700 mb-sm`}
               >
                 {body}
               </p>
@@ -66,7 +65,7 @@ const ContentBlockArticleList = ({
         cycleNum={cycleNum}
       />
      
-    </>
+    </section>
   );
 };
 

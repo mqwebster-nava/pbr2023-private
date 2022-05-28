@@ -18,6 +18,7 @@ const HighlightedCard: React.FC<ContentCardInterface> = ({
             layout={"fill"}
             className={`object-cover h-full w-full `}
             src={image.url}
+            alt={image.description}
           ></Image>
         </div>
         <div className="">

@@ -13,7 +13,7 @@ const NavaDigest = () => {
     <div className="pt-3xl relative">
       
     <div className="responsive-container z-10 relative">
-      <div className="bg-sage-400 font-sans  pt-2xl ">
+      <div className="bg-sage-700 font-sans  pt-2xl ">
       <div className="font-sans text-white px-2xl">
         <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
           <div className="w-full md:w-1/2 ">
@@ -51,9 +51,10 @@ const NavaDigest = () => {
                   />
                 </div>
               </div>
-              <label htmlFor="newsletter-sign-up" className="block underline">
+              {/* TODO figure out address for this */}
+              <a  className="block underline" href={"/"}>
                 View past newsletters
-              </label>
+              </a>
               <div id="mce-responses" className="clear">
                   <div
                     className="response hidden"

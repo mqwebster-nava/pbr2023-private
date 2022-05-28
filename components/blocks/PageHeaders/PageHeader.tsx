@@ -36,7 +36,7 @@ const PageHeader = (props: PageHeaderInterface) => {
     return (<header key={props.id}>
       <div className={`bg-navy-900 `}>
         <div
-          className={`responsive-container z-10 relative pt-5xl`}>
+          className={`responsive-container z-10 relative pt-5xl `}>
           <TitleBlock textColor={"text-navy-200"} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>
@@ -47,7 +47,7 @@ const PageHeader = (props: PageHeaderInterface) => {
     return (<header key={props.id}>
       <div className={`bg-plum-900 relative `}>
         <div
-          className={`responsive-container z-10 relative pt-5xl`}>
+          className={`responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}>
           <TitleBlock textColor={"text-plum-200"} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>

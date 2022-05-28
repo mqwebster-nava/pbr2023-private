@@ -12,7 +12,7 @@ const defaultIllustration: ContentfulImageAsset = {
   width: ill.width,
   height: ill.height,
   title: "Purple Nava Logo",
-  description: "A logo to act as a placeholder for the social image",
+  description: "An illustration of an old man",
 };
 const defaultPattern: ContentfulImageAsset = {
   id: "cWIxdC",
@@ -35,6 +35,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
                 width={defaultPattern.width}
                 height={defaultPattern.height}
                 layout="responsive"
+                alt={""}
               ></Image>
           </div>
           <div className={` absolute  z-10 top-[72px] lg:top-[128px]  h-full pr-xl md:pr-4xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}>
@@ -52,6 +53,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             width={defaultIllustration.width}
             height={defaultIllustration.height}
             layout="responsive"
+            alt={defaultIllustration.description}
           ></Image>
         </div>
       </div>

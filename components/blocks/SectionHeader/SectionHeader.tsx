@@ -25,7 +25,7 @@ const SectionHeader = ({
 }:SectionHeaderInterface) => {
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
-    "bg-sage-100": colorTheme=="sage",
+    "bg-sage-50": colorTheme=="sage",
     "bg-navy-900": colorTheme=="navy",
   });
   const textColor = classNames({
@@ -70,14 +70,14 @@ const SectionHeader = ({
   };
 
   return (
-    <div className={`${bg}`}>
+    <section className={`${bg}`} key={id}>
     <div className={`responsive-container pt-4xl pb-2xl`} key={id}>
       <TitleBlock />
       <ColoredLine/>
       {subtitle && <BodyBlock />}
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>
-    </div>
+    </section>
   );
 
 };

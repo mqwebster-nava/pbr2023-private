@@ -15,7 +15,7 @@ const SideNavComponent = ({h2Sections, activeSection}) => {
           "border-l-2 border-sage-50":!isActive
         });
         return (
-          <p className={`font-sans text-sage-dark  pl-sm py-sm hover:text-sage-base ${style}`}>
+          <p key={header} className={`font-sans text-sage-dark  pl-sm py-sm hover:text-sage-base ${style}`}>
             <AnchorLink href={`#${header}`}>{header}</AnchorLink>
           </p>
         );

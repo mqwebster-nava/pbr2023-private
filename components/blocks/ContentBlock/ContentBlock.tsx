@@ -25,13 +25,17 @@ export interface ContentBlockInterface {
       "md:flex-row":
         type == "right repeater",
     });
+    const imagePadding = classNames({
+      "pb-2xl pl-0 md:pb-0 md:pl-2xl": type=="left repeater",
+      "pb-2xl  pr-0 md:pb-0 md:pr-2xl":  type == "right repeater",
+    });
     if(image==null){console.error("Content Block image cannot be null", title); return null;}
 
     return (
-      <div className={"responsive-container py-2xl"} key={id}>
+      <section className={"responsive-container py-2xl"} key={id}>
       <div className={`w-full flex flex-col justify-between ${direction}`}>
-        <div className={`w-full md:w-1/2 max-w-[478px]`}>
-           <Image objectFit={"fill"} height={image.height} width={image.width}layout={"responsive"} src={image.url} /> 
+        <div className={`w-full md:w-1/2 max-w-[478px] ${imagePadding}`}>
+           <Image objectFit={"fill"} height={image.height} width={image.width}layout={"responsive"} src={image.url} alt={image.description} /> 
         </div>
         <div className={`w-full md:w-1/2 flex justify-center flex-col`}>
          {title && <h3 className={`font-sans type-preset-3 font-bold `}>{title} </h3> }
@@ -39,7 +43,7 @@ export interface ContentBlockInterface {
           {buttonText && <Button  href={buttonPath} variant="outlined">{buttonText}</Button> }
         </div>
       </div>
-      </div>
+      </section>
     );
   }
 
