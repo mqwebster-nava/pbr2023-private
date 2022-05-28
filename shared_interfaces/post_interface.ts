@@ -8,6 +8,7 @@ export interface ContentfulImageAsset{
   description?:string;
 }
 export interface BasicPostInterface{
+    __typename: string;
     id:string;
     slug:string;
     title:string;

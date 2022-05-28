@@ -8,6 +8,7 @@ export default async function getPostsByAuthor(slug, options=defaultOptions) {
     {
       authorCollection(limit: 20, where: { slug: $slug }) {
         items{
+          __typename
           ${AUTHOR_ALL_FIELDS}
       
         }
