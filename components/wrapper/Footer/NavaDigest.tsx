@@ -1,6 +1,5 @@
 import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
 import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
-import { Button } from "components/atom";
 import Image from "next/image";
 import FormInputButton from "components/atom/Button/FormInputButton";
 
@@ -65,10 +64,6 @@ const NavaDigest = () => {
                     id="mce-success-response" ></div>
                 </div>
             </form>
-            <script
-              type="text/javascript"
-              src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
-            ></script>
           </div>
         </div>
      </div>

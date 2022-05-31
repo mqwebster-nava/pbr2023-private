@@ -6,7 +6,6 @@ import NavaDigest from "./NavaDigest";
 
 
 
-
 const Footer = () => {
   let currentYear =  new Date().getFullYear();
 
@@ -47,9 +46,8 @@ const Footer = () => {
               {`©${currentYear} Nava PBC. All rights reserved`}
             </p>
             <div className="flex gap-2xl text-white font-bold type-preset-6">
-              <a>Twitter</a>
-              <a>Medium</a>
-              <a>LinkedIn</a>
+             <a href="https://twitter.com/NavaPBC" > Twitter</a>
+             <a href="https://www.linkedin.com/company/nava-pbc">  LinkedIn</a>
             </div>
           </div>
         </div>
