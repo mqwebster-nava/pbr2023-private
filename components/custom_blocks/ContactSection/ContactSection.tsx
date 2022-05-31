@@ -36,7 +36,7 @@ const ContactSection = () => {
             />
           </div> */}
           <div className="py-md">
-            <label className="uppercase type-preset-7 pb-sm" htmlFor="name">
+            <label className=" type-preset-7 pb-sm" htmlFor="name">
               Name
             </label>
             <br />
@@ -49,7 +49,7 @@ const ContactSection = () => {
             />
           </div>
           <div className="py-md">
-            <label className="uppercase type-preset-7 pb-sm" htmlFor="mail">
+            <label className="type-preset-7 pb-sm" htmlFor="mail">
               Email
             </label>
             <br />
@@ -62,7 +62,7 @@ const ContactSection = () => {
             />
           </div>
           <div>
-            <label className={"uppercase type-preset-7 pb-sm"} htmlFor="msg">
+            <label className={" type-preset-7 pb-sm"} htmlFor="msg">
               Message
             </label>
             <br />

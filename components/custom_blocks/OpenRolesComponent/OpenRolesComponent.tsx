@@ -93,9 +93,9 @@ export default function OpenRolesComponent() {
       <h3 className="type-preset-3 font-bold py-md">All open roles</h3>
       <DepartmentAnchors />
       <div className="hidden md:grid grid-cols-12 pt-4xl pb-sm">
-        <div className="col-span-4 uppercase type-preset-7">Team</div>
-        <div className="col-span-5 uppercase type-preset-7">Role</div>
-        <div className="col-span-3 uppercase type-preset-7">Details</div>
+        <div className="col-span-4 type-preset-7">Team</div>
+        <div className="col-span-5 type-preset-7">Role</div>
+        <div className="col-span-3  type-preset-7">Details</div>
       </div>
 
       {departments.map((d,j) => {

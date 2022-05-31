@@ -91,7 +91,7 @@ const DefaultContentCard  = ({
         {image? <ImageSquare/> : <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
-      {kicker && <div className="uppercase type-preset-8">{kicker}</div>}
+      {kicker && <div className=" type-preset-8">{kicker}</div>}
         <h5 className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
           {title}
         </h5>
