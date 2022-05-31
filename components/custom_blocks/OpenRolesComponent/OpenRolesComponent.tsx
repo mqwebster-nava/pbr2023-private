@@ -60,8 +60,8 @@ export default function OpenRolesComponent() {
         <details className="block md:hidden py-md">
           <summary>Show Teams</summary>
 
-          {departments.map((d) => (
-            <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}>
+          {departments.map((d, k) => (
+            <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`} key={`${d.title} nav ${k}`}>
               <AnchorLink href={`#${d.title}`}>
                 {d.title} ({d.postings.length})
               </AnchorLink>
@@ -69,13 +69,14 @@ export default function OpenRolesComponent() {
           ))}
         </details>
         <div className="hidden md:flex py-md ">
-          {groups.map((deps) => (
-            <div className="w-1/3">
+          {groups.map((deps,i) => (
+            <div className="w-1/3" key={i}>
               {deps.map((d) => (
                 <p
+                key={d.title}
                   className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
                 >
-                  <AnchorLink href={`#${d.title}`}>
+                  <AnchorLink href={`nav #${d.title} ${i}`}>
                     {d.title} ({d.postings.length})
                   </AnchorLink>
                 </p>
@@ -97,9 +98,9 @@ export default function OpenRolesComponent() {
         <div className="col-span-3 uppercase type-preset-7">Details</div>
       </div>
 
-      {departments.map((d) => {
+      {departments.map((d,j) => {
         return (
-          <a id={`${d.title}`}>
+          <div id={`${d.title}`} key={`${d.title} ${j} section`}>
             <hr />
             <div className="md:grid grid-cols-12">
               <div className="col-span-4">
@@ -110,12 +111,12 @@ export default function OpenRolesComponent() {
               <div className="col-span-8">
                 {d.postings.map((posting, i) => {
                   return (
-                    <>
+                    <div key={`${d.title} role ${i}`}>
                       {i != 0 && <hr />}
-                      <div className="md:grid grid-cols-8">
+                      <div className="md:grid grid-cols-8" >
                         <div
                           className="col-span-5 type-preset-5 font-sans py-md pr-sm"
-                          key={`${posting.id}`}
+                          
                         >
                           <LinkText
                             href={`${posting.hostedUrl}`}
@@ -134,13 +135,13 @@ export default function OpenRolesComponent() {
                           </p>
                         </div>
                       </div>
-                    </>
+                    </div>
                   );
                 })}
               </div>
             </div>
             <div className="py-md"></div>
-          </a>
+          </div>
         );
       })}
     </div>
