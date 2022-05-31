@@ -1,7 +1,3 @@
-
-
-
-import ContentGrid from "components/blocks/ContentGrid/ContentGrid";
 import dynamic from "next/dynamic";
 
 
@@ -16,7 +12,8 @@ const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
 const TimelineSection = dynamic(() => import("components/custom_blocks/TimelineSection/TimelineSection"));
 const AuthorBioBlock  = dynamic(() => import("components/custom_blocks/AuthorBioBlock/AuthorBioBlock"));
-
+const ContentGrid  = dynamic(() => import("components/blocks/ContentGrid/ContentGrid"));
+const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 import { PageInterface } from "shared_interfaces/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
@@ -28,11 +25,11 @@ const PageTemplate: React.FC<PageInterface> = ({
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
-      "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry}/>),
-      "SectionContentBlockText": ()=> <ContentBlockText key={index} {...entry}/>,
+      "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} />),
+      "SectionContentBlockText": ()=> <ContentBlockText key={index} {...entry} body={<MarkdownComponent content={entry.body}/>}/>,
       "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
-      "ContentBlock": ()=> <ContentBlock key={index} {...entry} />,
-      "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} />,
+      "ContentBlock": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />,
+      "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
       "ContentBlockArticleList": ()=>  <ContentBlockArticleList key={index} {...entry} />,
       "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry}/>,
@@ -46,8 +43,7 @@ const PageTemplate: React.FC<PageInterface> = ({
   return (
     <main>
       <PageHeader {...pageHeader}/>
-      {contentBlocks.map((block,i) =>  getComponent(block,i))
-      }
+      {contentBlocks.map((block,i) =>  getComponent(block,i))}
       {children}
     </main>
   );

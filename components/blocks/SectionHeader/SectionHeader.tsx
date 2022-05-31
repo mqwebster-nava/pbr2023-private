@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { Button } from "components/atom";
 import ColorTheme from "shared_interfaces/ColorThemes";
-import { MarkdownComponent } from "utils/utils";
 
 // TODO move as much to tailwind
 
@@ -9,7 +8,7 @@ import { MarkdownComponent } from "utils/utils";
 export interface SectionHeaderInterface {
   title: string;
   id: string;
-  subtitle?: string;
+  subtitle?: any;
   colorTheme?: ColorTheme;
   buttonText?: string;
   buttonPath?: string;
@@ -48,7 +47,7 @@ const SectionHeader = ({
     return (
       <div className={`flex`}>
         <div className={`md:w-3/4 type-preset-3  font-serif ${textColor}`}>
-          {<MarkdownComponent content={subtitle} />}
+          {subtitle}
         </div>
       </div>
     );

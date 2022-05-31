@@ -2,15 +2,15 @@
 //import ReactMarkdown from 'react-markdown';
 
 import ArticleInfoComponent from "./ArticleInfoComponent";
-import SideNavComponent from "./SideNavComponent";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useRef} from "react";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
-
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
-
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
+import dynamic from "next/dynamic";
+const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
+
 export interface PostBodyInterface {
   id: string;
   body: any;

@@ -15,6 +15,7 @@ const PostImage = ({image, border="none"}: PostImageInterface) => {
     return (
         <div className={`${borderStyle}`}>
         <Image
+          layout={"responsive"}
           src={image.url}
           height={image.height}
           width={image.width}

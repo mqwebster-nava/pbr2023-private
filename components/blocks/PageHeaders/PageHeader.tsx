@@ -1,20 +1,20 @@
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-import brandDefault from "public/images/header-pattern-block.png";
-import React from "react";
+//import brandDefault from "public/images/header-pattern-block.png";
+//import React from "react";
 import SecondaryPatternBlock from "./SecondaryPatternBlock";
 import TitleBlock from "./TitleBlock";
-import ImagePatternBlock from "./ImagePatternBlock";
+//import ImagePatternBlock from "./ImagePatternBlock";
 import IllustrationPatternBlock from "./ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
 
-const defaultPattern: ContentfulImageAsset = {
-  id: '6f9PYC9LuxyTeGpAQ0A4',
-  url: brandDefault.src,
-  width: brandDefault.height,
-  height: brandDefault.height,
-  title: 'Purple Nava Logo',
-  description: 'A logo to act as a placeholder for the social image'
-}
+// const defaultPattern: ContentfulImageAsset = {
+//   id: '6f9PYC9LuxyTeGpAQ0A4',
+//   url: brandDefault.src,
+//   width: brandDefault.height,
+//   height: brandDefault.height,
+//   title: 'Purple Nava Logo',
+//   description: 'A logo to act as a placeholder for the social image'
+// }
 
 
 

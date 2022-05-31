@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import { Button } from "../../atom/Button/Button";
-import { MarkdownComponent } from "utils/utils";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import classNames from "classnames";
 
@@ -18,7 +17,7 @@ export interface ContentBlockInterface {
     image: ContentfulImageAsset;
   }
   
-  const ContentBlock = ({id, title, body, type = "left repeater", image, buttonPath, buttonText}:ContentBlockInterface) => {
+  const ContentBlock  = ({id, title, body, type = "left repeater", image, buttonPath, buttonText}:ContentBlockInterface) => {
     
     const direction = classNames({
       "md:flex-row-reverse": type=="left repeater",

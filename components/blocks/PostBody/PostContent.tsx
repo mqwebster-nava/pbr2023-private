@@ -9,6 +9,8 @@ import PostBlockQuote from "./PostBlockQuote";
 import PostPullQuote from "./PostPullQuote";
 import PostImage from "./PostImage";
 import PostSummarySection from "./PostSummarySection";
+import React from "react";
+import MarkdownComponent from "utils/MarkdownComponent";
 
 
 const PostContent = ({docData, docLinks, }) =>{
@@ -36,7 +38,7 @@ const PostContent = ({docData, docLinks, }) =>{
           [BLOCKS.HEADING_4]: (node, children) => (
             <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
           ),
-          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children} isRichText={true}/>,
+          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className=" list-disc ml-2xl">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="">{children}</li>,
@@ -53,11 +55,11 @@ const PostContent = ({docData, docLinks, }) =>{
             let blockData = entryBlocks.find((element) => element.sys.id === id);
             blockData = liftData(blockData); // rises ID to top of map
             const embeddedEntries = {
-              "CaptionText": (props)=><CaptionText {...props}/>,
-              "PostBlockQuote": (props)=><PostBlockQuote {...props}/>,
-              "PostPullQuote":(props)=><PostPullQuote {...props}/>,
+              "CaptionText": (props)=><CaptionText {...props} caption={<MarkdownComponent content={props.caption}/>} />,
+              "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
+              "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostImage": (props) => <PostImage {...props}/>,
-              "PostSummarySection": (props)=> <PostSummarySection {...props}/>
+              "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>
             }
              if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
           },
