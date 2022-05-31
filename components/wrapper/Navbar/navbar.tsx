@@ -1,4 +1,4 @@
-import { Button } from "components/atom";
+
 import React, { useState } from "react";
 import useWindowSize from "utils/windowSizeHook";
 import DropdownNavButton from "./DropdownNavButton";
@@ -21,28 +21,30 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <nav className={`bg-gray-100 w-full z-20 pt-sm "`}>
+    <header className={`bg-gray-100 w-full z-20 pt-sm `}>
       <div className=" responsive-container   flex flex-wrap items-center justify-between">
         <Logo />
-        <div className=" flex items-baseline w-auto">
+        <nav className=" flex items-baseline w-auto" aria-label="main">
           {NavData.map((navSection) => {
             return "slug" in navSection ? (
-              <NavButton slug={navSection.slug}> {navSection.title}</NavButton>
+              <NavButton key={navSection.title} slug={navSection.slug}> {navSection.title}</NavButton>
             ) : (
-              <DropdownNavButton title={navSection.title}>
+              
+              <DropdownNavButton key={navSection.title} title={navSection.title} >
                 {navSection.subpages.map((navitem) => (
-                  <DropdownNavItem href={navitem.slug}>
+                  <DropdownNavItem href={navitem.slug} key={navitem.title}>
                     {navitem.title}
                   </DropdownNavItem>
                 ))}
               </DropdownNavButton>
+           
             );
           })}
           <div className="pl-sm"></div>
           <NavButton slug={"/contact"}> {"Get In Touch"}</NavButton>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
@@ -50,13 +52,14 @@ const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
   const NavLinksMobile = () => (
-    <div className="responsive-container w-full flex flex-row items-start bg-white">
+    <nav aria-label="main" className="responsive-container w-full flex flex-row items-start bg-white">
       <div className="py-lg">
         {NavData.map((navSection) => {
           return "slug" in navSection ? (
-            <NavButton slug={navSection.slug}> {navSection.title}</NavButton>
+            <NavButton key={navSection.title} slug={navSection.slug}> {navSection.title}</NavButton>
+          
           ) : (
-            <div>
+            <div key={navSection.title}>
               <div className="relative inline-block  text-navy-900  pr-sm   cursor-pointer">
                 <h3 className=" text-navy-900 pr-sm font-sans font-bold flex  items-center">
                   {navSection.title}
@@ -64,6 +67,7 @@ const MobileNavBar = ({ NavData }) => {
               </div>
               {navSection.subpages.map((navitem) => (
                 <a
+                  key={navitem.title}
                   href={navitem.slug}
                   className="block hover:bg-green px-4 cursor-pointer"
                 >
@@ -76,18 +80,19 @@ const MobileNavBar = ({ NavData }) => {
           );
         })}
       </div>
-    </div>
+    </nav>
   );
   return (
-    <nav className={` w-full z-10 bg-gray-100`}>
+    <header className={` w-full z-10 bg-gray-100`}>
       <div className="responsive-container  pt-lg flex flex-wrap items-baseline justify-between">
         <Logo />
         <div className="block ">
           <button
+            aria-label="menu"
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="   font-sans bg--200 text-navy-900 hover:text-sage-200 border-grey  "
+            className="font-sans text-navy-900 hover:text-sage-200 border-grey  "
           >
             <svg
               height="32px"
@@ -102,7 +107,7 @@ const MobileNavBar = ({ NavData }) => {
         </div>
       </div>
       {isShowingMenu && <NavLinksMobile />}
-    </nav>
+    </header>
   );
 };
 
