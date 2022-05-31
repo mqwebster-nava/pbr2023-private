@@ -1,11 +1,7 @@
 
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
-import brandPatternNavy from "public/images/brand-patterns/patternblock-navy.png";
-import brandPatternPlum from "public/images/brand-patterns/brand-pattern-plum.png";
 import brandDefault from "public/images/header-pattern-block.png";
-import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
-import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
 import ill from "public/images/illo.png";
 
 export interface ImagePatternBlockInterface {
@@ -43,6 +39,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             height={9}
             layout="responsive"
             alt={image.description}
+            priority
           ></Image>
            <div className="w-1/3 h-full absolute z-10 top-0 ">
            <Image
@@ -52,6 +49,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             height={4}
             layout="responsive"
             alt={pattern.description??""}
+            priority
           ></Image>
           </div>
         

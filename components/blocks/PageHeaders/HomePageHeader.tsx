@@ -2,7 +2,7 @@ import { PageHeaderInterface } from "./PageHeader";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
 
-import ill from "public/images/homeheader1.svg";
+import ill from "public/images/header-img.png";
 import pat from "public/images/HeaderPattern2.svg";
 import { Button } from "components/atom";
 

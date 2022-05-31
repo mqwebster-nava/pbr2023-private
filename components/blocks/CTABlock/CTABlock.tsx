@@ -1,5 +1,4 @@
 import { Button } from "../../atom/Button/Button";
-import { MarkdownComponent } from "utils/utils";
 import sageIll from "public/images/Illustrations-for-website-V019 1.png";
 import plumIll from "public/images/plum cta illustration.png";
 import Image from "next/image";
@@ -50,7 +49,7 @@ const CTABlock = ({
         <div className={`w-full lg:w-1/2 px-lg py-lg`}>
           <h3 className={` type-preset-2 font-bold  ${headerColor}`}>{title} </h3>
           <p className={`pt-lg  type-preset-2 font-bold ${subtitleColor} mb-lg`}>
-            {<MarkdownComponent content={body} />}
+            {body}
           </p>
           {buttonText && (
             <Button href={buttonPath} variant="white" children={buttonText}/> 
