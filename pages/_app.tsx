@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{pageData.title ?? ""}</title>
-        <html lang={"en"} />
+
         <meta property="og:type" content="website" />
         {pageData.title && <meta property="og:title" content={pageData.title} /> }
         {pageData.description && <meta name="twitter:card" content={pageData.description} /> }

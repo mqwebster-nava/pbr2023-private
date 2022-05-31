@@ -16,11 +16,10 @@ const NavaDigest = () => {
       <div className="font-sans text-white px-2xl">
         <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
           <div className="w-full md:w-1/2 ">
-            <h3 className="font-sans type-preset-2 font-bold pb-lg">Nava Digest</h3>
+            <h3 className="font-sans type-preset-2 font-bold pb-lg">Stay in touch</h3>
 
             <p className={`2 font-sans mr-3xl type-preset-6  mb-md`}>
-              Get Nava updates on new open roles, government partnerships,
-              learnings, and news from the broader civic tech community.
+            Sign up for Nava’s newsletter to find out about open roles, new partnerships, and news from the broader civic tech community.
             </p>
           </div>
           <div className="w-full md:w-1/2 pt-md">
@@ -44,7 +43,7 @@ const NavaDigest = () => {
                
                 <div className="clear">
                   <FormInputButton
-                    value="Subscribe"
+                    value="Sign up"
                     name="subscribe"
                     id="mc-embedded-subscribe"
                   />
