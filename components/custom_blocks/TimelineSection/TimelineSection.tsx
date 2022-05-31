@@ -11,9 +11,9 @@ const TimelineSection = ({year, richBody}:TimelineInterface) => {
         <div className="responsive-container">
 
         <hr/>
-    <div className={"grid grid-cols-3"}>
-        <div className="">{year}</div>
-        <div className="col-span-2">
+    <div className={"grid md:grid-cols-3 grid-cols-5"}>
+        <div className="type-preset-2 font-serif pt-md">{year}</div>
+        <div className="col-span-4 md:col-span-2 pt-md">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
     </div>

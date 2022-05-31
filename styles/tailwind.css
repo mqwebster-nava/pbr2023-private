@@ -117,6 +117,14 @@ body {
   
 }
 /*Added because the tailwind options seem to be not working*/
+.list-style-rich {
+  list-style-position: inside;
+  list-style-type: "— ";
+}
+.list-style-rich li p {
+  display: inline;
+}
+
 .list-style {
   list-style-position: inside;
 }

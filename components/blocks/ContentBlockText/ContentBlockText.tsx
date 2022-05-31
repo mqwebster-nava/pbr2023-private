@@ -1,9 +1,5 @@
 import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
-//import { MarkdownComponent } from "utils/utils";
-
-import ReactMarkdown from 'react-markdown'
-
 interface ContentBlockInterface {
     id:string;
     title?: string;
