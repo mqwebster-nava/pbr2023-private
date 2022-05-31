@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         {pageData.title && <meta property="og:title" content={pageData.title} /> }
         {pageData.description && <meta name="twitter:card" content={pageData.description} /> }
         {pageData.description &&<meta property="og:description" content={pageData.description } />}
+        {pageData.description && <meta name="description" content={pageData.description } />}
         {pageData.socialImage && (
           <meta property="og:image" content={pageData.socialImage.url} />
         )}
