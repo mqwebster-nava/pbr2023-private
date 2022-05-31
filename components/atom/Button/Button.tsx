@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import React from "react";
 type Variant = "default" | "outlined" | "white" | "dark";
 
 export interface ButtonProps {
@@ -26,11 +27,12 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <div>
     <button 
-        onClick={()=> {location.href = href;}}
-        className={
+onClick={()=> {location.href = href;}}
+    className={
           `font-sans font-bold md:h-[70px]
           inline-flex items-center justify-center rounded-sm
           px-xl py-sm  
+         mr-auto
           type-preset-6 leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
