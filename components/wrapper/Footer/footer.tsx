@@ -26,9 +26,7 @@ const Footer = () => {
               />
             </div>
             <div className="type-preset-5 text-white flex-1">
-              We envision a world where our interactions with government are
-              delightful and we are confident in government’s ability to achieve
-              the goals we set for it.
+            Nava's mission is to make government services simple, effective, and accessible to all, helping to restore trust between people and public institutions. 
             </div>
           </div>
           <nav aria-label={"secondary"} className="flex flex-wrap text-white  my-xl ">
