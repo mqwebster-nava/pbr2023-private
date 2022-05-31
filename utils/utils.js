@@ -1,23 +1,5 @@
 
 
-import ReactMarkdown from 'react-markdown'
-
-export function MarkdownComponent({ content }) {
-    return (
-      <ReactMarkdown
-      suppressHydrationWarning={true}
-        children={content}
-        // todo add styling here for markdown
-        components={{
-          ul: ({ node, children }) => <ul className="list-style"  >{children}</ul>,
-          li: ({ node, children }) => <li className="pb-sm"  >{children} </li>,
-          
-        }}
-      />
-    );
-  };
-
-
 export function getContentUrl(contentType, slug){
     const contentMap ={
         "Insight": "insights",

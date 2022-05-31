@@ -10,7 +10,8 @@
     "tailwind-storybook-build": "NODE_ENV=production postcss ./styles/tailwind.css -o ./storybook-static/storybook/tailwind.storybook.css",
     "storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook && npm run tailwind-storybook-build",
-    "chromatic": "npx chromatic --project-token=5e72f01a7a18"
+    "chromatic": "npx chromatic --project-token=5e72f01a7a18",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.11.0",
