@@ -23,19 +23,29 @@ export function liftData(data){
         }
     }
     // For Article Post List component
-    if( "postsCollection" in data && "items" in data.postsCollection){
-        newData = {
-            ...newData,
-            posts:data.postsCollection.items.map((item)=>liftData(item))
-        }
-    }
-
-    if( "featureCardsCollection" in data && "items" in data.featureCardsCollection){
+  for (let key in data) {
+     if (key.includes("Collection")){
       newData = {
-          ...newData,
-          items:data.featureCardsCollection.items.map((item)=>liftData(item))
-      }
+        ...newData,
+        items:data[key].items.map((item)=>liftData(item))
     }
+  }
+      // Use `key` and `value`
+  }
+    // if( "postsCollection" in data && "items" in data.postsCollection){
+    //     newData = {
+    //         ...newData,
+    //         posts:data.postsCollection.items.map((item)=>liftData(item))
+    //     }
+    // }
+
+    // if( "featureCardsCollection" in data && "items" in data.featureCardsCollection){
+    //   newData = {
+    //       ...newData,
+    //       items:data.featureCardsCollection.items.map((item)=>liftData(item))
+    //   }
+    // }
+
     return newData;
 }
 // Slugify for turning tags into urls

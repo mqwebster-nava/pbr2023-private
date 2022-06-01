@@ -69,7 +69,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         __typename:"ContentBlockArticleList",
         id: `${post.id}-more-posts`,
         title:"More from Nava",
-        posts: morePosts
+        items: morePosts
       },
      
 
@@ -103,7 +103,7 @@ export function formatAuthorPage(slug, author){
       {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        posts: author.linkedFrom.postCollection.items,
+        items: author.linkedFrom.postCollection.items,
         title: `More by ${author.name}`
       }
     ], 
@@ -130,7 +130,7 @@ export function formatTagsPage(slug, tagName, posts){
       {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        posts: posts
+        items: posts
       }
     ],
  }

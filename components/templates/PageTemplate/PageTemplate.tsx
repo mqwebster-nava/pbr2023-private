@@ -1,3 +1,4 @@
+import CapabilitiesSection from "components/custom_blocks/CapabilitiesSection/CapabilitiesSection";
 import dynamic from "next/dynamic";
 
 
@@ -36,6 +37,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "TimelineSection": () => <TimelineSection key={index} {...entry}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
+      "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "ContentGridFeatureCards": ()=><ContentGrid key={index} {...entry} layout={"default"}  padding="py-2xl" contentType={"feature cards"}/>
     }
     return typename in componentMap ? componentMap[typename](entry) : <div></div>
