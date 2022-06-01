@@ -1,6 +1,7 @@
 import { PageHeaderInterface } from "./PageHeader";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
+import CrossfadeCarousel from '@notbaldrick/react-crossfade-carousel'
 
 import ill from "public/images/header-img.png";
 import pat from "public/images/HeaderPattern2.svg";
@@ -27,16 +28,16 @@ const headers = [
     illustration:defaultIllustration
 
 },
-{
-    bg:"bg-gold-900",
-    pattern:"/images/home-patterns-gold.png",
-    illustration:defaultIllustration
-},
-{
-    bg:"bg-sage-900",
-    pattern:"/images/home-patterns-gold.png",
-    illustration:defaultIllustration
-},
+// {
+//     bg:"bg-gold-900",
+//     pattern:"/images/home-patterns-gold.png",
+//     illustration:defaultIllustration
+// },
+// {
+//     bg:"bg-sage-900",
+//     pattern:"/images/home-patterns-gold.png",
+//     illustration:defaultIllustration
+// },
 
 
 
@@ -77,15 +78,24 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
       </div>
       <div className=" relative responsive-container ">
         <div className={`${header.bg} -mt-[3px]  h-1/2 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}></div>
-        <div className="w-3/4 lg:w-1/2 ml-auto">
-          <Image
+        <div className="w-3/4 lg:w-1/2 ml-auto aspect-[4/3] bg-cyan-50">
+        <CrossfadeCarousel
+            interval={2000}
+            transition={2000}
+            images={[
+                'https://images.ctfassets.net/t2ekr6eg3fr3/2noBSMs0a4cEnhGkcWIxdC/2ce8bc39952b4a9f0626c0706aa4cb9d/homepageheader.png',
+                'https://images.ctfassets.net/t2ekr6eg3fr3/5RbNb5FurHFYvCJCGlDAtu/a641902efe240e23b85ebab972d6955f/home-header-2.png',
+                'https://images.ctfassets.net/t2ekr6eg3fr3/4wPLWGu4pTpnYL5uvKvbX3/6468f9e29f0d24aab310c65b4f8ec88d/home-header-3.png'
+            ]}
+        />
+          {/* <Image
             className="object-cover "
             src={defaultIllustration.url}
             width={defaultIllustration.width}
             height={defaultIllustration.height}
             layout="responsive"
             alt={defaultIllustration.description}
-          ></Image>
+          ></Image> */}
         </div>
       </div>
     </header>
