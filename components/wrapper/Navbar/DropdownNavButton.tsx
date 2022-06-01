@@ -39,7 +39,7 @@ const DropdownNavButton = (props) => {
             ></path>
           </svg>
         </div>
-          <div role="menu" className={`absolute left-0 top-[42px] bg-white z-1 w-full border-t-8 border-sage-base ${!showMenu && "hidden"}`}>
+          <div role="menu" className={`absolute left-0 top-[42px] bg-white z-1 w-full border-t-8 border-${props.color} ${!showMenu && "hidden"}`}>
             {props.children}
           </div>
       </button>

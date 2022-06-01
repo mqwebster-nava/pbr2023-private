@@ -53,6 +53,7 @@ const SectionHeader = ({
     );
   };
   const ColoredLine = () => {
+ 
     return colorTheme == "gold" ? (
       <div className="flex mb-xl">
         <div className="bg-gold-900 h-[12px] w-[46px]"></div>
@@ -70,9 +71,11 @@ const SectionHeader = ({
 
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-4xl pb-2xl`} key={id}>
+    <div className={`responsive-container pt-4xl pb-xl`} key={id}>
       <TitleBlock />
-      <ColoredLine/>
+       <div className="flex mb-xl">
+        <div className="bg-gray-900 h-[8px] w-[138px]"></div>
+      </div> 
       {subtitle && <BodyBlock />}
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>

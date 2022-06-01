@@ -1,7 +1,7 @@
-import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
-import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
-import Image from "next/image";
 import FormInputButton from "components/atom/Button/FormInputButton";
+
+const brandDirection = "/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
+const brandTerrain = "/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
 
 
 /*
@@ -67,8 +67,8 @@ const NavaDigest = () => {
         </div>
      </div>
         <div className="w-full flex justify-end">
-          <Image src={brandTerrain} height={72} width={72} alt="" />
-          <Image src={brandDirection} height={72} width={72} alt="" />
+          <img src={brandTerrain} height={72} width={72}  alt="" />
+          <img src={brandDirection} height={72} width={72} alt="" />
         </div>
       </div>
      
