@@ -1,4 +1,5 @@
 
+import CAPABILITIES_SECTION from "./content_blocks/CAPABILITIES_SECTION";
 import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_LIST";
 import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
 import CONTENT_BLOCK_TEXT from "./content_blocks/CONTENT_BLOCK_TEXT";
@@ -63,6 +64,9 @@ contentCollection(limit:20) {
         }
         ... on ContentGridFeatureCards {
             ${CONTENT_GRID_FEATURE_CARDS}
+        }
+        ... on CapabilitiesSection {
+            ${CAPABILITIES_SECTION}
         }
     }
 }

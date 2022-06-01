@@ -9,7 +9,7 @@ interface ArticleListInterface {
   buttonText?: string;
   buttonPath?: string;
   body?: string;
-  posts: any;
+  items: any;
   cycleNum?: number;
   max?: number;
   layout?: ListLayout;
@@ -19,7 +19,7 @@ const ContentBlockArticleList = ({
   id,
   title,
   body,
-  posts,
+  items,
   buttonPath,
   buttonText,
   cycleNum = Math.floor(Math.random() * 4),
@@ -30,7 +30,7 @@ const ContentBlockArticleList = ({
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (layout= "default"),
     "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (layout= "feature"),
   });
-  posts = posts.filter((post) => post != null);
+  items = items.filter((post) => post != null);
   return (
     <section key={id}>
       <div className="responsive-container pt-xl" key={id}>
@@ -59,7 +59,7 @@ const ContentBlockArticleList = ({
       </div>
       <ContentGrid
         id={"id"}
-        items={posts}
+        items={items}
         contentType={"posts"}
         layout={layout}
         cycleNum={cycleNum}
