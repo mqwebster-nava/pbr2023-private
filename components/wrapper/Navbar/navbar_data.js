@@ -2,6 +2,7 @@
 const NavData = [
   {
     title: "About",
+    color: "gold-700",
     subpages: [
       { title: "Nava's story", slug: "/story" },
       { title: "Our people", slug: "/people" },
@@ -11,6 +12,7 @@ const NavData = [
   },
   {
     title: "Mission",
+    color: "sage-700",
     subpages: [
       { title: "Impact", slug: "/impact" },
       { title: "Values", slug: "/values" },
@@ -18,6 +20,7 @@ const NavData = [
   },
   {
     title: "Work",
+    color: "navy-700",
     subpages: [
       { title: "Services", slug: "/services" },
       { title: "Case studies", slug: "/case-studies" },
@@ -26,6 +29,7 @@ const NavData = [
   },
   {
     title: "Careers",
+    color: "plum-700",
     subpages: [
       { title: "Working at Nava", slug: "/working-at-nava" },
       { title: "Open roles", slug: "/open-roles" },
@@ -34,6 +38,7 @@ const NavData = [
 
   {
     title: "Insights",
+    color: "purple-700",
     slug: "/insights",
   },
 ];
