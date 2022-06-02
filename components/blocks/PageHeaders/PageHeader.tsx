@@ -7,7 +7,6 @@ import TitleBlock from "./TitleBlock";
 import IllustrationPatternBlock from "./ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
 import React from "react";
-import ImagePatternBlock from "./ImagePatternBlock";
 
 // const defaultPattern: ContentfulImageAsset = {
 //   id: '6f9PYC9LuxyTeGpAQ0A4',
@@ -59,7 +58,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           <TitleBlock textColor={titleColor} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>
-      {props.variant=="Post"? <ImagePatternBlock image={props.image}/> :  <IllustrationPatternBlock/>}
+      {props.variant=="Post"? <IllustrationPatternBlock image={props.image} colorTheme={"sage"}/> :  <IllustrationPatternBlock/>}
     </header>)
   }
   if(props.variant == "Home"){
