@@ -7,6 +7,21 @@ module.exports = {
   plugins: [],
   theme: {
     extend: {
+  
+      keyframes: {
+        slide: {
+          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+        },
+        appear: {
+          '0%, 91%': { opacity: 0 },
+          '100%': { opacity: 1, }
+        },
+      },
+      animation: {
+        'titleSlide': 'slide 1s ease-out',
+        'titleButton': 'appear 1100ms linear',
+      },
       listStyleType: {
         dash: "square",
       },

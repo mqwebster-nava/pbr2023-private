@@ -10,7 +10,7 @@ const SecondaryPatternBlock = ({bgColor}) => {
         <div className="responsive-container pt-3xl">
       <div className=" w-1/4">
       <div className="flex items-stretch">
-        <div className="bg-navy-800 max-h-4xl h-full text-[0px]">
+        <div className={`bg-navy-800 max-h-4xl h-full text-[0px]`}>
           <Image
             src={brandDirection}
             className="object-cover "
@@ -19,7 +19,7 @@ const SecondaryPatternBlock = ({bgColor}) => {
             alt=""
           />
         </div>
-        <div className="bg-navy-600 max-h-4xl h-full text-[0px]">
+        <div className={`bg-navy-600 max-h-4xl h-full text-[0px]`}>
           <Image
             src={brandTerrain}
             className="object-cover"
@@ -28,7 +28,7 @@ const SecondaryPatternBlock = ({bgColor}) => {
             alt=""
           />
         </div>
-        <div className="bg-navy-200 max-h-4xl w-4xl "> </div>
+        <div className={`bg-navy-200 max-h-4xl w-4xl `}> </div>
       </div>
     </div>
     </div>

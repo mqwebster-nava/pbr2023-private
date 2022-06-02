@@ -1,7 +1,7 @@
 
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
-import brandDefault from "public/images/header-pattern-block.png";
+import brandDefault from "public/images/Article-Pattern.png";
 import ill from "public/images/illo.png";
 
 export interface ImagePatternBlockInterface {
@@ -31,7 +31,7 @@ const defaultPattern: ContentfulImageAsset = {
 const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern}:ImagePatternBlockInterface) =>{
     return  (
         <div className=" relative responsive-container  aspect-video -mb-[50px] xl:mb-0">
-            <div className="bg-plum-900 -mt-[3px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
+            <div className="bg-sage-900 -mt-[15px]  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 "></div>
           <Image
             className="w-full object-cover "
             src={image.url}
@@ -41,18 +41,17 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             alt={image.description}
             priority
           ></Image>
-           <div className="w-1/3 h-full absolute z-10 top-0 ">
+           <div className="w-1/5 h-full absolute z-10 top-0 ">
            <Image
             className="w-full object-cover"
             src={pattern.url}
-            width={4}
+            width={8}
             height={4}
             layout="responsive"
             alt={pattern.description??""}
             priority
           ></Image>
           </div>
-        
         </div>
     )
   }
