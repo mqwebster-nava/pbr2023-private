@@ -35,11 +35,11 @@ const SectionHeader = ({
   const TitleBlock = () => {
     return (
       <div className="lg:w-3/4 w-full">
-        <h1
+        <h2
           className={`w-full font-sans ${textColor} type-preset-2 font-black mt-xl mb-xl`}
         >
           {title}
-        </h1>
+        </h2>
       </div>
     );
   };
