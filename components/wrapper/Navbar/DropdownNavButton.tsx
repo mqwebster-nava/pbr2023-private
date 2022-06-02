@@ -18,17 +18,19 @@ const DropdownNavButton = (props) => {
          aria-haspopup="true"
           className=" 
             text-navy-900 font-bold font-sans 
-            pt-md pb-sm flex  
+            pt-md pb-sm flex 
             "
         >
           {props.title}
+     
   
           <svg
+
             aria-hidden="true"
             focusable="false"
             data-prefix="fas"
             data-icon="caret-down"
-            className="w-2 ml-2"
+            className="w-2 ml-2 h-full my-auto"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 320 512"
