@@ -27,11 +27,11 @@ const QuoteBlock = ({
         <div className={`w-full lg:w-5/6 flex`}>
           <div className="pr-md">
             <p
-              className={`font-sans type-preset-3  text-white font-bold mb-md`}
+              className={`font-sans type-preset-3  text-black font-bold mb-md`}
             >
               {body}
             </p>
-            <p className={`font-serif type-preset-6 text-white pt-lg`}>
+            <p className={`font-serif type-preset-6 text-black pt-lg`}>
               {authorName}, {authorRole}
             </p>
           </div>
