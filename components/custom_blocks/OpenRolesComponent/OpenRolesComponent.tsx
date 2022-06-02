@@ -126,9 +126,6 @@ export default function OpenRolesComponent() {
                           </LinkText>
                         </div>
                         <div className=" col-span-3 type-preset-7 font-sans py-md">
-                          <p className="pb-sm">
-                            <b>Compensation:</b> up to $160,000 DOE
-                          </p>
                           <p>
                             <b>Location: </b>
                             {posting.location}
