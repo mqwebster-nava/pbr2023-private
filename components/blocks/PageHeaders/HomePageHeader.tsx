@@ -39,7 +39,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
               ></Image>
           </div>
           <div className={` absolute  z-10 top-[72px] lg:top-[128px]  h-full pr-xl md:pr-4xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}>
-            <h1 className={`font-sans type-preset-1 text-white font-black pb-md`}>{title}</h1>
+            <h1 className={`font-sans type-preset-1 text-white font-bold md:font-black pb-md`}>{title}</h1>
             <Button variant="white" href={"/services"}>Our Work</Button>
           </div>
         </div>
