@@ -235,7 +235,7 @@ export default function DesignSystem(props: PageInterface) {
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-navy-100"
+              className="bg-navy-100 border-navy-900"
             >
               100
             </div>
