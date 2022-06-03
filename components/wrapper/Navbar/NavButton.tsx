@@ -1,5 +1,6 @@
 
 const NavButton = (props) => {
+  console.log(props.color)
     return (
       <div key={props.slug} className="relative font-bold inline-block  text-navy-900  cursor-pointer ">
         <a
@@ -7,7 +8,7 @@ const NavButton = (props) => {
           text-navy-900 pt-md font-sans flex
           mt-sm pr-3xl
           pb-sm
-          hover:border-${props.color} border-b-8 border-transparent
+          hover:border-black border-b-8 border-transparent
             `}
           href={props.slug}
         >

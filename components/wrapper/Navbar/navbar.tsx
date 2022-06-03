@@ -27,9 +27,9 @@ const DesktopNavBar = ({ NavData }) => {
         <nav className=" flex items-baseline w-auto" aria-label="main">
           {NavData.map((navSection) => {
             return "slug" in navSection ? (
-              <NavButton key={navSection.title} slug={navSection.slug} color={"black"}> {navSection.title}</NavButton>
+              <NavButton key={navSection.title} slug={navSection.slug} color={"navy-900"}> {navSection.title}</NavButton>
             ) : (
-              <DropdownNavButton key={navSection.title} title={navSection.title} color={"black"} >
+              <DropdownNavButton key={navSection.title} title={navSection.title} color={"navy-900"} >
                 {navSection.subpages.map((navitem) => (
                   <DropdownNavItem href={navitem.slug} key={navitem.title}>
                     {navitem.title}
@@ -40,7 +40,7 @@ const DesktopNavBar = ({ NavData }) => {
             );
           })}
           <div className="pl-sm"></div>
-          <NavButton slug={"/contact"} color={"black"}> {"Get In Touch"}</NavButton>
+          <NavButton slug={"/contact"} color={"navy-900"}> {"Get In Touch"}</NavButton>
         </nav>
       </div>
     </header>
