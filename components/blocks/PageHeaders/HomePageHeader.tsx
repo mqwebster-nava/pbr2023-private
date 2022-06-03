@@ -2,7 +2,7 @@ import { PageHeaderInterface } from "./PageHeader";
 import CrossfadeCarousel from "@notbaldrick/react-crossfade-carousel";
 import { Button } from "components/atom";
 
-const headers = [
+const header = 
   {
     bg: "bg-plum-900",
     illBg:"bg-plum-50",
@@ -13,53 +13,10 @@ const headers = [
       "https://images.ctfassets.net/t2ekr6eg3fr3/6z2ffB942KoxRjoVvKtTLU/5d94d27f379d041b087a7a7ff2b37158/home_plum_il4.png",
       "https://images.ctfassets.net/t2ekr6eg3fr3/35fBvEBsC6ajPKq8HldU2x/fe67befe37a9dc7d31be576035342614/home_plum_il3.png",
     ],
-  },
-  {
-    bg: "bg-purple-900",
-    illBg:"bg-purple-50",
-    pattern: "/images/home-patterns-purple.png",
-    illustrations: [
-      "https://images.ctfassets.net/t2ekr6eg3fr3/1T8jjNls5GR7ctPQB9Jyqx/c494abda7e335a5630723efbc753f08c/home_purple_il1.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/7sGbzaIVacjiFh23zBN0rw/875c6be98884f00cac71cf6d5da0f05f/home_purple_il3.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/1LVHX9xno6DNMVRSNZTqPP/69fe69045e636aceacbcfaa324595a24/home_purple_il4.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/3plqrsnQRrh2dsoKogrtST/0f4cf544901c3c9855608e4100e2777d/home_purple_il2.png",
-    ],
-  },
-  {
-    bg: "bg-navy-900",
-    illBg:"bg-navy-50",
-    pattern: "/images/home navy pattern.png",
-    illustrations: [
-      "https://images.ctfassets.net/t2ekr6eg3fr3/70cDqOzh6VSUiHKKf7SIjD/1440b9310d81d5f939d28be691aee1b9/home_navy_il1.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/5nAtbp4Kb3EYhmWdBqdzmM/6b404195377b35c91cac6ca6e96d93d7/home_navy_il3.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/NJkPKtknB62UV80gyxyuR/4f900212a73685bfa3861959a8fe95d3/home_navy_il2.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/2ZVfWN7RgI8IMqOGBmb9HT/17ec4b9b13d8ebf1ae99ca5e7960935f/home_navy_il4.png",
-    ],
-  },
-  {
-    bg: "bg-sage-900",
-    illBg:"bg-sage-50",
-    pattern: "/images/home-green-pattern.png",
-    illustrations: [
-        'https://images.ctfassets.net/t2ekr6eg3fr3/34y8V9VXnoZNT2t3d9qfhR/7c7ca98c3b094c95f8690078dae9c1fe/home_sage_il2.png',
-        'https://images.ctfassets.net/t2ekr6eg3fr3/oUamgScZg6Z96MP7KhLjZ/eec94f2c0896ef5b58ddd2111f955832/home_sage_il4.png',
-        'https://images.ctfassets.net/t2ekr6eg3fr3/nKOGFVtPm0MJhWEOjGAd6/69a812f1f672d4b999ac51dfefd09325/home_sage_il1.png',
-        'https://images.ctfassets.net/t2ekr6eg3fr3/20uK2R5w8sXEVILo4OakNr/d39690c8a9389be4c7434b59ffc9ddb9/home_sage_il3.png'
-    ],
-  },
-];
-
-// const defaultPattern: ContentfulImageAsset = {
-//   id: "cWIxdC",
-//   url: pat.src,
-//   width: pat.width,
-//   height: pat.height,
-//   title: "Purple Nava Logo",
-//   description: "A logo to act as a placeholder for the social image",
-// };
+  }
+;
 
 const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
-  const header = headers[Math.floor(headers.length * Math.random())];
 
   return (
     <header key={id}>
@@ -101,14 +58,6 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             transition={2000}
             images={header.illustrations}
           />
-          {/* <Image
-            className="object-cover "
-            src={defaultIllustration.url}
-            width={defaultIllustration.width}
-            height={defaultIllustration.height}
-            layout="responsive"
-            alt={defaultIllustration.description}
-          ></Image> */}
         </div>
       </div>
     </header>
@@ -116,3 +65,37 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
 };
 
 export default HomePageHeader;
+
+// {
+  //   bg: "bg-purple-900",
+  //   illBg:"bg-purple-50",
+  //   pattern: "/images/home-patterns-purple.png",
+  //   illustrations: [
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/1T8jjNls5GR7ctPQB9Jyqx/c494abda7e335a5630723efbc753f08c/home_purple_il1.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/7sGbzaIVacjiFh23zBN0rw/875c6be98884f00cac71cf6d5da0f05f/home_purple_il3.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/1LVHX9xno6DNMVRSNZTqPP/69fe69045e636aceacbcfaa324595a24/home_purple_il4.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/3plqrsnQRrh2dsoKogrtST/0f4cf544901c3c9855608e4100e2777d/home_purple_il2.png",
+  //   ],
+  // },
+  // {
+  //   bg: "bg-navy-900",
+  //   illBg:"bg-navy-50",
+  //   pattern: "/images/home navy pattern.png",
+  //   illustrations: [
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/70cDqOzh6VSUiHKKf7SIjD/1440b9310d81d5f939d28be691aee1b9/home_navy_il1.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/5nAtbp4Kb3EYhmWdBqdzmM/6b404195377b35c91cac6ca6e96d93d7/home_navy_il3.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/NJkPKtknB62UV80gyxyuR/4f900212a73685bfa3861959a8fe95d3/home_navy_il2.png",
+  //     "https://images.ctfassets.net/t2ekr6eg3fr3/2ZVfWN7RgI8IMqOGBmb9HT/17ec4b9b13d8ebf1ae99ca5e7960935f/home_navy_il4.png",
+  //   ],
+  // },
+  // {
+  //   bg: "bg-sage-900",
+  //   illBg:"bg-sage-50",
+  //   pattern: "/images/home-green-pattern.png",
+  //   illustrations: [
+  //       'https://images.ctfassets.net/t2ekr6eg3fr3/34y8V9VXnoZNT2t3d9qfhR/7c7ca98c3b094c95f8690078dae9c1fe/home_sage_il2.png',
+  //       'https://images.ctfassets.net/t2ekr6eg3fr3/oUamgScZg6Z96MP7KhLjZ/eec94f2c0896ef5b58ddd2111f955832/home_sage_il4.png',
+  //       'https://images.ctfassets.net/t2ekr6eg3fr3/nKOGFVtPm0MJhWEOjGAd6/69a812f1f672d4b999ac51dfefd09325/home_sage_il1.png',
+  //       'https://images.ctfassets.net/t2ekr6eg3fr3/20uK2R5w8sXEVILo4OakNr/d39690c8a9389be4c7434b59ffc9ddb9/home_sage_il3.png'
+  //   ],
+  // },
