@@ -35,11 +35,11 @@ const SectionHeader = ({
   const TitleBlock = () => {
     return (
       <div className="lg:w-3/4 w-full">
-        <h1
+        <h2
           className={`w-full font-sans ${textColor} type-preset-2 font-black mt-xl mb-xl`}
         >
           {title}
-        </h1>
+        </h2>
       </div>
     );
   };
@@ -55,17 +55,13 @@ const SectionHeader = ({
   const ColoredLine = () => {
  
     return colorTheme == "gold" ? (
-      <div className="flex mb-xl">
-        <div className="bg-gold-900 h-[12px] w-[46px]"></div>
-        <div className="bg-gold-700 h-[12px] w-[46px]"></div>
-        <div className="bg-gold-500 h-[12px] w-[46px]"></div>
-      </div>
-    ) : (
-      <div className="flex mb-xl">
-        <div className="bg-purple-900 h-[12px] w-[46px]"></div>
-        <div className="bg-purple-500 h-[12px] w-[46px]"></div>
-        <div className="bg-purple-300 h-[12px] w-[46px]"></div>
-      </div>
+       <div className="bg-gold-900 h-[12px] w-[138px]"></div>
+        
+    ) : colorTheme == "sage" ?  (
+      <div className="bg-sage-900 h-[12px] w-[138px]"></div>
+       
+   ) : (
+      <div className="bg-plum-400 h-[12px] w-[138px]"></div>
     );
   };
 
@@ -74,7 +70,8 @@ const SectionHeader = ({
     <div className={`responsive-container pt-4xl pb-xl`} key={id}>
       <TitleBlock />
        <div className="flex mb-xl">
-        <div className="bg-gray-900 h-[8px] w-[138px]"></div>
+         <ColoredLine/>
+        {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
       {subtitle && <BodyBlock />}
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
