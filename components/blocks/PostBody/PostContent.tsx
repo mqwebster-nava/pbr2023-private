@@ -39,7 +39,7 @@ const PostContent = ({docData, docLinks, }) =>{
             <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
           ),
           [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
-          [BLOCKS.UL_LIST]: (node, children) => ( <ul className=" list-style-rich">{children}</ul> ),
+          [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="pb-sm">{children}</li>,
           [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),

@@ -21,7 +21,7 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-purple-400">400</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-purple-500">500</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-purple-600">600</div>
-            <div style={{ width: "100px", height: "100px" }} className="bg-purple-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-purple-700 border-purple-700 hover:border-purple-700">700</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-purple-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-purple-900">900</div>
           </div>
@@ -34,7 +34,7 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-plum-400">400</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-plum-500">500</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-plum-600">600</div>
-            <div style={{ width: "100px", height: "100px" }} className="bg-plum-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-plum-700 border-plum-700 hover:border-plum-700">700</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-plum-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-plum-900">900</div>
           </div>
@@ -47,7 +47,7 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-gold-400">400</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-gold-500">500</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-gold-600">600</div>
-            <div style={{ width: "100px", height: "100px" }} className="bg-gold-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-gold-700 border-gold-700 hover:border-gold-700">700</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-gold-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-gold-900">900</div>
           </div>
@@ -60,7 +60,7 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-navy-400">400</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-navy-500">500</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-navy-600">600</div>
-            <div style={{ width: "100px", height: "100px" }} className="bg-navy-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-navy-700 border-navy-700 hover:border-navy-700">700</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-navy-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-navy-900">900</div>
           </div>
@@ -73,7 +73,7 @@ export const Color = () => {
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-400">400</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-500">500</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-600">600</div>
-            <div style={{ width: "100px", height: "100px" }} className="bg-sage-700">700</div>
+            <div style={{ width: "100px", height: "100px" }} className="bg-sage-700 hover:border-sage-700">700</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-800">800</div>
             <div style={{ width: "100px", height: "100px" }} className="bg-sage-900">900</div>
           </div>

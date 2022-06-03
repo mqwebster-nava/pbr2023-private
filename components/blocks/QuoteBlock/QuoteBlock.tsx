@@ -20,11 +20,11 @@ const QuoteBlock = ({
   const baseColor = color ? color : "gold";
   return (
     <blockquote className={`bg-gold-700`}>
-      <div className="responsive-container py-4xl flex flex-wrap">
-      <div className={`w-full lg:w-1/6`}>
-         <Image src={QuotePattern} layout={"fixed"} alt="quotation marks"></Image>
+      <div className="responsive-container py-2xl md:py-4xl flex flex-wrap">
+      <div className={`w-full pb-md`}>
+         <Image src={QuotePattern} height={70} width={128} layout={"fixed"} alt="quotation marks"></Image>
        </div>
-        <div className={`w-full lg:w-5/6 flex`}>
+        <div className={`w-full lg:w-4/5 flex`}>
           <div className="pr-md">
             <p
               className={`font-sans type-preset-3  text-black font-bold mb-md`}

@@ -56,7 +56,7 @@ html {
   --small-line-height:1.1;
   --type-preset-1__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
   --type-preset-2__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
-    --type-preset-3__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale));
+   --type-preset-3__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale));
     --type-preset-4__fontSize: calc(1em * var(--typescale) * var(--typescale));
     --type-preset-5__fontSize: calc(1em * var(--typescale));
     --type-preset-6__fontSize: 1em;
@@ -116,28 +116,22 @@ body {
   }
   
 }
-/*Added because the tailwind options seem to be not working*/
-.list-style-rich {
+/*Added because the tailwind options seem to be not working list-style is a ul*/
+.list-style {
   list-style-position: inside;
   list-style-type: "— ";
+  
 }
-.list-style-rich li p {
+.list-style li {
+  text-indent: -1em;
+  padding-left: 1em;
+}
+.list-style li p {
   display: inline;
 }
 
-.list-style {
-  list-style-position: inside;
-}
 
-.list-style li::before {
-  /* https://www.w3schools.com/howto/howto_css_bullet_color.asp */
-  content: "— ";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: black; /* Change the color */
-  /*font-weight: bold;  If you want it to be bold */
-   /*display: inline-block; Needed to add space between the bullet and the text */
-  /*width: 1em;  Also needed for space (tweak if needed) */
-   /*margin-left: -1em; Also needed for space (tweak if needed) */
-}
+
 .rainbow-gradient {
   background-image: linear-gradient(
     to right,

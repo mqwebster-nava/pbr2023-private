@@ -6,6 +6,7 @@ import TitleBlock from "./TitleBlock";
 //import ImagePatternBlock from "./ImagePatternBlock";
 import IllustrationPatternBlock from "./ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
+import React from "react";
 
 // const defaultPattern: ContentfulImageAsset = {
 //   id: '6f9PYC9LuxyTeGpAQ0A4',
@@ -32,26 +33,32 @@ export interface PageHeaderInterface {
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
-  if(props.variant=="Secondary" || props.variant=="Post" || !props.variant){
+  if(props.variant=="Secondary" || (props.variant=="Post" && props.image==null)|| !props.variant){
+    const bg = props.variant=="Post"? "bg-sage-900": "bg-navy-900";
+    const titleColor = props.variant=="Post"? "bg-sage-200": "text-navy-200";
+    
     return (<header key={props.id}>
-      <div className={`bg-navy-900 `}>
+      <div className={bg}>
         <div
           className={`responsive-container z-10 relative pt-5xl `}>
-          <TitleBlock textColor={"text-navy-200"} title={props.title} subtitle={props.subtitle} body={props.body}/>
+          <TitleBlock textColor={titleColor} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>
-      <SecondaryPatternBlock bgColor={"bg-navy-900"}/> 
+      <SecondaryPatternBlock bgColor={bg}/> 
     </header>)
   }
-  if(props.variant=="Primary"){
+  if(props.variant=="Primary" || (props.variant=="Post" && props.image!=null)){
+    const bg = props.variant=="Post"? "bg-sage-900": "bg-plum-900";
+    const titleColor = props.variant=="Post"? "text-sage-200": "text-plum-200";
+    
     return (<header key={props.id}>
-      <div className={`bg-plum-900 relative `}>
+      <div className={`${bg} relative `}>
         <div
           className={`responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}>
-          <TitleBlock textColor={"text-plum-200"} title={props.title} subtitle={props.subtitle} body={props.body}/>
+          <TitleBlock textColor={titleColor} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>
-      <IllustrationPatternBlock/>
+      {props.variant=="Post"? <IllustrationPatternBlock image={props.image} colorTheme={"sage"}/> :  <IllustrationPatternBlock/>}
     </header>)
   }
   if(props.variant == "Home"){

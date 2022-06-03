@@ -28,6 +28,7 @@ const FeatureCard = ({id, icon, title, body}:FeatureCardInterface) => {
             src={icon.url} 
             height={"36px"}
             width={"36px"}
+            alt=""
             ></Image>
         <p className={"type-preset-4 font-sans font-bold text-white pt-md"}>
             <span className="text-purple-100 ">{`${title} `}</span>

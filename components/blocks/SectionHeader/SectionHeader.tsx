@@ -53,26 +53,26 @@ const SectionHeader = ({
     );
   };
   const ColoredLine = () => {
+ 
     return colorTheme == "gold" ? (
-      <div className="flex mb-xl">
-        <div className="bg-gold-900 h-[12px] w-[46px]"></div>
-        <div className="bg-gold-700 h-[12px] w-[46px]"></div>
-        <div className="bg-gold-500 h-[12px] w-[46px]"></div>
-      </div>
-    ) : (
-      <div className="flex mb-xl">
-        <div className="bg-purple-900 h-[12px] w-[46px]"></div>
-        <div className="bg-purple-500 h-[12px] w-[46px]"></div>
-        <div className="bg-purple-300 h-[12px] w-[46px]"></div>
-      </div>
+       <div className="bg-gold-900 h-[12px] w-[138px]"></div>
+        
+    ) : colorTheme == "sage" ?  (
+      <div className="bg-sage-900 h-[12px] w-[138px]"></div>
+       
+   ) : (
+      <div className="bg-plum-400 h-[12px] w-[138px]"></div>
     );
   };
 
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-4xl pb-2xl`} key={id}>
+    <div className={`responsive-container pt-4xl pb-xl`} key={id}>
       <TitleBlock />
-      <ColoredLine/>
+       <div className="flex mb-xl">
+         <ColoredLine/>
+        {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
+      </div> 
       {subtitle && <BodyBlock />}
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>
