@@ -1,4 +1,4 @@
-import { getContentUrl } from "utils/utils";
+import { getContentUrl, getDateStr } from "utils/utils";
 import { ContentCard, LinkText } from "components/atom";
 import classNames from "classnames";
 import FeatureCard from "components/atom/FeatureCard/FeatureCard";
@@ -71,7 +71,7 @@ const ContentGrid = ({
                         ? "half"
                         : "quarter"
                     }
-                    kicker={item.contentType == "Case Study" && item.clientName}
+                    kicker={item.contentType == "Case Study" && item.clientName ||item.contentType == "News" && getDateStr(item.date)}
                     title={item.title}
                     image={item.promoImage}
                     path={getContentUrl(item.contentType, item.slug)}

@@ -75,16 +75,13 @@ const DefaultContentCard  = ({
       className={`${backgroundColor} aspect-[16/9] flex flex-col`}
     >
       <div className={`bg-${color}-900 h-1/3 w-full flex justify-end`}>
-        <div className=" h-full aspect-[1/1]">
-          <img src={brandDirectional} alt="" width="200px" height="200px" className="object-cover"/>
-        </div>
-        <div className={`bg-${color}-500 h-full aspect-[1/1]`}> <img src={brandTerrain1}  width="200px" height="200px" className="object-fill" alt=""/></div>
+        <div className={`bg-${color}-800 h-full aspect-[1/1] `}></div>
+        <div className={`bg-${color}-500 h-full aspect-[1/1]`}></div>
         <div className={`bg-${color}-200 h-full aspect-[1/1]`}></div>
       </div>
       <div className="flex h-2/3 justify-end">
-        <div className={"h-full aspect-[1/1]"}>
-         <img src={brandDirectional} className="object-fill" alt=""  width="300px" height="300px" />
-         </div>
+      <div className={`bg-${color}-800 h-full aspect-[1/1] `}></div>
+       
       </div>
     </div>)
   }
@@ -109,14 +106,4 @@ const DefaultContentCard  = ({
 };
 
 export default ContentCard;
-
-
-  // const ToolkitSquare = () => {
-  //   return ( <div
-  //     className={`bg-sage-200 aspect-[16/9] flex flex-col`}
-  //   >
-      
-  //   </div>)
-  // }
- 
 

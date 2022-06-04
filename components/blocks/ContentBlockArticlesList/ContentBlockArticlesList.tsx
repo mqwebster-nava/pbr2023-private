@@ -26,10 +26,7 @@ const ContentBlockArticleList = ({
   max = 6,
   layout = "feature",
 }: ArticleListInterface) => {
-  const GridStyle = classNames({
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": (layout= "default"),
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": (layout= "feature"),
-  });
+
   items = items.filter((post) => post != null);
   return (
     <section key={id}>
@@ -70,24 +67,3 @@ const ContentBlockArticleList = ({
 };
 
 export default ContentBlockArticleList;
-
-/*
-  const childrenArray = Children.toArray(children);
-
-  return ( 
-     <div className="responsive-container py-2xl">
-     <div className={`w-full `}>
-      
-                {title &&  <h3 className="font-sans type-preset-5 font-bold">{title} </h3> }
-                {body && <p className={`font-sans pt-lg type-preset-6 text-gray-800 mb-md`}>{body}</p> }
-                  <div className={`w-full flex  items-stretch md:flex-row flex-col gap-8 my-3xl `}>
-          <div className="w-full md:w-1/3 self-stretch"> {childrenArray[0]} </div>
-          <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>1 && childrenArray[1]} </div>
-          <div className="w-full md:w-1/3 self-stretch"> {childrenArray.length>2 && childrenArray[2]} </div>
-      </div> 
-                  
-              {buttonText && <Button href={buttonPath} >{buttonText}</Button>}
-          </div>
-      </div> 
-  );
-  */
