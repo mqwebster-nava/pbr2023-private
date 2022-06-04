@@ -45,8 +45,8 @@ const PageTemplate: React.FC<PageInterface> = ({
   return (
     <main>
       <PageHeader {...pageHeader}/>
-      {contentBlocks.map((block,i) =>  getComponent(block,i))}
       {children}
+      {contentBlocks.map((block,i) =>  getComponent(block,i))}
     </main>
   );
 };
