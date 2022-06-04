@@ -34,8 +34,9 @@ export interface PageHeaderInterface {
 
 const PageHeader = (props: PageHeaderInterface) => {
   if(props.variant=="Secondary" || (props.variant=="Post" && props.image==null)|| !props.variant){
+    const bgBase = props.variant=="Post"? "sage": "navy";
     const bg = props.variant=="Post"? "bg-sage-900": "bg-navy-900";
-    const titleColor = props.variant=="Post"? "bg-sage-200": "text-navy-200";
+    const titleColor = props.variant=="Post"? "text-sage-200": "text-navy-200";
     
     return (<header key={props.id}>
       <div className={bg}>
@@ -44,7 +45,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           <TitleBlock textColor={titleColor} title={props.title} subtitle={props.subtitle} body={props.body}/>
         </div>
       </div>
-      <SecondaryPatternBlock bgColor={bg}/> 
+      <SecondaryPatternBlock bgColor={bg} bgBase={ bgBase }/> 
     </header>)
   }
   if(props.variant=="Primary" || (props.variant=="Post" && props.image!=null)){
