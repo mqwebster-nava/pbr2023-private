@@ -42,7 +42,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       variant:"Post",
       subtitle:post.title,
       body:post.longSummary,
-      image:  liftData(post.leadImage) ?? liftData(post.promoImage),
+      image:  liftData(post.leadImage),
     },
     description:post.shortSummary,
     contentBlocks: [
@@ -123,14 +123,15 @@ export function formatTagsPage(slug, tagName, posts){
     pageHeader: {
       id: `${slug}-header`,
       variant:"Secondary",
-      title: tagName,
+      title:"Tags",
       subtitle: tagName,
     },
     contentBlocks: [
       {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        items: posts
+        items: posts,
+        layout:"default"
       }
     ],
  }
