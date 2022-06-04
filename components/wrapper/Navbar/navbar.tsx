@@ -21,7 +21,7 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <header className={`bg-gray-100 w-full z-20 pt-sm `}>
+    <header className={`bg-gray-100 w-full z-50 pt-sm `}>
       <div className=" responsive-container   flex flex-wrap items-center justify-between">
         <Logo />
         <nav className=" flex items-baseline w-auto" aria-label="main">

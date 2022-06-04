@@ -1,6 +1,5 @@
 
 const NavButton = (props) => {
-  console.log(props.color)
     return (
       <div key={props.slug} className="relative font-bold inline-block  text-navy-900  cursor-pointer ">
         <a
