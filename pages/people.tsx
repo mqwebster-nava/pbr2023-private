@@ -13,11 +13,10 @@ export default function People(props: PageInterface) {
       fetch("https://api.airtable.com/v0/appwGmpLTG1da8Ayy/tblvCwzJud7MCL9hW?api_key=keyhwtCt910pVmtUG")
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.records);
           setTeamMembers(data.records);
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
     }, []);
   return props ? ( <PageTemplate {...props} >
