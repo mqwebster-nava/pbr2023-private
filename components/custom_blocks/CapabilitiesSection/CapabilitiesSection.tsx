@@ -29,7 +29,7 @@ const CapabilitiesSection = ({title, capabilityTitle, body, items}:CapabilitiesS
           <p className="type-preset-7 text-gray-900 pb-md">Capabilities</p>
           {
           items.map((cap) => {
-            return <div className="bg-white flex my-sm p-xl gap-xl">
+            return <div className="bg-white flex my-sm p-xl gap-xl" key={cap.body}>
                 <img 
                 src="https://images.ctfassets.net/t2ekr6eg3fr3/3hBHof0lL9fl2Ui7QQdGnD/031cc4c1e72fb98b335ae54f3e2840eb/icon-house.svg"
                 height={"25px"}
