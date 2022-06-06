@@ -5,5 +5,7 @@ const POST_IMAGE =`
     image {
         ${IMAGE_FIELDS}
     }
+    caption
+    attribution
 `;
 export default POST_IMAGE;
