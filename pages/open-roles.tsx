@@ -8,7 +8,6 @@ export default function OpenRoles(props:PageInterface) {
  
   return (
     <PageTemplate {...props}>
-    <OpenRolesComponent/>
     </PageTemplate>
   );
 }
