@@ -8,6 +8,8 @@ sys {
 }
 title
 body
+buttonPath
+buttonText
 postsCollection(limit:10) {
     items{
         __typename
