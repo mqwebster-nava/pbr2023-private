@@ -12,7 +12,7 @@ export const PercentBarGraph: React.FC<PercentBarGraphInterface> = ({
   insideBarColor = "sage",
 }) => {
   const insideBar = classNames({
-    "bg-sage-400": insideBarColor === "sage",
+    "bg-sage-700": insideBarColor === "sage",
     "bg-navy-900": insideBarColor === "navy",
   });
   return (
@@ -21,7 +21,7 @@ export const PercentBarGraph: React.FC<PercentBarGraphInterface> = ({
         className={`${insideBar} min-h-[inherit] px-2 py-4 text-white`}
         style={{ width: `${percent}%` }}
       >
-        <h2 className="type-preset-3 font-black inline-block">{percent}%</h2>
+        <p className="type-preset-3 font-black inline-block">{percent}%</p>
         <p>{description}</p>
       </div>
     </div>

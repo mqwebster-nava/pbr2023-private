@@ -43,60 +43,6 @@ FeatureGrid.args = {
 }
 
 
-TeamGrid.args = {
-    "id": "VCxkKZMIzLeUNYIiiXS5G",
-    variant:"default",
-    contentType:"leadership bios",
-     "items": [
-        {
-            "id": "program-director-angela-colter",
-            "name":"Angela Colter",
-            "role": "Program Director",
-            "image": {
-                "sys": {
-                    "id": "26CEIuxhAypz4NwhtU1cUk"
-                },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/26CEIuxhAypz4NwhtU1cUk/a8dd41a91accb9d527d203a866b64484/_uploads_DayInLifeAngelaColter_Lede.jpeg",
-                "width": 1400,
-                "height": 934,
-                "title": "DayInLifeAngelaColter_Lede.",
-                "description": "Nava Program Director Angela Colter speaks on a panel on a conference."
-            },
-        },
-        {
-            "id": "program-director-angela-colter",
-            "name":"Angela Colter",
-            "role": "Program Director",
-            "image": {
-                "sys": {
-                    "id": "26CEIuxhAypz4NwhtU1cUk"
-                },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/26CEIuxhAypz4NwhtU1cUk/a8dd41a91accb9d527d203a866b64484/_uploads_DayInLifeAngelaColter_Lede.jpeg",
-                "width": 1400,
-                "height": 934,
-                "title": "DayInLifeAngelaColter_Lede.",
-                "description": "Nava Program Director Angela Colter speaks on a panel on a conference."
-            },
-        },
-        {
-            "id": "program-director-angela-colter",
-            "name":"Angela Colter",
-            "role": "Program Director",
-            "image": {
-                "sys": {
-                    "id": "26CEIuxhAypz4NwhtU1cUk"
-                },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/26CEIuxhAypz4NwhtU1cUk/a8dd41a91accb9d527d203a866b64484/_uploads_DayInLifeAngelaColter_Lede.jpeg",
-                "width": 1400,
-                "height": 934,
-                "title": "DayInLifeAngelaColter_Lede.",
-                "description": "Nava Program Director Angela Colter speaks on a panel on a conference."
-            },
-        },
-    
-    ]
-  };
-  
 
   
 Posts.args = {

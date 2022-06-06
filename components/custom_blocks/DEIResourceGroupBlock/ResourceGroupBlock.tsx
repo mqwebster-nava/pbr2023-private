@@ -32,7 +32,7 @@ export const ResourceGroupBlock: React.FC<ResourceGroupBlockInterface> = ({
     <div className="md:max-w-[45%] flex-grow flex flex-col items-stretch  mt-4 mr-4">
       <div className={`h-[10px] ${background}`} />
       <div className="flex-grow flex flex-col items-stretch bg-white p-6">
-        <h2 className={`font-bold type-preset-5 mb-lg ${textColor}`}>{title}</h2>
+        <h4 className={`font-bold type-preset-5 mb-lg ${textColor}`}>{title}</h4>
         <p>{description}</p>
       </div>
     </div>

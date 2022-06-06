@@ -31,11 +31,12 @@ const NavaDigest = () => {
               className="validate"
               target="_blank"
             >
+              <label htmlFor="email" hidden>Email</label>
               <div id="mc_embed_signup" className="flex gap-md w-full">
                 <input
                   type="email"
                   name="EMAIL"
-                  id="mce-EMAIL"
+                  id="email"
                   placeholder="Your email address"
                   className=" required email text-black w-full p-md rounded-sm"
                 />

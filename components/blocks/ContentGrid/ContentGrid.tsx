@@ -1,20 +1,17 @@
 import { getContentUrl, getDateStr } from "utils/utils";
-import { ContentCard, LinkText } from "components/atom";
+import { ContentCard, } from "components/atom";
 import classNames from "classnames";
 import FeatureCard from "components/atom/FeatureCard/FeatureCard";
-import LeadershipBioCard from "components/atom/LeadershipBioCard/LeadershipBioCard";
 import ColorTheme from "shared_interfaces/ColorThemes";
-import { Title } from "@storybook/addon-docs/node_modules/@storybook/components";
 
 /*
 Content Grid sets up the layout and background color 
 for the different types of cards used throughout the site.
-
 */
 
 
 export type ListLayout = "feature" | "default";
-type ContentType = "default" | "posts" | "feature cards" | "leadership bios" ;
+type ContentType = "default" | "posts" | "feature cards";
 interface ContentGridInterface {
   id: string;
   items: any;
@@ -59,8 +56,6 @@ const ContentGrid = ({
               <div className={`w-full self-stretch ${feature}`} key={item.id}>
                 {contentType == "feature cards" ? (
                   <FeatureCard {...item}/>
-                ) : contentType == "leadership bios" ? (
-                  <LeadershipBioCard {...item} />
                 ) : item["__typename"] == "Post" ?
                 (
                   <ContentCard

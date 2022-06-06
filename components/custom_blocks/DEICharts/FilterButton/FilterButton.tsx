@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 type FilterButtonInterface = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   value: string;
@@ -7,11 +9,12 @@ type FilterButtonInterface = {
 
 const colors = {
   selected: {
-    sage: "sage-600",
-    gold: "gold-900",
-    purple: "purple-600"
+    sage: "bg-sage-700 text-white",
+    gold: "bg-gold-900 text-black",
+    purple: "bg-purple-600 text-white"
   },
 };
+
 
 export const FilterButton: React.FC<FilterButtonInterface> = ({
   children,
@@ -31,7 +34,7 @@ export const FilterButton: React.FC<FilterButtonInterface> = ({
       mt-2 mr-2 py-1 px-2 
       border border-gray-400 rounded
       hover:bg-gray-500 hover:text-white
-      ${selected ? `bg-${colors.selected[theme]} text-white` : ""}
+      ${selected ? `${colors.selected[theme]}` : ""}
     `}
       value={value}
     >

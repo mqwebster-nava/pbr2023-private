@@ -1,7 +1,7 @@
 // TODO replace with correct logo
 // TODO: a11y - Link must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Logo = () => (
-  <a href={"/"} id="Home-link" aria-label="Home" className=" font-semibold font-sans type-preset-5 tracking-tight ">
+  <a href={"/"} id="Home-link" className=" font-semibold font-sans type-preset-5 tracking-tight ">
     <svg
       
       width="96"

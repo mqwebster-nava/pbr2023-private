@@ -67,7 +67,7 @@ const DefaultContentCard  = ({
       height={9}
       className={`${backgroundColor} object-cover w-full `}
       src={image ? image.url : pattern}
-      alt={image.description}
+      alt={image.description??""}
     ></Image>)
   }
   const PatternSquare = () => {
@@ -88,15 +88,17 @@ const DefaultContentCard  = ({
  
 
   return (
-    <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full ">
+    <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full "
+    aria-labelledby={path} 
+    >
       <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
         {image? <ImageSquare/> : <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
       {kicker && <div className=" type-preset-8">{kicker}</div>}
-        <h5 className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
+        <p id={path} className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
           {title}
-        </h5>
+        </p>
         <p className="type-preset-6 font-sans text-gray-700 ">
           {summary}
         </p>
