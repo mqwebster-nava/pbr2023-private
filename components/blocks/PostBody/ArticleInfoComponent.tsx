@@ -1,5 +1,5 @@
 
-import {slugify} from "utils/utils";
+import {getDateStr, slugify} from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { AuthorPostInterface } from "shared_interfaces/post_interface";
 
@@ -12,17 +12,12 @@ interface ArticleInfoComponentProps{
 
 const ArticleInfoComponent = ({date, authors, contentTags}:ArticleInfoComponentProps) =>{
 
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-  ];
-  const fmtdate = new Date(`${date}`);
-  const dateStr = monthNames[fmtdate.getMonth()]  +' ' + fmtdate.getDate()+ ', '+fmtdate.getFullYear();
 
     return (<div className="type-preset-7">
        <div className="font-sans md:block flex justify-between mb-lg">
      <div>
      <h3 className="font-bold">Published</h3>
-      <p className="font-sans pb-md">{dateStr}</p>
+      <p className="font-sans pb-md">{getDateStr(date)}</p>
      
               <div>
                 <h3 className="font-bold">Authors</h3>
