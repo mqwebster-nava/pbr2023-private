@@ -1,6 +1,5 @@
-import { Button } from "components/atom";
 
-const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonText=null }) => {
+const TitleBlock = ({ title, subtitle, body, textColor }) => {
     return (
       <div >
         <h1 className={` font-sans type-preset-1  ${textColor} font-bold md:font-black`}>
@@ -11,13 +10,11 @@ const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonT
         >
           {subtitle}
         </p>
-       { buttonPath &&
-       <div className="animate-titleButton">
-       <Button variant="white" href={buttonPath}>
-         {buttonText}
-       </Button>
-     </div>
-       }
+        {body && (
+          <p className="font-serif font-light type-preset-4 py-lg text-white">
+            {body}
+          </p>
+        )}
       </div>
     );
   };
