@@ -26,7 +26,6 @@ const ContentBlockArticleList = ({
   max = 6,
   layout = "feature",
 }: ArticleListInterface) => {
-
   items = items.filter((post) => post != null);
   return (
     <section key={id}>
@@ -47,8 +46,8 @@ const ContentBlockArticleList = ({
           <div>
           {buttonPath != null && (
        
-          <LinkText href={buttonPath} variant="large arrow">
-            Read more
+          <LinkText href={buttonPath} variant="default" color="sage">
+            {buttonText ?? "See more"}
           </LinkText>
       )}
           </div>
