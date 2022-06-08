@@ -76,6 +76,7 @@ const SectionHeader = ({
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
       {subtitle && <BodyBlock text={subtitle}/>}
+      {body && <BodyBlock text={body}/>}
      
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>
