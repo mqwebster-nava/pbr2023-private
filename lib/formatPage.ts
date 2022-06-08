@@ -63,6 +63,14 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         body:"Let’s make government services simple, effective, and accessible to all.",
         buttonText:"Get in touch",
         buttonPath:"/contact",
+        image:{
+          sys: { id: '1lNLtY5DLthC94TiYeKcvR' },
+          url: 'https://images.ctfassets.net/t2ekr6eg3fr3/1lNLtY5DLthC94TiYeKcvR/1949dd27b9cf2a0fae91253e06e933e0/illustration-plum-3.png',
+          width: 500,
+          height: 500,
+          title: 'illustration-plum-3',
+          description: ''
+        }
       },
       // more posts block
       {
