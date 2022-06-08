@@ -6,6 +6,7 @@ sys {
 }
 title
 subtitle
+body
 colorTheme
 buttonPath
 buttonText

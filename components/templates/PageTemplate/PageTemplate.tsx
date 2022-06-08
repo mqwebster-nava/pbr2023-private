@@ -31,7 +31,7 @@ const PageTemplate: React.FC<PageInterface> = ({
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
-      "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} />),
+      "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />),
       "SectionContentBlockText": ()=> <ContentBlockText key={index} {...entry} body={<MarkdownComponent content={entry.body}/>}/>,
       "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
       "ContentBlock": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />,
@@ -45,8 +45,8 @@ const PageTemplate: React.FC<PageInterface> = ({
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "ContentGridFeatureCards": ()=><ContentGrid key={index} {...entry} layout={"default"}  padding="py-2xl" contentType={"feature cards"}/>,
       "CustomBlock": ()=> {
-        if (entry.type == "Employee List") return <EmployeeList/>
-        if (entry.type == "Open Roles") return <OpenRolesComponent/>
+        if (entry.type == "Employee List") return <EmployeeList key={index} />
+        if (entry.type == "Open Roles") return <OpenRolesComponent key={index}/>
         return <div></div>
       }
     }

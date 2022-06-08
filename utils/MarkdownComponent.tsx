@@ -10,7 +10,7 @@ export default function MarkdownComponent({ content }) {
         components={{
           ul: ({ node, children }) => <ul className="list-style"  >{children}</ul>,
           li: ({ node, children }) => <li className="pb-sm"  >{children} </li>,
-          
+          p: ({ node, children }) => <p className="pb-md"  >{children} </p>,
         }}
       />
     );

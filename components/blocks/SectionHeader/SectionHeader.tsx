@@ -9,6 +9,7 @@ export interface SectionHeaderInterface {
   title: string;
   id: string;
   subtitle?: any;
+  body?:any;
   colorTheme?: ColorTheme;
   buttonText?: string;
   buttonPath?: string;
@@ -18,10 +19,12 @@ const SectionHeader = ({
   id,
   title,
   subtitle,
+  body,
   colorTheme="default",
   buttonText,
   buttonPath
 }:SectionHeaderInterface) => {
+  console.log(body);
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
     "bg-sage-50": colorTheme=="sage",
@@ -43,12 +46,12 @@ const SectionHeader = ({
       </div>
     );
   };
-  const BodyBlock = () => {
+  const BodyBlock = ({text}) => {
     return (
       <div className={`flex`}>
-        <div className={`md:w-3/4 type-preset-3  font-serif ${textColor}`}>
-          {subtitle}
-        </div>
+        <p className={`md:w-3/4 type-preset-3  font-serif ${textColor}`}>
+         {text}
+        </p>
       </div>
     );
   };
@@ -73,7 +76,8 @@ const SectionHeader = ({
          <ColoredLine/>
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
-      {subtitle && <BodyBlock />}
+      {subtitle && <BodyBlock text={subtitle}/>}
+     
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>
     </section>
