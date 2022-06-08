@@ -8,7 +8,6 @@ const NavData = [
       { title: "Our people", slug: "/people" },
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
-      { title: "Events", slug: "/events" },
     ],
   },
   {
