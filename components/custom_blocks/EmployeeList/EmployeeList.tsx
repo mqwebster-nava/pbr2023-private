@@ -4,6 +4,7 @@ const AuthorFiller =
 import { useEffect, useState } from "react";
 
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
+const tableId ="tblpYB59rae1t15C5"
 
 export default function EmployeeList() {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -11,12 +12,20 @@ export default function EmployeeList() {
       // This gets a maximum of 100 entries per call, so 200 entries total. 
       // TODO make this into a loop so it will get all entries if more than 200
     const data = await fetch(
-        "https://api.airtable.com/v0/appwGmpLTG1da8Ayy/tblvCwzJud7MCL9hW?api_key=keyhwtCt910pVmtUG"
+        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=keyhwtCt910pVmtUG`
       ).then((res) => res.json()).catch((error) => {console.error(error); });
-    const data2 = await fetch(
-        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/tblvCwzJud7MCL9hW?api_key=keyhwtCt910pVmtUG&offset=${data.offset}`
+    let records = data.records;
+    let maxPages = 4, currentPage=1, offset=data.offset;
+    while (offset && currentPage<maxPages){
+      const data2 = await fetch(
+        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=keyhwtCt910pVmtUG&offset=${offset}`
       ).then((res) => res.json()).catch((error) => {console.error(error); });
-      setTeamMembers(data.records.concat(data2.records));
+      records = records.concat(data2.records);
+      if("offset" in data2) offset = data2.offset;
+      else offset = null;
+      currentPage+=1;
+    }
+    setTeamMembers(records);
   }
   
   useEffect(() => {
@@ -26,9 +35,10 @@ export default function EmployeeList() {
 
   const DepartmentSection = ({ name, teamMembers, open=false }) => {
     return (
-       < div className=" responsive-container py-xl">
+       < div className=" py-2xl">
+         <hr/>
      <details open={open}>
-   <summary className="type-preset-3 font-bold">{name}</summary>
+   <summary className="type-preset-3 font-bold  list-none cursor-pointer">{name}</summary>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-xl pt-xl">
         {teamMembers.map((teamMember) => {
           const photo =
@@ -55,29 +65,22 @@ export default function EmployeeList() {
   };
 
   return (
-    <>
+    <div className="responsive-container py-2xl">
       <DepartmentSection
         name="Leadership"
         open={true}
         teamMembers={
           teamMembers &&
-          teamMembers.filter((m) => m.fields.Department == "Leadership")
+          teamMembers.filter((m) => m.fields.Department == "Executive")
         }
       />
-       <DepartmentSection
-        name="Engineering"
+      {[ "Design and Research", "Engineering","Project Management","Business Development","Business Operations","Delivery Operations","Communications","Recruiting", "Product", "Program Delivery"].map((name)=><DepartmentSection
+        name={name}
         teamMembers={
           teamMembers &&
-          teamMembers.filter((m) => m.fields.Department == "Engineering")
+          teamMembers.filter((m) => m.fields.Department == name)
         }
-      />
-      <DepartmentSection
-        name="Unlabeled"
-        teamMembers={
-          teamMembers &&
-          teamMembers.filter((m) => m.fields.Department == null)
-        }
-      />
-    </>
+      />)}
+    </div>
   );
 }
