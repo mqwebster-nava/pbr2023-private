@@ -4,7 +4,7 @@ const AuthorFiller =
 import { useEffect, useState } from "react";
 
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
-const apiKey = process.env.AIRTABLE_API;
+const apiKey = "keyhwtCt910pVmtUG";
 const tableId ="tblpYB59rae1t15C5"
 
 export default function EmployeeList() {
