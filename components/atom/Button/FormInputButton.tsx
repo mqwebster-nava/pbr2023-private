@@ -4,11 +4,12 @@ export interface FormInputButtonProps {
   value: string;
   name: string;
   id: string;
+  onClick: any;
 }
 
 
 const FormInputButton = ({
-    value, name, id
+    value, name, id, onClick
   }: FormInputButtonProps) => {
     
     return (
@@ -17,6 +18,7 @@ const FormInputButton = ({
       value={value}
       name={name}
       id={id}
+      onClick={onClick}
       className={`
             font-sans font-bold h-[70px]
             inline-flex items-center justify-center rounded-sm
