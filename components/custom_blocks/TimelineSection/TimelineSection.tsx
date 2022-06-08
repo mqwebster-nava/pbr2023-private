@@ -8,15 +8,11 @@ export interface TimelineInterface {
 
 const TimelineSection = ({year, richBody}:TimelineInterface) => {
     return (
-        <div className="responsive-container">
-
+        <div className="responsive-container ">
         <hr/>
-    <div className={"grid md:grid-cols-3 grid-cols-5"}>
-        <div className="type-preset-2 font-serif pt-md"><h3>{year}</h3></div>
-        <div className="col-span-4 md:col-span-2 pt-md">
+        <div className="xl:mr-auto xl:max-w-4xl ">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
-    </div>
     </div>)
 }
 
