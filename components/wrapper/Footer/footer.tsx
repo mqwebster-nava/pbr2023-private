@@ -26,7 +26,7 @@ const Footer = () => {
               />
             </div>
             <div className="type-preset-5 text-white flex-1">
-            Nava's mission is to make government services simple, effective, and accessible to all, helping to restore trust between people and public institutions. 
+            Nava's mission is to make government services simple, effective, and accessible to all.
             </div>
           </div>
           <nav aria-label={"secondary"} className="flex flex-wrap text-white  my-xl ">
@@ -46,6 +46,8 @@ const Footer = () => {
             <div className="flex gap-2xl text-white font-bold type-preset-6">
              <a href="https://twitter.com/NavaPBC" > Twitter</a>
              <a href="https://www.linkedin.com/company/nava-pbc">  LinkedIn</a>
+             <a href="https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"> Youtube</a>
+
             </div>
           </div>
         </div>
