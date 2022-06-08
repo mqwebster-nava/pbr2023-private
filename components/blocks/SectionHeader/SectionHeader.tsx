@@ -24,7 +24,6 @@ const SectionHeader = ({
   buttonText,
   buttonPath
 }:SectionHeaderInterface) => {
-  console.log(body);
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
     "bg-sage-50": colorTheme=="sage",

@@ -4,6 +4,7 @@ const AuthorFiller =
 import { useEffect, useState } from "react";
 
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
+const apiKey = process.env.AIRTABLE_API;
 const tableId ="tblpYB59rae1t15C5"
 
 export default function EmployeeList() {
@@ -11,14 +12,16 @@ export default function EmployeeList() {
   async function getAirtableData (){
       // This gets a maximum of 100 entries per call, so 200 entries total. 
       // TODO make this into a loop so it will get all entries if more than 200
+     
     const data = await fetch(
-        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=keyhwtCt910pVmtUG`
+     
+        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}`
       ).then((res) => res.json()).catch((error) => {console.error(error); });
     let records = data.records;
     let maxPages = 4, currentPage=1, offset=data.offset;
     while (offset && currentPage<maxPages){
       const data2 = await fetch(
-        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=keyhwtCt910pVmtUG&offset=${offset}`
+        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}&offset=${offset}`
       ).then((res) => res.json()).catch((error) => {console.error(error); });
       records = records.concat(data2.records);
       if("offset" in data2) offset = data2.offset;
