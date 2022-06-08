@@ -22,19 +22,7 @@ const ContactSection = () => {
           back to you as soon as possible.
         </h3>
         <form action="https://formspree.io/f/xknpbovg" method="POST">
-        {/* <div className="py-md">
-            <label className="uppercase type-preset-7 pb-sm" htmlFor="reason">
-              Reason
-            </label>
-            <br />
-            <input
-              className="border border-gray-900 p-md w-full"
-              type="text"
-              id="reason"
-              name="reason"
-              required
-            />
-          </div> */}
+        
           <div className="py-md">
             <label className=" type-preset-7 pb-sm" htmlFor="name">
               Name
@@ -62,14 +50,14 @@ const ContactSection = () => {
             />
           </div>
           <div>
-            <label className={" type-preset-7 pb-sm"} htmlFor="msg">
+            <label className={" type-preset-7 pb-sm"} htmlFor="Message">
               Message
             </label>
             <br />
             <textarea
               rows={7}
               className="border border-gray-900 w-full"
-              id="msg"
+              id="Message"
               name="user_message"
               required
             ></textarea>
@@ -117,3 +105,16 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
+/* <div className="py-md">
+            <label className="uppercase type-preset-7 pb-sm" htmlFor="reason">
+              Reason
+            </label>
+            <br />
+            <input
+              className="border border-gray-900 p-md w-full"
+              type="text"
+              id="reason"
+              name="reason"
+              required
+            />
+          </div> */
