@@ -65,6 +65,7 @@ const DefaultContentCard  = ({
       layout="responsive"
       width={16}
       height={9}
+      quality="50"
       className={`${backgroundColor} object-cover w-full `}
       src={image ? image.url : pattern}
       alt={image.description??""}
