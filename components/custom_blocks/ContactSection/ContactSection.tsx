@@ -14,6 +14,11 @@ const AddressBlock = ({ title, addrLine1, addrLine2, number }) => {
 };
 
 const ContactSection = () => {
+
+
+  const submitForm=()=>{
+
+  }
   return (
     <section className="responsive-container flex flex-col md:flex-row py-3xl">
       <div className="w-full md:w-3/4 pr-0 md:pr-5xl">
@@ -63,7 +68,7 @@ const ContactSection = () => {
             ></textarea>
           </div>
           <div className="pt-sm">
-            <FormInputButton value={"Send"} name={"send"} id={"send"} />
+            <FormInputButton value={"Send"} name={"send"} id={"send"} onClick={submitForm} />
           </div>
         </form>
       </div>
