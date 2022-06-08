@@ -5,6 +5,7 @@ import brandDefault from "public/images/header-pattern-block.png";
 import brandDefaultArticle from "public/images/Article-Pattern.png";
 import ill from "public/images/illo.png";
 import classNames from "classnames";
+import styles from "./PageHeader.module.css";
 
 type ColorTheme = "plum" | "sage";
 
@@ -45,11 +46,13 @@ const defaultPatternArticle: ContentfulImageAsset = {
 
 
 const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern, colorTheme="plum"}:ImagePatternBlockInterface) =>{
+  image ??= defaultIllustration;
   const lift =classNames({"-mt-[15px] ": colorTheme=="sage", "-mt-[3px] ": colorTheme=="plum",})
   if( colorTheme=="sage") { pattern=defaultPatternArticle;}
   return  (
-        <div className=" relative responsive-container  aspect-video -mb-[50px] xl:mb-0">
+        <div className={` relative responsive-container  aspect-video -mb-[50px] xl:mb-0`}>
             <div className={`bg-${colorTheme}-900 ${lift}  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 `}></div>
+         <div className={`${styles.fadeIn}`}>
           <Image
             className="w-full object-cover "
             src={image.url}
@@ -70,6 +73,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             priority
           ></Image>
           </div>
+          </div> 
         </div>
     )
   }

@@ -8,15 +8,10 @@ import IllustrationPatternBlock from "./ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
 import React from "react";
 import PostTitleBlock from "./PostTitleBlock";
+import styles from "./PageHeader.module.css";
 
-// const defaultPattern: ContentfulImageAsset = {
-//   id: '6f9PYC9LuxyTeGpAQ0A4',
-//   url: brandDefault.src,
-//   width: brandDefault.height,
-//   height: brandDefault.height,
-//   title: 'Purple Nava Logo',
-//   description: 'A logo to act as a placeholder for the social image'
-// }
+
+
 
 type PageHeaderVariant = "Primary" | "Secondary" | "Home" | "Post";
 
@@ -50,10 +45,10 @@ const PageHeader = (props: PageHeaderInterface) => {
   }
   if (props.variant == "Primary") {
     return (
-      <header key={props.id}>
-        <div className={`bg-plum-900 relative `}>
+      <header  key={props.id} >
+        <div className={`bg-plum-900 relative `} >
           <div
-            className={`responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}
+            className={`${styles.fadeIn} responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}
           >
             <TitleBlock
               textColor={"text-plum-200"}
@@ -62,8 +57,8 @@ const PageHeader = (props: PageHeaderInterface) => {
               body={props.body}
             />
           </div>
-        </div>
-        <IllustrationPatternBlock />
+        </div> 
+        <IllustrationPatternBlock image={props.image}/> 
       </header>
     );
   }
