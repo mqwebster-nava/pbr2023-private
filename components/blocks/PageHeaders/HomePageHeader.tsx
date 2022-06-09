@@ -51,7 +51,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             </h1>
             <div className="animate-titleButton">
               <Button variant="white" href={"/services"}>
-                Our Work
+                Our work
               </Button>
             </div>
           </div>
