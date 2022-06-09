@@ -11,7 +11,8 @@ const contentTypesMap = {
   "Insight": "/insights/",
   "News": "/news/",
   "Toolkit": "/toolkits/",
-  "Working at Nava": "/working-at-nava/"
+  "Working at Nava": "/working-at-nava/",
+  "Events":"/events/"
 }
 
 
