@@ -47,6 +47,7 @@ const defaultPatternArticle: ContentfulImageAsset = {
 
 const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern, colorTheme="plum"}:ImagePatternBlockInterface) =>{
   image ??= defaultIllustration;
+  pattern ??defaultPattern
   const lift =classNames({"-mt-[15px] ": colorTheme=="sage", "-mt-[3px] ": colorTheme=="plum",})
   if( colorTheme=="sage") { pattern=defaultPatternArticle;}
   return  (
@@ -66,7 +67,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
            <Image
             className="w-full object-cover"
             src={pattern.url}
-            width={colorTheme=="sage"?8:4}
+            width={colorTheme=="sage"?8:12}
             height={4}
             layout="responsive"
             alt={pattern.description??""}

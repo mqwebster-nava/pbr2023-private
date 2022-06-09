@@ -58,7 +58,7 @@ const PageHeader = (props: PageHeaderInterface) => {
             />
           </div>
         </div> 
-        <IllustrationPatternBlock image={props.image}/> 
+        <IllustrationPatternBlock image={props.image} pattern={props.pattern}/> 
       </header>
     );
   }
