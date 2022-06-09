@@ -1,15 +1,14 @@
-import { ButtonProps } from "./Button";
 
 export interface FormInputButtonProps {
   value: string;
   name: string;
   id: string;
-  onClick: any;
+  onClick?: any;
 }
 
 
 const FormInputButton = ({
-    value, name, id, onClick
+    value, name, id, onClick=null
   }: FormInputButtonProps) => {
     
     return (
