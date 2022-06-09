@@ -61,9 +61,9 @@ const ContactSection = () => {
             <br />
             <textarea
               rows={7}
-              className="border border-gray-900 w-full"
+              className="border border-gray-900 w-full p-md"
               id="Message"
-              name="user_message"
+              name="message"
               required
             ></textarea>
           </div>
