@@ -8,6 +8,7 @@ import { AuthorPostInterface } from "shared_interfaces/post_interface";
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
+import EventInfoComponent from "./EventInfoComponent";
 
 const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
 
@@ -18,6 +19,8 @@ export interface PostBodyInterface {
   authors: Array<AuthorPostInterface>;
   date: string;
   hideSideNav?: boolean;
+  registrationLink?: string;
+  isEvent?:boolean;
 }
 
 
@@ -28,6 +31,8 @@ export default function PostBody({
   authors,
   date,
   hideSideNav = false,
+  isEvent = false,
+  registrationLink,
 }: PostBodyInterface) {
   // need to deconstruct post
   const doc = body.json;
@@ -87,11 +92,14 @@ export default function PostBody({
       </article>
       {/* Article Sidebar Section  */}
       <div className={"w-full md:w-1/3 pt-md md:pl-xl"}>
+       { isEvent? 
+       <EventInfoComponent date={date} registrationLink={registrationLink} contentTags={contentTags}/> : 
         <ArticleInfoComponent
           authors={authors}
           date={date}
           contentTags={contentTags}
         />
+        }
         {!hideSideNav && (
           <SideNavComponent
             h2Sections={h2Sections}
