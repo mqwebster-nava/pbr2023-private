@@ -1,15 +1,17 @@
 
+import React from "react";
+import dynamic from "next/dynamic";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 import { LinkText } from "components/atom/LinkText/LinkText";
-
-import CaptionText from "./CaptionText";
 import { liftData } from "utils/utils";
-import PostBlockQuote from "./PostBlockQuote";
-import PostPullQuote from "./PostPullQuote";
-import PostImage from "./PostImage";
-import PostSummarySection from "./PostSummarySection";
-import React from "react";
+
+const PostBlockQuote  = dynamic(() => import("components/blocks/PostBody/PostBlockQuote"));
+const PostPullQuote  = dynamic(() => import("components/blocks/PostBody/PostPullQuote"));
+const PostImage  = dynamic(() => import("components/blocks/PostBody/PostImage"));
+const CaptionText  = dynamic(() => import("components/blocks/PostBody/CaptionText"));
+const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/PostSummarySection"));
+
 import MarkdownComponent from "utils/MarkdownComponent";
 
 

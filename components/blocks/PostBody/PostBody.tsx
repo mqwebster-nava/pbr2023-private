@@ -1,4 +1,4 @@
-
+import dynamic from "next/dynamic";
 //import ReactMarkdown from 'react-markdown';
 
 import ArticleInfoComponent from "./ArticleInfoComponent";
@@ -8,7 +8,7 @@ import { AuthorPostInterface } from "shared_interfaces/post_interface";
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
-import dynamic from "next/dynamic";
+
 const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
 
 export interface PostBodyInterface {
