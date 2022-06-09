@@ -1,5 +1,7 @@
+import { Button } from "components/atom";
+import React from "react";
 
-const TitleBlock = ({ title, subtitle, body, textColor }) => {
+const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonText=null }) => {
     return (
       <div >
         <h1 className={` font-sans type-preset-1  ${textColor} font-bold md:font-black`}>
@@ -15,6 +17,7 @@ const TitleBlock = ({ title, subtitle, body, textColor }) => {
             {body}
           </p>
         )}
+        {buttonPath && <Button href={buttonPath}>{buttonText}</Button>}
       </div>
     );
   };

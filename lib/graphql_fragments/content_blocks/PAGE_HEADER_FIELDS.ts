@@ -13,6 +13,8 @@ image {
 pattern {
     ${IMAGE_FIELDS}
 }
+buttonPath
+buttonText
 `;
 
 export default PAGE_HEADER_FIELDS;

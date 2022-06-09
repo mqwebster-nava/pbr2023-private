@@ -23,6 +23,8 @@ export interface PageHeaderInterface {
   variant?: PageHeaderVariant;
   image?: ContentfulImageAsset;
   pattern?: ContentfulImageAsset;
+  buttonPath?:string;
+  buttonText?:string;
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
@@ -55,6 +57,8 @@ const PageHeader = (props: PageHeaderInterface) => {
               title={props.title}
               subtitle={props.subtitle}
               body={props.body}
+              buttonText={props.buttonText}
+              buttonPath={props.buttonPath}
             />
           </div>
         </div> 
