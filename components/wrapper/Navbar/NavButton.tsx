@@ -7,7 +7,7 @@ const NavButton = (props) => {
           text-navy-900 pt-md font-sans flex
           mt-sm pr-3xl
           pb-sm
-          hover:border-black border-b-8 border-transparent
+          hover:border-black border-b-4 border-transparent
             `}
           href={props.slug}
         >
