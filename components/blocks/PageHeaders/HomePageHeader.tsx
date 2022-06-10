@@ -1,12 +1,10 @@
 import { PageHeaderInterface } from "./PageHeader";
-import CrossfadeCarousel from "@notbaldrick/react-crossfade-carousel";
 import { Button } from "components/atom";
 import headerIllustration1 from "public/images/Illustrations-for-website-V0118.png";
 import headerIllustration2 from "public/images/Illustrations-for-website-V0119 3.png";
 import headerIllustration3 from "public/images/Illustrations-for-website-V0120 9.png";
 import headerIllustration4 from "public/images/Illustrations-for-website-V0120.png";
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import Image from "next/image";
 import styles from "./PageHeader.module.css";
 
