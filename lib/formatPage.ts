@@ -8,6 +8,10 @@ intercept observer.
 import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
 import { liftData } from "utils/utils";
+
+const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
+
+
 const defaultSocialImage: ContentfulImageAsset = {
   id: '6f9PYC9LuxyTeGpAQ0A4Ea',
   url: 'https://images.ctfassets.net/t2ekr6eg3fr3/6f9PYC9LuxyTeGpAQ0A4Ea/3792ece63db1863f5754a373b770f731/purple-nava.png',
@@ -111,7 +115,7 @@ export function formatAuthorPage(slug, author){
       {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        items: author.linkedFrom.postCollection.items,
+        items:  sortPostsByDate(author.linkedFrom.postCollection.items),
         title: `More by ${author.name}`
       }
     ], 
@@ -138,7 +142,7 @@ export function formatTagsPage(slug, tagName, posts){
       {
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
-        items: posts,
+        items:  sortPostsByDate(posts),
         layout:"default"
       }
     ],
