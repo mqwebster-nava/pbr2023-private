@@ -118,9 +118,9 @@ function CrossfadeCarousel({
   return (
     <div  className="relative overflow-hidden w-full h-full">
       {images.map((image, index) => (
-        <div className={` absolute object-cover `}>
+        <div className={` absolute object-cover `} key={`${image}-${index}`} >
         <Image
-          key={`${image}-${index}`} 
+          
           src={image} 
           height={image.height}
           width={image.width}
