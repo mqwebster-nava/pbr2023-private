@@ -4,9 +4,9 @@ import { Navbar, Footer } from "components/wrapper/index";
 import Head from "next/head";
 import { PageInterface } from "shared_interfaces/page_interface";
 import React from "react";
-
-const debugUrl = "http://localhost:3000/";
-const baseUrl = "https://nava-website-2.vercel.app/";
+import favicon from "public/images/Nava-Favicon-01.png"
+// const debugUrl = "http://localhost:3000/";
+// const baseUrl = "https://nava-website-2.vercel.app/";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const pageData: PageInterface = pageProps;
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{pageData.title ?? ""}</title>
-
+        <link rel="shortcut icon" href="/public/images/Nava-Favicon-01.png" type="image/x-icon" />
         <meta property="og:type" content="website" />
         {pageData.title && <meta property="og:title" content={pageData.title} /> }
         {pageData.description && 
