@@ -59,7 +59,6 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             src={image.url}
             width={16}
             height={9}
-           
             layout="responsive"
             alt={image.description}
             priority
@@ -71,7 +70,7 @@ const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPat
             width={colorTheme=="sage"?8:12}
             height={4}
             layout="responsive"
-            alt={pattern.description??""}
+            alt={""}
             priority
           ></Image>
           </div>
