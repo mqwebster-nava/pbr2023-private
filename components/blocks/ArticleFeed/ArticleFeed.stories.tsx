@@ -1,6 +1,6 @@
 // Button.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ContentBlockArticleList  from './ContentBlockArticlesList';
+import  ArticleFeed  from './ArticleFeed';
 import { ContentCard } from '../../atom';
 export default {
   /* 👇 The title prop is optional.
@@ -8,18 +8,18 @@ export default {
   * to learn how to generate automatic titles
   */
   title: 'Blocks /  Content Block Article List',
-  component: ContentBlockArticleList,
-} as ComponentMeta<typeof ContentBlockArticleList>;
+  component: ArticleFeed,
+} as ComponentMeta<typeof ArticleFeed>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ContentBlockArticleList> = (args) => 
-<ContentBlockArticleList {...args} ></ContentBlockArticleList>;
+const Template: ComponentStory<typeof ArticleFeed> = (args) => 
+<ArticleFeed {...args} ></ArticleFeed>;
 
 export const Primary = Template.bind({});
 
 Primary.args = {
   "id": "VCxkKZMIzLeUNYIiiXS5G",
-  "__typename": "ContentBlockArticleList",
+  "__typename": "ArticleFeed",
   "sys": {
       "id": "VCxkKZMIzLeUNYIiiXS5G"
   },

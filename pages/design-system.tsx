@@ -32,7 +32,7 @@ export default function DesignSystem(props: PageInterface) {
         subtitle={"Design System of navapbc.com"}
       ></PageHeader>
 
-      <div className="responsive-container space-y-2 ">
+      {/* <div className="responsive-container space-y-2 ">
         <div>
           <div className="type-preset-5 font-sans font-black pt-3xl "> Colors </div>
           <hr className="pb-xl" />
@@ -491,20 +491,7 @@ export default function DesignSystem(props: PageInterface) {
         <div>
           <h3 className="font-sans pb-sm pt-lg">Content Card</h3>
           <div className="flex gap-4">
-            {/* <ContentCard type={"Insight"} title={"Content Card"} path={"/"}>
-              Example description for a content card
-            </ContentCard>
-            <ContentCard
-              type={"Insight"}
-              title={"Content Card With Image"}
-              path={"/"}
-              promoImage={{
-                id: "null",
-                url: "https://images.ctfassets.net/t2ekr6eg3fr3/4jyenuPc16hQCMqdaVYRLq/5bd3115348fba126ec19af90a704ad23/_uploads_CMS-simplifying_20social_20safety_20net-benefits_20partnership_20team.jpeg",
-              }}
-            >
-              Example description for a content card
-            </ContentCard> */}
+  
           </div>
         </div>
 
@@ -513,7 +500,7 @@ export default function DesignSystem(props: PageInterface) {
           Core Components{" "}
         </div>
         <hr className="pb-xl" />
-      </div>
+      </div> */}
 
       <PageTemplate {...page} />
     </div>

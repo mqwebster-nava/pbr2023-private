@@ -3,7 +3,7 @@ import SectionHeader from "./SectionHeader/SectionHeader";
 import PageHeader from "./PageHeaders/PageHeader";
 import ContentBlock from "./ContentBlock/ContentBlock";
 import ContentBlockText from "./ContentBlockText/ContentBlockText";
-import ContentBlockArticleList from "./ContentBlockArticlesList/ContentBlockArticlesList";
+import ArticleFeed from "./ArticleFeed/ArticleFeed";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
 import ReportContent from "./ReportBody/ReportContent/ReportContent";
@@ -29,7 +29,7 @@ export {
   PageHeader,
   ContentBlock,
   ContentBlockText,
-  ContentBlockArticleList,
+  ArticleFeed,
   CTABlock,
   QuoteBlock,
   ReportContent,

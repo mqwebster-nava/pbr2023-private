@@ -3,18 +3,6 @@ import classNames from "classnames";
 import HighlightedCard from "./HighlightedCard";
 //import LargeTextCard from "./LargeTextCard";
 import Image from "next/image";
-import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
-
-// import brandTerrain1 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain1-Medium-White-V01@4x 1.png";
-// import brandTerrain2 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain2-Medium-White-V01@4x 1.png";
-// import brandTerrain3 from "public/images/brand-patterns/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.png";
-// import brandDirectional from "public/images/brand-patterns/Nava-Brand Pattern-Direction1-Medium-White-V01@4x 2.png";
-
-const brandTerrain1 = "/images/brand-patterns/Nava-Brand Pattern-Terrain1-Medium-White-V01@4x 1.png";
-const brandTerrain2 = "/images/brand-patterns/Nava-Brand Pattern-Terrain2-Medium-White-V01@4x 1.png";
-const brandTerrain3 = "/images/brand-patterns/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.png";
-const brandDirectional = "/images/brand-patterns/Nava-Brand Pattern-Direction1-Medium-White-V01@4x 2.png";
-
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 
 
@@ -53,12 +41,6 @@ const DefaultContentCard  = ({
     "type-preset-6": size=="quarter" ||size=="third",
     "type-preset-6 lg:type-preset-4 ":  size=="half",
   });
-  const pattern =
-    cycleNum % 3 == 0
-      ? brandTerrain1
-      : cycleNum % 2 == 0
-      ? brandTerrain2
-      : brandTerrain3;
 
   const ImageSquare = () => {
     return ( <Image
@@ -67,7 +49,7 @@ const DefaultContentCard  = ({
       height={9}
       quality="50"
       className={`${backgroundColor} object-cover w-full `}
-      src={image ? image.url : pattern}
+      src={ image.url }
       alt={image.description??""}
     ></Image>)
   }

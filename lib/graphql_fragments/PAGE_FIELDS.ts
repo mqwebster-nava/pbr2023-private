@@ -63,7 +63,7 @@ contentCollection(limit:20) {
         ... on TimelineSection {
             ${TIMELINE_SECTION}
         }
-        ... on ContentGridFeatureCards {
+        ... on ContentGridFeatureCards { 
             ${CONTENT_GRID_FEATURE_CARDS}
         }
         ... on CapabilitiesSection {

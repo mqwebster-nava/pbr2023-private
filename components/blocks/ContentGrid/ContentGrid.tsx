@@ -1,7 +1,7 @@
 import { getContentUrl, getDateStr } from "utils/utils";
 import { ContentCard, } from "components/atom";
 import classNames from "classnames";
-import FeatureCard from "components/atom/FeatureCard/FeatureCard";
+import HighlightedInfoCard from "components/atom/HighlightedInfoCard/HighlightedInfoCard";
 import ColorTheme from "shared_interfaces/ColorThemes";
 
 /*
@@ -55,7 +55,7 @@ const ContentGrid = ({
             return (
               <div className={`w-full self-stretch ${feature}`} key={item.id}>
                 {contentType == "feature cards" ? (
-                  <FeatureCard {...item}/>
+                  <HighlightedInfoCard {...item}/>
                 ) : item["__typename"] == "Post" ?
                 (
                   <ContentCard

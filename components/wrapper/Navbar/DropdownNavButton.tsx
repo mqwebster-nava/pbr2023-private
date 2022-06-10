@@ -8,7 +8,7 @@ const DropdownNavButton = (props) => {
 
   return (
     <button
-      className="relative inline-block cursor-pointer pr-3xl"
+      className="relative inline-block cursor-pointer pr-3xl  "
       onMouseEnter={() => setShowMenu(true)}
       onFocus={() => setShowMenu(true)}
       onBlur={() => setShowMenu(false)}
@@ -19,12 +19,12 @@ const DropdownNavButton = (props) => {
         aria-expanded={showMenu ? "true" : "false"}
         aria-haspopup="true"
         className={` 
-            text-navy-900 font-bold font-sans 
+        text-navy-900 font-bold font-sans 
             pt-md pb-sm flex 
             ${showMenu && "border-b-4 border-black"}
-            `}
+         `}
       >
-        {props.title}
+{props.title} 
       </div>
       
         {showMenu ? (

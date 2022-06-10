@@ -14,14 +14,15 @@ const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime()
 
 const defaultSocialImage: ContentfulImageAsset = {
   id: '6f9PYC9LuxyTeGpAQ0A4Ea',
-  url: 'https://images.ctfassets.net/t2ekr6eg3fr3/6f9PYC9LuxyTeGpAQ0A4Ea/3792ece63db1863f5754a373b770f731/purple-nava.png',
-  width: 760,
-  height: 380,
+  url: 'https://images.ctfassets.net/t2ekr6eg3fr3/4FSYQIlTVLRdNz6jb65wYI/b1ca224c0842ad6ba621397d324950e2/About-_Navas_Story_Social_1280x720_-8.png',
+  width: 1280,
+  height: 720,
   title: 'Purple Nava Logo',
   description: 'A logo to act as a placeholder for the social image'
 }
 export {defaultSocialImage};
 export function formatPage(page){
+  
     const formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,
@@ -58,7 +59,8 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         contentTags: post.contentTags,
         authors: post.authors,
         date: post.date,
-        hideSideNav: post.hideSideNav
+        hideSideNav: post.hideSideNav,
+        isEvent: post.contentType=="Events"
       },
       {
         __typename:"SectionCtaBlock",

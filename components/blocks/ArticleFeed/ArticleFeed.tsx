@@ -1,9 +1,9 @@
-import { getContentUrl } from "utils/utils";
-import { ContentCard, LinkText } from "components/atom";
-import classNames from "classnames";
+
+import {  LinkText } from "components/atom";
+
 import ContentGrid, { ListLayout } from "../ContentGrid/ContentGrid";
 
-interface ArticleListInterface {
+interface ArticleFeedInterface {
   id: string;
   title?: string;
   buttonText?: string;
@@ -15,7 +15,7 @@ interface ArticleListInterface {
   layout?: ListLayout;
 }
 
-const ContentBlockArticleList = ({
+const ArticleFeed = ({
   id,
   title,
   body,
@@ -25,7 +25,7 @@ const ContentBlockArticleList = ({
   cycleNum = Math.floor(Math.random() * 4),
   max = 6,
   layout = "feature",
-}: ArticleListInterface) => {
+}: ArticleFeedInterface) => {
   items = items.filter((post) => post != null);
   return (
     <section key={id}>
@@ -65,4 +65,4 @@ const ContentBlockArticleList = ({
   );
 };
 
-export default ContentBlockArticleList;
+export default ArticleFeed;

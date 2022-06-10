@@ -1,5 +1,4 @@
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-//import brandDefault from "public/images/header-pattern-block.png";
 //import React from "react";
 import SecondaryPatternBlock from "./SecondaryPatternBlock";
 import TitleBlock from "./TitleBlock";

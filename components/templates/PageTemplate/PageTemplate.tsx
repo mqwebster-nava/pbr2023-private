@@ -5,7 +5,7 @@ import React from "react";
 
 const ContentBlock = dynamic(() => import("components/blocks/ContentBlock/ContentBlock"));
 const QuoteBlock= dynamic(() => import("components/blocks/QuoteBlock/QuoteBlock"));
-const ContentBlockArticleList= dynamic(() => import("components/blocks/ContentBlockArticlesList/ContentBlockArticlesList"));
+const ArticleFeed= dynamic(() => import("components/blocks/ArticleFeed/ArticleFeed"));
 const CTABlock= dynamic(() => import("components/blocks/CTABlock/CTABlock"));
 const PageHeader= dynamic(() => import("components/blocks/PageHeaders/PageHeader"));
 const ContentBlockText= dynamic(() => import("components/blocks/ContentBlockText/ContentBlockText"));
@@ -37,13 +37,14 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ContentBlock": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />,
       "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
-      "ContentBlockArticleList": ()=>  <ContentBlockArticleList key={index} {...entry} />,
+      "ContentBlockArticleList": ()=>  <ArticleFeed key={index} {...entry} />,
       "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry}/>,
       "TimelineSection": () => <TimelineSection key={index} {...entry}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
-      "ContentGridFeatureCards": ()=><ContentGrid key={index} {...entry} layout={"default"}  padding="py-2xl" contentType={"feature cards"}/>,
+      "ContentGridFeatureCards": // Highlighted Information Card
+         ()=><ContentGrid key={index}  {...entry} contentType={"feature cards"} layout={"default"}  padding="py-2xl" />,
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index}/>

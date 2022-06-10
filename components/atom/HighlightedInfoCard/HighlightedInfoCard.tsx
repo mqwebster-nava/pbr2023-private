@@ -1,6 +1,6 @@
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
-interface FeatureCardInterface {
+interface HighlightedInfoCardInterface {
     id?: string;
     icon?: ContentfulImageAsset; // TODO what to do with the icon selection (?),
     title: string;
@@ -19,7 +19,7 @@ const defaultIcon:ContentfulImageAsset =
     }
 
 
-const FeatureCard = ({id, icon, title, body}:FeatureCardInterface) => {
+const HighlightedInfoCard = ({id, icon, title, body}:HighlightedInfoCardInterface) => {
    
     icon = icon ?? defaultIcon;
     return (
@@ -39,4 +39,4 @@ const FeatureCard = ({id, icon, title, body}:FeatureCardInterface) => {
 }
 
 
-export default FeatureCard;
+export default HighlightedInfoCard;

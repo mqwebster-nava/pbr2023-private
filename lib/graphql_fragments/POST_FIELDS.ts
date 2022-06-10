@@ -46,7 +46,7 @@ export const AUTHOR_ALL_FIELDS =`
         }
         }
     }
-`
+`;
 
 export const POST_BODY = `
 
