@@ -1,33 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
 
 
 .details[open]>summary> div{
   transform: rotate(180deg);
 }
 
-/* 
-.summary :focus {
-    outline: none;
+.navDropdown {
+  transition-duration: 0.5s;
 }
-
-.summary:hover .summarychevronup svg {
-    opacity: 1;
-}
-
-
-.summarychevronup svg {
-  opacity: 0.5;
-}
-
-.summarychevronup,
-.summarychevrondown {
-  pointer-events: none;
-  position: absolute;
-  top: 0.75em;
-  background: "#ffffff";
-}
-
-.summarychevronup,
-.summarychevrondown > svg {
-  display: block;
-} */

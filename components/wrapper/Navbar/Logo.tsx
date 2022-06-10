@@ -1,11 +1,11 @@
 // TODO replace with correct logo
 // TODO: a11y - Link must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
-const Logo = () => (
+const Logo = ({isMobile=false}) => (
   <a href={"/"} id="Home-link" className=" font-semibold font-sans type-preset-5 tracking-tight ">
     <svg
       
-      width="96"
-      height="44"
+      width={isMobile ? "62" : "96"}
+      height={isMobile ? "28" : "44"}
       viewBox="0 0 96 44"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -6,6 +6,9 @@ import NavButton from "./NavButton";
 import Logo from "./Logo";
 import NavData from "./navbar_data";
 import styles from "./navbar.module.css";
+import { SlideDown } from "react-slidedown";
+import "react-slidedown/lib/slidedown.css";
+
 
 // TODO: a11y - all links must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Navbar = ({}) => {
@@ -22,7 +25,7 @@ const Navbar = ({}) => {
 const DesktopNavBar = ({ NavData }) => {
   return (
     <header className={`bg-white w-full z-50 pt-sm `}>
-      <div className=" responsive-container   flex flex-wrap items-center justify-between">
+      <div className=" responsive-container   flex flex-wrap items-center justify-between h-[80px]">
         <Logo />
         <nav className=" flex items-baseline w-auto" aria-label="main">
           {NavData.map((navSection) => {
@@ -66,13 +69,14 @@ const MobileNavBar = ({ NavData }) => {
   const NavLinksMobile = () => (
     <nav
       aria-label="main"
-      className="responsive-container w-full flex flex-col  bg-white py-lg"
+      className="absolute left-0 top-[80px] responsive-container w-full flex flex-col  bg-white py-lg"
     >
-      {NavData.map((navSection) => {
+      <SlideDown className={'my-dropdown-slidedown'}>
+
+      {isShowingMenu? NavData.map((navSection) => {
         return "slug" in navSection ? (
           <div className=" w-full border-t-[2px] border-black  pb-lg">
             <NavButton key={navSection.title} slug={navSection.slug}>
-              {" "}
               {navSection.title}
             </NavButton>
           </div>
@@ -112,32 +116,33 @@ const MobileNavBar = ({ NavData }) => {
                 href={navitem.slug}
                 className="block hover:bg-green px-4 cursor-pointer"
               >
-                <p className="font-sans text-navy-900 hover:text-sage-300 py-2 pl-5">
+                <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
                   {navitem.title}
                 </p>
               </a>
             ))}
           </details>
         );
-      })}
+      }): null}
+      </SlideDown>
     </nav>
   );
   return (
-    <header className={` w-full z-40 bg-white h-[80px]`}>
-      <div className="responsive-container  pt-lg flex flex-wrap items-baseline justify-between">
-        <Logo />
+    <header className={` w-full z-40 bg-white `}>
+      <div className="responsive-container  pt-lg flex flex-wrap items-center justify-between h-[80px]">
+        <Logo isMobile={true}/>
         <div className="block ">
           <button
             aria-label="menu"
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="font-sans text-navy-900 hover:text-sage-200 border-grey  "
+            className="font-sans text-navy-900  border-grey  "
           >
             {isShowingMenu ? (
               <svg
-                width="23"
-                height="32"
+                width="20"
+                height="25"
                 viewBox="0 0 23 23"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -151,8 +156,8 @@ const MobileNavBar = ({ NavData }) => {
               </svg>
             ) : (
               <svg
-                width="27"
-                height="32"
+                width="20"
+                height="25"
                 viewBox="0 0 27 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
