@@ -42,7 +42,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             
           </div>
           <div
-            className={` absolute  z-40 top-[72px] md:top-[100px] lg:top-[128px]  h-full pr-xl md:pr-4xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}
+            className={` absolute  z-40 top-[72px] md:top-[100px] lg:top-[128px]  h-full pr-xl md:pr-2xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}
           >
             <h1
               className={`animate-titleSlide font-sans type-preset-1 text-white font-black pb-md w-full lg:w-3/4`}

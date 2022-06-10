@@ -48,22 +48,23 @@ const defaultPatternArticle: ContentfulImageAsset = {
 const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern, colorTheme="plum"}:ImagePatternBlockInterface) =>{
   image ??= defaultIllustration;
   pattern ?? defaultPattern;
-  const lift =classNames({"-mt-[15px] ": colorTheme=="sage", "-mt-[3px] ": colorTheme=="plum",})
+  //const lift =classNames({"-mt-[0px] ": colorTheme=="sage", "-mt-[1px] ": colorTheme=="plum",})
   if( colorTheme=="sage") { pattern=defaultPatternArticle;}
   return  (
         <div className={` relative responsive-container  aspect-video -mb-[50px] xl:mb-0`}>
-            <div className={`bg-${colorTheme}-900 ${lift}  h-1/5 w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 `}></div>
+            <div className={`bg-${colorTheme}-900  h-[64px]   md:h-[96px] lg:h-[128px] w-full absolute z-0 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2 `}></div>
          <div className={`${styles.fadeIn}`}>
           <Image
             className="w-full object-cover "
             src={image.url}
             width={16}
             height={9}
+           
             layout="responsive"
             alt={image.description}
             priority
           ></Image>
-           <div className={`${colorTheme=="sage"?"w-1/5" : "w-1/3"} h-full absolute z-10 top-0 `}>
+           <div className={`${colorTheme=="sage"?"w-[128px] md:w-[192px] lg:w-[256px]" : "w-[192px] md:w-[288px] lg:w-[384px]"} h-full absolute z-10 top-0 `}>
            <Image
             className="w-full object-cover"
             src={pattern.url}
