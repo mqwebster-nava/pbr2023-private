@@ -13,7 +13,7 @@ export default function Home(props:PageInterface) {
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = 
     await getPageDataFromContentful({
-      slug:"/wic", 
+      slug:"/partnerships/wic", 
       preview: preview,
     });
   return {
