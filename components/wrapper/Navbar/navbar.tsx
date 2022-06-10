@@ -103,8 +103,8 @@ const MobileNavBar = ({ NavData }) => {
                     <path
                       d="M19 1L10 10L1 1"
                       stroke="#111827"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </div>
@@ -150,8 +150,8 @@ const MobileNavBar = ({ NavData }) => {
                 <path
                   d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
                   stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             ) : (
@@ -165,20 +165,20 @@ const MobileNavBar = ({ NavData }) => {
                 <path
                   d="M26.3997 1H1"
                   stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M26.3997 10.7695H1"
                   stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M26.3997 20.5391H1"
                   stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             )}
