@@ -47,7 +47,7 @@ const PageHeader = (props: PageHeaderInterface) => {
   if (props.variant == "Primary") {
     return (
       <header  key={props.id} >
-        <div className={`bg-plum-900 relative `} >
+        <div className={`bg-purple-900 relative `} >
           <div
             className={`${styles.fadeIn} responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}
           >
@@ -61,7 +61,7 @@ const PageHeader = (props: PageHeaderInterface) => {
             />
           </div>
         </div> 
-        <IllustrationPatternBlock image={props.image} pattern={props.pattern}/> 
+        <IllustrationPatternBlock image={props.image} pattern={props.pattern} colorTheme={"purple"}/> 
       </header>
     );
   }

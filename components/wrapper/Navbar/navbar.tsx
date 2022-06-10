@@ -75,7 +75,7 @@ const MobileNavBar = ({ NavData }) => {
 
       {isShowingMenu? NavData.map((navSection) => {
         return "slug" in navSection ? (
-          <div className=" w-full border-t-[2px] border-black  pb-lg">
+          <div className=" w-full border-t-[2px] border-black  pb-lg" key={navSection.title}>
             <NavButton key={navSection.title} slug={navSection.slug}>
               {navSection.title}
             </NavButton>
@@ -86,12 +86,12 @@ const MobileNavBar = ({ NavData }) => {
             className={`${styles.details} w-full border-t-[2px] border-black pt-sm pb-lg`}
           >
             <summary
-              className={` relative flex justify-between items-center  text-navy-900  pr-sm   cursor-pointer`}
+              className={` relative  text-navy-900  pr-sm   cursor-pointer`}
             >
-              <h3 className=" text-navy-900 pr-sm font-sans font-bold flex  items-center">
+          <div className="flex flex-row justify-between items-center">
+              <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
                 {navSection.title}
               </h3>
-              <div>
                 <div className={`chevron`}>
                   <svg
                     width="20"
@@ -108,7 +108,7 @@ const MobileNavBar = ({ NavData }) => {
                     />
                   </svg>
                 </div>
-              </div>
+                </div>
             </summary>
             {navSection.subpages.map((navitem) => (
               <a

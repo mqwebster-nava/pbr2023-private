@@ -1,7 +1,11 @@
 
 
-.details[open]>summary> div{
+.details[open]>summary> div > div{
   transform: rotate(180deg);
+}
+
+.details summary::-webkit-details-marker {
+  display:none;
 }
 
 .navDropdown {

@@ -6,7 +6,7 @@ import brandDefaultArticle from "public/images/Article-Pattern.png";
 import ill from "public/images/illo.png";
 import styles from "./PageHeader.module.css";
 
-type ColorTheme = "plum" | "sage";
+type ColorTheme = "purple" |"plum" | "sage";
 
 
 export interface ImagePatternBlockInterface {
@@ -44,7 +44,7 @@ const defaultPatternArticle: ContentfulImageAsset = {
 
 
 
-const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern, colorTheme="plum"}:ImagePatternBlockInterface) =>{
+const IllustrationPatternBlock = ({image=defaultIllustration, pattern=defaultPattern, colorTheme="purple"}:ImagePatternBlockInterface) =>{
   image ??= defaultIllustration;
   pattern ?? defaultPattern;
   //const lift =classNames({"-mt-[0px] ": colorTheme=="sage", "-mt-[1px] ": colorTheme=="plum",})

@@ -67,7 +67,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
       <div
           className={`  ${header.bg} -mt-[3px]  h-1/2 w-full absolute -z-10 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}
         ></div>
-        <div className={`w-full sm:w-2/3 md:w-3/5 ml-auto aspect-[4/3] bg-plum-50 relative z-70`}>
+        <div className={`w-full sm:w-2/3 md:w-3/5 ml-auto  pb-[50%]  aspect-[4/3] bg-plum-50 relative z-70`}>
            <CrossfadeCarousel
             interval={2000}
             transition={2000}
@@ -116,7 +116,7 @@ function CrossfadeCarousel({
   }, [active, cycle, transition, interval, images])
 
   return (
-    <div  className="relative overflow-hidden w-full h-full">
+    <div  className="relative  w-full h-full">
       {images.map((image, index) => (
         <div className={` absolute object-cover `} key={`${image}-${index}`} >
         <Image
