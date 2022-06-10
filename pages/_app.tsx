@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>{pageData.title ?? ""}</title>
-        <link rel="shortcut icon" href="/public/images/Nava-Favicon-01.png" type="image/x-icon" />
+        <link rel="icon" href="/favicon.png" type="image/x-icon" />
         <meta property="og:type" content="website" />
         {pageData.title && <meta property="og:title" content={pageData.title} /> }
         {pageData.description && 
