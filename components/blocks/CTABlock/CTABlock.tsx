@@ -1,6 +1,4 @@
 import { Button } from "../../atom/Button/Button";
-import sageIll from "public/images/Illustrations-for-website-V019 1.png";
-import plumIll from "public/images/plum cta illustration.png";
 import Image from "next/image";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import classNames from "classnames";
