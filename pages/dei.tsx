@@ -15,40 +15,16 @@ import {
   PercentSquareChartFixed,
 } from "components/blocks";
 import React from "react";
+import PageTemplate from "components/templates/PageTemplate/PageTemplate";
+import { getPageDataFromContentful } from "lib/api";
+import { PageInterface } from "shared_interfaces/page_interface";
 
-export const getStaticProps = async () => {
-  const content = getMarkdownByFilename("dei", 2021);
+interface DEIPageInterface {
+  page: PageInterface;
+  reportData: any;
+}
 
-  return {
-    props: {
-      reportData: {
-        overview,
-        categories,
-        race,
-        gender,
-        additionalIdentities,
-        content,
-      },
-    },
-  };
-};
-
-const createFilters = (dataKey, data, categories) => {
-  const filterKeys = Object.keys(data).filter(
-    (key) => !key.includes("_Multi") && !key.includes(dataKey)
-  );
-
-  const filters = filterKeys.map((key) => {
-    return {
-      id: key,
-      text: categories[key].display,
-      total: categories[key].total,
-    };
-  });
-  return filters;
-};
-
-export default function DEI({ reportData }) {
+export default function DEI({ page, reportData }: DEIPageInterface) {
   const { overview, categories, race, gender, additionalIdentities, content } =
     reportData;
   const raceKey = "race";
@@ -62,9 +38,7 @@ export default function DEI({ reportData }) {
   );
 
   return (
-    <main>
-      <ReportHeaderNavy title={content.title} />
-
+    <PageTemplate {...page}>
       <section className="bg-sage-50 py-4xl">
         <div className="responsive-container">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
@@ -89,7 +63,7 @@ export default function DEI({ reportData }) {
             description="How we're doing in 2021"
             graphs={overview}
           />
-          </div>
+        </div>
       </section>
       <section className="bg-white">
         <div className="responsive-container py-3xl">
@@ -124,11 +98,49 @@ export default function DEI({ reportData }) {
       </section>
 
       <section className="bg-sage-50">
-        <div  className="responsive-container py-3xl">
+        <div className="responsive-container py-3xl">
           <ReportContent content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
         </div>
       </section>
-    </main>
+    </PageTemplate>
   );
 }
+
+export async function getStaticProps({ params, preview = false }) {
+  const content = getMarkdownByFilename("dei", 2021);
+
+  const res: PageInterface = await getPageDataFromContentful({
+    slug: "/dei",
+    preview: preview,
+  });
+  return {
+    props: {
+      page: res,
+      reportData: {
+        overview,
+        categories,
+        race,
+        gender,
+        additionalIdentities,
+        content,
+      },
+    },
+  };
+}
+
+const createFilters = (dataKey, data, categories) => {
+  const filterKeys = Object.keys(data).filter(
+    (key) => !key.includes("_Multi") && !key.includes(dataKey)
+  );
+
+  const filters = filterKeys.map((key) => {
+    return {
+      id: key,
+      text: categories[key].display,
+      total: categories[key].total,
+    };
+  });
+  return filters;
+};
+
