@@ -65,8 +65,8 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       {
         __typename:"SectionCtaBlock",
         id: `${post.id}-work`,
-        title:"Want to work with us?",
-        body:"Let’s make government services simple, effective, and accessible to all.",
+        title:"Get in touch",
+        body:"Tell us about your opportunities, ideas, and challenges.",
         buttonText:"Get in touch",
         buttonPath:"/contact",
         image:{
@@ -138,7 +138,7 @@ export function formatTagsPage(slug, tagName, posts){
     pageHeader: {
       id: `${slug}-header`,
       variant:"Secondary",
-      title:"Tags",
+      title:"Related articles",
       subtitle: tagName,
     },
     contentBlocks: [
