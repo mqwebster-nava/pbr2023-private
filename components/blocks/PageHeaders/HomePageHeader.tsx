@@ -1,9 +1,9 @@
 import { PageHeaderInterface } from "./PageHeader";
 import { Button } from "components/atom";
-import headerIllustration1 from "public/images/Illustrations-for-website-V0118.png";
-import headerIllustration2 from "public/images/Illustrations-for-website-V0119 3.png";
-import headerIllustration3 from "public/images/Illustrations-for-website-V0120 9.png";
-import headerIllustration4 from "public/images/Illustrations-for-website-V0120.png";
+import headerIllustration1 from "public/images/Home Portrait 1 V1.png";
+import headerIllustration2 from "public/images/Home Portrait 2 V1.png";
+import headerIllustration3 from "public/images/Home Portrait 3 V1.png";
+import headerIllustration4 from "public/images/Home Portrait 4 V1.png";
 import React, { useState, useEffect } from 'react'
 import Image from "next/image";
 import styles from "./PageHeader.module.css";
@@ -14,12 +14,6 @@ const header =
     illBg:"bg-plum-50",
     pattern: "/images/HomeTerrain1.svg",
     pattern2:"/images/Home-Terrain-2.svg",
-    illustrations: [
-      "https://images.ctfassets.net/t2ekr6eg3fr3/1ciib588729zyZc31EPBGG/84a9b9fc268898ad2522faa82d2dad23/home_plum_il2.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/5U6xYalP1d57oGGP2ntsiq/099b83795740b85e04f065eba7b4f7a3/home_plum_il1.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/6z2ffB942KoxRjoVvKtTLU/5d94d27f379d041b087a7a7ff2b37158/home_plum_il4.png",
-      "https://images.ctfassets.net/t2ekr6eg3fr3/35fBvEBsC6ajPKq8HldU2x/fe67befe37a9dc7d31be576035342614/home_plum_il3.png",
-    ],
   }
 ;
 
