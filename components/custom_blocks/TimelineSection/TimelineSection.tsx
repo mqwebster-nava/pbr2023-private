@@ -1,4 +1,6 @@
 import PostContent from "components/blocks/PostBody/PostContent";
+import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
+import React from "react";
 
 
 export interface TimelineInterface {
@@ -8,12 +10,11 @@ export interface TimelineInterface {
 
 const TimelineSection = ({year, richBody}:TimelineInterface) => {
     return (
-        <div className="responsive-container ">
-        <hr/>
-        <div className="xl:mr-auto xl:max-w-4xl ">
+        <ResponsiveContentContainer alignment={"left"}>
+        <div className="py-xl">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
-    </div>)
+        </ResponsiveContentContainer>)
 }
 
 export default TimelineSection;
