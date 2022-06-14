@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useWindowSize from "utils/windowSizeHook";
 import DropdownNavButton from "./DropdownNavButton";
-import DropdownNavItem from "./DropdownNavItem";
+//import DropdownNavItem from "./DropdownNavItem";
 import NavButton from "./NavButton";
 import Logo from "./Logo";
 import NavData from "./navbar_data";
@@ -35,7 +35,6 @@ const DesktopNavBar = ({ NavData }) => {
                 slug={navSection.slug}
                 color={"navy-900"}
               >
-                {" "}
                 {navSection.title}
               </NavButton>
             ) : (
@@ -43,12 +42,13 @@ const DesktopNavBar = ({ NavData }) => {
                 key={navSection.title}
                 title={navSection.title}
                 color={"navy-900"}
+                subpages={navSection.subpages}
               >
-                {navSection.subpages.map((navitem) => (
+                {/* {navSection.subpages.map((navitem) => (
                   <DropdownNavItem href={navitem.slug} key={navitem.title}>
                     {navitem.title}
                   </DropdownNavItem>
-                ))}
+                ))} */}
               </DropdownNavButton>
             );
           })}
