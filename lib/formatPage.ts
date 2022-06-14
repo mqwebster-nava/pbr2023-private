@@ -118,7 +118,8 @@ export function formatAuthorPage(slug, author){
         __typename:"ContentBlockArticleList",
         id: `${slug}-posts`,
         items:  sortPostsByDate(author.linkedFrom.postCollection.items),
-        title: `More by ${author.name}`
+        title: `More by ${author.name}`,
+        layout:"default"
       }
     ], 
  }

@@ -42,6 +42,7 @@ export const AUTHOR_ALL_FIELDS =`
     linkedFrom {
         postCollection(limit:10){
         items{
+            __typename
             ${POST_CORE_FIELDS}
         }
         }
