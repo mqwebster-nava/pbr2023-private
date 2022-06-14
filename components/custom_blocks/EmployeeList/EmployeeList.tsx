@@ -77,7 +77,7 @@ export default function EmployeeList() {
           teamMembers.filter((m) => m.fields.Department == "Executive")
         }
       />
-      {[ "Business Development","Business Operations","Communications","Delivery Operations","Design and Research", "Engineering", "Product","Project Management", "Program Delivery","Recruiting"].map((name)=>
+      {[ "Business Development","Business Operations","Communications","Delivery Operations","Design and Research", "Engineering", "People Operations", "Product","Project Management", "Program Delivery","Recruiting"].map((name)=>
       <DepartmentSection
         key={name}
         name={name}
