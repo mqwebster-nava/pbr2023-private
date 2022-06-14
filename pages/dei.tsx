@@ -7,7 +7,6 @@ import {
 } from "../lib/data/dei_2021";
 import { getMarkdownByFilename } from "../lib/markdown";
 import {
-  ReportHeaderNavy,
   PercentBarChart,
   ReportContent,
   ResourceGroups,
@@ -39,11 +38,11 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
 
   return (
     <PageTemplate {...page}>
-      <section className="bg-sage-50 py-4xl">
+      <section className="bg-white py-4xl">
         <div className="responsive-container">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
             <div className="w-full">
-              <p className="type-preset-5 text-sage-dark">{content.lead}</p>
+              <p className="type-preset-5">{content.lead}</p>
               <ReportContent content={content.introduction} />
             </div>
             <img

@@ -7,7 +7,7 @@ intercept observer.
 
 import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
-import { liftData } from "utils/utils";
+import { capitalize, liftData } from "utils/utils";
 
 const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -139,7 +139,7 @@ export function formatTagsPage(slug, tagName, posts){
       id: `${slug}-header`,
       variant:"Secondary",
       title:"Related articles",
-      subtitle: tagName,
+      subtitle:capitalize(tagName),
     },
     contentBlocks: [
       {

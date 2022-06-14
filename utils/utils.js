@@ -68,3 +68,11 @@ export function slugify(text) {
     .replace(/[^\w\-]+/g, "") // Remove all non-word chars
     .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
+
+export function capitalize(str) {
+  if(str == null || str == "") {
+      return str;
+  }
+
+  return str.substring(0, 1).toUpperCase() + str.substring(1);
+}
