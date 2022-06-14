@@ -28,7 +28,7 @@ const ArticleFeed = ({
 }: ArticleFeedInterface) => {
   items = items.filter((post) => post != null);
   return (
-    <section key={id}>
+    <section key={id} >
       <div className="responsive-container pt-xl" key={id}>
         <div className={`w-full border-t-2 pt-md flex justify-between`}>
           <div>
@@ -53,6 +53,7 @@ const ArticleFeed = ({
           </div>
         </div>
       </div>
+      <div className="py-xl">
       <ContentGrid
         id={"id"}
         items={items}
@@ -60,7 +61,7 @@ const ArticleFeed = ({
         layout={layout}
         cycleNum={cycleNum}
       />
-     
+     </div>
     </section>
   );
 };

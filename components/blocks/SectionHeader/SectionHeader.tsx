@@ -28,11 +28,9 @@ const SectionHeader = ({
     "bg-gold-50": colorTheme=="gold",
     "bg-sage-50": colorTheme=="sage",
     "bg-navy-900": colorTheme=="navy",
+    "bg-purple-900": colorTheme=="purple",
   });
-  const textColor = classNames({
-    "text-navy-900": colorTheme!="navy",
-    "text-white": colorTheme=="navy",
-  })
+  const textColor =  (colorTheme=="navy" ||colorTheme=="purple")? "text-white":"text-navy-900";
 
   const TitleBlock = () => {
     return (
@@ -57,21 +55,24 @@ const SectionHeader = ({
   const ColoredLine = () => {
  
     return colorTheme == "gold" ? (
-       <div className="bg-gold-900 h-[12px] w-[138px]"></div>
+       <div className="bg-gold-900 h-[7px] w-[138px]"></div>
         
     ) : colorTheme == "sage" ?  (
-      <div className="bg-sage-900 h-[12px] w-[138px]"></div>
+      <div className="bg-sage-900 h-[7px] w-[138px]"></div>
        
-   ) : (
-      <div className="bg-plum-400 h-[12px] w-[138px]"></div>
+   ): colorTheme == "purple" ?  (
+    <div className="bg-purple-700 h-[7px] w-[138px]"></div>
+     
+ ) : (
+      <div className="bg-plum-400 h-[7px] w-[138px]"></div>
     );
   };
 
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-4xl pb-xl`} key={id}>
+    <div className={`responsive-container pt-3xl pb-xl`} key={id}>
       <TitleBlock />
-       <div className="flex mb-xl">
+       <div className={`flex ${subtitle && "mb-xl"}`}>
          <ColoredLine/>
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 

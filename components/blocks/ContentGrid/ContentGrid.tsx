@@ -35,6 +35,7 @@ const ContentGrid = ({
     "bg-gold-50": colorTheme=="gold",
     "bg-sage-100": colorTheme=="sage",
     "bg-navy-900": colorTheme=="navy",
+    "bg-purple-900": colorTheme=="purple"
   });
 
   const GridStyle = classNames({
@@ -47,7 +48,7 @@ const ContentGrid = ({
     <section className={`${bg}`} key={id}>
     <div className={`responsive-container ${padding}`} key={id}>
       <div className={`w-full`}>
-        <div className={`w-full ${GridStyle} gap-x-lg gap-y-xl my-2xl`}>
+        <div className={`w-full ${GridStyle} gap-x-lg gap-y-xl `}>
           {items.map((item, i) => {
             const feature = classNames({
               "lg:col-span-2": layout === "feature" && i == 0,
