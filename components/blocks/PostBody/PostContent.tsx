@@ -21,6 +21,8 @@ const PostContent = ({docData, docLinks, }) =>{
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
           [MARKS.ITALIC]: (text) => <span className="italic ">{text}</span>,
           [MARKS.UNDERLINE]: (text) => <span className=" underline">{text}</span>,
+          [MARKS.CODE]: (text) =>  <span className=" font-mono">{text}</span>
+            
         },
         renderNode: {
           [BLOCKS.PARAGRAPH]: (node, children) => (
@@ -40,6 +42,7 @@ const PostContent = ({docData, docLinks, }) =>{
           [BLOCKS.HEADING_4]: (node, children) => (
             <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
           ),
+          
           [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
