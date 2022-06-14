@@ -19,9 +19,9 @@ const DropdownNavButton = (props) => {
         aria-expanded={showMenu ? "true" : "false"}
         aria-haspopup="true"
         className={` 
-        text-navy-900 font-bold font-sans 
+        text-navy-900  font-sans 
             pt-md pb-sm flex 
-            ${showMenu && "border-b-4 border-black"}
+            ${showMenu && "border-b-2 border-black"}
          `}
       >
 {props.title} 
@@ -34,7 +34,7 @@ const DropdownNavButton = (props) => {
               !showMenu && "hidden"
             }`}
           >
-            <SlideDown className={`mt-lg bg-white ${styles.navDropdown}`}>
+            <SlideDown className={`mt-lg py-md bg-white ${styles.navDropdown}`}>
               {showMenu ? props.children:null }
               </SlideDown>
           </div>

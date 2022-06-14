@@ -24,7 +24,7 @@ const Navbar = ({}) => {
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <header className={`bg-white w-full z-50 pt-sm `}>
+    <header className={`bg-white w-full z-50  `}>
       <div className=" responsive-container   flex flex-wrap items-center justify-between h-[80px]">
         <Logo />
         <nav className=" flex items-baseline w-auto" aria-label="main">
@@ -69,7 +69,7 @@ const MobileNavBar = ({ NavData }) => {
   const NavLinksMobile = () => (
     <nav
       aria-label="main"
-      className="absolute left-0 top-[80px] responsive-container w-full flex flex-col  bg-white py-lg"
+      className="absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white py-lg"
     >
       <SlideDown className={'my-dropdown-slidedown'}>
 
@@ -129,7 +129,7 @@ const MobileNavBar = ({ NavData }) => {
   );
   return (
     <header className={` w-full z-40 bg-white `}>
-      <div className="responsive-container  pt-lg flex flex-wrap items-center justify-between h-[80px]">
+      <div className="responsive-container flex flex-wrap items-center justify-between h-[60px]">
         <Logo isMobile={true}/>
         <div className="block ">
           <button
