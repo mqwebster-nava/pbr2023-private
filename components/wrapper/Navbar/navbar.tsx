@@ -9,7 +9,6 @@ import styles from "./navbar.module.css";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
 
-
 // TODO: a11y - all links must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
@@ -71,66 +70,80 @@ const MobileNavBar = ({ NavData }) => {
       aria-label="main"
       className="absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white py-lg"
     >
-      <SlideDown className={'my-dropdown-slidedown'}>
-
-      {isShowingMenu? NavData.map((navSection) => {
-        return "slug" in navSection ? (
-          <div className=" w-full border-t-[2px] border-black  pb-lg" key={navSection.title}>
-            <NavButton key={navSection.title} slug={navSection.slug}>
-              {navSection.title}
-            </NavButton>
-          </div>
-        ) : (
-          <details
-            key={navSection.title}
-            className={`${styles.details} w-full border-t-[2px] border-black pt-sm pb-lg`}
-          >
-            <summary
-              className={` relative  text-navy-900  pr-sm   cursor-pointer`}
-            >
-          <div className="flex flex-row justify-between items-center">
-              <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
-                {navSection.title}
-              </h3>
-                <div className={`chevron`}>
-                  <svg
-                    width="20"
-                    height="11"
-                    viewBox="0 0 20 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+      <SlideDown className={"my-dropdown-slidedown"}>
+        {isShowingMenu
+          ? NavData.map((navSection) => {
+              return "slug" in navSection ? (
+                <a
+                 href={navSection.slug}
+                  className="group block w-full border-t-[2px] border-black py-lg "
+                  key={navSection.title}
+                >
+                  <div className="relative inline-block  "
                   >
-                    <path
-                      d="M19 1L10 10L1 1"
-                      stroke="#111827"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                </div>
-            </summary>
-            {navSection.subpages.map((navitem) => (
-              <a
-                key={navitem.title}
-                href={navitem.slug}
-                className="block hover:bg-green px-4 cursor-pointer"
-              >
-                <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
-                  {navitem.title}
-                </p>
-              </a>
-            ))}
-          </details>
-        );
-      }): null}
+                    <div
+                      className={` 
+          text-navy-900 font-sans font-bold
+          mr-3xl
+          group-hover:border-black border-b-2  border-transparent
+            `}
+                    >
+                      {navSection.title}
+                    </div>
+                  </div>
+                </a>
+              ) : (
+                <details
+                  key={navSection.title}
+                  className={`${styles.details} w-full border-t-[2px] border-black py-lg`}
+                >
+                  <summary
+                    className={` relative  text-navy-900  pr-sm   cursor-pointer`}
+                  >
+                    <div className="flex flex-row justify-between items-center">
+                      <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
+                        {navSection.title}
+                      </h3>
+                      <div className={`chevron`}>
+                        <svg
+                          width="20"
+                          height="11"
+                          viewBox="0 0 20 11"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M19 1L10 10L1 1"
+                            stroke="#111827"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </summary>
+                  {navSection.subpages.map((navitem) => (
+                    <a
+                      key={navitem.title}
+                      href={navitem.slug}
+                      className="block hover:bg-green px-4 cursor-pointer"
+                    >
+                      <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
+                        {navitem.title}
+                      </p>
+                    </a>
+                  ))}
+                </details>
+              );
+            })
+          : null}
       </SlideDown>
     </nav>
   );
   return (
     <header className={` w-full z-40 bg-white `}>
       <div className="responsive-container flex flex-wrap items-center justify-between h-[60px]">
-        <Logo isMobile={true}/>
+        <Logo isMobile={true} />
         <div className="block ">
           <button
             aria-label="menu"
