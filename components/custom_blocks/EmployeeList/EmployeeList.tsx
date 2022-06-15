@@ -50,7 +50,8 @@ export default function EmployeeList() {
               : AuthorFiller;
           return (
             <div className="" key={teamMember.fields.Name}>
-              <img src={`${photo}`} className="w-full"></img>
+              <img 
+              src={`${photo}`} className="w-full aspect-square"></img>
 
               <h5 className="type-preset-7 font-bold  pt-sm">
                 {teamMember.fields.Name}

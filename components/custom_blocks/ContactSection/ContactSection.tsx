@@ -1,14 +1,12 @@
 import { LinkText } from "components/atom";
 import FormInputButton from "components/atom/Button/FormInputButton";
 
-const AddressBlock = ({ title, addrLine1, addrLine2, number }) => {
+const AddressBlock = ({ title, addrLine1, addrLine2 }) => {
   return (
     <div className="py-xl">
       <b>{title}</b> <br />
       {addrLine1} <br />
       {addrLine2}
-      <br />
-      {number}
     </div>
   );
 };
@@ -75,22 +73,19 @@ const ContactSection = () => {
       <div className="w-full md:w-1/4 pt-2xl md:pt-0">
         <p className="type-preset-5 font-black">Our Offices</p>
         <AddressBlock
-          title={"Washington D.C"}
+          title={"Nava HQ"}
           addrLine1={"1445 New York Ave, NW, Suite 300"}
           addrLine2={"Washington, DC 20005"}
-          number={"123-456-7680"}
         />
         <AddressBlock
           title={"San Francisco"}
           addrLine1={"1445 New York Ave, NW, Suite 300"}
           addrLine2={"Washington, DC 20005"}
-          number={"123-456-7680"}
         />
         <AddressBlock
           title={"New York City"}
           addrLine1={"1445 New York Ave, NW, Suite 300"}
           addrLine2={"Washington, DC 20005"}
-          number={"123-456-7680"}
         />
         <p className="type-preset-5 font-black">Follow Us</p>
         <div className="py-sm">

@@ -20,7 +20,7 @@ const NavaDigest = () => {
             <h3 className="font-sans type-preset-2 font-bold pb-lg">Stay in touch</h3>
 
             <p className={`2 font-sans mr-3xl type-preset-6  mb-md`}>
-            Sign up for Nava’s newsletter to find out about career opportunities, new partnerships, and news from the broader civic tech community.
+            Sign up for our newsletter to find out about career opportunities, new partnerships, and news from the broader civic tech community.
             </p>
           </div>
           <div className="w-full md:w-1/2 pt-md">
