@@ -4,7 +4,7 @@ const NavData = [
     title: "About",
     subpages: [
       { title: "Nava's story", slug: "/story" },
-      { title: "Our people", slug: "/teams" },
+      { title: "Team", slug: "/team" },
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
     ],
