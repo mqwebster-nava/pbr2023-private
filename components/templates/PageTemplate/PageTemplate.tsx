@@ -19,7 +19,7 @@ const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 const CapabilitiesSection  = dynamic(() => import("components/custom_blocks/CapabilitiesSection/CapabilitiesSection"));
 const EmployeeList = dynamic(() => import("components/custom_blocks/EmployeeList/EmployeeList"));
 const OpenRolesComponent  = dynamic(() => import("components/custom_blocks/OpenRolesComponent/OpenRolesComponent"));
-
+const HighlightedInformationList  = dynamic(() => import("components/blocks/HighlightedInformationList/HighlightedInformationList"));
 import { PageInterface } from "shared_interfaces/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
@@ -44,7 +44,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "ContentGridFeatureCards": // Highlighted Information Card
-         ()=><ContentGrid key={index}  {...entry} contentType={"feature cards"} layout={"default"}  padding="py-2xl" />,
+         ()=><HighlightedInformationList {...entry} />,
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index}/>

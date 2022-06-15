@@ -1,7 +1,6 @@
 import { getContentUrl, getDateStr } from "utils/utils";
 import { ContentCard, } from "components/atom";
 import classNames from "classnames";
-import HighlightedInfoCard from "components/atom/HighlightedInfoCard/HighlightedInfoCard";
 import ColorTheme from "shared_interfaces/ColorThemes";
 
 /*
@@ -9,9 +8,8 @@ Content Grid sets up the layout and background color
 for the different types of cards used throughout the site.
 */
 
-
 export type ListLayout = "feature" | "default";
-type ContentType = "default" | "posts" | "feature cards";
+type ContentType = "default" | "posts";
 interface ContentGridInterface {
   id: string;
   items: any;
@@ -55,9 +53,7 @@ const ContentGrid = ({
             });
             return (
               <div className={`w-full self-stretch ${feature}`} key={item.id}>
-                {contentType == "feature cards" ? (
-                  <HighlightedInfoCard {...item}/>
-                ) : item["__typename"] == "Post" ?
+                { item["__typename"] == "Post" ?
                 (
                   <ContentCard
                     size={
