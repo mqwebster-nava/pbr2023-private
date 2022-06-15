@@ -10,7 +10,7 @@ export default function People(props: PageInterface) {
 
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = await getPageDataFromContentful({
-    slug:"/people", 
+    slug:"/team", 
     preview: preview,
   });
   return {

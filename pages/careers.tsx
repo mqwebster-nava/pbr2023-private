@@ -11,7 +11,7 @@ export default function WorkingAtNava(props:PageInterface ) {
 
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = await getPageDataFromContentful(
-    {slug:"/working-at-nava", 
+    {slug:"/careers", 
     preview: preview,
     });
  return {

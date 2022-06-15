@@ -4,7 +4,7 @@ const NavData = [
     title: "About",
     subpages: [
       { title: "Nava's story", slug: "/story" },
-      { title: "Our people", slug: "/people" },
+      { title: "Our people", slug: "/teams" },
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
     ],
@@ -26,7 +26,7 @@ const NavData = [
   },
   {
     title: "Careers",
-    slug: "/working-at-nava"
+    slug: "/careers"
   },
 
   {
