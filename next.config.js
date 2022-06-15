@@ -11,11 +11,11 @@ module.exports = withBundleAnalyzer({
     },
     async redirects() {
       return [
-        {
-          source: '/careers',
-          destination: '/working-at-nava',
-          permanent: true,
-        },
+        // {
+        //   source: '/careers',
+        //   destination: '/working-at-nava',
+        //   permanent: true,
+        // },
       ]
     },
   })
