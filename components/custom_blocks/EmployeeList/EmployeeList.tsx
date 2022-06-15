@@ -1,7 +1,11 @@
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import styles from "./EmployeeList.module.css";
+
 const AuthorFiller =
   "https://images.ctfassets.net/t2ekr6eg3fr3/4qsxN30IaLkcwEHLUbfjjl/a35271a9d5c31f163703990126518886/author-filler.png?h=250";
-import { useEffect, useState } from "react";
+
 
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
 const apiKey = "keyhwtCt910pVmtUG";
@@ -40,8 +44,30 @@ export default function EmployeeList() {
     return (
        < div className=" py-2xl">
          <hr/>
-     <details open={open}>
-   <summary className="type-preset-3 font-bold  list-none cursor-pointer">{name}</summary>
+     <details className={`${styles.details}`} open={open}>
+   <summary className="type-preset-3 font-bold  list-none cursor-pointer">
+   <div className="flex flex-row justify-between items-center">
+              <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
+                {name}
+              </h3>
+                <div className={`chevron`}>
+                  <svg
+                    width="20"
+                    height="11"
+                    viewBox="0 0 20 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19 1L10 10L1 1"
+                      stroke="#111827"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                </div>
+     </summary>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-xl pt-xl">
         {teamMembers.map((teamMember) => {
           const photo =
@@ -50,8 +76,12 @@ export default function EmployeeList() {
               : AuthorFiller;
           return (
             <div className="" key={teamMember.fields.Name}>
-              <img 
-              src={`${photo}`} className="w-full aspect-square"></img>
+              <Image
+              src={photo} 
+              objectFit={"cover"}
+              width={400}
+              height={400}
+              className="w-full h-auto aspect-square object-cover"></Image>
 
               <h5 className="type-preset-7 font-bold  pt-sm">
                 {teamMember.fields.Name}
