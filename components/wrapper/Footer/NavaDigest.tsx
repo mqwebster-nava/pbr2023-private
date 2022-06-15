@@ -74,7 +74,7 @@ const NavaDigest = () => {
       </div>
      
     </div>
-    <div className="bg-navy-900 h-[242px] -z-10 -mt-[242px]"></div>
+    <div className="bg-navy-900 h-[220px] -z-10 -mt-[220px]"></div>
     </div>
   );
 };
