@@ -37,7 +37,7 @@ const NavaDigest = () => {
                 <input type="hidden" name="id" value="a994830182"/>
                 <input type="hidden" name="tags" value="12593337" /> 
 
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="hidden">Email</label>
               <div id="mc_embed_signup" className="flex gap-md w-full">
                 <input
                   type="email"
@@ -74,7 +74,7 @@ const NavaDigest = () => {
       </div>
      
     </div>
-    <div className="bg-navy-900 h-[200px] -z-10 -mt-[200px]"></div>
+    <div className="bg-navy-900 h-[242px] -z-10 -mt-[242px]"></div>
     </div>
   );
 };
