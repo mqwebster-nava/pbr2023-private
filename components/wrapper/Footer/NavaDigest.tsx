@@ -72,9 +72,8 @@ const NavaDigest = () => {
           <img src={brandDirection} height={72} width={72} alt="" />
         </div>
       </div>
-     
     </div>
-    <div className="bg-navy-900 h-[220px] -z-10 -mt-[220px]"></div>
+    <div className="bg-navy-900 h-[222px] -z-10 -mt-[222px]"></div>
     </div>
   );
 };
