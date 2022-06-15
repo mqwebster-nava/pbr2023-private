@@ -65,8 +65,8 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       {
         __typename:"SectionCtaBlock",
         id: `${post.id}-work`,
-        title:"Get in touch",
-        body:"Tell us about your opportunities, ideas, and challenges.",
+        title:"Partner with us",
+        body:"Let’s talk about what we can build together.",
         buttonText:"Get in touch",
         buttonPath:"/contact",
         image:{
