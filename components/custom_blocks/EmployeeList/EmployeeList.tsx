@@ -52,7 +52,7 @@ export default function EmployeeList() {
             <div className="" key={teamMember.fields.Name}>
               <img src={`${photo}`} className="w-full"></img>
 
-              <h5 className="type-preset-7 font-bold">
+              <h5 className="type-preset-7 font-bold  pt-sm">
                 {teamMember.fields.Name}
               </h5>
               <p className="type-preset-7 text-gray-600">
