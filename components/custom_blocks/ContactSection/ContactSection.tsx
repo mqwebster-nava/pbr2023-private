@@ -79,13 +79,13 @@ const ContactSection = () => {
         />
         <AddressBlock
           title={"San Francisco"}
-          addrLine1={"1445 New York Ave, NW, Suite 300"}
-          addrLine2={"Washington, DC 20005"}
+          addrLine1={"417 Montgomery Street"}
+          addrLine2={"San Francisco, CA 94104"}
         />
         <AddressBlock
-          title={"New York City"}
-          addrLine1={"1445 New York Ave, NW, Suite 300"}
-          addrLine2={"Washington, DC 20005"}
+          title={"WeWork, Dumbo Heights"}
+          addrLine1={"77 Sands Street"}
+          addrLine2={"Brooklyn, New York 11201"}
         />
         <p className="type-preset-5 font-black">Follow Us</p>
         <div className="py-sm">
