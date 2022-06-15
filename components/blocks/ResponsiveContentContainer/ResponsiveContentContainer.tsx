@@ -12,8 +12,8 @@ const ResponsiveContentContainer : React.FC<Props> = ({children, padding="", ali
         "mr-auto":alignment=="left"
     });
     
-    return (<div className={`responsive-container ${padding}`}>
-        <div className = {`xl:max-w-4xl ${alignmentStyle}`}>
+    return (<div className={`responsive-container ${padding} flex`}>
+        <div className = {`w-full lg:w-3/4 xl:w-2/3 xl:max-w-4xl ${alignmentStyle}`}>
             {children}
         </div>
     </div>
