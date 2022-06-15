@@ -17,6 +17,7 @@ import React from "react";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { getPageDataFromContentful } from "lib/api";
 import { PageInterface } from "shared_interfaces/page_interface";
+import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 
 interface DEIPageInterface {
   page: PageInterface;
@@ -56,18 +57,18 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
       </section>
 
       <section className="bg-sage-50 py-4xl">
-        <div className="responsive-container">
+        <ResponsiveContentContainer alignment={"left"}>
           <ReportContent content={content.overview} />
           <PercentBarChart
             description="How we're doing in 2021"
             graphs={overview}
           />
-        </div>
+        </ResponsiveContentContainer>
       </section>
       <section className="bg-white">
-        <div className="responsive-container py-3xl">
+        <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
           <ReportContent content={content.body} />
-        </div>
+        </ResponsiveContentContainer>
         <PercentSquareChart
           title={race.title}
           content={race.content}
@@ -97,10 +98,10 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
       </section>
 
       <section className="bg-sage-50">
-        <div className="responsive-container py-3xl">
+      <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
           <ReportContent content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
-        </div>
+      </ResponsiveContentContainer>
       </section>
     </PageTemplate>
   );
