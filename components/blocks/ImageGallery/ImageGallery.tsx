@@ -3,7 +3,7 @@ import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import classNames from "classnames";
 
 type ImageGalleryColorTheme = "default" | "navy";
-type ImageGalleryLayout = "Four image grid" | "Three image row";
+type ImageGalleryLayout = "Four image grid" | "Three image row" | "Single image";
 
 import img1 from "public/images/People Family looking at laptop together Credit Kampus Production 2.png";
 import img2 from "public/images/People Couple on couch looking at phone Credit Ketut Subiyanto 3.png";
@@ -47,6 +47,7 @@ const imgs = [
 
 interface ImageGalleryInterface {
   id: string;
+  image: ContentfulImageAsset; //TODO-  For transition - to remove once contentful is updated
   images?: Array<ContentfulImageAsset>;
   colorTheme?: ImageGalleryColorTheme;
   layout?: ImageGalleryLayout;
@@ -54,14 +55,17 @@ interface ImageGalleryInterface {
 
 const ImageGalleryBlock = ({
   id,
-  images=imgs,
+  image,
+  images,
   colorTheme = "default",
-  layout="Four image grid",
+  layout="Single image",
 }: ImageGalleryInterface) => {
   const bgColor = classNames({
     "bg-navy-900": colorTheme == "navy",
   });
-
+  //TODO-  For transition - to remove once contentful is updated
+  if(image && (!images || images.length<1)) images= [{...image}];
+  
   const FourImageGrid = () => {
     if (!images || images.length < 3) return <div></div>;
     return (
@@ -109,16 +113,9 @@ const ImageGalleryBlock = ({
       </>
     );
   };
-  const ThreeImageGrid = () => {
-    if (!images || images.length < 2) return <div></div>;
-    return (
-        <div className="flex justify-start">
-         
-        </div>
-    );
-  };
+
   const SingleImage = () => {
-    if (!images || images.length < 1) return <div></div>;
+    if (!images || images.length != 1) return <div></div>;
     return (
       <Image
       className=""
@@ -171,7 +168,11 @@ const ImageGalleryBlock = ({
   return (
     <div className={`w-full ${bgColor}`} key={id}>
       <div className="responsive-container w-full py-3xl">
-        {layout == "Four image grid" ? <FourImageGrid /> : <ThreeImageRow />}
+        {layout == "Four image grid" 
+        ? <FourImageGrid /> 
+       : layout == "Three image row"
+        ? <ThreeImageRow />
+        : <SingleImage/>}
       </div>
     </div>
   );
@@ -179,7 +180,7 @@ const ImageGalleryBlock = ({
 
 export default ImageGalleryBlock;
 
-{
+
   /* <Image
             className=""
             src={image.url}
@@ -188,4 +189,4 @@ export default ImageGalleryBlock;
             width={image.width}
             alt={image.description}
           ></Image> */
-}
+

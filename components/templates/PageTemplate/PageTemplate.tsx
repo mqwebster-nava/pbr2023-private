@@ -38,7 +38,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
       "ContentBlockArticleList": ()=>  <ArticleFeed key={index} {...entry} />,
-      "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry}/>,
+      "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items}/>,
       "TimelineSection": () => <TimelineSection key={index} {...entry}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
