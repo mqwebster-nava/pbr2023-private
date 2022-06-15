@@ -14,7 +14,6 @@ export interface ContentCardInterface {
   kicker?:string;
   size?:CardSize
   image?: ContentfulImageAsset;
-  cycleNum?: number;
 }
 
 const ContentCard = (props: ContentCardInterface) => {
@@ -27,13 +26,11 @@ const DefaultContentCard  = ({
   title,
   path,
   image = null,
-  cycleNum = Math.floor(Math.random() * 4),
   summary,
   size = "quarter",
   kicker
 }: ContentCardInterface) => {
 
-  cycleNum = cycleNum % 3;
   let color = "navy"
   const backgroundColor = "bg-navy-700";
 
@@ -55,8 +52,9 @@ const DefaultContentCard  = ({
   }
   const PatternSquare = () => {
     return ( <div
-      className={`${backgroundColor} aspect-[16/9] flex flex-col`}
+      className={`relative ${backgroundColor} aspect-video flex flex-col w-full pb-[56.25%]`}
     >
+       <div className={` w-full absolute top-0 left-0 right-0 bottom-0`}>
       <div className={`bg-${color}-900 h-1/3 w-full flex justify-end`}>
         <div className={`bg-${color}-800 h-full aspect-[1/1] `}></div>
         <div className={`bg-${color}-500 h-full aspect-[1/1]`}></div>
@@ -65,6 +63,7 @@ const DefaultContentCard  = ({
       <div className="flex h-2/3 justify-end">
       <div className={`bg-${color}-800 h-full aspect-[1/1] `}></div>
        
+      </div>
       </div>
     </div>)
   }

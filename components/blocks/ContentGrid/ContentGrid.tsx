@@ -15,7 +15,6 @@ interface ContentGridInterface {
   items: any;
   layout?: ListLayout;
   contentType?: ContentType;
-  cycleNum?: number;
   colorTheme?: ColorTheme;
   padding?:string;
 }
@@ -27,7 +26,6 @@ const ContentGrid = ({
   contentType,
   colorTheme= "default",
   padding="",
-  cycleNum = Math.floor(Math.random() * 4),
 }: ContentGridInterface) => {
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
@@ -67,7 +65,6 @@ const ContentGrid = ({
                     title={item.title}
                     image={item.promoImage}
                     path={getContentUrl(item.contentType, item.slug)}
-                    cycleNum={cycleNum}
                     summary={item.shortSummary}
                  />
                 )
