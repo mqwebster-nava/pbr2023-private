@@ -87,7 +87,7 @@ const ImageGalleryBlock = ({
           </div>
         </div>
         <div className="flex justify-center pt-md items-start">
-          <div className="w-7/12 pr-sm">
+          <div className="w-7/12 pr-md">
             <Image
               src={images[2].url}
               layout="responsive"
@@ -96,7 +96,7 @@ const ImageGalleryBlock = ({
               alt={images[2].description}
             ></Image>
           </div>
-          <div className="w-1/4 pl-sm">
+          <div className="w-1/4 pl-md">
             <Image
               src={images[3].url}
               layout="responsive"
