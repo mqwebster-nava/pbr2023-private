@@ -72,7 +72,7 @@ const SectionHeader = ({
     <section className={`${bg}`} key={id}>
     <div className={`responsive-container pt-3xl pb-xl`} key={id}>
       <TitleBlock />
-       <div className={`flex ${subtitle || body && "mb-xl"}`}>
+       <div className={`flex ${(subtitle || body) && "mb-xl"}`}>
          <ColoredLine/>
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
