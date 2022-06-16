@@ -105,7 +105,7 @@ export default function EmployeeList() {
         open={true}
         teamMembers={
           teamMembers &&
-          teamMembers.filter((m) => m.fields.Department == "Executive")
+          teamMembers.filter((m) => m.fields.Department == "Executive").sort((a,b)=>a.fields.Name.localeCompare(b.fields.Name))
         }
       />
       {[ "Business Development","Business Operations","Communications","Delivery Operations","Design and Research", "Engineering", "People Operations", "Product","Project Management", "Program Delivery","Recruiting"].map((name)=>
@@ -114,7 +114,7 @@ export default function EmployeeList() {
         name={name}
         teamMembers={
           teamMembers &&
-          teamMembers.filter((m) => m.fields.Department == name)
+          teamMembers.filter((m) => m.fields.Department == name).sort((a,b)=>a.fields.Name.localeCompare(b.fields.Name))
         }
       />)}
     </div>
