@@ -10,7 +10,6 @@ interface ArticleFeedInterface {
   buttonPath?: string;
   body?: string;
   items: any;
-  cycleNum?: number;
   max?: number;
   layout?: ListLayout;
 }
@@ -22,7 +21,6 @@ const ArticleFeed = ({
   items,
   buttonPath,
   buttonText,
-  cycleNum = Math.floor(Math.random() * 4),
   max = 6,
   layout = "feature",
 }: ArticleFeedInterface) => {
@@ -59,7 +57,7 @@ const ArticleFeed = ({
         items={items}
         contentType={"posts"}
         layout={layout}
-        cycleNum={cycleNum}
+       
       />
      </div>
     </section>
