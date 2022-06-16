@@ -1,9 +1,9 @@
 import { PageHeaderInterface } from "./PageHeader";
 import { Button } from "components/atom";
-import headerIllustration1 from "public/images/Home Portrait 1 V1.png";
-import headerIllustration2 from "public/images/Home Portrait 2 V1.png";
-import headerIllustration3 from "public/images/Home Portrait 3 V1.png";
-import headerIllustration4 from "public/images/Home Portrait 4 V1.png";
+import headerIllustration1 from "public/images/Home Portrait 1 880x660 V1.png";
+import headerIllustration2 from "public/images/Home Portrait 2 880x660 V1.png";
+import headerIllustration3 from "public/images/Home Portrait 3 880x660 V1.png";
+import headerIllustration4 from "public/images/Home Portrait 4 880x660 V1.png";
 import React, { useState, useEffect } from 'react'
 import Image from "next/image";
 import styles from "./PageHeader.module.css";
@@ -61,7 +61,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
       <div
           className={`  ${header.bg} -mt-[3px]  h-1/2 w-full absolute -z-10 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}
         ></div>
-        <div className={`w-full sm:w-2/3 md:w-3/5 ml-auto  pb-[50%]  aspect-[4/3] bg-plum-50 relative z-70`}>
+        <div className={`w-full sm:w-2/3 md:w-3/5 ml-auto  pb-[75%] sm:pb-[50%] md:pb-[45%]  bg-plum-50 relative z-70`}>
            <CrossfadeCarousel
             interval={2000}
             transition={2000}
