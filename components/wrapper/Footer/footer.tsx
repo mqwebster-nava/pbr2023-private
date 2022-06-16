@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "public/images/N logo.png";
 import FooterSiteSection from "./FooterSiteSection";
-import NavData from "../Navbar/navbar_data";
+import FooterNavData from "./footer_nav_data.js";
 import NavaDigest from "./NavaDigest";
 
 
@@ -30,7 +30,7 @@ const Footer = () => {
             </div>
           </div>
           <nav aria-label={"secondary"} className="flex flex-wrap text-white  my-xl ">
-           {NavData.map((data)=>
+           {FooterNavData.map((data)=>
            <FooterSiteSection  key={data.title} navDataSection={data}/>
            )}
           
