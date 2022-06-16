@@ -87,7 +87,7 @@ const ContactSection = () => {
           addrLine1={"77 Sands Street"}
           addrLine2={"Brooklyn, New York 11201"}
         />
-        <p className="type-preset-5 font-black">Follow Us</p>
+        <p className="type-preset-5 font-black pt-3xl">Follow Us</p>
         <div className="py-sm">
           <LinkText href={"/"} variant={"underlined"}>
             Twitter
