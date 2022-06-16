@@ -1,7 +1,9 @@
 
 import {  LinkText } from "components/atom";
 
-import ContentGrid, { ListLayout } from "../ContentGrid/ContentGrid";
+import ContentGrid, { ListLayout } from "./ContentGrid";
+
+
 
 interface ArticleFeedInterface {
   id: string;
@@ -22,8 +24,10 @@ const ArticleFeed = ({
   buttonPath,
   buttonText,
   max = 6,
-  layout = "feature",
+  layout,
 }: ArticleFeedInterface) => {
+  layout ??= "1 large 2 small cards row";
+  console.log(layout);
   items = items.filter((post) => post != null);
   return (
     <section key={id} >
@@ -57,7 +61,6 @@ const ArticleFeed = ({
         items={items}
         contentType={"posts"}
         layout={layout}
-       
       />
      </div>
     </section>

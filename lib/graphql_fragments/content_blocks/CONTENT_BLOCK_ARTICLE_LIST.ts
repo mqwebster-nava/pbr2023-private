@@ -8,6 +8,7 @@ sys {
 }
 title
 body
+layout
 buttonPath
 buttonText
 postsCollection(limit:10) {

@@ -25,7 +25,8 @@ export async function getStaticProps({ params, preview = false }) {
       
       __typename:"ContentBlockArticleList", // Article Feed
       id: "news section",
-      items: posts
+      items: posts,
+      layout:"3 card row"
     },
     ...res.contentBlocks
   ]

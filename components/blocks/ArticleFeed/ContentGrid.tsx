@@ -8,8 +8,10 @@ Content Grid sets up the layout and background color
 for the different types of cards used throughout the site.
 */
 
-export type ListLayout = "feature" | "default";
+export type ListLayout = "1 large 2 small cards row" | "3 card row";
 type ContentType = "default" | "posts";
+
+
 interface ContentGridInterface {
   id: string;
   items: any;
@@ -22,11 +24,11 @@ interface ContentGridInterface {
 const ContentGrid = ({
   id,
   items,
-  layout = "feature",
-  contentType,
+  layout,
   colorTheme= "default",
   padding="",
 }: ContentGridInterface) => {
+  layout ??= "1 large 2 small cards row";
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
     "bg-sage-100": colorTheme=="sage",
@@ -35,8 +37,8 @@ const ContentGrid = ({
   });
 
   const GridStyle = classNames({
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": layout == "default",
-    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": layout == "feature",
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3": layout == "3 card row",
+    "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4": layout == "1 large 2 small cards row",
   });
 
   items = items.filter((item) => item != null);
@@ -47,7 +49,7 @@ const ContentGrid = ({
         <div className={`w-full ${GridStyle} gap-x-lg gap-y-xl `}>
           {items.map((item, i) => {
             const feature = classNames({
-              "lg:col-span-2": layout === "feature" && i == 0,
+              "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,
             });
             return (
               <div className={`w-full self-stretch ${feature}`} key={item.id}>
@@ -55,7 +57,7 @@ const ContentGrid = ({
                 (
                   <ContentCard
                     size={
-                      layout == "default" || i > 3
+                      layout =="3 card row" || i > 3
                         ? "third"
                         : i == 0
                         ? "half"
@@ -71,7 +73,7 @@ const ContentGrid = ({
                  :(
                   <ContentCard
                     size={
-                      layout == "default" || i > 3
+                      layout =="3 card row" || i > 3
                         ? "third"
                         : i == 0
                         ? "half"
