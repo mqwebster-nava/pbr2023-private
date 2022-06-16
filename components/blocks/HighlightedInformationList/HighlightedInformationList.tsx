@@ -8,6 +8,8 @@ for the different types of cards used throughout the site.
 
 interface HighlightedInformationListInterface {
   id: string;
+  title: string;
+  subtitle:string;
   items: any;
 }
 

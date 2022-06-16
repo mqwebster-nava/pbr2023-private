@@ -14,7 +14,6 @@ const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
 const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
 const AuthorBioBlock  = dynamic(() => import("components/custom_blocks/AuthorBioBlock/AuthorBioBlock"));
-const ContentGrid  = dynamic(() => import("components/blocks/ContentGrid/ContentGrid"));
 const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 const CapabilitiesSection  = dynamic(() => import("components/custom_blocks/CapabilitiesSection/CapabilitiesSection"));
 const EmployeeList = dynamic(() => import("components/custom_blocks/EmployeeList/EmployeeList"));
