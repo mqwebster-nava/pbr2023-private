@@ -12,7 +12,7 @@ const ContentBlockText= dynamic(() => import("components/blocks/ContentBlockText
 const SectionHeader = dynamic(() => import("components/blocks/SectionHeader/SectionHeader"));
 const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
-const TimelineSection = dynamic(() => import("components/custom_blocks/TimelineSection/TimelineSection"));
+const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
 const AuthorBioBlock  = dynamic(() => import("components/custom_blocks/AuthorBioBlock/AuthorBioBlock"));
 const ContentGrid  = dynamic(() => import("components/blocks/ContentGrid/ContentGrid"));
 const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
@@ -39,7 +39,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
       "ContentBlockArticleList": ()=>  <ArticleFeed key={index} {...entry} />,
       "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items}/>,
-      "TimelineSection": () => <TimelineSection key={index} {...entry}/>,
+      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
