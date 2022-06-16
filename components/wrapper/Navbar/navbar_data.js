@@ -1,15 +1,6 @@
 
 const NavData = [
   {
-    title: "About",
-    subpages: [
-      { title: "Nava's story", slug: "/story" },
-      { title: "Team", slug: "/team" },
-      { title: "Diversity, equity, and inclusion", slug: "/dei" },
-      { title: "News", slug: "/news" },
-    ],
-  },
-  {
     title: "Mission",
     subpages: [
       { title: "Impact", slug: "/impact" },
@@ -25,13 +16,21 @@ const NavData = [
     ],
   },
   {
+    title: "Insights",
+    slug: "/insights",
+  },
+  {
     title: "Careers",
     slug: "/careers"
   },
-
   {
-    title: "Insights",
-    slug: "/insights",
+    title: "About",
+    subpages: [
+      { title: "Nava's story", slug: "/story" },
+      { title: "Team", slug: "/team" },
+      { title: "Diversity, equity, and inclusion", slug: "/dei" },
+      { title: "News", slug: "/news" },
+    ],
   },
 ];
 
