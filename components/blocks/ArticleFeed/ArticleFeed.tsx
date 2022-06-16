@@ -27,7 +27,6 @@ const ArticleFeed = ({
   layout,
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
-  console.log(layout);
   items = items.filter((post) => post != null);
   return (
     <section key={id} >
