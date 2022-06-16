@@ -76,12 +76,12 @@ export default function PostBody({
     <div
       key={id}
       className={
-        "responsive-container py-2xl flex md:flex-row flex-col-reverse "
+        "responsive-container py-2xl flex flex-col-reverse md:grid md:grid-cols-12 "
       }
     >
       <article
         id="article"
-        className="w-full md:w-2/3 pr-lg text-gray-base font-serif"
+        className="w-full md:col-span-8 text-gray-base font-serif"
       >
         {h2Sections.map((section) => (
           <section id={section.title} ref={section.ref} key={section.title}>
@@ -90,8 +90,9 @@ export default function PostBody({
         ))}
         {<AuthorBios authors={authors}/>}
       </article>
+      <div className="hidden md:block md:col-span-1"></div>
       {/* Article Sidebar Section  */}
-      <div className={"w-full md:w-1/3 pt-md md:pl-xl"}>
+      <div className={"w-full md:col-span-3 pt-md "}>
        { isEvent? 
        <EventInfoComponent date={date} registrationLink={registrationLink} contentTags={contentTags}/> : 
         <ArticleInfoComponent
