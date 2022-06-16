@@ -114,11 +114,12 @@ function CrossfadeCarousel({
       {images.map((image, index) => (
         <div className={` absolute object-cover `} key={`${image}-${index}`} >
         <Image
-          
           src={image} 
           height={image.height}
           width={image.width}
-           className={`${styles.homeTransition} ${active === index ? "opacity-100": "opacity-0"}`}       
+          alt={""}
+          className={`${styles.homeTransition} ${active === index ? "opacity-100": "opacity-0"}`}      
+            
         />
         </div>
       ))}

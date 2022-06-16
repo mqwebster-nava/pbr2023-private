@@ -1,5 +1,5 @@
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-
+import Image from "next/image";
 interface CapabilitiesInterface {
   icon: ContentfulImageAsset;
   body: string;
@@ -10,6 +10,16 @@ interface CapabilitiesSectionInterface {
   body: string;
   items: Array<CapabilitiesInterface>;
 }
+
+const defaultIcon:ContentfulImageAsset = 
+    {
+        "id": "3hBHof0lL9fl2Ui7QQdGnD",
+        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/3hBHof0lL9fl2Ui7QQdGnD/031cc4c1e72fb98b335ae54f3e2840eb/icon-house.svg",
+        "width": 38,
+        "height": 38,
+        "title": "icon-house",
+        "description": "Icon of a house"
+  }
 
 const CapabilitiesSection = ({title, capabilityTitle, body, items}:CapabilitiesSectionInterface) => {
   return (
@@ -29,12 +39,14 @@ const CapabilitiesSection = ({title, capabilityTitle, body, items}:CapabilitiesS
           <p className="type-preset-7 text-gray-900 pb-md">Capabilities</p>
           {
           items.map((cap) => {
+            const icon = cap.icon ?? defaultIcon;
             return <div className="bg-white flex my-sm p-xl gap-xl" key={cap.body}>
-                <img 
-                src="https://images.ctfassets.net/t2ekr6eg3fr3/3hBHof0lL9fl2Ui7QQdGnD/031cc4c1e72fb98b335ae54f3e2840eb/icon-house.svg"
+               <img 
+                src={icon.url} 
                 height={"25px"}
                 width={"25px"}
-                />
+                alt={""}
+            ></img>
                 <p>
                     {cap.body}
                 </p>
