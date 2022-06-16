@@ -25,7 +25,6 @@ export async function getStaticProps({ params, preview = false }) {
       
       __typename:"ContentBlockArticleList", // Article Feed
       id: "news section",
-      title:"Nava news",
       items: posts
     },
     ...res.contentBlocks
