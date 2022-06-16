@@ -13,7 +13,7 @@ interface PostImageInterface {
 
 const PostImage = ({image, border="none", caption, attribution}: PostImageInterface) => {
     const borderStyle = classNames({
-        "bg-gray-300 p-xl rounded": border==="gray"
+        "bg-gray-300 p-[1px] ": border==="gray"
     })
     const capH = classNames({
         "max-w-[500px]": (image.height/image.width)>=1
