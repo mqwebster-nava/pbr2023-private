@@ -3,20 +3,21 @@ import ResponsiveContentContainer from "components/blocks/ResponsiveContentConta
 import React from "react";
 
 
-export interface TimelineInterface {
-    year: string;
+export interface TextBodyInterface {
+    title: string;
     richBody: any; // Rich text from contentful
   }
 
-const TimelineSection = ({year, richBody}:TimelineInterface) => {
+const TextBodyBlock = ({title, richBody}:TextBodyInterface) => {
     return (
-        <ResponsiveContentContainer alignment={"left"}>
+        <ResponsiveContentContainer alignment={"left"}  padding={"py-xl"}>
         <div className="py-xl">
+        {title && <h3 className={`font-sans type-preset-3 font-bold pb-lg`}>{title} </h3> }
             <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
         </ResponsiveContentContainer>)
 }
 
-export default TimelineSection;
+export default TextBodyBlock;
 
 

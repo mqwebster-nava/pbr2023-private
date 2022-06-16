@@ -10,7 +10,7 @@ import IMAGE_GALLERY from "./content_blocks/IMAGE_GALLERY";
 import PAGE_HEADER_FIELDS from "./content_blocks/PAGE_HEADER_FIELDS";
 import QUOTE_BLOCK from "./content_blocks/QUOTE_BLOCK";
 import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
-import TIMELINE_SECTION from "./content_blocks/TIMELINE_SECTION";
+import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 
 /*
@@ -60,8 +60,8 @@ contentCollection(limit:20) {
         ... on ImageGallery {
             ${IMAGE_GALLERY}
         }
-        ... on TimelineSection {
-            ${TIMELINE_SECTION}
+        ... on TextBodyBlock {
+            ${TEXT_BODY_BLOCK}
         }
         ... on ContentGridFeatureCards { 
             ${CONTENT_GRID_FEATURE_CARDS}

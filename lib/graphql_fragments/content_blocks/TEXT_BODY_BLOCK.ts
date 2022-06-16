@@ -1,13 +1,13 @@
 
 import { POST_BODY } from "../POST_FIELDS";
 
-const TIMELINE_SECTION = `
+const TEXT_BODY_BLOCK = `
 sys {
     id
   }
-year
+title
 richBody{
   ${POST_BODY}
 }
 `;
-export default TIMELINE_SECTION;
+export default TEXT_BODY_BLOCK;
