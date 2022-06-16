@@ -1,6 +1,6 @@
 // Button.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  ContentBlockText from './ContentBlockText';
+import  ContentBlockText from './ListBlock';
 
 export default {
   /* 👇 The title prop is optional.

@@ -1,18 +1,17 @@
 import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
-interface ContentBlockInterface {
+interface ListBlockInterface {
     id:string;
     title?: string;
-    type?: string;
     body: any;
-    variant?: ColorTheme
+    colorTheme?: ColorTheme
   }
   
-  export const ContentBlockText : React.FC<ContentBlockInterface> = ({id, title, body, variant="default"}) => {
+  export const ListBlock : React.FC<ListBlockInterface> = ({id, title, body, colorTheme="default"}) => {
     
     const bg = classNames({
-      "bg-gold-50": variant=="gold",
-      "bg-sage-50": variant=="sage"
+      "bg-gold-50": colorTheme=="gold",
+      "bg-sage-50": colorTheme=="sage"
     })
     return ( 
       <section className={bg} key={id}>
@@ -28,5 +27,5 @@ interface ContentBlockInterface {
       );
 }
 
-  export default ContentBlockText;
+  export default ListBlock;
   

@@ -2,7 +2,6 @@
 import CAPABILITIES_SECTION from "./content_blocks/CAPABILITIES_SECTION";
 import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_LIST";
 import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
-import CONTENT_BLOCK_TEXT from "./content_blocks/CONTENT_BLOCK_TEXT";
 import CONTENT_GRID_FEATURE_CARDS from "./content_blocks/CONTENT_GRID_FEATURE_CARDS";
 import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
 import CUSTOM_BLOCK from "./content_blocks/CUSTOM_BLOCK";
@@ -12,6 +11,7 @@ import QUOTE_BLOCK from "./content_blocks/QUOTE_BLOCK";
 import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
 import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
+import LIST_BLOCK from "./content_blocks/LIST_BLOCK";
 
 /*
 The page fields should contain metadata about the page as 
@@ -42,8 +42,8 @@ contentCollection(limit:20) {
         ... on SectionHeader {
             ${SECTION_HEADER_FIELDS}
         }
-        ... on SectionContentBlockText {
-            ${CONTENT_BLOCK_TEXT}
+        ... on ListBlock {
+            ${LIST_BLOCK}
         }
         ... on ContentBlockLinkToPage{ 
             ${CONTENT_BLOCK}

@@ -8,7 +8,7 @@ const QuoteBlock= dynamic(() => import("components/blocks/QuoteBlock/QuoteBlock"
 const ArticleFeed= dynamic(() => import("components/blocks/ArticleFeed/ArticleFeed"));
 const CTABlock= dynamic(() => import("components/blocks/CTABlock/CTABlock"));
 const PageHeader= dynamic(() => import("components/blocks/PageHeaders/PageHeader"));
-const ContentBlockText= dynamic(() => import("components/blocks/ContentBlockText/ContentBlockText"));
+const ListBlock = dynamic(() => import("components/blocks/ListBlock/ListBlock"));
 const SectionHeader = dynamic(() => import("components/blocks/SectionHeader/SectionHeader"));
 const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
@@ -32,7 +32,7 @@ const PageTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
     const componentMap = {
       "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />),
-      "SectionContentBlockText": ()=> <ContentBlockText key={index} {...entry} body={<MarkdownComponent content={entry.body}/>}/>,
+      "ListBlock": ()=> <ListBlock key={index} {...entry} body={<MarkdownComponent content={entry.body}/>}/>,
       "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
       "ContentBlock": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />,
       "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
