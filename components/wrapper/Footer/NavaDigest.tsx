@@ -12,18 +12,22 @@ const NavaDigest = () => {
 
   return (
     <div className="pt-3xl relative">
+      <div className="responsive-container">
+          <div className="bg-sage-700 font-sans h-4xl "></div>
+      </div>
+  <div className="bg-navy-900 ">
     <div className="responsive-container z-10 relative">
-      <div className="bg-sage-700 font-sans  pt-2xl ">
+      <div className="bg-sage-700 font-sans  ">
       <div className="font-sans text-white px-2xl">
-        <div className=" w-full pt-lg flex pb-2xl flex-col md:flex-row">
+        <div className=" w-full flex pb-2xl flex-col md:flex-row">
           <div className="w-full md:w-1/2 ">
-            <h3 className="font-sans type-preset-2 font-bold pb-lg">Stay in touch</h3>
+            <h3 className="font-sans type-preset-2 font-bold pb-lg -mt-[6px] md:-mt-[12px]">Stay in touch</h3>
 
             <p className={`2 font-sans mr-3xl type-preset-6  mb-md`}>
             Sign up for our newsletter to find out about career opportunities, new partnerships, and news from the broader civic tech community.
             </p>
           </div>
-          <div className="w-full md:w-1/2 pt-md">
+          <div className="w-full md:w-1/2 ">
         
             <form
             action="https://navapbc.us10.list-manage.com/subscribe/post" 
@@ -38,13 +42,13 @@ const NavaDigest = () => {
                 <input type="hidden" name="tags" value="12593337" /> 
 
               <label htmlFor="email" className="hidden">Email</label>
-              <div id="mc_embed_signup" className="flex gap-md w-full">
+              <div id="mc_embed_signup" className="flex gap-md w-full pt-sm md:pt-0">
                 <input
                   type="email"
                   name="EMAIL"
                   id="email"
                   placeholder="Your email address"
-                  className={`required email text-black w-full p-md rounded-sm`}
+                  className={`required email text-black w-full p-md `}
                 />
                 <div className="clear">
                   <FormInputButton
@@ -54,15 +58,7 @@ const NavaDigest = () => {
                   />
                 </div>
               </div>
-              {/* <div id="response">
-                  {hasError && <div
-                    className="text-red-400"
-                    id="error-response"
-                  > Error submitting form</div> } 
-                 {hasCompleted && <div
-                    className="response"
-                    id="mce-success-response" > Thank you for subscribing</div>}
-                </div> */}
+            
             </form>
           </div>
         </div>
@@ -73,7 +69,7 @@ const NavaDigest = () => {
         </div>
       </div>
     </div>
-    <div className="bg-navy-900 h-[222px] -z-10 -mt-[222px]"></div>
+</div>
     </div>
   );
 };

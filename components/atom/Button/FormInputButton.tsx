@@ -20,7 +20,7 @@ const FormInputButton = ({
       onClick={onClick}
       className={`
             font-sans font-bold h-[70px]
-            inline-flex items-center justify-center rounded-sm
+            inline-flex items-center justify-center 
             px-lg py-sm  
             type-preset-6 leading-6
             transition duration-150 ease-in-out flex-col
