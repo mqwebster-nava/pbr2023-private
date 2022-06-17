@@ -1,5 +1,5 @@
 const FooterSiteSection = ({ navDataSection }) => navDataSection.subpages?(
-    <div className="w-1/2 md:w-1/5 font-sans p-sm" key={navDataSection.title}>
+    <div className="w-1/2 md:w-1/5 font-sans pr-sm py-sm" key={navDataSection.title}>
       <h4 className="font-bold pb-sm">{navDataSection.title}</h4>
       {navDataSection.subpages.map((subpage) => (
         <a
