@@ -2,15 +2,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./EmployeeList.module.css";
-
-const AuthorFiller =
-  "https://images.ctfassets.net/t2ekr6eg3fr3/4qsxN30IaLkcwEHLUbfjjl/a35271a9d5c31f163703990126518886/author-filler.png?h=250";
+import AuthorFiller from "/public/images/Missing images on our People.svg"
+// const AuthorFiller =
+//   "https://images.ctfassets.net/t2ekr6eg3fr3/4qsxN30IaLkcwEHLUbfjjl/a35271a9d5c31f163703990126518886/author-filler.png?h=250";
 
 
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
 const apiKey = "keyhwtCt910pVmtUG";
 const tableId ="tblpYB59rae1t15C5"
-
 export default function EmployeeList() {
   const [teamMembers, setTeamMembers] = useState([]);
   async function getAirtableData (){
@@ -73,7 +72,7 @@ export default function EmployeeList() {
           const photo =
             "Photo" in teamMember.fields && teamMember.fields.Photo.length > 0
               ? teamMember.fields.Photo[0].url
-              : AuthorFiller;
+              : AuthorFiller.src;
           return (
             <div className="" key={teamMember.fields.Name}>
               <Image
