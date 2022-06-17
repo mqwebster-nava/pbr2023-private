@@ -58,7 +58,7 @@ export default function OpenRolesComponent() {
     return (
       <>
         <details className="block md:hidden py-md">
-          <summary>Show Teams</summary>
+          <summary className="pb-sm">Show Teams</summary>
 
           {departments.map((d, k) => (
             <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`} key={`${d.title} nav ${k}`}>
