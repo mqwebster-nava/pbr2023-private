@@ -32,7 +32,7 @@ const ArticleFeed = ({
     <section key={id} >
       <div className="responsive-container pt-xl" key={id}>
         <div className={`w-full pt-md flex justify-between ${title && "border-t-2"}`}>
-          <div>
+          <div className="md:w-3/4 ">
             {title && (
               <h3 className="font-sans type-preset-3  font-bold">{title} </h3>
             )}
@@ -44,9 +44,8 @@ const ArticleFeed = ({
               </p>
             )}
           </div>
-          <div>
+          <div className="hidden md:inline-block">
           {buttonPath != null && (
-       
           <LinkText href={buttonPath} variant="default" color="sage">
             {buttonText ?? "See more"}
           </LinkText>
@@ -61,6 +60,13 @@ const ArticleFeed = ({
         contentType={"posts"}
         layout={layout}
       />
+       <div className="responsive-container md:hidden  py-lg flex justify-end">
+          {buttonPath != null && (
+          <LinkText href={buttonPath} variant="default" color="sage">
+            {buttonText ?? "See more"}
+          </LinkText>
+      )}
+          </div>
      </div>
     </section>
   );
