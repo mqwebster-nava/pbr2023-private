@@ -22,7 +22,7 @@ const HighlightedInfoCard = ({id, icon, title, body}:HighlightedInfoCardInterfac
    
     icon = icon ?? defaultIcon;
     return (
-    <div className="bg-plum-50 px-2xl pb-4xl xl:pb-5xl pt-3xl h-full ">
+    <div className="bg-plum-50 px-2xl  md:pb-4xl xl:pb-5xl pt-3xl h-full ">
           <Image 
             src={icon.url} 
             height={"36px"}
