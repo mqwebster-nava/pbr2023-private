@@ -46,7 +46,7 @@ const SectionHeader = ({
   const BodyBlock = ({text}) => {
     return (
       <div className={`flex`}>
-        <p className={`md:w-3/4 type-preset-3  font-serif ${textColor}`}>
+        <p className={`lg:w-3/4 type-preset-3  font-serif ${textColor}`}>
          {text}
         </p>
       </div>
