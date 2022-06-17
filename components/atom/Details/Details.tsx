@@ -9,7 +9,7 @@ export const Details: React.FC<ButtonProps> = ({ summary, children }) => {
   return (
     <details className={`${styles.details} `}>
       <summary className="font-sans font-bold md:h-[70px]
-    inline-flex items-center justify-center rounded-sm
+    inline-flex items-center justify-center 
     px-xl py-sm  
     type-preset-6 leading-6
     transition duration-150 ease-in-out flex-col

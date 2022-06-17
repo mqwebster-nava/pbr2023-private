@@ -8,7 +8,6 @@ export interface ButtonProps {
 }
 
 // TODO button
-// -- rounded
 
 export const Button: React.FC<ButtonProps> = ({
   children,
