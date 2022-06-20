@@ -43,10 +43,10 @@ const Footer = () => {
             <p className="text-white font-sans type-preset-8">
               {`©${currentYear} Nava PBC. All rights reserved`}
             </p>
-            <div className="flex gap-2xl text-white font-bold type-preset-6">
-             <a href="https://twitter.com/NavaPBC" > Twitter</a>
+            <div className="flex gap-2xl text-white underline type-preset-7">
+             <a  href="https://twitter.com/NavaPBC" > Twitter</a>
              <a href="https://www.linkedin.com/company/nava-pbc">  LinkedIn</a>
-             <a href="https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"> Youtube</a>
+             <a  href="https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"> Youtube</a>
 
             </div>
           </div>
