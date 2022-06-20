@@ -13,6 +13,7 @@ const CaptionText  = dynamic(() => import("components/blocks/PostBody/CaptionTex
 const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/PostSummarySection"));
 
 import MarkdownComponent from "utils/MarkdownComponent";
+import EmbeddedVideo from "./EmbeddedVideo";
 
 
 const PostContent = ({docData, docLinks, }) =>{
@@ -21,7 +22,7 @@ const PostContent = ({docData, docLinks, }) =>{
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
           [MARKS.ITALIC]: (text) => <span className="italic ">{text}</span>,
           [MARKS.UNDERLINE]: (text) => <span className=" underline">{text}</span>,
-          [MARKS.CODE]: (text) =>  <span className=" font-mono">{text}</span>
+          [MARKS.CODE]: (text) =>  <span className=" font-mono type-preset-7 py-[2px] px-[4px] bg-gray-100">{text}</span>
             
         },
         renderNode: {
@@ -64,7 +65,8 @@ const PostContent = ({docData, docLinks, }) =>{
               "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostImage": (props) => <PostImage {...props}/>,
-              "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>
+              "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>,
+              "EmbeddedVideo": (props)=> <EmbeddedVideo {...props} />
             }
              if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
           },
