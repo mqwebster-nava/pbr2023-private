@@ -43,11 +43,6 @@ const DesktopNavBar = ({ NavData }) => {
                 color={"navy-900"}
                 subpages={navSection.subpages}
               >
-                {/* {navSection.subpages.map((navitem) => (
-                  <DropdownNavItem href={navitem.slug} key={navitem.title}>
-                    {navitem.title}
-                  </DropdownNavItem>
-                ))} */}
               </DropdownNavButton>
             );
           })}
