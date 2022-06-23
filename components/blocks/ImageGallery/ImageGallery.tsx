@@ -4,47 +4,6 @@ import classNames from "classnames";
 
 type ImageGalleryColorTheme = "default" | "navy";
 type ImageGalleryLayout = "Four image grid" | "Three image row" | "Single image";
-
-import img1 from "public/images/People Family looking at laptop together Credit Kampus Production 2.png";
-import img2 from "public/images/People Couple on couch looking at phone Credit Ketut Subiyanto 3.png";
-import img3 from "public/images/People Family in supermarket looking at fruit Credit Greta Hoffman 4.png";
-import img4 from "public/images/People Middel aged people at laptops Credit Gary Barnes 2.png";
-
-const imgs = [
-  {
-    id: "1",
-    url: img1.src,
-    width: img1.width,
-    height: img1.height,
-    title: "FILLER - Careers Repeater",
-    description: "",
-  },
-  {
-    id: "2",
-    url: img2.src,
-    width: img2.width,
-    height: img2.height,
-    title: "FILLER - Careers Repeater",
-    description: "",
-  },
-  {
-    id: "3",
-    url: img3.src,
-    width: img3.width,
-    height: img3.height,
-    title: "FILLER - Careers Repeater",
-    description: "",
-  },
-  {
-    id: "4",
-    url: img4.src,
-    width: img4.width,
-    height: img4.height,
-    title: "FILLER - Careers Repeater",
-    description: "",
-  },
-];
-
 interface ImageGalleryInterface {
   id: string;
   image: ContentfulImageAsset; //TODO-  For transition - to remove once contentful is updated

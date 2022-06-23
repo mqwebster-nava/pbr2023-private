@@ -17,8 +17,16 @@ const Template: ComponentStory<typeof ListBlock> = (args) => <ListBlock {...args
 export const Primary = Template.bind({});
 
 Primary.args = {
-    title: "Careers",
-    body: "Come help us build the services of a better future for millions of people.",
-    colorTheme:"sage"
+    id: '4Q3d1MtucF7SYwFuGXSu3l',
+    __typename: 'ListBlock',
+    sys: { id: '4Q3d1MtucF7SYwFuGXSu3l' },
+    title: 'Financial health',
+    body: `
+      - Competitive compensation with transparent salary levels\n
+      - Fully remote workforce with equitable pay no matter where you live in the US\n 
+      - 4% 401K salary match\n 
+      - 37 paid days off per year: 20 vacation days, 5 floating holidays, the day after Thanksgiving, Juneteenth, and 10 federal holidays`,
+    colorTheme: 'sage'
+  
 };
 
