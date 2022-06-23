@@ -42,8 +42,7 @@ const DesktopNavBar = ({ NavData }) => {
                 title={navSection.title}
                 color={"navy-900"}
                 subpages={navSection.subpages}
-              >
-              </DropdownNavButton>
+              ></DropdownNavButton>
             );
           })}
           <div className="pl-sm"></div>
@@ -65,17 +64,16 @@ const MobileNavBar = ({ NavData }) => {
       aria-label="main"
       className="absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white py-lg"
     >
-      <SlideDown className={"my-dropdown-slidedown"}>
+      <SlideDown className={""}>
         {isShowingMenu
           ? NavData.map((navSection) => {
               return "slug" in navSection ? (
                 <a
-                 href={navSection.slug}
+                  href={navSection.slug}
                   className="group block w-full border-t-[2px] border-black py-lg "
                   key={navSection.title}
                 >
-                  <div className="relative inline-block  "
-                  >
+                  <div className="relative inline-block  ">
                     <div
                       className={` 
           text-navy-900 font-sans font-bold
@@ -117,17 +115,19 @@ const MobileNavBar = ({ NavData }) => {
                       </div>
                     </div>
                   </summary>
-                  {navSection.subpages.map((navitem) => (
-                    <a
-                      key={navitem.title}
-                      href={navitem.slug}
-                      className="block hover:bg-green px-4 cursor-pointer"
-                    >
-                      <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
-                        {navitem.title}
-                      </p>
-                    </a>
-                  ))}
+                  <SlideDown className={""}>
+                    {navSection.subpages.map((navitem) => (
+                      <a
+                        key={navitem.title}
+                        href={navitem.slug}
+                        className="block hover:bg-green px-4 cursor-pointer"
+                      >
+                        <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
+                          {navitem.title}
+                        </p>
+                      </a>
+                    ))}
+                  </SlideDown>
                 </details>
               );
             })
