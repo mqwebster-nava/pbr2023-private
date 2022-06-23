@@ -7,12 +7,12 @@ const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonT
           {title}
         </h1>
         <p
-          className={` text-white font-sans  type-preset-1  font-bold md:font-black pb-md w-full xl:w-3/4`}
+          className={` text-white font-sans  type-preset-1  font-bold md:font-black w-full xl:w-3/4`}
         >
           {subtitle}
         </p>
        { buttonPath &&
-       <div className="animate-titleButton">
+       <div className="animate-titleButton pt-md">
        <Button variant="white" href={buttonPath}>
          {buttonText}
        </Button>
