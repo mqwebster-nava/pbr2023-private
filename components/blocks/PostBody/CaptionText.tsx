@@ -7,8 +7,8 @@ interface CaptionTextInterface {
 
 const CaptionText = ({ id, caption, attribution }: CaptionTextInterface) => {
   return (
-    <div className={"type-preset-7 border-l-black border-l-2 pl-md mb-xl mt-sm"} key={id}>
-      <p className=" font-sans">{caption}</p>
+    <div className={"type-preset-7 border-l-black border-l-2 pl-md my-sm"} key={id}>
+      <div className="font-sans ">{caption}</div>
       {attribution && <p className=" font-sans text-gray-400 pt-md">{attribution}</p>}
     </div>
   );

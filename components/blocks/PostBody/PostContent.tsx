@@ -61,7 +61,7 @@ const PostContent = ({docData, docLinks, }) =>{
             let blockData = entryBlocks.find((element) => element.sys.id === id);
             blockData = liftData(blockData); // rises ID to top of map
             const embeddedEntries = {
-              "CaptionText": (props)=><CaptionText {...props} caption={<MarkdownComponent content={props.caption}/>} />,
+              "CaptionText": (props)=><CaptionText {...props} caption={<MarkdownComponent content={props.caption} removePadding={true}/>} />,
               "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostImage": (props) => <PostImage {...props}/>,

@@ -92,6 +92,7 @@ body {
   }
   .type-preset-1 {
     font-size: var(--type-preset-1__fontSize);
+    line-height: var(--small-line-height)
   }
   .type-preset-2 {
     font-size: var(--type-preset-2__fontSize);
