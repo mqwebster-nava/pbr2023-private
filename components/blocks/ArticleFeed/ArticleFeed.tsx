@@ -29,8 +29,8 @@ const ArticleFeed = ({
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
   return (
-    <section key={id} >
-      <div className="responsive-container pt-xl" key={id}>
+    <section key={id} className="pt-xl pb-4xl" >
+      <div className="responsive-container" key={id}>
         <div className={`w-full pt-md flex justify-between ${title && "border-t-2"}`}>
           <div className="md:w-3/4 ">
             {title && (
@@ -53,7 +53,7 @@ const ArticleFeed = ({
           </div>
         </div>
       </div>
-      <div className="py-xl">
+      <div className="pt-xl">
       <ContentGrid
         id={"id"}
         items={items}
