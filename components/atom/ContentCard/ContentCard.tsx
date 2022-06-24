@@ -45,7 +45,7 @@ const DefaultContentCard  = ({
       width={16}
       height={9}
       quality="50"
-      className={`${backgroundColor} object-fill w-full `}
+      className={`${backgroundColor} object-fill w-full group-hover:scale-110 ease-in duration-200  `}
       src={ image.url }
       alt={image.description??""}
     ></Image>)
@@ -73,11 +73,11 @@ const DefaultContentCard  = ({
     <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full "
     aria-labelledby={path} 
     >
-      <div className={` w-full sm:w-1/3 md:w-full group-hover:brightness-75`}>
+      <div className={` w-full sm:w-1/3 md:w-full `}>
         {image? <ImageSquare/> : <PatternSquare/>}
       </div>
       <div className="w-full sm:w-2/3 md:w-full">
-      {kicker && <div className=" type-preset-8 text-gray-500" >{kicker}</div>}
+      {kicker && <div className=" type-preset-8 text-gray-500 mb-md" >{kicker}</div>}
         <p id={path} className={`${titleSize} mb-2  font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400`}>
           {title}
         </p>

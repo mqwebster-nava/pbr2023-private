@@ -25,7 +25,7 @@ const  FeaturedArticle = ({
        </div>
         <div className={`col-span-3 md:col-span-1 `}>
           <div className="">
-            {kicker && <small className="text-gray-500 type-preset-7">{kicker}</small>}
+            {kicker && <small className="text-gray-500 type-preset-7 mb-sm">{kicker}</small>}
             <p
               className={`font-sans type-preset-4  text-gray-900 group-hover:text-sage-400 font-bold py-md`}
             >
