@@ -18,7 +18,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   const target = href.substr(0, 1) === "/" ? "" : "_blank";
 
   const variantStyles = classNames({
-    "underline": variant == "underlined",
+    "underline decoration-1": variant == "underlined",
     "text-sage-600": color=="sage",
     "text-gray-900": color=="black"
   }); // "type-preset-5": variant == "large arrow",
