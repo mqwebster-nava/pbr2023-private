@@ -70,7 +70,7 @@ const MobileNavBar = ({ NavData }) => {
               return "slug" in navSection ? (
                 <a
                   href={navSection.slug}
-                  className="group block w-full border-t-[2px] border-black py-lg "
+                  className="group block w-full border-t-[1px] border-black py-lg "
                   key={navSection.title}
                 >
                   <div className="relative inline-block  ">
@@ -88,7 +88,7 @@ const MobileNavBar = ({ NavData }) => {
               ) : (
                 <details
                   key={navSection.title}
-                  className={`${styles.details} w-full border-t-[2px] border-black py-lg`}
+                  className={`${styles.details} w-full border-t-[1px] border-black py-lg`}
                 >
                   <summary
                     className={` relative  text-navy-900  pr-sm   cursor-pointer`}
