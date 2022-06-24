@@ -29,8 +29,8 @@ const ImageGalleryBlock = ({
     if (!images || images.length < 3) return <div></div>;
     return (
       <>
-        <div className="flex justify-start items-end pb-md">
-          <div className="w-5/12 pr-md align-bottom">
+        <div className="flex justify-start items-end">
+          <div className="w-5/12 pr-md md:pr-2xl align-bottom">
             <Image
               src={images[0].url}
               layout="responsive"
@@ -39,7 +39,7 @@ const ImageGalleryBlock = ({
               alt={images[0].description}
             ></Image>
           </div>
-          <div className="w-7/12 pl-md">
+          <div className="w-7/12">
             <Image
               src={images[1].url}
               layout="responsive"
@@ -49,8 +49,8 @@ const ImageGalleryBlock = ({
             ></Image>
           </div>
         </div>
-        <div className="flex justify-center pt-md items-start">
-          <div className="w-7/12 pr-md">
+        <div className="flex justify-center pt-md md:pt-2xl items-start">
+          <div className="w-7/12  pr-md md:pr-2xl">
             <Image
               src={images[2].url}
               layout="responsive"
@@ -59,7 +59,7 @@ const ImageGalleryBlock = ({
               alt={images[2].description}
             ></Image>
           </div>
-          <div className="w-1/4 pl-md">
+          <div className="w-1/4 ">
             <Image
               src={images[3].url}
               layout="responsive"
@@ -91,7 +91,7 @@ const ImageGalleryBlock = ({
     if (!images || images.length < 2) return <div></div>;
     return (
         <div className="flex justify-start">
-          <div className="w-5/12 pr-md">
+          <div className="w-5/12">
             <Image
               src={images[0].url}
               layout="responsive"
@@ -100,7 +100,7 @@ const ImageGalleryBlock = ({
               alt={images[0].description}
             ></Image>
           </div>
-          <div className="w-2/12 self-start px-md">
+          <div className="w-2/12 self-start  px-md md:px-2xl">
             <Image
               src={images[1].url}
               layout="responsive"
@@ -109,9 +109,8 @@ const ImageGalleryBlock = ({
               alt={images[1].description}
             ></Image>
           </div>
-        
-
-        <div className="w-4/12  self-end pl-md">
+      
+        <div className="w-4/12  self-end">
           <Image
             src={images[2].url}
             layout="responsive"

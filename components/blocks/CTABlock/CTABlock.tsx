@@ -33,7 +33,7 @@ const CTABlock = ({
   return (
     <section className={` w-full ${bgColor}`}  key={id}>
       <div className={`responsive-container pt-md flex flex-col md:flex-row justify-start md:items-center items-start`} >
-      <div className={`w-full md:w-1/2  pt-3xl pb-md md:pt-4xl md:pb-3xl md`}>
+      <div className={`w-full md:w-1/2  pt-3xl pb-md md:pt-4xl md:pb-3xl `}>
           <h3 className={` type-preset-3 font-bold  ${headerColor}`}>{title} </h3>
           <p className={`pt-sm  type-preset-3 font-bold ${subtitleColor} pb-2xl`}>
             {body}

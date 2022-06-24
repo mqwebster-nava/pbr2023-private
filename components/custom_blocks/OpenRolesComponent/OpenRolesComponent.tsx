@@ -92,7 +92,7 @@ export default function OpenRolesComponent() {
     <div className="responsive-container py-2xl min-h-screen">
       <h3 className="type-preset-3 font-bold py-md">All open roles</h3>
       <DepartmentAnchors />
-      <div className="hidden md:grid grid-cols-12 pt-4xl pb-sm">
+      <div className="hidden md:grid grid-cols-12 pt-4xl pb-sm gap-x-md md:gap-x-2xl">
         <div className="col-span-4 type-preset-7">Team</div>
         <div className="col-span-5 type-preset-7">Role</div>
         <div className="col-span-3  type-preset-7">Details</div>
@@ -102,9 +102,9 @@ export default function OpenRolesComponent() {
         return (
           <div id={`${d.title}`} key={`${d.title} ${j} section`}>
             <hr />
-            <div className="md:grid grid-cols-12">
+            <div className="md:grid grid-cols-12 gap-x-md md:gap-x-2xl">
               <div className="col-span-4">
-                <h2 className="font-sans type-preset-4 font-bold py-md pr-sm">
+                <h2 className="font-sans type-preset-4 font-bold py-md">
                   {d.title}
                 </h2>
               </div>
@@ -113,10 +113,10 @@ export default function OpenRolesComponent() {
                   return (
                     <div key={`${d.title} role ${i}`}>
                       {i != 0 && <hr />}
-                      <div className="md:grid grid-cols-8" >
+                      <div className="md:grid grid-cols-8 gap-x-2xl" >
                         <div
-                          className="col-span-5 type-preset-5 font-sans py-md pr-sm"
-                          
+                          className="col-span-5 type-preset-5 font-sans py-md "
+                        
                         >
                           <LinkText
                             href={`${posting.hostedUrl}`}

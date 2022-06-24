@@ -18,7 +18,7 @@ interface ListBlockInterface {
         <div className="responsive-container">
           <hr className="border-top-2 border-gray-400"/>
         <div className="py-2xl block md:flex" key={id}>
-          {title && <h3 className="font-sans type-preset-4 font-bold md:w-1/3 w-full pt-sm pr-lg">{title} </h3> }
+          {title && <h3 className="font-sans type-preset-4 font-bold md:w-1/3 w-full pt-sm md:pr-2xl">{title} </h3> }
           <p className=" md:w-2/3 pt-sm w-full font-sans type-preset-5 text-gray-800 mb-md">{body}</p>
       </div> 
       </div>

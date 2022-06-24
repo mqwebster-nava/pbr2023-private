@@ -67,7 +67,7 @@ export default function EmployeeList() {
                 </div>
                 </div>
      </summary>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-xl pt-xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-md md:gap-2xl pt-xl">
         {teamMembers.map((teamMember) => {
           const photo =
             "Photo" in teamMember.fields && teamMember.fields.Photo.length > 0

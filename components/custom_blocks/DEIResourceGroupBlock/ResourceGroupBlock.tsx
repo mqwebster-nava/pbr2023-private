@@ -3,6 +3,7 @@ export interface ResourceGroupBlockInterface {
   description: string;
 }
 
+// TODO make sure columns ahave the right spacing
 const color = {
   earthtones: {
     title: "text-dei-brown-base",
@@ -21,6 +22,7 @@ const color = {
     bg: "rainbow-gradient",
   },
 };
+
 
 export const ResourceGroupBlock: React.FC<ResourceGroupBlockInterface> = ({
   title,

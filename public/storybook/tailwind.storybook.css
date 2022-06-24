@@ -453,6 +453,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .type-preset-1 {
     font-size: var(--type-preset-1__fontSize);
+    line-height: var(--small-line-height)
   }
 .type-preset-2 {
     font-size: var(--type-preset-2__fontSize);
@@ -575,6 +576,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .float-left {
   float: left;
 }
+.my-sm {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 .my-2xl {
   margin-top: 32px;
   margin-bottom: 32px;
@@ -594,10 +599,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
-}
-.my-sm {
-  margin-top: 8px;
-  margin-bottom: 8px;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -636,17 +637,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-xl {
   margin-top: 22px;
 }
-.mb-xl {
-  margin-bottom: 22px;
-}
-.mt-sm {
-  margin-top: 8px;
-}
 .ml-2xl {
   margin-left: 32px;
 }
 .mt-md {
   margin-top: 12px;
+}
+.mb-xl {
+  margin-bottom: 22px;
 }
 .mt-lg {
   margin-top: 18px;
@@ -662,6 +660,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mr-3xl {
   margin-right: 48px;
+}
+.mt-sm {
+  margin-top: 8px;
 }
 .mt-\[40px\] {
   margin-top: 40px;
@@ -1056,18 +1057,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .gap-lg {
   gap: 18px;
 }
-.gap-xl {
-  gap: 22px;
-}
 .gap-2xl {
   gap: 32px;
+}
+.gap-xl {
+  gap: 22px;
 }
 .gap-8 {
   gap: 2rem;
 }
-.gap-x-lg {
-  -moz-column-gap: 18px;
-       column-gap: 18px;
+.gap-x-2xl {
+  -moz-column-gap: 32px;
+       column-gap: 32px;
+}
+.gap-y-3xl {
+  row-gap: 48px;
 }
 .gap-y-xl {
   row-gap: 22px;
@@ -2492,11 +2496,6 @@ body {
   .md\:py-4xl {
     padding-top: 72px;
     padding-bottom: 72px;
-  }
-
-  .md\:px-lg {
-    padding-left: 18px;
-    padding-right: 18px;
   }
 
   .md\:pb-4xl {

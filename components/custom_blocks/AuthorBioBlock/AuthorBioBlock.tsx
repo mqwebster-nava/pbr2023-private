@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const AuthorBioBlock = ({bio, image, slug }:AuthorPostInterface) => {
     return (
-    <div className="responsive-container grid grid-cols-12 py-3xl">
+    <div className="responsive-container grid grid-cols-12 py-3xl gap-x-md md:gap-x-2xl">
         <div className="col-span-7">
             <p>
                 {bio}

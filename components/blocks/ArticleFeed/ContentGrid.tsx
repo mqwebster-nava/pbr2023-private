@@ -46,7 +46,7 @@ const ContentGrid = ({
     <section className={`${bg}`} key={id}>
     <div className={`responsive-container ${padding}`} key={id}>
       <div className={`w-full`}>
-        <div className={`w-full ${GridStyle} gap-x-lg gap-y-3xl `}>
+        <div className={`w-full ${GridStyle} gap-x-md md:gap-x-2xl  gap-y-3xl `}>
           {items.map((item, i) => {
             const feature = classNames({
               "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,

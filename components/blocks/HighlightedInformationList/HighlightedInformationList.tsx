@@ -23,7 +23,7 @@ const HighlightedInformationList = ({
     <section className={`bg-purple-900`} key={id}>
     <div className={`responsive-container py-2xl`} key={id}>
       <div className={`w-full`}>
-        <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-x-lg gap-y-xl `}>
+        <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-x-md md:gap-x-2xl gap-y-xl `}>
           {items.map((item, i) => {
             
             return (

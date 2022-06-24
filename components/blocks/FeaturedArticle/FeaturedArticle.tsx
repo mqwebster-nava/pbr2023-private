@@ -19,11 +19,11 @@ const  FeaturedArticle = ({
  
   return (
     <section className={`w-full`}>
-      <a href={path} className="group responsive-container py-2xl md:py-4xl grid grid-cols-3 ">
+      <a href={path} className="group responsive-container py-2xl md:py-4xl grid grid-cols-3 gap-x-md md:gap-x-2xl ">
       <div className={`group-hover:brightness-75 col-span-3 md:col-span-2`}>
         <Image src={promoImage.url}  />
        </div>
-        <div className={`col-span-3 md:col-span-1 md:px-lg`}>
+        <div className={`col-span-3 md:col-span-1 `}>
           <div className="">
             {kicker && <small className="text-gray-500 type-preset-7">{kicker}</small>}
             <p
