@@ -85,7 +85,7 @@ export default function PBR2019(props:PageInterface) {
       text: "text-sage-pbr",
     },
     default: {
-      text: "text-navy-900",
+      text: "text-gray-900",
     },
   };
 
