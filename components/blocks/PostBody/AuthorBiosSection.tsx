@@ -11,7 +11,7 @@ interface AuthorBioInterface {
 const AuthorBios = ({authors}:AuthorBioInterface) => {
     return (
       <div className="mt-xl font-sans">
-        <h5 className="font-bold type-preset-6">Written By</h5>
+        <h5 className="font-bold type-preset-6 pb-xs">Written By</h5>
         <hr />
         {authors.map((author) => ( 
         <div className="grid grid-cols-9 w-full font-sans type-preset-7 py-md" key={author.name}>
