@@ -40,7 +40,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
 }) => {
   const textColor = classNames({
     "text-sage-pbr": isGreenBG === true,
-    "text-navy-900": isGreenBG === false,
+    "text-gray-900": isGreenBG === false,
   });
 
   const signatures = fullList

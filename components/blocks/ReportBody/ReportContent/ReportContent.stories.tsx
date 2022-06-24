@@ -23,7 +23,7 @@ Primary.args = {
       text: "text-sage-pbr",
     },
     default: {
-      text: "text-navy-900",
+      text: "text-gray-900",
     },
   },
   isGreenBG: true,

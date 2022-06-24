@@ -81,7 +81,7 @@ const MobileNavBar = ({ NavData }) => {
                   <div className="relative inline-block  ">
                     <div
                       className={` 
-          text-navy-900 font-sans font-bold
+          text-gray-900 font-sans font-bold
           mr-3xl
           group-hover:border-black border-b-2  border-transparent
             `}
@@ -96,10 +96,10 @@ const MobileNavBar = ({ NavData }) => {
                   className={`${styles.details} w-full border-t-[1px] border-black py-lg`}
                 >
                   <summary
-                    className={` relative  text-navy-900  pr-sm   cursor-pointer`}
+                    className={` relative  text-gray-900  pr-sm   cursor-pointer`}
                   >
                     <div className="flex flex-row justify-between items-center">
-                      <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
+                      <h3 className=" text-gray-900 pr-sm font-sans font-bold ">
                         {navSection.title}
                       </h3>
                       <div className={`chevron`}>
@@ -127,7 +127,7 @@ const MobileNavBar = ({ NavData }) => {
                         href={navitem.slug}
                         className="block hover:bg-green px-4 cursor-pointer"
                       >
-                        <p className="font-sans text-navy-900 hover:underline py-2 pl-5">
+                        <p className="font-sans text-gray-900 hover:underline py-2 pl-5">
                           {navitem.title}
                         </p>
                       </a>
@@ -150,7 +150,7 @@ const MobileNavBar = ({ NavData }) => {
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="font-sans text-navy-900  border-grey  "
+            className="font-sans text-gray-900  border-grey  "
           >
             {isShowingMenu ? (
               <svg

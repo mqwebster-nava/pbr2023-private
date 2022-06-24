@@ -30,7 +30,7 @@ const SectionHeader = ({
     "bg-navy-900": colorTheme=="navy",
     "bg-purple-900": colorTheme=="purple",
   });
-  const textColor =  (colorTheme=="navy" ||colorTheme=="purple")? "text-white":"text-navy-900";
+  const textColor =  (colorTheme=="navy" ||colorTheme=="purple")? "text-white":"text-gray-900";
 
   const TitleBlock = () => {
     return (

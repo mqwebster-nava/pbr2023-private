@@ -20,7 +20,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   const variantStyles = classNames({
     "underline": variant == "underlined",
     "text-sage-600": color=="sage",
-    "text-black": color=="black"
+    "text-gray-900": color=="black"
   }); // "type-preset-5": variant == "large arrow",
 
   return (

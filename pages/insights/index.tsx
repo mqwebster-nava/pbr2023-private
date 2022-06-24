@@ -1,11 +1,7 @@
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import HighlightedCard from "components/atom/ContentCard/HighlightedCard";
 import { PageInterface } from "shared_interfaces/page_interface";
 
-// export interface Props {
-//   posts: Array<BasicPostInterface>;
-// }
 
 export default function Insights(props:PageInterface) {
  

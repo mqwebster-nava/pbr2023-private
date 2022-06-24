@@ -48,7 +48,7 @@ const NavaDigest = () => {
                   name="EMAIL"
                   id="email"
                   placeholder="Your email address"
-                  className={`required email text-black w-full p-md `}
+                  className={`required email text-gray-900 w-full p-md `}
                 />
                 <div className="clear">
                   <FormInputButton

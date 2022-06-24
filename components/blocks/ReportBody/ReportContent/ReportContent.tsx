@@ -69,7 +69,7 @@ const ReportContent: React.FC<ReportContentInterface> = ({
       components={{
         code: ({ node, ...props }) => (
           <p
-            className="text-navy-900 font-serif py-md type-preset-5"
+            className="text-gray-900 font-serif py-md type-preset-5"
             {...props}
           ></p>
         ),

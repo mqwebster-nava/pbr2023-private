@@ -6,7 +6,7 @@ const DropdownNavItem = (props) => {
       <a
       role="menuitem"
         href={props.href}
-        className="text-navy-900 text-left  block py-md px-[28px] font-sans hover:underline  "
+        className="text-gray-900 text-left  block py-md px-[28px] font-sans hover:underline  "
       >
         {props.children}
       </a>

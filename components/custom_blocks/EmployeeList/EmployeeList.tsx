@@ -46,7 +46,7 @@ export default function EmployeeList() {
      <details className={`${styles.details}`} open={open}>
    <summary className="type-preset-3 font-bold  list-none cursor-pointer">
    <div className="flex flex-row justify-between items-center">
-              <h3 className=" text-navy-900 pr-sm font-sans font-bold ">
+              <h3 className=" text-gray-900 pr-sm font-sans font-bold ">
                 {name}
               </h3>
                 <div className={`chevron`}>

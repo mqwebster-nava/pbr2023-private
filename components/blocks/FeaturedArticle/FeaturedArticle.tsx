@@ -27,11 +27,11 @@ const  FeaturedArticle = ({
           <div className="">
             {kicker && <small className="text-gray-500 type-preset-7">{kicker}</small>}
             <p
-              className={`font-sans type-preset-4  text-black group-hover:text-sage-400 font-bold py-md`}
+              className={`font-sans type-preset-4  text-gray-900 group-hover:text-sage-400 font-bold py-md`}
             >
              {title}
             </p>
-            <p className={`font-sans type-preset-6 text-black `}>
+            <p className={`font-sans type-preset-6 text-gray-900`}>
              {summary}
             </p>
           </div>

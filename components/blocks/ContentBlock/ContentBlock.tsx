@@ -46,20 +46,4 @@ export interface ContentBlockInterface {
     );
   }
 
-
-
-// const DefaultContentBlock: React.FC<ContentBlockInterface> = ({id, title, body, type, buttonPath, buttonText}) =>{
-// return ( 
-//     <div className="responsive-container py-2xl" key={id}>
-//     <div className={`w-full lg:w-2/3`}>
-     
-//                  <h3 className="font-sans type-preset-3 font-bold">{title} </h3>
-//                  <p className={`font-sans pt-lg type-preset-5 text-gray-800 mb-lg`}>{<MarkdownComponent content={body} />}</p>
-         
-//              {buttonText && <Button href={buttonPath} variant="outlined" >{buttonText}</Button>}
-//          </div>
-//      </div> 
-//      );
-// }
-
 export default ContentBlock;

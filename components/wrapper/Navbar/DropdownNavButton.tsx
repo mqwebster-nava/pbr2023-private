@@ -19,7 +19,7 @@ const DropdownNavButton = (props) => {
        
         className={` 
         inline-block cursor-pointer mr-3xl
-        text-navy-900  font-sans 
+        text-gray-900  font-sans 
             pt-md pb-sm
             ${showMenu && "border-b-2 border-black"}
          `}
@@ -38,7 +38,7 @@ const DropdownNavButton = (props) => {
            <a
            key={navitem.title}
            href={navitem.slug}
-             className="text-navy-900 text-left  block py-md px-[28px] font-sans hover:underline "
+             className="text-gray-900 text-left  block py-md px-[28px] font-sans hover:underline "
            >
              {navitem.title}
            </a>

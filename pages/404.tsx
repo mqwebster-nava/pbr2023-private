@@ -31,7 +31,7 @@ export default function Custom404() {
           <h1 className={`font-sans type-preset-3 font-bold pt-lg`}>
             Page not found...{" "}
           </h1>
-          <p className={`font-sans pt-lg type-preset-5 text-gray-800 pb-2xl`}>
+          <p className={`font-sans pt-lg type-preset-5 font-text-body-color pb-2xl`}>
             {
               "Sorry, the page you are looking for doesn’t exist or has been moved. "
             }

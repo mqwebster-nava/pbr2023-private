@@ -40,7 +40,7 @@ const CapabilitiesSection = ({
             <p className="type-preset-5 pb-xl">{body}</p>
           </div>
           <div>
-            <p className="type-preset-7 text-gray-900 pb-md">Capabilities</p>
+            <p className="type-preset-7 font-text-body-color pb-md">Capabilities</p>
             {items.map((cap) => {
               const icon = cap.icon ?? defaultIcon;
               return (
