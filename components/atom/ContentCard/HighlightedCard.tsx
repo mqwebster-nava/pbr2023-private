@@ -28,7 +28,7 @@ const HighlightedCard: React.FC<ContentCardInterface> = ({
           <h2 className="mb-2 type-preset-4 font-bold tracking-tight text-gray-900 font-sans group-hover:text-sage-400">
             {title}
           </h2>
-          <p className=" type-preset-5 font-sans text-gray-600 dark:text-gray-400">
+          <p className=" type-preset-5 font-sans text-gray-600 ">
             {children}
           </p>
         </div>

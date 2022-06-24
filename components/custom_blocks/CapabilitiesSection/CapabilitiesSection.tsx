@@ -49,6 +49,7 @@ const CapabilitiesSection = ({
                     src={icon.url}
                     height={"25px"}
                     width={"25px"}
+                    className={"mb-auto mt-[6px]"}
                     alt={""}
                   ></img>
                   <p>{cap.body}</p>
