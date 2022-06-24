@@ -81,7 +81,7 @@ export default function PostBody({
     >
       <article
         id="article"
-        className="w-full md:col-span-8 text-gray-base font-serif"
+        className="w-full md:col-span-8 text-gray-900 font-serif"
       >
         {h2Sections.map((section) => (
           <section id={section.title} ref={section.ref} key={section.title}>

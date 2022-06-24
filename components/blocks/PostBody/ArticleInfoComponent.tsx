@@ -33,7 +33,7 @@ const ArticleInfoComponent = ({
                     {author.name}
                   </LinkText>
                 </p>
-                <p className=" text-gray-600">{author.role}</p>
+                <p className=" text-gray-700">{author.role}</p>
               </div>
             ))}
           </div>

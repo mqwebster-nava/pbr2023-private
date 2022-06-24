@@ -85,7 +85,7 @@ export default function EmployeeList() {
               <h5 className="type-preset-7 font-bold  pt-sm">
                 {teamMember.fields.Name}
               </h5>
-              <p className="type-preset-7 text-gray-600">
+              <p className="type-preset-7 text-gray-700">
                 {teamMember.fields.Role}
               </p>
             </div>

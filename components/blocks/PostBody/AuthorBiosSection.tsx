@@ -26,7 +26,7 @@ const AuthorBios = ({authors}:AuthorBioInterface) => {
             </div>
             <div className="sm:pl-md col-span-6 sm:col-span-3">
               <h5 className="font-bold">{author.name}</h5>
-              <h6 className="text-gray-600">{author.role}</h6>
+              <h6 className="text-gray-700">{author.role}</h6>
             </div>
             <div className="col-span-9 sm:col-span-5 sm:pl-md pt-sm sm:pt-0">
             {author.bio}
