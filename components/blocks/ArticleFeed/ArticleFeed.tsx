@@ -31,7 +31,7 @@ const ArticleFeed = ({
   return (
     <section key={id} className="pt-xl pb-4xl" >
       <div className="responsive-container" key={id}>
-        <div className={`w-full pt-md flex justify-between ${title && "border-t-2"}`}>
+        <div className={`w-full pt-md flex justify-between ${title && "border-t-[1px] border-gray-300"}`}>
           <div className="md:w-3/4 ">
             {title && (
               <h3 className="font-sans type-preset-3  font-bold">{title} </h3>
