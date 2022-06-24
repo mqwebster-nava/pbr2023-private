@@ -12,19 +12,25 @@ import "react-slidedown/lib/slidedown.css";
 // TODO: a11y - all links must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Navbar = ({}) => {
   // Gets the current breakpoint to determine the navbar
-  const screenSize = useWindowSize();
-  const isMobile: Boolean = !screenSize.includes("xl");
-  return isMobile ? (
+
+  return <header className={`bg-white w-full z-50  `}>
+    <DesktopNavBar NavData={NavData}/>
     <MobileNavBar NavData={NavData} />
-  ) : (
-    <DesktopNavBar NavData={NavData} />
-  );
+  
+  </header>
+  // const screenSize = useWindowSize();
+  // const isMobile: Boolean = !screenSize.includes("xl");
+  // return isMobile ? (
+  //   <MobileNavBar NavData={NavData} />
+  // ) : (
+  //   <DesktopNavBar NavData={NavData} />
+  // );
 };
 
 const DesktopNavBar = ({ NavData }) => {
   return (
-    <header className={`bg-white w-full z-50  `}>
-      <div className=" responsive-container   flex flex-wrap items-center justify-between h-[80px]">
+
+      <div className="hidden lg:flex  responsive-container   flex-wrap items-center justify-between h-[80px]">
         <Logo />
         <nav className=" flex items-baseline w-auto" aria-label="main">
           {NavData.map((navSection) => {
@@ -52,7 +58,6 @@ const DesktopNavBar = ({ NavData }) => {
           </NavButton>
         </nav>
       </div>
-    </header>
   );
 };
 
@@ -136,8 +141,8 @@ const MobileNavBar = ({ NavData }) => {
     </nav>
   );
   return (
-    <header className={` w-full z-40 bg-white `}>
-      <div className="responsive-container flex flex-wrap items-center justify-between h-[60px]">
+    <>
+      <div className="lg:hidden responsive-container flex flex-wrap items-center justify-between h-[60px]">
         <Logo isMobile={true} />
         <div className="block ">
           <button
@@ -194,7 +199,7 @@ const MobileNavBar = ({ NavData }) => {
         </div>
       </div>
       {isShowingMenu && <NavLinksMobile />}
-    </header>
+    </>
   );
 };
 
