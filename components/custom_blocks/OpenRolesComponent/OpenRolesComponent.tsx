@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import { slugify } from "utils/utils";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -32,7 +33,6 @@ export default function OpenRolesComponent() {
       const deps: Array<JobGroupInterface> = res.data.map((dep) => {
         return {
           title: dep.title,
-
           postings: dep.postings.map((posting) => {
             return {
               id: posting.id,
@@ -62,7 +62,7 @@ export default function OpenRolesComponent() {
 
           {departments.map((d, k) => (
             <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`} key={`${d.title} nav ${k}`}>
-              <AnchorLink href={`#${d.title}`}>
+              <AnchorLink href={`#${slugify(d.title)}`}>
                 {d.title} ({d.postings.length})
               </AnchorLink>
             </p>
@@ -73,10 +73,10 @@ export default function OpenRolesComponent() {
             <div className="w-1/3" key={i}>
               {deps.map((d) => (
                 <p
-                key={d.title}
+                key={`nav ${d.title} ${i}`}
                   className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
                 >
-                  <AnchorLink href={`nav #${d.title} ${i}`}>
+                  <AnchorLink href={`#${slugify(d.title)}`}>
                     {d.title} ({d.postings.length})
                   </AnchorLink>
                 </p>
@@ -100,7 +100,7 @@ export default function OpenRolesComponent() {
 
       {departments.map((d,j) => {
         return (
-          <div id={`${d.title}`} key={`${d.title} ${j} section`}>
+          <div id={`${slugify(d.title)}`} key={`${d.title} ${j} section`}>
             <hr />
             <div className="md:grid grid-cols-12 gap-x-md md:gap-x-2xl">
               <div className="col-span-4">
