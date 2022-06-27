@@ -1,0 +1,15 @@
+/* For Mobile Navbar */
+.details[open]>summary> div > div{
+    transform: rotate(180deg);
+    transition-duration: .25s;
+  }
+  .details summary {
+    list-style: none;
+  }
+  .details summary::-webkit-details-marker {
+    display:none;
+  }
+  
+.mobileSlideDown {
+    transition-duration: 0.25s;
+}
