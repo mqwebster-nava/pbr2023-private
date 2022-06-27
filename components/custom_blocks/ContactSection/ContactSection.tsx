@@ -89,14 +89,18 @@ const ContactSection = () => {
         />
         <p className="type-preset-5 font-black pt-3xl">Follow Us</p>
         <div className="py-sm">
-          <LinkText href={"/"} variant={"underlined"}>
+          <LinkText href={"https://twitter.com/NavaPBC"} variant={"underlined"}>
             Twitter
-          </LinkText>{" "}
+          </LinkText>
         </div>
         <div className="py-sm">
-          {" "}
-          <LinkText href={"/"} variant={"underlined"}>
+          <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"underlined"}>
             LinkedIn
+          </LinkText>
+        </div>
+        <div className="py-sm">
+          <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"underlined"}>
+            YouTube
           </LinkText>
         </div>
       </div>
