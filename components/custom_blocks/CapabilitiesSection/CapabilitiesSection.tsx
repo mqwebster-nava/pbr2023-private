@@ -30,17 +30,17 @@ const CapabilitiesSection = ({
     <div className="bg-sage-50">
       <div className="responsive-container py-xl">
         {title && (
-          <h4 className="type-preset-2 font-black font-sans">{title}</h4>
+          <h4 className="type-preset-3 font-black font-sans pb-xs">{title}</h4>
         )}
         <hr className="h-[2px] bg-gray-900" />
-        <div className="grid grid-cols-1 md:grid-cols-2 pt-lg md:gap-x-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 pt-xl md:gap-x-2xl">
           <div className="">
-            <p className="type-preset-7 text-gray-900 pb-md">Services</p>
-            <h4 className="type-preset-4 font-bold pb-md">{capabilityTitle}</h4>
+            <p className="type-preset-7 text-gray-900 pb-xl">Services</p>
+            <h4 className="type-preset-4 font-bold pb-xl">{capabilityTitle}</h4>
             <p className="type-preset-5 pb-xl">{body}</p>
           </div>
           <div>
-            <p className="type-preset-7 font-text-body-color pb-md">Capabilities</p>
+            <p className="type-preset-7 font-text-body-color pb-xl">Capabilities</p>
             {items.map((cap) => {
               const icon = cap.icon ?? defaultIcon;
               return (
