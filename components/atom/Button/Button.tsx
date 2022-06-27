@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-type Variant = "default" | "outlined" | "white" | "dark";
+type Variant = "default" | "outlined" | "white" | "dark" | "";
 
 export interface ButtonProps {
   href?: string;
