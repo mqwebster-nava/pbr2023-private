@@ -21,7 +21,7 @@ const FormInputButton = ({
       className={`
             font-sans font-bold h-[70px]
             inline-flex items-center justify-center 
-            px-lg py-sm  
+            px-2xl py-sm  
             type-preset-6 leading-6
             transition duration-150 ease-in-out flex-col
             cursor-pointer

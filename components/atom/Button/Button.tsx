@@ -30,7 +30,7 @@ onClick={()=> {location.href = href;}}
     className={
           `font-sans font-bold h-[62px] md:h-[70px]
           inline-flex items-center justify-center 
-          px-xl py-sm  
+          px-2xl py-sm  
          mr-auto
           type-preset-6 leading-6
           transition duration-150 ease-in-out flex-col
