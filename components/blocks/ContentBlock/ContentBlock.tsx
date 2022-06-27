@@ -31,7 +31,7 @@ export interface ContentBlockInterface {
     if(image==null){console.error("Content Block image cannot be null", title); return null;}
 
     return (
-      <section className={"responsive-container py-2xl"} key={id}>
+      <section className={"responsive-container py-3xl"} key={id}>
       <div className={`w-full flex flex-col justify-between ${direction}`}>
         <div className={`w-full md:w-1/2 max-w-[478px] ${imagePadding}`}>
            <Image objectFit={"fill"} height={image.height} width={image.width}layout={"responsive"} src={image.url} alt={image.description} /> 

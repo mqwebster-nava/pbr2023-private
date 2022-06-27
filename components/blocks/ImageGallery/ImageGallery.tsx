@@ -125,7 +125,7 @@ const ImageGalleryBlock = ({
 
   return (
     <div className={`w-full ${bgColor}`} key={id}>
-      <div className="responsive-container w-full py-3xl">
+      <div className="responsive-container w-full u-py-block-default">
         {layout == "Four image grid" 
         ? <FourImageGrid /> 
        : layout == "Three image row"

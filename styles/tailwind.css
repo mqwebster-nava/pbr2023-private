@@ -120,6 +120,10 @@ body {
   .type-preset-8 {
     font-size: var(--type-preset-8__fontSize);
   }
+
+  .u-py-block-default {
+    @apply py-3xl
+  }
   
 }
 /*Added because the tailwind options seem to be not working list-style is a ul*/

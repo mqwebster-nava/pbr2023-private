@@ -21,7 +21,7 @@ const HighlightedInformationList = ({
   items = items.filter((item) => item != null);
   return (
     <section className={`bg-purple-900`} key={id}>
-    <div className={`responsive-container py-2xl`} key={id}>
+    <div className={`responsive-container pt-2xl pb-3xl`} key={id}>
       <div className={`w-full`}>
         <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-x-md md:gap-x-2xl gap-y-xl `}>
           {items.map((item, i) => {
