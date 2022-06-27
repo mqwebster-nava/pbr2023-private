@@ -20,13 +20,10 @@ const ContactSection = () => {
   return (
     <section className="responsive-container flex flex-col md:flex-row py-3xl">
       <div className="w-full md:w-3/4 pr-0 md:pr-5xl">
-        <h3 className="type-preset-4 font-bold">
-          Tell us about your agency, project, challenges, or ideas. We’ll get
-          back to you as soon as possible.
-        </h3>
+       
         <form action="https://formspree.io/f/xknpbovg" method="POST">
         
-          <div className="py-md">
+          <div className="pb-md">
             <label className=" type-preset-7 pb-sm" htmlFor="name">
               Name
             </label>
