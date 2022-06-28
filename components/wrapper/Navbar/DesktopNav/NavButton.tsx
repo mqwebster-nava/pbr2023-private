@@ -9,7 +9,7 @@ const NavButton = (props) => {
         <p
           className={` 
           text-gray-600 pt-md font-sans 
-          mt-sm  mr-3xl
+           mr-3xl
           pb-sm
           group-hover:text-gray-900
        

@@ -8,7 +8,7 @@ const DropdownNavButton = (props) => {
 
   return (
     <div
-      className={`${styles.dropdownAnimations} relative group`}
+      className={`${styles.dropdownAnimations} relative group my-auto`}
       onMouseEnter={() => setShowMenu(true)}
       onFocus={() => setShowMenu(true)}
       onBlur={() => setShowMenu(false)}
@@ -41,7 +41,7 @@ const DropdownNavButton = (props) => {
           </svg>
         </div>
       </button>
-      <div className={`absolute -left-[28px] top-[41px] z-1 w-[236px] block navDropdown`}>
+      <div className={`absolute -left-[28px] top-[45px] z-1 w-[236px] block navDropdown`}>
         <SlideDown className={`mt-lg  bg-white`}>
           {showMenu
             ? props.subpages.map((navitem, i) => (
