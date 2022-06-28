@@ -7,7 +7,7 @@ import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White
 const SecondaryPatternBlock = ({bgColor, bgBase}) => {
     return (
       <div className={`${bgColor}`}>
-        <div className="responsive-container pt-3xl">
+        <div className=" responsive-container pt-3xl">
       <div className=" w-1/4">
       <div className="flex items-stretch">
         <div className={`bg-${bgBase}-800 max-h-4xl h-full text-[0px]`}>

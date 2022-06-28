@@ -61,9 +61,9 @@ const IllustrationPatternBlock = ({
       className={`relative aspect-video pb-[56.25%] w-full`}
     >
       
-      <div className={`${styles.fadeIn}  w-full absolute top-0 left-0  bottom-0 `}>
+      <div className={` w-full absolute top-0 left-0  bottom-0 bg-${colorTheme}-50 `}>
         <Image
-          className="w-full object-cover "
+          className={`w-full object-cover animate-fadeIn`}
           src={image.url}
           width={16}
           height={9}
@@ -79,7 +79,7 @@ const IllustrationPatternBlock = ({
           } h-full absolute z-10 top-0 `}
         >
           <Image
-            className="w-full object-cover"
+            className={`w-full object-cover ${styles.fadeIn}`}
             src={pattern.url}
             width={colorTheme == "sage" ? 8 : 12}
             height={4}

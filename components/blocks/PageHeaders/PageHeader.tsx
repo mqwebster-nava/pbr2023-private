@@ -31,7 +31,7 @@ const PageHeader = (props: PageHeaderInterface) => {
     return (
       <header key={props.id}>
         <div className={"bg-navy-900"}>
-          <div className={`${styles.fadeIn} responsive-container z-10 relative pt-5xl `}>
+          <div className={`animate-titleSlide responsive-container z-10 relative pt-2xl  lg:pt-3xl `}>
             <TitleBlock
               textColor={"text-navy-200"}
               title={props.title}
@@ -49,10 +49,10 @@ const PageHeader = (props: PageHeaderInterface) => {
       <header  key={props.id} >
         <div className={`bg-purple-900 relative `} >
           <div
-            className={`${styles.fadeIn} responsive-container z-10 relative pt-3xl md:pt-5xl pb-2xl`}
+            className={` responsive-container z-10 relative py-2xl  lg:py-3xl`}
           >
             <TitleBlock
-              textColor={"text-plum-200"}
+              textColor={"text-purple-200"}
               title={props.title}
               subtitle={props.subtitle}
               body={props.body}
@@ -72,7 +72,7 @@ const PageHeader = (props: PageHeaderInterface) => {
     return (
       <header key={props.id}>
         <div className={"bg-sage-900"}>
-          <div className={`${styles.fadeIn} responsive-container z-10 relative pt-5xl pb-2xl`}>
+          <div className={` responsive-container z-10 relative pt-2xl  lg:pt-3xl pb-2xl`}>
             <PostTitleBlock
               textColor={"text-sage-200"}
               title={props.title}
@@ -90,9 +90,3 @@ const PageHeader = (props: PageHeaderInterface) => {
   }
 };
 export default PageHeader;
-// || (props.variant=="Post" && props.image!=null)
-// const bgBase = props.variant=="Post"? "sage": "navy";
-// const bg = props.variant=="Post"? "bg-sage-900": "bg-navy-900";
-// const titleColor = props.variant=="Post"? "text-sage-200": "text-navy-200";
-//{props.variant=="Post"? <IllustrationPatternBlock image={props.image} colorTheme={"sage"}/> :  <IllustrationPatternBlock/>}
-//(props.variant=="Post" && props.image==null)||

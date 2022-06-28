@@ -13,14 +13,33 @@ module.exports = {
           '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
           '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
         },
-        appear: {
-          '0%, 91%': { opacity: 0 },
-          '100%': { opacity: 1, }
+        slideDelay: {
+          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+          '25%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
         },
+        slideDelayButton: {
+          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+          '50%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
+          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+        },
+        fadeIn: {
+          '0%': { opacity: 0, },
+          '100%': { opacity: 1,}
+        },
+        fadeIn2: {
+          '0%': { opacity: 0, },
+          '40%': { opacity: 0, },
+          '100%': { opacity: 1,}
+        },
+       
       },
       animation: {
-        'titleSlide': 'slide 1s ease-out',
-        'titleButton': 'appear 1100ms linear',
+        'titleSlide': 'slide 0.4s ease-out',
+        'titleSlideB': 'slideDelay 0.5s ease-out',
+        'titleSlideC': 'slideDelayButton 0.6s ease-out',
+        'fadeIn': 'fadeIn 0.7s ease-out',
+        'fadeIn2': 'fadeIn2 1.0s ease-out',
       },
       listStyleType: {
         dash: "square",
