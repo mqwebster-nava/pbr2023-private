@@ -55,7 +55,6 @@ export async function getPageDataFromContentful({
         formattedPage.contentBlocks.map(async (block, i) => {
           if (block["__typename"] == "CustomBlock" && block.type == "Employee List") {
               const employeeData = await getEmployeeListFromAirtable();
-              console.log(employeeData[0]);
               formattedPage.contentBlocks[i] = { ...block, employeeData };
           }
         })
