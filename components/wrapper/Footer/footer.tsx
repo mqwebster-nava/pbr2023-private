@@ -26,8 +26,8 @@ const Footer = () => {
           </div>
           <div className={"hidden col-span-0 sm:block  md:col-span-2 lg:col-span-4"}></div>
           <div className="col-span-6 sm:col-span-4 lg:col-span-3 ">
-            {FooterNavData[0].map((data) => (
-               <div className={"pb-lg"}>
+            {FooterNavData[0].map((data, i ) => (
+               <div className={"pb-lg"} key={`list 1 ${i}`}>
               <LinkText href={data.slug} variant={"default"}  color={"white"}>
                 {data.title}
               </LinkText>
@@ -35,8 +35,8 @@ const Footer = () => {
             ))}
           </div>
           <div className="col-span-6 sm:col-span-4 lg:col-span-3">
-            {FooterNavData[1].map((data) => (
-               <div className={"pb-lg"}>
+            {FooterNavData[1].map((data, i) => (
+               <div className={"pb-lg"} key={`list 2 ${i}`}>
                 <LinkText href={data.slug} variant={"default"} color={"white"}>
                   {data.title}
                 </LinkText>
