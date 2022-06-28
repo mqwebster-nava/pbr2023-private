@@ -45,8 +45,8 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ContentGridFeatureCards": // Highlighted Information Card
          ()=><HighlightedInformationList key={index}  {...entry} />,
       "CustomBlock": ()=> {
-        if (entry.type == "Employee List") return <EmployeeList key={index} />
-        if (entry.type == "Open Roles") return <OpenRolesComponent key={index}/>
+        if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
+        if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
         return <div></div>
       }
     }
@@ -55,8 +55,10 @@ const PageTemplate: React.FC<PageInterface> = ({
   return (
     <main>
       <PageHeader {...pageHeader}/>
+      <div className="animate-fadeIn2">
       {children}
       {contentBlocks.map((block,i) =>  getComponent(block,i))}
+      </div>
     </main>
   );
 };

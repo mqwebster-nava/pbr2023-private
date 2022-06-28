@@ -2,42 +2,20 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./EmployeeList.module.css";
-import AuthorFiller from "/public/images/Missing images on our People.svg"
-// const AuthorFiller =
-//   "https://images.ctfassets.net/t2ekr6eg3fr3/4qsxN30IaLkcwEHLUbfjjl/a35271a9d5c31f163703990126518886/author-filler.png?h=250";
+import AuthorFiller from "/public/images/Missing images on our People V02.svg"
+import SlideDown from "react-slidedown";
+/*
+Moved to the backend so employee list will load faster
+*/
+
+export interface EmployeeListInterface {
+  employeeData: any
+}
 
 
-// TODO add error checking and a backup list to default to if there are errors detected with the airtable one
-const apiKey = "keyhwtCt910pVmtUG";
-const tableId ="tblpYB59rae1t15C5"
-export default function EmployeeList() {
-  const [teamMembers, setTeamMembers] = useState([]);
-  async function getAirtableData (){
-      // This gets a maximum of 100 entries per call, so 200 entries total. 
-      // TODO make this into a loop so it will get all entries if more than 200
-     
-    const data = await fetch(
-     
-        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}`
-      ).then((res) => res.json()).catch((error) => {console.error(error); });
-    let records = data.records;
-    let maxPages = 4, currentPage=1, offset=data.offset;
-    while (offset && currentPage<maxPages){
-      const data2 = await fetch(
-        `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}&offset=${offset}`
-      ).then((res) => res.json()).catch((error) => {console.error(error); });
-      records = records.concat(data2.records);
-      if("offset" in data2) offset = data2.offset;
-      else offset = null;
-      currentPage+=1;
-    }
-    setTeamMembers(records);
-  }
+export default function EmployeeList({employeeData}:EmployeeListInterface ) {
   
-  useEffect(() => {
-    getAirtableData();
-    
-  }, []);
+  const [teamMembers, setTeamMembers] = useState(employeeData);
 
   const DepartmentSection = ({ name, teamMembers, open=false }) => {
     return (
@@ -67,7 +45,8 @@ export default function EmployeeList() {
                 </div>
                 </div>
      </summary>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-md md:gap-2xl pt-xl">
+      <div className="">
+        <SlideDown className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-md md:gap-2xl pt-xl">
         {teamMembers.map((teamMember) => {
           const photo =
             "Photo" in teamMember.fields && teamMember.fields.Photo.length > 0
@@ -80,7 +59,7 @@ export default function EmployeeList() {
               objectFit={"cover"}
               width={400}
               height={400}
-              className="w-full h-auto aspect-square object-cover"></Image>
+              className="w-full h-auto aspect-square object-cover bg-navy-50"></Image>
 
               <h5 className="type-preset-7 font-bold  pt-sm">
                 {teamMember.fields.Name}
@@ -91,6 +70,7 @@ export default function EmployeeList() {
             </div>
           );
         })}
+        </SlideDown>
       </div>
       </details>
       </div>
@@ -119,3 +99,34 @@ export default function EmployeeList() {
     </div>
   );
 }
+
+// TODO add error checking and a backup list to default to if there are errors detected with the airtable one
+//const apiKey = "keyhwtCt910pVmtUG";
+//const tableId ="tblpYB59rae1t15C5"
+
+  // async function getAirtableData (){
+  //     // This gets a maximum of 100 entries per call, so 200 entries total. 
+  //     // TODO make this into a loop so it will get all entries if more than 200
+     
+  //   const data = await fetch(
+     
+  //       `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}`
+  //     ).then((res) => res.json()).catch((error) => {console.error(error); });
+  //   let records = data.records;
+  //   let maxPages = 4, currentPage=1, offset=data.offset;
+  //   while (offset && currentPage<maxPages){
+  //     const data2 = await fetch(
+  //       `https://api.airtable.com/v0/appwGmpLTG1da8Ayy/${tableId}?api_key=${apiKey}&offset=${offset}`
+  //     ).then((res) => res.json()).catch((error) => {console.error(error); });
+  //     records = records.concat(data2.records);
+  //     if("offset" in data2) offset = data2.offset;
+  //     else offset = null;
+  //     currentPage+=1;
+  //   }
+  //   setTeamMembers(records);
+  // }
+  
+  // useEffect(() => {
+  //   getAirtableData();
+    
+  // }, []);
