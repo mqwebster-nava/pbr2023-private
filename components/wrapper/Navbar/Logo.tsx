@@ -1,9 +1,9 @@
 // TODO replace with correct logo
 // TODO: a11y - Link must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
-const Logo = ({isMobile=false}) => (
-  <a href={"/"} id="Home-link" className=" font-semibold font-sans type-preset-5 tracking-tight ">
+const Logo = ({isMobile=false}) =>{
+  const id = isMobile ? "home-mobile-link" : "home-link";
+  return (<a href={"/"} id={id} className=" font-semibold font-sans type-preset-5 tracking-tight ">
     <svg
-      
       width={isMobile ? "62" : "96"}
       height={isMobile ? "28" : "44"}
       viewBox="0 0 96 44"
@@ -18,6 +18,7 @@ const Logo = ({isMobile=false}) => (
       <path d="M95.4028 36.2236H0V43.9499H95.4028V36.2236Z" fill="black" />
     </svg>
   </a>
-);
+)};
+
 
 export default Logo;

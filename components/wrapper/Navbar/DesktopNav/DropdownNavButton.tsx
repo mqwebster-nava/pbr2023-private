@@ -10,15 +10,13 @@ const DropdownNavButton = (props) => {
     <div
       className={`${styles.dropdownAnimations} relative group my-auto`}
       onMouseEnter={() => setShowMenu(true)}
-      onFocus={() => setShowMenu(true)}
-      onBlur={() => setShowMenu(false)}
       onMouseLeave={() => setShowMenu(false)}
     >
-      <button
-        className={`
+      <div
+        className={` dropdowntitle
         flex flex-row justify-between items-center 
          cursor-pointer mr-3xl
-          pt-md pb-sm
+         pt-md pb-sm
          `}
       >
         <p className=" text-gray-600 group-hover:text-gray-900 pr-xs font-sans ">
@@ -40,11 +38,10 @@ const DropdownNavButton = (props) => {
             />
           </svg>
         </div>
-      </button>
-      <div className={`absolute -left-[28px] top-[45px] z-1 w-[236px] block navDropdown`}>
+      </div>
+      <div className={`absolute -left-[28px] top-[45px] z-1 w-[236px] block `}>
         <SlideDown className={`mt-lg  bg-white`}>
-          {showMenu
-            ? props.subpages.map((navitem, i) => (
+          { props.subpages.map((navitem, i) => (
                 <a
                   key={navitem.title}
                   href={navitem.slug}
@@ -54,7 +51,7 @@ const DropdownNavButton = (props) => {
                   {navitem.title}
                 </a>
               ))
-            : null}
+            }
         </SlideDown>
       </div>
     </div>

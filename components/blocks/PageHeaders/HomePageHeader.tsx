@@ -23,7 +23,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
   return (
     <header key={id}>
       <div className={`${header.bg}`}>
-        <div className={`responsive-container relative z-30  `}>
+        <div className={`responsive-container relative z-20  `}>
           <div className={`
           w-full flex justify-end ml-auto text-[0px]
           sm:w-2/3 
@@ -60,7 +60,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             
           </div>
           <div
-            className={` absolute  z-40 top-2xl md:top-2xl lg:top-3xl  h-full pr-xl md:pr-2xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}
+            className={` absolute  z-30 top-2xl md:top-2xl lg:top-3xl  h-full pr-xl md:pr-2xl 2xl:pr-0 2xl:mx-auto 2xl:max-w-screen-xl `}
           >
             <h1
               className={`animate-titleSlide font-sans type-preset-1 text-white font-black pb-lg w-full sm:w-3/4 md:w-full lg:w-3/4 xl:w-[70%]`}
@@ -80,7 +80,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
       <div
           className={` ${header.bg} -mt-[3px]  h-1/2 w-full absolute -z-10 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}
         > </div>
-        <div className={`relative z-50  flex flex-col sm:flex-row `}>
+        <div className={`relative z-40  flex flex-col sm:flex-row `}>
         <div className="hidden sm:block animate-titleSlideB pb-xl">
               <Button variant="white" href={"/services"}>
                See our work

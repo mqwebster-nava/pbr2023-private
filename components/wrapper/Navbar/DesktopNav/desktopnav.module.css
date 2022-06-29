@@ -1,12 +1,12 @@
 
 /* For Desktop Navbar  */
-.dropdownAnimations:hover svg {
+.dropdownAnimations:hover svg, .dropdownAnimations:focus-within svg {
     transform: rotate(180deg);
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
   }
   
-  .dropdownAnimations  button::after{
+  .dropdownAnimations > div:first-of-type::after{
     content: '';
       position: absolute;
       bottom: 0;
@@ -19,21 +19,22 @@
       transition: width 0.25s ease-in-out;
   }
   
-  .dropdownAnimations:hover  button::after{
+  .dropdownAnimations:hover > div:first-of-type::after, .dropdownAnimations:focus-within > div:first-of-type::after{
     opacity: 1;
     width: calc( 100% - 48px );
   }
   
-  .dropdownAnimations > div {
+  
+  .dropdownAnimations > div:last-of-type {
     transition-duration: 0.25s;
     opacity: 0;
     transition: opacity 300ms;
   }
   
-  .dropdownAnimations:hover > div {
+  .dropdownAnimations:hover div:last-of-type, .dropdownAnimations:focus-within > div:last-of-type {
     opacity: 1;
   }
-  
+ 
   .lineAnimations  p::after{
     content: '';
       position: absolute;
@@ -47,7 +48,7 @@
       transition: width 0.25s ease-in-out;
   }
   
-  .lineAnimations:hover  p::after{
+  .lineAnimations:hover  p::after, .lineAnimations:focus-within  p::after{
     opacity: 1;
     width: calc( 100% - 48px );
   }

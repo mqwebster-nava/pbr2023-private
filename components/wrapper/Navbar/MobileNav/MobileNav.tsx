@@ -10,19 +10,19 @@ const MobileNavBar = ({ NavData }) => {
   const NavLinksMobile = () => (
     <nav
       aria-label="main"
-      className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white "
+      className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white z-50 "
     >
       <SlideDown className={``}>
         {isShowingMenu
           ? NavData.map((navSection, i) => {
               const extraPadding = classNames({
-                  "mt-lg": i==0,
-                  "mb-lg": i==NavData.length-1
-              })
+                "mt-lg": i == 0,
+                "mb-lg": i == NavData.length - 1,
+              });
               return "slug" in navSection ? (
                 <a
                   href={navSection.slug}
-                  className={ `group block w-full border-t-[1px] border-black py-lg ${extraPadding}`}
+                  className={`group block w-full border-t-[1px] border-black py-lg ${extraPadding}`}
                   key={navSection.title}
                 >
                   <div className="relative inline-block  ">
