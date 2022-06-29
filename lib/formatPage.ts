@@ -71,7 +71,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         buttonPath:"/contact",
         image:{
           sys: { id: '1lNLtY5DLthC94TiYeKcvR' },
-          url: 'https://images.ctfassets.net/t2ekr6eg3fr3/1lNLtY5DLthC94TiYeKcvR/1949dd27b9cf2a0fae91253e06e933e0/illustration-plum-3.png',
+          url: 'https://images.ctfassets.net/t2ekr6eg3fr3/48fDymd23rDMEPO6uJLKaT/31209543914cabd19098df89df3bc822/CTA-500x500-V01.png',
           width: 500,
           height: 500,
           title: 'illustration-plum-3',
