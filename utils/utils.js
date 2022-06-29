@@ -30,8 +30,6 @@ export function getEventDateStr(date) {
     hour:"numeric",
     minute: '2-digit'
   });
-  // const datetext = fmtdate.toTimeString();
-  console.log(fmtdate);
   return `${getDateStr(date)} at ${fmtdate} EST`;
 }
 
