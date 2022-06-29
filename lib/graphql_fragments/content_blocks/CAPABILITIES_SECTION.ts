@@ -7,7 +7,7 @@ sys {
 title
 capabilityTitle
 body
-capabilitiesCollection(limit:4) {
+capabilitiesCollection(limit:7) {
    items{
     __typename
     ... on CapabilitiesCard {
