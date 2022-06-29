@@ -102,7 +102,7 @@ export const POST_ALL_FIELDS = `
     body {
       ${POST_BODY}
     }
-
+    registrationLink
 `;
 
 

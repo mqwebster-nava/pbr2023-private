@@ -60,7 +60,8 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         authors: post.authors,
         date: post.date,
         hideSideNav: post.hideSideNav,
-        isEvent: post.contentType=="Events"
+        isEvent: post.contentType=="Events",
+        registrationLink: post.registrationLink
       },
       {
         __typename:"SectionCtaBlock",
@@ -79,7 +80,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         }
       },
       // more posts block
-      {
+      post.contentType!=="Events" && {
         __typename:"ContentBlockArticleList",
         id: `${post.id}-more-posts`,
         title:"More from Nava",

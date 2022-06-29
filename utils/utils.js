@@ -49,6 +49,7 @@ export function getContentUrl(contentType, slug) {
     Toolkit: "toolkits",
     "Working at Nava": "working-at-nava",
     News: "news",
+    Events:"events"
   };
   const contentPart = contentMap[contentType];
   return `/${contentPart}/${slug}`;

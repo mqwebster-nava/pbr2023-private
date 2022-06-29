@@ -28,7 +28,8 @@ const formatImageAsset = (imgData) => {
         clientName: post.clientName,
         contentType: post.contentType,
         shortSummary: post.shortSummary,
-        promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null
+        promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
+        
       }
       return newPost;
     })
@@ -61,7 +62,8 @@ const formatImageAsset = (imgData) => {
       contentType: post.contentType,
       shortSummary: post.shortSummary,
       leadImage: ("leadImage" in post) ? formatImageAsset(post.leadImage): null,
-      promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null
+      promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
+      registrationLink: post.registrationLink
     }
     return formattedPost;
   }

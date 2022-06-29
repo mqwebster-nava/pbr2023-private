@@ -18,6 +18,7 @@ export interface BasicPostInterface{
     contentTags:Array<string>;
     shortSummary:string;
     promoImage:ContentfulImageAsset;
+    
 }
 export interface FullPostInterface extends BasicPostInterface{
     longSummary:string;
@@ -25,6 +26,7 @@ export interface FullPostInterface extends BasicPostInterface{
     authors:Array<AuthorPostInterface>;
     body:any;
     leadImage:ContentfulImageAsset;
+    registrationLink: string;
 }
 
 export interface AuthorPostInterface{

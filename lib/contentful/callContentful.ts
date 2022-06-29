@@ -19,8 +19,9 @@ export const defaultOptions = {
 export default async function callContentful(
   query,
   variables = {},
-  options = defaultOptions
+  options
 ) {
+  options ??=defaultOptions;
   const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
   const accessToken = options.preview
