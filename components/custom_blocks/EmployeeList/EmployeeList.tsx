@@ -61,7 +61,7 @@ export default function EmployeeList({employeeData}:EmployeeListInterface ) {
               height={400}
               className="w-full h-auto aspect-square object-cover bg-navy-50"></Image>
 
-              <h5 className="type-preset-7 font-bold  pt-sm">
+              <h5 className="type-preset-7 font-bold  py-sm">
                 {teamMember.fields.Name}
               </h5>
               <p className="type-preset-7 text-gray-700">
