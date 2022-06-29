@@ -30,13 +30,14 @@ const SectionHeader = ({
     "bg-navy-900": colorTheme=="navy",
     "bg-purple-900": colorTheme=="purple",
   });
-  const LineColor = classNames({
+  let LineColor = classNames({
     "bg-gold-900":colorTheme == "gold",
     "bg-sage-700":colorTheme =="sage",
     "bg-purple-500":colorTheme=="purple",
     "bg-navy-200":colorTheme == "navy",
-    "bg-plum-400 ": colorTheme=="default"
+    "bg-plum-400 ": colorTheme=="default" || colorTheme==null
   })
+
   const TextColor =  (colorTheme=="navy" ||colorTheme=="purple")? "text-white":"text-gray-900";
 
   const TitleBlock = () => {
