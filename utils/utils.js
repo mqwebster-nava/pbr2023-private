@@ -1,18 +1,19 @@
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 export function getDateStr(date) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   const fmtdate = new Date(`${date}`);
   const dateStr =
     monthNames[fmtdate.getMonth()] +
@@ -21,6 +22,26 @@ export function getDateStr(date) {
     ", " +
     fmtdate.getFullYear();
   return dateStr;
+}
+
+export function getEventDateStr(date) {
+  const fmtdate = new Date(`${date}`).toLocaleTimeString("en-US", {
+    timeZone: "America/New_York",
+    hour:"numeric",
+    minute: '2-digit'
+  });
+  // const datetext = fmtdate.toTimeString();
+  console.log(fmtdate);
+  return `${getDateStr(date)} at ${fmtdate} EST`;
+}
+
+export function isDateAfterNow(date) {
+  const eventDate = new Date(`${date}`)
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  console
+  return eventDate > tomorrow;
 }
 
 export function getContentUrl(contentType, slug) {
@@ -70,8 +91,8 @@ export function slugify(text) {
 }
 
 export function capitalize(str) {
-  if(str == null || str == "") {
-      return str;
+  if (str == null || str == "") {
+    return str;
   }
 
   return str.substring(0, 1).toUpperCase() + str.substring(1);

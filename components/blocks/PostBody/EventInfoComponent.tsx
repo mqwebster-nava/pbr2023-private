@@ -1,5 +1,7 @@
-import { getDateStr, slugify } from "utils/utils";
+import { getEventDateStr, isDateAfterNow, slugify } from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import React from "react";
+import { Button } from "components/atom";
 
 interface EventInfoComponentProps {
   date: string;
@@ -18,11 +20,11 @@ const EventInfoComponent = ({
         <div>
           {/* TODO update Event date string to include time of day */}
           <h3 className="font-bold">Event Date</h3>
-          <p className="font-sans pb-md">{getDateStr(date)}</p>
+          <p className="font-sans pb-md">{getEventDateStr(date)}</p>
           <div></div>
         </div>
-        <div>
-          <h3 className="font-bold">Tags</h3>
+        <div className="pb-xl">
+        {contentTags &&<h3 className="font-bold">Tags</h3>}
           {contentTags &&
             contentTags.map((tag) => {
               return (
@@ -37,6 +39,11 @@ const EventInfoComponent = ({
               );
             })}
         </div>
+        { isDateAfterNow(date) &&
+        <Button href={registrationLink} variant={"outlined"}>
+          Register
+        </Button>
+      }
       </div>
     </div>
   );
