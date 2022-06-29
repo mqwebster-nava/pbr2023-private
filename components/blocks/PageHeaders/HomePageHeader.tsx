@@ -69,7 +69,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             </h1>
             <div className="block sm:hidden animate-titleSlideB">
               <Button variant="white" href={"/services"}>
-                Our work
+                See our work
               </Button>
             </div>
           </div>
@@ -83,7 +83,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
         <div className={`relative z-50  flex flex-col sm:flex-row `}>
         <div className="hidden sm:block animate-titleSlideB pb-xl">
               <Button variant="white" href={"/services"}>
-                Our work
+               See our work
               </Button>
             </div>
           <div className={`w-full sm:w-2/3 md:w-3/5 ml-auto  pb-[75%] sm:pb-[50%] md:pb-[45%]  bg-plum-50 `}>

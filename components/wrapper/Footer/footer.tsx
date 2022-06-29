@@ -51,12 +51,12 @@ const Footer = () => {
             }
           >
             <p className="text-white font-sans type-preset-8 pt-md sm-pt-0">
-              {`©${currentYear} Nava PBC. All rights reserved`}
+              {`© ${currentYear} Nava PBC. All rights reserved.`}
             </p>
             <div className="flex gap-2xl  type-preset-7">
             <LinkText href={"https://twitter.com/NavaPBC"} variant={"default"} color={"white"}> Twitter</LinkText>
             <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"default"} color={"white"}>LinkedIn</LinkText>
-            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"}>  Youtube</LinkText>
+            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"}>  YouTube</LinkText>
             </div>
           </div>
         </div>
