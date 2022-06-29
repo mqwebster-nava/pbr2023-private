@@ -60,7 +60,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
         <ResponsiveContentContainer alignment={"left"}>
           <ReportContent content={content.overview} />
           <PercentBarChart
-            description="How we're doing in 2021"
+            description="How we’re doing in 2021"
             graphs={overview}
           />
         </ResponsiveContentContainer>
