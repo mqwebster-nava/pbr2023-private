@@ -11,7 +11,7 @@ export interface TextBodyInterface {
 const TextBodyBlock = ({title, richBody}:TextBodyInterface) => {
     return (
         <ResponsiveContentContainer alignment={"left"}  padding={"py-xl"}>
-        <div className="py-xl">
+        <div className="">
         {title && <h3 className={`font-sans type-preset-3 font-bold pb-lg`}>{title} </h3> }
             <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
