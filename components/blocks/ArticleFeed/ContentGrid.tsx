@@ -1,4 +1,4 @@
-import { getContentUrl, getDateStr } from "utils/utils";
+import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
 import { ContentCard, } from "components/atom";
 import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
@@ -42,6 +42,7 @@ const ContentGrid = ({
   });
 
   items = items.filter((item) => item != null);
+
   return (
     <section className={`${bg}`} key={id}>
     <div className={`responsive-container ${padding}`} key={id}>
@@ -51,6 +52,10 @@ const ContentGrid = ({
             const feature = classNames({
               "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,
             });
+            const kicker = item.contentType == "Case Study" ? item.clientName :
+                           item.contentType == "News" ? getDateStr(item.date) :
+                           item.contentType == "Events" ? getEventDateStr(item.date): null;
+
             return (
               <div className={`w-full self-stretch ${feature}`} key={item.id}>
                 { item["__typename"] == "Post" ?
@@ -63,7 +68,7 @@ const ContentGrid = ({
                         ? "half"
                         : "quarter"
                     }
-                    kicker={item.contentType == "Case Study" && item.clientName ||item.contentType == "News" && getDateStr(item.date)}
+                    kicker={kicker}
                     title={item.title}
                     image={item.promoImage}
                     path={getContentUrl(item.contentType, item.slug)}
