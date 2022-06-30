@@ -49,7 +49,7 @@ const PageHeader = (props: PageHeaderInterface) => {
       <header  key={props.id} >
         <div className={`bg-purple-900 relative `} >
           <div
-            className={` responsive-container z-10 relative py-2xl  lg:py-3xl`}
+            className={` responsive-container z-10 relative pt-2xl pb-3xl  lg:pt-3xl lg:pb-4xl`}
           >
             <TitleBlock
               textColor={"text-purple-200"}
