@@ -4,13 +4,16 @@ import { AuthorPostInterface } from "shared_interfaces/post_interface";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorFiller from "public/images/author-filler.png"
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
+import React from "react";
+import { LinkText } from "components/atom";
 
 interface AuthorBioInterface {
     authors: Array<AuthorPostInterface>
 }
 
 const AuthorBios = ({authors}:AuthorBioInterface) => {
-    return (
+    const isNotNavaPBC = authors.length!=1 || authors[0].name !="Nava PBC";
+    return isNotNavaPBC && (
       <div className="mt-xl font-sans">
         <h5 className="font-bold type-preset-6 pb-xs">Written by</h5>
        <HorizontalLine variant="light"/>
@@ -27,7 +30,14 @@ const AuthorBios = ({authors}:AuthorBioInterface) => {
             </div>
             <div className="sm:pl-md col-span-7 sm:col-span-8 block sm:grid sm:grid-cols-8">
               <div className="w-full sm:col-span-3 pr-sm">
-              <h5 className="font-bold">{author.name}</h5>
+              <h5 className="font-bold">
+              <LinkText
+                    href={`/authors/${author.slug}`}
+                    variant={"underlined"}
+                  >
+                    {author.name}
+              </LinkText>
+             </h5>
               <h6 className="text-gray-700">{author.role}</h6>
             </div>
               <div className="w-full sm:col-span-5 sm:pt-0 pt-sm">

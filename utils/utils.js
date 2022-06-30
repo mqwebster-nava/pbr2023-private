@@ -14,6 +14,7 @@ const monthNames = [
 ];
 
 export function getDateStr(date) {
+  if(date==null) return null;
   const fmtdate = new Date(`${date}`);
   const dateStr =
     monthNames[fmtdate.getMonth()] +

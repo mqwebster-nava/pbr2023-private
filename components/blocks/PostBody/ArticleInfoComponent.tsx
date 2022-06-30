@@ -13,14 +13,15 @@ const ArticleInfoComponent = ({
   authors,
   contentTags,
 }: ArticleInfoComponentProps) => {
+  const publishDate = getDateStr(date);
   return (
     <div className="type-preset-7">
       <div className="font-sans md:block flex justify-between pb-2xl">
         <div>
-        <div className={"pb-2xl"}>
+       {publishDate&& <div className={"pb-2xl"}>
           <h3 className="font-bold">Published</h3>
-          <p className="font-sans">{getDateStr(date)}</p>
-          </div>
+          <p className="font-sans">{publishDate}</p>
+          </div>}
           <div className="pb-2xl">
             <h3 className="font-bold pb-sm">Authors</h3>
             {authors.map((author) => (
@@ -39,7 +40,7 @@ const ArticleInfoComponent = ({
           </div>
           </div>
         <div>
-          <h3 className="font-bold pb-sm">Topics</h3>
+        {contentTags && <h3 className="font-bold pb-sm">Topics</h3> }
           {contentTags &&
             contentTags.map((tag) => {
               return (

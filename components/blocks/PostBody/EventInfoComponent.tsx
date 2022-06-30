@@ -17,12 +17,11 @@ const EventInfoComponent = ({
   return (
     <div className="type-preset-7">
       <div className="font-sans md:block flex justify-between mb-lg">
-        <div>
-          {/* TODO update Event date string to include time of day */}
+        {date && <div>
           <h3 className="font-bold">Event Date</h3>
           <p className="font-sans pb-md">{getEventDateStr(date)}</p>
           <div></div>
-        </div>
+        </div> }
         <div className="pb-xl">
         {contentTags &&<h3 className="font-bold">Tags</h3>}
           {contentTags &&

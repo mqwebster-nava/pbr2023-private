@@ -49,7 +49,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     slug: post.slug,
     title: post.title,
     socialImage: liftData(post.promoImage)?? defaultSocialImage,
-    isBottomCTA: false,
+    isBottomCTA: true,
     pageHeader: {
       id: `${post.id}-header`,
       title:post.contentType ,
@@ -72,6 +72,14 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         isEvent: post.contentType=="Events",
         registrationLink: post.registrationLink
       },
+      // more posts block
+      post.contentType!=="Events" && {
+        __typename:"ContentBlockArticleList",
+        id: `${post.id}-more-posts`,
+        title:"More from Nava",
+        items: morePosts,
+        layout:"3 card row"
+      },
       {
         __typename:"SectionCtaBlock",
         id: `${post.id}-work`,
@@ -79,6 +87,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         body:"Let’s talk about what we can build together.",
         buttonText:"Get in touch",
         buttonPath:"/contact",
+        isBottom:true,
         image:{
           sys: { id: '1lNLtY5DLthC94TiYeKcvR' },
           url: 'https://images.ctfassets.net/t2ekr6eg3fr3/5BzdwfkJyPTjzFhJ3zGQrg/2dd62521fe065a8ea539ae8aed33c720/CTA2-500x500-V01.png',
@@ -88,15 +97,6 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
           description: ''
         }
       },
-      // more posts block
-      post.contentType!=="Events" && {
-        __typename:"ContentBlockArticleList",
-        id: `${post.id}-more-posts`,
-        title:"More from Nava",
-        items: morePosts,
-        layout:"3 card row"
-      },
-     
 
     ],
  }
