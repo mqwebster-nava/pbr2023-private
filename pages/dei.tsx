@@ -43,7 +43,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
         <div className="responsive-container">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
             <div className="w-full">
-              <p className="type-preset-5">{content.lead}</p>
+              <p className="type-preset-5 font-serif">{content.lead}</p>
               <ReportContent content={content.introduction} />
             </div>
             <img

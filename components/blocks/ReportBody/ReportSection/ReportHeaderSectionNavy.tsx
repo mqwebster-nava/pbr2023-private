@@ -10,7 +10,7 @@ const ReportSectionHeaderNavy = ({ title, titleId = null, introduction }) => {
           {title}
         </h2>
         <TealBar />
-        <p className="pt-lg type-preset-5 font-light">{introduction}</p>
+        <p className="pt-lg type-preset-5 font-serif font-light">{introduction}</p>
       </ResponsiveContentContainer>
     </section>
   );

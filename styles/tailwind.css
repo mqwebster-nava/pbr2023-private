@@ -52,7 +52,7 @@ html {
   font-family: "GTAmerica";
   --typescale: 1.25;
   --base-font-size: 1rem;
-  --big-line-height:1.25;
+  --big-line-height:1.3;
   --small-line-height:1.1;
   --type-preset-1__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
   --type-preset-2__fontSize: calc(1em * var(--typescale) * var(--typescale) * var(--typescale) * var(--typescale));
