@@ -6,21 +6,11 @@ import { formatPosts } from "lib/post_utils";
 
 
 export default async function getPostsByContentType(contentType, options=defaultOptions) {
-    const variables = {contentType };
-    const query =( contentType==="Insights")? 
-    ` query GetAllPosts
+    const variables = {contentType, keepHidden:false };
+    const query =
+    ` query GetPostsByContentType($contentType: String!, $keepHidden: Boolean!)
     {
-      postCollection(limit: 100) 
-      {
-        items {
-          ${POST_CORE_FIELDS}
-        }
-      }
-    }
-    `:
-    ` query GetPostsByContentType($contentType: String!)
-    {
-      postCollection(limit: 100, where: { contentType: $contentType }  ) 
+      postCollection(limit: 100, where: { contentType: $contentType, keepHidden: $keepHidden }  ) 
       {
         items {
           ${POST_CORE_FIELDS}
