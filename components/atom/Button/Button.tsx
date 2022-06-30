@@ -28,11 +28,11 @@ export const Button: React.FC<ButtonProps> = ({
     <button 
 onClick={()=> {location.href = href;}}
     className={
-          `font-sans font-bold h-[62px] md:h-[70px]
+          `font-sans font-bold h-[55px] md:h-[70px]
           inline-flex items-center justify-center 
           px-2xl py-sm  
          mr-auto
-          type-preset-6 leading-6
+         type-preset-7 md:type-preset-6 leading-6
           transition duration-150 ease-in-out flex-col
           cursor-pointer
           ${variantStyles}`}
