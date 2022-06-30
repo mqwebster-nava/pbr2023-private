@@ -1,4 +1,5 @@
 
+import FloatingButtonBlock from "components/blocks/FloatingButtonBlock/FloatingButtonBlock";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -42,6 +43,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
+      "FloatingButtonBlock":()=><FloatingButtonBlock key={index} {...entry}/>,
       "ContentGridFeatureCards": // Highlighted Information Card
          ()=><HighlightedInformationList key={index}  {...entry} />,
       "CustomBlock": ()=> {

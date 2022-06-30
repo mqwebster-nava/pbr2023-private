@@ -12,6 +12,7 @@ import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
 import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 import LIST_BLOCK from "./content_blocks/LIST_BLOCK";
+import FLOATING_BUTTON_BLOCK from "./content_blocks/FLOATING_BUTTON_BLOCK";
 
 /*
 The page fields should contain metadata about the page as 
@@ -71,6 +72,9 @@ contentCollection(limit:20) {
         }
         ... on CustomBlock {
             ${CUSTOM_BLOCK}
+        }
+        ... on FloatingButtonBlock {
+            ${FLOATING_BUTTON_BLOCK}
         }
     }
 }
