@@ -23,7 +23,7 @@ const defaultSocialImage: ContentfulImageAsset = {
 export {defaultSocialImage};
 export function formatPage(page){
   
-    const formattedPage: PageInterface = {
+    let formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,
         title: page.title,
@@ -31,6 +31,14 @@ export function formatPage(page){
         pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
+        isBottomCTA: false
+    }
+    if(!formattedPage.contentBlocks || formattedPage.contentBlocks.length<1) return formattedPage;
+    // Check for CTA block at bottom bc it requires extra formatting
+    const lastBlockIndex = formattedPage.contentBlocks.length-1;
+    if ( formattedPage.contentBlocks[lastBlockIndex]["__typename"]=="SectionCtaBlock"){
+      formattedPage.contentBlocks[lastBlockIndex].isBottom=true;
+      formattedPage.isBottomCTA =  true
     }
     return formattedPage; 
 }
@@ -41,6 +49,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     slug: post.slug,
     title: post.title,
     socialImage: liftData(post.promoImage)?? defaultSocialImage,
+    isBottomCTA: false,
     pageHeader: {
       id: `${post.id}-header`,
       title:post.contentType ,
@@ -72,7 +81,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         buttonPath:"/contact",
         image:{
           sys: { id: '1lNLtY5DLthC94TiYeKcvR' },
-          url: 'https://images.ctfassets.net/t2ekr6eg3fr3/48fDymd23rDMEPO6uJLKaT/31209543914cabd19098df89df3bc822/CTA-500x500-V01.png',
+          url: 'https://images.ctfassets.net/t2ekr6eg3fr3/5BzdwfkJyPTjzFhJ3zGQrg/2dd62521fe065a8ea539ae8aed33c720/CTA2-500x500-V01.png',
           width: 500,
           height: 500,
           title: 'illustration-plum-3',
@@ -104,6 +113,7 @@ export function formatAuthorPage(slug, author){
     title: author.name,
     description:author.bio,
     socialImage: defaultSocialImage,
+    isBottomCTA: false,
     pageHeader: {
       id: `${slug}-header`,
       variant:"Secondary",
@@ -136,6 +146,7 @@ export function formatTagsPage(slug, tagName, posts){
     title: tagName,
     socialImage: defaultSocialImage,
     description:`Posts related to ${tagName}`,
+    isBottomCTA: false,
     pageHeader: {
       id: `${slug}-header`,
       variant:"Secondary",

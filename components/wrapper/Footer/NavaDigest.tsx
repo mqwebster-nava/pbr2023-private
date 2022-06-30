@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import FormInputButton from "components/atom/Button/FormInputButton";
 import { useState } from "react";
 
@@ -8,10 +9,13 @@ const brandTerrain = "/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.
 /*
 TODO finish properly connecting it to Mailchimp and adding error/success text
 */
-const NavaDigest = () => {
+const NavaDigest = ({isBottomCTA=false}) => {
 
+  const topPadding = classNames({
+    "pt-xl md:pt-3xl": !isBottomCTA
+  });
   return (
-    <div className="pt-xl md:pt-3xl relative">
+    <div className={`${topPadding} relative`}>
       <div className="responsive-container bg-sage-700 sm:bg-transparent">
           <div className="bg-sage-700 font-sans h-3xl sm:h-4xl "></div>
       </div>

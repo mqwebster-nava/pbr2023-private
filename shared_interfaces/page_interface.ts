@@ -15,4 +15,5 @@ export interface PageInterface {
   preview?: boolean;
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
+  isBottomCTA?: boolean;
 }

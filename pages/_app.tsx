@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className="flex-grow  ">
           <Component {...pageProps} />
         </div>
-        <Footer/>
+        <Footer isBottomCTA={pageProps.isBottomCTA}/>
       </div>
     </>
   );

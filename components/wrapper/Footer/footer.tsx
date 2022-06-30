@@ -1,15 +1,15 @@
+import classNames from "classnames";
 import { LinkText } from "components/atom";
 import Image from "next/image";
 import logo from "public/images/N logo.png";
 import FooterNavData from "./footer_nav_data.js";
 import NavaDigest from "./NavaDigest";
 
-const Footer = () => {
+const Footer = ({isBottomCTA=false}) => {
   let currentYear = new Date().getFullYear();
-
   return (
     <footer>
-      <NavaDigest />
+      <NavaDigest isBottomCTA={isBottomCTA}/>
       <div className={"bg-navy-900 relative z-4 "}>
         <nav
           aria-label={"secondary"}
