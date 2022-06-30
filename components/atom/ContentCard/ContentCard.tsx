@@ -45,7 +45,7 @@ const DefaultContentCard  = ({
       width={16}
       height={9}
       quality="50"
-      className={`${backgroundColor} object-cover w-full group-hover:scale-110 ease-in duration-200  `}
+      className={`${backgroundColor} object-cover w-full group-hover:scale-105 ease-in duration-200  `}
       src={ image.url }
       alt={image.description??""}
     ></Image>)
