@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //https://www.digitalocean.com/community/tutorials/react-axios-react
 import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { slugify } from "utils/utils";
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -101,7 +102,7 @@ export default function OpenRolesComponent() {
       {departments.map((d,j) => {
         return (
           <div id={`${slugify(d.title)}`} key={`${d.title} ${j} section`}>
-            <hr />
+            <HorizontalLine variant="dark"/>
             <div className="md:grid grid-cols-12 gap-x-md md:gap-x-2xl">
               <div className="col-span-4">
                 <h2 className="font-sans type-preset-4 font-bold py-md">
@@ -112,7 +113,7 @@ export default function OpenRolesComponent() {
                 {d.postings.map((posting, i) => {
                   return (
                     <div key={`${d.title} role ${i}`}>
-                      {i != 0 && <hr />}
+                      {i != 0 && <HorizontalLine variant="light"/>}
                       <div className="md:grid grid-cols-8 gap-x-2xl" >
                         <div
                           className="col-span-5 type-preset-5 font-sans py-md "

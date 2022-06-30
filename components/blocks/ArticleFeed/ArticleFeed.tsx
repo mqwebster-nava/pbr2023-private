@@ -1,5 +1,7 @@
 
 import {  LinkText } from "components/atom";
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
+import React from "react";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
 
@@ -31,7 +33,8 @@ const ArticleFeed = ({
   return (
     <section key={id} className="pt-xl pb-4xl" >
       <div className="responsive-container" key={id}>
-        <div className={`w-full pt-md flex justify-between ${title && "border-t-[1px] border-gray-300"}`}>
+      {title &&  <HorizontalLine variant="light"/>}
+        <div className={`w-full pt-md flex justify-between `}>
           <div className="md:w-3/4 ">
             {title && (
               <h3 className="font-sans type-preset-3  font-bold">{title} </h3>
