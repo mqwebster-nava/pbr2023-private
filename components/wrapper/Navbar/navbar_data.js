@@ -31,6 +31,10 @@ const NavData = [
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
     ],
+  }, 
+  {
+    title: "Get in touch",
+    slug: "/contact"
   },
 ];
 

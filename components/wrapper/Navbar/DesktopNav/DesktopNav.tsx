@@ -24,11 +24,7 @@ const DesktopNavBar = ({ NavData }) => {
               ></DropdownNavButton>
             );
           })}
-          <div className="pl-sm"></div>
-          <NavButton slug={"/contact"} color={"navy-900"}>
-            {" "}
-            {"Get In Touch"}
-          </NavButton>
+         
         </nav>
       </div>
     );
