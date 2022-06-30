@@ -22,14 +22,17 @@ const HighlightedInfoCard = ({id, icon, title, body}:HighlightedInfoCardInterfac
    
     icon = icon ?? defaultIcon;
     return (
-    <div className="bg-plum-50 px-2xl  md:pb-4xl xl:pb-5xl pt-3xl h-full ">
+    <div className={`
+            bg-plum-50 h-full 
+            px-2xl  
+            pt-2xl  md:pb-4xl xl:pb-5xl `}>
           <Image 
             src={icon.url} 
             height={"36px"}
             width={"36px"}
             alt={""}
             ></Image>
-        <p className={"type-preset-4 font-sans font-bold text-purple-900 pt-lg pb-4xl xl:pb-5xl"}>
+        <p className={"type-preset-4 md:type-preset-5 lg:type-preset-4 font-sans font-bold text-purple-900 pt-lg pb-4xl xl:pb-5xl"}>
             <span className="text-purple-500 ">{`${title} `}</span>
             {body}
         </p>
