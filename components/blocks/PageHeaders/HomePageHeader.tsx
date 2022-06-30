@@ -41,6 +41,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
               layout={"responsive"}
               height="350"
               width="350"
+              alt={""}
             ></Image> 
             </div> 
             <div className={`
