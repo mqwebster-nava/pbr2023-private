@@ -9,7 +9,8 @@ import favicon from "public/images/Nava-Favicon-01.png"
 // const baseUrl = "https://nava-website-2.vercel.app/";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const pageData: PageInterface = pageProps;
+  // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
+  const pageData: PageInterface = ("page" in pageProps)? pageProps.page : pageProps;
  
   // TODO need to get the url from the slug and page interface data
   return (
