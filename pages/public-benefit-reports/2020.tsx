@@ -133,11 +133,18 @@ export default function PBR2020(props: PageInterface) {
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2020);
   const formattedPage: PageInterface = {
-    id: "public-benefit-reports",
-    slug: "public-benefit-reports",
-    title: "",
-    description: "description",
-    socialImage: null,
+    id: "public-benefit-reports/2020",
+    slug: "public-benefit-reports/2020",
+    title: "Nava: Public Benefit Report: 2020",
+    description: "Addressing the structural failures that have affected millions of Americans—most dramatically during the pandemic in 2020—requires resilience. See how we build it into everything we do.",
+    socialImage: {
+      "id": "WufZdooSKmPSGJlCZlUtu",
+      "url": "https://images.ctfassets.net/t2ekr6eg3fr3/WufZdooSKmPSGJlCZlUtu/b5772ce17a9c3e4b1fd851d9fe059a1a/pbr-promo-image.png",
+      "width": 1596,
+      "height": 897,
+      "title": "PBR image",
+      "description": ""
+  },
     pageHeader: null,
     contentBlocks: [report],
   };

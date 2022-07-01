@@ -12,11 +12,18 @@ import { PageInterface } from "shared_interfaces/page_interface";
 export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2018);
   const formattedPage: PageInterface = {
-    id: "public-benefit-reports",
-    slug: "public-benefit-reports",
-    title: "",
-    description:"description",
-    socialImage: null,
+    id: "public-benefit-reports/2018",
+    slug: "public-benefit-reports/2018",
+    title: "Nava: Public Benefit Reports: 2018 Progress Takes Work",
+    description:"Our government partners are committed to doing the hard work it takes to transform government services. See what we’ve accomplished together.",
+    socialImage: {
+       "id": "6uEQZE20CFQeMa63MMWyHl",
+      "url": "https://images.ctfassets.net/t2ekr6eg3fr3/6uEQZE20CFQeMa63MMWyHl/5d528c6614a95fd0929ef280c8a51a8f/Screen_Shot_2022-06-14_at_3.33.05_PM.png",
+      "width": 1127,
+      "height": 633,
+      "title": "2018_PBR screenshot",
+      "description": ""
+  },
     pageHeader: null,
     contentBlocks: [
       report
