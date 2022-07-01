@@ -43,7 +43,8 @@ export default async function preview(req, res) {
   let preview = null;
   let redirectUrl = "/";
   if(req.query.type=="post" && req.query.contentType){
-    preview = await getPostBySlug(req.query.slug, {
+    preview = await getPageDataFromContentful({slug:req.query.slug, 
+      variant:"post",
       preview: true,
     });
     let redirectPrefix = contentTypesMap[req.query.contentType] ;
@@ -60,7 +61,9 @@ export default async function preview(req, res) {
   if (!preview) {
     return res.status(401).json({ message: "Invalid slug Preview" });
   }
-  res.setPreviewData({});
+  res.setPreviewData({
+    maxAge: 60 * 60,
+  });
 
   /*
    * Redirect to the path from the fetched post.

@@ -6,14 +6,16 @@ import getMorePosts from "./getMorePosts";
 
 export default async function getPostBySlug(slug, options=defaultOptions) {
     const variables = { slug, preview: options.preview };
-    const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
-      postCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+    const preview = options.preview;
+    const query = `query GetPostBySlug($slug: String!) {
+      postCollection(limit: 1, where: {slug: $slug}, preview:  ${preview ? 'true' : 'false'}) {
         total
         items {
           ${POST_ALL_FIELDS}
         }
       }
     }`;
+    console.log(query);
     // TODO get CTA & add it
     const response = await callContentful(query, variables, options);
     if ("errors" in response){

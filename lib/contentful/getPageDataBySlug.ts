@@ -5,8 +5,8 @@ import callContentful from "./callContentful";
 
 export default async function getPageDataBySlug({slug, preview =false}:PageQueryInterface) {
     const variables = { slug, preview  };
-    const query = `query GetPageBySlug($slug: String!, $preview: Boolean!) {
-      pageContentCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+    const query = `query GetPageBySlug($slug: String!) {
+      pageContentCollection(limit: 1, where: {slug: $slug}, preview:  ${preview ? 'true' : 'false'}) {
         total
         items {
           ${PAGE_FIELDS}

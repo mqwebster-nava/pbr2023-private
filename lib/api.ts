@@ -42,12 +42,13 @@ export interface PageQueryInterface {
 export async function getPageDataFromContentful({
   slug,
   variant = "default",
-  preview = false,
+  preview =false,
 }: PageQueryInterface) {
   // If it is a default page, then there should be a corresponding Page Content model in
   // Contentful with page info
   if (variant == "default") {
     const page = await getPageDataBySlug({ slug, preview });
+  
     // Checks for errors and formats
     let formattedPage: PageInterface = formatPage(page);
     // check to see if employee list is one of the blocks and add data there
@@ -67,7 +68,7 @@ export async function getPageDataFromContentful({
   if (variant == "post") {
     // Get the post data
     try {
-      const res = await getPostBySlug(slug);
+      const res = await getPostBySlug(slug, {preview});
       const { post, morePosts } = res;
       const formattedPage: PageInterface = formatPostPage(post, morePosts);
       return formattedPage;
