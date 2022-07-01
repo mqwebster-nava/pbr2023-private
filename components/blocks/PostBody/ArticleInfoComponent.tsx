@@ -16,13 +16,13 @@ const ArticleInfoComponent = ({
   const publishDate = getDateStr(date);
   return (
     <div className="type-preset-7">
-      <div className="font-sans md:block flex justify-between pb-2xl">
+      <div className="font-sans md:block flex justify-between pb-xl md:pb-2xl">
         <div>
        {publishDate&& <div className={"pb-2xl"}>
           <h3 className="font-bold">Published</h3>
           <p className="font-sans">{publishDate}</p>
           </div>}
-          <div className="pb-2xl">
+          <div className="md:pb-2xl">
             <h3 className="font-bold pb-sm">Authors</h3>
             {authors.map((author) => (
               <div id={author.name} className="pb-md " key={author.name}>
