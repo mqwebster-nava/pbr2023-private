@@ -48,7 +48,7 @@ export default async function preview(req, res) {
       preview: true,
     });
     let redirectPrefix = contentTypesMap[req.query.contentType] ;
-    redirectUrl = `${redirectPrefix}${preview.post.slug}`;
+    redirectUrl = `${redirectPrefix}${req.query.slug}`;
 
   }
   if (req.query.type=="page"){
