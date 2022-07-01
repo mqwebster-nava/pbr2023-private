@@ -28,5 +28,9 @@ export async function getStaticProps({ params, preview = false }) {
   const page : PageInterface = await getPageDataFromContentful({slug:params.slug, variant:"tags", preview });
   return {
     props: page,
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 60 seconds
+    revalidate: 60, // In seconds
   };
 }

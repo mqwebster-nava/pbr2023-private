@@ -31,7 +31,11 @@ export async function getStaticProps({ params, preview = false }) {
     variant:"post"
   });
   return {
-    props: res
+    props: res,
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 60 seconds
+    revalidate: 60, // In seconds
   }
   // const res = await ContentfulApi.getPostBySlug(params.slug, {
   //   preview: preview,

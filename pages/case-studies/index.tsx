@@ -17,7 +17,11 @@ export async function getStaticProps({ params, preview = false }) {
       preview: preview,
     });
     return {
-      props: page // will be passed to the page component as props
+      props: page,
+      // Next.js will attempt to re-generate the page:
+      // - When a request comes in
+      // - At most once every 60 seconds
+      revalidate: 60, // In seconds
     }
   }
 
