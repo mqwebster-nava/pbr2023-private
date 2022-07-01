@@ -21,7 +21,7 @@ const PostContent = ({docData, docLinks, }) =>{
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
           [MARKS.ITALIC]: (text) => <span className="italic ">{text}</span>,
-          [MARKS.UNDERLINE]: (text) => <span className=" underline decoration-1">{text}</span>,
+          [MARKS.UNDERLINE]: (text) => <span className=" underline decoration-1 underline-offset-2">{text}</span>,
           [MARKS.CODE]: (text) =>  <span className=" font-mono type-preset-7 py-[2px] px-[4px] bg-gray-100">{text}</span>
             
         },

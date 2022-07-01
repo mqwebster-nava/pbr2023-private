@@ -19,7 +19,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   const target = href.substr(0, 1) === "/" ? "" : "_blank";
 
   const variantStyles = classNames({
-    "underline decoration-1 whitespace-pre-wrap  inline": variant == "underlined",
+    "underline decoration-1 whitespace-pre-wrap inline underline-offset-2": variant == "underlined",
   });
  
   const colorStyles = classNames({
