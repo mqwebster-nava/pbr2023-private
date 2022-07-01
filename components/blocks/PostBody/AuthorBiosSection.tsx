@@ -15,7 +15,7 @@ const AuthorBios = ({authors}:AuthorBioInterface) => {
     const isNotNavaPBC = authors.length!=1 || authors[0].name !="Nava PBC";
     return isNotNavaPBC && (
       <div className="mt-xl font-sans">
-        <h5 className="font-bold type-preset-6 pb-xs">Written by</h5>
+        <h2 className="font-bold type-preset-6 pb-xs">Written by</h2>
        <HorizontalLine variant="light"/>
         {authors.map((author) => ( 
         <div className="grid grid-cols-9 w-full font-sans type-preset-7 py-md" key={author.name}>
@@ -30,15 +30,15 @@ const AuthorBios = ({authors}:AuthorBioInterface) => {
             </div>
             <div className="sm:pl-md col-span-7 sm:col-span-8 block sm:grid sm:grid-cols-8">
               <div className="w-full sm:col-span-3 pr-sm">
-              <h5 className="font-bold">
+              <p className="font-bold">
               <LinkText
                     href={`/authors/${author.slug}`}
                     variant={"underlined"}
                   >
                     {author.name}
               </LinkText>
-             </h5>
-              <h6 className="text-gray-700">{author.role}</h6>
+             </p>
+              <p className="text-gray-700">{author.role}</p>
             </div>
               <div className="w-full sm:col-span-5 sm:pt-0 pt-sm">
               {author.bio}

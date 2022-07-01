@@ -32,7 +32,7 @@ const CapabilitiesSection = ({
     <div className="bg-sage-50">
       <div className="responsive-container py-xl">
         {title && (
-          <h4 className="type-preset-4 font-black font-sans pb-md">{title}</h4>
+          <h3 className="type-preset-4 font-black font-sans pb-md">{title}</h3>
         )}
        <HorizontalLine variant="light"/>
         <div className="grid grid-cols-1 md:grid-cols-2 pt-xl md:gap-x-2xl">
