@@ -15,7 +15,6 @@ export default async function getPostBySlug(slug, options=defaultOptions) {
         }
       }
     }`;
-    console.log(query);
     // TODO get CTA & add it
     const response = await callContentful(query, variables, options);
     if ("errors" in response){
