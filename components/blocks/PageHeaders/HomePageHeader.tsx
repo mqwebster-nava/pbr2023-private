@@ -13,7 +13,7 @@ const header =
   {
     bg: "bg-plum-900",
     illBg:"bg-plum-50",
-    pattern: "/images/Home Brand Pattern Terrain only V1.svg",
+    pattern: "/images/Home Brand Pattern Terrain only V2.svg",
     pattern2:"/images/Home Brand Pattern Direction only V1.svg",
   }
 ;

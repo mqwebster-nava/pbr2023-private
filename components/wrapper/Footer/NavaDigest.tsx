@@ -1,10 +1,7 @@
 import classNames from "classnames";
 import FormInputButton from "components/atom/Button/FormInputButton";
-import { useState } from "react";
 
-const brandDirection = "/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
-const brandTerrain = "/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
-
+const SignupBrand = "/images/Sign up_ Brand pattern V02.svg";
 
 /*
 TODO finish properly connecting it to Mailchimp and adding error/success text
@@ -68,8 +65,7 @@ const NavaDigest = ({isBottomCTA=false}) => {
         </div>
      </div>
         <div className="hidden sm:flex w-full justify-end">
-          <img src={brandTerrain} height={72} width={72}  alt="" />
-          <img src={brandDirection} height={72} width={72} alt="" />
+          <img src={SignupBrand} height={72} width={144}  alt="" />
         </div>
       </div>
     </div>
