@@ -7,6 +7,7 @@ sys {
 title
 buttonText
 buttonPath
+buttonAriaLabel
 type
 body
 image {

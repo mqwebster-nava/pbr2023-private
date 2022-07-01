@@ -13,12 +13,12 @@ export interface ContentBlockInterface {
     body?:any;
     buttonText?:string; 
     buttonPath?:string;
+    buttonAriaLabel?:string;
     type?: ContentBlockType;
     image: ContentfulImageAsset;
   }
   
-  const ContentBlock  = ({id, title, body, type = "left repeater", image, buttonPath, buttonText}:ContentBlockInterface) => {
-    
+  const ContentBlock  = ({id, title, body, type = "left repeater", image, buttonPath, buttonText, buttonAriaLabel}:ContentBlockInterface) => {
     const direction = classNames({
       "md:flex-row-reverse": type=="left repeater",
       "md:flex-row":
