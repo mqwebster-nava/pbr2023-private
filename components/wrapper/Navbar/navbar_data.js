@@ -21,7 +21,10 @@ const NavData = [
   },
   {
     title: "Careers",
-    slug: "/careers"
+    subpages: [
+      { title: "Working at Nava", slug: "/careers" },
+      { title: "Open roles", slug: "/open-roles" },
+    ],
   },
   {
     title: "About",
