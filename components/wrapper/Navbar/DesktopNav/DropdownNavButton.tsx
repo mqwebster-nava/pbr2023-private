@@ -19,8 +19,9 @@ const DropdownNavButton = (props) => {
          pt-md pb-sm
          `}
       >
-        <p className=" text-gray-600 group-hover:text-gray-900 pr-xs font-sans ">
+        <p className=" text-gray-600 group-hover:text-gray-900 pr-xs font-sans " tabIndex={0}>
           {props.title}
+
         </p>
         <div className={`chevron mt-[4px]`}>
           <svg
@@ -39,7 +40,7 @@ const DropdownNavButton = (props) => {
           </svg>
         </div>
       </div>
-      <div className={`absolute -left-[28px] top-[45px] z-1 w-[236px] block `}>
+      <div className={`hidden group-hover:block group-focus-within:block absolute -left-[28px] top-[45px] z-1 w-[236px]  `}>
         <SlideDown className={`mt-lg  bg-white`}>
           { props.subpages.map((navitem, i) => (
                 <a
