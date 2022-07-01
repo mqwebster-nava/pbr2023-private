@@ -23,8 +23,8 @@ export const LinkText: React.FC<LinkTextProps> = ({
   });
  
   const colorStyles = classNames({
-    "text-sage-600 hover:text-sage-base hover:underline decoration-1": color=="sage",
-    "text-gray-900 hover:text-sage-base": color=="black",
+    "text-sage-700 hover:text-sage-900 hover:underline decoration-1": color=="sage",
+    "text-gray-900 hover:text-sage-700": color=="black",
     "text-white hover:underline decoration-1": color=="white"
   });
  
