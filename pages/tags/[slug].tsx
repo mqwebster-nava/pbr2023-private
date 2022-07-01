@@ -17,7 +17,7 @@ export async function getStaticPaths({ params, preview = null }) {
   const paths = tags.map((tag)=>{ return {params: { slug:slugify(tag), tag } }});
     return {
       paths,
-      fallback: false
+      fallback: 'blocking'
     }
 }
 
