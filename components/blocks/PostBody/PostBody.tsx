@@ -9,7 +9,7 @@ import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
 import EventInfoComponent from "./EventInfoComponent";
-
+import styles from "./PostBody.module.css"
 const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
 
 export interface PostBodyInterface {
@@ -81,10 +81,12 @@ export default function PostBody({
     >
       <article
         id="article"
-        className="w-full md:col-span-8 text-gray-900 font-serif"
+        className={  `w-full md:col-span-8 text-gray-900 font-serif `}
       >
-        {h2Sections.map((section) => (
-          <section id={section.title} ref={section.ref} key={section.title}>
+        {h2Sections.map((section, i) => (
+          <section 
+            id={section.title} ref={section.ref} key={section.title} 
+            className={h2Sections.length-1==i && `${styles.endCap}`}>
             <PostContent docData={section.doc} docLinks={body.links} />
           </section>
         ))}

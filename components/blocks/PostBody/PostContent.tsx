@@ -26,7 +26,7 @@ const PostContent = ({docData, docLinks, }) =>{
             
         },
         renderNode: {
-          [BLOCKS.PARAGRAPH]: (node, children) => (
+          [BLOCKS.PARAGRAPH]: (node, children) => children!="" &&(
             <p className=" py-md type-preset-5">{children}</p>
           ),
           [BLOCKS.HEADING_1]: (node, children) => (
