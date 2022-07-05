@@ -65,7 +65,7 @@ const PostContent = ({docData, docLinks, }) =>{
               "CaptionText": (props)=><CaptionText {...props} caption={<MarkdownComponent content={props.caption} removePadding={true}/>} />,
               "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
-              "PostImage": (props) => <PostImage {...props}/>,
+              "PostImage": (props) =>  <PostImage {...props} caption={props.caption && <MarkdownComponent content={props.caption}/>}/>,
               "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "EmbeddedVideo": (props)=> <EmbeddedVideo {...props} />
             }
