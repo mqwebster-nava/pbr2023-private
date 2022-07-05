@@ -55,7 +55,7 @@ const PageTemplate: React.FC<PageInterface> = ({
     return typename in componentMap ? componentMap[typename](entry) : <div></div>
   };
   return (
-    <main>
+    <main id="main">
       <PageHeader {...pageHeader}/>
       <div className="animate-fadeIn2">
       {children}
