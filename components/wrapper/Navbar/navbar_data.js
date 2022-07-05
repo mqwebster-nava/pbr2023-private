@@ -29,7 +29,7 @@ const NavData = [
   {
     title: "About",
     subpages: [
-      { title: "Nava’s story", slug: "/story" },
+      { title: "Our story", slug: "/story" },
       { title: "Team", slug: "/team" },
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
