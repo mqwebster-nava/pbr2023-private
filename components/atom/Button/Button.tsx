@@ -5,6 +5,7 @@ type Variant = "default" | "outlined" | "white" | "dark" | "";
 export interface ButtonProps {
   href?: string;
   variant?: Variant;
+  buttonAriaLabel?:string;
 }
 
 // TODO button
@@ -13,6 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   href,
   variant = "default",
+  buttonAriaLabel=null
 }) => {
   const variantStyles = classNames({
     "text-sage-700 bg-white hover:bg-sage-100": variant == "white",
@@ -26,7 +28,8 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <div>
     <button 
-onClick={()=> {location.href = href;}}
+    aria-label={buttonAriaLabel}
+    onClick={()=> {location.href = href;}}
     className={
           `font-sans font-bold h-[55px] md:h-[70px]
           inline-flex items-center justify-center 
