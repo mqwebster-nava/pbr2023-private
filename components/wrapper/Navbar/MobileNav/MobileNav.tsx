@@ -88,12 +88,13 @@ const MobileNavBar = ({ NavData }) => {
     </nav>
   );
   return (
-    <>
-      <div className="lg:hidden responsive-container flex flex-wrap items-center justify-between h-[60px]">
+    <div  className="lg:hidden block ">
+      <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px]">
         <Logo isMobile={true} />
         <div className="block ">
           <button
             aria-label="menu"
+            aria-expanded={isShowingMenu?"true":"false"}
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
@@ -146,7 +147,7 @@ const MobileNavBar = ({ NavData }) => {
         </div>
       </div>
       <NavLinksMobile />
-    </>
+    </div>
   );
 };
 
