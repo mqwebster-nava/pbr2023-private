@@ -29,18 +29,21 @@ export default function OpenRolesComponent() {
   const leverURL = "https://api.lever.co/v0/postings/nava?mode=json&group=team";
   const [departments, setDepartments] = useState<Array<JobGroupInterface>>([]);
 
+  // TODO replace "Open to any office location/Remote" with "Remote"
   useEffect(() => {
     axios.get(leverURL).then((res) => {
       const deps: Array<JobGroupInterface> = res.data.map((dep) => {
         return {
           title: dep.title,
           postings: dep.postings.map((posting) => {
+            let location = posting.categories.location ?? "Remote";
+            if(location=="Open to any office location/Remote") location="Remote";
             return {
               id: posting.id,
               title: posting.text,
               applyUrl: posting.applyUrl,
               hostedUrl: posting.hostedUrl,
-              location: posting.categories.location ?? "Remote",
+              location: location,
             };
           }),
         };
