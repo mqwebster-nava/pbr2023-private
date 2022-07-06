@@ -35,6 +35,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             md:h-[320px] 
             `}>
              <Image
+              priority
               className=""
               src={header.pattern}
               objectFit={"cover"}
@@ -49,7 +50,8 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
             hidden 
             lg:block h-[240px] sm:h-[200px] md:h-[320px]   w-[160px] `}>
             <Image
-            className=""
+              priority
+              className=""
               objectFit={"cover"}
               src={Pattern2}
               alt={""}
