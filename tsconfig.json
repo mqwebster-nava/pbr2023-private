@@ -23,6 +23,6 @@
     "styles/brand_patterns.stories.js",
     "components/templates/PageTemplate/PageTemplate.js",
     "setupTests.js"
-  ],
+, "lib/gtag.js"  ],
   "exclude": ["node_modules"]
 }
