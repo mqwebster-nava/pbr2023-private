@@ -91,7 +91,7 @@ const ImageGalleryBlock = ({
     if (!images || images.length < 2) return <div></div>;
     return (
         <div className="flex justify-start">
-          <div className="w-5/12">
+          <div className="hidden sm:block sm:w-5/12">
             <Image
               src={images[0].url}
               layout="responsive"
@@ -100,7 +100,7 @@ const ImageGalleryBlock = ({
               alt={images[0].description}
             ></Image>
           </div>
-          <div className="w-2/12 self-start  px-md md:px-2xl">
+          <div className="hidden sm:block sm:w-3/12 self-start  px-md md:px-2xl">
             <Image
               src={images[1].url}
               layout="responsive"
@@ -110,7 +110,7 @@ const ImageGalleryBlock = ({
             ></Image>
           </div>
       
-        <div className="w-4/12  self-end">
+        <div className="w-full sm:w-4/12  self-end">
           <Image
             src={images[2].url}
             layout="responsive"
