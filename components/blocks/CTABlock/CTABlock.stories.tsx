@@ -18,5 +18,13 @@ Primary.args = {
   "title": "Want to work with us?",
   "body": "Let’s make government services simple, effective, and accessible to all.",
   "buttonText": "Get in touch",
-  "buttonPath": "/contact"
+  "buttonPath": "/contact",
+  "image":{
+   id: '5BzdwfkJyPTjzFhJ3zGQrg' ,
+    url: 'https://images.ctfassets.net/t2ekr6eg3fr3/5BzdwfkJyPTjzFhJ3zGQrg/2dd62521fe065a8ea539ae8aed33c720/CTA2-500x500-V01.png',
+    width: 500,
+    height: 500,
+    title: 'CTA2-500x500-V01',
+    description: ''
+  }
 };
