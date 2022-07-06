@@ -86,7 +86,7 @@ export default function PostBody({
         {h2Sections.map((section, i) => (
           <section 
             id={section.title} ref={section.ref} key={section.title} 
-            className={h2Sections.length-1==i && `${styles.endCap}`}>
+            className={h2Sections.length-1==i ? `${styles.endCap}`:""}>
             <PostContent docData={section.doc} docLinks={body.links} />
           </section>
         ))}
