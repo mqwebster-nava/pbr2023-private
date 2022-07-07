@@ -2,8 +2,7 @@
 /* For Desktop Navbar  */
 .dropdownAnimations:hover svg, .dropdownAnimations:focus-within svg {
     transform: rotate(180deg);
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
+    transition: transform 2000ms;
   }
   
   .dropdownAnimations > div:first-of-type::after{

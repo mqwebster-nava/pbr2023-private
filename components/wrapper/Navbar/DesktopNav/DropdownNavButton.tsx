@@ -37,15 +37,16 @@ const DropdownNavButton = (props) => {
 
   return (
     <div
+      role={"menu"}
       className={`${styles.dropdownAnimations} relative group my-auto`}
       onMouseEnter={()=>setIsShowingMenu(true)}
       onMouseLeave={()=>setIsShowingMenu(false)}
       onFocus={()=>setIsShowingMenu(true)}
       onBlur={()=>setIsShowingMenu(false)}
+      aria-expanded={isShowingMenu? "true":"false"}
     >
       <div
        tabIndex={0}
-        aria-expanded={isShowingMenu? "true":"false"}
         className={`dropdowntitle
         flex flex-row justify-between items-center gap-x-xs
          cursor-pointer mr-3xl
@@ -61,6 +62,7 @@ const DropdownNavButton = (props) => {
         <SlideDown className={`mt-lg  bg-white`}>
           { props.subpages.map((navitem, i) => (
                 <a
+                  role={"menuitem"}
                   key={navitem.title}
                   href={navitem.slug}
                   className={`text-gray-900 text-left  block  px-[28px] font-sans hover:underline 
