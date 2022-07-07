@@ -19,13 +19,15 @@ const ArticleInfoComponent = ({
       <div className="font-sans md:block flex justify-between pb-xl md:pb-2xl">
         <div>
        {publishDate&& <div className={"pb-2xl"}>
-          <h3 className="font-bold">Published</h3>
-          <p className="font-sans">{publishDate}</p>
+       <p className="font-sans">
+          <b className="font-bold block pb-sm">Published</b>
+        {publishDate}</p>
           </div>}
           <div className="md:pb-2xl">
-            <h3 className="font-bold pb-sm">Authors</h3>
+            <p className="font-bold pb-sm">Authors</p>
+            <ul>
             {authors.map((author) => (
-              <div id={author.name} className="pb-md " key={author.name}>
+              <li id={author.name} className="pb-md " key={author.name}>
                 <p>
                   <LinkText
                     href={`/authors/${author.slug}`}
@@ -35,25 +37,28 @@ const ArticleInfoComponent = ({
                   </LinkText>
                 </p>
                 <p className=" text-gray-700">{author.role}</p>
-              </div>
+              </li>
             ))}
+            </ul>
           </div>
           </div>
         <div>
-        {contentTags && <h3 className="font-bold pb-sm">Topics</h3> }
+        {contentTags && <p className="font-bold pb-sm">Topics</p> }
           {contentTags &&
-            contentTags.map((tag) => {
+          (<ul>
+            {contentTags.map((tag) => {
               return (
-                <p id={`${tag}`} key={tag}>
+                <li id={`${tag}`} key={tag}>
                   <LinkText
                     href={`/tags/${slugify(tag)}`}
                     variant={"underlined"}
                   >
                     {tag}
                   </LinkText>
-                </p>
+                </li>
               );
-            })}
+            })}  </ul>)}
+          
         </div>
       </div>
     </div>
