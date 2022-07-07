@@ -37,7 +37,7 @@ const ArticleFeed = ({
         <div className={`w-full pt-md flex justify-between `}>
           <div className="md:w-3/4 ">
             {title && (
-              <h3 className="font-sans type-preset-3  font-bold">{title} </h3>
+              <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
             )}
             {body && (
               <p
