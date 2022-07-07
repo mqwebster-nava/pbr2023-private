@@ -17,14 +17,24 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
-        source:
-          "/case-studies/product-management-in-government-why-its-essential-when-the-stakes-are-high.html",
+        source:"/case-studies/product-management-in-government-why-its-essential-when-the-stakes-are-high.html",
+        destination: "/insights/product-management-government-high-stakes",
+        permanent: true,
+      },
+      {
+        source:"/case-studies/product-management-in-government-why-its-essential-when-the-stakes-are-high",
         destination: "/insights/product-management-government-high-stakes",
         permanent: true,
       },
       {
         source:
           "/case-studies/how-to-use-policy-as-an-engineering-tool-not-a-crutch.html",
+        destination: "/insights/policy-engineering-tool",
+        permanent: true,
+      },
+      {
+        source:
+          "/case-studies/how-to-use-policy-as-an-engineering-tool-not-a-crutch",
         destination: "/insights/policy-engineering-tool",
         permanent: true,
       },
@@ -37,13 +47,32 @@ module.exports = withBundleAnalyzer({
       },
       {
         source:
+          "/case-studies/cloud-infrastructure-in-the-federal-government",
+        destination:
+          "/insights/cloud-infrastructure-excellent-customer-experiences",
+        permanent: true,
+      },
+      {
+        source:
           "/case-studies/integrating-eligibility-and-enrollment-for-health-and-human-services.html",
         destination:
           "/case-studies/integrating-eligibility-enrollment-software",
         permanent: true,
       },
       {
+        source:
+          "/case-studies/integrating-eligibility-and-enrollment-for-health-and-human-services",
+        destination:
+          "/case-studies/integrating-eligibility-enrollment-software",
+        permanent: true,
+      },
+      {
         source: "/case-studies/shaping-policy-with-design-practices.html",
+        destination: "/case-studies/shaping-policy-design-practices",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/shaping-policy-with-design-practices",
         destination: "/case-studies/shaping-policy-design-practices",
         permanent: true,
       },
@@ -55,7 +84,19 @@ module.exports = withBundleAnalyzer({
       },
       {
         source:
+          "/case-studies/Supporting-Veterans-During-the-Pandemic-with-Virtual-Tele-Hearings",
+        destination: "/case-studies/supporting-veterans-virtual-tele-hearings",
+        permanent: true,
+      },
+      {
+        source:
           "/case-studies/prioritizing-research-to-quickly-serve-people-during-a-crisis.html",
+        destination: "/case-studies/help-people-crisis-user-research",
+        permanent: true,
+      },
+      {
+        source:
+          "/case-studies/prioritizing-research-to-quickly-serve-people-during-a-crisis",
         destination: "/case-studies/help-people-crisis-user-research",
         permanent: true,
       },
@@ -65,7 +106,12 @@ module.exports = withBundleAnalyzer({
           "/case-studies/observations-integrated-eligibility-enrollment",
         permanent: true,
       },
-      
+      {
+        source: "/case-studies/Integrating-Eligibility-&-Enrollment",
+        destination:
+          "/case-studies/observations-integrated-eligibility-enrollment",
+        permanent: true,
+      },
       {
         source: "/insights/why-nava-public-benefit-corporation.html",
         destination: "/insights/why-nava-public-benefit-corporation",
@@ -77,9 +123,18 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/insights/digital-services-that-build-trust",
+        destination: "/insights/digital-services-build-trust",
+        permanent: true,
+      },
+      {
         source: "/insights/reimagine-unemployment-insurance.html",
-        destination:
-          "/insights/reimagine-unemployment-insurance-services-start-small",
+        destination:"/insights/reimagine-unemployment-insurance-services-start-small",
+        permanent: true,
+      },
+      {
+        source: "/insights/reimagine-unemployment-insurance",
+        destination:"/insights/reimagine-unemployment-insurance-services-start-small",
         permanent: true,
       },
       {
@@ -93,15 +148,28 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/insights/equitable-research-recruitment",
+        destination: "/insights/begin-equitable-research-recruitment",
+        permanent: true,
+      },
+      {
         source: "/insights/using-metrics-to-measure-your-program.html",
         destination: "/insights/outcomes-metrics-measure-program",
         permanent: true,
       },
       {
-        source:
-          "/insights/repeatable-processes-for-integrated-benefits-systems.html",
-        destination:
-          "/insights/repeatable-sustainable-processes-building-benefits-systems",
+        source: "/insights/using-metrics-to-measure-your-program",
+        destination: "/insights/outcomes-metrics-measure-program",
+        permanent: true,
+      },
+      {
+        source: "/insights/repeatable-processes-for-integrated-benefits-systems.html",
+        destination: "/insights/repeatable-sustainable-processes-building-benefits-systems",
+        permanent: true,
+      },
+      {
+        source: "/insights/repeatable-processes-for-integrated-benefits-systems",
+        destination:"/insights/repeatable-sustainable-processes-building-benefits-systems",
         permanent: true,
       },
       {
@@ -125,12 +193,22 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/insights/envision-future-PFML",
+        destination: "/insights/envision-future-paid-family-medical-leave",
+        permanent: true,
+      },
+      {
         source: "/2019/08/06/service-blueprinting-facilitation-guide/",
         destination: "/toolkits/service-blueprinting-facilitation-guide",
         permanent: true,
       },
       {
         source: "/toolkits/service-blueprinting-facilitation-guide.html",
+        destination: "/toolkits/service-blueprinting-facilitation-guide",
+        permanent: true,
+      },
+      {
+        source: "/toolkits/service-blueprinting-facilitation-guide",
         destination: "/toolkits/service-blueprinting-facilitation-guide",
         permanent: true,
       },
@@ -142,12 +220,29 @@ module.exports = withBundleAnalyzer({
       },
       {
         source:
+          "/toolkits/help-people-faster-during-a-crisis-with-service-design",
+        destination: "/toolkits/service-design-crisis-response",
+        permanent: true,
+      },
+      {
+        source:
           "/toolkits/protect-privacy-and-get-informed-consent-during-research.html",
         destination: "/toolkits/plain-language-templates-user-research",
         permanent: true,
       },
       {
+        source:
+          "/toolkits/protect-privacy-and-get-informed-consent-during-research",
+        destination: "/toolkits/plain-language-templates-user-research",
+        permanent: true,
+      },
+      {
         source: "/toolkits/conduct-user-research-to-improve-forms.html",
+        destination: "/toolkits/user-research-improving-forms",
+        permanent: true,
+      },
+      {
+        source: "/toolkits/conduct-user-research-to-improve-forms",
         destination: "/toolkits/user-research-improving-forms",
         permanent: true,
       },
@@ -158,7 +253,18 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source:
+          "/toolkits/build-high-performing-product-teams-with-product-ops-processes",
+        destination: "/toolkits/product-operations-processes",
+        permanent: true,
+      },
+      {
         source: "/toolkits/content-strategy-for-user-onboarding.html",
+        destination: "/toolkits/content-strategy-user-onboarding",
+        permanent: true,
+      },
+      {
+        source: "/toolkits/content-strategy-for-user-onboarding",
         destination: "/toolkits/content-strategy-user-onboarding",
         permanent: true,
       },
@@ -170,7 +276,19 @@ module.exports = withBundleAnalyzer({
       },
       {
         source:
+          "/toolkits/measuring-success-power-your-mission-with-human-centered-agile-technology",
+        destination: "/toolkits/measuring-success-power-mission",
+        permanent: true,
+      },
+      {
+        source:
           "/toolkits/engaging-users-and-iterating-power-your-mission-with-human-centered-agile-technology.html",
+        destination: "/toolkits/engaging-users-iterating-power-mission",
+        permanent: true,
+      },
+      {
+        source:
+          "/toolkits/engaging-users-and-iterating-power-your-mission-with-human-centered-agile-technology",
         destination: "/toolkits/engaging-users-iterating-power-mission",
         permanent: true,
       },
@@ -182,7 +300,19 @@ module.exports = withBundleAnalyzer({
       },
       {
         source:
+          "/toolkits/building-tech-power-your-mission-with-human-centered-agile-technology",
+        destination: "/toolkits/building-technology-power-mission",
+        permanent: true,
+      },
+      {
+        source:
           "/toolkits/setting-goals-power-your-mission-with-human-centered-agile-technology.html",
+        destination: "/toolkits/setting-goals-power-mission",
+        permanent: true,
+      },
+      {
+        source:
+          "/toolkits/setting-goals-power-your-mission-with-human-centered-agile-technology",
         destination: "/toolkits/setting-goals-power-mission",
         permanent: true,
       },
@@ -229,6 +359,13 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source:
+          "/working-at-nava/interviewing-at-nava-preparing-for-portfolio-presentation",
+        destination:
+          "/working-at-nava/interviewing-preparing-portfolio-presentation",
+        permanent: true,
+      },
+      {
         source: "/working-at-nava/senior-engineer-kat-tipton.html",
         destination: "/working-at-nava/senior-engineer-kat-tipton",
         permanent: true,
@@ -236,6 +373,11 @@ module.exports = withBundleAnalyzer({
       {
         source: "/working-at-nava/security-engineer-mohib-rizvi.html",
         destination: "/working-at-nava/security-engineer-Mohib-Rizvi",
+        permanent: true,
+      },
+      {
+        source: "/working-at-nava/billie-wright-vp-people-operations.html",
+        destination: "/working-at-nava/billie-wright-vp-people-operations",
         permanent: true,
       },
       {
