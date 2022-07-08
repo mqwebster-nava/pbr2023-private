@@ -198,17 +198,7 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
-        source: "/2019/08/06/service-blueprinting-facilitation-guide/",
-        destination: "/toolkits/service-blueprinting-facilitation-guide",
-        permanent: true,
-      },
-      {
         source: "/toolkits/service-blueprinting-facilitation-guide.html",
-        destination: "/toolkits/service-blueprinting-facilitation-guide",
-        permanent: true,
-      },
-      {
-        source: "/toolkits/service-blueprinting-facilitation-guide",
         destination: "/toolkits/service-blueprinting-facilitation-guide",
         permanent: true,
       },
