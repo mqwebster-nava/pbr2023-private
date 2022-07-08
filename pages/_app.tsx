@@ -16,33 +16,35 @@ import * as gtag from "../lib/gtag";
 function MyApp({ Component, pageProps }: AppProps) {
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
   const pageData: PageInterface = ("page" in pageProps)? pageProps.page : pageProps;
+  const env = process.env.NODE_ENV
   const router = useRouter();
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
+  //  if(env=="production"){
+      const handleRouteChange = (url) => {
+        gtag.pageview(url);
+      };
+      router.events.on("routeChangeComplete", handleRouteChange);
+      return () => {
+        router.events.off("routeChangeComplete", handleRouteChange);
+      };
+  //  }
   }, [router.events]);
 
   // TODO need to get the url from the slug and page interface data
-  /*
-  Page view
-  */
   return (
     <>
+{/* { (env=="production") && */}
     <Script 
     strategy="afterInteractive"
-     src="https://www.googletagmanager.com/gtag/js?id=G-BVP54XXLSE"/>
-    <Script strategy="afterInteractive"
+     src="https://www.googletagmanager.com/gtag/js?id=UA-61902536-1"/>
+  {/* { (env=="production") && */}
+   <Script strategy="afterInteractive" 
     dangerouslySetInnerHTML={{
       __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-BVP54XXLSE', {
+        gtag('config', 'UA-61902536-1', {
           page_path: window.location.pathname,
         });
       `,
@@ -52,7 +54,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />
         <meta property="og:type" content="website" />
-        {pageData.title && <meta property="og:title" content={pageData.title} /> }
+       
+       <meta property="og:title" content={pageData.title} /> 
+       <link rel="canonical" href="https://www.navapbc.com/" />
+        <meta property="og:url" content="https://www.navapbc.com/" />
+        <meta property="og:site_name" content="Nava PBC" />
+
         {pageData.description && 
         <>
         <meta property="og:description" content={pageData.description } />
