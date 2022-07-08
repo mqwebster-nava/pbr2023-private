@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const env = process.env.NODE_ENV
   const router = useRouter();
   useEffect(() => {
-  //  if(env=="production"){
+    if(env=="production"){
       const handleRouteChange = (url) => {
         gtag.pageview(url);
       };
@@ -27,17 +27,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       return () => {
         router.events.off("routeChangeComplete", handleRouteChange);
       };
-  //  }
+    }
   }, [router.events]);
 
   // TODO need to get the url from the slug and page interface data
   return (
     <>
-{/* { (env=="production") && */}
+{ (env=="production") &&
     <Script 
     strategy="afterInteractive"
-     src="https://www.googletagmanager.com/gtag/js?id=UA-61902536-1"/>
-  {/* { (env=="production") && */}
+     src="https://www.googletagmanager.com/gtag/js?id=UA-61902536-1"/>}
+  { (env=="production") && 
    <Script strategy="afterInteractive" 
     dangerouslySetInnerHTML={{
       __html: `
@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
       `,
     }}
-    />
+    />}
       <Head>
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />
