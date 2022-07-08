@@ -56,8 +56,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:type" content="website" />
        
        <meta property="og:title" content={pageData.title} /> 
-       <link rel="canonical" href="https://www.navapbc.com/" />
-        <meta property="og:url" content="https://www.navapbc.com/" />
+       <link rel="canonical" href={`https://www.navapbc.com${pageData.slug}`} />
+        <meta property="og:url" content={`https://www.navapbc.com${pageData.slug}`} />
         <meta property="og:site_name" content="Nava PBC" />
 
         {pageData.description && 

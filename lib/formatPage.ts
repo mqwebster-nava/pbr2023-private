@@ -7,7 +7,7 @@ intercept observer.
 
 import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
-import { capitalize, liftData } from "utils/utils";
+import { capitalize, getContentUrl, liftData } from "utils/utils";
 
 const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -46,7 +46,7 @@ export function formatPage(page){
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
   const formattedPage: PageInterface =  {
     id: post.id,
-    slug: post.slug,
+    slug: getContentUrl(post.contentType, post.slug),
     title: post.title,
     socialImage: liftData(post.promoImage)?? defaultSocialImage,
     isBottomCTA: true,
@@ -109,7 +109,7 @@ export function formatAuthorPage(slug, author){
     
   const formattedPage: PageInterface = {
     id: slug,
-    slug: slug,
+    slug: `/authors/${slug}`,
     title: author.name,
     description:author.bio,
     socialImage: defaultSocialImage,
@@ -142,7 +142,7 @@ export function formatTagsPage(slug, tagName, posts){
     
   const formattedPage: PageInterface = {
     id: slug,
-    slug: slug,
+    slug: `/tags/${slug}`,
     title: tagName,
     socialImage: defaultSocialImage,
     description:`Posts related to ${tagName}`,

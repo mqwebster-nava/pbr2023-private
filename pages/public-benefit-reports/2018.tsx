@@ -13,7 +13,7 @@ export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2018);
   const formattedPage: PageInterface = {
     id: "public-benefit-reports/2018",
-    slug: "public-benefit-reports/2018",
+    slug: "/public-benefit-reports/2018",
     title: "Nava: Public Benefit Reports: 2018 Progress Takes Work",
     description:"Our government partners are committed to doing the hard work it takes to transform government services. See what we’ve accomplished together.",
     socialImage: {

@@ -14,7 +14,7 @@ export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2019);
   const formattedPage: PageInterface = {
     id: "public-benefit-reports/2019",
-    slug: "public-benefit-reports/2019",
+    slug: "/public-benefit-reports/2019",
     title: "Nava: Public Benefit Reports: 2019 Think Long Term",
     description:"Building simple, effective, and accessible government services is an ongoing, continuous process. See how thinking long-term informs and strengthens our work.",
     socialImage: {
