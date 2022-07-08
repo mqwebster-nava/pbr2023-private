@@ -58,8 +58,8 @@ const DropdownNavButton = (props) => {
       
         <Chevron/>
       </div>
-      <div className={`absolute -left-[28px] top-[45px] z-1 w-[236px] hidden group-hover:block group-focus-within:block   `}>
-        <SlideDown className={`mt-lg  bg-white`}>
+      <div className={`absolute -left-[28px] top-[43px] z-1 w-[236px] hidden group-hover:block group-focus-within:block   `}>
+        <SlideDown className={`mt-[19px]  bg-white`}>
           { props.subpages.map((navitem, i) => (
                 <a
                   role={"menuitem"}
