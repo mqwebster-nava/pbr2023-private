@@ -12,7 +12,7 @@ import ReportSections from "./ReportBody/ReportSection/ReportSections";
 import ReportShoutoutSection from "./ReportBody/ReportSection/ReportShoutoutSection";
 import ReportShoutoutColumns from "./ReportBody/ReportSection/ReportShoutoutColumns";
 import ReportIntroSection from "./ReportBody/ReportSection/ReportIntroSection";
-import ReportHeaderHero from "./ReportHeader/ReportHeaderHero";
+import ReportHeaderHero2019 from "./ReportHeader/ReportHeaderHero2019";
 import ReportHeaderTextOverlay from "./ReportHeader/ReportHeaderTextOverlay";
 import ReportHeaderNavy from "./ReportHeader/ReportHeaderNavy";
 import ReportSectionHeaderNavy from "./ReportBody/ReportSection/ReportHeaderSectionNavy";
@@ -37,7 +37,7 @@ export {
   ReportShoutoutSection,
   ReportShoutoutColumns,
   ReportIntroSection,
-  ReportHeaderHero,
+  ReportHeaderHero2019,
   ReportHeaderTextOverlay,
   ReportHeaderNavy,
   ReportSectionHeaderNavy,

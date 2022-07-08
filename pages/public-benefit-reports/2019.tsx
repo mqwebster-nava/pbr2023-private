@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import {
-  ReportHeaderHero,
+  ReportHeaderHero2019,
   ReportIntroSection,
   ReportSections,
   ReportShoutoutSection,
@@ -98,9 +98,8 @@ export default function PBR2019(props:PageInterface) {
 
   return (
     <main>
-      <ReportHeaderHero
+      <ReportHeaderHero2019
         title={title}
-        banner="/images/pbrs/2019-head.png"
         altText="An illustration of people holding lines that spell out NAVA."
         pdfLink="/files/2019NavaPublicBenefitReport.pdf"
       />
