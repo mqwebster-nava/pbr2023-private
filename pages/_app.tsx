@@ -33,18 +33,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   // TODO need to get the url from the slug and page interface data
   return (
     <>
-{ (env=="production") &&
+ { (env=="production") && 
     <Script 
     strategy="afterInteractive"
-     src="https://www.googletagmanager.com/gtag/js?id=UA-61902536-1"/>}
-  { (env=="production") && 
+     src="https://www.googletagmanager.com/gtag/js?id=G-BVP54XXLSE"/>}
+   { (env=="production") &&  
    <Script strategy="afterInteractive" 
     dangerouslySetInnerHTML={{
       __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-61902536-1', {
+        gtag('config', 'G-BVP54XXLSE', {
           page_path: window.location.pathname,
         });
       `,
