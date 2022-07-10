@@ -441,6 +441,11 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/wic-webinar",
+        destination: "/partnerships/wic",
+        permanent: true,
+      },
+      {
         source: "/uploads/2019NavaPublicBenefitReport.pdf",
         destination: "/files/2019NavaPublicBenefitReport.pdf",
         permanent: true,
