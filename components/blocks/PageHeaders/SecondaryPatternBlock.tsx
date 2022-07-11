@@ -1,7 +1,7 @@
 
 import Image from "next/image";
-import brandDirection from "public/images/Nava-Brand Pattern-Direction1-Heavy-White-V01@4x 3.svg";
-import brandTerrain from "public/images/Nava-Brand Pattern-Terrain3-Medium-White-V01@4x 2.svg";
+import brandDirection from "public/images/Nava-Brand-Pattern-Direction1-Heavy-White-V01@4x-3.svg";
+import brandTerrain from "public/images/Nava-Brand-Pattern-Terrain3-Medium-White-V01@4x-2.svg";
 
 
 const SecondaryPatternBlock = ({bgColor, bgBase}) => {

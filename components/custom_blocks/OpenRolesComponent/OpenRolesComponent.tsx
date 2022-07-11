@@ -103,6 +103,7 @@ export default function OpenRolesComponent() {
       </div>
 
       {departments.map((d,j) => {
+        if(d.title=="Software") d.title="Engineering"
         return (
           <div id={`${slugify(d.title)}`} key={`${d.title} ${j} section`}>
             <HorizontalLine variant="dark"/>

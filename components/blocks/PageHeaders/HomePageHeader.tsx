@@ -78,7 +78,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
           </div>
         </div>
       </div>
-      <div className=" relative responsive-container ">
+      <div className=" relative responsive-container overflow-hidden">
    
       <div
           className={` ${header.bg} -mt-[3px]  h-1/2 w-full absolute -z-10 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}

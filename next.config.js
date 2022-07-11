@@ -198,6 +198,11 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/insights/twelve-years-of-healthcare-dot-gov.html",
+        destination: "/insights/twelve-years-of-healthcare-dot-gov",
+        permanent: true,
+      },
+      {
         source: "/toolkits/service-blueprinting-facilitation-guide.html",
         destination: "/toolkits/service-blueprinting-facilitation-guide",
         permanent: true,
@@ -432,6 +437,11 @@ module.exports = withBundleAnalyzer({
       },
       {
         source: "/wic-partnerships",
+        destination: "/partnerships/wic",
+        permanent: true,
+      },
+      {
+        source: "/wic-webinar",
         destination: "/partnerships/wic",
         permanent: true,
       },

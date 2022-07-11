@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import {
-  ReportHeaderHero,
+  ReportHeaderHero2019,
   ReportIntroSection,
   ReportSections,
   ReportShoutoutSection,
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   const report = getMarkdownByFilename("public-benefit-reports", 2019);
   const formattedPage: PageInterface = {
     id: "public-benefit-reports/2019",
-    slug: "public-benefit-reports/2019",
+    slug: "/public-benefit-reports/2019",
     title: "Nava: Public Benefit Reports: 2019 Think Long Term",
     description:"Building simple, effective, and accessible government services is an ongoing, continuous process. See how thinking long-term informs and strengthens our work.",
     socialImage: {
@@ -98,9 +98,8 @@ export default function PBR2019(props:PageInterface) {
 
   return (
     <main>
-      <ReportHeaderHero
+      <ReportHeaderHero2019
         title={title}
-        banner="/images/pbrs/2019-head.png"
         altText="An illustration of people holding lines that spell out NAVA."
         pdfLink="/files/2019NavaPublicBenefitReport.pdf"
       />
