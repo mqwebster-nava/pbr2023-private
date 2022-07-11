@@ -29,7 +29,7 @@ export interface PageHeaderInterface {
 const PageHeader = (props: PageHeaderInterface) => {
   if (props.variant == "Secondary" || !props.variant) {
     return (
-      <header key={props.id}>
+      <header key={props.id} className="overflow-hidden">
         <div className={"bg-navy-900"}>
           <div className={`animate-titleSlide responsive-container z-10 relative pt-2xl  lg:pt-3xl `}>
             <TitleBlock
@@ -46,7 +46,7 @@ const PageHeader = (props: PageHeaderInterface) => {
   }
   if (props.variant == "Primary") {
     return (
-      <header  key={props.id} >
+      <header  key={props.id} className="overflow-hidden" >
         <div className={`bg-purple-900 relative `} >
           <div
             className={` responsive-container z-10 relative pt-2xl pb-3xl  lg:pt-3xl lg:pb-4xl`}
@@ -70,7 +70,7 @@ const PageHeader = (props: PageHeaderInterface) => {
   }
   if (props.variant == "Post") {
     return (
-      <header key={props.id}>
+      <header key={props.id} className="overflow-hidden">
         <div className={"bg-sage-900"}>
           <div className={` responsive-container z-10 relative pt-2xl  lg:pt-3xl pb-2xl`}>
             <PostTitleBlock

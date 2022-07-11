@@ -21,7 +21,7 @@ const header =
 const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
 
   return (
-    <header key={id}>
+    <header key={id} className="overflow-hidden">
       <div className={`${header.bg}`}>
         <div className={`responsive-container relative z-20  `}>
           <div className={`
@@ -78,7 +78,6 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
           </div>
         </div>
       </div>
-      <div className="overflow-hidden">
       <div className="relative responsive-container">
       <div
           className={` ${header.bg} -mt-[3px]  h-1/2 w-full absolute -z-10 top-0 left-0 lg:left-1/2 lg:w-screen lg:-translate-x-1/2`}
@@ -104,7 +103,6 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
         </div>
         </div>
         </div>
-      </div>
     </header>
   );
 };
