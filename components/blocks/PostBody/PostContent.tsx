@@ -45,9 +45,9 @@ const PostContent = ({docData, docLinks, }) =>{
           ),
           
           [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
-          [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-2xl">{children}</ul> ),
-          [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-2xl">{children}</ol>,
-          [BLOCKS.LIST_ITEM]: (node, children) => <li className="-my-sm">{children}</li>,
+          [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
+          [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
+          [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,
          
           [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
           [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
