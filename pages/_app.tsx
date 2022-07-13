@@ -33,11 +33,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   // TODO need to get the url from the slug and page interface data
   return (
     <>
- { (env=="production") && 
+ {/* { (env=="production") &&  */}
     <Script 
     strategy="afterInteractive"
-     src="https://www.googletagmanager.com/gtag/js?id=G-BVP54XXLSE"/>}
-   { (env=="production") &&  
+     src="https://www.googletagmanager.com/gtag/js?id=G-BVP54XXLSE"/>
+   {/* { (env=="production") &&   */}
    <Script strategy="afterInteractive" 
     dangerouslySetInnerHTML={{
       __html: `
@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
       `,
     }}
-    />}
+    />
       <Head>
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />
