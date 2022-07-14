@@ -63,7 +63,7 @@ const SectionHeader = ({
   
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-3xl pb-xl`} key={id}>
+    <div className={`responsive-container pt-3xl pb-xl`} >
       <TitleBlock />
        <div className={`flex ${(subtitle || body) && "mb-xl"}`}>
        <div className={`${LineColor} h-[5px] w-[65px]`}></div>
