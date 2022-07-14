@@ -1,59 +1,111 @@
-## Set Up 
+# Nava PBC Website 
 
-1. Clone the repo
+> This is the repository for our company website, [navapbc.com](https://www.navapbc.com/). It is hosted on vercel, and built using the Next.js framework and Contentful as the CMS.
 
-1. Set node to latest stable version  
+**Note: Pushing to `main` will trigger a new build and release of the site.
+
+# Technical Stack
+
+## Framework: Next.js w/ Typescript 
+The site uses the [Next.js](https://nextjs.org/) react framework with typescript. This was chosen because of it's speed, flexibility, and popularity.
+## CMS: Contentful CMS
+The page and article content and assets live in [Contentful CMS](https://www.contentful.com/). The site interacts with contentful using it's graphql api. Pages are built out of components in contentful which map to components in the `blocks` folder.
+## Styling: Tailwind.css
+The styling of the site is almost entirely done using [tailwind.css](https://tailwindcss.com/), a flexible utility-first css framework. Utility tokens are defined in `tailwind.config.js`. When necessary, additional styling was added through plain css  scoped by css modules.
+## Hosting: Vercel
+[Vercel](https://vercel.com/) is a platform for static sites and frontend frameworks. This project lives in our "Nava-Comms" team account in vercel. The repo is linked to vercel so that any time a commit is pushed to `main`, vercel will rebuild and republish the site automatically.
+
+Our `navapbc.com` domain name is also currently managed by vercel. It automatically takes care of SSL certifications. 
+
+## Component Library: Storybook / Chromatic
+Storybook is a tool for building component libraries. This is useful for frontend testing and documentation. 
+# Contributing
+## Setting Up Locally
+
+### Clone the repo 
+```
+git clone https://github.com/navahq/nava-website.git
+```
+
+### Set node to latest stable version  
 ```
 nvm install --lts
 nvm use --lts
 ```
-Install yarn, if don't have it installed already
+### Install yarn, if don't have it installed already
 ```
 npm install yarn 
 ```
  
-install packages and run
+### Install packages and run
 ```
 yarn install
+```
+### Add variables to env.local
+Create an `env.local` file in the root directory. Copy and paste the vars fron `env.example`
+### Run the site
+
+```
 yarn dev
 ```
-
-
-To run
-yarn develop
-
-To run storybook 
-- yarn run storybook
-
-
- 
-** Add .env.example
-
-
-This package aims to be a flexible starting point if you want to use Nextjs, TailwindCSS, Storybook and TypeScript.
-
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Locally running site
 
-## Deploy on Vercel
+### Running the platform
+```
+yarn dev
+```
+### Building
+```
+yarn build
+```
+###
+
+
+## Deploy the Site to Navapbc.com
 
 The site is hosted on vercel. The main branch corresponds to the production site. Every time a change in a branch is pushed to github, vercel will make a new preview link with the site.
 
+### Deploy Storybook to Chromatic
+Run storybook locally
+```
+yarn run storybook
+```
 
+Publish storybook on chromatic
+```
+yarn run chromatic
+```
 
+# Structure
 
+## File Structure
+```
+├── components
+│   ├── atoms
+│   ├── blocks 
+│   ├── custom_blocks     One-off components
+│   ├── wrappers          Navbar and footer
+│   └── templates         Page template
+│
+├── content               content for migrated reports
+│            
+├── lib   
+│   ├── contentful
+│   ├── data
+│   ├── contentful
+│   ├── graphql_fragments
+│   ├── formatPage.ts 
+│   └── api.ts
+│
+├── pages                 site pages 
+├── public                site assets
+├── shared_interfaces     
+├── tests                 (not set up)
+├── styles                site-level styles
+└── utils                 misc helpers
+```
 
 
 
@@ -80,22 +132,6 @@ https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/mdx.md
 https://nextjs.org/docs/api-reference/next/image#objectfit
 
 
-
-
-
-### TailwindCSS
-
-Instead of using Storybook's own webpack, this repo uses nextjs build pipeline and then includes the generated CSS independently in Storybook.
-The only caveat is that you have to place the generated CSS somewhere that can be accessed by storybook webserver.
-
-Please review `package.json` and make changes according to your needs
-
-```json
-"tailwind-storybook": "tailwind build ./styles/tailwind.css -o ./public/storybook/tailwind.storybook.css",
-"tailwind-storybook-build": "NODE_ENV=production tailwind build ./styles/tailwind.css -o ./storybook-static/storybook/tailwind.storybook.css",
-"storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
-"build-storybook": "build-storybook && tailwind-storybook-build"
-```
 
 ## Approach to Component File Structure
 Any component row that’s only on a single page goes under custom_blocks. Component rows used throughout the site go in blocks.
