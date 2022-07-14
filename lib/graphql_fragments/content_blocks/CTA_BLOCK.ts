@@ -9,7 +9,6 @@ title
 body
 buttonText
 buttonPath
-colorTheme
 image {
     ${IMAGE_FIELDS}
 }
