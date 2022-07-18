@@ -6,19 +6,22 @@
 
 # Technical Stack
 
-## Framework: Next.js w/ Typescript 
-The site uses the [Next.js](https://nextjs.org/) react framework with typescript. This was chosen because of it's speed, flexibility, and popularity.
-## CMS: Contentful CMS
-The page and article content and assets live in [Contentful CMS](https://www.contentful.com/). The site interacts with contentful using it's graphql api. Pages are built out of components in contentful which map to components in the `blocks` folder.
-## Styling: Tailwind.css
-The styling of the site is almost entirely done using [tailwind.css](https://tailwindcss.com/), a flexible utility-first css framework. Utility tokens are defined in `tailwind.config.js`. When necessary, additional styling was added through plain css  scoped by css modules.
 ## Hosting: Vercel
 [Vercel](https://vercel.com/) is a platform for static sites and frontend frameworks. This project lives in our "Nava-Comms" team account in vercel. The repo is linked to vercel so that any time a commit is pushed to `main`, vercel will rebuild and republish the site automatically.
 
 Our `navapbc.com` domain name is also currently managed by vercel. It automatically takes care of SSL certifications. 
 
+## CMS: Contentful CMS
+The page and article content and assets live in [Contentful CMS](https://www.contentful.com/). The site interacts with contentful using it's graphql api. Pages are built out of components in contentful which map to components in the `blocks` folder.
+## Framework: Next.js w/ Typescript 
+The site uses the [Next.js](https://nextjs.org/) react framework with [typescript](https://www.typescriptlang.org/). This was chosen because of it's speed, flexibility, and popularity. The repo isn't strict typescript so javascript files can also be used if need be.
+## Styling: Tailwind.css
+The styling of the site is almost entirely done using [tailwind.css](https://tailwindcss.com/), a flexible utility-first css framework. Utility tokens are defined in `tailwind.config.js`. When necessary, additional styling was added through plain css  scoped by css modules.
 ## Component Library: Storybook / Chromatic
-Storybook is a tool for building component libraries. This is useful for frontend testing and documentation. 
+[Storybook](https://storybook.js.org/) is a tool for building component libraries. This is useful for frontend testing and documentation. Since our site is primarily built out of 'blocks' chosen in the CMS, this helps us document and test those blocks.
+
+[Chromatic](https://www.chromatic.com/) hosts the storybook on a public link ( LINK ) and provides tools for performing visual regression tests on the components. A webhook was set up in `.github/workflows/chromatic.yml` to rebuild the storybook when a commit is pushed.
+
 # Contributing
 ## Setting Up Locally
 
@@ -65,7 +68,7 @@ yarn build
 
 ## Deploy the Site to Navapbc.com
 
-The site is hosted on vercel. The main branch corresponds to the production site. Every time a change in a branch is pushed to github, vercel will make a new preview link with the site.
+The site is hosted on vercel. The `main` branch corresponds to the production site. Every time a change in a branch is pushed to github, vercel will make a new preview link with the site. 
 
 ### Deploy Storybook to Chromatic
 Run storybook locally
@@ -79,6 +82,7 @@ yarn run chromatic
 ```
 
 # Structure
+
 
 ## File Structure
 ```
@@ -104,13 +108,116 @@ yarn run chromatic
 ├── shared_interfaces     
 ├── tests                 (not set up)
 ├── styles                site-level styles
-└── utils                 misc helpers
+├── utils                 misc helpers
+├── package.json          list of packages added
+├── next.config.js        hosting configs (redirects etc)
+└── tailwind.config.css   tailwind variable overrides
+```
+
+## Pages
+All pages have at least some information stored in Contentful. Before rendering, their content is converted into the `PageInterface` model, which stores metadata and page content data.
+```
+// Page Interface Model
+export interface PageInterface {
+  id: string;
+  slug: string;
+  title: string;  
+  description: string;
+  socialImage?: ContentfulImageAsset;
+  preview?: boolean;
+  pageHeader: PageHeaderInterface;
+  contentBlocks: any; // data for page components
+  isBottomCTA?: boolean;
+}
 ```
 
 
+The 4 primary types of pages listed below determine how they are rendered on the site.
+
+<br/>
+
+### **Site Pages**
+
+The primary way pages are built is by using the `[Site] Page Content` model in contentful. 
+
+![Semantic description of image](/public/readme/sitepagecontentmodel.png)*Page content model in contentful*
+
+The title, description, slug, and promo image are used for metadata for the page. **A file matching the slug exactly must be in the `pages` folder** for page to render.
+
+The page header and content fields contain Contentful models that are used to render the components on the page. They are formatted in the `lib` file, then rendered in `components/templates/PageTemplates`
+
+<br/>
+
+### **Article Pages**
+
+Article pages include all insights, events, case stuides, news, and toolkits. They all use the same `Post` data model in Contentful. The articles are rendered in the `pages/[article type]/[slug]` by calling functions in `lib/api.ts.` They are converted from a `Post` data model to a `Page Interface` model in `lib/formatPage.ts` before being rendered in the same way Site Pages are.
+
+<br/>
+
+### **Author / Tag pages**
+
+These pages are a collection of posts related to a specific article or tag.
+
+<br/>
+
+### **Migrated Report Pages**
+
+The PBR 2018, PBR 2019, PBR 2020, and DEI pages were migrated over from the past site without major redesigns. Their page data is stored in Markdown files in the `content` folder rather than Contentful and they use custom _report_ components for their layout.
+
+<br/>
+
+## Blocks (Components)
+Each page is built from stacking `blocks` on top of each other. Each block corresponds to a `[Section]` data model in Contentful. 
+
+**How to create a Block - ex Quote Block**
+
+1. Create Contentful Model for a page component 
+![Semantic description of image](/public/readme/quote-contentful.png)*Quote content model in contentful*
+
+2. Add model to validation of the `[Site] Page Content` model ([link here](https://app.contentful.com/spaces/t2ekr6eg3fr3/content_types/pageContent/fields))
+
+![Semantic description of image](/public/readme/acc.png)*Quote content model in contentful*
 
 
 
+3. Add GraphQL Query for new component - create a new file in `lib/graphql_fragments` for the component and add the fields you want to pull in. Then go to `lib/PAGE_FIELDS.ts` and add the new type into the contentCollection section.
+
+![Semantic description of image](/public/readme/graphql-quot.png)*Quote graphql query* 
+
+4. Create a component in `components/blocks` with the same variable names as in contentful
+
+```
+interface QuoteBlockInterface {
+  id?: string;
+  body: string;
+  authorName: string;
+  authorRole: string;
+}
+const QuoteBlock = ({
+  body,
+  authorName,
+  authorRole,
+}: QuoteBlockInterface) => {
+    ...
+}
+```
+5. Connect the component to the data in `components/templates/PageTemplate`
+
+```
+const PageTemplate = ({
+  pageHeader, 
+  contentBlocks,
+}) => {
+  const getComponent = (entry: any, index) => {
+    const componentMap = {
+      "QuoteBlock": 
+         ()=> <QuoteBlock key={index} {...entry}/>,
+	    ...
+     } 
+   ...
+  };
+};
+```
 
 
 ## Resources
@@ -121,15 +228,9 @@ https://github.com/whitep4nth3r/nextjs-contentful-blog-starter
 https://betterprogramming.pub/create-a-blog-app-with-nextjs-and-contentful-api-7927af49b3b
 https://github.com/remarkjs/react-markdown
 
-https://stackoverflow.com/questions/54083103/contentful-documenttohtmlstring-doesnt-include-embedded-image-in-rich-text
-
-https://www.react-reveal.com/examples/common/
 
 https://storybook.js.org/tutorials/design-systems-for-developers/react/en/introduction/
 
-https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/mdx.md
-
-https://nextjs.org/docs/api-reference/next/image#objectfit
 
 
 
