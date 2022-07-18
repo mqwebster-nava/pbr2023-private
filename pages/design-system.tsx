@@ -26,13 +26,31 @@ export default function DesignSystem(props: PageInterface) {
   const page = props;
   return page ? (
     <div>
-      <PageHeader
+    
+      <PageTemplate {...page} />
+    </div>
+  ) : (
+    <div>Error</div>
+  );
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  const res: PageInterface = await getPageDataFromContentful({
+    slug: "/design-system",
+    preview: preview,
+  });
+  return {
+    props: res,
+  };
+}
+  /* <PageHeader
         id={"page-header"}
         title={"Design System"}
         subtitle={"Design System of navapbc.com"}
       ></PageHeader>
+ */
 
-      {/* <div className="responsive-container space-y-2 ">
+/* <div className="responsive-container space-y-2 ">
         <div>
           <div className="type-preset-5 font-sans font-black pt-3xl "> Colors </div>
           <hr className="pb-xl" />
@@ -500,21 +518,4 @@ export default function DesignSystem(props: PageInterface) {
           Core Components{" "}
         </div>
         <hr className="pb-xl" />
-      </div> */}
-
-      <PageTemplate {...page} />
-    </div>
-  ) : (
-    <div>Error</div>
-  );
-}
-
-export async function getStaticProps({ params, preview = false }) {
-  const res: PageInterface = await getPageDataFromContentful({
-    slug: "/design-system",
-    preview: preview,
-  });
-  return {
-    props: res,
-  };
-}
+      </div> */
