@@ -1,23 +1,16 @@
 import Image from "next/image";
 import QuotePattern from "public/images/pattern block.png";
-
-type QuoteBaseColor = "gold" | "purple";
 interface QuoteBlockInterface {
-  id: string;
+  id?: string;
   body: string;
   authorName: string;
   authorRole: string;
-  color?: QuoteBaseColor;
 }
-
 const QuoteBlock = ({
-  id,
   body,
   authorName,
   authorRole,
-  color,
 }: QuoteBlockInterface) => {
-  const baseColor = color ? color : "gold";
   return (
     <blockquote className={`bg-gold-700`}>
       <div className="responsive-container pt-2xl pb-3xl md:pb-4xl md:pt-3xl grid gap-x-2xl grid-cols-6">
