@@ -23,6 +23,6 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   "title": "Work on projects with a positive impact",
-  "subtitle": "Nava positively transforms the technology that helps people access public benefits. As a client services company, are clients are states and federal agencies. We help them improve how people apply for benefits, navigate their healthcare, and much more.",
+  "body": "Nava positively transforms the technology that helps people access public benefits. As a client services company, are clients are states and federal agencies. We help them improve how people apply for benefits, navigate their healthcare, and much more.",
   "colorTheme": "default"
 };
