@@ -493,6 +493,13 @@ module.exports = withBundleAnalyzer({
           "/files/Structuring%20a%20complex%20eligibility%20form%20for%20HealthCare.gov.pdf",
         permanent: true,
       },
+      {
+        source:
+          "/glossary",
+        destination:
+          "http://navahq.github.io/glossary/",
+        permanent: true,
+      },
     ];
   },
 });

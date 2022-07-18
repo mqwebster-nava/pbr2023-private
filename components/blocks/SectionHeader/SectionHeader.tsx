@@ -8,7 +8,6 @@ import ColorTheme from "shared_interfaces/ColorThemes";
 export interface SectionHeaderInterface {
   title: string;
   id: string;
-  subtitle?: any;
   body?:any;
   colorTheme?: ColorTheme;
   buttonText?: string;
@@ -18,7 +17,6 @@ export interface SectionHeaderInterface {
 const SectionHeader = ({
   id,
   title,
-  subtitle,
   body,
   colorTheme="default",
   buttonText,
@@ -63,13 +61,12 @@ const SectionHeader = ({
   
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-3xl pb-xl`} key={id}>
+    <div className={`responsive-container pt-3xl pb-xl`} >
       <TitleBlock />
-       <div className={`flex ${(subtitle || body) && "mb-xl"}`}>
+       <div className={`flex ${ body && "mb-xl"}`}>
        <div className={`${LineColor} h-[5px] w-[65px]`}></div>
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
-      {subtitle && <BodyBlock text={subtitle}/>}
       {body && <BodyBlock text={body}/>}
       {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
     </div>

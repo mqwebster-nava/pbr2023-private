@@ -40,3 +40,5 @@ yarn.lock
 # storybook build
 # generated on build
 /public/storybook/tailwind.storybook.css
+
+/storybook-static/

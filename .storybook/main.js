@@ -7,6 +7,14 @@ module.exports = {
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
     "../styles/*.stories.@(js|jsx|ts|tsx)",
   ],
+  refs: {
+    "chromatic-published-Storybook": {
+      // The title of your Storybook
+      title: "Design System",
+      // The url provided by Chromatic when it was published
+      url: "https://navapbc.chromatic.com",
+    },
+  },
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-docs",

@@ -5,7 +5,6 @@ sys {
     id
 }
 title
-subtitle
 body
 colorTheme
 buttonPath

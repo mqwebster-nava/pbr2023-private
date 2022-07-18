@@ -10,7 +10,7 @@
     "tailwind-storybook-build": "NODE_ENV=production postcss ./styles/tailwind.css -o ./storybook-static/storybook/tailwind.storybook.css",
     "storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook && npm run tailwind-storybook-build",
-    "chromatic": "npx chromatic --project-token=5e72f01a7a18",
+    "chromatic": "npx chromatic --project-token=3a397715e11a",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "next": "^12.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-gtm-module": "^2.0.11",
     "react-markdown": "^8.0.1",
     "react-popper-tooltip": "^4.3.1",
     "react-reveal": "^1.2.2",

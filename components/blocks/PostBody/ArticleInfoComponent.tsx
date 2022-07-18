@@ -43,12 +43,12 @@ const ArticleInfoComponent = ({
           </div>
           </div>
         <div>
-        {contentTags && <p className="font-bold pb-sm">Topics</p> }
+        {contentTags && <p className="font-bold pb-md">Topics</p> }
           {contentTags &&
           (<ul>
             {contentTags.map((tag) => {
               return (
-                <li id={`${tag}`} key={tag}>
+                <li id={`${tag}`} key={tag} className="pb-md">
                   <LinkText
                     href={`/tags/${slugify(tag)}`}
                     variant={"underlined"}
