@@ -24,7 +24,7 @@ const Footer = ({isBottomCTA=false}) => {
               className=""
             />
           </div>
-          <div className={"hidden col-span-0 sm:block  md:col-span-2 lg:col-span-4"}></div>
+          <div className={"hidden col-span-0 md:block  md:col-span-2 lg:col-span-4"}></div>
           <div className="col-span-6 sm:col-span-4 lg:col-span-3 ">
             {FooterNavData[0].map((data, i ) => (
                <div className={"pb-lg"} key={`list 1 ${i}`}>
@@ -50,7 +50,7 @@ const Footer = ({isBottomCTA=false}) => {
               "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
             }
           >
-            <p className="text-white font-sans type-preset-8 pt-md sm-pt-0">
+            <p className="text-white font-sans type-preset-8 pt-md sm:pt-0">
               {`© ${currentYear} Nava PBC. All rights reserved.`}
             </p>
             <div className="flex gap-2xl  type-preset-7">
