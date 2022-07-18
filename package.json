@@ -10,7 +10,7 @@
     "tailwind-storybook-build": "NODE_ENV=production postcss ./styles/tailwind.css -o ./storybook-static/storybook/tailwind.storybook.css",
     "storybook": "npm run tailwind-storybook && start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook && npm run tailwind-storybook-build",
-    "chromatic": "npx chromatic --project-token=5e72f01a7a18",
+    "chromatic": "npx chromatic --project-token=3a397715e11a",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
