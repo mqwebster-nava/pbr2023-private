@@ -1,10 +1,7 @@
 import { Button } from "../../atom/Button/Button";
 import Image from "next/image";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-import classNames from "classnames";
 
-
-type CTAColorTheme =   "plum" | "sage";
 interface CTABlockInterface {
   id: string;
   title: string;
@@ -12,7 +9,6 @@ interface CTABlockInterface {
   image: ContentfulImageAsset;
   buttonText: string;
   buttonPath: string;
-  colorTheme?: CTAColorTheme;
   isBottom: boolean
 }
 
@@ -25,12 +21,7 @@ const CTABlock = ({
   buttonText,
   isBottom=false
 }:CTABlockInterface) => {
-  //const bgColor=  classNames({"bg-plum-50": colorTheme=="plum","bg-sage-50": colorTheme=="sage",})
-  //const headerColor=classNames({"text-plum-900": colorTheme=="plum","text-sage-900": colorTheme=="sage",})
- //const subtitleColor= classNames({"text-plum-600": colorTheme=="plum","text-sage-600": colorTheme=="sage",})
-  //const layout= classNames({"flex-row-reverse": colorTheme=="plum"})
   return (
-
     <section className={`relative w-full bg-plum-50`}  key={id}>
       <div className={`responsive-container pt-md flex flex-col md:flex-row justify-start`} >
       <div className={`w-full md:w-1/2  pt-3xl pb-md md:pt-4xl md:pb-3xl `}>

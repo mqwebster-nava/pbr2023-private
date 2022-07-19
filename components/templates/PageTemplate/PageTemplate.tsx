@@ -44,7 +44,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "FloatingButtonBlock":()=><FloatingButtonBlock key={index} {...entry}/>,
-      "ContentGridFeatureCards": // Highlighted Information Card
+      "HighlightedInformationList": // Highlighted Information Card
          ()=><HighlightedInformationList key={index}  {...entry} />,
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />

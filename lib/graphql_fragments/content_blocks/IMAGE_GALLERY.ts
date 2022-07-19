@@ -6,9 +6,6 @@ sys {
 }
 colorTheme
 layout
-image {
-    ${IMAGE_FIELDS}
-}
 imagesCollection {
     items {
         ${IMAGE_FIELDS}

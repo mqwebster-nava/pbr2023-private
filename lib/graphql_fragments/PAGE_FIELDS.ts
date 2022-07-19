@@ -2,7 +2,7 @@
 import CAPABILITIES_SECTION from "./content_blocks/CAPABILITIES_SECTION";
 import CONTENT_BLOCK_ARTICLE_LIST from "./content_blocks/CONTENT_BLOCK_ARTICLE_LIST";
 import CONTENT_BLOCK from "./content_blocks/CONTENT_BLOCK_LINK_TO_PAGE";
-import CONTENT_GRID_FEATURE_CARDS from "./content_blocks/CONTENT_GRID_FEATURE_CARDS";
+import HIGHLIGHTED_INFORMATION_LIST from "./content_blocks/HIGHLIGHTED_INFORMATION_LIST";
 import CTA_BLOCK from "./content_blocks/CTA_BLOCK";
 import CUSTOM_BLOCK from "./content_blocks/CUSTOM_BLOCK";
 import IMAGE_GALLERY from "./content_blocks/IMAGE_GALLERY";
@@ -64,8 +64,8 @@ contentCollection(limit:20) {
         ... on TextBodyBlock {
             ${TEXT_BODY_BLOCK}
         }
-        ... on ContentGridFeatureCards { 
-            ${CONTENT_GRID_FEATURE_CARDS}
+        ... on HighlightedInformationList { 
+            ${HIGHLIGHTED_INFORMATION_LIST}
         }
         ... on CapabilitiesSection {
             ${CAPABILITIES_SECTION}

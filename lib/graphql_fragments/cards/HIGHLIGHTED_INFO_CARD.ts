@@ -1,6 +1,6 @@
 import IMAGE_FIELDS from "../IMAGE_FIELDS";
 
-const FEATURE_CARD = `
+const HIGHLIGHTED_INFO_CARD = `
   sys {
     id
   }
@@ -10,4 +10,4 @@ const FEATURE_CARD = `
     ${IMAGE_FIELDS}
   }
 `;
-export default FEATURE_CARD;
+export default HIGHLIGHTED_INFO_CARD;
