@@ -49,7 +49,7 @@ const ArticleFeed = ({
           </div>
           <div className="hidden md:inline-block">
           {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage">
+          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
             {buttonText ?? "See more"}
           </LinkText>
       )}
@@ -65,7 +65,7 @@ const ArticleFeed = ({
       />
        <div className="responsive-container md:hidden  py-lg flex justify-end">
           {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage">
+          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
             {buttonText ?? "See more"}
           </LinkText>
       )}

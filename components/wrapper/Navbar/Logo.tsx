@@ -2,7 +2,7 @@
 // TODO: a11y - Link must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Logo = ({isMobile=false}) =>{
   const id = isMobile ? "home-mobile-link" : "home-link";
-  return (<a href={"/"} id={id} className=" font-semibold font-sans type-preset-5 tracking-tight ">
+  return (<a href={"/"} id={id} className="navbar">
     <svg
       width={isMobile ? "62" : "96"}
       height={isMobile ? "28" : "44"}

@@ -68,7 +68,7 @@ const SectionHeader = ({
         {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
       </div> 
       {body && <BodyBlock text={body}/>}
-      {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white">{buttonText}</Button> </div>}
+      {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white" analyticsLabel="section-header">{buttonText}</Button> </div>}
     </div>
     </section>
   );

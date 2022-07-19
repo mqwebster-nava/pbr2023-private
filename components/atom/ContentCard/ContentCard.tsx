@@ -4,6 +4,7 @@ import HighlightedCard from "./HighlightedCard";
 //import LargeTextCard from "./LargeTextCard";
 import Image from "next/image";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 
 
 type CardSize = "half" |"quarter" | "full" | "third";
@@ -14,21 +15,18 @@ export interface ContentCardInterface {
   kicker?:string;
   size?:CardSize
   image?: ContentfulImageAsset;
+  analyticsLabel?:AnalyticsLabelType;
 }
 
-const ContentCard = (props: ContentCardInterface) => {
-  if (props.size=="full") return <HighlightedCard {...props} />;
-  //if (props.type === "Toolkit") return <LargeTextCard {...props} />;
-  return <DefaultContentCard {...props} />;
-};
 
-const DefaultContentCard  = ({
+const ContentCard  = ({
   title,
   path,
   image = null,
   summary,
   size = "quarter",
-  kicker
+  kicker,
+  analyticsLabel=""
 }: ContentCardInterface) => {
 
   let color = "navy"
@@ -70,7 +68,7 @@ const DefaultContentCard  = ({
  
 
   return (
-    <a href={`${path}`} className="group flex flex-col sm:flex-row gap-md md:flex-col h-full "
+    <a href={`${path}`} className= {`group flex flex-col sm:flex-row gap-md md:flex-col h-full ${analyticsLabel}`}
     aria-labelledby={path} 
     >
       <div className={` w-full sm:w-1/3 md:w-full `}>

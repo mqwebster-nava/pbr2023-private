@@ -16,6 +16,7 @@ const Footer = ({isBottomCTA=false}) => {
           className="responsive-container py-2xl sm:py-4xl grid grid-cols-12 gap-x-md md:gap-x-2xl"
         >
           <div className={"col-span-12 sm:col-span-2 pb-xl"}>
+            <a href="/" id={"footer-home"} aria-label={"Nava Home"} className="footer" >
             <Image
               src={logo}
               alt="Nava Logo"
@@ -23,12 +24,13 @@ const Footer = ({isBottomCTA=false}) => {
               width={65}
               className=""
             />
+            </a>
           </div>
           <div className={"hidden col-span-0 md:block  md:col-span-2 lg:col-span-4"}></div>
           <div className="col-span-6 sm:col-span-4 lg:col-span-3 ">
             {FooterNavData[0].map((data, i ) => (
                <div className={"pb-lg"} key={`list 1 ${i}`}>
-              <LinkText href={data.slug} variant={"default"}  color={"white"}>
+              <LinkText href={data.slug} variant={"default"} color={"white"} analyticsLabel="footer">
                 {data.title}
               </LinkText>
               </div>
@@ -37,7 +39,7 @@ const Footer = ({isBottomCTA=false}) => {
           <div className="col-span-6 sm:col-span-4 lg:col-span-3">
             {FooterNavData[1].map((data, i) => (
                <div className={"pb-lg"} key={`list 2 ${i}`}>
-                <LinkText href={data.slug} variant={"default"} color={"white"}>
+                <LinkText href={data.slug} variant={"default"} color={"white"} analyticsLabel="footer">
                   {data.title}
                 </LinkText>
               </div>
@@ -54,9 +56,9 @@ const Footer = ({isBottomCTA=false}) => {
               {`© ${currentYear} Nava PBC. All rights reserved.`}
             </p>
             <div className="flex gap-2xl  type-preset-7">
-            <LinkText href={"https://twitter.com/NavaPBC"} variant={"default"} color={"white"}> Twitter</LinkText>
-            <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"default"} color={"white"}>LinkedIn</LinkText>
-            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"}>  YouTube</LinkText>
+            <LinkText href={"https://twitter.com/NavaPBC"} variant={"default"} color={"white"} analyticsLabel={"footer"}> Twitter</LinkText>
+            <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"default"} color={"white"} analyticsLabel={"footer"}>LinkedIn</LinkText>
+            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"} analyticsLabel={"footer"} >  YouTube</LinkText>
             </div>
           </div>
         </div>

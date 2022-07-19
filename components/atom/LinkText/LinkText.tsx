@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 
 type LinkTextVariant = "default" | "underlined";
 type LinkColor = "black" |"sage" | "white";
@@ -7,13 +8,16 @@ export interface LinkTextProps {
   href: string;
   variant: LinkTextVariant;
   color?: LinkColor;
+  analyticsLabel?:AnalyticsLabelType
+
 }
 
 export const LinkText: React.FC<LinkTextProps> = ({
   children,
   href,
   variant,
-  color="black"
+  color="black",
+  analyticsLabel=""
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
   const target = href.substr(0, 1) === "/" ? "" : "_blank";
@@ -32,7 +36,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
 
   return (
     <a
-      className={` ${colorStyles} ${variantStyles}`}
+      className={` ${colorStyles} ${variantStyles} ${analyticsLabel}`}
       href={href}
       target={target}
     >

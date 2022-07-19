@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../Logo";
 import NavButton from "./NavButton";
 import DropdownNavButton from "./DropdownNavButton";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 
 /*
 Notes
@@ -29,6 +30,7 @@ Issues
 
 
 const DesktopNavBar = ({ NavData }) => {
+  const analyticsLabel: AnalyticsLabelType = "navbar";
     return (
       <div className="hidden lg:flex  responsive-container   flex-wrap items-center justify-between h-[80px]">
         <a className="absolute -left-[1000px] focus:left-0 top-0 bg-white p-sm" href="#main">Skip Navigation Links</a>
@@ -39,14 +41,15 @@ const DesktopNavBar = ({ NavData }) => {
               <NavButton
                 key={navSection.title}
                 slug={navSection.slug}
-              >
-                {navSection.title}
-              </NavButton>
+                title= {navSection.title}
+                analyticsLabel={analyticsLabel}
+              />
             ) : (
               <DropdownNavButton
                 key={navSection.title}
                 title={navSection.title}
                 subpages={navSection.subpages}
+                analyticsLabel={analyticsLabel}
               ></DropdownNavButton>
             );
           })}

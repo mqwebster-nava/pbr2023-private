@@ -4,15 +4,7 @@ import { Navbar, Footer } from "components/wrapper/index";
 import Head from "next/head";
 import { PageInterface } from "shared_interfaces/page_interface";
 import React, { useEffect } from "react";
-import Script from "next/script";
-import { useRouter } from "next/router";
-import * as gtag from "../lib/gtag";
 import TagManager from 'react-gtm-module';
-
-
-// const debugUrl = "http://localhost:3000/";
-// const baseUrl = "https://nava-website-2.vercel.app/";
-
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
@@ -20,42 +12,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-NRQK2XB' });
 }, []);
-  // const env = process.env.NODE_ENV
-  // const router = useRouter()
-  // useEffect(() => {
-  //   const handleRouteChange = (url) => {
-  //     gtag.pageview(url)
-  //   }
-  //   router.events.on('routeChangeComplete', handleRouteChange)
-  //   router.events.on('hashChangeComplete', handleRouteChange)
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange)
-  //     router.events.off('hashChangeComplete', handleRouteChange)
-  //   }
-  // }, [router.events])
-
-  // TODO need to get the url from the slug and page interface data
   return (
     <>
-  {/* { (env=="production") &&  
-    <Script 
-    strategy="afterInteractive"
-     src="https://www.googletagmanager.com/gtag/js?id=UA-61902536-1"/>}
-    { (env=="production") &&   
-   <Script 
-   id="gtag-init"
-   strategy="afterInteractive" 
-    dangerouslySetInnerHTML={{
-      __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-61902536-1', {
-          page_path: window.location.pathname,
-        });
-      `,
-    }}
-    />} */}
       <Head>
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />

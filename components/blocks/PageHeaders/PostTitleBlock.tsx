@@ -18,7 +18,7 @@ const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonT
             {body}
           </p>
         )}
-        {buttonPath && <Button href={buttonPath}>{buttonText}</Button>}
+        {buttonPath && <Button href={buttonPath} analyticsLabel="page-header">{buttonText}</Button>}
       </div>
     );
   };
