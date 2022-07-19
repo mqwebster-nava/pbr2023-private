@@ -6,7 +6,6 @@ type ImageGalleryColorTheme = "default" | "navy";
 type ImageGalleryLayout = "Four image grid" | "Three image row" | "Single image";
 interface ImageGalleryInterface {
   id: string;
-  image: ContentfulImageAsset; //TODO-  For transition - to remove once contentful is updated
   images?: Array<ContentfulImageAsset>;
   colorTheme?: ImageGalleryColorTheme;
   layout?: ImageGalleryLayout;
@@ -14,7 +13,6 @@ interface ImageGalleryInterface {
 
 const ImageGalleryBlock = ({
   id,
-  image,
   images,
   colorTheme = "default",
   layout="Single image",
@@ -23,7 +21,6 @@ const ImageGalleryBlock = ({
     "bg-navy-900": colorTheme == "navy",
   });
   //TODO-  For transition - to remove once contentful is updated
-  if(image && (!images || images.length<1)) images= [{...image}];
   
   const FourImageGrid = () => {
     if (!images || images.length < 3) return <div></div>;

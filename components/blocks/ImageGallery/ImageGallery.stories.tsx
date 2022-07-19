@@ -21,15 +21,15 @@ Primary.args = {
     id: '1G0XatnkkyIu35omQ6JXtf',
     __typename: 'ImageGallery',
     colorTheme: 'navy',
-    layout: null,
-    image: {
+    layout: "Single image",
+    images: [{
       sys: { id: 'mq5nTWUTQNVx3K2Mllmto' },
       url: 'https://images.ctfassets.net/t2ekr6eg3fr3/mq5nTWUTQNVx3K2Mllmto/39fd7054e582ebd267ce790a525d290e/Values_gallery_V1.png',
       width: 2220,
       height: 888,
       title: 'Values gallery V1',
       description: ''
-    },
+    }],
     
   
 };
