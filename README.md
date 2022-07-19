@@ -243,3 +243,5 @@ If any atom or row component becomes reusable, we switch its location to atoms o
 
 If any atom or row component feels redundant, we try to replace it with a core component.
 
+TODO
+- Image gallery  / Highlighted info sections
