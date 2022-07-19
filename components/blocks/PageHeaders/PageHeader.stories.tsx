@@ -32,17 +32,17 @@ Second.args = {
   subtitle: "Come help us build the services of a better future for millions of people.",
   image: "",
 };
-
+// TODO Replace image
 Image.args = {
   title: "Careers",
   subtitle: "Come help us build the services of a better future for millions of people.",
   image: {
     description: "",
-    height: 4480,
+    height: 720,
     sys: {id: '3ij9n5sQgDhoKdRpiAvphl'},
-    title: "Test Image",
-    url: "https://images.ctfassets.net/t2ekr6eg3fr3/3ij9n5sQgDhoKdRpiAvphl/bbf96df3225ac63c10bf232420ee20f6/pexels-rodnae-productions-7468198.jpg",
-    width: 6720,
+    title: "Careers Hero",
+    url: "https://images.ctfassets.net/t2ekr6eg3fr3/1JUCNfRws7YytAPntXLX4E/5943919906600c4dfc2c49bbb3355ed7/Careers__Hero.png",
+    width: 1280,
   },
 };
 

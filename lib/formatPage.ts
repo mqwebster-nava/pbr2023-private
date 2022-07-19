@@ -9,25 +9,27 @@ import { PageInterface } from "shared_interfaces/page_interface";
 import { BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "shared_interfaces/post_interface";
 import { capitalize, getContentUrl, liftData } from "utils/utils";
 
+
 const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
 const defaultSocialImage: ContentfulImageAsset = {
   id: '6f9PYC9LuxyTeGpAQ0A4Ea',
-  url: 'https://images.ctfassets.net/t2ekr6eg3fr3/4FSYQIlTVLRdNz6jb65wYI/b1ca224c0842ad6ba621397d324950e2/About-_Navas_Story_Social_1280x720_-8.png',
+  url: 'https://images.ctfassets.net/t2ekr6eg3fr3/1XVCel1lt0F1olfgIWgnh1/219ed4ebe26ec4528c04a834b2b77e8f/Author-Social-V2.png',
   width: 1280,
   height: 720,
   title: 'Purple Nava Logo',
   description: 'A logo to act as a placeholder for the social image'
 }
 export {defaultSocialImage};
+
 export function formatPage(page){
   
     let formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,
         title: page.title,
-        socialImage: liftData(page.socialImage) ?? defaultSocialImage,
+        socialImage: liftData(page.socialImage),
         pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
@@ -112,7 +114,14 @@ export function formatAuthorPage(slug, author){
     slug: `/authors/${slug}`,
     title: author.name,
     description:author.bio,
-    socialImage: defaultSocialImage,
+    socialImage: {
+      id: '1XVCel1lt0F1olfgIWgnh1',
+      url: 'https://images.ctfassets.net/t2ekr6eg3fr3/1XVCel1lt0F1olfgIWgnh1/219ed4ebe26ec4528c04a834b2b77e8f/Author-Social-V2.png',
+      width: 1280,
+      height: 720,
+      title: 'Author Social',
+      description: ''
+    },
     isBottomCTA: false,
     pageHeader: {
       id: `${slug}-header`,
@@ -144,7 +153,14 @@ export function formatTagsPage(slug, tagName, posts){
     id: slug,
     slug: `/tags/${slug}`,
     title: tagName,
-    socialImage: defaultSocialImage,
+    socialImage: {
+        id: '37ezJD5SPWfjLlm0n4swuq',
+        url: 'https://images.ctfassets.net/t2ekr6eg3fr3/37ezJD5SPWfjLlm0n4swuq/ac58529bd710971907e89e9e03b865cd/Tag-Social-V2.png',
+        width: 1280,
+        height: 720,
+        title: 'Tag Social',
+        description: ''
+      },
     description:`Posts related to ${tagName}`,
     isBottomCTA: false,
     pageHeader: {
