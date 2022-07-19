@@ -30,7 +30,7 @@ const CTABlock = ({
             {body}
           </p>
           {buttonText && (
-            <Button href={buttonPath} variant="white" children={buttonText}/> 
+            <Button href={buttonPath} variant="white" children={buttonText} analyticsLabel="CTA-block"/> 
           )}
         </div>
       <div className=" self-center md:self-end w-full md:w-1/2 max-h-[400px] max-w-[400px] lg:max-h-[500px] lg:max-w-[500px] overflow-hidden align-end">

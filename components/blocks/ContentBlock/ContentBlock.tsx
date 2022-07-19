@@ -39,7 +39,7 @@ export interface ContentBlockInterface {
         <div className={`w-full md:w-1/2 flex justify-center flex-col`}>
          {title && <h3 className={`font-sans type-preset-3 font-bold `}>{title} </h3> }
           <div className={`font-sans pt-lg type-preset-5 text-gray-700 pb-lg md:pb-xl`}>{body}</div>
-          {buttonText && <Button  href={buttonPath} variant="outlined" buttonAriaLabel={buttonAriaLabel}>{buttonText}</Button> }
+          {buttonText && <Button  href={buttonPath} variant="outlined" buttonAriaLabel={buttonAriaLabel} analyticsLabel={"content-and-image-block"}>{buttonText}</Button> }
         </div>
       </div>
       </section>

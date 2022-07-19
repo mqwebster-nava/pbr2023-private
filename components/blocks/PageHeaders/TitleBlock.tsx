@@ -13,7 +13,7 @@ const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonT
         </p>
        { buttonPath &&
        <div className="animate-titleSlideC pt-2xl lg:pt-3xl -mt-[5px]">
-       <Button variant="white" href={buttonPath}>
+       <Button variant="white" href={buttonPath} analyticsLabel={"page-header"}>
          {buttonText}
        </Button>
      </div>

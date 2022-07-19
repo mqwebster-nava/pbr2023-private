@@ -1,11 +1,20 @@
+
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 import styles from "./desktopnav.module.css";
 
-const NavButton = (props) => {
+interface NavButtonnInterface {
+  title: string;
+  slug: string;
+  analyticsLabel?: AnalyticsLabelType
+}
+
+
+const NavButton = ({title, slug, analyticsLabel="navbar"}:NavButtonnInterface) => {
     return (
       <a 
-      key={props.slug} 
-      href={props.slug}
-      className={`group relative inline-block  cursor-pointer    ${styles.lineAnimations}`}>
+      key={slug} 
+      href={slug}
+      className={`group relative inline-block  cursor-pointer ${styles.lineAnimations} ${analyticsLabel} `}>
         <p
           className={` 
           text-gray-600 pt-md font-sans 
@@ -15,7 +24,7 @@ const NavButton = (props) => {
        
         `}
         >
-          {props.children}
+          {title}
         </p>
       </a>
     );

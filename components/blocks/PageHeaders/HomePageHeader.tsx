@@ -71,7 +71,7 @@ const HomePageHeader = ({ id, title }: PageHeaderInterface) => {
               {title}
             </h1>
             <div className="block sm:hidden animate-titleSlideB">
-              <Button variant="white" href={"/services"}>
+              <Button variant="white" href={"/services"} analyticsLabel="page-header">
                 See our work
               </Button>
             </div>

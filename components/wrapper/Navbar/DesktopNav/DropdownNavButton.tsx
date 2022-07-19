@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 import styles from "./desktopnav.module.css";
 
 
@@ -13,7 +14,18 @@ import styles from "./desktopnav.module.css";
 // display none leave the containing box while visibility none removes  
 // -- both remove things from the accessibility tree
 
-const DropdownNavButton = (props) => {
+interface DropdownNavButtonInterface {
+  title: string;
+  subpages: any;
+  analyticsLabel?: AnalyticsLabelType
+}
+
+
+const DropdownNavButton = ({
+  title,
+  subpages,
+  analyticsLabel="navbar"
+}:DropdownNavButtonInterface) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
 
@@ -54,19 +66,19 @@ const DropdownNavButton = (props) => {
          text-gray-600 group-hover:text-gray-900 pr-xs font-sans
          `}
       >
-          {props.title}
+          {title}
       
         <Chevron/>
       </div>
       <div className={`absolute -left-[28px] top-[43px] z-1 w-[236px] hidden group-hover:block group-focus-within:block   `}>
         <SlideDown className={`mt-[19px]  bg-white`}>
-          { props.subpages.map((navitem, i) => (
+          { subpages.map((navitem, i) => (
                 <a
                   role={"menuitem"}
                   key={navitem.title}
                   href={navitem.slug}
-                  className={`text-gray-900 text-left  block  px-[28px] font-sans hover:underline 
-                  ${i==0 ? "pt-xl pb-md": i==props.subpages.length-1 ? "pt-md pb-xl":"py-md" }`}
+                  className={`text-gray-900 text-left  block  px-[28px] font-sans hover:underline  ${analyticsLabel}
+                  ${i==0 ? "pt-xl pb-md": i==subpages.length-1 ? "pt-md pb-xl":"py-md" }`}
                 >
                   {navitem.title}
                 </a>

@@ -1,13 +1,16 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import SlideDown from "react-slidedown";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 import Logo from "../Logo";
 import styles from "./mobilenav.module.css";
 
 const MobileNavBar = ({ NavData }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
+  const analyticsLabel: AnalyticsLabelType = "navbar";
 
   const NavLinksMobile = () => (
+    
     <nav
       aria-label="main"
       className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white z-50 "
@@ -22,7 +25,7 @@ const MobileNavBar = ({ NavData }) => {
               return "slug" in navSection ? (
                 <a
                   href={navSection.slug}
-                  className={`group block w-full border-t-[1px] border-black py-lg ${extraPadding}`}
+                  className={`group block w-full border-t-[1px] border-black py-lg ${extraPadding} ${analyticsLabel}`}
                   key={navSection.title}
                 >
                   <div className="relative inline-block  ">
@@ -72,7 +75,7 @@ const MobileNavBar = ({ NavData }) => {
                       <a
                         key={navitem.title}
                         href={navitem.slug}
-                        className="block hover:bg-green px-4 cursor-pointer"
+                        className={`block hover:bg-green px-4 cursor-pointer ${analyticsLabel}`}
                       >
                         <p className="font-sans text-gray-900 hover:underline py-2 pl-5">
                           {navitem.title}

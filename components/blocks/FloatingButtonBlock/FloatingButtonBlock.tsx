@@ -13,7 +13,7 @@ const FloatingButtonBlock = ({id, buttonText, buttonPath}:FloatingButtonInterfac
     return ( 
     <section className={``}>
     <div className="responsive-container">
-        <Button href={buttonPath} variant={"dark"}>{buttonText}</Button>
+        <Button href={buttonPath} variant={"dark"} analyticsLabel="floating-action-button">{buttonText}</Button>
       </div>
       </section>
     )

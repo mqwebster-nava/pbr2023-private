@@ -73,6 +73,7 @@ const ContentGrid = ({
                     image={item.promoImage}
                     path={getContentUrl(item.contentType, item.slug)}
                     summary={item.shortSummary}
+                    analyticsLabel="article-feed"
                  />
                 )
                  :(

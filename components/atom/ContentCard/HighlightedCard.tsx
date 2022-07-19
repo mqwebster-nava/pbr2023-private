@@ -1,4 +1,6 @@
 
+// NOTE Not currently used on the site
+
 import Image from "next/image";
 import { ContentCardInterface } from "./ContentCard";
 
