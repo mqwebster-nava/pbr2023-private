@@ -84,6 +84,15 @@ export const POST_BODY = `
       block {
         ${IMAGE_FIELDS}
       }
+      hyperlink{
+        sys {
+          id
+        }
+        title
+        contentType
+        description
+        url
+      }
     }
   }
 
