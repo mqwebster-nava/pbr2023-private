@@ -17,7 +17,6 @@ import EmbeddedVideo from "./EmbeddedVideo";
 
 
 const PostContent = ({docData, docLinks, }) =>{
-  console.log(docData, docLinks);
     const options = {
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
