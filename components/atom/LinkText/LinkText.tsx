@@ -9,7 +9,7 @@ export interface LinkTextProps {
   variant: LinkTextVariant;
   color?: LinkColor;
   analyticsLabel?:AnalyticsLabelType
-
+  ariaLabel?: string;
 }
 
 export const LinkText: React.FC<LinkTextProps> = ({
@@ -17,7 +17,8 @@ export const LinkText: React.FC<LinkTextProps> = ({
   href,
   variant,
   color="black",
-  analyticsLabel=""
+  analyticsLabel="",
+  ariaLabel=null
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
   const target = href.substr(0, 1) === "/" ? "" : "_blank";
@@ -39,6 +40,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
       className={` ${colorStyles} ${variantStyles} ${analyticsLabel}`}
       href={href}
       target={target}
+      aria-label={ariaLabel}
     >
       {children}
     </a>

@@ -2,6 +2,7 @@
 //https://www.npmjs.com/package/react-anchor-link-smooth-scroll
 import React, {Component} from 'react'
 
+
 class AnchorLink extends Component {
   constructor(props) {
     super(props)
@@ -31,8 +32,9 @@ class AnchorLink extends Component {
   }
   render() {
     const { offset, ...rest } = this.props;
+    const  ariaLabel = this.props.ariaLabel ?? null
     return (
-      <a {...rest} onClick={this.smoothScroll} />
+      <a {...rest} onClick={this.smoothScroll} aria-label={ariaLabel} />
     )
   }
 }

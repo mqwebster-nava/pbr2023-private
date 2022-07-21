@@ -37,7 +37,8 @@ export default function OpenRolesComponent() {
           title: dep.title,
           postings: dep.postings.map((posting) => {
             let location = posting.categories.location ?? "Remote";
-            if(location=="Open to any office location/Remote") location="Remote";
+            if (location == "Open to any office location/Remote")
+              location = "Remote";
             return {
               id: posting.id,
               title: posting.text,
@@ -51,6 +52,10 @@ export default function OpenRolesComponent() {
       setDepartments(deps);
     });
   }, []);
+  const getAnchorMenuAriaLabel = (title, postingsLength) => {
+    let roleStr = postingsLength > 1 ? "roles" : "role";
+    return `${title}, ${postingsLength} open ${roleStr}, skip to section`;
+  };
 
   const DepartmentAnchors = () => {
     let departmentsLen = Math.floor(departments.length / 3);
@@ -62,32 +67,57 @@ export default function OpenRolesComponent() {
     return (
       <>
         <details className="block md:hidden py-md">
-          <summary className="pb-sm">Show Teams</summary>
-
-          {departments.map((d, k) => (
-            <p className={`font-sans text-sage-900 hover:text-sage-500 pb-md`} key={`${d.title} nav ${k}`}>
-              <AnchorLink href={`#${slugify(d.title)}`}>
-                {d.title} ({d.postings.length})
-              </AnchorLink>
-            </p>
-          ))}
-        </details>
-        <div className="hidden md:flex py-md ">
-          {groups.map((deps,i) => (
-            <div className="w-1/3" key={i}>
-              {deps.map((d) => (
-                <p
-                key={`nav ${d.title} ${i}`}
-                  className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+          <summary
+            className="pb-sm"
+            aria-label={"Open roles by team, dropdown menu"}
+          >
+            Show Teams
+          </summary>
+          <ul>
+            {departments.map((d, k) => (
+              <li
+                className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+                key={`${d.title} nav ${k}`}
+              >
+                <AnchorLink
+                  href={`#${slugify(d.title)}`}
+                  ariaLabel={getAnchorMenuAriaLabel(d.title, d.postings.length)}
                 >
-                  <AnchorLink href={`#${slugify(d.title)}`}>
-                    {d.title} ({d.postings.length})
-                  </AnchorLink>
-                </p>
-              ))}
+                  {d.title} ({d.postings.length})
+                </AnchorLink>
+              </li>
+            ))}
+          </ul>
+        </details>
+        <ul
+          className="hidden md:flex py-md"
+          role="menubar"
+          aria-label={",Open roles by team,"}
+        >
+          {groups.map((deps, i) => (
+            <div className="w-1/3" key={i}>
+              {deps.map((d) => {
+                return (
+                  <li
+                    role={"menuitem"}
+                    key={`nav ${d.title} ${i}`}
+                    className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+                  >
+                    <AnchorLink
+                      href={`#${slugify(d.title)}`}
+                      ariaLabel={getAnchorMenuAriaLabel(
+                        d.title,
+                        d.postings.length
+                      )}
+                    >
+                      {d.title} ({d.postings.length})
+                    </AnchorLink>
+                  </li>
+                );
+              })}
             </div>
           ))}
-        </div>
+        </ul>
       </>
     );
   };
@@ -97,50 +127,62 @@ export default function OpenRolesComponent() {
       <h3 className="type-preset-3 font-bold py-md">All open roles</h3>
       <DepartmentAnchors />
       <div className="hidden md:grid grid-cols-12 pt-4xl pb-sm gap-x-md md:gap-x-2xl">
-        <div className="col-span-4 type-preset-7">Team</div>
-        <div className="col-span-5 type-preset-7">Role</div>
-        <div className="col-span-3  type-preset-7">Details</div>
+        <div className="col-span-4 type-preset-7" aria-hidden={true}>
+          Team
+        </div>
+        <div className="col-span-5 type-preset-7" aria-hidden={true}>
+          Role
+        </div>
+        <div className="col-span-3  type-preset-7" aria-hidden={true}>
+          Details
+        </div>
       </div>
 
-      {departments.map((d,j) => {
-        if(d.title=="Software") d.title="Engineering"
+      {departments.map((d, j) => {
+        if (d.title == "Software") d.title = "Engineering";
         return (
           <div id={`${slugify(d.title)}`} key={`${d.title} ${j} section`}>
-            <HorizontalLine variant="dark"/>
+            <HorizontalLine variant="dark" hideFromVoiceOver={true} />
             <div className="md:grid grid-cols-12 gap-x-md md:gap-x-2xl">
               <div className="col-span-4">
-                <h2 className="font-sans type-preset-4 font-bold py-md">
+                <h2
+                  className="font-sans type-preset-4 font-bold py-md"
+                  aria-label={`Team: ${d.title}`}
+                >
                   {d.title}
                 </h2>
               </div>
-              <div className="col-span-8">
+              <ul className="col-span-8">
                 {d.postings.map((posting, i) => {
                   return (
-                    <div key={`${d.title} role ${i}`}>
-                      {i != 0 && <HorizontalLine variant="light"/>}
-                      <div className="md:grid grid-cols-8 gap-x-2xl" >
-                        <div
-                          className="col-span-5 type-preset-5 font-sans py-md "
-                        
-                        >
+                    <li key={`${d.title} role ${i}`}>
+                      {i != 0 && (
+                        <HorizontalLine
+                          variant="light"
+                          hideFromVoiceOver={true}
+                        />
+                      )}
+                      <div className="md:grid grid-cols-8 gap-x-2xl">
+                        <div className="col-span-5 type-preset-5 font-sans py-md ">
                           <LinkText
                             href={`${posting.hostedUrl}`}
                             variant="underlined"
+                            ariaLabel={`Role: ${posting.title}`}
                           >
                             {posting.title}
                           </LinkText>
                         </div>
-                        <div className=" col-span-3 type-preset-7 font-sans py-md">
+                        <div className=" col-span-3 type-preset-7 font-sans md:pt-md pt-0 pb-md">
                           <p>
                             <b>Location: </b>
                             {posting.location}
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
             </div>
             <div className="py-md"></div>
           </div>
