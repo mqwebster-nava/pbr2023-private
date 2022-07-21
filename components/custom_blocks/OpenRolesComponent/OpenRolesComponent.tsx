@@ -91,7 +91,6 @@ export default function OpenRolesComponent() {
         </details>
         <ul
           className="hidden md:flex py-md"
-          role="menubar"
           aria-label={",Open roles by team,"}
         >
           {groups.map((deps, i) => (
@@ -99,7 +98,7 @@ export default function OpenRolesComponent() {
               {deps.map((d) => {
                 return (
                   <li
-                    role={"menuitem"}
+                   
                     key={`nav ${d.title} ${i}`}
                     className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
                   >
