@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 
-type LinkTextVariant = "default" | "underlined";
-type LinkColor = "black" |"sage" | "white";
+type LinkTextVariant = "default" | "" |"underlined";
+type LinkColor = "black" |"sage" | "white" |"gray";
 
 export interface LinkTextProps {
   href: string;
@@ -21,7 +21,8 @@ export const LinkText: React.FC<LinkTextProps> = ({
   ariaLabel=null
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
-  const target = href.substr(0, 1) === "/" ? "" : "_blank";
+  const loc =href.substr(0, 1);
+  const target = (loc === "/" || loc==="#") ? "" : "_blank";
 
   const variantStyles = classNames({
     "underline decoration-1 whitespace-pre-wrap inline underline-offset-2": variant == "underlined",
@@ -30,6 +31,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   const colorStyles = classNames({
     "text-sage-700 hover:text-sage-900 hover:underline decoration-1": color=="sage",
     "text-gray-900 hover:text-sage-700": color=="black",
+    "text-gray-600 hover:text-sage-700": color=="gray",
     "text-white hover:underline decoration-1": color=="white"
   });
  

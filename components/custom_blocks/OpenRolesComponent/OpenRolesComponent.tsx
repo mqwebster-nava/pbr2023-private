@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 //https://www.digitalocean.com/community/tutorials/react-axios-react
-import AnchorLink from "components/atom/AnchorLink/AnchorLink";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { slugify } from "utils/utils";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
@@ -76,15 +75,17 @@ export default function OpenRolesComponent() {
           <ul>
             {departments.map((d, k) => (
               <li
-                className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+                className={`pb-md`}
                 key={`${d.title} nav ${k}`}
               >
-                <AnchorLink
+                <LinkText
+                  variant="default"
+                  color="sage"
                   href={`#${slugify(d.title)}`}
                   ariaLabel={getAnchorMenuAriaLabel(d.title, d.postings.length)}
                 >
                   {d.title} ({d.postings.length})
-                </AnchorLink>
+                </LinkText>
               </li>
             ))}
           </ul>
@@ -100,9 +101,11 @@ export default function OpenRolesComponent() {
                   <li
                    
                     key={`nav ${d.title} ${i}`}
-                    className={`font-sans text-sage-900 hover:text-sage-500 pb-md`}
+                    className={`pb-md`}
                   >
-                    <AnchorLink
+                    <LinkText
+                      variant="default"
+                      color="sage"
                       href={`#${slugify(d.title)}`}
                       ariaLabel={getAnchorMenuAriaLabel(
                         d.title,
@@ -110,7 +113,7 @@ export default function OpenRolesComponent() {
                       )}
                     >
                       {d.title} ({d.postings.length})
-                    </AnchorLink>
+                    </LinkText>
                   </li>
                 );
               })}
