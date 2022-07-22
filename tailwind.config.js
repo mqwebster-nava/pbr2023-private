@@ -67,6 +67,7 @@ module.exports = {
       screens: {
         sm: "540px", // => @media (min-width: 540px) { ... }
         md: "768px",
+        "xl":"1264px",
         "2xl": "1440px", // => @media (min-width: 1440px) { ... }
       },
       colors: {
@@ -202,6 +203,7 @@ module.exports = {
       height: {
         128: "32rem",
       },
+     
       spacing: {
         xs: "4px",
         sm: "8px",
