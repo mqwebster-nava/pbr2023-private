@@ -28,7 +28,7 @@ Primary.args = {
                 "sys": {
                     "id": "BHfODV7LqscqYQUBTzUmJ"
                 },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/BHfODV7LqscqYQUBTzUmJ/ebf659daaa7cc3f2e02af05ff9d28cb3/Customer_experiences_icon.svg",
+                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/3FosxQMrAo3C045k4ndLpv/c2fb4aec736d8694bd2082df1ddf137e/Customer_experiences_icon_V2.svg",
                 "width": 39,
                 "height": 35,
                 "title": "Customer experiences icon",
@@ -47,7 +47,7 @@ Primary.args = {
                 "sys": {
                     "id": "4jwzWHTwjr1lwkXMxIK8N9"
                 },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/4jwzWHTwjr1lwkXMxIK8N9/7f3ecbbe9f44818aeb8fd8a40c172055/Program_outcomes_icon.svg",
+                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/39JKyxZnihSsnL7o6lSmVE/0f928d79e8f76c9ee8501f2e0b2a1f4a/Program_outcomes_icon_V2.svg",
                 "width": 39,
                 "height": 39,
                 "title": "Program outcomes icon",
@@ -66,7 +66,7 @@ Primary.args = {
                 "sys": {
                     "id": "5qbmNPXi1mTKLrY7xvj0Dh"
                 },
-                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/5qbmNPXi1mTKLrY7xvj0Dh/b0522ea7f5004234a1c069d542257973/Agency_technology_icon.svg",
+                "url": "https://images.ctfassets.net/t2ekr6eg3fr3/5lYJLDtTVvP5Mhm6fZlAQ2/c47d2fba1b8ac9623fef4381eca9daa2/Agency_technology_icon_V2.svg",
                 "width": 39,
                 "height": 39,
                 "title": "Agency technology icon",
