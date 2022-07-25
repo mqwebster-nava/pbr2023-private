@@ -34,6 +34,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
+
   const [multiSelected, setMultiSelected] = useState(false);
 
   // Two more selections made in data has the key suffixed with "_Multi"
@@ -60,6 +61,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
       </div>
 
       <FilterControl
+        label={`Filter ${title} data by employee role`}
         filters={dataFilters}
         checkboxValue={checkbox && checkbox.value ? checkbox.value : null}
         checkboxLabel={checkbox && checkbox.label ? checkbox.label : null}
@@ -68,7 +70,9 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
-        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5">
+        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5" 
+          aria-label={`${title} data, filtered by ${selectedFilter.text}`}
+        >
           {stats.map((graph, index) => (
             <PercentSquareGraph
               key={`percent_square_graph_${index}`}

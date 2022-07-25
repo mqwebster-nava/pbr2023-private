@@ -1,8 +1,9 @@
 import { PercentSquareGraph } from "components/atom";
+import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 
 export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
   return (
-    <div className="responsive-container">
+    <ResponsiveContentContainer>
       <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
         {title}
       </h3>
@@ -14,10 +15,9 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
             description={graph.category}
             theme={theme}
             showTooltip={false}
-            fixed
-          />
+            fixed          />
         ))}
       </div>
-    </div>
+      </ResponsiveContentContainer>
   );
 };
