@@ -1,4 +1,5 @@
-import AnchorLink from "components/atom/AnchorLink/AnchorLink";
+
+import { LinkText } from "components/atom";
 import React from "react";
 
 const ReportSideMenu = ({ links, activeSection }) => {
@@ -9,13 +10,7 @@ const ReportSideMenu = ({ links, activeSection }) => {
         {links.map((link, index) => {
          return (
           <li key={`report_side_menu_${index}`} className={`pt-xl text-sage-dark hover:text-sage-base ${activeSection === link.id ? "font-bold" : ""}`}>
-            {/* <a
-              className={`text-sage-dark hover:text-sage-base ${activeSection === link.id ? "font-bold" : ""}`}
-              href={`#${link.id}`}
-            >
-              {link.text}
-            </a> */}
-            <AnchorLink href={`#${link.id}`}>{link.text}</AnchorLink>
+            <LinkText href={`#${link.id}`} variant={"default"} color={activeSection === link.id ? "black":"gray"}>{link.text}</LinkText>
           </li>
         )})}
       </ul>
