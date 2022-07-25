@@ -51,6 +51,7 @@
 html {
   font-size: 18px;
   font-family: "GTAmerica";
+  scroll-behavior: smooth;
   --typescale: 1.25;
   --base-font-size: 1rem;
   --big-line-height:1.3;
@@ -64,6 +65,9 @@ html {
     --type-preset-7__fontSize: calc(1em / var(--typescale));
     --type-preset-8__fontSize: calc(1em / var(--typescale) / var(--typescale));
 
+    
+   
+    
 }
 
 .font-text-body-color {

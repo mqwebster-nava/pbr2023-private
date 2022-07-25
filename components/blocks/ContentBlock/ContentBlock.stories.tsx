@@ -31,7 +31,7 @@ LeftRepeater.args = {
         "sys": {
             "id": "25rM4zPs2oPwiw4gzk8vwh"
         },
-        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/25rM4zPs2oPwiw4gzk8vwh/61e5764a5367aa596a2fecf729c8cb5d/Image.png",
+        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/7cPDT7gCq60whFZacUFPEa/61655929593d597fe7da19898c1bf0b0/career_filler.png",
         "width": 478,
         "height": 495,
         "title": "FILLER - Careers Repeater",

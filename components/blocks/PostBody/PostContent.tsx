@@ -50,6 +50,11 @@ const PostContent = ({docData, docLinks, }) =>{
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,
          
           [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
+          [INLINES.ASSET_HYPERLINK]: (node, children) =>{
+            const id = node.data.target.sys.id;
+            const assets = docLinks.assets.hyperlink;
+            const asset = assets.find((element) => element.sys.id === id);
+             return (asset&&<LinkText href={asset.url} variant={"underlined"}>{children}</LinkText>)},
           [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
             const id = data.target.sys.id;
             const assets = docLinks.assets.block;

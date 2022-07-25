@@ -85,9 +85,13 @@ export async function getPageDataFromContentful({
 
   if (variant == "tags") {
     const tags = await getAllTags();
+      // check somewhere to see if there's a page connected to that tag
+     // if there use use that data, otherwise do the default way
     const tagName = tags.find((tag) => slugify(tag) === slug);
     const posts: Array<BasicPostInterface> = await getPostsByTag(tagName);
+
     const formattedPage: PageInterface = formatTagsPage(slug, tagName, posts);
+   
     return formattedPage;
   }
 }

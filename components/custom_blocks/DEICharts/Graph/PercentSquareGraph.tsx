@@ -37,7 +37,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   percent,
   multiPercent = null,
   description,
-  category = "",
+  category = "All employees",
   theme = "sage",
   showTooltip = true,
   fixed = false,
@@ -53,7 +53,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   const tooltipText = `${percent}% of ${category} identify as ${description}.`;
 
   return (
-    <div className="my-2 mr-2">
+    <div className="my-2 mr-2" aria-label={tooltipText}>
       {showTooltip && visible && (
         <GraphTooltip
           text={tooltipText}
@@ -93,8 +93,8 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
           ></div>
         )}
       </div>
-      <p className="type-preset-4">{percent}%</p>
-      <p className="type-preset-6">{description}</p>
+      <p className="type-preset-4" aria-hidden={true}>{percent}%</p>
+      <p className="type-preset-6"  aria-hidden={true}>{description}</p>
     </div>
   );
 };

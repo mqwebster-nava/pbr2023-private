@@ -20,7 +20,12 @@ The styling of the site is almost entirely done using [tailwind.css](https://tai
 ## Component Library: Storybook / Chromatic
 [Storybook](https://storybook.js.org/) is a tool for building component libraries. This is useful for frontend testing and documentation. Since our site is primarily built out of 'blocks' chosen in the CMS, this helps us document and test those blocks.
 
-[Chromatic](https://www.chromatic.com/) hosts the storybook on a public link ( LINK ) and provides tools for performing visual regression tests on the components. A webhook was set up in `.github/workflows/chromatic.yml` to rebuild the storybook when a commit is pushed.
+[Chromatic](https://www.chromatic.com/) hosts the storybook on a public link ( https://main--62c4782b65a749485ef12359.chromatic.com/ ) and provides tools for performing visual regression tests on the components. A webhook was set up in `.github/workflows/chromatic.yml` to rebuild the storybook when a commit is pushed.
+
+## Analytics: Vercel Vitals / Google Analytics
+Vercel automatically performs anayltics to track web vitals on site pages. These can be seen on the [vercel analytics page](https://vercel.com/nava-comms/nava-website/analytics).
+
+Google Analtyics is also used to track page views and other events. 
 
 # Contributing
 ## Setting Up Locally
@@ -242,6 +247,3 @@ Any “atom” component used in only one component row, goes in the folder with
 If any atom or row component becomes reusable, we switch its location to atoms or blocks, accordingly. 
 
 If any atom or row component feels redundant, we try to replace it with a core component.
-
-TODO
-- Image gallery  / Highlighted info sections

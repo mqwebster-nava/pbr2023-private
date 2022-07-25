@@ -10,6 +10,7 @@ import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
 import EventInfoComponent from "./EventInfoComponent";
 import styles from "./PostBody.module.css"
+import { slugify } from "utils/utils";
 const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
 
 export interface PostBodyInterface {
@@ -85,7 +86,7 @@ export default function PostBody({
       >
         {h2Sections.map((section, i) => (
           <section 
-            id={section.title} ref={section.ref} key={section.title} 
+            id={slugify(section.title)} ref={section.ref} key={section.title} 
             className={h2Sections.length-1==i ? `${styles.endCap}`:""}>
             <PostContent docData={section.doc} docLinks={body.links} />
           </section>

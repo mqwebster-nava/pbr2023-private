@@ -26,7 +26,9 @@ export const FilterButton: React.FC<FilterButtonInterface> = ({
 }) => {
   return (
     <button
+     
       {...rest}
+      aria-label={`${children}, ${selected? "selected": "unselected"}`}
       onClick={onClick}
       className={`
       w-fit
