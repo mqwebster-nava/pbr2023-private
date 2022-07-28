@@ -82,6 +82,7 @@ const DepartmentSection = ({ name, teamMembers, open=false }) => {
         return (
           <div className="" key={teamMember.fields.Name}>
             <Image
+            alt={`Headshot of ${teamMember.fields.Name}`}
             src={photo} 
             objectFit={"cover"}
             width={400}
