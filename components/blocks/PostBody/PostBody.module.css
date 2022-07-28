@@ -1,8 +1,8 @@
 
-.endCap > p:last-of-type::after{ 
+/* .endCap > p:last-of-type::after{ 
     content:"";
     width: 16px;
     height: 16px;
     display: inline-block;
     @apply bg-plum-800 ml-sm -mb-[1px]
-}
+} */
