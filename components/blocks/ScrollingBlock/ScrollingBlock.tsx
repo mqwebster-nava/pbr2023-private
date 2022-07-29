@@ -23,6 +23,7 @@ const ScrollingBlock = ({
   buttonText,
   buttonPath,
 }: ScrollingBlockInterface) => {
+    const picture = "/images/pbrs/PBR-sketch-1.png"
   return (
     <section className={``}>
         <div className="sticky top-0 bg-plum-700">
@@ -39,7 +40,7 @@ const ScrollingBlock = ({
           className="block sticky top-[70px] h-screen w-screen -z-10"
           style={{
             background:
-              `url(/images/pbrs/pbr-sketch-1.png)` + " no-repeat center center",
+              `url(${picture})` + " no-repeat center center",
             backgroundSize: "cover",
           }}
         />
