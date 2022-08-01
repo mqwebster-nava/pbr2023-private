@@ -7,6 +7,7 @@ interface FilterButtonGroupInterface {
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
   selectedFilter: FilterInterface;
   theme: string;
+  regionID?:string;
 }
 
 export const FilterButtonGroup: React.FC<FilterButtonGroupInterface> = ({
@@ -14,12 +15,14 @@ export const FilterButtonGroup: React.FC<FilterButtonGroupInterface> = ({
   handleClick,
   selectedFilter,
   theme,
+  regionID
 }) => {
   return (
     <div className="flex flex-wrap">
       {filters.map((filter, index) => (
         <FilterButton
           key={`filter_button_${index}`}
+          aria-controls={regionID}
           onClick={handleClick}
           value={filter.id}
           selected={selectedFilter.id === filter.id}

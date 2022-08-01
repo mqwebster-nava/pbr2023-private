@@ -31,6 +31,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
 }) => {
   // Default to first item in filter selected.
   const defaultFilter = dataFilters[0];
+  const regionId = `${title}Charts`;
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
@@ -41,6 +42,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   const multiKey = `${selectedFilter.id}_Multi`;
 
   const handleFilterClick = (e) => {
+    console.log(e);
     const selectedTotal = dataFilters.find(
       (filter) => filter.id === e.target.value
     ).total;
@@ -62,6 +64,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
 
       <FilterControl
         label={`Filter ${title} data by employee role`}
+        regionID={regionId}
         filters={dataFilters}
         checkboxValue={checkbox && checkbox.value ? checkbox.value : null}
         checkboxLabel={checkbox && checkbox.label ? checkbox.label : null}
@@ -70,7 +73,10 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
-        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5" 
+        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5"
+         role="region" 
+         aria-live="polite"
+          id={regionId}
           aria-label={`${title} data, filtered by ${selectedFilter.text}`}
         >
           {stats.map((graph, index) => (
