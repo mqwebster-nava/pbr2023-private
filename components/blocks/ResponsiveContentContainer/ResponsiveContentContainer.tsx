@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-type Alignment = "left" | "center";
+type Alignment = "left" | "center" | "right";
 
 interface Props {
     padding?:string
@@ -10,7 +10,9 @@ interface Props {
 const ResponsiveContentContainer : React.FC<Props> = ({children, padding="", alignment="left", bgColor=""}) => {
     const alignmentStyle = classNames({
         "mx-auto":alignment=="center",
-        "mr-auto":alignment=="left"
+        "mr-auto":alignment=="left",
+        "ml-auto":alignment=="right",
+        
     });
     
     return (<div className={`responsive-container ${padding} ${bgColor} flex`}>

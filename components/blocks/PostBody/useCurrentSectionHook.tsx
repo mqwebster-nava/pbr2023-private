@@ -8,14 +8,16 @@ export default function useCurrentSectionHook(h2Sections) {
     
     h2Sections.forEach((h2) => {
       if (h2.ref.current){
-        h2.triggerTop = h2.ref.current.offsetTop-30; //- window.innerHeight/2;
-        h2.triggerBottom = h2.triggerTop +  h2.ref.current.offsetHeight-30;// - 5;
+        const extraOffset = "extraOffset" in h2? h2.extraOffset : 30
+        h2.triggerTop = h2.ref.current.offsetTop-extraOffset; //- window.innerHeight/2;
+        h2.triggerBottom = h2.triggerTop +  h2.ref.current.offsetHeight-extraOffset;// - 5;
       }
     });
     const onScroll = () => {
       const offset = window.pageYOffset;
       h2Sections.forEach((h2) => {
-        if(offset>h2.triggerTop && offset<h2.triggerBottom && activeSection!=h2.title ){
+        if(offset>h2.triggerTop && offset<h2.triggerBottom && activeSection!=h2.titleId ){
+          console.log(h2.titleId)
           setActiveSection(h2.titleId); return;
         }
       });

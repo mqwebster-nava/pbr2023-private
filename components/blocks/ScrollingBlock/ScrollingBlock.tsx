@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { Button } from "components/atom";
+import React from "react";
 import { useState } from "react";
 import ColorTheme from "shared_interfaces/ColorThemes";
 import ResponsiveContentContainer from "../ResponsiveContentContainer/ResponsiveContentContainer";
@@ -11,26 +12,26 @@ export interface ScrollingBlockInterface {
   kicker: string;
   title: string;
   body?: any;
+  activeSection:string;
   stories?: Array<any>;
 }
 
 //buttonText?: string;
 //buttonPath?: string;
 
-const ScrollingBlock = ({
-  id,
-  kicker,
-  title = "Test",
-  body,
-  stories,
-}: ScrollingBlockInterface) => {
+const ScrollingBlock =  React.forwardRef<HTMLButtonElement, ScrollingBlockInterface>( (props, ref) => {
   const picture = "/images/pbrs/PBR-sketch-1.png";
   return (
-    <section className={``}>
-      <div className="sticky top-0 bg-plum-700">
-        <div className="responsive-container py-md">
-          <div className="type-preset-5 font-bold text-white">{kicker}</div>
-          <h2 className="type-preset-3 font-bold text-white">{title}</h2>
+    <section id={props.id} ref={ref}>
+      <div className="sticky top-0 bg-plum-700" >
+        <div className="responsive-container py-md grid grid-cols-2">
+        <div className=" ">
+          <div className="type-preset-5 font-bold text-white">{props.kicker}</div>
+          <h2 className="type-preset-3 font-bold text-white">{props.title}</h2>
+          </div>
+          {props.stories.length>0 && <div className="mt-auto">
+           <h3 className="type-preset-5 font-bold text-white"> {props.activeSection}</h3>
+          </div>}
         </div>
       </div>
       <div className="grid grid-cols-2 ">
@@ -42,21 +43,18 @@ const ScrollingBlock = ({
           }}
         />
         <div className="">
-          {stories.map((story) => StorySection(story))}
+          {props.stories.map((story) => StorySection(story))}
         </div>
       </div>
     </section>
   );
-};
+});
 
 const StorySection = (story) => {
 
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <>
-    <div className="sticky top-[99px] bg-white p-xl mt-[400px]">
-      <h2>{story.title}</h2>
-    </div>
       <div className="h-auto w-full bg-white mt-[400px] mb-4xl p-xl">
         <p className="pb-xl">{story.intro}</p>
         {
@@ -66,7 +64,6 @@ const StorySection = (story) => {
         {story.full}
       </p>
       }
-      
       </div>
     </>
   );
