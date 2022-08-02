@@ -5,6 +5,7 @@ import ResponsiveContentContainer from "components/blocks/ResponsiveContentConta
 import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
 const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
+import Image from "next/image";
 
 
 const SectionHeader = dynamic(
@@ -40,7 +41,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
         });
 
         block.reportSubsectionsCollection.items.forEach((subsection) => {
-          const anch = `${block.anchor}-${subsection.anchor}`;
+          const anch = `${block.anchor}--${subsection.anchor}`;
           output.push({
             title: subsection.title,
             titleId: anch,
@@ -50,7 +51,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
             triggerBottom: 9999,
           });
           subsection.storiesCollection.items.forEach((story) => {
-            const anch2 = `${block.anchor}-${subsection.anchor}-${story.anchor}`;
+            const anch2 = `${block.anchor}--${subsection.anchor}--${story.anchor}`;
             output.push({
               title: story.title,
               extraOffset: 30,
@@ -83,12 +84,12 @@ const ReportTemplate: React.FC<PageInterface> = ({
             />
           </div>
           {entry.reportSubsectionsCollection.items.map((subsection) => {
-            const anch = `${entry.anchor}-${subsection.anchor}`;
-            const activeStory =subsection.storiesCollection.items.find((k)=>`${anch}-${k.anchor}`===activeSection) ?? subsection.storiesCollection.items[0];
+            const anch = `${entry.anchor}--${subsection.anchor}`;
+            const activeStory =subsection.storiesCollection.items.find((k)=>`${anch}--${k.anchor}`===activeSection) ?? subsection.storiesCollection.items[0];
             return (
               <section key={anch}>
                 <div
-                  className="sticky top-0 bg-plum-700"
+                  className="sticky top-0 bg-plum-700 z-30"
                   id={anch}
                 >
                   <div className="responsive-container py-xl grid grid-cols-2">
@@ -123,7 +124,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
                   </div>
                   <ResponsiveContentContainer padding="-mt-[100vh] pb-[300px]" alignment="right" >
                     {subsection.storiesCollection.items.map((story) => {
-                      const anch2 = `${entry.anchor}-${subsection.anchor}-${story.anchor}`;
+                      const anch2 = `${entry.anchor}--${subsection.anchor}--${story.anchor}`;
                       return (
                         <div
                           key={story.title}
@@ -168,13 +169,13 @@ const StorySection = (story) => {
     <div className="h-screen"></div>
 
       <div className="h-auto w-full bg-white p-xl font-serif">
-        <div className="w-full h-[200px] flex justify-center items-center bg-gray-200 mb-md">
-            STATS
+        <div className="w-full h-[300px] flex justify-center items-center bg-gray-200 mb-md">
+           {story.callOut? 
+           <Image className={"z-10"} src={story.callOut.url} height={300} width={525}>
+           </Image> : "CALL OUT"}
         </div>
-        {(typeof story.intro === 'string') ?  <p className="pb-xl">{story.intro}</p> :
         <PostContent docData={story.intro.json} docLinks={story.intro.links} />
-        }
-       
+
         {isCollapsed ? (
           <button
             onClick={() => {
@@ -184,8 +185,7 @@ const StorySection = (story) => {
             Read More
           </button>
         ) : (
-            <p>filler 2</p>
-        //   <p>{story.fullText}</p>
+            <PostContent docData={story.body.json} docLinks={story.body.links} />
         )}
       </div>
     </>
