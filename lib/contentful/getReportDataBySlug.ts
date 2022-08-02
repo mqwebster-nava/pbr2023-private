@@ -16,7 +16,6 @@ export default async function getReportDataBySlug({slug, preview =false}:PageQue
     }`;
     const response = await callContentful(query, variables, {preview});
     // console error this
-    console.log(response)
     if ("errors" in response){
       console.error(response);
       return null;

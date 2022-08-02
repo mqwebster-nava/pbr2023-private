@@ -188,7 +188,6 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
     variant:"report"
     });
-console.log(formattedPage.contentBlocks);
   formattedPage.contentBlocks=[...formattedPage.contentBlocks, ...contentBlocks];
   
   return {

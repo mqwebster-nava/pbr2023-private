@@ -17,7 +17,6 @@ export default function useCurrentSectionHook(h2Sections) {
       const offset = window.pageYOffset;
       h2Sections.forEach((h2) => {
         if(offset>h2.triggerTop && offset<h2.triggerBottom && activeSection!=h2.titleId ){
-          console.log(h2.titleId)
           setActiveSection(h2.titleId); return;
         }
       });

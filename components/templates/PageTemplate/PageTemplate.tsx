@@ -27,7 +27,6 @@ const PageTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-console.log(contentBlocks);
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {

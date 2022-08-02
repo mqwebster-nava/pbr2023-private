@@ -68,7 +68,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
-    console.log(entry)
     const componentMap = {
      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
       ReportSection: (entry) => (
