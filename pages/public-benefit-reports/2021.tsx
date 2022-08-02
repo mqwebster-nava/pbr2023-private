@@ -10,6 +10,7 @@ import React, { useRef } from "react";
 import { ReportHeaderNavy, SectionHeader } from "components/blocks";
 import { PageInterface } from "shared_interfaces/page_interface";
 import ReportTemplate from "components/templates/ReportTemplate/ReportTemplate";
+import { getPageDataFromContentful } from "lib/api";
 
 const contentBlocks = [
       {
@@ -174,19 +175,28 @@ const contentBlocks = [
 
 
 export default function PBR2021(props: PageInterface) {
-  //const report = props.contentBlocks[0];
 
   return (
-    <div>
-     
-        <ReportHeaderNavy title={"Public Benefit Report"} maxWidth="max-w-xl" />
-        <Image
-          alt={""}
-          src={Nava2020Cover}
-          layout="responsive"
-        />
         <ReportTemplate {...props}> </ReportTemplate>
-        {/* <SectionHeader title={"Equity is..."} id={"eq"} />
+  );
+}
+
+export async function getStaticProps({ params, preview = false }) {
+  //const report = getMarkdownByFilename("public-benefit-reports", 2020);
+  let formattedPage: PageInterface = await getPageDataFromContentful(
+    {slug:"/public-benefit-reports/2021", 
+    preview: preview,
+    variant:"report"
+    });
+console.log(formattedPage.contentBlocks);
+  formattedPage.contentBlocks=[...formattedPage.contentBlocks, ...contentBlocks];
+  
+  return {
+    props: formattedPage,
+  };
+}
+
+/* <SectionHeader title={"Equity is..."} id={"eq"} />
         <ScrollingBlock
           title={"Small pilots make a big impact"}
           kicker={"Equity is..."}
@@ -228,32 +238,4 @@ export default function PBR2021(props: PageInterface) {
           id={"test"}
           body={"Body Text"}
           stories={[]}
-        ></ScrollingBlock> */}
-     
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  //const report = getMarkdownByFilename("public-benefit-reports", 2020);
-  const formattedPage: PageInterface = {
-    id: "public-benefit-reports/2021",
-    slug: "/public-benefit-reports/2021",
-    title: "Nava: Public Benefit Report: 2021",
-    description:
-      "Addressing the structural failures that have affected millions of Americans—most dramatically during the pandemic in 2020—requires resilience. See how we build it into everything we do.",
-    socialImage: {
-      id: "WufZdooSKmPSGJlCZlUtu",
-      url: "https://images.ctfassets.net/t2ekr6eg3fr3/WufZdooSKmPSGJlCZlUtu/b5772ce17a9c3e4b1fd851d9fe059a1a/pbr-promo-image.png",
-      width: 1596,
-      height: 897,
-      title: "PBR image",
-      description: "",
-    },
-    pageHeader: null,
-    contentBlocks: contentBlocks,
-  };
-  return {
-    props: formattedPage,
-  };
-}
+        ></ScrollingBlock> */

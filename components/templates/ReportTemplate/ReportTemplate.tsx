@@ -1,8 +1,10 @@
 import { PageHeader } from "components/blocks";
+import PostContent from "components/blocks/PostBody/PostContent";
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
+const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
 
 
 const SectionHeader = dynamic(
@@ -20,8 +22,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-  const picture = "/images/pbrs/PBR-sketch-1.png";
-  const picture2 = "/images/pbrs/PBR-sketch-3.png";
   let reportSections = sortDocIntoH2Sections();
   reportSections.forEach((sec) => (sec.ref = useRef()));
   const activeSection = useCurrentSectionHook(reportSections);
@@ -68,7 +68,9 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
+    console.log(entry)
     const componentMap = {
+     "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
       ReportSection: (entry) => (
         <>
           <div
@@ -92,9 +94,9 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 >
                   <div className="responsive-container py-xl grid grid-cols-2">
                     <div className=" ">
-                      <div className="type-preset-5 font-bold text-white">
+                      {/* <div className="type-preset-5 font-bold text-white">
                         {subsection.kicker}
-                      </div>
+                      </div> */}
                       <h2 className="type-preset-3 font-bold text-white">
                         {subsection.title}
                       </h2>
@@ -112,7 +114,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
                   <div
                     className="block sticky top-[70px] h-screen w-screen -z-10"
                     style={{
-                      backgroundImage: `url(${activeStory.image})`,
+                      backgroundImage: `url(${activeStory.image ?? activeStory.illustration.url})`,
                       backgroundRepeat:"no-repeat",
                       backgroundPosition:"center center",
                       backgroundSize: "cover",
@@ -166,11 +168,14 @@ const StorySection = (story) => {
     <>
     <div className="h-screen"></div>
 
-      <div className="h-auto w-full bg-white p-xl">
+      <div className="h-auto w-full bg-white p-xl font-serif">
         <div className="w-full h-[200px] flex justify-center items-center bg-gray-200 mb-md">
             STATS
         </div>
-        <p className="pb-xl">{story.intro}</p>
+        {(typeof story.intro === 'string') ?  <p className="pb-xl">{story.intro}</p> :
+        <PostContent docData={story.intro.json} docLinks={story.intro.links} />
+        }
+       
         {isCollapsed ? (
           <button
             onClick={() => {
@@ -180,7 +185,8 @@ const StorySection = (story) => {
             Read More
           </button>
         ) : (
-          <p>{story.fullText}</p>
+            <p>filler 2</p>
+        //   <p>{story.fullText}</p>
         )}
       </div>
     </>

@@ -18,6 +18,7 @@ import getPageDataBySlug from "./contentful/getPageDataBySlug";
 import getPostBySlug from "./contentful/getPostBySlug";
 import getPostsByAuthor from "./contentful/getPostsByAuthor";
 import getPostsByTag from "./contentful/getPostsByTag";
+import getReportDataBySlug from "./contentful/getReportDataBySlug";
 import {
   formatAuthorPage,
   formatPage,
@@ -31,7 +32,7 @@ const defaultOptions = {
   preview: false,
 };
 
-type PageVariant = "default" | "post" | "tags" | "author";
+type PageVariant = "default" | "post" | "tags" | "author" | "report";
 
 export interface PageQueryInterface {
   slug: string;
@@ -62,6 +63,12 @@ export async function getPageDataFromContentful({
       );
     return formattedPage;
     
+  }
+
+  if (variant == "report") {
+    const page = await getReportDataBySlug({ slug, preview });
+    let formattedPage: PageInterface = formatPage(page);
+    return formattedPage;
   }
 
   // If it is a post, we create the page interface data from the post content
