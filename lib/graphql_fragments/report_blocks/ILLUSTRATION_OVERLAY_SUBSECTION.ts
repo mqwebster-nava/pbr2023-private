@@ -9,6 +9,7 @@ sys {
 title
 anchor
 body
+colorTheme
 storiesCollection(limit:7) {
     items{
      __typename
