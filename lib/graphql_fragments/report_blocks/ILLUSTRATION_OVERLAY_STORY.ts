@@ -17,6 +17,9 @@ body {
 illustration{
     ${IMAGE_FIELDS}
 }
+contextIllustration{
+    ${IMAGE_FIELDS}
+}
 callOut {
     ${IMAGE_FIELDS}
 }

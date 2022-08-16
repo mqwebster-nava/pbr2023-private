@@ -8,9 +8,8 @@ const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/Text
 import Image from "next/image";
 
 
-
 import { PageInterface } from "shared_interfaces/page_interface";
-import ReportSection from "./ReportSection";
+import ReportSection from "../../blocks/NewReportSection/NewReportSection";
 
 const ReportTemplate: React.FC<PageInterface> = ({
   pageHeader,
@@ -37,6 +36,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       <div className="animate-fadeIn2">
         {children}
         {contentBlocks.map((block, i) => getComponent(block, i))}
+
       </div>
     </main>
   );
