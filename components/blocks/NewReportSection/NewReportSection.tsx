@@ -11,6 +11,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import TableOfContentsSection from "./TableOfContents";
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 /*
@@ -29,7 +30,7 @@ const NewReportSection = ({ entry }) => {
 
   function sortDocIntoH2Sections() {
     let output = [];
-    function addSection(title, anchor, type, storyId) {
+    function addSection(title, anchor, type, storyId, pin) {
       output.push({
         title: title,
         titleId: anchor,
@@ -39,33 +40,35 @@ const NewReportSection = ({ entry }) => {
         ref: null,
         triggerTop: 9999,
         triggerBottom: 9999,
+        pin:pin
       });
     }
     entry.reportSubsectionsCollection.items.forEach((subsection) => {
-      addSection(subsection.title, `${subsection.anchor}`, "section", null);
-      subsection.storiesCollection.items.forEach((story) => {
+      addSection(subsection.title, `${subsection.anchor}`, "section", null, true);
+      subsection.storiesCollection.items.forEach((story, i) => {
         addSection(
           story.title,
           `${subsection.anchor}--${story.anchor}`,
           "story",
-          story.anchor
+          story.anchor,
+          (subsection.storiesCollection.items.length-1)===i
         );
       });
     });
     return output;
   }
 
-  function goToSection(t) {
-    gsap.to(window, {
-      scrollTo: {y: t, autoKill: false},
-      duration: 1,
-      //onComplete: () => scrollTween = null,
-      overwrite: true
-    });
-  }
+  // function goToSection(t) {
+  //   gsap.to(window, {
+  //     scrollTo: {y: t, autoKill: false},
+  //     duration: 1,
+  //     //onComplete: () => scrollTween = null,
+  //     overwrite: true
+  //   });
+  // }
 
   useEffect(() => {
-    reportSections.forEach((section) => {
+    reportSections.forEach((section, i) => {
       const trigger = section.ref.current;
       const t =  trigger.offsetTop;
       console.log(t);
@@ -78,6 +81,12 @@ const NewReportSection = ({ entry }) => {
         // tl.to(trigger, {
         //   y:0,
         //   duration:1
+        // });
+        // tl.to(window, {
+        //   scrollTo: {y: trigger, autoKill: false},
+        //   duration: 1,
+        //   //onComplete: () => scrollTween = null,
+        //   overwrite: true
         // });
         tl.to(q("#storyImg-"+section.storyId), {
           opacity: 1,
@@ -113,44 +122,39 @@ const NewReportSection = ({ entry }) => {
             y:"0",
             duration: 0.5,
           }
-        );
-        
+        )
+       
         ScrollTrigger.create({
           trigger:trigger,
           start:"top top",
           markers: true,
           pin: true,
-          pinnedContainer: q("#imageBackground-"+section.storyId),
+         // pinnedContainer: q("#imageBackground-"+section.storyId),
           scrub:true,
           toggleActions:"play none none reverse",
           animation:tl,
-          onEnter: () => {
-            console.log("enter", section.storyId);
-          }
+          //pinSpacing: section.pin,
+          
         })
-        
-
-    
       }
-      ScrollTrigger.create({
-        trigger: trigger,
-        start: "top bottom",
-        end: "+=200%",
-        onToggle: self => self.isActive && goToSection(t)
-      });
-      // ScrollTrigger.create({
-      //   trigger: trigger,
-      //   onEnter: () => goToSection(t)
-      // });
+      
+    //   ScrollTrigger.create({
+    //     trigger: trigger,
+    //     start: "top bottom",
+    //     end: "+=20px",
+    //     //end: "+=200%",
+    //     onToggle: self => self.isActive && goToSection(t)
+    //   });
 
-      // ScrollTrigger.create({
-      //   trigger: trigger,
-      //   start: "bottom bottom",
-      //   onEnterBack: () => goToSection(t),
-      // });
-    });
+    //   ScrollTrigger.create({
+    //     trigger: trigger,
+    //     start: "bottom bottom",
+    //     onEnterBack: () => goToSection(t),
+    //   });
+     });
 
    // ScrollTrigger.refresh();
+    
   }, []);
 
   return (
@@ -158,7 +162,7 @@ const NewReportSection = ({ entry }) => {
       <TableOfContentsSection entry={entry} />
       <ReportNavbar entry={entry} />
 
-      {entry.reportSubsectionsCollection.items.map((subsection) => {
+      {entry.reportSubsectionsCollection.items.map((subsection, i) => {
         return (
           <>
             <section
@@ -172,14 +176,15 @@ const NewReportSection = ({ entry }) => {
               <SectionIntro subsection={subsection} />
             </section>
 
-            {subsection.storiesCollection.items.map((story) => {
+            {subsection.storiesCollection.items.map((story, j) => {
               const anch2 = `${subsection.anchor}--${story.anchor}`;
+              const z = 40-j*10;
               return (
                 <section
                   key={anch2}
                   id={anch2}
                   ref={reportSections.find((k) => k.titleId == anch2).ref}
-                  //  className="h-screen w-screen"
+                  
                 >
                   <StorySection
                     story={story}

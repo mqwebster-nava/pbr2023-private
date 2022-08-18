@@ -4,7 +4,7 @@ import PostContent from "../PostBody/PostContent";
 
 
 
-const StorySection = ({ story, colorTheme }) => {
+const StorySection = ({ story, colorTheme, }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <>
@@ -12,7 +12,7 @@ const StorySection = ({ story, colorTheme }) => {
       id={`imageBackground-${story.anchor}`}
       className={`imageBackground block relative w-screen h-screen -z-10 bg-${colorTheme}-50 t-[70px]`} //top-[70px] h-[calc(100vh_-_70px)]
     >
-      <div className="relative h-[calc(100vw_*_9_/_16)] md:h-full w-screen mx-auto max-w-screen-2xl"> 
+      <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen w-screen mx-auto max-w-screen-2xl"> 
       <Image
         id={``}
         src={story.contextIllustration.url}
@@ -38,7 +38,7 @@ const StorySection = ({ story, colorTheme }) => {
         className={"storyTitle type-preset-2 font-black"}
         >{story.title}</h2>
     </div>
-    <div className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl h-auto">
+    <div className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl">
         <div
          id={`storyCallOut-${story.anchor}`}
          className=" storyCallOut w-full h-[250px] bg-gray-50 flex justify-center items-center mb-md ">
@@ -55,7 +55,7 @@ const StorySection = ({ story, colorTheme }) => {
         </div>
         <div 
          id={`storySummary-${story.anchor}`}
-        className={`storySummary w-full font-serif text-${colorTheme}-900 type-preset-5`}>
+        className={`storySummary w-full font-serif text-${colorTheme}-900 type-preset-5 mb-[200px]`}>
           <PostContent
             docData={story.intro.json}
             docLinks={story.intro.links}
@@ -72,18 +72,20 @@ const StorySection = ({ story, colorTheme }) => {
               
             )} */}
       </div>
-      <div 
+      {/* <div 
        id={`storyContent-${story.anchor}`}
       className="storyContent opacity-0 responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl h-auto">
           <PostContent
                 docData={story.body.json}
                 docLinks={story.body.links}
               />
-     </div>
+     </div> */}
 
     </div>
-    
- 
+    </>
+  );
+};
+
 
       {/* <div className="responsive-container grid grid-cols-3 trigger-content">
         <div className="col-span-1"></div>
@@ -127,10 +129,7 @@ const StorySection = ({ story, colorTheme }) => {
          
         </div>
       </div> */}
-    </>
-  );
-};
-
+      
 // const StorySectionContent = (story) => {
 //   const [isCollapsed, setIsCollapsed] = useState(true);
 //   return <></>;
