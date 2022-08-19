@@ -58,14 +58,7 @@ const NewReportSection = ({ entry }) => {
     return output;
   }
 
-  // function goToSection(t) {
-  //   gsap.to(window, {
-  //     scrollTo: {y: t, autoKill: false},
-  //     duration: 1,
-  //     //onComplete: () => scrollTween = null,
-  //     overwrite: true
-  //   });
-  // }
+
 
   useEffect(() => {
     reportSections.forEach((section, i) => {
@@ -74,42 +67,32 @@ const NewReportSection = ({ entry }) => {
       console.log(t);
       if (
         section.type == "story" //&&
-        //section.titleId === "infrastructure--california-unemployment"
       ) {
         const q = gsap.utils.selector(trigger);
         let tl = gsap.timeline()
-        // tl.to(trigger, {
-        //   y:0,
-        //   duration:1
-        // });
-        // tl.to(window, {
-        //   scrollTo: {y: trigger, autoKill: false},
-        //   duration: 1,
-        //   //onComplete: () => scrollTween = null,
-        //   overwrite: true
-        // });
         tl.to(q("#storyImg-"+section.storyId), {
           opacity: 1,
           duration: 1,
         });
-        tl.to(q("#storyTitle-"+section.storyId), 
-        {
-          opacity: 0,
-          y:-200,
-          duration: 1,
-        });
+  
         tl.fromTo(
           q("#storyCallOut-"+section.storyId),
           {
             opacity: 0,
             y: "400",
-           
           },
           {
             opacity: 1,
             y:"0",
-            duration: 2,
-          }
+            duration: 1,
+          },"+=1"
+        )
+        tl.to(
+          q("#storyCallOut-"+section.storyId),
+          {
+            opacity: 0,
+            duration: 0.5,
+          },
         );
         tl.fromTo(
           q("#storySummary-"+section.storyId),
@@ -120,37 +103,34 @@ const NewReportSection = ({ entry }) => {
           {
             opacity: 1,
             y:"0",
-            duration: 0.5,
-          }
+            duration: 1,
+          }, "+=1"
         )
+        
        
         ScrollTrigger.create({
           trigger:trigger,
           start:"top top",
+          //end:"+=2000",
           markers: true,
           pin: true,
-         // pinnedContainer: q("#imageBackground-"+section.storyId),
-          scrub:true,
+          pinnedContainer: q("#imageBackground-"+section.storyId),
+          scrub:0.5,
           toggleActions:"play none none reverse",
           animation:tl,
           //pinSpacing: section.pin,
           
         })
+      } else {
+        ScrollTrigger.create({
+          trigger:trigger,
+          start:"top top",
+          markers: true,
+          pin: true,
+          pinSpacing: false,
+          
+        })
       }
-      
-    //   ScrollTrigger.create({
-    //     trigger: trigger,
-    //     start: "top bottom",
-    //     end: "+=20px",
-    //     //end: "+=200%",
-    //     onToggle: self => self.isActive && goToSection(t)
-    //   });
-
-    //   ScrollTrigger.create({
-    //     trigger: trigger,
-    //     start: "bottom bottom",
-    //     onEnterBack: () => goToSection(t),
-    //   });
      });
 
    // ScrollTrigger.refresh();
@@ -178,7 +158,7 @@ const NewReportSection = ({ entry }) => {
 
             {subsection.storiesCollection.items.map((story, j) => {
               const anch2 = `${subsection.anchor}--${story.anchor}`;
-              const z = 40-j*10;
+              
               return (
                 <section
                   key={anch2}
@@ -203,6 +183,14 @@ export default NewReportSection;
 
 
 
+  // function goToSection(t) {
+  //   gsap.to(window, {
+  //     scrollTo: {y: t, autoKill: false},
+  //     duration: 1,
+  //     //onComplete: () => scrollTween = null,
+  //     overwrite: true
+  //   });
+  // }
 // let tl = gsap.timeline({
         //   scrollTrigger: {
         //     trigger: trigger,

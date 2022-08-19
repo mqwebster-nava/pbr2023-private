@@ -3,7 +3,6 @@ import { LinkText } from "components/atom";
 const TableOfContentsSection = ({ entry }) => {
     return (
       <section className={` w-full h-screen flex flex-col `}>
-        <div className="responsive-container">TOC</div>
         {entry.reportSubsectionsCollection.items.map((section) => {
           const color = section.colorTheme ?? "purple";
           return (

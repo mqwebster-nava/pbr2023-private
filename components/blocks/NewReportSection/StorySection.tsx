@@ -10,7 +10,7 @@ const StorySection = ({ story, colorTheme, }) => {
     <>
      <div
       id={`imageBackground-${story.anchor}`}
-      className={`imageBackground block relative w-screen h-screen -z-10 bg-${colorTheme}-50 t-[70px]`} //top-[70px] h-[calc(100vh_-_70px)]
+      className={`imageBackground sticky block  w-screen h-screen -z-10 bg-${colorTheme}-50 t-[70px]`} //top-[70px] h-[calc(100vh_-_70px)]
     >
       <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen w-screen mx-auto max-w-screen-2xl"> 
       <Image
@@ -29,33 +29,37 @@ const StorySection = ({ story, colorTheme, }) => {
         height={9}
         layout="fill"
         objectFit="cover"
-        className="storyImg w-screen absolute top-[70px] left-0 right-0 opacity-0 object-left-top"
+        className="storyImg w-screen absolute top-[150px] left-0 right-0 opacity-0 object-left-top"
       ></Image>
       </div>
-      <div className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl">
+      <div  id={`storyTitle-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl">
         <h2 
-        id={`storyTitle-${story.anchor}`}
-        className={"storyTitle type-preset-2 font-black"}
+        className={`storyTitle type-preset-3 font-black text-${colorTheme}-900`}
         >{story.title}</h2>
-    </div>
-    <div className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl">
+    </div> 
+    <div  id={`storyCallOut-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[160px] z-10 right-0 pl-xl">
         <div
-         id={`storyCallOut-${story.anchor}`}
-         className=" storyCallOut w-full h-[250px] bg-gray-50 flex justify-center items-center mb-md ">
+         className=" w-full h-auto  flex justify-start items-center my-md ">
           {story.callOut ? (
             <Image
               className={"z-10"}
               src={story.callOut.url}
-              height={300}
-              width={525}
+              height={story.callOut.height}
+              width={story.callOut.width}
             ></Image>
           ) : (
             "CALL OUT"
           )}
         </div>
-        <div 
-         id={`storySummary-${story.anchor}`}
-        className={`storySummary w-full font-serif text-${colorTheme}-900 type-preset-5 mb-[200px]`}>
+        
+       
+      </div>
+     
+     
+    </div>
+    <div id={`storySummary-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[160px] z-10 right-0 pl-xl overflow-scroll h-auto">
+      <div 
+        className={` w-full font-serif text-${colorTheme}-900 type-preset-6 `}>
           <PostContent
             docData={story.intro.json}
             docLinks={story.intro.links}
@@ -67,25 +71,34 @@ const StorySection = ({ story, colorTheme, }) => {
               >
                 Read More
             </button>
-        </div>
-        {/* {!isCollapsed && (
-              
-            )} */}
-      </div>
-      {/* <div 
+            </div>
+             {/* <div 
        id={`storyContent-${story.anchor}`}
-      className="storyContent opacity-0 responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl h-auto">
+      className="storyContent opacity-100">
           <PostContent
                 docData={story.body.json}
                 docLinks={story.body.links}
               />
      </div> */}
 
-    </div>
+        
+    </div> 
     </>
   );
 };
 
+
+
+export default StorySection;
+
+{/* <div 
+id={`storyContent-${story.anchor}`}
+className="storyContent opacity-100 responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl h-auto">
+   <PostContent
+         docData={story.body.json}
+         docLinks={story.body.links}
+       />
+</div> */}
 
       {/* <div className="responsive-container grid grid-cols-3 trigger-content">
         <div className="col-span-1"></div>
@@ -134,9 +147,6 @@ const StorySection = ({ story, colorTheme, }) => {
 //   const [isCollapsed, setIsCollapsed] = useState(true);
 //   return <></>;
 // };
-
-export default StorySection;
-
 // const ImageBackground = ({ story, colorTheme }) => {
 //   return (
 //     // <div

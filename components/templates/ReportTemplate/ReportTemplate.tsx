@@ -1,11 +1,7 @@
 import { PageHeader } from "components/blocks";
-import PostContent from "components/blocks/PostBody/PostContent";
-import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
-import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
 const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
-import Image from "next/image";
 
 
 import { PageInterface } from "shared_interfaces/page_interface";
