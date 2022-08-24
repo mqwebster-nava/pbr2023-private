@@ -16,11 +16,9 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 /*
 Process 
-
 -- Nav sticks 
 -- Intro Frame
 -- Frame 1 - Illustration Full
-
 */
 
 const NewReportSection = ({ entry }) => {
