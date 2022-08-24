@@ -1,4 +1,5 @@
 import { PageHeader } from "components/blocks";
+import ReportHero from "components/blocks/PageHeaders/ReportHero";
 import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
 const TextBodyBlock = dynamic(() => import("components/blocks/TextBodyBlock/TextBodyBlock"));
@@ -28,7 +29,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
   };
   return (
     <main id="main">
-      <PageHeader {...pageHeader} />
+      {/* <PageHeader {...pageHeader} /> */}
+      <ReportHero {...pageHeader}/>
       <div className="animate-fadeIn2">
         {children}
         {contentBlocks.map((block, i) => getComponent(block, i))}

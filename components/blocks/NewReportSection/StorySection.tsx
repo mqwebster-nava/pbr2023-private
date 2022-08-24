@@ -6,13 +6,15 @@ import PostContent from "../PostBody/PostContent";
 
 const StorySection = ({ story, colorTheme, }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  console.log(isCollapsed);
   return (
     <>
      <div
-      id={`imageBackground-${story.anchor}`}
-      className={`imageBackground sticky block  w-screen h-screen -z-10 bg-${colorTheme}-50 t-[70px]`} //top-[70px] h-[calc(100vh_-_70px)]
+     
+      className={`imageBackground relative block  w-screen -z-10 bg-${colorTheme}-50 t-[70px]`} //top-[70px] h-[calc(100vh_-_70px)]
     >
-      <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen w-screen mx-auto max-w-screen-2xl"> 
+      <div  id={`imageBackground-${story.anchor}`}
+      className="sticky h-[calc(100vw_*_9_/_16)] md:h-screen w-screen mx-auto max-w-screen-2xl "> 
       <Image
         id={``}
         src={story.contextIllustration.url}
@@ -31,15 +33,16 @@ const StorySection = ({ story, colorTheme, }) => {
         objectFit="cover"
         className="storyImg w-screen absolute top-[150px] left-0 right-0 opacity-0 object-left-top"
       ></Image>
+      
       </div>
-      <div  id={`storyTitle-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 pl-xl">
+      <div  className="responsive-container w-2/3 pt-lg absolute top-[70px] z-10 right-0 bottom-0 pl-xl">
         <h2 
-        className={`storyTitle type-preset-3 font-black text-${colorTheme}-900`}
+         id={`storyTitle-${story.anchor}`}
+        className={`storyTitle type-preset-3 font-black text-${colorTheme}-900 `}
         >{story.title}</h2>
-    </div> 
-    <div  id={`storyCallOut-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[160px] z-10 right-0 pl-xl">
         <div
-         className=" w-full h-auto  flex justify-start items-center my-md ">
+        id={`storyCallOut-${story.anchor}`}
+         className=" w-full h-auto flex justify-start items-center my-md ">
           {story.callOut ? (
             <Image
               className={"z-10"}
@@ -52,13 +55,8 @@ const StorySection = ({ story, colorTheme, }) => {
           )}
         </div>
         
-       
-      </div>
-     
-     
-    </div>
-    <div id={`storySummary-${story.anchor}`} className="responsive-container w-2/3 pt-lg absolute top-[160px] z-10 right-0 pl-xl overflow-scroll h-auto">
       <div 
+      id={`storySummary-${story.anchor}`}
         className={` w-full font-serif text-${colorTheme}-900 type-preset-6 `}>
           <PostContent
             docData={story.intro.json}
@@ -72,16 +70,17 @@ const StorySection = ({ story, colorTheme, }) => {
                 Read More
             </button>
             </div>
-             {/* <div 
+            
+            <div 
        id={`storyContent-${story.anchor}`}
-      className="storyContent opacity-100">
+      className={`storyContent ${isCollapsed ? "hidden": "block"}`}>
           <PostContent
                 docData={story.body.json}
                 docLinks={story.body.links}
               />
-     </div> */}
-
-        
+     </div> 
+            </div>
+            
     </div> 
     </>
   );

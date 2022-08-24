@@ -1,16 +1,16 @@
-import PostContent from "components/blocks/PostBody/PostContent";
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
-import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { LinkText } from "components/atom";
 import ReportNavbar from "./ReportNavbar";
 import SectionIntro from "./SectionIntro";
-import StorySection from "./StorySection";
+import StorySection from "./Story2";
+import PostContent from "../PostBody/PostContent";
+import styles from "./styles.module.css";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import TableOfContentsSection from "./TableOfContents";
+import MarkdownComponent from "utils/MarkdownComponent";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -26,123 +26,109 @@ Process
 const NewReportSection = ({ entry }) => {
   let reportSections = sortDocIntoH2Sections();
   reportSections.forEach((sec) => (sec.ref = useRef()));
-  const activeSection = useCurrentSectionHook(reportSections);
+  //const activeSection = useCurrentSectionHook(reportSections);
+  const [activeSection, setActiveSection] = useState(null);
 
   function sortDocIntoH2Sections() {
     let output = [];
-    function addSection(title, anchor, type, storyId, pin) {
+    function addSection(title, anchor, type, storyId, pin, colorTheme) {
       output.push({
         title: title,
         titleId: anchor,
-        storyId:storyId,
+        storyId: storyId,
         type: type,
         extraOffset: 30,
         ref: null,
         triggerTop: 9999,
         triggerBottom: 9999,
-        pin:pin
+        pin: pin,
+        colorTheme: colorTheme,
       });
     }
     entry.reportSubsectionsCollection.items.forEach((subsection) => {
-      addSection(subsection.title, `${subsection.anchor}`, "section", null, true);
+      addSection(
+        subsection.title,
+        `${subsection.anchor}`,
+        "section",
+        null,
+        true,
+        subsection.colorTheme
+      );
       subsection.storiesCollection.items.forEach((story, i) => {
         addSection(
           story.title,
           `${subsection.anchor}--${story.anchor}`,
           "story",
           story.anchor,
-          (subsection.storiesCollection.items.length-1)===i
+          subsection.storiesCollection.items.length - 1 === i,
+          subsection.colorTheme
         );
       });
     });
     return output;
   }
 
-
-
   useEffect(() => {
-    reportSections.forEach((section, i) => {
-      const trigger = section.ref.current;
-      const t =  trigger.offsetTop;
-      console.log(t);
-      if (
-        section.type == "story" //&&
-      ) {
-        const q = gsap.utils.selector(trigger);
-        let tl = gsap.timeline()
-        tl.to(q("#storyImg-"+section.storyId), {
-          opacity: 1,
-          duration: 1,
-        });
-  
-        tl.fromTo(
-          q("#storyCallOut-"+section.storyId),
-          {
-            opacity: 0,
-            y: "400",
-          },
-          {
-            opacity: 1,
-            y:"0",
-            duration: 1,
-          },"+=1"
-        )
-        tl.to(
-          q("#storyCallOut-"+section.storyId),
-          {
-            opacity: 0,
-            duration: 0.5,
-          },
-        );
-        tl.fromTo(
-          q("#storySummary-"+section.storyId),
-          {
-            opacity: 0,
-            y: "400"
-          },
-          {
-            opacity: 1,
-            y:"0",
-            duration: 1,
-          }, "+=1"
-        )
-        
-       
-        ScrollTrigger.create({
-          trigger:trigger,
-          start:"top top",
-          //end:"+=2000",
-          markers: true,
-          pin: true,
-          pinnedContainer: q("#imageBackground-"+section.storyId),
-          scrub:0.5,
-          toggleActions:"play none none reverse",
-          animation:tl,
-          //pinSpacing: section.pin,
-          
-        })
-      } else {
-        ScrollTrigger.create({
-          trigger:trigger,
-          start:"top top",
-          markers: true,
-          pin: true,
-          pinSpacing: false,
-          
-        })
+    reportSections.forEach((h2) => {
+      if (h2.ref.current) {
+        const extraOffset = "extraOffset" in h2 ? h2.extraOffset : 30;
+        h2.triggerTop = h2.ref.current.offsetTop - extraOffset; //- window.innerHeight/2;
+        h2.triggerBottom =
+          h2.triggerTop + h2.ref.current.offsetHeight - extraOffset; // - 5;
       }
-     });
-
-   // ScrollTrigger.refresh();
+    });
     
-  }, []);
+    
+
+    //tl.to(".box2", {duration: partDuration, height: 250, width:250},partDuration);
+    //tl.to(".box", {duration: partDuration, height: 250, width:250}, 2*partDuration);
+   //tl.fromTo(".box3",{height: 700, width:700}, {duration: partDuration, height: 250, width:250},0 );
+    //tl.fromTo(".lineOne", {opacity:0 , y:200},{duration: partDuration,opacity:100, y:0 },0)
+   // tl.fromTo(".lineTwo",  {opacity:0 ,y:200},{duration: partDuration, opacity:100, y:0 },partDuration/3);
+   // tl.to(".lineThree", {duration: partDuration/3, opacity:100 },2*partDuration/3)
+
+    const onScroll = () => {
+      const offset = window.pageYOffset;
+      reportSections.forEach((h2) => {
+        if (
+          offset > h2.triggerTop &&
+          offset < h2.triggerBottom &&
+          activeSection != h2.titleId
+        ) {
+          let oldSec = reportSections.find(
+            (sec) => sec.titleId === activeSection
+          );
+          setActiveSection(h2.titleId);
+          if (h2.storyId) {
+            const sectionImg = document.getElementById(
+              "storyImg-" + h2.storyId
+            );
+            sectionImg.classList.replace("opacity-0", "opacity-100");
+          }
+          if (oldSec) {
+            const oldSectionImg = document.getElementById(
+              "storyImg-" + oldSec.storyId
+            );
+            if (oldSectionImg)
+              oldSectionImg.classList.replace("opacity-100", "opacity-0");
+          }
+          return;
+        }
+      });
+    };
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  });
 
   return (
     <>
+      
       <TableOfContentsSection entry={entry} />
+   
       <ReportNavbar entry={entry} />
-
       {entry.reportSubsectionsCollection.items.map((subsection, i) => {
+        const colorTheme = subsection.colorTheme ?? "purple";
         return (
           <>
             <section
@@ -151,25 +137,38 @@ const NewReportSection = ({ entry }) => {
               ref={
                 reportSections.find((k) => k.titleId == subsection.anchor).ref
               }
-              // className="h-screen w-screen"
             >
-              <SectionIntro subsection={subsection} />
+              <div className={`bg-${colorTheme}-900 w-full h-screen `}>
+                <div
+                  className="responsive-container max-w-screen-lg"
+                  id={subsection.anchor}
+                >
+                  <div className="pt-[160px] ">
+                    <h2
+                      className=" font-black text-white text-7xl pb-2xl "
+                      id={`h2-${subsection.anchor}`}
+                    >
+                      {subsection.title}
+                    </h2>
+                    <p className="type-preset-5 font-serif text-white">
+                      <MarkdownComponent content={subsection.body} />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {subsection.storiesCollection.items.map((story, j) => {
               const anch2 = `${subsection.anchor}--${story.anchor}`;
-              
+
               return (
                 <section
                   key={anch2}
                   id={anch2}
                   ref={reportSections.find((k) => k.titleId == anch2).ref}
-                  
+                  className={`relative`}
                 >
-                  <StorySection
-                    story={story}
-                    colorTheme={subsection.colorTheme}
-                  />
+                  <StorySection story={story} colorTheme={colorTheme} />
                 </section>
               );
             })}
@@ -180,172 +179,3 @@ const NewReportSection = ({ entry }) => {
   );
 };
 export default NewReportSection;
-
-
-
-  // function goToSection(t) {
-  //   gsap.to(window, {
-  //     scrollTo: {y: t, autoKill: false},
-  //     duration: 1,
-  //     //onComplete: () => scrollTween = null,
-  //     overwrite: true
-  //   });
-  // }
-// let tl = gsap.timeline({
-        //   scrollTrigger: {
-        //     trigger: trigger,
-        //     markers: true,
-        //     pin: true,
-        //     pinnedContainer: q("#imageBackground-"+section.storyId),
-        //     scrub: true,
-        //     toggleActions: "play none none none",
-        //   },
-        // });
-
-
-      // ScrollTrigger.create({
-      //   trigger: trigger,
-      //   start: "bottom bottom",
-      //   onEnterBack: () => goToSection(t),
-      // });
-        // gsap.to(q(".storyImg"), {
-        //   scrollTrigger: {
-        //       trigger:trigger,
-        //       start: "top top",
-        //       //endTrigger: q(".trigger-content"),
-        //       end: "top-=400px",
-        //       scrub: 1,
-        //       // toggleActions: "none none reverse reset",
-        //     },
-        //     opacity: 1,
-        //     duration: 1,
-        //   });
-        // gsap.to(q(".storyTitle"), {
-        //   scrollTrigger: {
-        //       trigger:q(".trigger-content"),
-        //       start: "top top",
-        //       markers:true,
-        //       scrub: 1,
-        //       toggleActions: "none none reverse none",
-        //     },
-        //     opacity: 0,
-        //     duration: 0.5,
-        //   });
-// gsap.from(
-//   id3, {
-//   scrollTrigger: {
-//     trigger:id2,
-//     start: "top bottom",
-//    // endTrigger: id3,
-//     end: "top 400px",
-//     scrub: 1
-//    // toggleActions: "play complete none reset",
-//   },
-//   opacity: 0,
-//   duration: 1,
-// });
-
-// const id = "#h2-" + subsection.anchor;
-// gsap.from(id, {
-//   scrollTrigger: {
-//     trigger: id,
-//     start: "top top", // first is trigger / second is
-//     markers:true,
-//     end: "top 400px",
-//     toggleActions: "restart complete reverse reset",
-//    // scrub: 1,
-//   },
-//   xPercent: -100,
-//   opacity: 0,
-// });
-// <section key={anch}>
-// <div className="">
-//   <div
-//     className="block sticky top-[70px] h-screen w-screen -z-10"
-//     style={{
-//       backgroundImage: `url(${
-//         activeStory.image ?? activeStory.illustration.url
-//       })`,
-//       backgroundRepeat: "no-repeat",
-//       backgroundPosition: "center center",
-//       backgroundSize: "cover",
-//       transition: "background-image 0.8s ease-in-out",
-//     }}
-//   >
-//     <div className="responsive-container pt-xl">
-//     {activeStory.title}
-//     </div>
-
-//   </div>
-//   <ResponsiveContentContainer
-//     padding="-mt-[100vh] pb-[300px]"
-//     alignment="right"
-//   >
-//     {subsection.storiesCollection.items.map((story) => {
-//       const anch2 = `${subsection.anchor}--${story.anchor}`;
-//       return (
-//         <div
-//           key={story.title}
-//           id={anch2}
-//           ref={reportSections.find((k) => k.titleId == anch2).ref}
-//         >
-//           {StorySection(story)}
-//         </div>
-//       );
-//     })}
-//   </ResponsiveContentContainer>
-// </div>
-// </section>
-
-// Execution heading
-
-// Custom trigger
-// ScrollTrigger.create({
-//   trigger: "#h3",
-//   start: "top bottom+=-200px", // 200px after the top passes the bottom of the viewport
-//   endTrigger: '#section2',
-//   end: "bottom top",
-//   onUpdate: (self) => {
-//     const progress = Math.max(2, Math.ceil(self.progress * 100)); //No lower than 2.
-//     number.current.innerHTML = progress;
-//     // console.log(
-//     //   "progress:",
-//     //   self.progress.toFixed(3),
-//     //   "direction:",
-//     //   self.direction,
-//     //   "velocity",
-//     //   self.getVelocity()
-//     // );
-//   },
-// });
-
-// entry.reportSubsectionsCollection.items.forEach((subsection) => {
-
-//   subsection.storiesCollection.items.forEach((story) => {
-//     const id2 = "#section-" +  story.anchor;
-//     console.log(id2)
-//    // const anch2 = `#${subsection.anchor}--${story.anchor}`;
-//     //const id3 = "#section-end-" +  story.anchor;
-//     gsap.from(
-//       id2, {
-//       scrollTrigger: {
-//         trigger:".trigger-top",
-//         start: "top top",
-//         markers:true,
-//         pin:".trigger-top",
-//        // endTrigger: id3,
-//         end: "top 400px",
-//         scrub: 0.5,
-
-//        // toggleActions: "none none reverse reset",
-//       },
-//       opacity: 0,
-//       duration: 1,
-//     });
-
-//   });
-
-// });
-// ScrollTrigger.create({
-//   snap: 1 / 4, // snap whole page to the closest section!
-// });
