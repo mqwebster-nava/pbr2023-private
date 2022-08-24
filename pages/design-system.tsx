@@ -28,6 +28,75 @@ export default function DesignSystem(props: PageInterface) {
     <div>
     
       <PageTemplate {...page} />
+      <div className="responsive-container space-y-2 ">
+        <div>
+          <div className="type-preset-5 font-sans font-black pt-3xl "> Colors </div>
+          <hr className="pb-xl" />
+          <div>Purple</div>
+          <div className="h-32 flex ">
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-50 stroke-purple-50"
+            >
+              50
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-100 stroke-purple-100"
+            >
+              100
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-200 stroke-purple-200"
+            >
+              200
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-300 stroke-purple-300"
+            >
+              300
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-400 stroke-purple-400"
+            >
+              400
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-500 stroke-purple-500"
+            >
+              500
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-600 stroke-purple-600"
+            >
+              600
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-700 stroke-purple-700"
+            >
+              700
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-800 stroke-purple-800"
+            >
+              800
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-900 stroke-purple-900"
+            >
+              900
+            </div>
+            </div>
+            </div>
+    </div>
     </div>
   ) : (
     <div>Error</div>

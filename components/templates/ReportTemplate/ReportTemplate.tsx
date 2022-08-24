@@ -1,4 +1,5 @@
 import { PageHeader } from "components/blocks";
+import ReportIntroductionBlock from "components/blocks/NewReportSection/ReportIntroduction";
 import ReportHero from "components/blocks/PageHeaders/ReportHero";
 import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
@@ -18,7 +19,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
-     "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
+     "TextBodyBlock": () => <ReportIntroductionBlock key={index} {...entry}/>,
       "ReportSection": (entry) => <ReportSection  key={index} entry={entry}/>,
     };
     return typename in componentMap ? (
