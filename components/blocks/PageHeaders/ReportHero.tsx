@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
   useEffect(() => {
     var tl = gsap.timeline({ repeat: -1 }); // <- This is where the repeat is set
-    const partDuration = 2;
+    const partDuration = 2.5;
     tl.set(".box3", { css: { height: 700, width: 700, zIndex: 10 } }, 0);
     tl.fromTo(
       ".box",
@@ -61,9 +61,9 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
   });
   return (
     <header className={`bg-purple-900 w-full h-screen  `}>
-      <div className="responsive-container">
-        <div className="w-full relative h-full">
-          <div className="absolute top-[30px]  z-40">
+      <div className="responsive-container w-full h-full relative">
+   
+          <div className="absolute top-[30px] z-40 lg:pl-[108px]">
             <h1 className="type-preset-3  font-black text-white">
               Public Benefit Report 2021
             </h1>
@@ -83,17 +83,16 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             {SVGBox("box3", "purple-500", "purple-900", "700px", 10)}
           </div>
         </div>
-      </div>
     </header>
   );
 };
 const SVGBox = (className, bg, stroke, h, z) => {
   return (
     <svg
-      className={`${className}  bg-${bg} stroke-${stroke} stroke-[5px] absolute bottom-0 left-0 h-[${h}] w-[${h}] z-${z}`}
-      width="320"
-      height="320"
-      viewBox="0 0 320 320"
+      className={`${className}  bg-${bg} stroke-${stroke} stroke-[5px] absolute  bottom-0 left-0 h-[${h}] w-[${h}] z-${z}`}
+      width="250"
+      height="250"
+      viewBox="0 0 250 250"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

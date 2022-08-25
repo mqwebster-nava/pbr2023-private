@@ -26,6 +26,7 @@ const NewReportSection = ({ entry }) => {
   reportSections.forEach((sec) => (sec.ref = useRef()));
   //const activeSection = useCurrentSectionHook(reportSections);
   const [activeSection, setActiveSection] = useState(null);
+  let observer;
 
   function sortDocIntoH2Sections() {
     let output = [];
@@ -75,16 +76,7 @@ const NewReportSection = ({ entry }) => {
           h2.triggerTop + h2.ref.current.offsetHeight - extraOffset; // - 5;
       }
     });
-    
-    
-
-    //tl.to(".box2", {duration: partDuration, height: 250, width:250},partDuration);
-    //tl.to(".box", {duration: partDuration, height: 250, width:250}, 2*partDuration);
-   //tl.fromTo(".box3",{height: 700, width:700}, {duration: partDuration, height: 250, width:250},0 );
-    //tl.fromTo(".lineOne", {opacity:0 , y:200},{duration: partDuration,opacity:100, y:0 },0)
-   // tl.fromTo(".lineTwo",  {opacity:0 ,y:200},{duration: partDuration, opacity:100, y:0 },partDuration/3);
-   // tl.to(".lineThree", {duration: partDuration/3, opacity:100 },2*partDuration/3)
-
+  
     const onScroll = () => {
       const offset = window.pageYOffset;
       reportSections.forEach((h2) => {
@@ -96,22 +88,51 @@ const NewReportSection = ({ entry }) => {
           let oldSec = reportSections.find(
             (sec) => sec.titleId === activeSection
           );
-          setActiveSection(h2.titleId);
+          
+          if (oldSec) {
+            const oldSectionImg = document.getElementById(
+              "storyImg-" + oldSec.storyId
+            );
+            if (oldSectionImg) oldSectionImg.classList.replace("opacity-100", "opacity-0");
+           
+            if(observer) observer.unobserve(oldSec.ref.current)
+          }
           if (h2.storyId) {
             const sectionImg = document.getElementById(
               "storyImg-" + h2.storyId
             );
             sectionImg.classList.replace("opacity-0", "opacity-100");
+            // observer = new IntersectionObserver(
+            //   ([e]) => {
+            //     console.log(e.intersectionRatio);
+            //     const storyTitle = document.getElementById(
+            //       "storyTitle-" + h2.storyId
+            //     );
+            //     if(e.intersectionRatio< 0.95 && e.intersectionRatio>0.5  && storyTitle){
+            //       storyTitle.classList.replace("opacity-100", "opacity-0");
+              
+            //     }
+            //     else if(e.intersectionRatio< 0.2  && storyTitle){
+            //       storyTitle.classList.replace("opacity-0", "opacity-100");
+            //     }
+            //     },
+            //   { threshold: [.95, 0] }
+            // )
+            // observer.observe(sectionImg)
           }
-          if (oldSec) {
-            const oldSectionImg = document.getElementById(
-              "storyImg-" + oldSec.storyId
-            );
-            if (oldSectionImg)
-              oldSectionImg.classList.replace("opacity-100", "opacity-0");
-          }
+          setActiveSection(h2.titleId);
+         
+          
+
           return;
+        } else if(activeSection == h2.titleId) {
+          const sectionImg = document.getElementById(
+            "imageBackground-" + h2.storyId
+          );
+         
+          //if(storyTitle)console.log(sectionImg.offsetTop, h2.ref.current.getBoundingClientRect().height)
         }
+
       });
     };
     window.removeEventListener("scroll", onScroll);
@@ -136,7 +157,7 @@ const NewReportSection = ({ entry }) => {
                 reportSections.find((k) => k.titleId == subsection.anchor).ref
               }
             >
-              <div className={`bg-${colorTheme}-900 w-full h-screen `}>
+              <div className={`bg-${colorTheme}-900 w-full min-h-screen `}>
                 <div
                   className="responsive-container max-w-screen-lg"
                   id={subsection.anchor}
@@ -148,14 +169,13 @@ const NewReportSection = ({ entry }) => {
                     >
                       {subsection.title}
                     </h2>
-                    <p className="type-preset-5 font-serif text-white">
+                    <p className="type-preset-5 font-serif text-white pb-[160px]">
                       <MarkdownComponent content={subsection.body} />
                     </p>
                   </div>
                 </div>
               </div>
             </section>
-
             {subsection.storiesCollection.items.map((story, j) => {
               const anch2 = `${subsection.anchor}--${story.anchor}`;
 
@@ -173,6 +193,13 @@ const NewReportSection = ({ entry }) => {
           </>
         );
       })}
+      <section className="w-full h-screen bg-gold-700">
+      <div className="responsive-container lg:pl-[108px] py-2xl" >
+        <div className="font-serif text-black type-preset-1 pt-2xl">
+          Conclusion
+       </div>
+        </div>
+      </section>
     </>
   );
 };

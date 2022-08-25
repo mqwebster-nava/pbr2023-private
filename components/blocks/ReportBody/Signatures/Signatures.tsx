@@ -5,6 +5,7 @@ import shaSignature from "/public/images/pbrs/sha-signature.png";
 import jodiSignature from "/public/images/pbrs/jodi-signature.png";
 export interface SignaturesProps {
   isGreenBG?: boolean;
+  isNew?: boolean;
   fullList?: boolean;
   margin?: string;
 }
@@ -35,12 +36,14 @@ const fullListOfSignatures = [
 
 export const Signatures: React.FC<SignaturesProps> = ({
   isGreenBG,
+  isNew =false,
   fullList = false,
   margin = "",
 }) => {
   const textColor = classNames({
     "text-sage-pbr": isGreenBG === true,
-    "text-gray-900": isGreenBG === false,
+    "text-gray-900": isGreenBG === false && isNew===false,
+    "text-purple-900":isNew===true
   });
 
   const signatures = fullList
@@ -66,8 +69,8 @@ export const Signatures: React.FC<SignaturesProps> = ({
               width={signature.width}
               alt={`Image of ${signature.name}'s signature`}
             />
-            <p className={`${textColor} type-preset-5 py-md`}>
-              {signature.name}, {signature.titleAbbreviation}
+            <p className={`${textColor} type-preset-5 py-md font-serif font-bold `}>
+              {signature.name} <br/> <span className={`font-light ${isNew && "font-purple-500"}`}>{signature.titleAbbreviation}</span>
             </p>
           </div>
         ))}
