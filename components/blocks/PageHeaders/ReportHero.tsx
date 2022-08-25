@@ -63,30 +63,16 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     <header className={`bg-purple-900 w-full h-screen  `}>
       <div className="responsive-container w-full h-full relative">
    
-          <div className="absolute top-[30px] z-40 lg:pl-[108px] flex">
-            <div className=" w-3/4 ">
+          <div className="absolute top-[30px] left-0 z-40 lg:pl-[108px] ">
             <h1 className=" -ml-md lineOne text-[200px]  font-black text-white opacity-100 leading-[0.8]">
             Public <br/> Benefit <br/> Report
             </h1>
-            </div>
-            <div className=" w-1/4 pt-xl ">
-            <p className="type-preset-5 font-serif text-white font-bold pb-3xl">  Public Benefit <br/> Report <br/> <span className="font-normal">2021 </span></p>
-             <p className="type-preset-5 font-serif text-white font-light"> Equity that lasts: </p>
-             <p className="type-preset-5 font-serif text-white font-light"> building sustainable government services</p>
-            </div>
+          </div>
+          <div className="absolute top-[30px] right-[180px] z-40 w-[180px] pt-md">
             
-            {/* <h1 className="type-preset-3  font-black text-white">
-              Public Benefit Report 2021
-            </h1>
-            <h1 className="lineOne text-[120px]  font-black text-white opacity-100">
-              Building
-            </h1>
-            <h1 className="lineTwo text-[120px] font-black text-white opacity-100">
-              Equitable
-            </h1>
-            <h1 className="lineThree text-[120px]  font-black text-white opacity-100">
-              Systems
-            </h1> */}
+      
+             <p className="type-preset-5 font-serif text-white font-light"> Building equity into our foundations</p>
+          
           </div>
           <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
             {SVGBox("box", "purple-900", "purple-200", "250px", 30)}
