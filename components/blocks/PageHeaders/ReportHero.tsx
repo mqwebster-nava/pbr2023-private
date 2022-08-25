@@ -63,7 +63,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     <header className={`bg-purple-900 w-full h-screen  `}>
       <div className="responsive-container w-full h-full relative">
    
-          <div className="absolute top-[30px] z-40 lg:pl-[108px] flex w-full">
+          <div className="absolute top-[30px] z-40 lg:pl-[108px] flex">
             <div className=" w-3/4 ">
             <h1 className=" -ml-md lineOne text-[200px]  font-black text-white opacity-100 leading-[0.8]">
             Public <br/> Benefit <br/> Report
@@ -71,7 +71,8 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             </div>
             <div className=" w-1/4 pt-xl ">
             <p className="type-preset-5 font-serif text-white font-bold pb-3xl">  Public Benefit <br/> Report <br/> <span className="font-normal">2021 </span></p>
-             <p className="type-preset-5 font-serif text-white font-light"> Equity that lasts: <br/> building sustainable government services</p>
+             <p className="type-preset-5 font-serif text-white font-light"> Equity that lasts: </p>
+             <p className="type-preset-5 font-serif text-white font-light"> building sustainable government services</p>
             </div>
             
             {/* <h1 className="type-preset-3  font-black text-white">

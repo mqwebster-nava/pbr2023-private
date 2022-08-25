@@ -22,9 +22,9 @@ const StorySection = ({ story, colorTheme }) => {
       </div>
       <div
         id={`imageBackground-${story.anchor}`}
-        className={`imageBackground sticky block  w-screen bg-${colorTheme}-50 top-[70px] z-0`} // h-[calc(100vh_-_70px)]
+        className={`imageBackground sticky block  w-screen bg-${colorTheme}-50 top-[70px] z-0 `} // h-[calc(100vh_-_70px)]
       >
-        <div className="relative h-[calc(100vw_*_9_/_16)] md:h-[calc(100vh_-_70)] md:max-h-[calc(100vh_-_70)] w-screen mx-auto max-w-screen-2xl">
+        <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen md:max-h-screen w-screen mx-auto max-w-screen-2xl">
           <Image
             id={``}
             src={story.contextIllustration.url}
@@ -32,7 +32,7 @@ const StorySection = ({ story, colorTheme }) => {
             height={9}
             layout="fill"
             objectFit="cover"
-            className=" w-screen absolute top-0p left-0 right-0 opacity-90 object-left-top"
+            className=" w-screen absolute top-0 left-[60px] opacity-90 object-left-top"
           ></Image>
           <Image
             id={`storyImg-${story.anchor}`}
@@ -41,7 +41,7 @@ const StorySection = ({ story, colorTheme }) => {
             height={9}
             layout="fill"
             objectFit="cover"
-            className="storyImg w-screen absolute top-0 left-0 right-0 opacity-0 object-left-top transition-opacity duration-500"
+            className="storyImg w-screen absolute top-0 left-[60px] right-0 opacity-0 object-left-top transition-opacity duration-500"
           ></Image>
         </div>
       </div>
