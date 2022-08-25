@@ -8,7 +8,7 @@ const TableOfContentsSection = ({ entry, onClick=()=>{} }) => {
           return (
             <div className={`w-full flex-1 bg-${color}-900 `}>
               <div
-                className={`responsive-container text-white grid grid-cols-12 `}
+                className={`responsive-container text-white grid grid-cols-12 pl-[108px] gap-lg`}
               >
                 <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
                 <LinkText
@@ -23,7 +23,7 @@ const TableOfContentsSection = ({ entry, onClick=()=>{} }) => {
                   {section.storiesCollection.items.map((story) => {
                     const anch2 = `#${section.anchor}--${story.anchor}`;
                     return (
-                      <div onClick={onClick}>
+                      <div onClick={onClick} className="font-serif">
                         <LinkText
                           href={anch2}
                           variant={"default"}

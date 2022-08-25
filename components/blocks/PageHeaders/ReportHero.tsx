@@ -63,8 +63,18 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     <header className={`bg-purple-900 w-full h-screen  `}>
       <div className="responsive-container w-full h-full relative">
    
-          <div className="absolute top-[30px] z-40 lg:pl-[108px]">
-            <h1 className="type-preset-3  font-black text-white">
+          <div className="absolute top-[30px] z-40 lg:pl-[108px] flex w-full">
+            <div className=" w-3/4 ">
+            <h1 className=" -ml-md lineOne text-[200px]  font-black text-white opacity-100 leading-[0.8]">
+            Public <br/> Benefit <br/> Report
+            </h1>
+            </div>
+            <div className=" w-1/4 pt-xl ">
+            <p className="type-preset-5 font-serif text-white font-bold pb-3xl">  Public Benefit <br/> Report <br/> <span className="font-normal">2021 </span></p>
+             <p className="type-preset-5 font-serif text-white font-light"> Equity that lasts: <br/> building sustainable government services</p>
+            </div>
+            
+            {/* <h1 className="type-preset-3  font-black text-white">
               Public Benefit Report 2021
             </h1>
             <h1 className="lineOne text-[120px]  font-black text-white opacity-100">
@@ -75,9 +85,9 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             </h1>
             <h1 className="lineThree text-[120px]  font-black text-white opacity-100">
               Systems
-            </h1>
+            </h1> */}
           </div>
-          <div className="w-2/3 ml-auto absolute bottom-0 right-0">
+          <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
             {SVGBox("box", "purple-900", "purple-200", "250px", 30)}
             {SVGBox("box2", "purple-700", "purple-800", "400px", 20)}
             {SVGBox("box3", "purple-500", "purple-900", "700px", 10)}

@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import TableOfContentsSection from "./TableOfContents";
 import MarkdownComponent from "utils/MarkdownComponent";
+import { LinkText } from "components/atom";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -159,17 +160,17 @@ const NewReportSection = ({ entry }) => {
             >
               <div className={`bg-${colorTheme}-900 w-full min-h-screen `}>
                 <div
-                  className="responsive-container max-w-screen-lg"
+                  className="responsive-container "
                   id={subsection.anchor}
                 >
-                  <div className="pt-[160px] ">
+                  <div className="pt-[160px] lg:pl-[108px]">
                     <h2
-                      className=" font-black text-white text-7xl pb-2xl "
+                      className=" font-black text-white text-7xl pb-3xl max-w-screen-lg"
                       id={`h2-${subsection.anchor}`}
                     >
                       {subsection.title}
                     </h2>
-                    <p className="type-preset-5 font-serif text-white pb-[160px]">
+                    <p className="type-preset-5 font-serif font-light text-white pb-[160px] max-w-screen-md">
                       <MarkdownComponent content={subsection.body} />
                     </p>
                   </div>
@@ -194,9 +195,22 @@ const NewReportSection = ({ entry }) => {
         );
       })}
       <section className="w-full h-screen bg-gold-700">
-      <div className="responsive-container lg:pl-[108px] py-2xl" >
-        <div className="font-serif text-black type-preset-1 pt-2xl">
+      <div className="responsive-container py-2xl lg:pl-[108px]" >
+        <div className="font-serif text-black type-preset-1 pt-3xl">
           Conclusion
+       </div>
+       <p className="type-preset-5 font-sans text-black pt-[70px] max-w-screen-md">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+       </p>
+       <div className="flex pt-[70px]">
+        <div className="w-1/3">
+          <p className="type-preset-5 font-bold">Where next?</p>
+        </div>
+        <div className="w-2/3 flex flex-col gap-sm pt-xs font-serif">
+          <LinkText href="/careers" variant={"default"} color="black">Careers</LinkText>
+          <LinkText href="/case-studies" variant={"default"} color="black"> Case Studies</LinkText>
+          <LinkText href="/public-benefit-reports/2020" variant={"default"} color="black">2020 Public Benefit Report</LinkText>
+        </div>
        </div>
         </div>
       </section>
