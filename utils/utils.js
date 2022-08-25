@@ -37,9 +37,8 @@ export function getEventDateStr(date) {
 export function isDateAfterNow(date) {
   const eventDate = new Date(`${date}`)
   const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setDate(tomorrow.getDate());
   tomorrow.setHours(0, 0, 0, 0);
-  console
   return eventDate > tomorrow;
 }
 
