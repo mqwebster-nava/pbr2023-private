@@ -4,7 +4,7 @@ import PostContent from "../PostBody/PostContent";
 
 const StorySection = ({ story, colorTheme }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  console.log(isCollapsed);
+  //console.log(isCollapsed);
   return (
     <div className={`bg-${colorTheme}-50 h-full relative`}>
       <div
@@ -85,7 +85,7 @@ const StorySection = ({ story, colorTheme }) => {
         </div>
         <div
           id={`storyContent-${story.anchor}`}
-          className={`storyContent w-2/3 ml-auto pb-[200px] font-serif type-preset-6 ${
+          className={`storyContent w-2/3 ml-auto pb-[200px] font-serif type-preset-6 font-light ${
             isCollapsed ? "hidden" : "block"
           }`}
         >

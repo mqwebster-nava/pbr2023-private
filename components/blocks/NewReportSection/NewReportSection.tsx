@@ -103,23 +103,7 @@ const NewReportSection = ({ entry }) => {
               "storyImg-" + h2.storyId
             );
             sectionImg.classList.replace("opacity-0", "opacity-100");
-            // observer = new IntersectionObserver(
-            //   ([e]) => {
-            //     console.log(e.intersectionRatio);
-            //     const storyTitle = document.getElementById(
-            //       "storyTitle-" + h2.storyId
-            //     );
-            //     if(e.intersectionRatio< 0.95 && e.intersectionRatio>0.5  && storyTitle){
-            //       storyTitle.classList.replace("opacity-100", "opacity-0");
-              
-            //     }
-            //     else if(e.intersectionRatio< 0.2  && storyTitle){
-            //       storyTitle.classList.replace("opacity-0", "opacity-100");
-            //     }
-            //     },
-            //   { threshold: [.95, 0] }
-            // )
-            // observer.observe(sectionImg)
+           
           }
           setActiveSection(h2.titleId);
          
@@ -144,11 +128,14 @@ const NewReportSection = ({ entry }) => {
   return (
     <>
       
+     
+      <ReportNavbar entry={entry} />
       <TableOfContentsSection entry={entry} />
    
-      <ReportNavbar entry={entry} />
       {entry.reportSubsectionsCollection.items.map((subsection, i) => {
-        const colorTheme = subsection.colorTheme ?? "purple";
+        // TODO update color palette just for gold
+        let colorTheme = subsection.colorTheme ?? "purple";
+        let textColor = subsection.colorTheme==="gold" ? "black" : "white";
         return (
           <>
             <section
@@ -160,17 +147,17 @@ const NewReportSection = ({ entry }) => {
             >
               <div className={`bg-${colorTheme}-900 w-full min-h-screen `}>
                 <div
-                  className="responsive-container "
+                  className="responsive-container mr-auto lg:pl-[108px]"
                   id={subsection.anchor}
                 >
-                  <div className="pt-[160px] lg:pl-[108px]">
+                  <div className="pt-[160px] ">
                     <h2
-                      className=" font-black text-white text-7xl pb-3xl max-w-screen-lg"
+                      className={`font-black text-${textColor} text-7xl pb-3xl max-w-screen-md mr-auto`}
                       id={`h2-${subsection.anchor}`}
                     >
                       {subsection.title}
                     </h2>
-                    <p className="type-preset-5 font-serif font-light text-white pb-[160px] max-w-screen-md">
+                    <p className={`type-preset-5 font-serif font-light text-${textColor} pb-[160px] max-w-screen-md`}>
                       <MarkdownComponent content={subsection.body} />
                     </p>
                   </div>
@@ -206,7 +193,9 @@ const NewReportSection = ({ entry }) => {
         <div className="w-1/3">
           <p className="type-preset-5 font-bold">Where next?</p>
         </div>
-        <div className="w-2/3 flex flex-col gap-sm pt-xs font-serif">
+        {/* TODO add rules between them & prototype */}
+        <div className="w-2/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black">
+        <LinkText href="/public-benefit-reports/2020" variant={"default"} color="black">Download PDF</LinkText>
           <LinkText href="/careers" variant={"default"} color="black">Careers</LinkText>
           <LinkText href="/case-studies" variant={"default"} color="black"> Case Studies</LinkText>
           <LinkText href="/public-benefit-reports/2020" variant={"default"} color="black">2020 Public Benefit Report</LinkText>
@@ -218,3 +207,22 @@ const NewReportSection = ({ entry }) => {
   );
 };
 export default NewReportSection;
+
+
+ // observer = new IntersectionObserver(
+            //   ([e]) => {
+            //     console.log(e.intersectionRatio);
+            //     const storyTitle = document.getElementById(
+            //       "storyTitle-" + h2.storyId
+            //     );
+            //     if(e.intersectionRatio< 0.95 && e.intersectionRatio>0.5  && storyTitle){
+            //       storyTitle.classList.replace("opacity-100", "opacity-0");
+              
+            //     }
+            //     else if(e.intersectionRatio< 0.2  && storyTitle){
+            //       storyTitle.classList.replace("opacity-0", "opacity-100");
+            //     }
+            //     },
+            //   { threshold: [.95, 0] }
+            // )
+            // observer.observe(sectionImg)

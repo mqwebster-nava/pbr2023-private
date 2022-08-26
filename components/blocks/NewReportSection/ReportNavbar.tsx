@@ -1,15 +1,18 @@
 import Logo from "components/wrapper/Navbar/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SlideDown from "react-slidedown";
 import TableOfContentsSection from "./TableOfContents";
 
 
 const ReportNavbar = ({ entry }) => {
+
+  
   const [isShowingMenu, setIsShowingMenu] = useState(false);
+  
     return (
       <div  className="block sticky top-0  z-30  pt-md w-full bg-white">
-      <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px]">
-        <Logo isMobile={true} />
+      <div className=" responsive-container flex flex-wrap items-center justify-between h-[70px]">
+        <Logo isMobile={false} />
         <div className="block ">
           <button
             aria-label="menu"

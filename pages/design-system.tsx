@@ -28,7 +28,7 @@ export default function DesignSystem(props: PageInterface) {
     <div>
     
       <PageTemplate {...page} />
-      <div className="responsive-container space-y-2 ">
+      <div className="responsive-container space-y-2  divide-y divide-black">
         <div>
           <div className="type-preset-5 font-sans font-black pt-3xl "> Colors </div>
           <hr className="pb-xl" />
@@ -91,6 +91,12 @@ export default function DesignSystem(props: PageInterface) {
             <div
               style={{ width: "100px", height: "100px" }}
               className="bg-purple-900 stroke-purple-900"
+            >
+              900
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-900 stroke-gold-900 text-gold-900"
             >
               900
             </div>

@@ -11,6 +11,8 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
   useEffect(() => {
     var tl = gsap.timeline({ repeat: -1 }); // <- This is where the repeat is set
     const partDuration = 2.5;
+    // Have the small square grow from 0
+    // Have the animation go right up to the top of the page
     tl.set(".box3", { css: { height: 700, width: 700, zIndex: 10 } }, 0);
     tl.fromTo(
       ".box",
@@ -71,7 +73,8 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
           <div className="absolute top-[30px] right-[180px] z-40 w-[180px] pt-md">
             
       
-             <p className="type-preset-5 font-serif text-white font-light"> Building equity into our foundations</p>
+             <p className="type-preset-5 font-serif text-white font-bold"> Equity that lasts:</p>
+             <p className="type-preset-5 font-serif text-white font-light">building sustainable government services</p>
           
           </div>
           <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
