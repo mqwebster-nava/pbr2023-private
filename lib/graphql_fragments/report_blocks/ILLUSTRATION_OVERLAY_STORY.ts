@@ -7,6 +7,7 @@ sys {
     id
 }
 title
+shortTitle
 anchor
 intro {
     ${POST_BODY}
