@@ -62,7 +62,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     tl.set(".box3", { css: { zIndex: 10 } });
   });
   return (
-    <header className={`bg-purple-900 w-full h-screen  `}>
+    <header className={`bg-purple-900 w-full h-screen  `} id="reportHeader">
       <div className="responsive-container w-full h-full relative">
    
           <div className="absolute top-[30px] left-0 z-40 lg:pl-[108px] ">
@@ -71,11 +71,8 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             </h1>
           </div>
           <div className="absolute top-[30px] right-[180px] z-40 w-[180px] pt-md">
-            
-      
              <p className="type-preset-5 font-serif text-white font-bold"> Equity that lasts:</p>
              <p className="type-preset-5 font-serif text-white font-light">building sustainable government services</p>
-          
           </div>
           <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
             {SVGBox("box", "purple-900", "purple-200", "250px", 30)}

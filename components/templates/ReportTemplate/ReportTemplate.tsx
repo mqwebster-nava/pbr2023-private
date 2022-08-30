@@ -20,7 +20,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
     const componentMap = {
      "TextBodyBlock": () => <ReportIntroductionBlock key={index} {...entry}/>,
-      "ReportSection": (entry) => <ReportSection  key={index} entry={entry}/>,
+      "ReportSection": (entry) => <ReportSection  key={index} entry={entry} hero={pageHeader}/>,
     };
     return typename in componentMap ? (
       componentMap[typename](entry)
@@ -28,13 +28,17 @@ const ReportTemplate: React.FC<PageInterface> = ({
       <div></div>
     );
   };
+
   return (
     <main id="main">
       {/* <PageHeader {...pageHeader} /> */}
-      <ReportHero {...pageHeader}/>
+      {/* <ReportHero {...pageHeader}/> */}
       <div className="animate-fadeIn2">
-        {children}
+       { /*
         {contentBlocks.map((block, i) => getComponent(block, i))}
+        */}
+
+        {contentBlocks.filter((block)=>block.__typename==="ReportSection").map((block, i) => getComponent(block, i))}
 
       </div>
     </main>

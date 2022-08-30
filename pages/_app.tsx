@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <div className="flex flex-col h-screen ">
-        <Navbar />
+      {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&  <Navbar /> }
 
         <div className="flex-grow ">
           <Component {...pageProps} />
