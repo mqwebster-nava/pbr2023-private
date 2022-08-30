@@ -1,18 +1,14 @@
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
 import { useEffect, useRef, useState } from "react";
 import ReportNavbar from "./ReportNavbar";
-import SectionIntro from "./SectionIntro";
 import StorySection from "./Story2";
-import PostContent from "../PostBody/PostContent";
-import styles from "./styles.module.css";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import TableOfContentsSection from "./TableOfContents";
 import MarkdownComponent from "utils/MarkdownComponent";
 import { LinkText } from "components/atom";
-
+import ReportHero from "components/blocks/PageHeaders/ReportHero";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 /*
@@ -22,7 +18,7 @@ Process
 -- Frame 1 - Illustration Full
 */
 
-const NewReportSection = ({ entry }) => {
+const NewReportSection = ({ entry, hero }) => {
   let reportSections = sortDocIntoH2Sections();
   reportSections.forEach((sec) => (sec.ref = useRef()));
   //const activeSection = useCurrentSectionHook(reportSections);
@@ -111,10 +107,9 @@ const NewReportSection = ({ entry }) => {
 
           return;
         } else if(activeSection == h2.titleId) {
-          const sectionImg = document.getElementById(
-            "imageBackground-" + h2.storyId
-          );
-         
+          // const sectionImg = document.getElementById(
+          //   "imageBackground-" + h2.storyId
+          // );
           //if(storyTitle)console.log(sectionImg.offsetTop, h2.ref.current.getBoundingClientRect().height)
         }
 
@@ -127,9 +122,8 @@ const NewReportSection = ({ entry }) => {
 
   return (
     <>
-      
-     
-      <ReportNavbar entry={entry} />
+      <ReportNavbar entry={entry} activeSection={activeSection} sections={reportSections}/>
+      <ReportHero {...hero}></ReportHero>
       <TableOfContentsSection entry={entry} />
    
       {entry.reportSubsectionsCollection.items.map((subsection, i) => {
