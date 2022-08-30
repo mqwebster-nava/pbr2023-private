@@ -80,7 +80,7 @@ const StorySection = ({ story, colorTheme }) => {
               setIsCollapsed(!isCollapsed);
             }}
           >
-            {isCollapsed ? "Read More" : "Read less"}
+            {isCollapsed ? "See more" : "See less"}
           </button>
         </div>
         <div
