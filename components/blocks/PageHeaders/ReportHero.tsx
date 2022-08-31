@@ -8,22 +8,29 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
+  
+
   useEffect(() => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const largeS = w/2, midS = w/3, smallS=w/4;
+    
+
     var tl = gsap.timeline({ repeat: -1 }); // <- This is where the repeat is set
     const partDuration = 2.5;
     // Have the small square grow from 0
     // Have the animation go right up to the top of the page
-    tl.set(".box3", { css: { height: 700, width: 700, zIndex: 10 } }, 0);
+    tl.set(".box3", { css: { height: largeS, width: largeS, zIndex: 10 } }, 0);
     tl.fromTo(
       ".box",
-      { height: 250, width: 250 },
-      { height: 400, width: 400, duration: partDuration },
+      { height: smallS, width: smallS },
+      { height: midS, width: midS, duration: partDuration },
       0
     );
     tl.fromTo(
       ".box2",
-      { height: 400, width: 400 },
-      { duration: partDuration, height: 700, width: 700 },
+      { height: midS, width: midS },
+      { duration: partDuration, height: largeS, width: largeS },
       0
     );
     tl.set(".box", { css: { zIndex: 20 } }, partDuration);
@@ -31,42 +38,44 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     tl.set(".box3", { css: { zIndex: 30 } }, partDuration);
     tl.to(
       ".box",
-      { duration: partDuration, height: 700, width: 700 },
+      { duration: partDuration, height: largeS, width: largeS },
       partDuration
     );
     tl.fromTo(
       ".box3",
-      { height: 250, width: 250 },
-      { duration: partDuration, height: 400, width: 400 },
+      { height: smallS, width: smallS },
+      { duration: partDuration, height: midS, width: midS },
       partDuration
     );
     tl.set(".box", { css: { zIndex: 10 } }, 2 * partDuration);
     tl.set(
       ".box2",
-      { css: { zIndex: 30, height: 250, width: 250 } },
+      { css: { zIndex: 30, height: smallS, width: smallS } },
       2 * partDuration
     );
     tl.set(".box3", { css: { zIndex: 20 } }, 2 * partDuration);
     tl.to(
       ".box2",
-      { duration: partDuration, height: 400, width: 400 },
+      { duration: partDuration, height: midS, width: midS },
       2 * partDuration
     );
     tl.to(
       ".box3",
-      { duration: partDuration, height: 700, width: 700 },
+      { duration: partDuration, height: largeS, width: largeS },
       2 * partDuration
     );
-    tl.set(".box", { css: { zIndex: 30, height: 250, width: 250 } });
+    tl.set(".box", { css: { zIndex: 30, height: smallS, width: smallS } });
     tl.set(".box2", { css: { zIndex: 20 } });
     tl.set(".box3", { css: { zIndex: 10 } });
-  });
+  },[]);
+
+
   return (
     <header className={`bg-purple-900 w-full h-screen  `} id="reportHeader">
       <div className="responsive-container w-full h-full relative">
    
           <div className="absolute top-[30px] left-0 z-40 lg:pl-[108px] ">
-            <h1 className=" -ml-md lineOne text-[200px]  font-black text-white opacity-100 leading-[0.8]">
+            <h1 className=" -ml-md lineOne lg:text-[200px] text-[120px] font-black text-white opacity-100 leading-[0.8]">
             Public <br/> Benefit <br/> Report
             </h1>
           </div>
@@ -75,9 +84,9 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
              <p className="type-preset-5 font-serif text-white font-light">building sustainable government services</p>
           </div>
           <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
-            {SVGBox("box", "purple-900", "purple-200", "250px", 30)}
-            {SVGBox("box2", "purple-700", "purple-800", "400px", 20)}
-            {SVGBox("box3", "purple-500", "purple-900", "700px", 10)}
+            {SVGBox("box", "purple-900", "purple-200", "500px", 30)}
+            {SVGBox("box2", "purple-largeS", "purple-800", "500px", 20)}
+            {SVGBox("box3", "purple-500", "purple-900", "500px", 10)}
           </div>
         </div>
     </header>

@@ -14,7 +14,7 @@ const ReportIntroductionBlock = ({ title, richBody }: TextBodyInterface) => {
         <div className="font-serif text-purple-900">
           {title && (
             <h3 className={`font-sans type-preset-3  font-bold pb-lg`}>
-              {title}{" "}
+              {title}
             </h3>
           )}
           <PostContent docData={richBody.json} docLinks={richBody.links} />

@@ -1,38 +1,14 @@
 import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
-import SlideDown from "react-slidedown";
 import TableOfContentsSection from "./TableOfContents";
 
-const ReportNavbar = ({ entry, activeSection, sections }) => {
-  const [currentSectionPct, setCurrentSectionPct] = useState(0);
-  const ref = useRef();
-  useEffect(() => {
-    const onScroll = () => {
-      const offset = window.pageYOffset;
-      if (!activeSection) return;
-      const sectionInfo = sections.find(
-        (section) => section.titleId === activeSection
-      );
-      if (!sectionInfo) return;
-     
-      const offsetPct =  Math.round(
-        (100 * (offset - sectionInfo.triggerTop)) /
-          (sectionInfo.triggerBottom - sectionInfo.triggerTop)
-      );
-      if(offsetPct < 0  || offsetPct >=100)return;
-       setCurrentSectionPct(offsetPct);
-      
-    };
-    window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  });
+const ReportNavbar = ({  contentBlocks, activeSection, sections, percent}) => {
 
   const [isShowingMenu, setIsShowingMenu] = useState(false);
   let navBG = "purple"
   if (activeSection){
     const sectionInfo = sections.find(
-      (section) => section.titleId === activeSection
+      (section) => section.anchor === activeSection
     );
     navBG = sectionInfo.colorTheme;
   }
@@ -57,47 +33,9 @@ const ReportNavbar = ({ entry, activeSection, sections }) => {
             className="font-sans text-white-900  border-grey  "
           >
             {isShowingMenu ? (
-              <svg
-                width="20"
-                height="25"
-                viewBox="0 0 23 23"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <CloseSVG/>
             ) : (
-              <svg
-                width="20"
-                height="25"
-                viewBox="0 0 27 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M26.3997 1H1"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M26.3997 10.7695H1"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M26.3997 20.5391H1"
-                  stroke="white"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <OpenSVG/>
             )}
           </button>
         </div>
@@ -107,21 +45,19 @@ const ReportNavbar = ({ entry, activeSection, sections }) => {
           let s = `bg-${section.colorTheme}-50`
           
           if(activeSection && (sections.findIndex(
-            (section) => section.titleId === activeSection
+            (section) => section.anchor === activeSection
           ) > i) ){
             s = `bg-${section.colorTheme}-900`
           }
           return ( <div className={`h-full w-[150px] ${s}`}>
-            {  <div style={{width:`${activeSection=== section.titleId ? currentSectionPct: 0}%`}}className={`h-full bg-${section.colorTheme}-900`}></div>}
+            {  <div style={{width:`${activeSection=== section.anchor ? percent: 0}%`}}className={`h-full bg-${section.colorTheme}-900`}></div>}
           </div>)
         })}
-        
-        
       </div>
       <div className="overflow-scroll">
         {isShowingMenu ? (
           <TableOfContentsSection
-            entry={entry}
+            contentBlocks={contentBlocks}
             onClick={() => setIsShowingMenu(false)}
           />
         ) : null}
@@ -129,6 +65,50 @@ const ReportNavbar = ({ entry, activeSection, sections }) => {
     </div>
   );
 };
+
+
+const CloseSVG = () => <svg
+width="20"
+height="25"
+viewBox="0 0 23 23"
+fill="none"
+xmlns="http://www.w3.org/2000/svg"
+>
+<path
+  d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
+  stroke="white"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+/>
+</svg>
+
+const OpenSVG = () => 
+  <svg
+  width="20"
+  height="25"
+  viewBox="0 0 27 22"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M26.3997 1H1"
+    stroke="white"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M26.3997 10.7695H1"
+    stroke="white"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M26.3997 20.5391H1"
+    stroke="white"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
 
 export default ReportNavbar;
 {

@@ -14,6 +14,7 @@ import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 import LIST_BLOCK from "./content_blocks/LIST_BLOCK";
 import FLOATING_BUTTON_BLOCK from "./content_blocks/FLOATING_BUTTON_BLOCK";
 import REPORT_SECTION from "./report_blocks/REPORT_SECTION";
+import REPORT_ILLUSTRATION_OVERLAY_SUBSECTION from "./report_blocks/ILLUSTRATION_OVERLAY_SUBSECTION";
 
 /*
 The page fields should contain metadata about the page as 
@@ -47,9 +48,10 @@ contentCollection(limit:5) {
         ... on TextBodyBlock {
             ${TEXT_BODY_BLOCK}
         }
-        ... on ReportSection {
-            ${REPORT_SECTION}
+        ... on ReportIllustrationOverlaySubsection {
+            ${REPORT_ILLUSTRATION_OVERLAY_SUBSECTION}
         }
+
     }
 }
 `;

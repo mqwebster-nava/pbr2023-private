@@ -2,19 +2,20 @@ import { useState } from "react";
 import Image from "next/image";
 import PostContent from "../PostBody/PostContent";
 
-const StorySection = ({ story, colorTheme }) => {
+const StorySection = ({ story, colorTheme, sectionAnchor }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   //console.log(isCollapsed);
   return (
-    <div className={`bg-${colorTheme}-50 h-full relative`}>
+    <section className="" id={`${sectionAnchor}--${story.anchor}`}>
+    <div className={`bg-${colorTheme}-50 h-full relative `}>
       <div
         id={`storyTitleDiv-${story.anchor}`}
-        className={`sticky top-[70px] z-20 right-0 responsive-container`}
+        className={`sticky top-[70px] z-20 right-0 responsive-container `}
       >
-        <div className={`bg-${colorTheme}-50 ml-auto w-2/3`}>
+        <div className={`bg-${colorTheme}-50 ml-auto md:w-2/3 w-full pt-md`}>
           <h2
             id={`storyTitle-${story.anchor}`}
-            className={`storyTitle type-preset-3 font-black text-${colorTheme}-900 py-md  opacity-100`}
+            className={`storyTitle md:type-preset-3 type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100`}
           >
             {story.title}
           </h2>
@@ -22,7 +23,7 @@ const StorySection = ({ story, colorTheme }) => {
       </div>
       <div
         id={`imageBackground-${story.anchor}`}
-        className={`imageBackground sticky block  w-screen bg-${colorTheme}-50 top-[70px] z-0 `} // h-[calc(100vh_-_70px)]
+        className={`imageBackground sticky block  w-screen bg-${colorTheme}-50 top-[70px] z-10 md:z-10 `} // h-[calc(100vh_-_70px)]
       >
         <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen md:max-h-screen w-screen mx-auto max-w-screen-2xl">
           <Image
@@ -47,11 +48,11 @@ const StorySection = ({ story, colorTheme }) => {
       </div>
       <div
         id={`storyMain-${story.anchor}`}
-        className="responsive-container pt-lg h-auto ml-auto z-10 relative"
+        className="responsive-container pt-lg h-auto ml-auto md:z-10  z-0 relative "
       >
         <div
           id={`storyCallOut-${story.anchor}`}
-          className=" w-2/3 ml-auto h-auto flex justify-start items-center my-md "
+          className=" w-full md:w-2/3 ml-auto h-auto flex justify-start items-center my-md "
         >
           {story.callOut ? (
             <Image
@@ -66,7 +67,7 @@ const StorySection = ({ story, colorTheme }) => {
         </div>
         <div
           id={`storySummary-${story.anchor}`}
-          className={` w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 ${
+          className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
             isCollapsed ? "pb-[300px]" : "pb-md"
           }`}
         >
@@ -85,7 +86,7 @@ const StorySection = ({ story, colorTheme }) => {
         </div>
         <div
           id={`storyContent-${story.anchor}`}
-          className={`storyContent w-2/3 ml-auto pb-[200px] font-serif type-preset-6 font-light ${
+          className={`storyContent w-2/3 ml-auto pb-[200px] font-serif type-preset-6 font-light text-${colorTheme}-50 ${
             isCollapsed ? "hidden" : "block"
           }`}
         >
@@ -93,6 +94,7 @@ const StorySection = ({ story, colorTheme }) => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

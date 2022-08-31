@@ -1,9 +1,9 @@
 import { LinkText } from "components/atom";
-const TableOfContentsSection = ({ entry, onClick=()=>{} }) => {
+const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
    // Have the bottom rule not have a hr
     return (
       <section className={` w-full h-screen flex flex-col `}>
-        {entry.reportSubsectionsCollection.items.map((section) => {
+        {contentBlocks.filter((entry)=>entry.__typename==="ReportIllustrationOverlaySubsection").map((section) => {
           const color = section.colorTheme ?? "purple";
           const textColor = section.colorTheme==="gold"?"black" : "white";
           return (
