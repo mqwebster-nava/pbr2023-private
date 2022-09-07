@@ -1,6 +1,6 @@
 import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
-import TableOfContentsSection from "./TableOfContents";
+import { LinkText } from "components/atom";
 
 const ReportNavbar = ({  contentBlocks, activeSection, sections, percent}) => {
 
@@ -14,11 +14,11 @@ const ReportNavbar = ({  contentBlocks, activeSection, sections, percent}) => {
   }
 
   return (
-    <div className={`block sticky top-0  z-50 w-full bg-${navBG}-900`}>
+    <div className={`block sticky top-0  z-50 w-full bg-white`}>
       <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px]">
-        <Logo isMobile={true} color="white" />
+        <Logo isMobile={true} color="black" />
         <a href="#reportHeader">
-        <h2 className="type-preset-6 font-serif text-white">
+        <h2 className="type-preset-6 font-serif text-black">
           Public Benefit Report 2021
         </h2>
         </a>
@@ -30,7 +30,7 @@ const ReportNavbar = ({  contentBlocks, activeSection, sections, percent}) => {
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="font-sans text-white-900  border-grey  "
+            className="font-sans text-black  border-grey  "
           >
             {isShowingMenu ? (
               <CloseSVG/>
@@ -76,7 +76,7 @@ xmlns="http://www.w3.org/2000/svg"
 >
 <path
   d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
-  stroke="white"
+  stroke="black"
   strokeLinecap="round"
   strokeLinejoin="round"
 />
@@ -92,19 +92,19 @@ const OpenSVG = () =>
 >
   <path
     d="M26.3997 1H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 10.7695H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 20.5391H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
@@ -122,3 +122,69 @@ export default ReportNavbar;
 </nav>
 /h-[70px] */
 }
+
+
+const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
+   // Have the bottom rule not have a hr
+    return (
+      <section className={` w-full h-screen flex flex-col `}>
+        {contentBlocks.filter((entry)=>entry.__typename==="ReportIllustrationOverlaySubsection").map((section) => {
+          const color = section.colorTheme ?? "purple";
+          const textColor = section.colorTheme==="gold"?"black" : "white";
+          return (
+            <div className={`w-full flex-1 bg-${color}-900 `}>
+              <div
+                className={`responsive-container  text-white grid grid-cols-12 pl-[108px] gap-lg`}
+              >
+                <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
+                <LinkText
+                          href={`#${section.anchor}`}
+                          variant={"default"}
+                          color={textColor}
+                        >
+                  {section.title}
+                  </LinkText>
+                </h2>
+                <div className={`col-span-8 pt-md divide-y divide-${textColor}`}>
+                  {section.storiesCollection.items.map((story) => {
+                    const anch2 = `#${section.anchor}--${story.anchor}`;
+                    const title = story.shortTitle ?? story.title;
+                    return (
+    
+                      <div onClick={onClick} className="font-serif py-sm">
+                        <LinkText
+                          href={anch2}
+                          variant={"default"}
+                          color={textColor}
+                        >
+                          {title}
+                        </LinkText>
+                        
+                      </div>
+                    
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+         <div className={`w-full flex-1 bg-white `}>
+              <div
+                className={`responsive-container  text-black grid grid-cols-12 pl-[108px] gap-lg`}
+              >
+                <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
+                <LinkText
+                          href={``}
+                          variant={"default"}
+                          color={'black'}
+                        >
+                 Download PDF
+                  </LinkText>
+                </h2>
+            
+              </div>
+            </div>
+      </section>
+    );
+  };

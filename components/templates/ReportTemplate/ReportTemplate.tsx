@@ -15,6 +15,7 @@ import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar";
 import ReportConclusion from "components/blocks/NewReportSection/ReportConclusion";
 import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
 import StorySection from "components/blocks/NewReportSection/StorySection";
+import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -27,6 +28,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   let reportSections = sortDocIntoH2Sections(contentBlocks);
   const [activeSection, setActiveSection] = useState(null);
   const [sectionPct, setSectionPct] = useState(null);
+  const [showTOC, setShowTOC] = useState(false);
   
 
   const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
@@ -51,11 +53,9 @@ const ReportTemplate: React.FC<PageInterface> = ({
             const oldSectionImg = document.getElementById(
               "storyImg-" + oldSec.storyId
             );
-            if (oldSectionImg) oldSectionImg.classList.replace("opacity-100", "opacity-0");
-           
+            if (oldSectionImg) oldSectionImg.classList.replace("opacity-100", "opacity-0"); 
           }
-
-          console.log(activeSection)
+          console.log(section.anchor)
           setActiveSection(section.anchor);
           const startPct = (oldSec && reportSections.findIndex((sec) => sec.anchor === activeSection)>i) ? 100 : 0;
           setSectionPct(startPct);
@@ -74,20 +74,38 @@ const ReportTemplate: React.FC<PageInterface> = ({
         (100 * (offset - topTrigger)) /
           (bottomTrigger - topTrigger)
       );
+
       if(offsetPct < 0  || offsetPct >=100)return;
       // section checks 
       let section = reportSections.find((sec) => sec.anchor === activeSection);
-      if(section.storyId){
+     if(section.anchor==="toc"){
+      if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
+        setShowTOC(true);
+      }
+      else if (offsetPct < 25 && showTOC) {
+        setShowTOC(false);
+      }
+    }
+      else if(section.storyId){
         const sectionImg = document.getElementById(
           "storyImg-" + section.storyId
         );
-        if(((offset - topTrigger)>400) && sectionImg.classList.contains("opacity-0")){
+        const storyTitleDiv = document.getElementById(
+          "storyTitleDiv-" + section.storyId
+        );
+        const storyH = storyTitleDiv.getBoundingClientRect().height;
+        const bgTriggerH = storyH + 50;
+        if(((offset - topTrigger)>  bgTriggerH) && sectionImg.classList.contains("opacity-0")){
           sectionImg.classList.replace("opacity-0", "opacity-100");
-        }else if((offset - topTrigger)<400  && sectionImg.classList.contains("opacity-100")){
+        }else if((offset - topTrigger)<bgTriggerH  && sectionImg.classList.contains("opacity-100")){
           sectionImg.classList.replace("opacity-100", "opacity-0");
         }
+        // else if((bottomTrigger- offset )< sectionImg.getBoundingClientRect().height){
+        //   console.log(bottomTrigger-offset);
+        //  storyTitleDiv.classList.add("opacity-0");
+        // }
       }
-      setSectionPct(offsetPct);
+      //setSectionPct(offsetPct);
     };
 
     window.removeEventListener("scroll", onScroll);
@@ -131,6 +149,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       />
       {<ReportHero {...pageHeader} />}
       <div className="animate-fadeIn2">
+        {<TableOfContentsSection contentBlocks={contentBlocks} showTOC={showTOC} />}
         {contentBlocks
           .map((block, i) => getComponent(block, i))}
         <ReportConclusion />
@@ -150,6 +169,9 @@ function sortDocIntoH2Sections(contentBlocks) {
       colorTheme: colorTheme,
     });
   }
+  addSection("TOC", "toc", null, null, "white");
+  addSection("Intro", "intro", null, null, "white");
+
   contentBlocks.forEach((subsection) => {
     const typename = subsection.__typename;
     if (typename !== "ReportIllustrationOverlaySubsection") return;
