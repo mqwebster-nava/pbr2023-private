@@ -74,7 +74,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     <header className={`bg-purple-900 w-full h-screen  `} id="reportHeader">
       <div className="responsive-container w-full h-full relative">
    
-          <div className="absolute top-[30px] left-0 z-40 lg:pl-[108px] ">
+          <div className="absolute top-[30px] z-40  ">
             <h1 className=" -ml-md lineOne lg:text-[200px] text-[120px] font-black text-white opacity-100 leading-[0.8]">
             Public <br/> Benefit <br/> Report
             </h1>
@@ -83,7 +83,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
              <p className="type-preset-5 font-serif text-white font-bold"> Equity that lasts:</p>
              <p className="type-preset-5 font-serif text-white font-light">building sustainable government services</p>
           </div>
-          <div className="w-2/3 ml-auto absolute bottom-0 left-[108px]">
+          <div className="w-2/3 ml-auto absolute bottom-0 ">
             {SVGBox("box", "purple-900", "purple-200", "500px", 30)}
             {SVGBox("box2", "purple-largeS", "purple-800", "500px", 20)}
             {SVGBox("box3", "purple-500", "purple-900", "500px", 10)}

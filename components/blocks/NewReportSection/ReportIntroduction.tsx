@@ -9,7 +9,7 @@ export interface TextBodyInterface {
 
 const ReportIntroductionBlock = ({ title, richBody }: TextBodyInterface) => {
   return (
-    <div className="responsive-container mr-auto  py-2xl lg:pl-[108px]">
+    <div className="responsive-container mr-auto  py-2xl " id={"intro"}>
       <div className="max-w-screen-md   mr-auto">
         <div className="font-serif text-purple-900">
           {title && (
