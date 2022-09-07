@@ -4,8 +4,8 @@ const SectionIntro = ({ section }) => {
     const colorTheme = section.colorTheme ?? "purple";
     let textColor = section.colorTheme==="gold" ? "black" : "white";
     return (
-      <section id={`${section.anchor}`} >
-      <div className={`bg-${colorTheme}-900 w-full min-h-screen `}>
+      <section id={`${section.anchor}`} className="h-auto lg:h-[200vh]">
+      <div className={`bg-${colorTheme}-900 w-full min-h-screen block lg:sticky lg:top-[70px]`}>
       <div
         className="responsive-container mr-auto lg:pl-[108px]"
         id={section.anchor}
