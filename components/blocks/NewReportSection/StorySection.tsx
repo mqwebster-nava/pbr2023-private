@@ -5,6 +5,7 @@ import PostContent from "../PostBody/PostContent";
 const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isActive, setIsActive] = useState(false);
+  //const [isSnapScrolling, setIsSnapScrolling] = useState(false);
   const storyId = `${sectionAnchor}--${story.anchor}`;
 
   const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
@@ -14,6 +15,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
   useEffect(() => {
     // Gets the default bottom padding neeeded to stop the info right before the
     function getBottomPadding() {
+      console.log(windowSize)
       if (windowSize === "desktop") {
         const storyTitleDiv = document.getElementById(
           "storyTitleDiv-" + story.anchor
@@ -32,7 +34,8 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
 
         const r = Math.round(sectionH - secTitleH - storyH);
         storyMain.style.paddingBottom = r + "px";
-      } else {
+      } else if(windowSize==="mobile"){
+        console.log(windowSize)
         const imgBg = document.getElementById("imageBackground-"+story.anchor)
         const storyTitleDiv = document.getElementById("storyTitleDiv-" + story.anchor);
         const secTitleH = storyTitleDiv.getBoundingClientRect().height;
@@ -76,6 +79,14 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
         ) {
           sectionImg.classList.replace("opacity-100", "opacity-0");
         }
+        // TODO snap to spot
+        // else if (offsetPct > 75 && offsetPct <90  && !isSnapScrolling) {
+        //   setIsSnapScrolling(true);
+        //   window.scrollTo({
+        //     top: bottomTrigger,
+        //     behavior: 'smooth'
+        //   });
+        // }
       }
     };
     getBottomPadding();
@@ -86,7 +97,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
 
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-      <div className={`bg-${colorTheme}-50 h-full relative`}>
+      <div className={`bg-${colorTheme}-50 relative`}>
         <div
           id={`storyTitleDiv-${story.anchor}`}
           className={`sticky top-[70px] z-20 right-0 responsive-container `}
@@ -100,11 +111,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
             </h2>
           </div>
         </div>
+
+
         <div
           id={`imageBackground-${story.anchor}`}
-          className={`imageBackground sticky block  w-screen bg-${colorTheme}-50 top-[70px] z-0 md:z-10 `} // h-[calc(100vh_-_70px)]
+          className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 md:z-10 `} // h-[calc(100vh_-_70px)]
         >
-          <div className="relative h-[calc(100vw_*_9_/_16)] md:h-screen md:max-h-screen w-screen mx-auto max-w-screen-2xl">
+          <div className="relative h-[calc(100vw_*_9_/_16)] md:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-screen-2xl">
             <Image
               id={``}
               src={story.contextIllustration.url}
@@ -125,7 +138,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
             ></Image>
           </div>
         </div>
-        <div className="lg:hidden block h-[300px]"></div>
+         <div className="lg:hidden block h-[300px]"></div> 
         <div
           id={`storyMain-${story.anchor}`}
           className={`responsive-container pt-lg h-auto ml-auto md:z-10  z-0 relative `}
@@ -148,13 +161,16 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
           <div
             id={`storySummary-${story.anchor}`}
             className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
-              isCollapsed ? "pb-xl" : "pb-md"
+              isCollapsed ? "pb-sm" : "pb-2xl"
             }`}
           >
             <PostContent
               docData={story.intro.json}
               docLinks={story.intro.links}
             />
+            <div className="w-full">
+
+            <hr />
             <button
               className="font-serif type-preset-6 underline hover:font-bold"
               onClick={() => {
@@ -163,6 +179,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
             >
               {isCollapsed ? "See more" : "See less"}
             </button>
+            </div>
           </div>
           <div
             id={`storyContent-${story.anchor}`}

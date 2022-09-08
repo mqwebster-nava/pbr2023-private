@@ -2,7 +2,6 @@ import ReportIntroductionBlock from "components/blocks/NewReportSection/ReportIn
 import ReportHero from "components/blocks/NewReportSection/ReportHero";
 import React, { useEffect, useRef, useState } from "react";
 
-
 import { PageInterface } from "shared_interfaces/page_interface";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -23,49 +22,54 @@ const ReportTemplate: React.FC<PageInterface> = ({
   let reportSections = sortDocIntoH2Sections(contentBlocks);
   const [activeSection, setActiveSection] = useState(null);
   //const windowSize = useWindowSize();
-  const [windowSize, setWindowSize] = useState(null)
+  const [windowSize, setWindowSize] = useState(null);
 
-  const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
-  
+  const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
+  const getBottom = (el, extraOffset) =>
+    getTop(el, extraOffset) + el.offsetHeight - extraOffset;
 
   useEffect(() => {
     const onScroll = () => {
       const offset = window.pageYOffset;
-      reportSections.forEach((section, i ) => {
+      reportSections.forEach((section, i) => {
         const secElement = document.getElementById(section.anchor);
         if (
           offset > getTop(secElement, 30) &&
           offset < getBottom(secElement, 30) &&
           activeSection != section.anchor
-        ) 
+        )
           setActiveSection(section.anchor);
-        })}
-     function handleResize() {
-          // Set window width/height to state
-         if((window.innerWidth < 1024 || window.innerHeight < 650) && windowSize!=="mobile"){
-          setWindowSize("mobile");
-          
-          // TODO deal with all the sizes
-         } else if (window.innerWidth > 1024 && window.innerHeight > 650 && windowSize!=="desktop"){
-          setWindowSize("desktop");
-         
-         }
-        }
-
-        handleResize()
-    window.removeEventListener("scroll", onScroll);
+      });
+    };
+    function handleResize() {
+      // Set window width/height to state
+      if (
+        (window.innerWidth < 768 || window.innerHeight < 650) &&
+        windowSize !== "mobile"
+      ) {
+        setWindowSize("mobile");
+        // TODO deal with all the sizes
+      } else if (
+        window.innerWidth > 768 &&
+        window.innerHeight > 650 &&
+        windowSize !== "desktop"
+      ) {
+        setWindowSize("desktop");
+      }
+    }
+    handleResize();
+    window.removeEventListener("resize", handleResize);
     window.addEventListener("resize", handleResize, { passive: true });
 
-     // Empty array ensures that effect is only run on mount
+    // Empty array ensures that effect is only run on mount
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", handleResize);
-    }
+    };
   });
-  
+
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -99,9 +103,13 @@ const ReportTemplate: React.FC<PageInterface> = ({
       />
       {<ReportHero {...pageHeader} />}
       <div className="animate-fadeIn2">
-        {<TableOfContentsSection contentBlocks={contentBlocks} activeSection={activeSection} />}
-        {contentBlocks
-          .map((block, i) => getComponent(block, i))}
+        {
+          <TableOfContentsSection
+            contentBlocks={contentBlocks}
+            activeSection={activeSection}
+          />
+        }
+        {contentBlocks.map((block, i) => getComponent(block, i))}
         <ReportConclusion />
       </div>
     </main>
@@ -146,5 +154,3 @@ export function sortDocIntoH2Sections(contentBlocks) {
 }
 
 export default ReportTemplate;
-
-

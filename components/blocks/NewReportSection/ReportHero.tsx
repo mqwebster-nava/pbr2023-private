@@ -8,15 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
-
-
   const [isActive, setIsActive] = useState(false);
   var tl = gsap.timeline();
 
   const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
   const getBottom = (el, extraOffset) =>
     getTop(el, extraOffset) + el.offsetHeight - extraOffset;
-    
+
   useEffect(() => {
     const startAnimation = () => {
       const w = window.innerWidth;
@@ -25,7 +23,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
         midS = w / 3,
         smallS = w / 4;
 
-       // <- This is where the repeat is set
+      // <- This is where the repeat is set
       const partDuration = 2.5;
       // Have the small square grow from 0
       // Have the animation go right up to the top of the page
@@ -51,15 +49,14 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
         { duration: partDuration, height: largeS, width: largeS },
         partDuration
       );
-     
     };
 
     const onScroll = () => {
       const offset = window.pageYOffset;
       const secElement = document.getElementById("reportHeader");
-      const topTrigger =  getTop(secElement, 30);
-      const bottomTrigger =  getBottom(secElement, 30)
-      
+      const topTrigger = getTop(secElement, 30);
+      const bottomTrigger = getBottom(secElement, 30);
+
       const _isActive = offset > topTrigger && offset < bottomTrigger;
       if (_isActive !== isActive) setIsActive(_isActive);
 
@@ -68,17 +65,16 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
           (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
         );
         if (offsetPct < 0 || offsetPct >= 100) return;
-        console.log(offsetPct);
-        if(offsetPct>10 && !tl.isActive()){
+        if (offsetPct > 10 && !tl.isActive()) {
           startAnimation();
         }
         const l2 = document.getElementById("titleLine2");
-        if(offsetPct>20 && l2.classList.contains("opacity-0")){
-          l2.classList.add("animate-titleSlide")
+        if (offsetPct > 20 && l2.classList.contains("opacity-0")) {
+          l2.classList.add("animate-titleSlide");
           l2.classList.replace("opacity-0", "opacity-100");
         }
-        if(offsetPct<20 && l2.classList.contains("opacity-100")){
-          l2.classList.remove("animate-titleSlide")
+        if (offsetPct < 20 && l2.classList.contains("opacity-100")) {
+          l2.classList.remove("animate-titleSlide");
           l2.classList.replace("opacity-100", "opacity-0");
         }
       }
@@ -88,67 +84,73 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
     return () => window.removeEventListener("scroll", onScroll);
   });
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
-    <header className={`bg-purple-900 w-full lg:h-[200vh] h-[150vh] `} id="reportHeader">
-      <div className={`bg-purple-900 w-full h-[calc(100vh_-_70px)] sticky top-[70px]`} >
-      <div className="responsive-container w-full h-full relative">
-    
-        <div className="lg:absolute pt-2xl z-40 flex flex-col lg:flex-row gap-xl bottom-0">
-          <h1 className="animate-titleSlide  -ml-md lineOne lg:text-[200px] md:text-[120px] text-[80px] font-black text-white  leading-[0.8]">
-            Public <br /> Benefit <br /> Report
-          </h1>
-       
-        <div className=" w-[292px] h-full flex flex-col justify-between pt-3xl gap-xl">
-         <div>
-          <p className="animate-titleSlide type-preset-5 font-serif text-white font-bold">
-            Equity that lasts:
-          </p>
-          <p className="animate-titleSlide type-preset-5 font-serif text-white font-light">
-            building sustainable government services
-          </p>
-          </div> 
-          <div>
-          <p  id="titleLine2" className="type-preset-5 font-serif text-purple-100 opacity-0">
-          Each year, Nava outlines its work and progress in a public benefit report. 
-          </p>
-          </div>
-          <div className="pb-xl pt-auto">
-            <p className="type-preset-5 text-white font-light font-serif">Scroll down</p>
-              <svg
-                width="56"
-                height="103"
-                viewBox="0 0 56 103"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M27.998 1V101.613"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+    <header
+      className={`bg-purple-900 w-full lg:h-[200vh] h-[150vh] `}
+      id="reportHeader"
+    >
+      <div className={`w-full h-[calc(100vh_-_70px)] sticky top-[70px]`}>
+        <div className="responsive-container w-full h-full relative">
+          <div className="lg:absolute lg:top-0 pt-2xl z-40 flex flex-col lg:flex-row gap-xl bottom-0">
+            <h1 className="animate-titleSlide  -ml-md lineOne lg:text-[200px] md:text-[120px] text-[80px] font-black text-white  leading-[0.8]">
+              Public <br /> Benefit <br /> Report
+            </h1>
+
+            <div className=" w-full lg:w-[292px] h-full flex flex-col justify-between pt-3xl gap-xl">
+              <div>
+                <p className="animate-titleSlide type-preset-5 font-serif text-white font-bold">
+                  Equity that lasts:
+                </p>
+                <p className="animate-titleSlide type-preset-5 font-serif text-white font-light">
+                  building sustainable government services
+                </p>
+              </div>
+              <div>
+                <p
+                  id="titleLine2"
+                  className="type-preset-5 font-serif text-purple-100 opacity-0"
+                >
+                  Each year, Nava outlines its work and progress in a public
+                  benefit report.
+                </p>
+              </div>
+              <div className="pb-xl pt-auto">
+                <p className="type-preset-5 text-white font-light font-serif">
+                  Scroll down
+                </p>
+                <svg
+                  width="56"
+                  height="103"
+                  viewBox="0 0 56 103"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M27.998 1V101.613"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
+          </div>
+          <div className="hidden md:block responsive-container w-2/3 lg:ml-auto lg:absolute top-0  bottom-0 z-20">
+            {SVGBox("box", "purple-900", "purple-200", "500px", 30)}
+            {SVGBox("box2", "purple-largeS", "purple-800", "500px", 20)}
+            {SVGBox("box3", "purple-500", "purple-900", "900px", 10)}
+          </div>
         </div>
-        </div>
-        <div className="hidden lg:block responsive-container w-2/3 lg:ml-auto lg:absolute top-0 ">
-          {SVGBox("box", "purple-900", "purple-200", "500px", 30)}
-          {SVGBox("box2", "purple-largeS", "purple-800", "500px", 20)}
-          {SVGBox("box3", "purple-500", "purple-900", "900px", 10)}
-        </div>
-      </div>
       </div>
     </header>
   );
