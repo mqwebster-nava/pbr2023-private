@@ -55,6 +55,7 @@ export function getContentUrl(contentType, slug) {
   return `/${contentPart}/${slug}`;
 }
 
+// Ensures that the id is a stand alone field and maps collections to a list of items
 export function liftData(data) {
   if (!data) return data;
 

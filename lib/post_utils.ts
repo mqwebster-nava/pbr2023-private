@@ -63,6 +63,7 @@ const formatImageAsset = (imgData) => {
       shortSummary: post.shortSummary,
       leadImage: ("leadImage" in post) ? formatImageAsset(post.leadImage): null,
       promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
+      socialImage: ("socialImage" in post) ? formatImageAsset(post.socialImage): null,
       registrationLink: post.registrationLink
     }
     return formattedPost;
