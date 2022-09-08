@@ -1,7 +1,37 @@
 import { LinkText } from "components/atom";
-const TableOfContentsSection = ({ contentBlocks, showTOC, onClick = () => {} }) => {
-  // Have the bottom rule not have a hr
-  // @apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
+import { useEffect, useState } from "react";
+const TableOfContentsSection = ({ contentBlocks, activeSection, onClick = () => {} }) => {
+  const [showTOC, setShowTOC] = useState(false);
+  const isActive = activeSection=="toc";
+
+  const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
+  const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
+  
+  useEffect(() => {
+    const onScroll = () => {
+      const offset = window.pageYOffset;
+      const secElement = document.getElementById(activeSection);
+      if(!secElement) return;
+      const topTrigger =  getTop(secElement, 30);
+      const bottomTrigger =  getBottom(secElement, 30)
+     
+      const offsetPct =  Math.round(
+        (100 * (offset - topTrigger)) /
+          (bottomTrigger - topTrigger)
+      );
+      if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
+        setShowTOC(true);
+      }
+      else if (offsetPct < 25 && showTOC) {
+        setShowTOC(false);
+      }
+    }
+    if(isActive){
+      window.removeEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    return () => window.removeEventListener("scroll", onScroll);
+  });
 
   const MobileSectionTitle = ({
     title,

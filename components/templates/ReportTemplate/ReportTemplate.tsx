@@ -1,11 +1,7 @@
-import { PageHeader } from "components/blocks";
 import ReportIntroductionBlock from "components/blocks/NewReportSection/ReportIntroduction";
-import ReportHero from "components/blocks/PageHeaders/ReportHero";
-import dynamic from "next/dynamic";
+import ReportHero from "components/blocks/NewReportSection/ReportHero";
 import React, { useEffect, useRef, useState } from "react";
-const TextBodyBlock = dynamic(
-  () => import("components/blocks/TextBodyBlock/TextBodyBlock")
-);
+
 
 import { PageInterface } from "shared_interfaces/page_interface";
 import { gsap } from "gsap";
@@ -16,7 +12,6 @@ import ReportConclusion from "components/blocks/NewReportSection/ReportConclusio
 import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
 import StorySection from "components/blocks/NewReportSection/StorySection";
 import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents";
-
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -27,9 +22,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
 }) => {
   let reportSections = sortDocIntoH2Sections(contentBlocks);
   const [activeSection, setActiveSection] = useState(null);
-  const [sectionPct, setSectionPct] = useState(null);
-  const [showTOC, setShowTOC] = useState(false);
-  
+  //const windowSize = useWindowSize();
+  const [windowSize, setWindowSize] = useState(null)
 
   const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
   const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
@@ -38,82 +32,40 @@ const ReportTemplate: React.FC<PageInterface> = ({
   useEffect(() => {
     const onScroll = () => {
       const offset = window.pageYOffset;
-      
       reportSections.forEach((section, i ) => {
         const secElement = document.getElementById(section.anchor);
         if (
           offset > getTop(secElement, 30) &&
           offset < getBottom(secElement, 30) &&
           activeSection != section.anchor
-        ) {
-          let oldSec = reportSections.find(
-            (sec) => sec.anchor === activeSection
-          );
-          if (oldSec) {
-            const oldSectionImg = document.getElementById(
-              "storyImg-" + oldSec.storyId
-            );
-            if (oldSectionImg) oldSectionImg.classList.replace("opacity-100", "opacity-0"); 
-          }
-          console.log(section.anchor)
+        ) 
           setActiveSection(section.anchor);
-          const startPct = (oldSec && reportSections.findIndex((sec) => sec.anchor === activeSection)>i) ? 100 : 0;
-          setSectionPct(startPct);
+        })}
+     function handleResize() {
+          // Set window width/height to state
+         if((window.innerWidth < 1024 || window.innerHeight < 650) && windowSize!=="mobile"){
+          setWindowSize("mobile");
+          
+          // TODO deal with all the sizes
+         } else if (window.innerWidth > 1024 && window.innerHeight > 650 && windowSize!=="desktop"){
+          setWindowSize("desktop");
          
-         
-          return;
-        } 
-      });
-      if (!activeSection) return;
-      const secElement = document.getElementById(activeSection);
-      if(!secElement) return;
-      const topTrigger =  getTop(secElement, 30);
-      const bottomTrigger =  getBottom(secElement, 30)
-     
-      const offsetPct =  Math.round(
-        (100 * (offset - topTrigger)) /
-          (bottomTrigger - topTrigger)
-      );
-
-      if(offsetPct < 0  || offsetPct >=100)return;
-      // section checks 
-      let section = reportSections.find((sec) => sec.anchor === activeSection);
-     if(section.anchor==="toc"){
-      if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
-        setShowTOC(true);
-      }
-      else if (offsetPct < 25 && showTOC) {
-        setShowTOC(false);
-      }
-    }
-      else if(section.storyId){
-        const sectionImg = document.getElementById(
-          "storyImg-" + section.storyId
-        );
-        const storyTitleDiv = document.getElementById(
-          "storyTitleDiv-" + section.storyId
-        );
-        const storyH = storyTitleDiv.getBoundingClientRect().height;
-        const bgTriggerH = storyH + 50;
-        if(((offset - topTrigger)>  bgTriggerH) && sectionImg.classList.contains("opacity-0")){
-          sectionImg.classList.replace("opacity-0", "opacity-100");
-        }else if((offset - topTrigger)<bgTriggerH  && sectionImg.classList.contains("opacity-100")){
-          sectionImg.classList.replace("opacity-100", "opacity-0");
+         }
         }
-        // else if((bottomTrigger- offset )< sectionImg.getBoundingClientRect().height){
-        //   console.log(bottomTrigger-offset);
-        //  storyTitleDiv.classList.add("opacity-0");
-        // }
-      }
-      //setSectionPct(offsetPct);
-    };
 
+        handleResize()
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", handleResize, { passive: true });
+
+     // Empty array ensures that effect is only run on mount
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", handleResize);
+    }
   });
-
-
+  
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -127,6 +79,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
               story={story}
               colorTheme={entry.colorTheme}
               sectionAnchor={entry.anchor}
+              windowSize={windowSize}
             />
           ))}
         </>
@@ -138,18 +91,15 @@ const ReportTemplate: React.FC<PageInterface> = ({
       <div></div>
     );
   };
-
   return (
     <main id="main">
       <ReportNavbar
         contentBlocks={contentBlocks}
-        activeSection={activeSection}
-        sections={reportSections}
-        percent={sectionPct}
+        reportSections={reportSections}
       />
       {<ReportHero {...pageHeader} />}
       <div className="animate-fadeIn2">
-        {<TableOfContentsSection contentBlocks={contentBlocks} showTOC={showTOC} />}
+        {<TableOfContentsSection contentBlocks={contentBlocks} activeSection={activeSection} />}
         {contentBlocks
           .map((block, i) => getComponent(block, i))}
         <ReportConclusion />
@@ -158,7 +108,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   );
 };
 
-function sortDocIntoH2Sections(contentBlocks) {
+export function sortDocIntoH2Sections(contentBlocks) {
   let output = [];
   function addSection(title, anchor, type, storyId, colorTheme) {
     output.push({

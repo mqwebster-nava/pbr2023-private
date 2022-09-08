@@ -5,14 +5,19 @@ const SectionIntro = ({ section }) => {
     let textColor = section.colorTheme==="gold" ? "black" : "white";
     return (
       <section id={`${section.anchor}`} className="h-auto lg:h-[200vh]">
-      <div className={`bg-${colorTheme}-900 w-full min-h-screen block lg:sticky lg:top-[70px]`}>
+      <div className={`bg-${colorTheme}-900 w-full lg:min-h-screen block lg:sticky lg:top-[70px]`}>
       <div
-        className="responsive-container mr-auto lg:pl-[108px]"
+        className="responsive-container  "
         id={section.anchor}
       >
-        <div className="pt-[160px] ">
+        <div className="lg:pt-[160px] pt-3xl ">
+        <p
+            className={`text-${textColor} type-preset-1 pb-xl max-w-screen-md mr-auto font-serif`}
+          >
+            Theme 1
+          </p>
           <h2
-            className={`font-black text-${textColor} text-7xl pb-3xl max-w-screen-md mr-auto`}
+            className={`font-black text-${textColor} md:text-7xl type-preset-1 pb-3xl max-w-screen-md mr-auto`}
             id={`h2-${section.anchor}`}
           >
             {section.title}
@@ -20,6 +25,8 @@ const SectionIntro = ({ section }) => {
           <p className={`type-preset-5 font-serif font-light text-${textColor} pb-[160px] max-w-screen-md`}>
             <MarkdownComponent content={section.body} />
           </p>
+          
+
         </div>
       </div>
     </div>
