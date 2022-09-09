@@ -1,6 +1,6 @@
 import MarkdownComponent from "utils/MarkdownComponent";
 
-const SectionIntro = ({ section }) => {
+const SectionIntro = ({ section, i }) => {
     const colorTheme = section.colorTheme ?? "purple";
     let textColor = section.colorTheme==="gold" ? "black" : "white";
     return (
@@ -14,7 +14,7 @@ const SectionIntro = ({ section }) => {
         <p
             className={`text-${textColor} type-preset-1 pb-xl max-w-screen-md mr-auto font-serif`}
           >
-            Theme 1
+            Theme {i}
           </p>
           <h2
             className={`font-black text-${textColor} md:text-7xl type-preset-1 pb-3xl max-w-screen-md mr-auto`}

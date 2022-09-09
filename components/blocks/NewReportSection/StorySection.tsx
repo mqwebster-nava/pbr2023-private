@@ -1,16 +1,48 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostContent from "../PostBody/PostContent";
+import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 
-const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
+const makeFadeAnimation = (elementId) => {
+  const an = document.getElementById(elementId).animate(
+    [
+      { opacity: '0%' },
+      { opacity: '100%' },
+    ],
+    {
+      duration: 200,
+      iterations: 1,
+      fill: 'forwards',
+    }
+  );
+  an.pause();
+  return an;
+};
+
+
+const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSection }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [isActive, setIsActive] = useState(false);
-  //const [isSnapScrolling, setIsSnapScrolling] = useState(false);
+  const [animationList, setAnimationList] = useState([]);
   const storyId = `${sectionAnchor}--${story.anchor}`;
+  const isActive = activeSection==storyId;
 
-  const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset) =>
-    getTop(el, extraOffset) + el.offsetHeight - extraOffset;
+
+  const initiateAnimations= () =>{
+    const storyTitleDiv = document.getElementById(
+      "storyTitleDiv-" + story.anchor
+    );
+    const storyH = storyTitleDiv.getBoundingClientRect().height;
+    const bgTriggerH = storyH + 50;
+    let backgroundFade: AnimationObject = {
+      triggerPct: 100* bgTriggerH / document.getElementById(storyId).offsetHeight,
+     // status: 'at start',
+      animation: makeFadeAnimation("storyImg-" + story.anchor),
+      //targetId: "storyImg-" + story.anchor,
+    };
+
+    setAnimationList([backgroundFade]);
+      
+  }
 
   useEffect(() => {
     // Gets the default bottom padding neeeded to stop the info right before the
@@ -40,58 +72,37 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
         const storyTitleDiv = document.getElementById("storyTitleDiv-" + story.anchor);
         const secTitleH = storyTitleDiv.getBoundingClientRect().height;
         imgBg.style.top = 70+ Math.round(secTitleH) + "px"
-
       }
-
       return;
     }
 
     const onScroll = () => {
-      const offset = window.pageYOffset;
-      const secElement = document.getElementById(storyId);
-      if (!secElement) return;
-      const topTrigger = getTop(secElement, 30);
-      const bottomTrigger = getBottom(secElement, 30);
+      if(!isActive)return;
+      // const offset = window.pageYOffset;
+      // const secElement = document.getElementById(storyId);
+      // if (!secElement) return;
+      // const topTrigger = getTop(secElement, 30);
+      // const bottomTrigger = getBottom(secElement, 30);
+      const totalH = document.getElementById(storyId).offsetHeight;
+      const offsetPct = getOffsetPct(storyId);
+      
+      if (offsetPct < 0 || offsetPct >= 100) return;
+      animationHandler({offsetPct, animationList});
 
-      const _isActive = offset > topTrigger && offset < bottomTrigger;
-      if (_isActive !== isActive) setIsActive(_isActive);
 
-      if (_isActive) {
-        const offsetPct = Math.round(
-          (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
-        );
-        if (offsetPct < 0 || offsetPct >= 100) return;
-
-        const sectionImg = document.getElementById("storyImg-" + story.anchor);
-        const storyTitleDiv = document.getElementById(
-          "storyTitleDiv-" + story.anchor
-        );
-        const storyH = storyTitleDiv.getBoundingClientRect().height;
-        const bgTriggerH = storyH + 50;
-        if (
-          offset - topTrigger > bgTriggerH &&
-          sectionImg.classList.contains("opacity-0")
-        ) {
-          sectionImg.classList.replace("opacity-0", "opacity-100");
-        } else if (
-          offset - topTrigger < bgTriggerH &&
-          sectionImg.classList.contains("opacity-100")
-        ) {
-          sectionImg.classList.replace("opacity-100", "opacity-0");
-        }
-        // TODO snap to spot
-        // else if (offsetPct > 75 && offsetPct <90  && !isSnapScrolling) {
-        //   setIsSnapScrolling(true);
-        //   window.scrollTo({
-        //     top: bottomTrigger,
-        //     behavior: 'smooth'
-        //   });
-        // }
-      }
+      
     };
-    getBottomPadding();
-    window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    
+   
+
+    if(isActive){
+      getBottomPadding();
+      if(animationList.length==0){
+        initiateAnimations();
+      }
+      window.removeEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
     return () => window.removeEventListener("scroll", onScroll);
   });
 
@@ -141,7 +152,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
          <div className="lg:hidden block h-[300px]"></div> 
         <div
           id={`storyMain-${story.anchor}`}
-          className={`responsive-container pt-lg h-auto ml-auto md:z-10  z-0 relative `}
+          className={`responsive-container pt-lg h-auto ml-auto md:z-10  z-10 relative `}
         >
           <div
             id={`storyCallOut-${story.anchor}`}
@@ -183,7 +194,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
           </div>
           <div
             id={`storyContent-${story.anchor}`}
-            className={`storyContent lg:w-2/3 ml-auto pb-[200px] font-serif type-preset-6 font-light text-${colorTheme}-50 ${
+            className={`storyContent lg:w-2/3 ml-auto pb-[200px] font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
               isCollapsed ? "hidden" : "block"
             }`}
           >
@@ -199,3 +210,32 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize }) => {
 };
 
 export default StorySection;
+
+
+
+        // const sectionImg = document.getElementById("storyImg-" + story.anchor);
+        // const storyTitleDiv = document.getElementById(
+        //   "storyTitleDiv-" + story.anchor
+        // );
+        // const storyH = storyTitleDiv.getBoundingClientRect().height;
+        // const bgTriggerH = storyH + 50;
+
+        // if (
+        //   offset - topTrigger > bgTriggerH &&
+        //   sectionImg.classList.contains("opacity-0")
+        // ) {
+        //   sectionImg.classList.replace("opacity-0", "opacity-100");
+        // } else if (
+        //   offset - topTrigger < bgTriggerH &&
+        //   sectionImg.classList.contains("opacity-100")
+        // ) {
+        //   sectionImg.classList.replace("opacity-100", "opacity-0");
+        // }
+        // TODO snap to spot
+        // else if (offsetPct > 75 && offsetPct <90  && !isSnapScrolling) {
+        //   setIsSnapScrolling(true);
+        //   window.scrollTo({
+        //     top: bottomTrigger,
+        //     behavior: 'smooth'
+        //   });
+        // }

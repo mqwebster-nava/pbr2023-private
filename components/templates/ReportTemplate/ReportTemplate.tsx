@@ -76,7 +76,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <>
-          <SectionIntro section={entry} key={entry.anchor} />
+          <SectionIntro section={entry} key={entry.anchor} i={index} />
           {entry.storiesCollection.items.map((story, j) => (
             <StorySection
               key={story.anchor}
@@ -84,6 +84,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
               colorTheme={entry.colorTheme}
               sectionAnchor={entry.anchor}
               windowSize={windowSize}
+              activeSection={activeSection}
             />
           ))}
         </>
@@ -107,6 +108,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
           <TableOfContentsSection
             contentBlocks={contentBlocks}
             activeSection={activeSection}
+            windowSize={windowSize}
           />
         }
         {contentBlocks.map((block, i) => getComponent(block, i))}

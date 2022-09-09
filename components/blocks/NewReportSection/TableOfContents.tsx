@@ -1,32 +1,100 @@
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
-const TableOfContentsSection = ({ contentBlocks, activeSection, onClick = () => {} }) => {
+
+import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
+
+
+
+
+
+// Components that can be animated
+
+const makeSlideUpAnimation = (elementId) => {
+  let an = document.getElementById(elementId).animate(
+    [
+      { transform: 'translateY(20%)', opacity: '0%',  },
+      { transform: 'translateY(0%)', opacity: '100%',   },
+    ],
+    {
+      duration: 200,
+      iterations: 1,
+      fill: 'forwards',
+    }
+  );
+  an.pause();
+  return an;
+};
+
+
+
+
+
+
+const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
   const [showTOC, setShowTOC] = useState(false);
+  const [animationList, setAnimationList] = useState([]);
   const isActive = activeSection=="toc";
 
-  const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
+
+
+  const initiateAnimations= () =>{
+    let animations = []
+    let line1Fade: AnimationObject = {
+      triggerPct:3,
+      animation: makeSlideUpAnimation("desktop-description1"),
+    };
+    animations.push(line1Fade);
+
+    // Introing the secitons
+    contentBlocks
+      .filter(
+        (entry) =>
+          entry.__typename === "ReportIllustrationOverlaySubsection"
+      ).forEach((block, i)=>{
+        let a: AnimationObject = {
+          triggerPct:-40 + 10*i,
+          animation: makeSlideUpAnimation("themenum-"+ block.anchor),
+        };
+        animations.push(a);
+      
+        let b: AnimationObject = {
+          triggerPct:20,
+          animation: makeSlideUpAnimation("stories-"+ block.anchor),
+        };
+        animations.push(b);
+      })
+      animations.push( {
+        triggerPct:-10,
+        animation: makeSlideUpAnimation("themenum-conclusion"),
+      });
+      animations.push( {
+        triggerPct:-50,
+        animation: makeSlideUpAnimation("themenum-intro"),
+      });
+
+
+      // Part 2
+      let line2Fade: AnimationObject = {
+        triggerPct:20,
+        animation: makeSlideUpAnimation("desktop-description2"),
+      };
+      animations.push(line2Fade);
   
+    setAnimationList(animations);
+      
+  }
+
+
   useEffect(() => {
     const onScroll = () => {
-      const offset = window.pageYOffset;
-      const secElement = document.getElementById(activeSection);
-      if(!secElement) return;
-      const topTrigger =  getTop(secElement, 30);
-      const bottomTrigger =  getBottom(secElement, 30)
      
-      const offsetPct =  Math.round(
-        (100 * (offset - topTrigger)) /
-          (bottomTrigger - topTrigger)
-      );
-      if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
-        setShowTOC(true);
-      }
-      else if (offsetPct < 25 && showTOC) {
-        setShowTOC(false);
-      }
+      const offsetPct = getOffsetPct(activeSection);
+      //if(offsetPct<0 || offsetPct > 100) return;
+      //console.log(offsetPct)
+      animationHandler({offsetPct, animationList});
     }
     if(isActive){
+      if(animationList.length==0) initiateAnimations();
       window.removeEventListener("scroll", onScroll);
       window.addEventListener("scroll", onScroll, { passive: true });
     }
@@ -152,149 +220,169 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, onClick = () => 
     );
   };
 
-  const DesktopSectionTitle = ({
-    title,
-    anchor,
-    themeNum,
-    bgColor,
-    textColor,
-    stories,
-  }) => {
-    return (
-      <div className={`w-full grow ${bgColor} `}>
-        <div
-          className={` md:ml-4xl pl-xl text-white grid grid-cols-12  gap-lg `}
-        >
-          <div className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
-            {themeNum != null && (
-              <p className="type-preset-7 font-serif pt-sm">
-                Theme {themeNum + 1}
-              </p>
-            )}
-            <h2 className="type-preset-5 font-bold ">
-              <LinkText
-                href={`#${anchor}`}
-                variant={"default"}
-                color={textColor}
-              >
-                {title}
-              </LinkText>
-            </h2>
-          </div>
-          <div
-            className={` col-span-8 pt-md divide-y divide-${textColor} ${showTOC ? "opacity-100 animate-titleSlide": "opacity-0"} transition duration-1000 `}
-          >
-            {stories &&
-              stories.map((story) => {
-                const anch2 = `#${anchor}--${story.anchor}`;
-                const title = story.shortTitle ?? story.title;
-                return (
-                  <div
-                    onClick={onClick}
-                    className=" font-serif py-sm type-preset-7"
-                  >
-                    <LinkText
-                      href={anch2}
-                      variant={"default"}
-                      color={textColor}
-                    >
-                      {title}
-                    </LinkText>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </div>
-    );
-  };
+  
 
-  const DesktopSection = () => {
-    return (
-      <div className="lg:sticky top-[70px] lg:h-[calc(100vh_-_70px)] hidden lg:block">
-        <div className="pr-xl md:pr-4xl md:pl-0  flex flex-col-reverse lg:flex-row gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
-          <div className="w-full lg:w-3/4 h-full flex flex-col">
-            <DesktopSectionTitle
-              title={"Introduction Letter"}
-              anchor={"intro"}
-              themeNum={null}
-              bgColor={`bg-gold-50`}
-              textColor={"black"}
-              stories={null}
-            />
-            {contentBlocks
-              .filter(
-                (entry) =>
-                  entry.__typename === "ReportIllustrationOverlaySubsection"
-              )
-              .map((section, i) => {
-                const color = section.colorTheme ?? "purple";
-                const textColor =
-                  section.colorTheme === "gold" ? "black" : "white";
-                return (
-                  <DesktopSectionTitle
-                    title={section.title}
-                    anchor={section.anchor}
-                    themeNum={i + 1}
-                    bgColor={`bg-${color}-900`}
-                    textColor={textColor}
-                    stories={section.storiesCollection.items}
-                  />
-                );
-              })}
-            <DesktopSectionTitle
-              title={"Conclusion"}
-              anchor={"conclusion"}
-              themeNum={null}
-              bgColor={`bg-gold-50`}
-              textColor={"black"}
-              stories={null}
-            />
-          </div>
-          <div className="w-full lg:w-1/4 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
-            <p className="type-preset-5 font-serif">
-              Our 2021 report is themed around building equity through strong
-              public services.
-            </p>
-            <p className={`type-preset-5 font-serif ${showTOC ? "opacity-100 animate-titleSlide": "opacity-0"} transition-opacity duration-500`} >
-              Through project-specific stories, the 2021 report details how Nava
-              worked to build equity by designing public services for all.
-            </p>
-            <div className="pb-xl hidden lg:block">
-              <svg
-                width="56"
-                height="103"
-                viewBox="0 0 56 103"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M27.998 1V101.613"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
     <section className={`w-full lg:h-[200vh] bg-white relative`} id="toc">
-      <DesktopSection />
+      <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection />
     </section>
   );
 };
 export default TableOfContentsSection;
+
+
+const DesktopSection = ({contentBlocks}) => {
+  return (
+    <>
+    <div className="lg:sticky top-[70px] lg:h-[calc(100vh_-_70px)] hidden lg:block">
+      <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
+        <div className="w-full lg:w-3/4 h-full flex flex-col">
+          <DesktopSectionTitle
+            title={"Introduction Letter"}
+            anchor={"intro"}
+            themeNum={null}
+            bgColor={`bg-gold-50`}
+            textColor={"black"}
+            stories={null}
+          />
+          {contentBlocks
+            .filter(
+              (entry) =>
+                entry.__typename === "ReportIllustrationOverlaySubsection"
+            )
+            .map((section, i) => {
+              const color = section.colorTheme ?? "purple";
+              const textColor =
+                section.colorTheme === "gold" ? "black" : "white";
+              return (
+                <DesktopSectionTitle
+                  title={section.title}
+                  anchor={section.anchor}
+                  themeNum={i + 1}
+                  bgColor={`bg-${color}-900`}
+                  textColor={textColor}
+                  stories={section.storiesCollection.items}
+                />
+              );
+            })}
+          <DesktopSectionTitle
+            title={"Conclusion"}
+            anchor={"conclusion"}
+            themeNum={null}
+            bgColor={`bg-gold-50`}
+            textColor={"black"}
+            stories={null}
+          />
+        </div>
+        <div className="w-full lg:w-1/4 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
+         <div>
+          <div id={"desktop-description1"} className={`type-preset-5 font-serif opacity-0 motion-reduce:opacity-100`}>
+            Our 2021 report is themed around building equity through strong public services.
+          </div>
+          <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif opacity-0 motion-reduce:opacity-100`} >
+            Through project-specific stories, the 2021 report details how Nava
+            worked to build equity by designing public services for all.
+          </p>
+          </div>
+          <div className="pb-xl hidden lg:block">
+            <svg
+              width="56"
+              height="103"
+              viewBox="0 0 56 103"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M27.998 1V101.613"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
+  );
+};
+
+const DesktopSectionTitle = ({
+  title,
+  anchor,
+  themeNum,
+  bgColor,
+  textColor,
+  stories,
+}) => {
+  return (
+    <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
+      <div
+        className={` xl:ml-sm md:ml-4xl pl-xl text-white grid grid-cols-12  gap-lg `}
+      >
+        <div  className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
+          {themeNum != null && (
+            <p className="type-preset-6 font-serif pt-sm">
+              Theme {themeNum }
+            </p>
+          )}
+          <h2 className="type-preset-5 font-bold ">
+            <LinkText
+              href={`#${anchor}`}
+              variant={"default"}
+              color={textColor}
+            >
+              {title}
+            </LinkText>
+          </h2>
+        </div>
+        <div
+        id={`stories-${anchor}`}
+          className={` col-span-8 pt-md divide-y divide-${textColor}  opacity-0 motion-reduce:opacity-100`}
+        >
+          {stories &&
+            stories.map((story) => {
+              const anch2 = `#${anchor}--${story.anchor}`;
+              const title = story.shortTitle ?? story.title;
+              return (
+                <div
+                  className=" font-serif py-sm type-preset-6"
+                >
+                  <LinkText
+                    href={anch2}
+                    variant={"default"}
+                    color={textColor}
+                  >
+                    {title}
+                  </LinkText>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+  // console.log(offsetPct);
+      // if(offsetPct>10 && windowSize==="desktop" &&  document.getElementById("desktop-description") && document.getElementById("desktop-description").classList.contains("opacity-0")) { // TODO add mobile check 
+      //   gsap.fromTo("#desktop-description", {y:50,}, {y:0, });
+      //   document.getElementById("desktop-description").classList.replace("opacity-0", "opacity-100")
+      // }
+
+      // if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
+      //   setShowTOC(true);
+      // }
+      // else if (offsetPct < 25 && showTOC) {
+      //   setShowTOC(false);
+      // }
