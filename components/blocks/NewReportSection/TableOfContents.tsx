@@ -4,9 +4,6 @@ import { useEffect, useState } from "react";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 
 
-
-
-
 // Components that can be animated
 
 const makeSlideUpAnimation = (elementId) => {
@@ -26,12 +23,7 @@ const makeSlideUpAnimation = (elementId) => {
 };
 
 
-
-
-
-
 const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
-  const [showTOC, setShowTOC] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   const isActive = activeSection=="toc";
 
@@ -87,150 +79,146 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
 
   useEffect(() => {
     const onScroll = () => {
-     
       const offsetPct = getOffsetPct(activeSection);
-      //if(offsetPct<0 || offsetPct > 100) return;
-      //console.log(offsetPct)
+      if(offsetPct<-100 || offsetPct > 100) return;
       animationHandler({offsetPct, animationList});
     }
-    if(isActive){
-      if(animationList.length==0) initiateAnimations();
-      window.removeEventListener("scroll", onScroll);
-      window.addEventListener("scroll", onScroll, { passive: true });
-    }
+    
+    if(animationList.length==0) initiateAnimations();
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   });
 
-  const MobileSectionTitle = ({
-    title,
-    anchor,
-    themeNum,
-    bgColor,
-    textColor,
-  }) => {
-    return (
-      <div className={`w-full grow ${bgColor} `}>
-        <div className={` pl-xl text-white grid grid-cols-12  gap-lg `}>
-          <div className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
-            {themeNum != null && (
-              <p className="type-preset-7 font-serif pt-sm">
-                Theme {themeNum + 1}
-              </p>
-            )}
-            <h2 className="type-preset-5 font-bold ">
-              <LinkText
-                href={`#${anchor}`}
-                variant={"default"}
-                color={textColor}
-              >
-                {title}
-              </LinkText>
-            </h2>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  const MobileSection = () => {
-    return (
-      <div className="block lg:hidden">
-        <div className="w-full h-full bg-white pt-3xl px-xl md:px-4xl  ">
-          <p className="type-preset-5 font-serif pb-md">
-            Our 2021 report is themed around building equity through strong
-            public services.
-          </p>
-        </div>
-        <MobileSectionTitle
-          title={"Letter from Leadership"}
-          anchor={"intro"}
-          themeNum={null}
-          bgColor={`bg-gold-50`}
-          textColor={"black"}
-        />
-        {contentBlocks
-          .filter(
-            (entry) =>
-              entry.__typename === "ReportIllustrationOverlaySubsection"
-          )
-          .map((section, i) => {
-            const color = section.colorTheme ?? "purple";
-            const textColor = section.colorTheme === "gold" ? "black" : "white";
-            return (
-              <MobileSectionTitle
-                title={section.title}
-                anchor={section.anchor}
-                themeNum={i}
-                bgColor={`bg-${color}-900`}
-                textColor={textColor}
-              />
-            );
-          })}
-        <MobileSectionTitle
-          title={"Conclusion"}
-          anchor={"conclusion"}
-          themeNum={null}
-          bgColor={`bg-gold-50`}
-          textColor={"black"}
-        />
-
-        <div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
-          <p className="type-preset-5 font-serif pb-md" >
-            Through project-specific stories, the 2021 report details how Nava
-            worked to build equity by designing public services for all.
-          </p>
-        </div>
-        <div className="flex lg:hidden pr-xl md:pr-4xl md:pl-0 2xl:px-0 flex-col gap-lg max-w-screen-xl">
-          <div className="w-full lg:w-3/4 h-full flex flex-col">
-            {contentBlocks
-              .filter(
-                (entry) =>
-                  entry.__typename === "ReportIllustrationOverlaySubsection"
-              )
-              .map((section, i) => {
-                const color = section.colorTheme ?? "purple";
-                const textColor =
-                  section.colorTheme === "gold" ? "black" : "white";
-                return (
-                  <div className={`w-full grow bg-${color}-900 `}>
-                    <div className={`md:pl-4xl pl-xl text-white  gap-lg`}>
-                      <div className={` pt-md divide-y divide-${textColor}`}>
-                        {section.storiesCollection.items.map((story) => {
-                          const anch2 = `#${section.anchor}--${story.anchor}`;
-                          const title = story.shortTitle ?? story.title;
-                          return (
-                            <div onClick={onClick} className="font-serif py-sm">
-                              <LinkText
-                                href={anch2}
-                                variant={"default"}
-                                color={textColor}
-                              >
-                                {title}
-                              </LinkText>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
     <section className={`w-full lg:h-[200vh] bg-white relative`} id="toc">
       <DesktopSection contentBlocks={contentBlocks}/>
-      <MobileSection />
+      <MobileSection contentBlocks={contentBlocks}/>
     </section>
   );
 };
 export default TableOfContentsSection;
+
+const MobileSectionTitle = ({
+  title,
+  anchor,
+  themeNum,
+  bgColor,
+  textColor,
+  fontStyle
+}) => {
+  return (
+    <div className={`w-full grow ${bgColor}`} >
+      <a  href={`#${anchor}`}>
+       <div className={`px-xl md:px-4xl py-lg`}>
+
+      
+          {themeNum != null && (
+            <p className={`type-preset-7 font-serif pt-sm text-${textColor}`}>
+              Theme {themeNum + 1}
+            </p>
+          )}
+          <h2 className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline `}>
+              {title}
+          </h2>
+          </div>
+      </a>
+     
+    </div>
+  );
+};
+const MobileSection = ({contentBlocks}) => {
+  return (
+    <div className="block lg:hidden">
+      <div className="w-full h-full bg-white pt-3xl px-xl md:px-4xl  ">
+        <p className="type-preset-5 font-serif pb-md">
+          Our 2021 report is themed around building equity through strong
+          public services.
+        </p>
+      </div>
+      <MobileSectionTitle
+        title={"Letter from Leadership"}
+        anchor={"intro"}
+        themeNum={null}
+        bgColor={`bg-purple-50`}
+        textColor={"purple-900"}
+        fontStyle={"font-serif"}
+      />
+      {contentBlocks
+        .filter(
+          (entry) =>
+            entry.__typename === "ReportIllustrationOverlaySubsection"
+        )
+        .map((section, i) => {
+          const color = section.colorTheme ?? "purple";
+          const textColor = section.colorTheme === "gold" ? "black" : "white";
+          return (
+            <MobileSectionTitle
+              title={section.title}
+              anchor={section.anchor}
+              themeNum={i}
+              bgColor={`bg-${color}-900`}
+              textColor={textColor}
+              fontStyle={"font-bold"}
+            />
+          );
+        })}
+      <MobileSectionTitle
+        title={"Conclusion"}
+        anchor={"conclusion"}
+        themeNum={null}
+        bgColor={`bg-gold-50`}
+        textColor={"black"}
+        fontStyle={"font-serif"}
+      />
+
+      <div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
+        <p className="type-preset-5 font-serif pb-md" >
+          Through project-specific stories, the 2021 report details how Nava
+          worked to build equity by designing public services for all.
+        </p>
+      </div>
+        <div className="w-full h-full flex flex-col">
+          {contentBlocks
+            .filter(
+              (entry) =>
+                entry.__typename === "ReportIllustrationOverlaySubsection"
+            )
+            .map((section, i) => {
+              const color = section.colorTheme ?? "purple";
+              const textColor =
+                section.colorTheme === "gold" ? "black" : "white";
+              return (
+                <div className={`w-full grow bg-${color}-900 `}>
+                  <div className={`md:px-4xl px-xl text-white  gap-lg`}>
+                    <div className={` pt-md divide-y divide-${textColor}`}>
+                      {section.storiesCollection.items.map((story) => {
+                        const anch2 = `#${section.anchor}--${story.anchor}`;
+                        const title = story.shortTitle ?? story.title;
+                        return (
+                          <div className={`font-serif py-sm text-${textColor}`}>
+                            <LinkText
+                              href={anch2}
+                              variant={"default"}
+                              color={["black", "white"].includes(textColor)? textColor : null}
+                              hoverStyle={"underlined"}
+                            >
+                              {title}
+                            </LinkText>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+    </div>
+  );
+};
 
 
 const DesktopSection = ({contentBlocks}) => {
@@ -243,9 +231,10 @@ const DesktopSection = ({contentBlocks}) => {
             title={"Introduction Letter"}
             anchor={"intro"}
             themeNum={null}
-            bgColor={`bg-gold-50`}
-            textColor={"black"}
+            bgColor={`bg-purple-50`}
+            textColor={"purple-900"}
             stories={null}
+            fontStyle={"font-serif"}
           />
           {contentBlocks
             .filter(
@@ -264,6 +253,7 @@ const DesktopSection = ({contentBlocks}) => {
                   bgColor={`bg-${color}-900`}
                   textColor={textColor}
                   stories={section.storiesCollection.items}
+                  fontStyle={"font-bold"}
                 />
               );
             })}
@@ -274,6 +264,7 @@ const DesktopSection = ({contentBlocks}) => {
             bgColor={`bg-gold-50`}
             textColor={"black"}
             stories={null}
+            fontStyle={"font-serif"}
           />
         </div>
         <div className="w-full lg:w-1/4 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
@@ -324,6 +315,7 @@ const DesktopSectionTitle = ({
   bgColor,
   textColor,
   stories,
+  fontStyle
 }) => {
   return (
     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
@@ -336,11 +328,12 @@ const DesktopSectionTitle = ({
               Theme {themeNum }
             </p>
           )}
-          <h2 className="type-preset-5 font-bold ">
+          <h2 className={`type-preset-5 font-bold ${fontStyle} text-${textColor}`}>
             <LinkText
               href={`#${anchor}`}
               variant={"default"}
-              color={textColor}
+              color={["black", "white"].includes(textColor)? textColor : null}
+              hoverStyle={"underlined"}
             >
               {title}
             </LinkText>

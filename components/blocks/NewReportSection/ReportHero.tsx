@@ -1,32 +1,10 @@
 import { PageHeaderInterface } from "../PageHeaders/PageHeader";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin);
-
-
-/*
-Animation Handler
-
-[
-  Animation
-]
-
-
-
-
-*/
-
-
 
 
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
   const [isActive, setIsActive] = useState(false);
   const [animationHeight, setAnimationHeight] = useState(0);
-  var tl = gsap.timeline();
 
   const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
   const getBottom = (el, extraOffset) =>

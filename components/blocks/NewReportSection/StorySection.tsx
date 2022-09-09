@@ -3,11 +3,14 @@ import Image from "next/image";
 import PostContent from "../PostBody/PostContent";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 
+
+// TODO  When expand need to initiate animations again to get based on larger size
+
 const makeFadeAnimation = (elementId) => {
   const an = document.getElementById(elementId).animate(
     [
-      { opacity: '0%' },
       { opacity: '100%' },
+      { opacity: '0%' },
     ],
     {
       duration: 200,
@@ -19,7 +22,6 @@ const makeFadeAnimation = (elementId) => {
   return an;
 };
 
-
 const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSection }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [animationList, setAnimationList] = useState([]);
@@ -28,6 +30,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
 
 
   const initiateAnimations= () =>{
+    let ana  = []
     const storyTitleDiv = document.getElementById(
       "storyTitleDiv-" + story.anchor
     );
@@ -35,12 +38,20 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
     const bgTriggerH = storyH + 50;
     let backgroundFade: AnimationObject = {
       triggerPct: 100* bgTriggerH / document.getElementById(storyId).offsetHeight,
-     // status: 'at start',
-      animation: makeFadeAnimation("storyImg-" + story.anchor),
-      //targetId: "storyImg-" + story.anchor,
+      animation: makeFadeAnimation("contextImg-" + story.anchor),
     };
+    ana.push(backgroundFade);
+    if(windowSize==="mobile"){
+    
+      let mobileFade2: AnimationObject = {
+        triggerPct: 40* window.innerHeight / document.getElementById(storyId).offsetHeight,
+        animation: makeFadeAnimation("storyImg-" + story.anchor),
+      };
+      ana.push(mobileFade2);
+    }
+    
 
-    setAnimationList([backgroundFade]);
+    setAnimationList(ana);
       
   }
 
@@ -78,19 +89,10 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
 
     const onScroll = () => {
       if(!isActive)return;
-      // const offset = window.pageYOffset;
-      // const secElement = document.getElementById(storyId);
-      // if (!secElement) return;
-      // const topTrigger = getTop(secElement, 30);
-      // const bottomTrigger = getBottom(secElement, 30);
-      const totalH = document.getElementById(storyId).offsetHeight;
       const offsetPct = getOffsetPct(storyId);
       
       if (offsetPct < 0 || offsetPct >= 100) return;
       animationHandler({offsetPct, animationList});
-
-
-      
     };
     
    
@@ -129,24 +131,21 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
           className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 md:z-10 `} // h-[calc(100vh_-_70px)]
         >
           <div className="relative h-[calc(100vw_*_9_/_16)] md:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-screen-2xl">
-            <Image
-              id={``}
-              src={story.contextIllustration.url}
-              width={16}
-              height={9}
-              layout="fill"
-              objectFit="cover"
-              className=" w-screen absolute top-0 left-[60px] opacity-90 object-left-top"
-            ></Image>
-            <Image
+          <Image
               id={`storyImg-${story.anchor}`}
               src={story.illustration.url}
-              width={16}
-              height={9}
               layout="fill"
               objectFit="cover"
-              className="storyImg w-screen absolute top-0 left-[60px] right-0 opacity-0 object-left-top transition-opacity duration-500"
+              className="storyImg w-screen absolute top-0 left-[60px] right-0 opacity-100 object-left-top transition-opacity duration-500"
             ></Image>
+            <Image
+               id={`contextImg-${story.anchor}`}
+              src={story.contextIllustration.url}
+              layout="fill"
+              objectFit="cover"
+              className=" w-screen absolute top-0 left-[60px] opacity-100 object-left-top"
+            ></Image>
+          
           </div>
         </div>
          <div className="lg:hidden block h-[300px]"></div> 

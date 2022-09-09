@@ -175,15 +175,20 @@ const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
    // Have the bottom rule not have a hr
     return (
       <section className={` w-full h-screen flex flex-col `}>
-        {contentBlocks.filter((entry)=>entry.__typename==="ReportIllustrationOverlaySubsection").map((section) => {
+        {contentBlocks.filter((entry)=>entry.__typename==="ReportIllustrationOverlaySubsection").map((section, i) => {
           const color = section.colorTheme ?? "purple";
           const textColor = section.colorTheme==="gold"?"black" : "white";
           return (
             <div className={`w-full flex-1 bg-${color}-900 `}>
               <div
-                className={`responsive-container  text-white grid grid-cols-12 pl-[108px] gap-lg`}
+                className={`responsive-container  text-white grid grid-cols-12 gap-lg`}
               >
-                <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
+              <div className="col-span-4 ">
+            <p className="type-preset-6 font-serif pt-sm">
+              Theme {i+1 }
+            </p>
+          
+                <h2 className="type-preset-4 font-bold pt-sm">
                 <LinkText
                           href={`#${section.anchor}`}
                           variant={"default"}
@@ -192,6 +197,7 @@ const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
                   {section.title}
                   </LinkText>
                 </h2>
+                </div>  
                 <div className={`col-span-8 pt-md divide-y divide-${textColor}`}>
                   {section.storiesCollection.items.map((story) => {
                     const anch2 = `#${section.anchor}--${story.anchor}`;
@@ -218,7 +224,7 @@ const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
         })}
          <div className={`w-full flex-1 bg-white `}>
               <div
-                className={`responsive-container  text-black grid grid-cols-12 pl-[108px] gap-lg`}
+                className={`responsive-container  text-black grid grid-cols-12 gap-lg`}
               >
                 <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
                 <LinkText

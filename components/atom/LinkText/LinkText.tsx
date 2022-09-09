@@ -2,12 +2,14 @@ import classNames from "classnames";
 import { AnalyticsLabelType } from "shared_interfaces/Analytics";
 
 type LinkTextVariant = "default" | "" |"underlined";
-type LinkColor = "black" |"sage" | "white" |"gray";
+type LinkColor = "black" |"sage" | "white" |"gray" | "";
+type LinkHover = "underlined" | "sage" ;
 
 export interface LinkTextProps {
   href: string;
   variant: LinkTextVariant;
   color?: LinkColor;
+  hoverStyle?: LinkHover
   analyticsLabel?:AnalyticsLabelType
   ariaLabel?: string;
 }
@@ -17,6 +19,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   href,
   variant,
   color="black",
+  hoverStyle=null,
   analyticsLabel="",
   ariaLabel=null
 }) => {
@@ -29,17 +32,22 @@ export const LinkText: React.FC<LinkTextProps> = ({
   });
  
   const colorStyles = classNames({
-    "text-sage-700 hover:text-sage-900 hover:underline decoration-1": color=="sage",
-    "text-gray-900 hover:text-sage-700": color=="black",
-    "text-gray-600 hover:text-sage-700": color=="gray",
-    "text-white hover:underline decoration-1": color=="white"
+    "text-sage-700": color=="sage",
+    "text-gray-900": color=="black",
+    "text-gray-600": color=="gray",
+    "text-white": color=="white"
+  });
+  const hoverStyles = classNames({
+    "hover:text-sage-900 hover:underline decoration-1": color=="sage",
+    "hover:text-sage-700": (hoverStyle==="sage" || (!hoverStyle && (color=="black" || color=="gray"))),
+    "hover:underline decoration-1":(hoverStyle==="underlined" || (!hoverStyle && color=="white" ) || (!hoverStyle && color===""))
   });
  
 
 
   return (
     <a
-      className={` ${colorStyles} ${variantStyles} ${analyticsLabel}`}
+      className={` ${colorStyles} ${variantStyles} ${hoverStyles} ${analyticsLabel}`}
       href={href}
       target={target}
       aria-label={ariaLabel}
