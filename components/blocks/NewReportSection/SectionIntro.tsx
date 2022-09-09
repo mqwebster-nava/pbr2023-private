@@ -76,10 +76,9 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor),
       };
       
-     
       let SectionStoriesSlideUp: AnimationObject = {
-        triggerPct: windowSize==="desktop" ? 30 : -30,
-        animation: makeSlideUpAnimationWithDelay(`sectionStories-${section.anchor}`, 400),
+        triggerPct: windowSize==="desktop" ? 0 : -30,
+        animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`),
       };
 
       ana.push(TitleSlideUp);
@@ -122,7 +121,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
     const colorTheme = section.colorTheme ?? "purple";
     let textColor = section.colorTheme==="gold" ? "black" : "white";
     return (
-      <section id={`${section.anchor}`} className="h-auto lg:h-[200vh]">
+      <section id={`${section.anchor}`} className="h-auto lg:h-[150vh]">
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div className={`bg-${colorTheme}-900 w-full lg:min-h-screen block lg:sticky lg:top-[70px]`}>
       <div
@@ -144,7 +143,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           </h2>
           <p 
           id={`sectionBody-${section.anchor}`}
-          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
+          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg`}>
             <MarkdownComponent content={section.body} />
           </p>
           <div
@@ -152,14 +151,14 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           className={`type-preset-5 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
           <h3 className={`font-bold pb-sm text-${textColor} `}>Scroll to see stories</h3>
           <hr className={`bg-${textColor} `}/>
-          <div className={`flex gap-xl  text-${textColor} font-serif pt-md`}>
-            <div className="w-1/3  type-preset-6 ">
+          <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
+            <div className="w-full md:w-1/3  type-preset-6 ">
             <a>Helping Veterans get their disability claims decisions faster</a>
             </div>
-            <div className="w-1/3  type-preset-6 ">
+            <div className="w-ull md:w-1/3  type-preset-6 ">
             <a>Building Massachusetts’ Paid Family and Medical Leave program</a>
             </div>
-            <div className="w-1/3  type-preset-6 ">
+            <div className="w-full md:w-1/3  type-preset-6 ">
             <a>Tracking unemployment claims for Californians in a crisis</a>
             </div>
           </div>
