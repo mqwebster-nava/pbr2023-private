@@ -76,7 +76,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <>
-          <SectionIntro section={entry} key={entry.anchor} i={index} />
+          <SectionIntro section={entry} key={entry.anchor} i={index}  windowSize={windowSize} activeSection={activeSection}/>
           {entry.storiesCollection.items.map((story, j) => (
             <StorySection
               key={story.anchor}

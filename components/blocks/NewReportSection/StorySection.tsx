@@ -58,7 +58,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
   useEffect(() => {
     // Gets the default bottom padding neeeded to stop the info right before the
     function getBottomPadding() {
-      console.log(windowSize)
+     // console.log(windowSize)
       if (windowSize === "desktop") {
         const storyTitleDiv = document.getElementById(
           "storyTitleDiv-" + story.anchor
@@ -78,7 +78,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
         const r = Math.round(sectionH - secTitleH - storyH);
         storyMain.style.paddingBottom = r + "px";
       } else if(windowSize==="mobile"){
-        console.log(windowSize)
+       // console.log(windowSize)
         const imgBg = document.getElementById("imageBackground-"+story.anchor)
         const storyTitleDiv = document.getElementById("storyTitleDiv-" + story.anchor);
         const secTitleH = storyTitleDiv.getBoundingClientRect().height;

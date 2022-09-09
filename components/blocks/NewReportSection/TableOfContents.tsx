@@ -44,7 +44,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
           entry.__typename === "ReportIllustrationOverlaySubsection"
       ).forEach((block, i)=>{
         let a: AnimationObject = {
-          triggerPct:-40 + 10*i,
+          triggerPct:-30 + 10*i,
           animation: makeSlideUpAnimation("themenum-"+ block.anchor),
         };
         animations.push(a);
@@ -56,11 +56,11 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
         animations.push(b);
       })
       animations.push( {
-        triggerPct:-10,
+        triggerPct:20,
         animation: makeSlideUpAnimation("themenum-conclusion"),
       });
       animations.push( {
-        triggerPct:-50,
+        triggerPct:-30,
         animation: makeSlideUpAnimation("themenum-intro"),
       });
 
@@ -224,6 +224,7 @@ const MobileSection = ({contentBlocks}) => {
 const DesktopSection = ({contentBlocks}) => {
   return (
     <>
+    <div className="h-[160px]"></div>
     <div className="lg:sticky top-[70px] lg:h-[calc(100vh_-_70px)] hidden lg:block">
       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
         <div className="w-full lg:w-3/4 h-full flex flex-col">
@@ -267,7 +268,7 @@ const DesktopSection = ({contentBlocks}) => {
             fontStyle={"font-serif"}
           />
         </div>
-        <div className="w-full lg:w-1/4 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
+        <div className="w-full lg:w-1/4 h-full bg-white pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
          <div>
           <div id={"desktop-description1"} className={`type-preset-5 font-serif opacity-0 motion-reduce:opacity-100`}>
             Our 2021 report is themed around building equity through strong public services.
@@ -324,7 +325,7 @@ const DesktopSectionTitle = ({
       >
         <div  className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
           {themeNum != null && (
-            <p className="type-preset-6 font-serif pt-sm">
+            <p className="type-preset-6 font-serif ">
               Theme {themeNum }
             </p>
           )}

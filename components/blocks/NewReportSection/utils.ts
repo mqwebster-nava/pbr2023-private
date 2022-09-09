@@ -41,14 +41,14 @@ export const animationHandler = ({
         animation.animation.playState == 'finished') ||
         animation.animation.playState == 'paused')
     ) {
-        console.log("an started", animation.animation )
+       /// console.log("an started", animation.animation )
       if (
         animation.animation.playbackRate == -1 &&
         animation.animation.playState == 'finished'
       ) {
         animation.animation.reverse();
       } else {
-        console.log("an started", animation.animation )
+        //console.log("an started", animation.animation )
         animation.animation.play();
       }
     }

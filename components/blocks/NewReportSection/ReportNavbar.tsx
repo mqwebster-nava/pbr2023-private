@@ -24,7 +24,6 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
           let oldSec = reportSections.find(
             (sec) => sec.anchor === activeSection
           );
-          console.log(section.anchor)
           setActiveSection(section.anchor);
           const startPct = (oldSec && reportSections.findIndex((sec) => sec.anchor === activeSection)>i) ? 100 : 0;
           setSectionPct(startPct);

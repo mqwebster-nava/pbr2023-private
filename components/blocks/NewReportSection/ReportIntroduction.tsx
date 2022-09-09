@@ -9,17 +9,22 @@ export interface TextBodyInterface {
 
 const ReportIntroductionBlock = ({ title, richBody }: TextBodyInterface) => {
   return (
-    <div className="responsive-container mr-auto  py-2xl " id={"intro"}>
-      <div className="max-w-screen-md   mr-auto">
-        <div className="font-serif text-purple-900">
-          {title && (
-            <h3 className={`font-sans type-preset-3  font-bold pb-lg`}>
-              {title}
-            </h3>
-          )}
-          <PostContent docData={richBody.json} docLinks={richBody.links} />
+    <div className="bg-purple-50 mt-[160px]">
+      <div className="responsive-container mr-auto  py-2xl " id={"intro"}>
+        <div className="max-w-screen-md   mr-auto">
+        <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md">
+            {title && (
+              <h3 className={`font-sans type-preset-3  font-bold pb-lg`}>
+                {title}
+              </h3>
+            )}
+          </div>
+          <div className="font-serif text-purple-900">
+           
+            <PostContent docData={richBody.json} docLinks={richBody.links} />
+          </div>
+          <Signatures fullList={true} isNew={true} />
         </div>
-        <Signatures fullList={true} isNew={true} />
       </div>
     </div>
   );
