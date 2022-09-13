@@ -180,7 +180,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
           <div
             id={`storySummary-${story.anchor}`}
             className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
-              isCollapsed ? "pb-sm" : "pb-2xl"
+              isCollapsed ? "pb-sm" : "pb-md"
             }`}
           >
             <PostContent
