@@ -1,5 +1,6 @@
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
+import ArrowDown from "./Atoms/ArrowDown";
 
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 
@@ -224,7 +225,7 @@ const MobileSection = ({contentBlocks}) => {
 const DesktopSection = ({contentBlocks}) => {
   return (
     <>
-    <div className="h-[160px]"></div>
+    <div className="h-[160px]  hidden lg:block"></div>
     <div className="lg:sticky top-[70px] lg:h-[calc(100vh_-_70px)] hidden lg:block">
       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
         <div className="w-full lg:w-3/4 h-full flex flex-col">
@@ -278,29 +279,8 @@ const DesktopSection = ({contentBlocks}) => {
             worked to build equity by designing public services for all.
           </p>
           </div>
-          <div className="pb-xl hidden lg:block">
-            <svg
-              width="56"
-              height="103"
-              viewBox="0 0 56 103"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M27.998 1V101.613"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+          <div className="hidden md:block pb-[160px]">
+            <ArrowDown color="black" size="default" sectionId={'toc'}/>
           </div>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
+
+
 const makeFadeAnimation = (elementId) => {
   const an = document.getElementById(elementId).animate(
     [
@@ -40,7 +42,14 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
       triggerPct: 100* bgTriggerH / document.getElementById(storyId).offsetHeight,
       animation: makeFadeAnimation("contextImg-" + story.anchor),
     };
+
     ana.push(backgroundFade);
+    let titleFade: AnimationObject = {
+      triggerPct: 75,
+      animation: makeFadeAnimation("storyTitleDiv-" + story.anchor),
+    };
+
+    ana.push(titleFade);
     if(windowSize==="mobile"){
     
       let mobileFade2: AnimationObject = {
@@ -178,18 +187,21 @@ const StorySection = ({ story, colorTheme, sectionAnchor, windowSize, activeSect
               docData={story.intro.json}
               docLinks={story.intro.links}
             />
-            <div className="w-full">
+            <div className="w-full border-b-[1px] border-black flex justify-between">
 
-            <hr />
+            
+           
             <button
-              className="font-serif type-preset-6 underline hover:font-bold"
+              className="font-serif type-preset-6 hover:font-bold"
               onClick={() => {
                 setIsCollapsed(!isCollapsed);
               }}
             >
               {isCollapsed ? "See more" : "See less"}
             </button>
+            +
             </div>
+           
           </div>
           <div
             id={`storyContent-${story.anchor}`}

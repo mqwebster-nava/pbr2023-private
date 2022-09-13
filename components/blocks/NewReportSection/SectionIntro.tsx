@@ -130,7 +130,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
       >
         <div className="lg:pt-4xl pt-3xl ">
         <p
-            className={`text-${textColor} type-preset-1 pb-xl max-w-screen-md mr-auto font-serif opacity-0 motion-reduce:opacity-100`}
+            className={`text-${textColor} type-preset-5 pb-sm max-w-screen-md mr-auto font-serif opacity-0 motion-reduce:opacity-100`}
             id={`themeNum-${section.anchor}`}
           >
             Theme {i}
