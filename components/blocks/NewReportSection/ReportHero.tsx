@@ -2,6 +2,15 @@ import { PageHeaderInterface } from "../PageHeaders/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import ArrowDown from "./Atoms/ArrowDown";
 
+
+/*
+TODO 
+ - Responsively change box size
+ - Accessibility Check
+- Defined Sizing of the title font, align with 
+*/
+
+
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -63,10 +72,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
         l2.classList.replace("opacity-100", "opacity-0");
       }
     };
-    // if (
-    //   document.getElementById("animation-box").getBoundingClientRect().height ==
-    //   0
-    // ) {
+
       getAnimationBoxHeight();
     
     window.removeEventListener("scroll", onScroll);
@@ -80,7 +86,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
       id="reportHeader"
     >
       <div
-        className={`hehe w-full lg:h-[calc(100vh_-_70px)] sticky top-[70px] responsive-container`}
+        className={`w-full lg:h-[calc(100vh_-_70px)] sticky top-[70px] responsive-container overflow-hidden`}
       >
         <div className=" z-40 flex flex-col lg:flex-row gap-xl ">
           <div
@@ -92,7 +98,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             </h1>
             <div
               id="animation-box"
-              className="absolute top-0 left-0 -z-10 h-full w-full"
+              className="absolute top-0 left-0 -z-10 h-full w-full "
             >
                 <SVG1/> 
                 <SVG2/>
@@ -181,7 +187,7 @@ const SVG2 = () => {
   return (
   <svg   id={'box2'} 
   className={`absolute bottom-0 left-0 bg-purple-700 -z-10`}
-width="527" height="527" viewBox="0 0 527 527" fill="none" xmlns="http://www.w3.org/2000/svg">
+width="0" height="0" viewBox="0 0 527 527" fill="none" xmlns="http://www.w3.org/2000/svg">
 
 <path d="M483.32 979.561L-452.561 43.6804" stroke="#471385" stroke-width="2.635"/>
 <path d="M498.843 964.037L-437.037 28.1565" stroke="#471385" stroke-width="2.635"/>
