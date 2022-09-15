@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <div className="flex-grow ">
           <Component {...pageProps} />
         </div>
-        <Footer isBottomCTA={pageProps.isBottomCTA}/>
+        {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&   <Footer isBottomCTA={pageProps.isBottomCTA}/> }
       </div>
     </>
   );
