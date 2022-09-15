@@ -9,8 +9,8 @@ import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar";
 import ReportConclusion from "components/blocks/NewReportSection/ReportConclusion";
 import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
-import StorySection from "components/blocks/NewReportSection/StorySection";
-import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents";
+import StorySection from "components/blocks/NewReportSection/StorySection/StorySection";
+import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents/TableOfContents";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -129,8 +129,9 @@ export function sortDocIntoH2Sections(contentBlocks) {
       colorTheme: colorTheme,
     });
   }
-  addSection("TOC", "toc", null, null, "white");
-  addSection("Intro", "intro", null, null, "white");
+  addSection("Hero", "reportHeader", null, null, "purple");
+  addSection("TOC", "toc", null, null, "purple");
+  addSection("Intro", "intro", null, null, "purple");
 
   contentBlocks.forEach((subsection) => {
     const typename = subsection.__typename;
@@ -154,5 +155,6 @@ export function sortDocIntoH2Sections(contentBlocks) {
   });
   return output;
 }
+
 
 export default ReportTemplate;

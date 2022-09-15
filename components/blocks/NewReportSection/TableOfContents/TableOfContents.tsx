@@ -1,29 +1,12 @@
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
-import ArrowDown from "./Atoms/ArrowDown";
+import { makeSlideUpAnimation } from "../animations";
+import ArrowDown from "../Atoms/ArrowDown";
 
-import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
+import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 
 
 // Components that can be animated
-
-const makeSlideUpAnimation = (elementId) => {
-  let an = document.getElementById(elementId).animate(
-    [
-      { transform: 'translateY(20%)', opacity: '0%',  },
-      { transform: 'translateY(0%)', opacity: '100%',   },
-    ],
-    {
-      duration: 200,
-      iterations: 1,
-      fill: 'forwards',
-    }
-  );
-  an.pause();
-  return an;
-};
-
-
 const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
   const [animationList, setAnimationList] = useState([]);
   const isActive = activeSection=="toc";
@@ -34,7 +17,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
     let animations = []
     let line1Fade: AnimationObject = {
       triggerPct:3,
-      animation: makeSlideUpAnimation("desktop-description1"),
+      animation: makeSlideUpAnimation("desktop-description1", 0),
     };
     animations.push(line1Fade);
 
@@ -46,30 +29,30 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
       ).forEach((block, i)=>{
         let a: AnimationObject = {
           triggerPct:-30 + 10*i,
-          animation: makeSlideUpAnimation("themenum-"+ block.anchor),
+          animation: makeSlideUpAnimation("themenum-"+ block.anchor, 0),
         };
         animations.push(a);
       
         let b: AnimationObject = {
           triggerPct:20,
-          animation: makeSlideUpAnimation("stories-"+ block.anchor),
+          animation: makeSlideUpAnimation("stories-"+ block.anchor, 0),
         };
         animations.push(b);
       })
       animations.push( {
-        triggerPct:20,
-        animation: makeSlideUpAnimation("themenum-conclusion"),
+        triggerPct:10,
+        animation: makeSlideUpAnimation("themenum-conclusion", 0),
       });
       animations.push( {
         triggerPct:-30,
-        animation: makeSlideUpAnimation("themenum-intro"),
+        animation: makeSlideUpAnimation("themenum-intro", 0),
       });
 
 
       // Part 2
       let line2Fade: AnimationObject = {
         triggerPct:20,
-        animation: makeSlideUpAnimation("desktop-description2"),
+        animation: makeSlideUpAnimation("desktop-description2", 0),
       };
       animations.push(line2Fade);
   
@@ -80,7 +63,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
 
   useEffect(() => {
     const onScroll = () => {
-      const offsetPct = getOffsetPct(activeSection);
+      const offsetPct = getOffsetPct('toc');
       if(offsetPct<-100 || offsetPct > 100) return;
       animationHandler({offsetPct, animationList});
     }
@@ -138,6 +121,10 @@ const MobileSection = ({contentBlocks}) => {
           Our 2021 report is themed around building equity through strong
           public services.
         </p>
+        <p className="type-preset-5 font-serif pb-md">
+          Through project-specific stories, the 2021 report details how Nava
+          worked to build equity by designing public services for all.
+        </p>
       </div>
       <MobileSectionTitle
         title={"Letter from Leadership"}
@@ -175,13 +162,13 @@ const MobileSection = ({contentBlocks}) => {
         fontStyle={"font-serif"}
       />
 
-      <div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
+        {/*<div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
         <p className="type-preset-5 font-serif pb-md" >
           Through project-specific stories, the 2021 report details how Nava
           worked to build equity by designing public services for all.
         </p>
       </div>
-        <div className="w-full h-full flex flex-col">
+      <div className="w-full h-full flex flex-col">
           {contentBlocks
             .filter(
               (entry) =>
@@ -216,8 +203,8 @@ const MobileSection = ({contentBlocks}) => {
                 </div>
               );
             })}
-        </div>
-    </div>
+        </div>*/}
+    </div> 
   );
 };
 
@@ -327,7 +314,7 @@ const DesktopSectionTitle = ({
           {stories &&
             stories.map((story) => {
               const anch2 = `#${anchor}--${story.anchor}`;
-              const title = story.shortTitle ?? story.title;
+              const title =  story.title;
               return (
                 <div
                   className=" font-serif py-sm type-preset-6"
