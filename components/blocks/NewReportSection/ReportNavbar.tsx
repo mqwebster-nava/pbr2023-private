@@ -9,7 +9,9 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
   let navBG = "purple"
   const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
   const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
-  
+   
+
+  //const checkSection
   useEffect(() => {
     const onScroll = () => {
       const offset = window.pageYOffset;
@@ -30,6 +32,7 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
           return;
         } 
       });
+      
       if (!activeSection) return;
       const secElement = document.getElementById(activeSection);
       if(!secElement) return;
@@ -60,11 +63,11 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
   }
 
   return (
-    <div className={`block sticky top-0  z-50 w-full bg-white`}>
+    <div className={`block sticky top-0  z-50 w-full bg-${navBG}-900`}>
       <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px] ">
-        <Logo isMobile={true} color="black" />
+        <Logo isMobile={true} color="white" />
         <a href="#reportHeader">
-        <h2 className="type-preset-6 font-serif text-black">
+        <h2 className="type-preset-6 font-serif text-white">
           Public Benefit Report 2021
         </h2>
         </a>
@@ -76,7 +79,7 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="font-sans text-black  border-grey  "
+            className="font-sans text-white  border-grey  "
           >
             {isShowingMenu ? (
               <CloseSVG/>
@@ -122,7 +125,7 @@ xmlns="http://www.w3.org/2000/svg"
 >
 <path
   d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
-  stroke="black"
+  stroke="white"
   strokeLinecap="round"
   strokeLinejoin="round"
 />
@@ -138,36 +141,26 @@ const OpenSVG = () =>
 >
   <path
     d="M26.3997 1H1"
-    stroke="black"
+    stroke="white"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 10.7695H1"
-    stroke="black"
+    stroke="white"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 20.5391H1"
-    stroke="black"
+    stroke="white"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
 </svg>
 
 export default ReportNavbar;
-{
-  /* <nav className="w-full  bg-white sticky top-0  z-30  pt-md">
-       
-<div className="responsive-container flex justify-between">
- <Logo/>
-  <div className="text-white">Menu</div>
- 
-</div>
-</nav>
-/h-[70px] */
-}
+
 
 
 const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {

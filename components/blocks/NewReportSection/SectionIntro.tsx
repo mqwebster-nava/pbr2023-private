@@ -1,84 +1,32 @@
+import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import MarkdownComponent from "utils/MarkdownComponent";
+import { makeSlideUpAnimation } from "./animations";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
-
-
-
-const makeSlideUpAnimation = (elementId) => {
-  let an = document.getElementById(elementId).animate(
-    [
-      { transform: 'translateY(20%)', opacity: '0%',  },
-      { transform: 'translateY(0%)', opacity: '100%',   },
-    ],
-    {
-      duration: 300,
-      iterations: 1,
-      fill: 'forwards',
-    }
-  );
-  an.pause();
-  return an;
-};
-
-const makeSlideUpAnimationWithDelay = (elementId, delay) => {
-  let an = document.getElementById(elementId).animate(
-    [
-      { transform: 'translateY(20%)', opacity: '0%',  },
-      { transform: 'translateY(0%)', opacity: '100%',   },
-    ],
-    {
-      duration: 300,
-      iterations: 1,
-      fill: 'forwards',
-      delay:delay
-    }
-  );
-  an.pause();
-  return an;
-};
-
-const makeFadeOutAnimation = (elementId ) => {
-  let an = document.getElementById(elementId).animate(
-    [
-      {  opacity: '100%',  },
-       { opacity: '0%',  height:0 },
-    ],
-    {
-      duration: 200,
-      iterations: 1,
-      fill: 'forwards',
-    }
-  );
-  an.pause();
-  return an;
-};
-
-
 
 const SectionIntro = ({ section, i, windowSize, activeSection}) => {
     const [animationList, setAnimationList] = useState([]);
     const isActive = activeSection==activeSection;
-
     const initiateAnimations= () =>{
       let ana  = []
      
       
       let ThemeSlideUp: AnimationObject = {
         triggerPct: windowSize==="desktop" ? -20 :-50,
-        animation: makeSlideUpAnimation("themeNum-" + section.anchor),
+        animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
         triggerPct: windowSize==="desktop" ? -10 : -40,
-        animation: makeSlideUpAnimation("h2-" + section.anchor),
+        animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
         triggerPct: windowSize==="desktop" ? 0 : -30,
-        animation: makeSlideUpAnimation("sectionBody-" + section.anchor),
+        animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
       };
       
       let SectionStoriesSlideUp: AnimationObject = {
         triggerPct: windowSize==="desktop" ? 0 : -30,
-        animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`),
+        animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
       };
 
       ana.push(TitleSlideUp);
@@ -108,7 +56,6 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
         if (offsetPct < -50 || offsetPct >= 100) return;
         animationHandler({offsetPct, animationList});
       };
-      console.log(section.anchor, windowSize)
         if(animationList.length==0 && windowSize){
           initiateAnimations();
         }
@@ -148,19 +95,18 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           </p>
           <div
           id={`sectionStories-${section.anchor}`}
-          className={`type-preset-5 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
+          className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
           <h3 className={`font-bold pb-sm text-${textColor} `}>Scroll to see stories</h3>
           <hr className={`bg-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
-            <div className="w-full md:w-1/3  type-preset-6 ">
-            <a>Helping Veterans get their disability claims decisions faster</a>
-            </div>
-            <div className="w-ull md:w-1/3  type-preset-6 ">
-            <a>Building Massachusetts’ Paid Family and Medical Leave program</a>
-            </div>
-            <div className="w-full md:w-1/3  type-preset-6 ">
-            <a>Tracking unemployment claims for Californians in a crisis</a>
-            </div>
+            {section.items.map((story)=>{
+              return ( <div className="w-full md:w-1/3  type-preset-6 ">
+             <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={section.colorTheme==="gold" ? "black" : "white"}>
+              {story.title}
+             </LinkText>
+              </div>)
+            })}
+    
           </div>
           </div>
         </div>

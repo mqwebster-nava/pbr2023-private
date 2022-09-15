@@ -3,7 +3,7 @@ import MarkdownComponent from "utils/MarkdownComponent";
 
 const ReportConclusion = ({}) => {
   return (
-    <section className="w-full h-screen bg-gold-700">
+    <section id="reportConclusion" className="w-full h-screen bg-gold-700">
       <div className="responsive-container py-2xl lg:pl-[108px]">
         <div className="font-serif text-black type-preset-1 pt-3xl">
           Conclusion

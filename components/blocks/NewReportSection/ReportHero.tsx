@@ -1,6 +1,8 @@
 import { PageHeaderInterface } from "../PageHeaders/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import ArrowDown from "./Atoms/ArrowDown";
+import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
+import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
 
 
 /*
@@ -13,11 +15,9 @@ TODO
 
 const ReportHero = ({ id, title }: PageHeaderInterface) => {
   const [isActive, setIsActive] = useState(false);
-
-  const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset) =>
-    getTop(el, extraOffset) + el.offsetHeight - extraOffset;
-
+  const [animationList, setAnimationList] = useState([]);
+  
+ 
     function getAnimationBoxHeight(){
       const title = document.getElementById("reportHeader-titleBox");
       let h = Math.round(title.getBoundingClientRect().height);
@@ -30,31 +30,38 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
       if(window.innerWidth < 768 && s>250){
         s=250
       }
-      console.log(h,w);
       const svg = document.getElementById("baseSVG");
       const animBox = document.getElementById("animation-box");
       svg.setAttribute('height', `${s}`);
-     svg.setAttribute('width', `${s}`);
+      svg.setAttribute('width', `${s}`);
       animBox.style.height=`${s}px`;
       animBox.style.width=`${s}px`;
-      //animBox.style.bottom=`0`;
+    }
+
+    const initiateAnimations= () =>{
+    let ana  = []
+  
+     makeSlideUpAnimation("reportHeader-titleBox", 0).play()
+     makeSlideUpAnimation("titleLine1", 200).play()
+     makeSlideUpAnimation("titleLine2", 400).play()
+     makeFadeInAnimation("heroArrow", 600).play();
+      let Line3SlideUp: AnimationObject = {
+        triggerPct: 30,
+        animation: makeSlideUpAnimation("titleLine3", 0),
+      };
+      ana.push(Line3SlideUp);
+      setAnimationList(ana);
     }
   useEffect(() => {
     const onScroll = () => {
-      const offset = window.pageYOffset;
-      const secElement = document.getElementById("reportHeader");
-      const topTrigger = getTop(secElement, 30);
-      const bottomTrigger = getBottom(secElement, 30);
-
-      const _isActive = offset > topTrigger && offset < bottomTrigger;
+      
+      const offsetPct = getOffsetPct("reportHeader");
+      const _isActive = offsetPct >= 0 && offsetPct < 100 ;
       if (_isActive !== isActive) setIsActive(_isActive);
-
       if (!_isActive) return;
-
-      const offsetPct = Math.round(
-        (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
-      );
+     
       if (offsetPct < 0 || offsetPct >= 100) return;
+      animationHandler({offsetPct, animationList});
       const animBox = document.getElementById("animation-box");
       const s = animBox.getBoundingClientRect().height;
       const svg = document.getElementById("box2");
@@ -62,19 +69,21 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
       svg.setAttribute('height', `${pctS}`);
       svg.setAttribute('width', `${pctS}`);
   
-      const l2 = document.getElementById("titleLine2");
-      if (offsetPct > 20 && l2.classList.contains("opacity-0")) {
-        l2.classList.add("animate-titleSlide");
-        l2.classList.replace("opacity-0", "opacity-100");
-      }
-      if (offsetPct < 20 && l2.classList.contains("opacity-100")) {
-        l2.classList.remove("animate-titleSlide");
-        l2.classList.replace("opacity-100", "opacity-0");
-      }
+      // const l2 = document.getElementById("titleLine2");
+      // if (offsetPct > 20 && l2.classList.contains("opacity-0")) {
+      //   l2.classList.add("animate-titleSlide");
+      //   l2.classList.replace("opacity-0", "opacity-100");
+      // }
+      // if (offsetPct < 20 && l2.classList.contains("opacity-100")) {
+      //   l2.classList.remove("animate-titleSlide");
+      //   l2.classList.replace("opacity-100", "opacity-0");
+      // }
     };
 
       getAnimationBoxHeight();
-    
+    if(animationList.length==0 ){
+        initiateAnimations();
+    }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -93,7 +102,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
             
             className="w-full lg:w-3/4 relative h-auto"
           >
-            <h1 id={"reportHeader-titleBox"} className="pt-2xl animate-titleSlide -ml-sm md:-ml-md  lineOne xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]">
+            <h1 id={"reportHeader-titleBox"} className="pt-2xl -ml-sm md:-ml-md  lineOne xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100">
               Public <br /> Benefit <br /> Report
             </h1>
             <div
@@ -108,21 +117,21 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
           </div>
           <div className=" w-full  lg:w-1/4 h-full flex flex-col justify-between pt-3xl gap-xl">
             <div>
-              <p className="animate-titleSlide type-preset-4 font-serif text-white font-bold tracking-wide">
+              <p id="titleLine1" className=" type-preset-5 font-serif text-white font-bold tracking-wide opacity-0 motion-reduce:opacity-100">
                 Equity that lasts:
               </p>
-              <p className="animate-titleSlide type-preset-4 font-serif text-white font-light tracking-wide">
+              <p id="titleLine2" className="type-preset-5 font-serif text-white font-light tracking-wide opacity-0 motion-reduce:opacity-100">
                 building sustainable government services
               </p>
               <p
-                id="titleLine2"
-                className="type-preset-4 font-serif text-purple-100 opacity-0 pt-xl tracking-wide"
+                id="titleLine3"
+                className="type-preset-5 font-serif text-purple-100 opacity-0 pt-xl tracking-wide"
               >
                 Each year, Nava outlines its work and progress in a public
                 benefit report.
               </p>
             </div>
-            <div className="lg:absolute lg:bottom-[160px]">
+            <div  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100">
               <ArrowDown
                 color="white"
                 size="large"
