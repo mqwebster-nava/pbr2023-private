@@ -1,7 +1,6 @@
 // https://www.navapbc.com/public-benefit-reports/2020/
 
-import React, { useRef } from "react";
-import { ReportHeaderNavy, SectionHeader } from "components/blocks";
+import React from "react";
 import { PageInterface } from "shared_interfaces/page_interface";
 import ReportTemplate from "components/templates/ReportTemplate/ReportTemplate";
 import { getPageDataFromContentful } from "lib/api";
@@ -27,6 +26,7 @@ export async function getStaticProps({ params, preview = false }) {
 
   return {
     props: formattedPage,
+    revalidate: 60, // In seconds
   };
 }
 
