@@ -1,5 +1,6 @@
 import IMAGE_FIELDS from "../IMAGE_FIELDS";
 import { POST_BODY } from "../POST_FIELDS";
+import CALLOUT from "./CALLOUT";
 
 
 const REPORT_ILLUSTRATION_OVERLAY_STORY = `
@@ -23,6 +24,9 @@ contextIllustration{
 }
 callOut {
     ${IMAGE_FIELDS}
+}
+featuredCallOut {
+    ${CALLOUT}
 }
 `;
 
