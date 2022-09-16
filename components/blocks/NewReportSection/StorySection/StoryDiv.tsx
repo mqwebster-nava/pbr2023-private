@@ -9,17 +9,17 @@ const StoryDiv = ({ story, colorTheme, isCollapsed, setCollapsed }) => {
           <PostContent docData={story.intro.json} docLinks={story.intro.links} />
           <button 
           id={`expandBtn-${story.anchor}`}
-          className={` pt-md w-full flex justify-start items-center  bg-${colorTheme}-50`}
+          className={` pt-md w-full flex justify-start items-center  bg-${colorTheme}-50 hover:underline`}
           onClick={() => {
             setCollapsed(!isCollapsed);
           }} 
           >
             <div
-              className="font-serif type-preset-6 font-bold pr-md"
+              className="font-serif type-preset-6 font-bold text-start  w-[100px]"
             >
               {isCollapsed ? "Read more" : "Read less"}
             </div>
-            <div className={`chevron `}>
+            <div className={`chevron ${!isCollapsed && "rotate-180"}`}>
                             <svg
                             className={`stroke-${colorTheme}-900`}
                               width="18"
@@ -37,9 +37,10 @@ const StoryDiv = ({ story, colorTheme, isCollapsed, setCollapsed }) => {
                           </div>
           </button>
           <div
+            onClick={ ()=> {if(isCollapsed)setCollapsed(!isCollapsed)}}
             id={`storyContent-${story.anchor}`}
              className={` font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
-              isCollapsed ? `max-h-[100px] overflow-clip relative opacity-70` : "block pb-[200px]"
+              isCollapsed ? `max-h-[100px] overflow-clip relative opacity-70 hover:opacity-100 cursor-pointer` : "block pb-[200px]"
             }`}
           >
               <div className={`absolute top-0 left-0  h-[100px] z-10 w-full 

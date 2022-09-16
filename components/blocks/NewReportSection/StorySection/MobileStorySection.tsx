@@ -4,7 +4,7 @@ import PostContent from "../../PostBody/PostContent";
 import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 import StoryDiv from "./StoryDiv";
 import { makeFadeInAnimation } from "../animations";
-import CalloutDiv from "./CallOutDiv";
+import CalloutDiv from "./FeaturedCallOut";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
