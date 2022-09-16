@@ -100,7 +100,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           <hr className={`bg-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
-              return ( <div className="w-full md:w-1/3  type-preset-6 ">
+              return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm">
              <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={section.colorTheme==="gold" ? "black" : "white"}>
               {story.title}
              </LinkText>

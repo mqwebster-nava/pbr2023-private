@@ -100,7 +100,7 @@ const MobileSectionTitle = ({
 
       
           {themeNum != null && (
-            <p className={`type-preset-7 font-serif pt-sm text-${textColor}`}>
+            <p className={`type-preset-7 font-serif  text-${textColor}`}>
               Theme {themeNum + 1}
             </p>
           )}
@@ -116,18 +116,16 @@ const MobileSectionTitle = ({
 const MobileSection = ({contentBlocks}) => {
   return (
     <div className="block lg:hidden">
-      <div className="w-full h-full bg-white pt-3xl px-xl md:px-4xl  ">
+      <div className="w-full h-full bg-white pt-lg pb-3xl px-xl  ">
         <p className="type-preset-5 font-serif pb-md">
-          Our 2021 report is themed around building equity through strong
-          public services.
+        Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
         </p>
-        <p className="type-preset-5 font-serif pb-md">
-          Through project-specific stories, the 2021 report details how Nava
-          worked to build equity by designing public services for all.
+        <p className="type-preset-5 font-serif ">
+        Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava worked to build equity by designing public services for all.
         </p>
       </div>
       <MobileSectionTitle
-        title={"Letter from Leadership"}
+        title={"Letter from leadership"}
         anchor={"intro"}
         themeNum={null}
         bgColor={`bg-purple-50`}
@@ -161,49 +159,6 @@ const MobileSection = ({contentBlocks}) => {
         textColor={"black"}
         fontStyle={"font-serif"}
       />
-
-        {/*<div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
-        <p className="type-preset-5 font-serif pb-md" >
-          Through project-specific stories, the 2021 report details how Nava
-          worked to build equity by designing public services for all.
-        </p>
-      </div>
-      <div className="w-full h-full flex flex-col">
-          {contentBlocks
-            .filter(
-              (entry) =>
-                entry.__typename === "ReportIllustrationOverlaySubsection"
-            )
-            .map((section, i) => {
-              const color = section.colorTheme ?? "purple";
-              const textColor =
-                section.colorTheme === "gold" ? "black" : "white";
-              return (
-                <div className={`w-full grow bg-${color}-900 `}>
-                  <div className={`md:px-4xl px-xl text-white  gap-lg`}>
-                    <div className={` pt-md divide-y divide-${textColor}`}>
-                      {section.storiesCollection.items.map((story) => {
-                        const anch2 = `#${section.anchor}--${story.anchor}`;
-                        const title = story.shortTitle ?? story.title;
-                        return (
-                          <div className={`font-serif py-sm text-${textColor}`}>
-                            <LinkText
-                              href={anch2}
-                              variant={"default"}
-                              color={["black", "white"].includes(textColor)? textColor : null}
-                              hoverStyle={"underlined"}
-                            >
-                              {title}
-                            </LinkText>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-        </div>*/}
     </div> 
   );
 };
@@ -217,7 +172,7 @@ const DesktopSection = ({contentBlocks}) => {
       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
         <div className="w-full lg:w-3/4 h-full flex flex-col">
           <DesktopSectionTitle
-            title={"Introduction Letter"}
+            title={"Letter from leadership"}
             anchor={"intro"}
             themeNum={null}
             bgColor={`bg-purple-50`}
@@ -258,11 +213,11 @@ const DesktopSection = ({contentBlocks}) => {
         </div>
         <div className="w-full lg:w-1/4 h-full bg-white pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
          <div>
-          <div id={"desktop-description1"} className={`type-preset-5 font-serif opacity-0 motion-reduce:opacity-100`}>
-            Our 2021 report is themed around building equity through strong public services.
+          <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-sm opacity-0 motion-reduce:opacity-100`}>
+            Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
-          <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif opacity-0 motion-reduce:opacity-100`} >
-            Through project-specific stories, the 2021 report details how Nava
+          <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
+            Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava
             worked to build equity by designing public services for all.
           </p>
           </div>
@@ -288,7 +243,7 @@ const DesktopSectionTitle = ({
   return (
     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
       <div
-        className={` xl:ml-sm md:ml-4xl pl-xl text-white grid grid-cols-12  gap-lg `}
+        className={` xl:ml-sm md:ml-4xl pl-xl text-${textColor} grid grid-cols-12  gap-lg `}
       >
         <div  className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
           {themeNum != null && (
@@ -296,7 +251,7 @@ const DesktopSectionTitle = ({
               Theme {themeNum }
             </p>
           )}
-          <h2 className={`type-preset-5 font-bold ${fontStyle} text-${textColor}`}>
+          <h2 className={`type-preset-5 ${fontStyle} text-${textColor}`}>
             <LinkText
               href={`#${anchor}`}
               variant={"default"}
@@ -309,7 +264,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-8 pt-md divide-y divide-${textColor}  opacity-0 motion-reduce:opacity-100`}
+          className={` col-span-8 pt-md divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
         >
           {stories &&
             stories.map((story) => {
@@ -347,3 +302,47 @@ const DesktopSectionTitle = ({
       // else if (offsetPct < 25 && showTOC) {
       //   setShowTOC(false);
       // }
+
+
+      /*<div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
+        <p className="type-preset-5 font-serif pb-md" >
+          Through project-specific stories, the 2021 report details how Nava
+          worked to build equity by designing public services for all.
+        </p>
+      </div>
+      <div className="w-full h-full flex flex-col">
+          {contentBlocks
+            .filter(
+              (entry) =>
+                entry.__typename === "ReportIllustrationOverlaySubsection"
+            )
+            .map((section, i) => {
+              const color = section.colorTheme ?? "purple";
+              const textColor =
+                section.colorTheme === "gold" ? "black" : "white";
+              return (
+                <div className={`w-full grow bg-${color}-900 `}>
+                  <div className={`md:px-4xl px-xl text-white  gap-lg`}>
+                    <div className={` pt-md divide-y divide-${textColor}`}>
+                      {section.storiesCollection.items.map((story) => {
+                        const anch2 = `#${section.anchor}--${story.anchor}`;
+                        const title = story.shortTitle ?? story.title;
+                        return (
+                          <div className={`font-serif py-sm text-${textColor}`}>
+                            <LinkText
+                              href={anch2}
+                              variant={"default"}
+                              color={["black", "white"].includes(textColor)? textColor : null}
+                              hoverStyle={"underlined"}
+                            >
+                              {title}
+                            </LinkText>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>*/

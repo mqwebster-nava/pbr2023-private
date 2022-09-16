@@ -1,8 +1,6 @@
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageInterface } from "shared_interfaces/page_interface";
-import { PageHeader } from "components/blocks";
-import { ContentCard, Button, LinkText } from "components/atom";
 //https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
 
@@ -72,31 +70,31 @@ export default function DesignSystem(props: PageInterface) {
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-600 stroke-purple-600"
+              className="bg-purple-600 stroke-navy-900 border-navy-900 from-navy-50"
             >
               600
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-700 stroke-purple-700"
+              className="bg-purple-700 stroke-plum-900 border-plum-900 from-plum-50"
             >
               700
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-800 stroke-purple-800"
+              className="bg-purple-800 stroke-sage-900 border-sage-900 from-sage-50"
             >
               800
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-900 stroke-purple-900"
+              className="bg-purple-900 stroke-purple-900 border-purple-900 from-purple-50"
             >
               900
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-gold-900 stroke-gold-900 text-gold-900"
+              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50"
             >
               900
             </div>

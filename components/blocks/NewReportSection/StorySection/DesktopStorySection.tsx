@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostContent from "../../PostBody/PostContent";
 import { animationHandler, AnimationObject, debounce, getOffsetPct } from "../utils";
 import { makeFadeAnimation, makeSlideUpAnimation } from "../animations";
+import StoryDiv from "./StoryDiv";
+import CalloutDiv from "./CallOutDiv";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
@@ -16,7 +18,6 @@ const DesktopStorySection = ({
   windowSize,
   activeSection,
 }) => {
-
 
 const storyId = `${sectionAnchor}--${story.anchor}`;
   const isActive = activeSection == storyId;
@@ -61,22 +62,19 @@ const storyId = `${sectionAnchor}--${story.anchor}`;
   };
 
 
-
-//   const onScroll = useMemo(
-//     ()=>debounce(() => {
-//     // Do stuff with the event!
-   
-//   if (!isActive) return;
-//   const offsetPct = getOffsetPct(storyId);
-//   console.log(offsetPct);
-//   if (offsetPct < 0 || offsetPct >= 100) return;
-//   if(isCollapsed) animationHandler({ offsetPct, animationList });
-// }, 10), []);
 const onScroll =() => {
     // Do stuff with the event!
    
-  if (!isActive) return;
+  if (!isActive && isCollapsed) return;
   const offsetPct = getOffsetPct(storyId);
+
+  if(!isCollapsed && (offsetPct < -50 || offsetPct> 150)) {
+    console.log('collapsing ', storyId)
+    setIsCollapsed(true);
+    animationHandler({ offsetPct, animationList });
+    document.getElementById(`contextImg-${story.anchor}`).style.opacity='100';
+    return;
+  }
   if (offsetPct < 0 || offsetPct >= 100) return;
   if(isCollapsed) animationHandler({ offsetPct, animationList });
 };
@@ -86,12 +84,7 @@ const onScroll =() => {
     const _isExpanding = isCollapsed;
     
     if(_isExpanding){
-        
-       // document.getElementById(`storyExpanded-${story.anchor}`).classList.replace("hidden", "block")
-        //console.log(getOffsetPct(storyId));
-
-        // Hide the old box 
-     
+   
         document.getElementById(`contextImg-${story.anchor}`).style.opacity='0';
         //setAnimationList([]);
         setIsCollapsed(!isCollapsed);
@@ -101,6 +94,8 @@ const onScroll =() => {
             behavior:'auto'
         });
         document.documentElement.style.scrollBehavior = "smooth";
+        const top = Math.round(document.getElementById("storyTitleDiv-" + story.anchor).offsetHeight + 80);
+        document.getElementById("expandBtn-" + story.anchor).classList.replace("top-0", `top-[${top}px]`)
     
 
     } else {
@@ -118,9 +113,9 @@ const onScroll =() => {
   };
 
   useEffect(() => {
-    if (isActive) {
+    if (isActive || !isCollapsed) {
         if(isCollapsed){  document.getElementById(`contextImg-${story.anchor}`).style.opacity='100';}
-        if (animationList.length == 0 && isCollapsed) {
+        if (animationList.length == 0 ) {
             initiateAnimations();
         }
       window.removeEventListener("scroll", onScroll);
@@ -154,7 +149,7 @@ const onScroll =() => {
             colorTheme={colorTheme}
             isCollapsed={isCollapsed}
           />
-          <CalloutDiv anchor={story.anchor} callOut={story.callOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
+          <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
           <StoryDiv
             story={story}
             colorTheme={colorTheme}
@@ -179,7 +174,7 @@ const ImageBackgroundContainerDesktop = ({
   return (
     <div
       id={`imageBackground-${story.anchor}`}
-      className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 `} // h-[calc(100vh_-_70px)]
+      className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
       <div className="relative h-[calc(100vh_-_70px)] max-h-screen w-screen mx-auto max-w-screen-2xl">
         <Image
@@ -206,7 +201,7 @@ const ImageBackgroundContainerDesktop = ({
             colorTheme={colorTheme}
             isCollapsed={isCollapsed}
           />
-          <CalloutDiv anchor={story.anchor} callOut={story.callOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
+          <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
           <StoryDiv
             story={story}
             colorTheme={colorTheme}
@@ -234,54 +229,16 @@ const TitleDiv = ({ anchor, title, colorTheme, isCollapsed }) => {
   );
 };
 
-const CalloutDiv = ({ anchor, callOut, isCollapsed, colorTheme}) => {
-  return (
-    <div
-      id={`storyCallOut-${anchor}`}
-      className={`bg-${colorTheme}-50 w-2/3 ml-auto h-auto flex justify-start items-center my-md ${isCollapsed ? "opacity-0 motion-reduce:opacity-100" : "opacity-100"}`}
-    >
-      <Image
-        className={"z-0"}
-        src={callOut.url}
-        height={callOut.height}
-        width={callOut.width}
-      ></Image>
-    </div>
-  );
-};
-
-const StoryDiv = ({ story, colorTheme, isCollapsed, setCollapsed }) => {
-
-
-  return (
-    <div
-      id={`storySummary-${story.anchor}`}
-      className={`w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${isCollapsed ? "opacity-0 motion-reduce:opacity-100" : "opacity-100"}`}
-    >
-      <PostContent docData={story.intro.json} docLinks={story.intro.links} />
-      <div className={`w-full border-b-[1px] border-black flex justify-between sticky  bg-${colorTheme}-50 top-[200px]`}>
-        <button
-          className="font-serif type-preset-6 hover:font-bold "
-          onClick={() => {
-            setCollapsed(!isCollapsed);
-          }}
-        >
-          {isCollapsed ? "See more" : "See less"}
-        </button>
-        +
-      </div>
-      <div
-        id={`storyContent-${story.anchor}`}
-        className={`storyContent pb-[200px] font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
-          isCollapsed ? "hidden" : "block"
-        }`}
-      >
-        <PostContent docData={story.body.json} docLinks={story.body.links} />
-      </div>
-    </div>
-  );
-};
-
+//   const onScroll = useMemo(
+//     ()=>debounce(() => {
+//     // Do stuff with the event!
+   
+//   if (!isActive) return;
+//   const offsetPct = getOffsetPct(storyId);
+//   console.log(offsetPct);
+//   if (offsetPct < 0 || offsetPct >= 100) return;
+//   if(isCollapsed) animationHandler({ offsetPct, animationList });
+// }, 10), []);
  /*
 If it is a anchored section, we show the full story from the start. 
 

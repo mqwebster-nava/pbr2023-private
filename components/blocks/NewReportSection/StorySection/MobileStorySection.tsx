@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostContent from "../../PostBody/PostContent";
 import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
+import StoryDiv from "./StoryDiv";
+import { makeFadeInAnimation } from "../animations";
+import CalloutDiv from "./CallOutDiv";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
@@ -42,12 +45,22 @@ const MobileStorySection = ({
     };
 
     ana.push(backgroundFade);
+    let storyFade: AnimationObject = {
+      triggerPct: 0,
+      animation: makeFadeInAnimation(`storySummary-${story.anchor}`, 0),
+    };
     let titleFade: AnimationObject = {
       triggerPct: 75,
       animation: makeFadeAnimation("storyTitleDiv-" + story.anchor),
     };
+    let calloutFade: AnimationObject = {
+      triggerPct: 0,
+      animation: makeFadeInAnimation(`storyCallOut-${story.anchor}`, 0),
+    };
 
+    ana.push( storyFade);
     ana.push(titleFade);
+    ana.push(calloutFade);
 
     let mobileFade2: AnimationObject = {
       triggerPct:
@@ -58,7 +71,16 @@ const MobileStorySection = ({
     ana.push(mobileFade2);
     setAnimationList(ana);
   };
-  const handleExpand = () => {};
+
+  const handleExpandCollapse = () => {
+    const _isExpanding = isCollapsed;
+    
+    if(_isExpanding){
+        setIsCollapsed(!isCollapsed);
+    } else {
+        setIsCollapsed(!isCollapsed);
+    }
+  };
 
   useEffect(() => {
     // Gets the default bottom padding neeeded to stop the info right before the
@@ -105,50 +127,8 @@ const MobileStorySection = ({
           id={`storyMain-${story.anchor}`}
           className={`responsive-container pt-lg h-auto ml-auto md:z-10  z-10 relative `}
         >
-          <div
-            id={`storyCallOut-${story.anchor}`}
-            className=" w-full md:w-2/3 ml-auto h-auto flex justify-start items-center my-md "
-          >
-            <Image
-              className={"z-10"}
-              src={story.callOut.url}
-              height={story.callOut.height}
-              width={story.callOut.width}
-            ></Image>
-          </div>
-          <div
-            id={`storySummary-${story.anchor}`}
-            className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
-              isCollapsed ? "pb-[200px]" : "pb-md"
-            }`}
-          >
-            <PostContent
-              docData={story.intro.json}
-              docLinks={story.intro.links}
-            />
-            <div className="w-full border-b-[1px] border-black flex justify-between">
-              <button
-                className="font-serif type-preset-6 hover:font-bold"
-                onClick={() => {
-                  setIsCollapsed(!isCollapsed);
-                }}
-              >
-                {isCollapsed ? "See more" : "See less"}
-              </button>
-              +
-            </div>
-          </div>
-          <div
-            id={`storyContent-${story.anchor}`}
-            className={`storyContent lg:w-2/3 ml-auto pb-[200px] font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
-              isCollapsed ? "hidden" : "block"
-            }`}
-          >
-            <PostContent
-              docData={story.body.json}
-              docLinks={story.body.links}
-            />
-          </div>
+         <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed} colorTheme={colorTheme}/>
+          <StoryDiv story={story} colorTheme={colorTheme} isCollapsed={isCollapsed} setCollapsed={handleExpandCollapse}></StoryDiv>
         </div>
       </div>
     </>
@@ -200,3 +180,38 @@ const ImageBackgroundContainer = ({ story, colorTheme }) => {
     </div>
   );
 };
+
+
+/* <div
+            id={`storySummary-${story.anchor}`}
+            className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
+              isCollapsed ? "pb-sm" : "pb-md"
+            }`}
+          >
+            <PostContent
+              docData={story.intro.json}
+              docLinks={story.intro.links}
+            />
+            <div className="w-full border-b-[1px] border-black flex justify-between">
+              <button
+                className="font-serif type-preset-6 hover:font-bold"
+                onClick={() => {
+                  setIsCollapsed(!isCollapsed);
+                }}
+              >
+                {isCollapsed ? "See more" : "See less"}
+              </button>
+              +
+            </div>
+          </div>
+          <div
+            id={`storyContent-${story.anchor}`}
+            className={`storyContent lg:w-2/3 ml-auto pb-[200px] font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
+              isCollapsed ? "hidden" : "block"
+            }`}
+          >
+            <PostContent
+              docData={story.body.json}
+              docLinks={story.body.links}
+            />
+          </div> */
