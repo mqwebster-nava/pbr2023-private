@@ -3,6 +3,7 @@ import classNames from "classnames";
 import rohanSignature from "/public/images/pbrs/rohan-signature.png";
 import shaSignature from "/public/images/pbrs/sha-signature.png";
 import jodiSignature from "/public/images/pbrs/jodi-signature.png";
+import darcySignature from "/public/images/pbrs/darcy-signature.png";
 export interface SignaturesProps {
   isGreenBG?: boolean;
   isNew?: boolean;
@@ -32,6 +33,13 @@ const fullListOfSignatures = [
     image: jodiSignature,
     width: 150,
   },
+  {
+    name: "Darcy Williamson",
+    titleAbbreviation: "CFO",
+    title: "Chief Financial Officer",
+    image: darcySignature,
+    width: 150,
+  },
 ];
 
 export const Signatures: React.FC<SignaturesProps> = ({
@@ -48,18 +56,18 @@ export const Signatures: React.FC<SignaturesProps> = ({
 
   const signatures = fullList
     ? fullListOfSignatures
-    : fullListOfSignatures.slice(0, -1);
+    : fullListOfSignatures.slice(0, -2);
   const numberOfSignatures = signatures.length;
 
   const gridColumns = classNames({
-    "grid-cols-1": true,
+    "grid-cols-2": true,
     "md:grid-cols-2": numberOfSignatures <= 2,
-    "lg:grid-cols-3": numberOfSignatures > 2,
+    "lg:grid-cols-4": numberOfSignatures > 2,
   });
 
   return (
     <div className={`py-xl ${margin}`}>
-      <div className={`grid ${gridColumns} max-w-lg`}>
+      <div className={`grid ${gridColumns} w-full`}>
         {signatures.map((signature, index) => (
           <div key={index}>
             <Image
