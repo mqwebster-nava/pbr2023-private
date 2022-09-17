@@ -50,11 +50,17 @@ const ReportTemplate: React.FC<PageInterface> = ({
         setWindowSize("mobile");
         // TODO deal with all the sizes
       } else if (
-        window.innerWidth > 768 &&
+        window.innerWidth > 1024 &&
         window.innerHeight > 650 &&
         windowSize !== "desktop"
       ) {
         setWindowSize("desktop");
+      }
+      else if (
+        window.innerWidth > 768 &&   window.innerWidth < 1024 &&
+        windowSize !== "tablet"
+      ) {
+        setWindowSize("tablet");
       }
     }
     handleResize();
@@ -102,7 +108,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
         contentBlocks={contentBlocks}
         reportSections={reportSections}
       />
-      {<ReportHero {...pageHeader} />}
+      {<ReportHero  windowSize={windowSize} />}
       <div className="animate-fadeIn2">
         {
           <TableOfContentsSection

@@ -9,8 +9,6 @@ import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 // Components that can be animated
 const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
   const [animationList, setAnimationList] = useState([]);
-  const isActive = activeSection=="toc";
-
 
 
   const initiateAnimations= () =>{
@@ -65,7 +63,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
     const onScroll = () => {
       const offsetPct = getOffsetPct('toc');
       if(offsetPct<-100 || offsetPct > 100) return;
-      animationHandler({offsetPct, animationList});
+      animationHandler({offsetPct, animationList, windowSize});
     }
     
     if(animationList.length==0) initiateAnimations();
@@ -116,7 +114,7 @@ const MobileSectionTitle = ({
 const MobileSection = ({contentBlocks}) => {
   return (
     <div className="block lg:hidden">
-      <div className="w-full h-full bg-white pt-lg pb-3xl px-xl  ">
+      <div className="w-full h-full bg-white pt-lg pb-3xl px-xl md:px-4xl  ">
         <p className="type-preset-5 font-serif pb-md">
         Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
         </p>

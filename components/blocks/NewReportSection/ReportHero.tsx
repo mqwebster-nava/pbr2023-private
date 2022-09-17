@@ -13,7 +13,7 @@ TODO
 */
 
 
-const ReportHero = ({ id, title }: PageHeaderInterface) => {
+const ReportHero = ({ windowSize }) => { //id, title, 
   const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
@@ -61,7 +61,7 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
       if (!_isActive) return;
      
       if (offsetPct < 0 || offsetPct >= 100) return;
-      animationHandler({offsetPct, animationList});
+      animationHandler({offsetPct, animationList, windowSize});
       const animBox = document.getElementById("animation-box");
       const s = animBox.getBoundingClientRect().height;
       const svg = document.getElementById("box2");
@@ -69,15 +69,6 @@ const ReportHero = ({ id, title }: PageHeaderInterface) => {
       svg.setAttribute('height', `${pctS}`);
       svg.setAttribute('width', `${pctS}`);
   
-      // const l2 = document.getElementById("titleLine2");
-      // if (offsetPct > 20 && l2.classList.contains("opacity-0")) {
-      //   l2.classList.add("animate-titleSlide");
-      //   l2.classList.replace("opacity-0", "opacity-100");
-      // }
-      // if (offsetPct < 20 && l2.classList.contains("opacity-100")) {
-      //   l2.classList.remove("animate-titleSlide");
-      //   l2.classList.replace("opacity-100", "opacity-0");
-      // }
     };
 
       getAnimationBoxHeight();

@@ -5,6 +5,7 @@ import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 import StoryDiv from "./StoryDiv";
 import { makeFadeInAnimation } from "../animations";
 import CalloutDiv from "./FeaturedCallOut";
+import StoryTitle from "./StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
@@ -25,6 +26,7 @@ const MobileStorySection = ({
   colorTheme,
   sectionAnchor,
   activeSection,
+  windowSize
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [animationList, setAnimationList] = useState([]);
@@ -43,24 +45,26 @@ const MobileStorySection = ({
         (100 * bgTriggerH) / document.getElementById(storyId).offsetHeight,
       animation: makeFadeAnimation("contextImg-" + story.anchor),
     };
-
+    makeFadeInAnimation(`storySummary-${story.anchor}`, 0).play();
+    makeFadeInAnimation(`storyCallOut-${story.anchor}`, 0).play();
+    
     ana.push(backgroundFade);
-    let storyFade: AnimationObject = {
-      triggerPct: 0,
-      animation: makeFadeInAnimation(`storySummary-${story.anchor}`, 0),
-    };
+    // let storyFade: AnimationObject = {
+    //   triggerPct: 0,
+    //   animation: makeFadeInAnimation(`storySummary-${story.anchor}`, 0),
+    // };
     let titleFade: AnimationObject = {
       triggerPct: 75,
       animation: makeFadeAnimation("storyTitleDiv-" + story.anchor),
     };
-    let calloutFade: AnimationObject = {
-      triggerPct: 0,
-      animation: makeFadeInAnimation(`storyCallOut-${story.anchor}`, 0),
-    };
+    // let calloutFade: AnimationObject = {
+    //   triggerPct: 0,
+    //   animation: makeFadeInAnimation(`storyCallOut-${story.anchor}`, 0),
+    // };
 
-    ana.push( storyFade);
+    //ana.push( storyFade);
     ana.push(titleFade);
-    ana.push(calloutFade);
+    //ana.push(calloutFade);
 
     let mobileFade2: AnimationObject = {
       triggerPct:
@@ -90,7 +94,7 @@ const MobileStorySection = ({
         "storyTitleDiv-" + story.anchor
       );
       const secTitleH = storyTitleDiv.getBoundingClientRect().height;
-      imgBg.style.top = 70 + Math.round(secTitleH) + "px";
+      imgBg.style.top = 70+ Math.round(secTitleH) + "px";
       return;
     }
 
@@ -99,7 +103,7 @@ const MobileStorySection = ({
       const offsetPct = getOffsetPct(storyId);
 
       if (offsetPct < 0 || offsetPct >= 100) return;
-      animationHandler({ offsetPct, animationList });
+      animationHandler({ offsetPct, animationList, windowSize });
     };
 
     if (isActive) {
@@ -115,8 +119,8 @@ const MobileStorySection = ({
 
   return (
     <>
-      <div className={`bg-${colorTheme}-50 relative`}>
-        <StoryTitle story={story} colorTheme={colorTheme} />
+      <div className={`bg-${colorTheme}-50 relative min-h-[120vh]`}>
+        <StoryTitle anchor={story.anchor} title={story.title} colorTheme={colorTheme} isCollapsed={isCollapsed} isDesktop={false}/>
         <ImageBackgroundContainer
           story={story}
           colorTheme={colorTheme}
@@ -136,24 +140,6 @@ const MobileStorySection = ({
 };
 
 export default MobileStorySection;
-
-const StoryTitle = ({ story, colorTheme }) => {
-  return (
-    <div
-      id={`storyTitleDiv-${story.anchor}`}
-      className={`sticky top-[70px] z-20 right-0 responsive-container `}
-    >
-      <div className={`bg-${colorTheme}-50 w-full pt-md `}>
-        <h2
-          id={`storyTitle-${story.anchor}`}
-          className={`type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100`}
-        >
-          {story.title}
-        </h2>
-      </div>
-    </div>
-  );
-};
 
 const ImageBackgroundContainer = ({ story, colorTheme }) => {
   return (
@@ -181,37 +167,3 @@ const ImageBackgroundContainer = ({ story, colorTheme }) => {
   );
 };
 
-
-/* <div
-            id={`storySummary-${story.anchor}`}
-            className={` w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${
-              isCollapsed ? "pb-sm" : "pb-md"
-            }`}
-          >
-            <PostContent
-              docData={story.intro.json}
-              docLinks={story.intro.links}
-            />
-            <div className="w-full border-b-[1px] border-black flex justify-between">
-              <button
-                className="font-serif type-preset-6 hover:font-bold"
-                onClick={() => {
-                  setIsCollapsed(!isCollapsed);
-                }}
-              >
-                {isCollapsed ? "See more" : "See less"}
-              </button>
-              +
-            </div>
-          </div>
-          <div
-            id={`storyContent-${story.anchor}`}
-            className={`storyContent lg:w-2/3 ml-auto pb-[200px] font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
-              isCollapsed ? "hidden" : "block"
-            }`}
-          >
-            <PostContent
-              docData={story.body.json}
-              docLinks={story.body.links}
-            />
-          </div> */

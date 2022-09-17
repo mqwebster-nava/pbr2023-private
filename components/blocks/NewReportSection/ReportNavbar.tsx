@@ -1,6 +1,12 @@
 import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
 import { LinkText } from "components/atom";
+import SlideDown from "react-slidedown";
+
+import classNames from "classnames";
+import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import styles from "./mobilenav.module.css";
+
 
 const ReportNavbar = ({  contentBlocks, reportSections}) => {
   const [activeSection, setActiveSection] = useState(null);
@@ -63,11 +69,11 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
   }
 
   return (
-    <div className={`block sticky top-0  z-50 w-full bg-${navBG}-900`}>
+    <div className={`block sticky top-0  z-50 w-full bg-white`}>
       <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px] ">
-        <Logo isMobile={true} color="white" />
+        <Logo isMobile={true} color="black" />
         <a href="#reportHeader">
-        <h2 className="type-preset-6 font-serif text-white">
+        <h2 className="type-preset-6 font-serif text-black">
           Public Benefit Report
         </h2>
         </a>
@@ -89,9 +95,9 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
           </button>
         </div>
       </div>
-      <div className="h-md bg-sage-50 flex basis-6">
+      <div className="h-md  flex basis-6">
         {reportSections.map((section, i)=>{
-          let s = `bg-${section.colorTheme}-50`
+          let s = `bg-white`
           
           if(activeSection && (reportSections.findIndex(
             (section) => section.anchor === activeSection
@@ -125,7 +131,7 @@ xmlns="http://www.w3.org/2000/svg"
 >
 <path
   d="M22.0003 1L1 22.0003M1 1L22.0003 22.0003"
-  stroke="white"
+  stroke="black"
   strokeLinecap="round"
   strokeLinejoin="round"
 />
@@ -141,19 +147,19 @@ const OpenSVG = () =>
 >
   <path
     d="M26.3997 1H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 10.7695H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
   <path
     d="M26.3997 20.5391H1"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
   />
@@ -234,282 +240,84 @@ const TableOfContentsSection = ({ contentBlocks, onClick=()=>{} }) => {
     );
   };
 
-//   import { LinkText } from "components/atom";
-// import { useEffect, useState } from "react";
-// import { makeSlideUpAnimation } from "../animations";
-// import ArrowDown from "../Atoms/ArrowDown";
-
-// import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
-
-
-// // Components that can be animated
-// const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
-//   const [animationList, setAnimationList] = useState([]);
-//   const isActive = activeSection=="toc";
-
-
-
-//   const initiateAnimations= () =>{
-//     let animations = []
-//     let line1Fade: AnimationObject = {
-//       triggerPct:3,
-//       animation: makeSlideUpAnimation("desktop-description1", 0),
-//     };
-//     animations.push(line1Fade);
-
-//     // Introing the secitons
-//     contentBlocks
-//       .filter(
-//         (entry) =>
-//           entry.__typename === "ReportIllustrationOverlaySubsection"
-//       ).forEach((block, i)=>{
-//         let a: AnimationObject = {
-//           triggerPct:-30 + 10*i,
-//           animation: makeSlideUpAnimation("themenum-"+ block.anchor, 0),
-//         };
-//         animations.push(a);
+  // const NavLinksMobile = () => (
       
-//         let b: AnimationObject = {
-//           triggerPct:20,
-//           animation: makeSlideUpAnimation("stories-"+ block.anchor, 0),
-//         };
-//         animations.push(b);
-//       })
-//       animations.push( {
-//         triggerPct:10,
-//         animation: makeSlideUpAnimation("themenum-conclusion", 0),
-//       });
-//       animations.push( {
-//         triggerPct:-30,
-//         animation: makeSlideUpAnimation("themenum-intro", 0),
-//       });
-
-
-//       // Part 2
-//       let line2Fade: AnimationObject = {
-//         triggerPct:20,
-//         animation: makeSlideUpAnimation("desktop-description2", 0),
-//       };
-//       animations.push(line2Fade);
-  
-//     setAnimationList(animations);
-      
-//   }
-
-
-//   useEffect(() => {
-//     const onScroll = () => {
-//       const offsetPct = getOffsetPct('toc');
-//       if(offsetPct<-100 || offsetPct > 100) return;
-//       animationHandler({offsetPct, animationList});
-//     }
-    
-//     if(animationList.length==0) initiateAnimations();
-//     window.removeEventListener("scroll", onScroll);
-//     window.addEventListener("scroll", onScroll, { passive: true });
-//     return () => window.removeEventListener("scroll", onScroll);
-//   });
-
-
-//   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
-//   return (
-//     <section className={`w-full lg:h-[200vh] bg-white relative`} id="toc">
-//       <DesktopSection contentBlocks={contentBlocks}/>
-//       <MobileSection contentBlocks={contentBlocks}/>
-//     </section>
-//   );
-// };
-// export default TableOfContentsSection;
-
-// const MobileSectionTitle = ({
-//   title,
-//   anchor,
-//   themeNum,
-//   bgColor,
-//   textColor,
-//   fontStyle
-// }) => {
-//   return (
-//     <div className={`w-full grow ${bgColor}`} >
-//       <a  href={`#${anchor}`}>
-//        <div className={`px-xl md:px-4xl py-lg`}>
-
-      
-//           {themeNum != null && (
-//             <p className={`type-preset-7 font-serif pt-sm text-${textColor}`}>
-//               Theme {themeNum + 1}
-//             </p>
-//           )}
-//           <h2 className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline `}>
-//               {title}
-//           </h2>
-//           </div>
-//       </a>
-     
-//     </div>
-//   );
-// };
-// const MobileSection = ({contentBlocks}) => {
-//   return (
-//     <div className="block lg:hidden">
-//       <div className="w-full h-full bg-white pt-3xl px-xl md:px-4xl  ">
-//         <p className="type-preset-5 font-serif pb-md">
-//           Our 2021 report is themed around building equity through strong
-//           public services.
-//         </p>
-//         <p className="type-preset-5 font-serif pb-md">
-//           Through project-specific stories, the 2021 report details how Nava
-//           worked to build equity by designing public services for all.
-//         </p>
-//       </div>
-//       <MobileSectionTitle
-//         title={"Letter from Leadership"}
-//         anchor={"intro"}
-//         themeNum={null}
-//         bgColor={`bg-purple-50`}
-//         textColor={"purple-900"}
-//         fontStyle={"font-serif"}
-//       />
-//       {contentBlocks
-//         .filter(
-//           (entry) =>
-//             entry.__typename === "ReportIllustrationOverlaySubsection"
-//         )
-//         .map((section, i) => {
-//           const color = section.colorTheme ?? "purple";
-//           const textColor = section.colorTheme === "gold" ? "black" : "white";
-//           return (
-//             <MobileSectionTitle
-//               title={section.title}
-//               anchor={section.anchor}
-//               themeNum={i}
-//               bgColor={`bg-${color}-900`}
-//               textColor={textColor}
-//               fontStyle={"font-bold"}
-//             />
-//           );
-//         })}
-//       <MobileSectionTitle
-//         title={"Conclusion"}
-//         anchor={"conclusion"}
-//         themeNum={null}
-//         bgColor={`bg-gold-50`}
-//         textColor={"black"}
-//         fontStyle={"font-serif"}
-//       />
-//     </div> 
-//   );
-// };
-
-
-// const DesktopSection = ({contentBlocks}) => {
-//   return (
-//     <>
-//     <div className=" top-[70px] lg:h-[calc(100vh_-_70px)]">
-//       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
-//         <div className="w-full lg:w-3/4 h-full flex flex-col">
-//           <DesktopSectionTitle
-//             title={"Introduction Letter"}
-//             anchor={"intro"}
-//             themeNum={null}
-//             bgColor={`bg-purple-50`}
-//             textColor={"purple-900"}
-//             stories={null}
-//             fontStyle={"font-serif"}
-//           />
-//           {contentBlocks
-//             .filter(
-//               (entry) =>
-//                 entry.__typename === "ReportIllustrationOverlaySubsection"
-//             )
-//             .map((section, i) => {
-//               const color = section.colorTheme ?? "purple";
-//               const textColor =
-//                 section.colorTheme === "gold" ? "black" : "white";
-//               return (
-//                 <DesktopSectionTitle
-//                   title={section.title}
-//                   anchor={section.anchor}
-//                   themeNum={i + 1}
-//                   bgColor={`bg-${color}-900`}
-//                   textColor={textColor}
-//                   stories={section.storiesCollection.items}
-//                   fontStyle={"font-bold"}
-//                 />
-//               );
-//             })}
-//           <DesktopSectionTitle
-//             title={"Conclusion"}
-//             anchor={"conclusion"}
-//             themeNum={null}
-//             bgColor={`bg-gold-50`}
-//             textColor={"black"}
-//             stories={null}
-//             fontStyle={"font-serif"}
-//           />
-//         </div>
-  
-//       </div>
-//     </div>
-//     </>
-//   );
-// };
-
-// const DesktopSectionTitle = ({
-//   title,
-//   anchor,
-//   themeNum,
-//   bgColor,
-//   textColor,
-//   stories,
-//   fontStyle
-// }) => {
-//   return (
-//     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
-//       <div
-//         className={` xl:ml-sm md:ml-4xl pl-xl text-white grid grid-cols-12  gap-lg `}
-//       >
-//         <div  className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
-//           {themeNum != null && (
-//             <p className="type-preset-6 font-serif ">
-//               Theme {themeNum }
-//             </p>
-//           )}
-//           <h2 className={`type-preset-5 font-bold ${fontStyle} text-${textColor}`}>
-//             <LinkText
-//               href={`#${anchor}`}
-//               variant={"default"}
-//               color={["black", "white"].includes(textColor)? textColor : null}
-//               hoverStyle={"underlined"}
-//             >
-//               {title}
-//             </LinkText>
-//           </h2>
-//         </div>
-//         <div
-//         id={`stories-${anchor}`}
-//           className={` col-span-8 pt-md divide-y divide-${textColor}  opacity-0 motion-reduce:opacity-100`}
-//         >
-//           {stories &&
-//             stories.map((story) => {
-//               const anch2 = `#${anchor}--${story.anchor}`;
-//               const title =  story.title;
-//               return (
-//                 <div
-//                   className=" font-serif py-sm type-preset-6"
-//                 >
-//                   <LinkText
-//                     href={anch2}
-//                     variant={"default"}
-//                     color={textColor}
-//                   >
-//                     {title}
-//                   </LinkText>
-//                 </div>
-//               );
-//             })}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+  //   <nav
+  //     aria-label="main"
+  //     className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white z-50 "
+  //   >
+  //     <SlideDown className={``}>
+  //       {isShowingMenu
+  //         ? NavData.map((navSection, i) => {
+  //             const extraPadding = classNames({
+  //               "mt-lg": i == 0,
+  //               "mb-lg": i == NavData.length - 1,
+  //             });
+  //             return "slug" in navSection ? (
+  //               <a
+  //                 href={navSection.slug}
+  //                 className={`group block w-full border-t-[1px] border-black py-lg ${extraPadding} ${analyticsLabel}`}
+  //                 key={navSection.title}
+  //               >
+  //                 <div className="relative inline-block  ">
+  //                   <div
+  //                     className={` 
+  //           text-gray-900 font-sans font-bold
+  //           mr-3xl
+  //           group-hover:border-black border-b-2  border-transparent
+  //             `}
+  //                   >
+  //                     {navSection.title}
+  //                   </div>
+  //                 </div>
+  //               </a>
+  //             ) : (
+  //               <details
+  //                 key={navSection.title}
+  //                 className={`${styles.details} ${extraPadding} w-full border-t-[1px] border-black py-lg`}
+  //               >
+  //                 <summary
+  //                   className={` relative  text-gray-900  pr-sm   cursor-pointer`}
+  //                 >
+  //                   <div className="flex flex-row justify-between items-center">
+  //                     <h3 className=" text-gray-900 pr-sm font-sans font-bold ">
+  //                       {navSection.title}
+  //                     </h3>
+  //                     <div className={`chevron`}>
+  //                       <svg
+  //                         width="18"
+  //                         height="9"
+  //                         viewBox="0 0 20 11"
+  //                         fill="none"
+  //                         xmlns="http://www.w3.org/2000/svg"
+  //                       >
+  //                         <path
+  //                           d="M19 1L10 10L1 1"
+  //                           stroke="#111827"
+  //                           strokeLinecap="round"
+  //                           strokeLinejoin="round"
+  //                         />
+  //                       </svg>
+  //                     </div>
+  //                   </div>
+  //                 </summary>
+  //                 <SlideDown className={`${styles.mobileSlideDown}`}>
+  //                   {navSection.subpages.map((navitem) => (
+  //                     <a
+  //                       key={navitem.title}
+  //                       href={navitem.slug}
+  //                       className={`block hover:bg-green px-4 cursor-pointer ${analyticsLabel}`}
+  //                     >
+  //                       <p className="font-sans text-gray-900 hover:underline py-2 pl-5">
+  //                         {navitem.title}
+  //                       </p>
+  //                     </a>
+  //                   ))}
+  //                 </SlideDown>
+  //               </details>
+  //             );
+  //           })
+  //         : null}
+  //     </SlideDown>
+  //   </nav>
+  // );

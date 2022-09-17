@@ -17,13 +17,14 @@ export const makeSlideUpAnimation = (elementId, delay) => {
   };
   
 
- export const makeFadeAnimation = (elementId) => {
+ export const makeFadeAnimation = (elementId, delay, duration) => {
     const an = document
       .getElementById(elementId)
       .animate([{ opacity: "100%" }, { opacity: "0%" }], {
-        duration: 200,
+        duration: duration,
         iterations: 1,
         fill: "forwards",
+        delay:delay
       });
     an.pause();
     return an;

@@ -18,22 +18,35 @@ export const getOffsetPct = (sectionId) => {
 }
   
 
-//type AnimationStatus = 'at start' | 'in progress' | 'completed';
+export type WindowSize = 'desktop' | 'tablet' | 'mobile';
 export interface AnimationObject {
   triggerPct: number;
   animation?: any;
+  windowSizes?: Array<WindowSize>
+  componentStates?:Array<string>
 }
 
 export interface AnimationHandlerInterface {
   offsetPct: any;
   animationList: any;
+  windowSize:string;
+  componentState?:string
 }
 export const animationHandler = ({
   offsetPct,
   animationList,
+  windowSize,
+  componentState=null
+
 }: AnimationHandlerInterface) => {
   animationList.forEach((animation, i) => {
     // Check Start
+   
+    if(animation.windowSizes && !animation.windowSizes.includes(windowSize)) {
+      if(animation.animation.playState == 'finished' && animation.animation.playbackRate !== -1  && animation.animation.playState !== 'running'){animation.animation.reverse()}
+      return;
+    }
+    if(componentState && animation.componentStates && !animation.includes(componentState)) return;
     if (animation.animation.playState == 'running') return;
     if (
       offsetPct > animation.triggerPct &&
@@ -60,10 +73,6 @@ export const animationHandler = ({
     ) {
       animation.animation.reverse();
     }
-
-    // Check Reverse
-
-    // Check Reset
   });
 
   return null;

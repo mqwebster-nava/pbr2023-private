@@ -2,30 +2,33 @@ import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import MarkdownComponent from "utils/MarkdownComponent";
 import { makeSlideUpAnimation } from "./animations";
-import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
+import { animationHandler, AnimationObject, getOffsetPct, WindowSize } from "./utils";
 
 const SectionIntro = ({ section, i, windowSize, activeSection}) => {
     const [animationList, setAnimationList] = useState([]);
     const isActive = activeSection==activeSection;
     const initiateAnimations= () =>{
       let ana  = []
-     
-      
+      const windowSizes:Array<WindowSize> = ["mobile", "tablet", "desktop"]
       let ThemeSlideUp: AnimationObject = {
-        triggerPct: windowSize==="desktop" ? -20 :-50,
+        triggerPct: windowSize!=="mobile" ? -20 :-50,
+        windowSizes:windowSizes,
         animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
-        triggerPct: windowSize==="desktop" ? -10 : -40,
+        triggerPct: windowSize!=="mobile" ? -10 : -40,
+        windowSizes:windowSizes,
         animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
-        triggerPct: windowSize==="desktop" ? 0 : -30,
+        triggerPct: windowSize!=="mobile" ? 0 : -30,
+        windowSizes:windowSizes,
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
       };
       
       let SectionStoriesSlideUp: AnimationObject = {
-        triggerPct: windowSize==="desktop" ? 0 : -30,
+        triggerPct: windowSize!=="mobile" ? 0 : -30,
+        windowSizes:windowSizes,
         animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
       };
 
@@ -54,7 +57,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
         const offsetPct = getOffsetPct(section.anchor);
         
         if (offsetPct < -50 || offsetPct >= 100) return;
-        animationHandler({offsetPct, animationList});
+        animationHandler({offsetPct, animationList, windowSize});
       };
         if(animationList.length==0 && windowSize){
           initiateAnimations();
@@ -68,7 +71,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
     const colorTheme = section.colorTheme ?? "purple";
     let textColor = section.colorTheme==="gold" ? "black" : "white";
     return (
-      <section id={`${section.anchor}`} className="h-auto lg:h-[150vh]">
+      <section id={`${section.anchor}`} className="h-auto lg:h-[180vh]">
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div className={`bg-${colorTheme}-900 w-full lg:min-h-screen block lg:sticky lg:top-[70px]`}>
       <div
@@ -97,7 +100,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           id={`sectionStories-${section.anchor}`}
           className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
           <h3 className={`font-bold pb-sm text-${textColor} `}>Scroll to see stories</h3>
-          <hr className={`bg-${textColor} `}/>
+          <hr className={`border-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
               return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm">

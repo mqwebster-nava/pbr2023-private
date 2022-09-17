@@ -5,11 +5,9 @@ import { animationHandler, AnimationObject, debounce, getOffsetPct } from "../ut
 import { makeFadeAnimation, makeSlideUpAnimation } from "../animations";
 import StoryDiv from "./StoryDiv";
 import CalloutDiv from "./FeaturedCallOut";
+import StoryTitle from "./StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
-
-
-
 
 const DesktopStorySection = ({
   story,
@@ -18,34 +16,37 @@ const DesktopStorySection = ({
   windowSize,
   activeSection,
 }) => {
-
+console.log(windowSize);
 const storyId = `${sectionAnchor}--${story.anchor}`;
   const isActive = activeSection == storyId;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [animationList, setAnimationList] = useState([]);
-  
+ 
 
   const initiateAnimations = () => {
     let ana = [];
-    const storyTitleDiv = document.getElementById(
-      "storyTitleDiv-" + story.anchor
-    );
-    const storyH = storyTitleDiv.getBoundingClientRect().height;
-    const bgTriggerH = storyH + 50;
+    let fadeInPct = 12;
+    let fadeOutPct = 12;
+    let delay=0
+    let duration = 200;
+   
+    let backgroundIndividualFade: AnimationObject = {
+      triggerPct:fadeInPct,
+      windowSizes:["tablet"],
+      animation: makeFadeAnimation("storyImg-" + story.anchor, delay, 400),
+    };
+    ana.push(backgroundIndividualFade);
     let backgroundFade: AnimationObject = {
-      triggerPct:
-        (100 * bgTriggerH) / document.getElementById(storyId).offsetHeight,
-      animation: makeFadeAnimation("contextImg-" + story.anchor),
+      triggerPct:fadeOutPct,
+      animation: makeFadeAnimation("contextImg-" + story.anchor, 0, duration),
     };
     let calloutIntro: AnimationObject = {
-      triggerPct:
-        (100 * bgTriggerH) / document.getElementById(storyId).offsetHeight,
-      animation: makeSlideUpAnimation(`storyCallOut-${story.anchor}`, 200),
+      triggerPct:fadeInPct,
+      animation: makeSlideUpAnimation(`storyCallOut-${story.anchor}`, delay+200),
     };
     let summaryIntro: AnimationObject = {
-      triggerPct:
-        (100 * bgTriggerH) / document.getElementById(storyId).offsetHeight,
-      animation: makeSlideUpAnimation(`storySummary-${story.anchor}`, 400),
+      triggerPct:fadeInPct,
+      animation: makeSlideUpAnimation(`storySummary-${story.anchor}`, delay+400),
     };
     ana.push(backgroundFade);
     ana.push(calloutIntro);
@@ -53,30 +54,28 @@ const storyId = `${sectionAnchor}--${story.anchor}`;
 
     let titleFade: AnimationObject = {
       triggerPct: 75,
-      animation: makeFadeAnimation("storyTitleDiv-" + story.anchor),
+      animation: makeFadeAnimation("storyTitleDiv-" + story.anchor,0, 200),
     };
 
     ana.push(titleFade);
-
     setAnimationList(ana);
   };
 
 
 const onScroll =() => {
-    // Do stuff with the event!
-   
+
   if (!isActive && isCollapsed) return;
   const offsetPct = getOffsetPct(storyId);
 
   if(!isCollapsed && (offsetPct < -50 || offsetPct> 150)) {
     console.log('collapsing ', storyId)
     setIsCollapsed(true);
-    animationHandler({ offsetPct, animationList });
+    animationHandler({ offsetPct, animationList, windowSize });
     document.getElementById(`contextImg-${story.anchor}`).style.opacity='100';
     return;
   }
   if (offsetPct < 0 || offsetPct >= 100) return;
-  if(isCollapsed) animationHandler({ offsetPct, animationList });
+  if(isCollapsed) animationHandler({ offsetPct, animationList, windowSize });
 };
 
 
@@ -101,7 +100,7 @@ const onScroll =() => {
     } else {
         document.documentElement.style.scrollBehavior = "auto";
         window.scrollTo({
-            top: document.getElementById(storyId).offsetTop + 200,
+            top: document.getElementById(storyId).offsetTop + document.getElementById(storyId).offsetHeight*.15,
             behavior:'auto'
         })
         document.documentElement.style.scrollBehavior = "smooth";
@@ -143,11 +142,12 @@ const onScroll =() => {
           id={`storyExpanded-${story.anchor}`}
           className={`responsive-container h-auto  z-30 relative  -mt-[calc(100vh_-_160px)] ${!isCollapsed ?"block":"hidden"} `}
         >
-          <TitleDiv
+          <StoryTitle
             anchor={story.anchor}
             title={story.title}
             colorTheme={colorTheme}
             isCollapsed={isCollapsed}
+            isDesktop={true}
           />
           <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
           <StoryDiv
@@ -195,11 +195,12 @@ const ImageBackgroundContainerDesktop = ({
           id={`storyMain-${story.anchor}`}
           className={`absolute top-0 right-0 left-0 pt-lg h-auto z-10 responsive-container mx-auto ${isCollapsed ?"block":"hidden"} `}
         >
-          <TitleDiv
+          <StoryTitle
             anchor={story.anchor}
             title={story.title}
             colorTheme={colorTheme}
             isCollapsed={isCollapsed}
+            isDesktop={true}
           />
           <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed}  colorTheme={colorTheme}/>
           <StoryDiv
@@ -209,21 +210,6 @@ const ImageBackgroundContainerDesktop = ({
             setCollapsed={setCollapsed}
           />
         </div>
-      </div>
-    </div>
-  );
-};
-
-const TitleDiv = ({ anchor, title, colorTheme, isCollapsed }) => {
-  return (
-    <div id={`storyTitleDiv-${anchor}`} className={`z-10 ${!isCollapsed && "sticky top-[70px]"}`}>
-      <div className={`bg-${colorTheme}-50 ml-auto w-2/3 pt-md `}>
-        <h2
-          id={`storyTitle-${anchor}`}
-          className={`storyTitle md:type-preset-3 type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100`}
-        >
-          {title}
-        </h2>
       </div>
     </div>
   );

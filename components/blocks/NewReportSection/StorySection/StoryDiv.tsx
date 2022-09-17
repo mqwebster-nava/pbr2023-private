@@ -4,7 +4,7 @@ const StoryDiv = ({ story, colorTheme, isCollapsed, setCollapsed }) => {
     return (
         <div
           id={`storySummary-${story.anchor}`}
-          className={`w-full md:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${isCollapsed ? "opacity-0 motion-reduce:opacity-100" : "opacity-100"}`}
+          className={`w-full lg:w-2/3 ml-auto font-serif text-${colorTheme}-900 type-preset-6 bg-${colorTheme}-50 ${isCollapsed ? "opacity-0 motion-reduce:opacity-100" : "opacity-100"} `}
         >
           <PostContent docData={story.intro.json} docLinks={story.intro.links} />
           <button 

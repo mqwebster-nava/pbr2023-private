@@ -12,8 +12,8 @@ const StorySection = ({
 }) => {
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-      {windowSize==="mobile" ? <MobileStorySection story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection}/> : 
-      <DesktopStorySection  story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection} windowSize={undefined}/>
+      {windowSize==="mobile" ? <MobileStorySection story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection} windowSize={windowSize}/> : 
+      <DesktopStorySection  story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection} windowSize={windowSize}/>
       }
   
     </section>
