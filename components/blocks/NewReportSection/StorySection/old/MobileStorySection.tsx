@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import PostContent from "../../PostBody/PostContent";
-import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
-import StoryDiv from "./StoryDiv";
-import { makeFadeInAnimation } from "../animations";
-import CalloutDiv from "./FeaturedCallOut";
-import StoryTitle from "./StoryTitle";
+import PostContent from "../../../PostBody/PostContent";
+import { animationHandler, AnimationObject, getOffsetPct } from "../../utils";
+import StoryDiv from "../StoryDiv";
+import { makeFadeInAnimation } from "../../animations";
+import CalloutDiv from "../FeaturedCallOut";
+import StoryTitle from "../StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
@@ -28,7 +28,6 @@ const MobileStorySection = ({
   activeSection,
   windowSize
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
   const [animationList, setAnimationList] = useState([]);
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const isActive = activeSection == storyId;
@@ -76,15 +75,6 @@ const MobileStorySection = ({
     setAnimationList(ana);
   };
 
-  const handleExpandCollapse = () => {
-    const _isExpanding = isCollapsed;
-    
-    if(_isExpanding){
-        setIsCollapsed(!isCollapsed);
-    } else {
-        setIsCollapsed(!isCollapsed);
-    }
-  };
 
   useEffect(() => {
     // Gets the default bottom padding neeeded to stop the info right before the
@@ -120,7 +110,7 @@ const MobileStorySection = ({
   return (
     <>
       <div className={`bg-${colorTheme}-50 relative min-h-[120vh]`}>
-        <StoryTitle anchor={story.anchor} title={story.title} colorTheme={colorTheme} isCollapsed={isCollapsed} isDesktop={false}/>
+        <StoryTitle anchor={story.anchor} title={story.title} colorTheme={colorTheme} isDesktop={false}/>
         <ImageBackgroundContainer
           story={story}
           colorTheme={colorTheme}
@@ -131,8 +121,8 @@ const MobileStorySection = ({
           id={`storyMain-${story.anchor}`}
           className={`responsive-container py-lg h-auto ml-auto md:z-10  z-10 relative `}
         >
-         <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed} colorTheme={colorTheme}/>
-          <StoryDiv story={story} colorTheme={colorTheme} isCollapsed={isCollapsed} setCollapsed={handleExpandCollapse}></StoryDiv>
+         <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} colorTheme={colorTheme}/>
+          <StoryDiv story={story} colorTheme={colorTheme} ></StoryDiv>
         </div>
       </div>
     </>

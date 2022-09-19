@@ -1,17 +1,15 @@
-
-
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import PostContent from "../../PostBody/PostContent";
-import { animationHandler, AnimationObject, debounce, getOffsetPct } from "../utils";
-import { makeFadeAnimation, makeSlideUpAnimation } from "../animations";
-import StoryDiv from "./StoryDiv";
-import CalloutDiv from "./FeaturedCallOut";
-import StoryTitle from "./StoryTitle";
+import PostContent from "../../../PostBody/PostContent";
+import { animationHandler, AnimationObject, debounce, getOffsetPct } from "../../utils";
+import { makeFadeAnimation, makeSlideUpAnimation } from "../../animations";
+import StoryDiv from "../StoryDiv";
+import CalloutDiv from "../FeaturedCallOut";
+import StoryTitle from "../StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
-const StorySection = ({
+const DesktopStorySection = ({
   story,
   colorTheme,
   sectionAnchor,
@@ -40,20 +38,20 @@ const storyId = `${sectionAnchor}--${story.anchor}`;
     };
     ana.push(backgroundIndividualFade);
     let backgroundFade: AnimationObject = {
-      triggerPct:fadeOutPct ,
+      triggerPct:fadeOutPct,
       animation: makeFadeAnimation("contextImg-" + story.anchor, 0, duration),
     };
     let calloutIntro: AnimationObject = {
       triggerPct:fadeInPct,
       animation: makeSlideUpAnimation(`storyCallOut-${story.anchor}`, delay+200),
     };
-    // let summaryIntro: AnimationObject = {
-    //   triggerPct:fadeInPct ,
-    //   animation: makeSlideUpAnimation(`storySummary-${story.anchor}`, delay+200),
-    // };
+    let summaryIntro: AnimationObject = {
+      triggerPct:fadeInPct,
+      animation: makeSlideUpAnimation(`storySummary-${story.anchor}`, delay+400),
+    };
     ana.push(backgroundFade);
     ana.push(calloutIntro);
-    //ana.push(summaryIntro);
+    ana.push(summaryIntro);
 
     let titleFade: AnimationObject = {
       triggerPct: 75,
@@ -88,17 +86,15 @@ const onScroll =() => {
   });
 
   return (
-    <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-    
     <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
-        <ImageBackgroundContainerDesktop
+        <ImageBackgroundContainer
           story={story}
           colorTheme={colorTheme}
-        ></ImageBackgroundContainerDesktop>
+        ></ImageBackgroundContainer>
 
       <div
           id={`storyExpanded-${story.anchor}`}
-          className={`responsive-container h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16)] md:-mt-[calc(100vh_-_70px)] block `}
+          className={`responsive-container h-auto  z-30 relative  -mt-[calc(100vh_-_70px)] block `}
         >
           <StoryTitle
             anchor={story.anchor}
@@ -106,7 +102,6 @@ const onScroll =() => {
             colorTheme={colorTheme}
             isDesktop={true}
           />
-          <div className="h-screen"></div>
           <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut}  colorTheme={colorTheme}/>
           <StoryDiv
             story={story}
@@ -114,13 +109,14 @@ const onScroll =() => {
           />
         </div>
       </div>
-      </section>
   );
 };
 
+export default DesktopStorySection;
 
 
-const ImageBackgroundContainerDesktop = ({
+
+const ImageBackgroundContainer = ({
   story,
   colorTheme,
 }) => {
@@ -148,25 +144,3 @@ const ImageBackgroundContainerDesktop = ({
     </div>
   );
 };
-
-
-export default StorySection;
-
-/*
-import MobileStorySection from "./MobileStorySection";
-import DesktopStorySection from "./DesktopStorySection";
-*/
-// // TODO  When expand need to initiate animations again to get based on larger size
-// const StorySection = ({
-//   story,
-//   colorTheme,
-//   sectionAnchor,
-//   windowSize,
-//   activeSection,
-// }) => {
-//   return (
-//     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-//       <DesktopStorySection  story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection} windowSize={windowSize}/>
-//     </section>
-//   );
-// };
