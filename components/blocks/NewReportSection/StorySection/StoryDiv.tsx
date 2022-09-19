@@ -40,10 +40,10 @@ const StoryDiv = ({ story, colorTheme, isCollapsed, setCollapsed }) => {
             onClick={ ()=> {if(isCollapsed)setCollapsed(!isCollapsed)}}
             id={`storyContent-${story.anchor}`}
              className={` font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-50 ${
-              isCollapsed ? `max-h-[100px] overflow-clip relative opacity-70 hover:opacity-100 cursor-pointer` : "block pb-[200px]"
+              isCollapsed ? `max-h-[100px] overflow-hidden h-[100px] relative opacity-70 hover:opacity-100 cursor-pointer` : "block pb-[200px]"
             }`}
           >
-              <div className={`absolute top-0 left-0  h-[100px] z-10 w-full 
+              <div className={`absolute top-0 left-0  h-[100px] z-10 w-full
               ${ isCollapsed &&  ` bg-gradient-to-t from-${colorTheme}-50`}`}></div>
             <PostContent docData={story.body.json} docLinks={story.body.links} />
           </div>

@@ -129,7 +129,7 @@ const MobileStorySection = ({
 
         <div
           id={`storyMain-${story.anchor}`}
-          className={`responsive-container pt-lg h-auto ml-auto md:z-10  z-10 relative `}
+          className={`responsive-container py-lg h-auto ml-auto md:z-10  z-10 relative `}
         >
          <CalloutDiv anchor={story.anchor} featuredCallOut={story.featuredCallOut} isCollapsed={isCollapsed} colorTheme={colorTheme}/>
           <StoryDiv story={story} colorTheme={colorTheme} isCollapsed={isCollapsed} setCollapsed={handleExpandCollapse}></StoryDiv>

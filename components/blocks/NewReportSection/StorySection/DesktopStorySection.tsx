@@ -16,7 +16,6 @@ const DesktopStorySection = ({
   windowSize,
   activeSection,
 }) => {
-console.log(windowSize);
 const storyId = `${sectionAnchor}--${story.anchor}`;
   const isActive = activeSection == storyId;
   const [isCollapsed, setIsCollapsed] = useState(true);

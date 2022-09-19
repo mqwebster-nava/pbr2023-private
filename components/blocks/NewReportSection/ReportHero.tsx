@@ -1,4 +1,3 @@
-import { PageHeaderInterface } from "../PageHeaders/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import ArrowDown from "./Atoms/ArrowDown";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
@@ -93,7 +92,7 @@ const ReportHero = ({ windowSize }) => { //id, title,
             
             className="w-full lg:w-3/4 relative h-auto"
           >
-            <h1 id={"reportHeader-titleBox"} className="pt-2xl -ml-sm md:-ml-md  lineOne xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100">
+            <h1 id={"reportHeader-titleBox"} className="pt-2xl -ml-sm md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100">
               Public <br /> Benefit <br /> Report
             </h1>
             <div
@@ -122,7 +121,7 @@ const ReportHero = ({ windowSize }) => { //id, title,
                 benefit report.
               </p>
             </div>
-            <div  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100">
+            <div  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100 pb-sm">
               <ArrowDown
                 color="white"
                 size="large"

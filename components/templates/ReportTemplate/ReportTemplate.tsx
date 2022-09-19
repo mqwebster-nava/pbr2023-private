@@ -118,7 +118,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
           />
         }
         {contentBlocks.map((block, i) => getComponent(block, i))}
-        <ReportConclusion />
+        <ReportConclusion windowSize={windowSize} />
       </div>
     </main>
   );
