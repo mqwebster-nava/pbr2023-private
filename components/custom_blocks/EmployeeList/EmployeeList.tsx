@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./EmployeeList.module.css";
 import AuthorFiller from "/public/images/Missing images on our People V02.svg"
 import SlideDown from "react-slidedown";
+import { LinkText } from "components/atom";
 /*
 Moved to the backend so employee list will load faster
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one
@@ -90,7 +91,9 @@ const DepartmentSection = ({ name, teamMembers, open=false }) => {
             className="w-full h-auto aspect-square object-cover bg-navy-50"></Image>
 
             <h5 className="type-preset-7 font-bold  py-sm">
-              {teamMember.fields.Name}
+              {teamMember.fields.linkedIn ? 
+              <LinkText href={teamMember.fields.linkedIn} variant={"underlined"} color={"black"}>{teamMember.fields.Name}</LinkText>
+              :teamMember.fields.Name}
             </h5>
             <p className="type-preset-7 text-gray-700">
               {teamMember.fields.Role}
