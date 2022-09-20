@@ -76,7 +76,7 @@ const IllustrationPatternBlock = ({
             colorTheme == "sage"
               ? "w-[128px] md:w-[192px] lg:w-[256px]"
               : "w-[192px] md:w-[288px] lg:w-[384px]"
-          } h-full absolute z-10 top-0 `}
+          } h-full absolute z-10 top-0 sm:block hidden`}
         >
           <Image
             className={`w-full object-cover ${styles.fadeIn}`}
