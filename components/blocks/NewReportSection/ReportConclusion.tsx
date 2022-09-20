@@ -9,41 +9,51 @@ const ReportConclusion = ({windowSize}) => {
   const [animationList, setAnimationList] = useState([]);
   
 
-  function getAnimationBoxHeight(){
 
-  }
 
   const initiateAnimations= () =>{
-    let ana  = []
+    let ana  = [
+      {
+        triggerPct: -20,
+        animation: makeSlideUpAnimation("conclusion-text", 0),
+      },
+      {
+        triggerPct: -5,
+        animation: makeSlideUpAnimation("conclusion-next", 0),
+      },
+      {
+        triggerPct: -5,
+        animation: makeSlideUpAnimation("conclusion-footer1", 0),
+      },
+      {
+        triggerPct: 5,
+        animation: makeSlideUpAnimation("conclusion-footer2", 0),
+      },
+      {
+        triggerPct: 10,
+        animation: makeSlideUpAnimation("conclusion-footer3", 0),
+      }
+    ]
   
-    //  makeSlideUpAnimation("reportHeader-titleBox", 0).play()
-    //  makeSlideUpAnimation("titleLine1", 200).play()
-    //  makeSlideUpAnimation("titleLine2", 400).play()
-    //  makeFadeInAnimation("heroArrow", 600).play();
-    //   let Line3SlideUp: AnimationObject = {
-    //     triggerPct: 30,
-    //     animation: makeSlideUpAnimation("titleLine3", 0),
-    //   };
-    //   ana.push(Line3SlideUp);
-    //   setAnimationList(ana);
+ 
+      setAnimationList(ana);
     }
 
     useEffect(() => {
       const onScroll = () => {
         
         const offsetPct = getOffsetPct("reportConclusion");
-        const _isActive = offsetPct >= 0 && offsetPct < 100 ;
+        const _isActive = offsetPct >= -40 && offsetPct < 100 ;
         if (_isActive !== isActive) setIsActive(_isActive);
         if (!_isActive) return;
        
-        if (offsetPct < 0 || offsetPct >= 100) return;
-        // animationHandler({offsetPct, animationList, windowSize});
-        // const animBox = document.getElementById("animation-box");
-        // const s = animBox.getBoundingClientRect().height;
-        // const svg = document.getElementById("box2");
-        // const pctS = Math.round((s* Math.min(offsetPct, 50)) / 50);
-        // svg.setAttribute('height', `${pctS}`);
-        // svg.setAttribute('width', `${pctS}`);
+        animationHandler({offsetPct, animationList, windowSize});
+        const animBox = document.getElementById("conclusion-box");
+        const s = animBox.getBoundingClientRect().height;
+        const svg = document.getElementById("conclusionSVG");
+        const pctS = Math.round((s* Math.min(offsetPct, 20)) / 20);
+        svg.setAttribute('height', `${pctS}`);
+        svg.setAttribute('width', `${pctS}`);
     
       };
   
@@ -58,25 +68,42 @@ const ReportConclusion = ({windowSize}) => {
 
   return (
     <section id="reportConclusion" className="w-full h-[150vh] bg-gold-700">
-      <div className="responsive-container py-2xl lg:h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
+      <div className="responsive-container py-2xl md:h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
+        <div className="relative h-full">
+
+        <div
+              id="conclusion-box"
+              className="absolute top-0 left-0 -z-10 h-full w-full "
+            >
+                <SVGConclusion/> 
+            </div>
         <div className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
           Conclusion
         </div>
-        <p className="type-preset-5 font-sans text-black pt-[70px] max-w-screen-md">
-        Public services reach a massive number of people, often at critical and stressful moments in their lives. When Nava is tasked with building or improving these services, we start small. That means building and releasing prototypes to a limited  number of people, helping prevent catastrophic rollouts and allowing us to test and iterate based on user feedback.
+        <p id={"conclusion-text"} className="type-preset-5 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
+        Equity is an essential value to building sustainable public services that can serve generations to come. It’s also a foundational principle in how Nava cultivates our organization, teams, and company culture. <br/><br/>If you’re interested in joining our mission, check out our open roles or sign up for our newsletter.
+
         </p>
-        <div className="flex pt-[70px]">
-          <div className="w-1/3">
-            <p className="type-preset-5 font-bold">Where next?</p>
-          </div>
-          <div className="w-2/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black">
-            <LinkText
+        <p id={"conclusion-next"}  className="type-preset-5 font-bold pt-[70px] pb-sm opacity-0 motion-reduce:opacity-100">Where next?</p>
+        <div className="flex gap-lg flex-col md:flex-row">
+          <div id={"conclusion-footer1"}className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2 divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+          <LinkText
               href="/public-benefit-reports/2020"
               variant={"default"}
               color="black"
             >
               Download PDF
             </LinkText>
+            <LinkText
+              href="#reportHeader"
+              variant={"default"}
+              color="black"
+            >
+             Back to top
+            </LinkText>
+          </div>
+          <div id={"conclusion-footer2"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+           
             <LinkText href="/careers" variant={"default"} color="black">
               Careers
             </LinkText>
@@ -91,7 +118,24 @@ const ReportConclusion = ({windowSize}) => {
               2020 Public Benefit Report
             </LinkText>
           </div>
+          <div id={"conclusion-footer3"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+           
+           <LinkText href="/careers" variant={"default"} color="black">
+            Get in touch
+           </LinkText>
+           <LinkText href="/case-studies" variant={"default"} color="black">
+             Case Studies
+           </LinkText>
+           <LinkText
+             href="/public-benefit-reports/2020"
+             variant={"default"}
+             color="black"
+           >
+             2020 Public Benefit Report
+           </LinkText>
+         </div>
         </div>
+      </div>
       </div>
     </section>
   );
@@ -100,7 +144,10 @@ const ReportConclusion = ({windowSize}) => {
 
 const SVGConclusion = () => {
   return (
-  <svg width="919" height="919" viewBox="0 0 919 919" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg  
+   id={'conclusionSVG'}
+   className={"absolute bottom-0 left-0 "}
+    width="10" height="10" viewBox="0 0 919 919" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M1818.76 960.914L-41.9146 -899.762" stroke="#FAD01A" stroke-width="5.23879"/>
   <path d="M1787.9 991.774L-72.7739 -868.902" stroke="#FAD01A" stroke-width="5.23879"/>
   <path d="M1757.19 1022.63L-103.634 -838.188" stroke="#FAD01A" stroke-width="5.23879"/>
