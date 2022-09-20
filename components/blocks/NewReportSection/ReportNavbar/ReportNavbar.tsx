@@ -59,7 +59,7 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
 
 
   return (
-    <div className={`block sticky top-0  z-50 w-full bg-white`}>
+    <div className={`block sticky top-0  z-50 w-full bg-white ${!isShowingMenu && "h-[70px] overflow-clip"}`}>
       <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px] ">
         <Logo isMobile={true} color="black" />
         <a href="#reportHeader">
@@ -84,7 +84,7 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
           </button>
         </div>
       </div>
-      <div className="h-md  flex basis-6">
+      <div className="h-[10px]  flex basis-6">
         {reportSections.map((section, i)=>{
           let s = `bg-white`
           
