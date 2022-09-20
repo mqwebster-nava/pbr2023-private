@@ -7,7 +7,7 @@ const StoryTitle = ({ anchor, title, colorTheme,  isDesktop }) => {
     
     return (
       <div id={`storyTitleDiv-${anchor}`} className={`z-20 sticky top-[70px]`}>
-        <div className={`bg-${colorTheme}-50 ml-auto w-full lg:w-2/3 pt-md `}>
+        <div className={`bg-${colorTheme}-50 px-sm ml-auto w-full lg:w-2/3 pt-md `}>
       
           <h2
             id={`storyTitle-${anchor}`}
@@ -15,11 +15,7 @@ const StoryTitle = ({ anchor, title, colorTheme,  isDesktop }) => {
           >
             {title}
           </h2>
-          <div className="w-full flex justify-end pb-md">
-
          
-<button className={`underline text-${colorTheme}-900 ` }>{"Next ->"}</button>
-</div>
         </div>
       </div>
     );

@@ -91,6 +91,7 @@ const onScroll =() => {
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
     
     <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
+       
         <ImageBackgroundContainerDesktop
           story={story}
           colorTheme={colorTheme}
@@ -127,22 +128,22 @@ const ImageBackgroundContainerDesktop = ({
   return (
     <div
       id={`imageBackground-${story.anchor}`}
-      className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
+      className={`imageBackground sticky w-screen bg-${colorTheme}-50 md:top-[70px] top-[170px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
-      <div className="relative h-[calc(100vw_*_9_/_16)] md:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-screen-2xl">
+      <div className="relative h-[calc(100vw_*_9_/_16)] md:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-screen-2xl ">
         <Image
           id={`storyImg-${story.anchor}`}
           src={story.illustration.url}
           layout="fill"
           objectFit="cover"
-          className="storyImg w-screen absolute top-0 left-0 right-0 opacity-100 object-left-top"
+          className="storyImg w-screen opacity-100 object-left-top"
         ></Image>
         <Image
           id={`contextImg-${story.anchor}`}
           src={story.contextIllustration.url}
           layout="fill"
           objectFit="cover"
-          className={`w-screen absolute top-0 left-[60px] opacity-100 object-left-top block}`}
+          className={`w-screen opacity-100 object-left-top block}`}
         ></Image>
       </div>
     </div>
