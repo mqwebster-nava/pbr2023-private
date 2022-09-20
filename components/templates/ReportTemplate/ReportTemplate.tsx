@@ -6,7 +6,7 @@ import { PageInterface } from "shared_interfaces/page_interface";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar";
+import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar/ReportNavbar";
 import ReportConclusion from "components/blocks/NewReportSection/ReportConclusion";
 import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
 import StorySection from "components/blocks/NewReportSection/StorySection/StorySection";
