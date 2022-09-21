@@ -46,18 +46,18 @@ const ArrowDown = ({size="default", color="black", sectionId}: ArrowDownInterfac
         id={`${sectionId}-line`}
         d="M27.998 1V101.613"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         strokeDasharray="320"
         strokeDashoffset="0"
       />
       <path
         d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
     </div>
