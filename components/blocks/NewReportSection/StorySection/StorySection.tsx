@@ -130,7 +130,7 @@ if(nextId){
             >
               <h2
                 id={`storyTitle-${story.anchor}`}
-                className={`md:type-preset-3 type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100 lg:px-sm`}
+                className={`md:type-preset-3 type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100 `}
               >
                 {story.title}
               </h2>
