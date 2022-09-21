@@ -278,6 +278,7 @@ const DesktopSectionTitle = ({
                     href={anch2}
                     variant={"default"}
                     color={textColor}
+                    hoverStyle={"underlined"}
                   >
                     {title}
                   </LinkText>
