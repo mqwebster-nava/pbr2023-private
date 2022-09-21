@@ -84,11 +84,11 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           >
             {section.title}
           </h2>
-          <p 
+          <div
           id={`sectionBody-${section.anchor}`}
           className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg`}>
             <MarkdownComponent content={section.body} />
-          </p>
+          </div>
           <div
           id={`sectionStories-${section.anchor}`}
           className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
@@ -96,7 +96,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
           <hr className={`border-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
-              return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm">
+              return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm" key={`sectionIntro-${story.anchor}`}>
              <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={section.colorTheme==="gold" ? "black" : "white"}>
               {story.title}
              </LinkText>

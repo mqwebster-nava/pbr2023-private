@@ -140,6 +140,7 @@ const MobileSection = ({contentBlocks}) => {
           const textColor = section.colorTheme === "gold" ? "black" : "white";
           return (
             <MobileSectionTitle
+             key={`${section.anchor}-${i}-toc`}
               title={section.title}
               anchor={section.anchor}
               themeNum={i}
@@ -189,6 +190,7 @@ const DesktopSection = ({contentBlocks}) => {
                 section.colorTheme === "gold" ? "black" : "white";
               return (
                 <DesktopSectionTitle
+                key={`${section.anchor}-${i}-toc`}
                   title={section.title}
                   anchor={section.anchor}
                   themeNum={i + 1}
@@ -270,7 +272,7 @@ const DesktopSectionTitle = ({
               const title =  story.title;
               return (
                 <div
-                  className=" font-serif py-sm type-preset-6"
+                  className=" font-serif py-sm type-preset-6" key={`${anch2}-toc`}
                 >
                   <LinkText
                     href={anch2}
