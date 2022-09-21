@@ -17,6 +17,7 @@ const ReportHero = ({ windowSize }) => { //id, title,
   const [animationList, setAnimationList] = useState([]);
   
  
+  // Figures out the size of the box with the patterns 
     function getAnimationBoxHeight(){
       const title = document.getElementById("reportHeader-titleBox");
       let h = Math.round(title.getBoundingClientRect().height);
@@ -38,18 +39,15 @@ const ReportHero = ({ windowSize }) => { //id, title,
     }
 
     const initiateAnimations= () =>{
-    let ana  = []
-  
+
      makeSlideUpAnimation("reportHeader-titleBox", 0).play()
      makeSlideUpAnimation("titleLine1", 200).play()
      makeSlideUpAnimation("titleLine2", 400).play()
      makeFadeInAnimation("heroArrow", 600).play();
-      let Line3SlideUp: AnimationObject = {
+     setAnimationList([{
         triggerPct: 30,
         animation: makeSlideUpAnimation("titleLine3", 0),
-      };
-      ana.push(Line3SlideUp);
-      setAnimationList(ana);
+      }]);
     }
   useEffect(() => {
     const onScroll = () => {
@@ -121,13 +119,13 @@ const ReportHero = ({ windowSize }) => { //id, title,
                 benefit report.
               </p>
             </div>
-            <div  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100 pb-sm">
+            <a  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100 pb-sm" href={"#toc"}>
               <ArrowDown
                 color="white"
                 size="large"
                 sectionId={"reportHeader"}
               />
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -227,57 +225,3 @@ width="0" height="0" viewBox="0 0 527 527" fill="none" xmlns="http://www.w3.org/
 }
 export default ReportHero;
 
-
-
-// const SVGBox = (className, bg, stroke, h, z) => {
-//   return (
-//     <svg
-//       id={className}
-//       className={`${className}  bg-${bg} stroke-${stroke} stroke-[5px] absolute bottom-[60px] left-0 h-[${h}] w-[${h}] -z-${z}`}
-//       width="250"
-//       height="250"
-//       viewBox="0 0 250 250"
-//       fill="none"
-//       xmlns="http://www.w3.org/2000/svg"
-//     >
-//       <g>
-//         <path d="M615.393 362.142L-42.1415 -295.393" />
-//         <path d="M581.748 395.837L-75.8373 -261.748" strokeWidth="5.54729" />
-//         <path d="M548.049 429.485L-109.485 -228.049" strokeWidth="5.54729" />
-//         <path d="M514.404 463.181L-143.181 -194.404" strokeWidth="5.54729" />
-//         <path d="M480.705 496.88L-176.88 -160.705" strokeWidth="5.54729" />
-//         <path d="M447.01 530.524L-210.524 -127.01" strokeWidth="5.54729" />
-//         <path d="M413.361 564.224L-244.224 -93.3613" strokeWidth="5.54729" />
-//         <path d="M379.666 597.868L-277.868 -59.666" strokeWidth="5.54729" />
-//         <path d="M346.021 631.564L-311.564 -26.0215" strokeWidth="5.54729" />
-//         <path d="M312.322 665.212L-345.212 7.67773" strokeWidth="5.54729" />
-//       </g>
-//     </svg>
-//   );
-// };
-
-// TODO figure this out more
-// const getAnimationBoxHeight = () => {
-//   const animBox = document.getElementById("animation-box");
-//   const animBox2 = document.getElementById("box");
-//   let windowWidth = Math.round(animBox.getBoundingClientRect().width);
-
-//   if (window.innerWidth < 768) {
-//     animBox.style.height = Math.round((windowWidth * 2) / 3) + "px";
-//     animBox.style.width = Math.round((windowWidth * 2) / 3) + "px";
-//     animBox2.style.height = Math.round((windowWidth * 2) / 3) + "px";
-//     animBox2.style.width = Math.round((windowWidth * 2) / 3) + "px";
-//     setAnimationHeight(Math.round((windowWidth * 2) / 3));
-//   } else if (windowWidth > window.innerHeight) {
-//     animBox.style.height = window.innerHeight + "px";
-//     animBox.style.width = window.innerHeight + "px";
-//     animBox2.style.height = window.innerHeight + "px";
-//     animBox2.style.width = window.innerHeight + "px";
-//     setAnimationHeight(window.innerHeight);
-//   } else {
-//     animBox.style.height = windowWidth + "px";
-//     animBox2.style.height = windowWidth + "px";
-//     animBox2.style.width = windowWidth + "px";
-//     setAnimationHeight(windowWidth);
-//   }
-// };

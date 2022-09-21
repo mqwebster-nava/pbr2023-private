@@ -93,8 +93,8 @@ const ReportMenuRow = ({
               const anch2 = `#${anchor}--${story.anchor}`;
               const title = story.title;
               return (
-                <div onClick={onClick} className="font-serif py-sm" key={anch2}>
-                  <LinkText href={anch2} variant={"default"} color={textColor}>
+                <div onClick={onClick} className="font-serif py-sm"  key={anch2}>
+                  <LinkText href={anch2} variant={"default"} color={textColor} hoverStyle={"underlined"}>
                     {title}
                   </LinkText>
                 </div>
@@ -135,7 +135,7 @@ const ReportMenuRow = ({
               <LinkText
                 href={`#${anchor}`}
                 variant={"default"}
-                hoverStyle={undefined}
+                hoverStyle={'underlined'}
                 color={textColor}
               >
                 Introduction

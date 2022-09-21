@@ -62,7 +62,6 @@ const ArrowDown = ({size="default", color="black", sectionId}: ArrowDownInterfac
     </svg>
     </div>
   );
-
 };
 
 export default ArrowDown;

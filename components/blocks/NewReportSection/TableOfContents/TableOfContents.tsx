@@ -19,12 +19,13 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
     };
     animations.push(line1Fade);
 
-    // Introing the secitons
+    //Introing the secitons
     contentBlocks
       .filter(
         (entry) =>
           entry.__typename === "ReportIllustrationOverlaySubsection"
       ).forEach((block, i)=>{
+        
         let a: AnimationObject = {
           triggerPct:-30 + 10*i,
           animation: makeSlideUpAnimation("themenum-"+ block.anchor, 0),
@@ -39,7 +40,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
       })
       animations.push( {
         triggerPct:10,
-        animation: makeSlideUpAnimation("themenum-conclusion", 0),
+        animation: makeSlideUpAnimation("themenum-reportConclusion", 0),
       });
       animations.push( {
         triggerPct:-30,
@@ -152,7 +153,7 @@ const MobileSection = ({contentBlocks}) => {
         })}
       <MobileSectionTitle
         title={"Conclusion"}
-        anchor={"conclusion"}
+        anchor={"reportConclusion"}
         themeNum={null}
         bgColor={`bg-gold-50`}
         textColor={"black"}
@@ -203,7 +204,7 @@ const DesktopSection = ({contentBlocks}) => {
             })}
           <DesktopSectionTitle
             title={"Conclusion"}
-            anchor={"conclusion"}
+            anchor={"reportConclusion"}
             themeNum={null}
             bgColor={`bg-gold-50`}
             textColor={"black"}
@@ -278,6 +279,7 @@ const DesktopSectionTitle = ({
                     href={anch2}
                     variant={"default"}
                     color={textColor}
+                    hoverStyle={"underlined"}
                   >
                     {title}
                   </LinkText>
@@ -289,60 +291,3 @@ const DesktopSectionTitle = ({
     </div>
   );
 };
-
-  // console.log(offsetPct);
-      // if(offsetPct>10 && windowSize==="desktop" &&  document.getElementById("desktop-description") && document.getElementById("desktop-description").classList.contains("opacity-0")) { // TODO add mobile check 
-      //   gsap.fromTo("#desktop-description", {y:50,}, {y:0, });
-      //   document.getElementById("desktop-description").classList.replace("opacity-0", "opacity-100")
-      // }
-
-      // if(offsetPct> 25 && !showTOC ) { // TODO add mobile check
-      //   setShowTOC(true);
-      // }
-      // else if (offsetPct < 25 && showTOC) {
-      //   setShowTOC(false);
-      // }
-
-
-      /*<div className="w-full lg:w-1/3 h-full bg-white pt-3xl px-xl md:px-4xl lg:px-0 flex flex-col justify-between">
-        <p className="type-preset-5 font-serif pb-md" >
-          Through project-specific stories, the 2021 report details how Nava
-          worked to build equity by designing public services for all.
-        </p>
-      </div>
-      <div className="w-full h-full flex flex-col">
-          {contentBlocks
-            .filter(
-              (entry) =>
-                entry.__typename === "ReportIllustrationOverlaySubsection"
-            )
-            .map((section, i) => {
-              const color = section.colorTheme ?? "purple";
-              const textColor =
-                section.colorTheme === "gold" ? "black" : "white";
-              return (
-                <div className={`w-full grow bg-${color}-900 `}>
-                  <div className={`md:px-4xl px-xl text-white  gap-lg`}>
-                    <div className={` pt-md divide-y divide-${textColor}`}>
-                      {section.storiesCollection.items.map((story) => {
-                        const anch2 = `#${section.anchor}--${story.anchor}`;
-                        const title = story.shortTitle ?? story.title;
-                        return (
-                          <div className={`font-serif py-sm text-${textColor}`}>
-                            <LinkText
-                              href={anch2}
-                              variant={"default"}
-                              color={["black", "white"].includes(textColor)? textColor : null}
-                              hoverStyle={"underlined"}
-                            >
-                              {title}
-                            </LinkText>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-        </div>*/
