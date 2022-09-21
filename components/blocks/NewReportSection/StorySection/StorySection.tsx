@@ -144,7 +144,7 @@ if(nextId){
           >
             <div
               id={`storySummary-${story.anchor}`}
-              className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 lg:px-sm`}
+              className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
             >
               <PostContent
                 docData={story.intro.json}
@@ -154,7 +154,7 @@ if(nextId){
 
             <div
               id={`storyCallOut-${story.anchor}`}
-              className={` opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 lg:px-sm`}
+              className={` opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
             >
               <Callout
                 body={story.featuredCallOut.body}
@@ -165,7 +165,7 @@ if(nextId){
             </div>
             <div
               id={`storyContent-${story.anchor}`}
-              className={` font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-900 bg-${colorTheme}-50 lg:px-sm
+              className={` font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-900 bg-${colorTheme}-50 
               block pb-[200px]
             `}
             >
