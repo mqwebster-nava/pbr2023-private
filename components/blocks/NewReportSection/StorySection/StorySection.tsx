@@ -140,11 +140,11 @@ if(nextId){
           <div className="h-screen "></div>
 
           <div
-            className={` w-full font-serif   `}
+            className={` w-full`}
           >
             <div
               id={`storySummary-${story.anchor}`}
-              className={`font-serif text-${colorTheme}-900 type-preset-6 opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 lg:px-sm`}
+              className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 lg:px-sm`}
             >
               <PostContent
                 docData={story.intro.json}
