@@ -4,12 +4,10 @@ import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
 import { useEffect, useState } from "react";
 
 
-const ReportConclusion = ({windowSize}) => {
+const ReportConclusion = ({title, body, windowSize}) => {
   const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
-
-
 
   const initiateAnimations= () =>{
     let ana  = [
@@ -78,11 +76,10 @@ const ReportConclusion = ({windowSize}) => {
                 <SVGConclusion/> 
             </div>
         <div className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
-          Conclusion
+          {title}
         </div>
         <p id={"conclusion-text"} className="type-preset-5 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
-        Equity is an essential value to building sustainable public services that can serve generations to come. It’s also a foundational principle in how Nava cultivates our organization, teams, and company culture. <br/><br/>If you’re interested in joining our mission, check out our open roles or sign up for our newsletter.
-
+        {body}
         </p>
         <p id={"conclusion-next"}  className="type-preset-5 font-bold pt-[70px] pb-sm opacity-0 motion-reduce:opacity-100">Where next?</p>
         <div className="flex gap-lg flex-col md:flex-row">
@@ -102,7 +99,7 @@ const ReportConclusion = ({windowSize}) => {
              Back to top
             </LinkText>
           </div>
-          <div id={"conclusion-footer2"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+          <div id={"conclusion-footer2"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2 divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
            
             <LinkText href="/careers" variant={"default"} color="black">
               Careers
@@ -120,18 +117,8 @@ const ReportConclusion = ({windowSize}) => {
           </div>
           <div id={"conclusion-footer3"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
            
-           <LinkText href="/careers" variant={"default"} color="black">
+           <LinkText href="/contact" variant={"default"} color="black">
             Get in touch
-           </LinkText>
-           <LinkText href="/case-studies" variant={"default"} color="black">
-             Case Studies
-           </LinkText>
-           <LinkText
-             href="/public-benefit-reports/2020"
-             variant={"default"}
-             color="black"
-           >
-             2020 Public Benefit Report
            </LinkText>
          </div>
         </div>

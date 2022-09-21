@@ -3,16 +3,19 @@ import ReportHero from "components/blocks/NewReportSection/ReportHero";
 import React, { useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar/ReportNavbar";
 import ReportConclusion from "components/blocks/NewReportSection/ReportConclusion";
 import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
 import StorySection from "components/blocks/NewReportSection/StorySection/StorySection";
 import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents/TableOfContents";
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin);
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+// import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+//gsap.registerPlugin(ScrollTrigger);
+//gsap.registerPlugin(ScrollToPlugin);
+
+
 
 const ReportTemplate: React.FC<PageInterface> = ({
   pageHeader,
@@ -21,7 +24,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
 }) => {
   let reportSections = sortDocIntoH2Sections(contentBlocks);
   const [activeSection, setActiveSection] = useState(null);
-  //const windowSize = useWindowSize();
   const [windowSize, setWindowSize] = useState(null);
 
   const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
@@ -80,6 +82,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
     const componentMap = {
       TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
+      ReportConclusion: () => <ReportConclusion  key={index} {...entry}  windowSize={windowSize}/>,
       ReportIllustrationOverlaySubsection: (entry) => (
         <>
           <SectionIntro section={entry} key={entry.anchor} i={index}  windowSize={windowSize} activeSection={activeSection}/>
@@ -118,7 +121,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
           />
         }
         {contentBlocks.map((block, i) => getComponent(block, i))}
-        <ReportConclusion windowSize={windowSize} />
+        {/* <ReportConclusion windowSize={windowSize} /> */}
       </div>
     </main>
   );
