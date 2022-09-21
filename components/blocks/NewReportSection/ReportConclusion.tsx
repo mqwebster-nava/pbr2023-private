@@ -50,10 +50,15 @@ const ReportConclusion = ({windowSize}) => {
         animationHandler({offsetPct, animationList, windowSize});
         const animBox = document.getElementById("conclusion-box");
         const s = animBox.getBoundingClientRect().height;
-        const svg = document.getElementById("conclusionSVG");
         const pctS = Math.round((s* Math.min(offsetPct, 20)) / 20);
-        svg.setAttribute('height', `${pctS}`);
-        svg.setAttribute('width', `${pctS}`);
+
+        const svg = document.getElementById("conclusionSVG");
+        if(pctS > 0){
+          svg.setAttribute('height', `${pctS}`);
+          svg.setAttribute('width', `${pctS}`);
+
+        }
+       
     
       };
   
@@ -102,7 +107,7 @@ const ReportConclusion = ({windowSize}) => {
              Back to top
             </LinkText>
           </div>
-          <div id={"conclusion-footer2"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+          <div id={"conclusion-footer2"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2 divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
            
             <LinkText href="/careers" variant={"default"} color="black">
               Careers
@@ -118,7 +123,7 @@ const ReportConclusion = ({windowSize}) => {
               2020 Public Benefit Report
             </LinkText>
           </div>
-          <div id={"conclusion-footer3"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
+          <div id={"conclusion-footer3"} className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2  divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
            
            <LinkText href="/careers" variant={"default"} color="black">
             Get in touch

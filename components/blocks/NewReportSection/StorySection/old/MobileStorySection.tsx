@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostContent from "../../../PostBody/PostContent";
 import { animationHandler, AnimationObject, getOffsetPct } from "../../utils";
-import StoryDiv from "../StoryDiv";
+import StoryDiv from "./StoryDiv";
 import { makeFadeInAnimation } from "../../animations";
-import CalloutDiv from "../FeaturedCallOut";
-import StoryTitle from "../StoryTitle";
+import CalloutDiv from "./FeaturedCallOut";
+import StoryTitle from "./StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 

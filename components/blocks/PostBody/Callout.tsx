@@ -1,7 +1,7 @@
 
 
 
-const Callout = ({ body, colorTheme}) => {
+const Callout = ({ body, colorTheme, variant="statistic",attribution=null}) => {
     return (
       <div
         className={`bg-${colorTheme}-50 px-sm border-y-[1px] border-${colorTheme}-900 w-full flex justify-start my-md min-h-[100px] md:min-h-[140px]`}

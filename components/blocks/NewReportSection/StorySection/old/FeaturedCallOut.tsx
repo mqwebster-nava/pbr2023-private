@@ -8,7 +8,7 @@ const FeaturedCallOut = ({ anchor, featuredCallOut, colorTheme}) => {
       id={`storyCallOut-${anchor}`}
       className={`w-full lg:w-2/3 ml-auto h-auto opacity-0 motion-reduce:opacity-100}`}
     >
-      <Callout body={featuredCallOut.body} colorTheme={colorTheme}></Callout>
+      <Callout body={featuredCallOut.body} attribution={featuredCallOut.attribution} colorTheme={colorTheme} variant={featuredCallOut.variant}></Callout>
     </div>
   );
 };

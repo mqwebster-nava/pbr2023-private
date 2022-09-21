@@ -38,14 +38,7 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
       
       ana.push(SectionStoriesSlideUp);
   
-      // if(windowSize==="desktop"){
 
-      //   let SectionBodyFadeOut: AnimationObject = {
-      //     triggerPct: 30,
-      //     animation: makeFadeOutAnimation("sectionBody-" + section.anchor),
-      //   };
-      //   ana.push(SectionBodyFadeOut);
-      // }
       setAnimationList(ana);
     }
 

@@ -3,9 +3,9 @@ import Image from "next/image";
 import PostContent from "../../../PostBody/PostContent";
 import { animationHandler, AnimationObject, debounce, getOffsetPct } from "../../utils";
 import { makeFadeAnimation, makeSlideUpAnimation } from "../../animations";
-import StoryDiv from "../StoryDiv";
-import CalloutDiv from "../FeaturedCallOut";
-import StoryTitle from "../StoryTitle";
+import StoryDiv from "./StoryDiv";
+import CalloutDiv from "./FeaturedCallOut";
+import StoryTitle from "./StoryTitle";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 

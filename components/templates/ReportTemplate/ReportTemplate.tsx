@@ -91,6 +91,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
               sectionAnchor={entry.anchor}
               windowSize={windowSize}
               activeSection={activeSection}
+              nextSection={entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].anchor : null}
             />
           ))}
         </>
