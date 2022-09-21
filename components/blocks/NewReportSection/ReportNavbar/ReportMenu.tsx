@@ -93,7 +93,7 @@ const ReportMenuRow = ({
               const anch2 = `#${anchor}--${story.anchor}`;
               const title = story.title;
               return (
-                <div onClick={onClick} className="font-serif py-sm">
+                <div onClick={onClick} className="font-serif py-sm"  key={anch2}>
                   <LinkText href={anch2} variant={"default"} color={textColor}>
                     {title}
                   </LinkText>

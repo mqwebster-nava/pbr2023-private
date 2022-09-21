@@ -93,7 +93,7 @@ const ReportNavbar = ({  contentBlocks, reportSections}) => {
           ) > i) ){
             s = `bg-${section.colorTheme}-900`
           }
-          return ( <div className={`h-full w-[150px] ${s}`}>
+          return ( <div className={`h-full w-[150px] ${s}`} key={`${section.anchor}-${i}-nav`}>
             {  <div style={{width:`${activeSection=== section.anchor ? sectionPct: 0}%`}}className={`h-full bg-${section.colorTheme}-900`}></div>}
           </div>)
         })}
