@@ -7,9 +7,9 @@ import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 
 
 // Components that can be animated
-const TableOfContentsSection = ({ title, anchor, contentBlocks }) => { //activeSection, windowSize,
+const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSection, windowSize,
   const [animationList, setAnimationList] = useState([]);
-
+ 
 
   const initiateAnimations= () =>{
     let animations = []

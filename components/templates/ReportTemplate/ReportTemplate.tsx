@@ -1,6 +1,6 @@
 import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction";
 import ReportHero from "components/blocks_reports/NewReportSection/ReportHero";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Children, useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
 
@@ -17,28 +17,33 @@ const ReportTemplate: React.FC<PageInterface> = ({
   children,
 }) => {
   // Want everything to be a section
-  let reportSections = sortDocIntoH2Sections(contentBlocks);
+  //let reportSections = sortDocIntoH2Sections(contentBlocks);
+  let reportSections = getSectionsInfo(contentBlocks);
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
-      TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
+      //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <>
           <SectionIntro section={entry} key={entry.anchor} i={index}   />
-          {entry.storiesCollection.items.map((story, j) => (
+          {entry.storiesCollection.items.map((story, j) => {
+           let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
+           if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) nextSection = contentBlocks[index+1].anchor
+           return (
             <StorySection
               key={story.anchor}
               story={story}
               colorTheme={entry.colorTheme}
               sectionAnchor={entry.anchor}
-              nextSection={entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].anchor : null}
+              nextSection={nextSection}
             />
-          ))}
+          )})}
         </>
       ),
       ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
-      ReportSectionCustom: (entry) => (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks}/> :null
-      
+      ReportSectionCustom: (entry) => 
+      (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
+      :(entry.type=='Introduction 2021') ? <ReportIntroductionBlock key={index} {...entry} />:null //contentBlocks={contentBlocks}
     };
     return typename in componentMap ? (
       componentMap[typename](entry)
@@ -61,7 +66,53 @@ const ReportTemplate: React.FC<PageInterface> = ({
 };
 
 // Report Sections replacing content blocks
-// - need Title, anchor, 
+// - need Title, anchor, type
+
+export function getSectionsInfo(contentBlocks) {
+  let output = [];
+
+  function addSection(title, anchor, type, colorTheme, parentAnchor) {
+    output.push({
+      title: title,
+      anchor: anchor,
+      type: type,
+      colorTheme: colorTheme,
+      parentAnchor: parentAnchor, 
+    });
+  }
+  addSection("Hero", "reportHeader", null, "purple", null);
+  contentBlocks.forEach((section) => {
+    const typename = section.__typename;
+    if (typename == "ReportIllustrationOverlaySubsection"){
+      addSection(
+        section.title,
+        section.anchor,
+        typename,
+        section.colorTheme,
+        null,
+    );
+      section.storiesCollection.items.forEach((story, i) => {
+          addSection(
+            story.title,
+            `${section.anchor}--${story.anchor}`,
+            "story",
+            section.colorTheme,
+            section.anchor,
+          );
+       })
+
+    } else {
+      addSection(
+        section.title,
+        section.anchor,
+        typename,
+        ("colorTheme" in section) ? section.colorTheme: "purple",
+        null, 
+      )
+    } return;
+  });
+  return output;
+}
 
 export function sortDocIntoH2Sections(contentBlocks) {
   let output = [];

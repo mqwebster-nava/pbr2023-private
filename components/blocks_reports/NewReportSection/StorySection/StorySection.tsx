@@ -24,7 +24,7 @@ const StorySection = ({
   nextSection,
 }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
-  const nextId = nextSection && `${sectionAnchor}--${nextSection}`;
+  const nextId = nextSection;//  && `${sectionAnchor}--${nextSection}`;
   //const isActive = activeSection == storyId;
   const [animationList, setAnimationList] = useState([]);
 
@@ -34,7 +34,7 @@ const StorySection = ({
     const f = Math.round(
       (35 * window.innerHeight) / document.getElementById(storyId).offsetHeight
     );
-    console.log(f);
+    
     let fadeInPct = f;
     let fadeOutPct = f;
     let delay = 0;
@@ -42,17 +42,20 @@ const StorySection = ({
     // Want the animations at
 
     let backgroundIndividualFade: AnimationObject = {
-      triggerPct: fadeInPct,
+      triggerPct: fadeInPct/2,
       windowSizes: ["mobile", "tablet"],
       animation: makeFadeAnimation("storyImg-" + story.anchor, 200, 400),
     };
-    ana.push(backgroundIndividualFade);
+   
+    
     let backgroundFade: AnimationObject = {
       triggerPct: fadeOutPct,
+      triggerPcts: {"mobile":fadeOutPct/2,  "tablet":fadeOutPct/2},
       animation: makeFadeAnimation("contextImg-" + story.anchor, 0, duration),
     };
     let calloutIntro: AnimationObject = {
       triggerPct: fadeInPct,
+      windowSizes: ["desktop"],
       animation: makeSlideUpAnimation(
         `storyCallOut-${story.anchor}`,
         delay + 50
@@ -60,21 +63,26 @@ const StorySection = ({
     };
     let summaryIntro: AnimationObject = {
       triggerPct: fadeInPct,
+      //triggerPcts: {"mobile":1,  "tablet":1},
+      windowSizes: ["desktop"],
       animation: makeSlideUpAnimation(
         `storySummary-${story.anchor}`,
         delay + 50
       ),
     };
-
-    ana.push(backgroundFade);
-    ana.push(calloutIntro);
-    ana.push(summaryIntro);
-
     let titleFade: AnimationObject = {
       triggerPct: 75,
       animation: makeFadeAnimation("storyTitleDiv-" + story.anchor, 0, 200),
     };
-    ana.push(titleFade);
+
+    ana = [
+      backgroundIndividualFade,
+      backgroundFade,
+      calloutIntro,
+      summaryIntro,
+      titleFade
+    ]
+  
     if (nextId) {
       let nextStoryArrow: AnimationObject = {
         triggerPct: fadeInPct,
@@ -137,12 +145,12 @@ const StorySection = ({
               </div>
             </div>
 
-            <div className="h-screen "></div>
+            <div className={`lg:h-screen h-[50vh] landscape:h-screen `}></div>
 
             <div className={` w-full`}>
               <div
                 id={`storySummary-${story.anchor}`}
-                className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
+                className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
               >
                 <PostContent
                   docData={story.intro.json}
@@ -152,7 +160,7 @@ const StorySection = ({
 
               <div
                 id={`storyCallOut-${story.anchor}`}
-                className={` opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
+                className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
               >
                 <Callout
                   body={story.featuredCallOut.body}
@@ -202,7 +210,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
       <div className={`h-[100px] block lg:hidden`}> </div>
-      <div className="relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] ">
+      <div className={`relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}>
         <Image
           id={`storyImg-${story.anchor}`}
           src={story.illustration.url}

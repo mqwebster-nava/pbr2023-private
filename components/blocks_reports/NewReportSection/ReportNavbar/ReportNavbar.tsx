@@ -5,35 +5,43 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 
 
-const ReportNavbar = ({  contentBlocks, reportSections}) => { //
+const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
+const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
+
+
+const ReportNavbar = ({ reportSections, contentBlocks}) => { //
   const [activeSection, setActiveSection] = useState(null);
   const [sectionPct, setSectionPct] = useState(null);
   const [isShowingMenu, setIsShowingMenu] = useState(false);
-  //let navBG = "purple"
-  const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
-   
+  //  let navBG = "purple"
+ 
+  const checkIfSectionIsActive = (section, offset, sectionIndex) => {
+    const secElement = document.getElementById(section.anchor);
+    if (
+      secElement &&
+      offset > getTop(secElement, 30) &&
+      offset < getBottom(secElement, 30) &&
+      activeSection != section.anchor
+    ) {
+      let oldSec = reportSections.find(
+        (sec) => sec.anchor === activeSection
+      );
+      setActiveSection(section.anchor);
+      // Will need to figure out
+      const startPct = (oldSec && reportSections.findIndex((sec) => sec.anchor === activeSection)>sectionIndex) ? 100 : 0;
+
+     
+      setSectionPct(startPct);
+      return;
+    } 
+  }
 
   //const checkSection
   useEffect(() => {
     const onScroll = () => {
       const offset = window.pageYOffset;
-      
       reportSections.forEach((section, i ) => {
-        const secElement = document.getElementById(section.anchor);
-        if (
-          offset > getTop(secElement, 30) &&
-          offset < getBottom(secElement, 30) &&
-          activeSection != section.anchor
-        ) {
-          let oldSec = reportSections.find(
-            (sec) => sec.anchor === activeSection
-          );
-          setActiveSection(section.anchor);
-          const startPct = (oldSec && reportSections.findIndex((sec) => sec.anchor === activeSection)>i) ? 100 : 0;
-          setSectionPct(startPct);
-          return;
-        } 
+        checkIfSectionIsActive(section, offset, i);
       });
       
       if (!activeSection) return;

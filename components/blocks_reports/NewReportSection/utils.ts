@@ -1,9 +1,9 @@
 export const getScreenSize = () => {
-  return window.innerWidth < 768 || window.innerHeight < 650
+  return window.innerWidth < 768 //|| window.innerHeight < 650
     ? "mobile"
-    : window.innerWidth > 1024 && window.innerHeight > 650
+    : window.innerWidth > 1024 //&& window.innerHeight > 650
     ? "desktop"
-    : window.innerWidth > 768 && window.innerWidth < 1024
+    : window.innerWidth >= 768 && window.innerWidth <= 1024
     ? "tablet"
     : null;
 };
@@ -39,7 +39,7 @@ export interface AnimationObject {
   triggerPct: number;
   animation?: any;
   windowSizes?: Array<WindowSize>;
-  componentStates?: Array<string>;
+  triggerPcts?: any;
 }
 
 export interface AnimationHandlerInterface {
@@ -55,7 +55,7 @@ export const animationHandler = ({
   const windowSize = getScreenSize();
   animationList.forEach((animation, i) => {
     // Check Start
-
+    let triggerPct = (animation.triggerPcts && windowSize in animation.triggerPcts ) ? animation.triggerPcts[windowSize] : animation.triggerPct;
     if (animation.windowSizes && !animation.windowSizes.includes(windowSize)) {
       if (
         animation.animation.playState == "finished" &&
@@ -66,15 +66,10 @@ export const animationHandler = ({
       }
       return;
     }
-    // if (
-    //   componentState &&
-    //   animation.componentStates &&
-    //   !animation.includes(componentState)
-    // )
-    //   return;
+ 
     if (animation.animation.playState == "running") return;
     if (
-      offsetPct > animation.triggerPct &&
+      offsetPct > triggerPct &&
       ((animation.animation.playbackRate == -1 &&
         animation.animation.playState == "finished") ||
         animation.animation.playState == "paused")
@@ -92,7 +87,7 @@ export const animationHandler = ({
     }
     // Check End
     else if (
-      offsetPct < animation.triggerPct &&
+      offsetPct < triggerPct &&
       animation.animation.playState == "finished" &&
       animation.animation.playbackRate == 1
     ) {
@@ -112,3 +107,10 @@ export const debounce = (callback, wait) => {
     }, wait);
   };
 };
+
+   // if (
+    //   componentState &&
+    //   animation.componentStates &&
+    //   !animation.includes(componentState)
+    // )
+    //   return;
