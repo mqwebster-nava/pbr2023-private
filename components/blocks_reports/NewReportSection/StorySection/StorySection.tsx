@@ -116,6 +116,8 @@ const StorySection = ({
     return () => window.removeEventListener("scroll", onScroll);
   });
 
+
+  const textColor = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
@@ -136,12 +138,12 @@ const StorySection = ({
               className={`z-20 sticky top-[70px]`}
             >
               <div className={`bg-${colorTheme}-50   w-full  pt-md  `}>
-                <h2
+                <h3
                   id={`storyTitle-${story.anchor}`}
-                  className={`md:type-preset-3 type-preset-4 font-black text-${colorTheme}-900 py-md  opacity-100 `}
+                  className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
                 >
                   {story.title}
-                </h2>
+                </h3>
               </div>
             </div>
 
@@ -150,7 +152,7 @@ const StorySection = ({
             <div className={` w-full`}>
               <div
                 id={`storySummary-${story.anchor}`}
-                className={`font-bold text-${colorTheme}-900 border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
+                className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
               >
                 <PostContent
                   docData={story.intro.json}
@@ -172,7 +174,7 @@ const StorySection = ({
               </div>
               <div
                 id={`storyContent-${story.anchor}`}
-                className={` font-serif type-preset-6 tracking-wide font-light text-${colorTheme}-900 bg-${colorTheme}-50 
+                className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
               block pb-[200px]
             `}
               >
@@ -213,6 +215,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       <div className={`relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}>
         <Image
           id={`storyImg-${story.anchor}`}
+          alt={`${story.illustration.description}`}
           src={story.illustration.url}
           layout="fill"
           objectFit="cover"
@@ -220,6 +223,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
         ></Image>
         <Image
           id={`contextImg-${story.anchor}`}
+          alt={`${story.contextIllustration.description}`}
           src={story.contextIllustration.url}
           layout="fill"
           objectFit="cover"

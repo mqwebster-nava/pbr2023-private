@@ -80,9 +80,9 @@ const ReportConclusion = ({title, body}) => {
             >
                 <SVGConclusion/> 
             </div>
-        <div className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
+        <h2 className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
           {title}
-        </div>
+        </h2>
         <p id={"conclusion-text"} className="type-preset-5 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
         {body}
         </p>

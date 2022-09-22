@@ -14,9 +14,9 @@ const ReportIntroductionBlock = ({ title, richBody }: TextBodyInterface) => {
         <div className="max-w-screen-md   mr-auto">
         <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20">
             {title && (
-              <h3 className={`font-serif font-light md:text-7xl type-preset-1  pb-2xl`}>
+              <h2 className={`font-serif font-light md:text-7xl type-preset-1  pb-2xl`}>
                 {title}
-              </h3>
+              </h2>
             )}
           </div>
           <div className="font-serif text-purple-900 py-2xl">

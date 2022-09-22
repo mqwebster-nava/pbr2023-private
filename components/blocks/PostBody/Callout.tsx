@@ -5,18 +5,22 @@ const Callout = ({
   attribution = null,
   attributionRole = null
 }) => {
+
+  const textColor = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
+  const Color = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
+  
   return (
     <div
       className={`bg-${colorTheme}-50  border-y-[2px] border-${colorTheme}-900 w-full  my-md min-h-[100px] md:min-h-[140px]`}
     >
      {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
       <p
-        className={`py-md type-preset-3 font-serif font-light text-${colorTheme}-900`}
+        className={`py-md type-preset-3 font-serif font-light ${textColor}`}
       >
         {body}
       </p>
       {variant==="quote" && attribution && 
-      <p className={`font-serif  text-${colorTheme}-900 type-preset-6 pb-lg`}> 
+      <p className={`font-serif  ${textColor} type-preset-6 pb-lg`}> 
          <b>{attribution}</b>{attributionRole && `, ${attributionRole}`}
       </p>}
     </div>

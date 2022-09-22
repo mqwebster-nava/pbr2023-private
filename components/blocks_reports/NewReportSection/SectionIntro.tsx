@@ -34,7 +34,6 @@ const SectionIntro = ({ section, i}) => {
       ana.push(TitleSlideUp);
       ana.push(ThemeSlideUp);
       ana.push(SectionBodySlideUp);
-      
       ana.push(SectionStoriesSlideUp);
   
 

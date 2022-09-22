@@ -24,8 +24,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const componentMap = {
       //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       ReportIllustrationOverlaySubsection: (entry) => (
-        <>
-          <SectionIntro section={entry} key={entry.anchor} i={index}   />
+        <div  key={`${entry.anchor}-${index}`}>
+          <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
           {entry.storiesCollection.items.map((story, j) => {
            let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
            if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) nextSection = contentBlocks[index+1].anchor
@@ -38,7 +38,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
               nextSection={nextSection}
             />
           )})}
-        </>
+        </div>
       ),
       ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
       ReportSectionCustom: (entry) => 
@@ -48,7 +48,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
     return typename in componentMap ? (
       componentMap[typename](entry)
     ) : (
-      <div></div>
+      <div key={index}></div>
     );
   };
   return (

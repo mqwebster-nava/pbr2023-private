@@ -73,7 +73,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
             <Image
               src={signature.image}
               layout="fixed"
-              height="80"
+              height={'80'}
               width={signature.width}
               alt={`Image of ${signature.name}'s signature`}
             />

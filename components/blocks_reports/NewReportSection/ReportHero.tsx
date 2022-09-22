@@ -119,7 +119,7 @@ const ReportHero = ({ }) => { //id, title,
                 benefit report.
               </p>
             </div>
-            <a  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100 pb-sm" href={"#toc"}>
+            <a  id={"heroArrow"} className="lg:absolute lg:bottom-[160px] opacity-0 motion-reduce:opacity-100 pb-sm" href={"#toc"} aria-label={"skip to next section"}>
               <ArrowDown
                 color="white"
                 size="large"
