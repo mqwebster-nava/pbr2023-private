@@ -5,7 +5,7 @@ import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 import REPORT_ILLUSTRATION_OVERLAY_SUBSECTION from "./report_blocks/ILLUSTRATION_OVERLAY_SUBSECTION";
 import REPORT_CONCLUSION from "./report_blocks/REPORT_CONCLUSION";
-import REPORT_HERO_FIELDS from "./report_blocks/Report_HERO";
+import REPORT_HERO_FIELDS from "./report_blocks/REPORT_HERO";
 import REPORT_SECTION_CUSTOM from "./report_blocks/REPORT_SECTION_CUSTOM";
 
 /*
