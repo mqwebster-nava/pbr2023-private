@@ -4,30 +4,29 @@ import MarkdownComponent from "utils/MarkdownComponent";
 import { makeSlideUpAnimation } from "./animations";
 import { animationHandler, AnimationObject, getOffsetPct, WindowSize } from "./utils";
 
-const SectionIntro = ({ section, i, windowSize, activeSection}) => {
+const SectionIntro = ({ section, i}) => {
     const [animationList, setAnimationList] = useState([]);
-    const isActive = activeSection==activeSection;
     const initiateAnimations= () =>{
       let ana  = []
       const windowSizes:Array<WindowSize> = ["mobile", "tablet", "desktop"]
       let ThemeSlideUp: AnimationObject = {
-        triggerPct: windowSize!=="mobile" ? -20 :-50,
+        triggerPct: -20,
         windowSizes:windowSizes,
         animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
-        triggerPct: windowSize!=="mobile" ? -10 : -40,
+        triggerPct:  -10,
         windowSizes:windowSizes,
         animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
-        triggerPct: windowSize!=="mobile" ? 0 : -30,
+        triggerPct: 0,
         windowSizes:windowSizes,
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
       };
       
       let SectionStoriesSlideUp: AnimationObject = {
-        triggerPct: windowSize!=="mobile" ? 0 : -30,
+        triggerPct:  0,
         windowSizes:windowSizes,
         animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
       };
@@ -46,13 +45,11 @@ const SectionIntro = ({ section, i, windowSize, activeSection}) => {
       // Gets the default bottom padding neeeded to stop the info right before the
       
       const onScroll = () => {
-        
         const offsetPct = getOffsetPct(section.anchor);
-        
         if (offsetPct < -50 || offsetPct >= 100) return;
-        animationHandler({offsetPct, animationList, windowSize});
+        animationHandler({offsetPct, animationList});
       };
-        if(animationList.length==0 && windowSize){
+        if(animationList.length==0){
           initiateAnimations();
         }
         window.removeEventListener("scroll", onScroll);

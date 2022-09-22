@@ -14,7 +14,7 @@ const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/Pos
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import EmbeddedVideo from "./EmbeddedVideo";
-import CalloutDiv from "../NewReportSection/StorySection/old/FeaturedCallOut";
+import CalloutDiv from "../../blocks_reports/NewReportSection/StorySection/old/FeaturedCallOut";
 import Callout from "./Callout";
 
 

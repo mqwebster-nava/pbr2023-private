@@ -1,4 +1,4 @@
-import { ReportContent } from "../..";
+import { ReportContent } from "../../../blocks";
 import { Details } from "../../../atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";

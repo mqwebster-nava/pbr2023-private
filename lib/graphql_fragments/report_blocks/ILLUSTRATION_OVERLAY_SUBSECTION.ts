@@ -1,4 +1,3 @@
-import IMAGE_FIELDS from "../IMAGE_FIELDS";
 import ILLUSTRATION_OVERLAY_STORY from "./ILLUSTRATION_OVERLAY_STORY";
 
 
@@ -10,6 +9,7 @@ title
 anchor
 body
 colorTheme
+themeNum
 storiesCollection(limit:7) {
     items{
      __typename

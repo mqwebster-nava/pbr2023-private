@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReportContent } from "../..";
+import { ReportContent } from "../../../blocks";
 import { Button } from "../../../atom";
 import { ReportMetrics } from "../ReportMetrics/ReportMetrics";
 

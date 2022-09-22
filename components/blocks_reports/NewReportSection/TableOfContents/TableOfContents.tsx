@@ -7,7 +7,7 @@ import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 
 
 // Components that can be animated
-const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onClick = () => {} }) => {
+const TableOfContentsSection = ({ title, anchor, contentBlocks }) => { //activeSection, windowSize,
   const [animationList, setAnimationList] = useState([]);
 
 
@@ -62,9 +62,9 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
 
   useEffect(() => {
     const onScroll = () => {
-      const offsetPct = getOffsetPct('toc');
+      const offsetPct = getOffsetPct(anchor);
       if(offsetPct<-100 || offsetPct > 100) return;
-      animationHandler({offsetPct, animationList, windowSize});
+      animationHandler({offsetPct, animationList});
     }
     
     if(animationList.length==0) initiateAnimations();
@@ -76,7 +76,7 @@ const TableOfContentsSection = ({ contentBlocks, activeSection, windowSize, onCl
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
-    <section className={`w-full lg:h-[200vh] bg-white relative`} id="toc">
+    <section className={`w-full lg:h-[200vh] bg-white relative`} id={anchor}>
       <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection contentBlocks={contentBlocks}/>
     </section>

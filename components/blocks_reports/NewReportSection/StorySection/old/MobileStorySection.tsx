@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import PostContent from "../../../PostBody/PostContent";
+import PostContent from "../../../../blocks/PostBody/PostContent";
 import { animationHandler, AnimationObject, getOffsetPct } from "../../utils";
 import StoryDiv from "./StoryDiv";
 import { makeFadeInAnimation } from "../../animations";

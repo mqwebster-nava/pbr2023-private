@@ -4,7 +4,7 @@ import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
 import { useEffect, useState } from "react";
 
 
-const ReportConclusion = ({title, body, windowSize}) => {
+const ReportConclusion = ({title, body}) => {
   const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
@@ -45,7 +45,7 @@ const ReportConclusion = ({title, body, windowSize}) => {
         if (_isActive !== isActive) setIsActive(_isActive);
         if (!_isActive) return;
        
-        animationHandler({offsetPct, animationList, windowSize});
+        animationHandler({offsetPct, animationList});
         const animBox = document.getElementById("conclusion-box");
         const s = animBox.getBoundingClientRect().height;
         const pctS = Math.round((s* Math.min(offsetPct, 20)) / 20);

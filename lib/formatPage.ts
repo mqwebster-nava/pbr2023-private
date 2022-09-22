@@ -45,6 +45,25 @@ export function formatPage(page){
     return formattedPage; 
 }
 
+
+export function formatReportPage(page){
+  
+  let formattedPage: PageInterface = {
+      id: page.sys.id,
+      slug: page.slug,
+      title: page.title,
+      socialImage: liftData(page.socialImage),
+      pageHeader:liftData(page.pageHeader),
+      contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
+      description: page.description,
+      isBottomCTA: false
+  }
+  if(!formattedPage.contentBlocks || formattedPage.contentBlocks.length<1) return formattedPage;
+  // Check for CTA block at bottom bc it requires extra formatting
+  return formattedPage; 
+}
+
+
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
   const formattedPage: PageInterface =  {
     id: post.id,

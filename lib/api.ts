@@ -23,6 +23,7 @@ import {
   formatAuthorPage,
   formatPage,
   formatPostPage,
+  formatReportPage,
   formatTagsPage,
 } from "./formatPage";
 
@@ -67,7 +68,7 @@ export async function getPageDataFromContentful({
 
   if (variant == "report") {
     const page = await getReportDataBySlug({ slug, preview });
-    let formattedPage: PageInterface = formatPage(page);
+    let formattedPage: PageInterface = formatReportPage(page);
     return formattedPage;
   }
 

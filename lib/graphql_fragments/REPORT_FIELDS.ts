@@ -5,6 +5,8 @@ import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 import REPORT_ILLUSTRATION_OVERLAY_SUBSECTION from "./report_blocks/ILLUSTRATION_OVERLAY_SUBSECTION";
 import REPORT_CONCLUSION from "./report_blocks/REPORT_CONCLUSION";
+import REPORT_HERO_FIELDS from "./report_blocks/Report_HERO";
+import REPORT_SECTION_CUSTOM from "./report_blocks/REPORT_SECTION_CUSTOM";
 
 /*
 The page fields should contain metadata about the page as 
@@ -27,14 +29,11 @@ socialImage {
     ${IMAGE_FIELDS}
 }
 pageHeader {
-    ${PAGE_HEADER_FIELDS}
+    ${REPORT_HERO_FIELDS}
 }
 contentCollection(limit:8) {
     items {
         __typename
-        ... on SectionHeader {
-            ${SECTION_HEADER_FIELDS}
-        }
         ... on TextBodyBlock {
             ${TEXT_BODY_BLOCK}
         }
@@ -44,6 +43,12 @@ contentCollection(limit:8) {
         ... on ReportConclusion {
             ${REPORT_CONCLUSION}
         }
+        ... on ReportSectionCustom {
+            ${REPORT_SECTION_CUSTOM}
+        }
+
+
+
     }
 }
 `;

@@ -5,7 +5,7 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 
 
-const ReportNavbar = ({  contentBlocks, reportSections}) => {
+const ReportNavbar = ({  contentBlocks, reportSections}) => { //
   const [activeSection, setActiveSection] = useState(null);
   const [sectionPct, setSectionPct] = useState(null);
   const [isShowingMenu, setIsShowingMenu] = useState(false);

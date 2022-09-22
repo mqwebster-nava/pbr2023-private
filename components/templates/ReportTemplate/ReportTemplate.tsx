@@ -1,20 +1,14 @@
-import ReportIntroductionBlock from "components/blocks/NewReportSection/ReportIntroduction";
-import ReportHero from "components/blocks/NewReportSection/ReportHero";
+import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction";
+import ReportHero from "components/blocks_reports/NewReportSection/ReportHero";
 import React, { useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
 
-import ReportNavbar from "components/blocks/NewReportSection/ReportNavbar/ReportNavbar";
-import ReportConclusion from "components/blocks/NewReportSection/ReportConclusion";
-import SectionIntro from "components/blocks/NewReportSection/SectionIntro";
-import StorySection from "components/blocks/NewReportSection/StorySection/StorySection";
-import TableOfContentsSection from "components/blocks/NewReportSection/TableOfContents/TableOfContents";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-//gsap.registerPlugin(ScrollTrigger);
-//gsap.registerPlugin(ScrollToPlugin);
-
+import ReportNavbar from "components/blocks_reports/NewReportSection/ReportNavbar/ReportNavbar";
+import ReportConclusion from "components/blocks_reports/NewReportSection/ReportConclusion";
+import SectionIntro from "components/blocks_reports/NewReportSection/SectionIntro";
+import StorySection from "components/blocks_reports/NewReportSection/StorySection/StorySection";
+import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -22,83 +16,29 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
+  // Want everything to be a section
   let reportSections = sortDocIntoH2Sections(contentBlocks);
-  const [activeSection, setActiveSection] = useState(null);
-  const [windowSize, setWindowSize] = useState(null);
-
-  const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
-  const getBottom = (el, extraOffset) =>
-    getTop(el, extraOffset) + el.offsetHeight - extraOffset;
-
-  useEffect(() => {
-    const onScroll = () => {
-      const offset = window.pageYOffset;
-      reportSections.forEach((section, i) => {
-        const secElement = document.getElementById(section.anchor);
-        if (
-          offset > getTop(secElement, 30) &&
-          offset < getBottom(secElement, 30) &&
-          activeSection != section.anchor
-        )
-          setActiveSection(section.anchor);
-      });
-    };
-    function handleResize() {
-      // Set window width/height to state
-      if (
-        (window.innerWidth < 768 || window.innerHeight < 650) &&
-        windowSize !== "mobile"
-      ) {
-        setWindowSize("mobile");
-        // TODO deal with all the sizes
-      } else if (
-        window.innerWidth > 1024 &&
-        window.innerHeight > 650 &&
-        windowSize !== "desktop"
-      ) {
-        setWindowSize("desktop");
-      }
-      else if (
-        window.innerWidth > 768 &&   window.innerWidth < 1024 &&
-        windowSize !== "tablet"
-      ) {
-        setWindowSize("tablet");
-      }
-    }
-    handleResize();
-    window.removeEventListener("resize", handleResize);
-    window.addEventListener("resize", handleResize, { passive: true });
-
-    // Empty array ensures that effect is only run on mount
-    window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
       TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
-      ReportConclusion: () => <ReportConclusion  key={index} {...entry}  windowSize={windowSize}/>,
       ReportIllustrationOverlaySubsection: (entry) => (
         <>
-          <SectionIntro section={entry} key={entry.anchor} i={index}  windowSize={windowSize} activeSection={activeSection}/>
+          <SectionIntro section={entry} key={entry.anchor} i={index}   />
           {entry.storiesCollection.items.map((story, j) => (
             <StorySection
               key={story.anchor}
               story={story}
               colorTheme={entry.colorTheme}
               sectionAnchor={entry.anchor}
-              windowSize={windowSize}
-              activeSection={activeSection}
               nextSection={entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].anchor : null}
             />
           ))}
         </>
       ),
+      ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
+      ReportSectionCustom: (entry) => (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks}/> :null
+      
     };
     return typename in componentMap ? (
       componentMap[typename](entry)
@@ -112,21 +52,16 @@ const ReportTemplate: React.FC<PageInterface> = ({
         contentBlocks={contentBlocks}
         reportSections={reportSections}
       />
-      {<ReportHero  windowSize={windowSize} />}
+      <ReportHero   />
       <div className="animate-fadeIn2">
-        {
-          <TableOfContentsSection
-            contentBlocks={contentBlocks}
-            activeSection={activeSection}
-            windowSize={windowSize}
-          />
-        }
         {contentBlocks.map((block, i) => getComponent(block, i))}
-        {/* <ReportConclusion windowSize={windowSize} /> */}
       </div>
     </main>
   );
 };
+
+// Report Sections replacing content blocks
+// - need Title, anchor, 
 
 export function sortDocIntoH2Sections(contentBlocks) {
   let output = [];
@@ -168,3 +103,31 @@ export function sortDocIntoH2Sections(contentBlocks) {
 
 
 export default ReportTemplate;
+
+
+  //const [activeSection, setActiveSection] = useState(null);
+  //const [windowSize, setWindowSize] = useState(null);
+
+  // useEffect(() => {
+  //   // const onScroll = () => {
+  //   //   reportSections.forEach((section, i) => {
+  //   //     if (checkActive({offsetPct:getOffsetPct(section.anchor)}) &&
+  //   //       activeSection != section.anchor)
+  //   //       setActiveSection(section.anchor);
+  //   //   });
+  //   // };
+  //   function handleResize() {
+  //    const size = getScreenSize();
+  //    if(size && size!==windowSize) setWindowSize(size);
+  //   }
+  //   handleResize();
+  //   window.removeEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize, { passive: true });
+  //   // Empty array ensures that effect is only run on mount
+  //  // window.removeEventListener("scroll", onScroll);
+  //  // window.addEventListener("scroll", onScroll, { passive: true });
+  //   return () => {
+  //  //   window.removeEventListener("scroll", onScroll);
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // });

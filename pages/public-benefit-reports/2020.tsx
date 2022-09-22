@@ -16,7 +16,7 @@ import {
 } from "components/blocks";
 import { PageInterface } from "shared_interfaces/page_interface";
 import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
-import { ReportIntroSectionFull } from "components/blocks/ReportSection/ReportIntroSectionFull";
+import { ReportIntroSectionFull } from "components/blocks_reports/ReportSection/ReportIntroSectionFull";
 
 const sectionData = [
   {

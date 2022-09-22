@@ -12,8 +12,8 @@ TODO
 */
 
 
-const ReportHero = ({ windowSize }) => { //id, title, 
-  const [isActive, setIsActive] = useState(false);
+const ReportHero = ({ }) => { //id, title, 
+  //const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
  
@@ -54,11 +54,11 @@ const ReportHero = ({ windowSize }) => { //id, title,
       
       const offsetPct = getOffsetPct("reportHeader");
       const _isActive = offsetPct >= 0 && offsetPct < 100 ;
-      if (_isActive !== isActive) setIsActive(_isActive);
+      //if (_isActive !== isActive) setIsActive(_isActive);
       if (!_isActive) return;
      
       if (offsetPct < 0 || offsetPct >= 100) return;
-      animationHandler({offsetPct, animationList, windowSize});
+      animationHandler({offsetPct, animationList});
       const animBox = document.getElementById("animation-box");
       const s = animBox.getBoundingClientRect().height;
       const svg = document.getElementById("box2");

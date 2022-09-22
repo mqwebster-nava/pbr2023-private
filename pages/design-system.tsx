@@ -70,31 +70,31 @@ export default function DesignSystem(props: PageInterface) {
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-600 stroke-navy-900 border-navy-900 from-navy-50"
+              className="bg-purple-600 stroke-navy-900 border-navy-900 from-navy-50 fill-navy-900"
             >
               600
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-700 stroke-plum-900 border-plum-900 from-plum-50"
+              className="bg-purple-700 stroke-plum-900 border-plum-900 from-plum-50 fill-plum-900"
             >
               700
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-800 stroke-sage-900 border-sage-900 from-sage-50"
+              className="bg-purple-800 stroke-sage-900 border-sage-900 from-sage-50 fill-sage-900"
             >
               800
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-900 stroke-purple-900 border-purple-900 from-purple-50 divide-white"
+              className="bg-purple-900 stroke-purple-900 border-purple-900 from-purple-50 divide-white fill-purple-900"
             >
               900
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50 divid-black"
+              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50 divid-black fill-gold-900"
             >
               900
             </div>

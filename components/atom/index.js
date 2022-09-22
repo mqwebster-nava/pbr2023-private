@@ -1,12 +1,12 @@
 import ContentCard from "./ContentCard/ContentCard";
 import { LinkText } from "./LinkText/LinkText";
-import { BlockQuote } from "../blocks/ReportBody/BlockQuote/BlockQuote";
+import { BlockQuote } from "../blocks_reports/ReportBody/BlockQuote/BlockQuote";
 import { Button } from "./Button/Button";
 import { CheckBox } from "./CheckBox/CheckBox";
 import { Details } from "./Details/Details";
-import { PullQuote } from "../blocks/ReportBody/PullQuote/PullQuote";
-import { Signatures } from "../blocks/ReportBody/Signatures/Signatures";
-import { TealBar } from "../blocks/ReportHeader/TealBar/TealBar";
+import { PullQuote } from "../blocks_reports/ReportBody/PullQuote/PullQuote";
+import { Signatures } from "../blocks_reports/ReportBody/Signatures/Signatures";
+import { TealBar } from "../blocks_reports/ReportHeader/TealBar/TealBar";
 import { PercentSquareGraph } from "../custom_blocks/DEICharts/Graph/PercentSquareGraph";
 import { PercentBarGraph } from "../custom_blocks/DEICharts/Graph/PercentBarGraph";
 export {
