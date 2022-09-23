@@ -1,4 +1,5 @@
 
+
 export interface ContentfulImageAsset{
   id:string;
   url:string;
@@ -27,6 +28,7 @@ export interface FullPostInterface extends BasicPostInterface{
     body:any;
     leadImage:ContentfulImageAsset;
     registrationLink: string;
+    eventInfo: EventInfo
 }
 
 export interface AuthorPostInterface{
@@ -38,4 +40,13 @@ export interface AuthorPostInterface{
     posts?:Array<BasicPostInterface>;
 }
 
+
+
+export interface EventInfo {
+    location:string;
+    eventTime:string;
+    eventEndTime: string;
+    registrationLink?:string;
+    recordingLink?:string;
+}
 
