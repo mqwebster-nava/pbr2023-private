@@ -1,6 +1,7 @@
 import IMAGE_FIELDS from "../IMAGE_FIELDS";
 import { POST_BODY } from "../POST_FIELDS";
 import CALLOUT from "./CALLOUT";
+import { REPORT_BODY } from "./REPORT_BODY";
 
 
 const REPORT_ILLUSTRATION_OVERLAY_STORY = `
@@ -11,10 +12,10 @@ title
 shortTitle
 anchor
 intro {
-    ${POST_BODY}
+    ${REPORT_BODY}
 }
 body {
-    ${POST_BODY}
+    ${REPORT_BODY}
 }
 illustration{
     ${IMAGE_FIELDS}

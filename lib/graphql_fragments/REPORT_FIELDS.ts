@@ -6,7 +6,9 @@ import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
 import REPORT_ILLUSTRATION_OVERLAY_SUBSECTION from "./report_blocks/ILLUSTRATION_OVERLAY_SUBSECTION";
 import REPORT_CONCLUSION from "./report_blocks/REPORT_CONCLUSION";
 import REPORT_HERO_FIELDS from "./report_blocks/REPORT_HERO";
+import REPORT_INTRODUCTION from "./report_blocks/REPORT_INTRODUCTION";
 import REPORT_SECTION_CUSTOM from "./report_blocks/REPORT_SECTION_CUSTOM";
+import SPLIT_IMAGE_TEXT_SECTION from "./report_blocks/SPLIT_IMAGE_TEXT_SECTION";
 
 /*
 The page fields should contain metadata about the page as 
@@ -34,23 +36,28 @@ pageHeader {
 contentCollection(limit:8) {
     items {
         __typename
-        ... on TextBodyBlock {
-            ${TEXT_BODY_BLOCK}
+        
+        ... on ReportIntroduction {
+            ${REPORT_INTRODUCTION}
         }
         ... on ReportIllustrationOverlaySubsection {
             ${REPORT_ILLUSTRATION_OVERLAY_SUBSECTION}
         }
-        ... on ReportConclusion {
-            ${REPORT_CONCLUSION}
-        }
         ... on ReportSectionCustom {
             ${REPORT_SECTION_CUSTOM}
         }
-
-
-
+        ... on ReportSectionSplitImageText {
+            ${SPLIT_IMAGE_TEXT_SECTION}
+        }
+        ... on ReportConclusion {
+            ${REPORT_CONCLUSION}
+        }
     }
 }
 `;
 
 export default REPORT_FIELDS;
+
+/*
+
+*/
