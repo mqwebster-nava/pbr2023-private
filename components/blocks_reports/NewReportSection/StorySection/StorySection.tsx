@@ -10,6 +10,7 @@ import {
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
+  makeSlideOutAnimation,
   makeSlideUpAnimation,
 } from "../animations";
 import Callout from "components/blocks/PostBody/Callout";
@@ -39,6 +40,7 @@ const StorySection = ({
     let fadeOutPct = f;
     let delay = 0;
     let duration = 200;
+ 
     // Want the animations at
 
     let backgroundIndividualFade: AnimationObject = {
@@ -70,9 +72,14 @@ const StorySection = ({
         delay + 50
       ),
     };
+
+    const titleOutTrigger = Math.round(
+      100*(document.getElementById(storyId).offsetHeight - ( window.innerHeight)) / document.getElementById(storyId).offsetHeight
+    );
+    console.log(titleOutTrigger);
     let titleFade: AnimationObject = {
-      triggerPct: 75,
-      animation: makeFadeAnimation("storyTitleDiv-" + story.anchor, 0, 200),
+      triggerPct: titleOutTrigger,
+      animation: makeSlideOutAnimation("storyTitleDiv-" + story.anchor, 0),
     };
 
     ana = [
@@ -132,7 +139,7 @@ const StorySection = ({
           id={`storyExpanded-${story.anchor}`}
           className={`grid grid-cols-12 responsive-container h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
         >
-          <div className="lg:col-start-5 lg:col-span-7 col-start-0 col-span-11">
+          <div className="lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl">
             <div
               id={`storyTitleDiv-${story.anchor}`}
               className={`z-20 sticky top-[70px]`}

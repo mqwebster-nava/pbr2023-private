@@ -45,7 +45,7 @@ const ReportHero = ({ }) => { //id, title,
      makeSlideUpAnimation("titleLine2", 400).play()
      makeFadeInAnimation("heroArrow", 600).play();
      setAnimationList([{
-        triggerPct: 30,
+        triggerPct: 5,
         animation: makeSlideUpAnimation("titleLine3", 0),
       }]);
     }
@@ -54,7 +54,6 @@ const ReportHero = ({ }) => { //id, title,
       
       const offsetPct = getOffsetPct("reportHeader");
       const _isActive = offsetPct >= 0 && offsetPct < 100 ;
-      //if (_isActive !== isActive) setIsActive(_isActive);
       if (!_isActive) return;
      
       if (offsetPct < 0 || offsetPct >= 100) return;
@@ -79,18 +78,18 @@ const ReportHero = ({ }) => { //id, title,
 
   return (
     <header
-      className={`bg-purple-900 w-full lg:h-[200vh] h-[150vh] `}
+      className={`bg-purple-900 w-full lg:h-[150vh] h-[125vh] `}
       id="reportHeader"
     >
       <div
-        className={`w-full lg:h-[calc(100vh_-_70px)] sticky top-[70px] responsive-container overflow-hidden`}
+        className={`w-full lg:min-h-[650px] lg:h-[calc(100vh_-_70px)]  sticky top-[70px] responsive-container overflow-hidden`}
       >
         <div className=" z-40 flex flex-col lg:flex-row gap-xl ">
           <div
             
             className="w-full lg:w-3/4 relative h-auto"
           >
-            <h1 id={"reportHeader-titleBox"} className="pt-2xl -ml-sm md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100">
+            <h1 id={"reportHeader-titleBox"} className="pt-2xl lg:pb-3xl -ml-sm md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100">
               Public <br /> Benefit <br /> Report
             </h1>
             <div

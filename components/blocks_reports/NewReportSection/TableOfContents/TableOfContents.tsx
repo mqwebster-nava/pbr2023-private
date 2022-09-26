@@ -168,7 +168,7 @@ const DesktopSection = ({contentBlocks}) => {
   return (
     <>
     <div className="h-[160px]  hidden lg:block"></div>
-    <div className="lg:sticky top-[70px] lg:h-[calc(100vh_-_70px)] hidden lg:block">
+    <div className="lg:sticky top-[70px] lg:min-h-[calc(100vh_-_70px)] lg:h-[calc(100vh_-_70px)] hidden lg:block">
       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
         <div className="w-full lg:w-3/4 h-full flex flex-col">
           <DesktopSectionTitle
@@ -244,9 +244,9 @@ const DesktopSectionTitle = ({
   return (
     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
       <div
-        className={` xl:ml-sm md:ml-4xl pl-xl text-${textColor} grid grid-cols-12  gap-lg `}
+        className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className="lg:col-span-4 col-span-12 lg:py-auto py-lg">
+        <div  className="col-span-3 lg:py-auto py-lg">
           {themeNum != null && (
             <p className="type-preset-6 font-serif ">
               Theme {themeNum }
@@ -265,7 +265,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-8 pt-md divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
+          className={` col-span-5 pt-md pr-xl divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
         >
           {stories &&
             stories.map((story) => {

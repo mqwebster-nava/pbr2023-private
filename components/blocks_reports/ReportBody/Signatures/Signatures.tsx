@@ -8,6 +8,7 @@ export interface SignaturesProps {
   isGreenBG?: boolean;
   isNew?: boolean;
   fullList?: boolean;
+  fullerList?:boolean;
   margin?: string;
 }
 
@@ -46,6 +47,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
   isGreenBG,
   isNew =false,
   fullList = false,
+  fullerList=false,
   margin = "",
 }) => {
   const textColor = classNames({
@@ -54,8 +56,11 @@ export const Signatures: React.FC<SignaturesProps> = ({
     "text-purple-900":isNew===true
   });
 
-  const signatures = fullList
+  const signatures = 
+  fullerList
     ? fullListOfSignatures
+    : fullList
+    ? fullListOfSignatures.slice(0, -1)
     : fullListOfSignatures.slice(0, -2);
   const numberOfSignatures = signatures.length;
 

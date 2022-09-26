@@ -42,3 +42,21 @@ export const makeSlideUpAnimation = (elementId, delay) => {
     an.pause();
     return an;
   };
+
+  export const makeSlideOutAnimation = (elementId, delay) => {
+    let an = document.getElementById(elementId).animate(
+      [
+        { transform: "translateY(0%)", opacity: "100%" },
+        { transform: "translateY(-50%)", opacity: "0%" },
+      ],
+      {
+        duration: 200,
+        iterations: 1,
+        fill: "forwards",
+        delay: delay,
+      }
+    );
+    an.pause();
+    return an;
+  };
+  

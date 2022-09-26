@@ -68,14 +68,16 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
 
   return (
     <div className={`block sticky top-0  z-50 w-full bg-white ${!isShowingMenu && "h-[70px] overflow-clip"}`}>
-      <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px] ">
+      <div className=" responsive-container flex flex-wrap items-center  h-[60px] ">
+       <div className="w-1/3">
         <Logo isMobile={true} color="black" />
+        </div>
         <a href="#reportHeader">
         <h2 className="type-preset-6 font-serif text-black">
           Public Benefit Report
         </h2>
         </a>
-        <div className="block ">
+        <div className="block ml-auto ">
           <button
             aria-label="menu"
             aria-expanded={isShowingMenu ? "true" : "false"}

@@ -70,8 +70,8 @@ const ReportConclusion = ({title, body}) => {
 
 
   return (
-    <section id="reportConclusion" className="w-full h-[150vh] bg-gold-700">
-      <div className="responsive-container py-2xl md:h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
+    <section id="reportConclusion" className="w-full min-h-[150vh] bg-gold-700">
+      <div className="responsive-container py-2xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
         <div className="relative h-full">
 
         <div
@@ -87,7 +87,7 @@ const ReportConclusion = ({title, body}) => {
         {body}
         </p>
         <p id={"conclusion-next"}  className="type-preset-5 font-bold pt-[70px] pb-sm opacity-0 motion-reduce:opacity-100">Where next?</p>
-        <div className="flex gap-lg flex-col md:flex-row">
+        <div className="flex gap-lg flex-col md:flex-row pb-2xl">
           <div id={"conclusion-footer1"}className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2 divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
           <LinkText
               href="/public-benefit-reports/2020"
