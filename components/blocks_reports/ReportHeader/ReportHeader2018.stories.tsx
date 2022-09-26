@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ReportHeaderTextOverlay from "./ReportHeaderTextOverlay";
+import ReportHeaderTextOverlay from "./ReportHeader2018";
 
 export default {
   title: "Blocks /  Report Header / Text Overlay",

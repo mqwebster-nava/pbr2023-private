@@ -1,6 +1,6 @@
 import { TealBar } from "components/atom";
 
-const ReportHeaderNavy = ({ title, maxWidth = "" }) => {
+const ReportHeader2020 = ({ title, maxWidth = "" }) => {
   return (
     <section className="bg-navy-800 text-white relative z-3">
       <div className="responsive-container">
@@ -13,4 +13,4 @@ const ReportHeaderNavy = ({ title, maxWidth = "" }) => {
   );
 };
 
-export default ReportHeaderNavy;
+export default ReportHeader2020;

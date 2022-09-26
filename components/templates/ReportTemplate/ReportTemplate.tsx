@@ -1,5 +1,5 @@
 import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction";
-import ReportHero from "components/blocks_reports/NewReportSection/ReportHero";
+import ReportHero from "components/blocks_reports/NewReportSection/ReportHero2021";
 import React, { Children, useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
@@ -10,6 +10,7 @@ import SectionIntro from "components/blocks_reports/NewReportSection/SectionIntr
 import StorySection from "components/blocks_reports/NewReportSection/StorySection/StorySection";
 import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
 import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
+import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -64,7 +65,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
         contentBlocks={contentBlocks}
         reportSections={reportSections}
       />}
-      <ReportHero   />
+       <ReportHeader {...pageHeader}   />
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
       </div>

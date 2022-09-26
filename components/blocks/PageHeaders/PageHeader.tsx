@@ -12,7 +12,7 @@ import styles from "./PageHeader.module.css";
 
 
 
-type PageHeaderVariant = "Primary" | "Secondary" | "Home" | "Post";
+type PageHeaderVariant = "Primary" | "Secondary" | "Home" | "Post" | "2018" | "2019"| "2020"|"2021";
 
 export interface PageHeaderInterface {
   id: string;

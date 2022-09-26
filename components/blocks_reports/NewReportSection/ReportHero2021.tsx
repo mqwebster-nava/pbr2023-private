@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ArrowDown from "./Atoms/ArrowDown";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
+import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
 
 /*
@@ -12,7 +13,7 @@ TODO
 */
 
 
-const ReportHero = ({ }) => { //id, title, 
+const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title, 
   //const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
@@ -222,5 +223,5 @@ width="0" height="0" viewBox="0 0 527 527" fill="none" xmlns="http://www.w3.org/
 </svg>
   )
 }
-export default ReportHero;
+export default ReportHero2021;
 
