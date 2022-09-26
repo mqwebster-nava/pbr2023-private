@@ -9,9 +9,11 @@ import ReportConclusion from "components/blocks_reports/NewReportSection/ReportC
 import SectionIntro from "components/blocks_reports/NewReportSection/SectionIntro";
 import StorySection from "components/blocks_reports/NewReportSection/StorySection/StorySection";
 import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
+import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
+  slug,
   pageHeader,
   contentBlocks,
   children,
@@ -23,6 +25,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
     const componentMap = {
       //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
+      
+      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry}  />,
+      ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} {...entry}  />,
+      ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
@@ -40,10 +46,11 @@ const ReportTemplate: React.FC<PageInterface> = ({
           )})}
         </div>
       ),
-      ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
-      :(entry.type=='Introduction 2021') ? <ReportIntroductionBlock key={index} {...entry} />:null //contentBlocks={contentBlocks}
+      :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <div></div>
+
+      :null //contentBlocks={contentBlocks}
     };
     return typename in componentMap ? (
       componentMap[typename](entry)
@@ -53,10 +60,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
   };
   return (
     <main id="main">
-      <ReportNavbar
+   { slug=="/public-benefit-reports/2021" && <ReportNavbar
         contentBlocks={contentBlocks}
         reportSections={reportSections}
-      />
+      />}
       <ReportHero   />
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}

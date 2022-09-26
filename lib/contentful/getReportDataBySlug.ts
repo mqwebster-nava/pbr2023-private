@@ -2,8 +2,6 @@ import { PageQueryInterface } from "lib/api";
 import PAGE_FIELDS from "lib/graphql_fragments/PAGE_FIELDS";
 import REPORT_FIELDS from "lib/graphql_fragments/REPORT_FIELDS";
 import callContentful from "./callContentful";
-
-
 export default async function getReportDataBySlug({slug, preview =false}:PageQueryInterface) {
     const variables = { slug, preview  };
     const query = `query GetReportBySlug($slug: String!) {
