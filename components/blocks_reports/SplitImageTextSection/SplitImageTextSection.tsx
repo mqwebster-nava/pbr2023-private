@@ -25,9 +25,10 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
   return (
     <section className={`${colorTheme==="sage" ? "bg-sage-50" : ""}`} >
     <ResponsiveContentContainer padding="py-4xl" alignment="center">
-        <h2 className="type-preset-3 font-bold text-sage-pbr">{title}</h2>
+        <h2 className="type-preset-3 font-bold  text-sage-pbr">{title}</h2>
+       <div className="font-serif type-preset-6">
         <PostContent docData={introduction.json} docLinks={introduction.links} />
-       
+        </div>
        <div className="md:hidden block">
          <Image
           src={image.url}
@@ -39,7 +40,7 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
     </ResponsiveContentContainer>
       <div className="grid md:grid-cols-2">
         {textSide === "left" && (
-          <div className="p-2xl">
+          <div className="p-2xl font-serif type-preset-6">
             <PostContent docData={richBody.json} docLinks={richBody.links}/>
           </div>
         )}
@@ -51,7 +52,7 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
           }}
         />
         {textSide === "right" && (
-          <div className="p-2xl">
+          <div className="p-2xl font-serif type-preset-6">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
           </div>
         )}

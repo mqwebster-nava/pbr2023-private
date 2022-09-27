@@ -14,7 +14,7 @@ const ShoutoutSection = ({ title, type, richBody }) => {
     <section>
       <ResponsiveContentContainer padding={"py-2xl"} alignment="center">
         <h2 className="type-preset-3 font-bold">{title}</h2>
-        <div className="pb-xl">
+        <div className="pb-xl font-serif">
           <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
         {type == "Shoutout 2019" && (
@@ -31,12 +31,9 @@ const ShoutoutSection = ({ title, type, richBody }) => {
 
 const ReportShoutoutColumns = ({ list }) => {
   const { title, columns } = list;
-  columns.map((c)=>{
-    console.log(c)
-  })
   return (
     <>
-      <h3 className="type-preset-4 font-bold py-md">{title}</h3>
+      <h3 className="type-preset-4 font-serif font-bold py-md">{title}</h3>
       <div className="grid grid-cols-3">
          {columns.map((column, index) => (
           <ul  key={`title-col-${index}`} className={`list-disc ml-xl`}>
