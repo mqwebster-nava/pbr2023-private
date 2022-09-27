@@ -33,7 +33,7 @@ const IntroductionBlock2021 = ({
          <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 ">
             {title && (
               <h2
-                className={`font-serif font-light md:text-7xl type-preset-1  pb-2xl`}
+                className={`font-serif font-light xl:text-7xl type-preset-1  pb-2xl`}
               >
                 {title}
               </h2>
@@ -44,7 +44,7 @@ const IntroductionBlock2021 = ({
           <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 lg:hidden ">
             {title && (
               <h2
-                className={`font-serif font-light md:text-7xl type-preset-1  pb-2xl`}
+                className={`font-serif font-light xl:text-7xl type-preset-1  pb-2xl`}
               >
                 {title}
               </h2>

@@ -168,7 +168,7 @@ const DesktopSection = ({contentBlocks}) => {
   return (
     <>
     <div className="h-[160px]  hidden lg:block"></div>
-    <div className="lg:sticky top-[70px] lg:min-h-[calc(100vh_-_70px)] lg:h-[calc(100vh_-_70px)] hidden lg:block">
+    <div className="lg:sticky top-[70px] lg:min-h-[calc(100vh_-_70px)] hidden lg:block">
       <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
         <div className="w-full lg:w-3/4 h-full flex flex-col">
           <DesktopSectionTitle
