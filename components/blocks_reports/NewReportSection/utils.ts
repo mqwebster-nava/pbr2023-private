@@ -1,9 +1,9 @@
 export const getScreenSize = () => {
   return window.innerWidth < 768 //|| window.innerHeight < 650
     ? "mobile"
-    : window.innerWidth > 1024 //&& window.innerHeight > 650
+    : window.innerWidth >= 1024 //&& window.innerHeight > 650
     ? "desktop"
-    : window.innerWidth >= 768 && window.innerWidth <= 1024
+    : window.innerWidth >= 768 && window.innerWidth < 1024
     ? "tablet"
     : null;
 };

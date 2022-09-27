@@ -225,9 +225,14 @@ const DesktopSection = ({contentBlocks}) => {
             worked to build equity by designing public services for all.
           </p>
           </div>
-          <div className="hidden md:block pb-[160px]">
-            <ArrowDown color="black" size="default" sectionId={'toc'}/>
-          </div>
+          <a  id={"tocArrow"} className="hidden md:block pb-[160px] pt-lg" href={"#intro"} aria-label={"skip to Letter from leadership"}>
+              <ArrowDown
+                color="black"
+                size="default"
+                sectionId={"toc"}
+              />
+            </a>
+       
         </div>
       </div>
     </div>
@@ -255,7 +260,7 @@ const DesktopSectionTitle = ({
               Theme {themeNum }
             </p>
           )}
-          <h2 className={`type-preset-5 ${fontStyle} text-${textColor}`}>
+          <h2 className={`type-preset-5 ${fontStyle} text-${textColor} pb-xl`}>
             <LinkText
               href={`#${anchor}`}
               variant={"default"}

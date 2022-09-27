@@ -24,13 +24,8 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
     const sectionH = document.getElementById(storyId).offsetHeight;
     const screenH = window.innerHeight;
     // make pct once it gets to full page
-    const desktopTriggerPct = Math.round(
-      (35 * screenH) / sectionH
-    );
-    const mobileTriggerPct = Math.round(
-      (15 * screenH) /sectionH
-    );
-console.log("trigger", mobileTriggerPct)
+    const desktopTriggerPct = Math.round((35 * screenH) / sectionH);
+    const mobileTriggerPct = Math.round((15 * screenH) / sectionH);
     //let fadeInPct = f;
     //let fadeOutPct = f;
     let delay = 0;
@@ -68,9 +63,8 @@ console.log("trigger", mobileTriggerPct)
     };
 
     const titleOutTrigger = Math.round(
-      (100 * (sectionH -  0.35 * screenH)) /sectionH
+      (100 * (sectionH - 0.35 * screenH)) / sectionH
     );
-    console.log(titleOutTrigger);
     let titleFade: AnimationObject = {
       triggerPct: titleOutTrigger,
       animation: makeSlideOutAnimation("storyTitleDiv-" + story.anchor, 0),
@@ -86,8 +80,11 @@ console.log("trigger", mobileTriggerPct)
 
     if (nextId) {
       let nextStoryArrow: AnimationObject = {
-        triggerPct: desktopTriggerPct/2,
-        triggerPcts: {"mobile":mobileTriggerPct/2, "tablet":mobileTriggerPct/2},
+        triggerPct: desktopTriggerPct / 2,
+        triggerPcts: {
+          mobile: mobileTriggerPct / 2,
+          tablet: mobileTriggerPct / 2,
+        },
         animation: makeFadeInAnimation(
           `${story.anchor}-next-arrow`,
           delay + 50
@@ -104,7 +101,6 @@ console.log("trigger", mobileTriggerPct)
     const offsetPct = getOffsetPct(storyId);
 
     if (offsetPct < 0 || offsetPct >= 100) return;
-    console.log(offsetPct);
     animationHandler({ offsetPct, animationList });
   };
   useEffect(() => {
@@ -131,74 +127,81 @@ console.log("trigger", mobileTriggerPct)
         <div
           className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
         >
-          <div className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}>
-            <div className={`lg:col-start-5 lg:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}  id={`storyTitleDiv-${story.anchor}`}>
-                  <h3
-                    id={`storyTitle-${story.anchor}`}
-                    className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
-                  >
-                    {story.title}
-                  </h3>
+          <div
+            className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}
+          >
+            <div
+              className={`lg:col-start-5 lg:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}
+              id={`storyTitleDiv-${story.anchor}`}
+            >
+              <h3
+                id={`storyTitle-${story.anchor}`}
+                className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
+              >
+                {story.title}
+              </h3>
             </div>
           </div>
           <div className={`lg:h-screen h-[50vh] landscape:h-screen `}></div>
 
           <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
-            <div className="grid grid-cols-12 responsive-container h-auto relative"> 
-
-            <div className="lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl">
-
-            <div
-              id={`storySummary-${story.anchor}`}
-              className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
-            >
-              <PostContent
-                docData={story.intro.json}
-                docLinks={story.intro.links}
-              />
-            </div>
-
-            <div
-              id={`storyCallOut-${story.anchor}`}
-              className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
-            >
-              <Callout
-                body={story.featuredCallOut.body}
-                attribution={story.featuredCallOut.attribution}
-                colorTheme={colorTheme}
-                variant={story.featuredCallOut.variant}
-                attributionRole={story.featuredCallOut.attributionRole}
-              ></Callout>
-            </div>
-            <div
-              id={`storyContent-${story.anchor}`}
-              className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
-              block pb-[200px]
-            `}
-            >
-              <PostContent
-                docData={story.body.json}
-                docLinks={story.body.links}
-              />
-            </div>
-          </div>
-          
-          <div className="col-span-1 ">
-            {nextId && (
-              <a
-                id={`${story.anchor}-next-arrow`}
-                href={`#${nextId}`}
-                className=" w-full sticky top-[calc(100vh_-_120px)] px-md  pb-md opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
+            <div className="grid grid-cols-12 responsive-container h-auto relative">
+              <div
+                className={`lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl `}
               >
-                <p className="type-preset-7  opacity-70 text-center">
-                  Next story
-                </p>
-                <ArrowDown sectionId={`${story.anchor}`}></ArrowDown>
-              </a>
-            )}
+                <div
+                  id={`storySummary-${story.anchor}`}
+                  className={` lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
+                >
+                  <div className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
+                    <PostContent
+                      docData={story.intro.json}
+                      docLinks={story.intro.links}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  id={`storyCallOut-${story.anchor}`}
+                  className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 -mx-sm px-sm`}
+                >
+                  <Callout
+                    body={story.featuredCallOut.body}
+                    attribution={story.featuredCallOut.attribution}
+                    colorTheme={colorTheme}
+                    variant={story.featuredCallOut.variant}
+                    attributionRole={story.featuredCallOut.attributionRole}
+                  ></Callout>
+                </div>
+                <div
+                  id={`storyContent-${story.anchor}`}
+                  className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
+              block pb-[200px] -mx-sm px-sm
+            `}
+                >
+                  <PostContent
+                    docData={story.body.json}
+                    docLinks={story.body.links}
+                  />
+                </div>
+              </div>
+
+              <div className="col-span-1 ">
+                {nextId && (
+                  <a
+                    id={`${story.anchor}-next-arrow`}
+                    href={`#${nextId}`}
+                    className=" w-full sticky top-[calc(100vh_-_120px)] px-md  pb-md opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
+                  >
+                    <p className="type-preset-7  opacity-70 text-center">
+                      Next story
+                    </p>
+                    <ArrowDown sectionId={`${story.anchor}`}></ArrowDown>
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
         </div>
       </div>
     </section>
