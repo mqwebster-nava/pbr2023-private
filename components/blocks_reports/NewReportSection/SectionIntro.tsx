@@ -12,22 +12,26 @@ const SectionIntro = ({ section, i}) => {
       let ThemeSlideUp: AnimationObject = {
         triggerPct: -20,
         windowSizes:windowSizes,
+        triggerPcts:{"mobile":-90},
         animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
         triggerPct:  -10,
         windowSizes:windowSizes,
+        triggerPcts:{"mobile":-80},
         animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
         triggerPct: 0,
         windowSizes:windowSizes,
+        triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
       };
       
       let SectionStoriesSlideUp: AnimationObject = {
         triggerPct:  0,
         windowSizes:windowSizes,
+        triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
       };
 
@@ -45,7 +49,7 @@ const SectionIntro = ({ section, i}) => {
       
       const onScroll = () => {
         const offsetPct = getOffsetPct(section.anchor);
-        if (offsetPct < -50 || offsetPct >= 100) return;
+        if (offsetPct < -75 || offsetPct >= 100) return;
         animationHandler({offsetPct, animationList});
       };
         if(animationList.length==0){
@@ -58,11 +62,13 @@ const SectionIntro = ({ section, i}) => {
     });
   
     const colorTheme = section.colorTheme ?? "purple";
-    let textColor = section.colorTheme==="gold" ? "black" : "white";
+    const bg = section.colorTheme === "gold" ? `bg-${colorTheme}-dark` : `bg-${colorTheme}-900`;
+    const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
+
     return (
       <section id={`${section.anchor}`} className="h-auto md:h-[180vh]">
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
-      <div className={`bg-${colorTheme}-900 w-full md:min-h-screen block md:sticky md:top-[70px]`}>
+      <div className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px]`}>
       <div
         className="responsive-container  "
         id={section.anchor}
@@ -93,7 +99,7 @@ const SectionIntro = ({ section, i}) => {
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
               return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm" key={`sectionIntro-${story.anchor}`}>
-             <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={section.colorTheme==="gold" ? "black" : "white"}>
+             <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={ "white"}>
               {story.title}
              </LinkText>
               </div>)

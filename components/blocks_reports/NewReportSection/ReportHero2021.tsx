@@ -43,12 +43,13 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
 
      makeSlideUpAnimation("reportHeader-titleBox", 0).play()
      makeSlideUpAnimation("titleLine1", 200).play()
-     makeSlideUpAnimation("titleLine2", 400).play()
-     makeFadeInAnimation("heroArrow", 600).play();
-     setAnimationList([{
-        triggerPct: 5,
-        animation: makeSlideUpAnimation("titleLine3", 0),
-      }]);
+     makeSlideUpAnimation("titleLine2", 400).play();
+     makeSlideUpAnimation("titleLine3", 600).play();
+     makeFadeInAnimation("heroArrow", 900).play();
+    //  setAnimationList([{
+    //     triggerPct: 5,
+    //     animation: makeSlideUpAnimation("titleLine3", 0),
+    //   }]);
     }
   useEffect(() => {
     const onScroll = () => {
@@ -58,7 +59,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
       if (!_isActive) return;
      
       if (offsetPct < 0 || offsetPct >= 100) return;
-      animationHandler({offsetPct, animationList});
+      //animationHandler({offsetPct, animationList});
       const animBox = document.getElementById("animation-box");
       const s = animBox.getBoundingClientRect().height;
       const svg = document.getElementById("box2");
@@ -69,9 +70,9 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
     };
 
       getAnimationBoxHeight();
-    if(animationList.length==0 ){
+   // if(animationList.length==0 ){
         initiateAnimations();
-    }
+    //}
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
