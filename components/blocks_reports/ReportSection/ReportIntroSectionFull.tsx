@@ -1,6 +1,6 @@
 import { Signatures } from "components/atom";
 import ReportSectionContentFull from "../ReportBody/ReportSection/ReportSectionContentFull";
-
+// TODO Deprecate
 export const ReportIntroSectionFull = ({title, body}) => (
   <>
     <ReportSectionContentFull

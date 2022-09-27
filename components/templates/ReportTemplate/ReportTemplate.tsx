@@ -11,6 +11,7 @@ import StorySection from "components/blocks_reports/NewReportSection/StorySectio
 import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
 import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
 import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
+import ShoutoutSection from "components/blocks_reports/ShoutoutSection/ShoutoutSection";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -49,7 +50,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ),
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
-      :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <div></div>
+      :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>
 
       :null //contentBlocks={contentBlocks}
     };
