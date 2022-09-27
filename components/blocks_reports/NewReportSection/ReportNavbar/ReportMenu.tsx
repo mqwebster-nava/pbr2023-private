@@ -22,15 +22,18 @@ import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
           (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
         )
         .map((section, i) => {
+      
           const color = section.colorTheme ?? "purple";
-          const textColor = section.colorTheme === "gold" ? "black" : "white";
+          const bg = section.colorTheme === "gold" ? `bg-${color}-dark` : `bg-${color}-900`;
+          const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
+
           return (
             <ReportMenuRow
               key={section.anchor}
               title={section.title}
               anchor={section.anchor}
               themeNum={i + 1}
-              bgColor={`bg-${color}-900`}
+              bgColor={bg}
               textColor={textColor}
               fontStyle={"font-bold"}
               stories={section.items}

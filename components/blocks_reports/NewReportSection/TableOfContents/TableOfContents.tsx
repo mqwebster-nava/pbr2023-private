@@ -138,14 +138,15 @@ const MobileSection = ({contentBlocks}) => {
         )
         .map((section, i) => {
           const color = section.colorTheme ?? "purple";
-          const textColor = section.colorTheme === "gold" ? "black" : "white";
+          const bg = section.colorTheme === "gold" ? `bg-${color}-dark` : `bg-${color}-900`;
+          const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
           return (
             <MobileSectionTitle
              key={`${section.anchor}-${i}-toc`}
               title={section.title}
               anchor={section.anchor}
               themeNum={i}
-              bgColor={`bg-${color}-900`}
+              bgColor={bg}
               textColor={textColor}
               fontStyle={"font-bold"}
             />
@@ -186,16 +187,18 @@ const DesktopSection = ({contentBlocks}) => {
                 entry.__typename === "ReportIllustrationOverlaySubsection"
             )
             .map((section, i) => {
+             
               const color = section.colorTheme ?? "purple";
-              const textColor =
-                section.colorTheme === "gold" ? "black" : "white";
+              const bg = section.colorTheme === "gold" ? `bg-${color}-dark` : `bg-${color}-900`;
+              const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
+
               return (
                 <DesktopSectionTitle
                 key={`${section.anchor}-${i}-toc`}
                   title={section.title}
                   anchor={section.anchor}
                   themeNum={i + 1}
-                  bgColor={`bg-${color}-900`}
+                  bgColor={bg}
                   textColor={textColor}
                   stories={section.storiesCollection.items}
                   fontStyle={"font-bold"}

@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PostContent from "../../../blocks/PostBody/PostContent";
-import {
-  animationHandler,
-  AnimationObject,
-  debounce,
-  getOffsetPct,
-} from "../utils";
+import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
@@ -18,45 +13,44 @@ import ArrowDown from "../Atoms/ArrowDown";
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
-const StorySection = ({
-  story,
-  colorTheme,
-  sectionAnchor,
-  nextSection,
-}) => {
+const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
-  const nextId = nextSection;//  && `${sectionAnchor}--${nextSection}`;
+  const nextId = nextSection; //  && `${sectionAnchor}--${nextSection}`;
   //const isActive = activeSection == storyId;
   const [animationList, setAnimationList] = useState([]);
 
   const initiateAnimations = () => {
     let ana = [];
+    const sectionH = document.getElementById(storyId).offsetHeight;
+    const screenH = window.innerHeight;
     // make pct once it gets to full page
-    const f = Math.round(
-      (35 * window.innerHeight) / document.getElementById(storyId).offsetHeight
+    const desktopTriggerPct = Math.round(
+      (35 * screenH) / sectionH
     );
-    
-    let fadeInPct = f;
-    let fadeOutPct = f;
+    const mobileTriggerPct = Math.round(
+      (15 * screenH) /sectionH
+    );
+console.log("trigger", mobileTriggerPct)
+    //let fadeInPct = f;
+    //let fadeOutPct = f;
     let delay = 0;
     let duration = 200;
- 
+
     // Want the animations at
 
     let backgroundIndividualFade: AnimationObject = {
-      triggerPct: fadeInPct/2,
+      triggerPct: mobileTriggerPct,
       windowSizes: ["mobile", "tablet"],
       animation: makeFadeAnimation("storyImg-" + story.anchor, 200, 400),
     };
-   
-    
+
     let backgroundFade: AnimationObject = {
-      triggerPct: fadeOutPct,
-      triggerPcts: {"mobile":fadeOutPct/2,  "tablet":fadeOutPct/2},
+      triggerPct: desktopTriggerPct,
+      triggerPcts: { mobile: mobileTriggerPct, tablet: mobileTriggerPct },
       animation: makeFadeAnimation("contextImg-" + story.anchor, 0, duration),
     };
     let calloutIntro: AnimationObject = {
-      triggerPct: fadeInPct,
+      triggerPct: desktopTriggerPct,
       windowSizes: ["desktop"],
       animation: makeSlideUpAnimation(
         `storyCallOut-${story.anchor}`,
@@ -64,7 +58,7 @@ const StorySection = ({
       ),
     };
     let summaryIntro: AnimationObject = {
-      triggerPct: fadeInPct,
+      triggerPct: desktopTriggerPct,
       //triggerPcts: {"mobile":1,  "tablet":1},
       windowSizes: ["desktop"],
       animation: makeSlideUpAnimation(
@@ -74,7 +68,7 @@ const StorySection = ({
     };
 
     const titleOutTrigger = Math.round(
-      100*(document.getElementById(storyId).offsetHeight - ( window.innerHeight)) / document.getElementById(storyId).offsetHeight
+      (100 * (sectionH -  0.35 * screenH)) /sectionH
     );
     console.log(titleOutTrigger);
     let titleFade: AnimationObject = {
@@ -87,12 +81,13 @@ const StorySection = ({
       backgroundFade,
       calloutIntro,
       summaryIntro,
-      titleFade
-    ]
-  
+      titleFade,
+    ];
+
     if (nextId) {
       let nextStoryArrow: AnimationObject = {
-        triggerPct: fadeInPct,
+        triggerPct: desktopTriggerPct/2,
+        triggerPcts: {"mobile":mobileTriggerPct/2, "tablet":mobileTriggerPct/2},
         animation: makeFadeInAnimation(
           `${story.anchor}-next-arrow`,
           delay + 50
@@ -109,89 +104,85 @@ const StorySection = ({
     const offsetPct = getOffsetPct(storyId);
 
     if (offsetPct < 0 || offsetPct >= 100) return;
+    console.log(offsetPct);
     animationHandler({ offsetPct, animationList });
   };
   useEffect(() => {
-   // if (isActive) {
-      if (animationList.length == 0) {
-        initiateAnimations();
-      }
-      window.removeEventListener("scroll", onScroll);
-      window.addEventListener("scroll", onScroll, { passive: true });
-  //  }
+    // if (isActive) {
+    if (animationList.length == 0) {
+      initiateAnimations();
+    }
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    //  }
 
     return () => window.removeEventListener("scroll", onScroll);
   });
 
-
-  const textColor = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
+  const textColor =
+    colorTheme == "gold" ? "text-gold-dark" : `text-${colorTheme}-900`;
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
-        <div></div>
         <ImageBackgroundContainerDesktop
           story={story}
           colorTheme={colorTheme}
         ></ImageBackgroundContainerDesktop>
-        <div></div>
-
         <div
-          id={`storyExpanded-${story.anchor}`}
-          className={`grid grid-cols-12 responsive-container h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
+          className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
         >
-          <div className="lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl">
-            <div
-              id={`storyTitleDiv-${story.anchor}`}
-              className={`z-20 sticky top-[70px]`}
-            >
-              <div className={`bg-${colorTheme}-50   w-full  pt-md  `}>
-                <h3
-                  id={`storyTitle-${story.anchor}`}
-                  className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
-                >
-                  {story.title}
-                </h3>
-              </div>
-            </div>
-
-            <div className={`lg:h-screen h-[50vh] landscape:h-screen `}></div>
-
-            <div className={` w-full`}>
-              <div
-                id={`storySummary-${story.anchor}`}
-                className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
-              >
-                <PostContent
-                  docData={story.intro.json}
-                  docLinks={story.intro.links}
-                />
-              </div>
-
-              <div
-                id={`storyCallOut-${story.anchor}`}
-                className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
-              >
-                <Callout
-                  body={story.featuredCallOut.body}
-                  attribution={story.featuredCallOut.attribution}
-                  colorTheme={colorTheme}
-                  variant={story.featuredCallOut.variant}
-                  attributionRole={story.featuredCallOut.attributionRole}
-                ></Callout>
-              </div>
-              <div
-                id={`storyContent-${story.anchor}`}
-                className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
-              block pb-[200px]
-            `}
-              >
-                <PostContent
-                  docData={story.body.json}
-                  docLinks={story.body.links}
-                />
-              </div>
+          <div className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}>
+            <div className={`lg:col-start-5 lg:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}  id={`storyTitleDiv-${story.anchor}`}>
+                  <h3
+                    id={`storyTitle-${story.anchor}`}
+                    className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
+                  >
+                    {story.title}
+                  </h3>
             </div>
           </div>
+          <div className={`lg:h-screen h-[50vh] landscape:h-screen `}></div>
+
+          <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
+            <div className="grid grid-cols-12 responsive-container h-auto relative"> 
+
+            <div className="lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl">
+
+            <div
+              id={`storySummary-${story.anchor}`}
+              className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6 lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50 `}
+            >
+              <PostContent
+                docData={story.intro.json}
+                docLinks={story.intro.links}
+              />
+            </div>
+
+            <div
+              id={`storyCallOut-${story.anchor}`}
+              className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 `}
+            >
+              <Callout
+                body={story.featuredCallOut.body}
+                attribution={story.featuredCallOut.attribution}
+                colorTheme={colorTheme}
+                variant={story.featuredCallOut.variant}
+                attributionRole={story.featuredCallOut.attributionRole}
+              ></Callout>
+            </div>
+            <div
+              id={`storyContent-${story.anchor}`}
+              className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
+              block pb-[200px]
+            `}
+            >
+              <PostContent
+                docData={story.body.json}
+                docLinks={story.body.links}
+              />
+            </div>
+          </div>
+          
           <div className="col-span-1 ">
             {nextId && (
               <a
@@ -207,6 +198,8 @@ const StorySection = ({
             )}
           </div>
         </div>
+        </div>
+        </div>
       </div>
     </section>
   );
@@ -219,7 +212,9 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
       <div className={`h-[100px] block lg:hidden`}> </div>
-      <div className={`relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}>
+      <div
+        className={`relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
+      >
         <Image
           id={`storyImg-${story.anchor}`}
           alt={`${story.illustration.description}`}
@@ -243,8 +238,8 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
 
 export default StorySection;
 
-  //windowSize,
- // activeSection,
+//windowSize,
+// activeSection,
 //bg-orange-400 sm:bg-white md:bg-slate-200 lg:bg-blue-500 xl:bg-green-300
 
 /*

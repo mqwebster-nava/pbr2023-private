@@ -97,14 +97,15 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
       <div className="h-[10px]  flex basis-6">
         {reportSections.map((section, i)=>{
           let s = `bg-white`
+          const bg  = section.colorTheme === "gold" ? `bg-${section.colorTheme}-dark` : `bg-${section.colorTheme}-900`;
           
           if(activeSection && (reportSections.findIndex(
             (section) => section.anchor === activeSection
           ) > i) ){
-            s = `bg-${section.colorTheme}-900`
+            s = bg
           }
           return ( <div className={`h-full w-[150px] ${s}`} key={`${section.anchor}-${i}-nav`}>
-            {  <div style={{width:`${activeSection=== section.anchor ? sectionPct: 0}%`}}className={`h-full bg-${section.colorTheme}-900`}></div>}
+            {  <div style={{width:`${activeSection=== section.anchor ? sectionPct: 0}%`}}className={`h-full ${bg}`}></div>}
           </div>)
         })}
       </div>
