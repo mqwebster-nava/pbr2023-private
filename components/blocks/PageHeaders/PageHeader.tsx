@@ -116,7 +116,7 @@ const PageHeader = (props: PageHeaderInterface) => {
       props.eventInfo &&
       "location" in props.eventInfo &&
       props.eventInfo.location
-        ? props.eventInfo.eventTime
+        ? props.eventInfo.location
         : null;
     const registrationLink =
       date &&
