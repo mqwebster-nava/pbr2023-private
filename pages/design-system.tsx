@@ -98,6 +98,12 @@ export default function DesignSystem(props: PageInterface) {
             >
               900
             </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-dark stroke-gold-dark text-gold-dark border-gold-dark from-gold-50 divid-black fill-gold-dark"
+            >
+              900
+            </div>
             </div>
             </div>
     </div>
