@@ -11,7 +11,7 @@ const Callout = ({
   
   return (
     <div
-      className={`bg-${colorTheme}-50  border-y-[2px] border-${colorTheme}-900 w-full  my-md min-h-[100px] md:min-h-[140px]`}
+      className={`bg-${colorTheme}-50  border-y-[2px] border-${colorTheme}-900 w-full pb-md my-md min-h-[100px] md:min-h-[140px]`}
     >
      {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
       <p
