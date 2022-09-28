@@ -80,14 +80,14 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
 
     if (nextId) {
       let nextStoryArrow: AnimationObject = {
-        triggerPct: desktopTriggerPct / 2,
+        triggerPct: 1.5*desktopTriggerPct ,
         triggerPcts: {
-          mobile: mobileTriggerPct / 2,
-          tablet: mobileTriggerPct / 2,
+          mobile: 1.5*mobileTriggerPct ,
+          tablet: 1.5*mobileTriggerPct ,
         },
         animation: makeFadeInAnimation(
           `${story.anchor}-next-arrow`,
-          delay + 50
+          delay
         ),
       };
       ana.push(nextStoryArrow);
