@@ -40,7 +40,7 @@ export const LinkText: React.FC<LinkTextProps> = ({
   const hoverStyles = classNames({
     "hover:text-sage-900 hover:underline decoration-1": color=="sage",
     "hover:text-sage-700": (hoverStyle==="sage" || (!hoverStyle && (color=="black" || color=="gray"))),
-    "hover:underline decoration-1":(hoverStyle==="underlined" || (!hoverStyle && color=="white" ) || (!hoverStyle && color===""))
+    "hover:underline decoration-1 hover:underline-offset-2":(hoverStyle==="underlined" || (!hoverStyle && color=="white" ) || (!hoverStyle && color===""))
   });
  
 
