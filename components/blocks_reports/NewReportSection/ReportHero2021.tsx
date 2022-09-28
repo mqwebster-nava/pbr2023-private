@@ -14,7 +14,6 @@ TODO
 
 
 const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title, 
-  //const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
  
@@ -46,10 +45,6 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
      makeSlideUpAnimation("titleLine2", 400).play();
      makeSlideUpAnimation("titleLine3", 600).play();
      makeFadeInAnimation("heroArrow", 900).play();
-    //  setAnimationList([{
-    //     triggerPct: 5,
-    //     animation: makeSlideUpAnimation("titleLine3", 0),
-    //   }]);
     }
   useEffect(() => {
     const onScroll = () => {
@@ -80,7 +75,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
 
   return (
     <header
-      className={`bg-purple-900 w-full lg:h-[150vh] h-[125vh] `}
+      className={`bg-purple-900 w-full lg:h-[125vh] h-[125vh] `}
       id="reportHeader"
     >
       <div
@@ -114,7 +109,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
               </p>
               <p
                 id="titleLine3"
-                className="type-preset-5 font-serif text-purple-100 opacity-0 pt-xl tracking-wide"
+                className="type-preset-5 font-serif text-purple-100 opacity-0 pt-xl tracking-wide font-light"
               >
                 Each year, Nava outlines its work and progress in a public
                 benefit report.
@@ -125,6 +120,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
                 color="white"
                 size="large"
                 sectionId={"reportHeader"}
+                isAnimated={true}
               />
             </a>
           </div>

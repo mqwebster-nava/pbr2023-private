@@ -1,7 +1,9 @@
 import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Signatures } from "../ReportBody/Signatures/Signatures";
+import { makeSlideUpAnimation } from "./animations";
+import { animationHandler, getOffsetPct } from "./utils";
 
 export interface TextBodyInterface {
   title: string;
@@ -26,31 +28,28 @@ const IntroductionBlock2021 = ({
   variant,
   signatures,
 }: TextBodyInterface) => {
+
   return (
-    <div className="bg-purple-50 mt-3xl ">
-      <div className="responsive-container  py-2xl grid grid-cols-12" id={"intro"}>
+    <div id={`${anchor}`} className="bg-purple-50 mt-3xl">
+      <div  className="responsive-container  py-2xl grid grid-cols-12 ">
         <div className="hidden lg:block lg:col-span-4">
-         <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 ">
-            {title && (
+         <div id={`${anchor}-desktop-title`}className=" text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 ">
               <h2
                 className={`font-serif font-light xl:text-7xl type-preset-1  pb-2xl`}
               >
                 {title}
               </h2>
-            )}
           </div> 
         </div>
         <div className="lg:col-span-7 col-start-0 col-span-11 pr-xl">
-          <div className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 lg:hidden ">
-            {title && (
+          <div id={`${anchor}-mobile-title`} className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 lg:hidden ">
               <h2
                 className={`font-serif font-light xl:text-7xl type-preset-1  pb-2xl`}
               >
                 {title}
               </h2>
-            )}
           </div>
-          <div className="font-serif text-purple-900 py-2xl">
+          <div id={`${anchor}-body`}className="font-serif text-purple-900 pt-sm lg:pt-xl pb-2xl ">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
           </div>
           <Signatures fullerList={true} isNew={true} />

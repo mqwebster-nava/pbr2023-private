@@ -256,7 +256,7 @@ const DesktopSectionTitle = ({
       >
         <div  className="col-span-3 lg:py-auto py-lg">
           {themeNum != null && (
-            <p className="type-preset-6 font-serif ">
+            <p className="type-preset-6 font-serif font-light">
               Theme {themeNum }
             </p>
           )}
@@ -273,7 +273,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-5 pt-md pr-xl divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
+          className={` col-span-5 pt-md pr-xl pb-sm divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
         >
           {stories &&
             stories.map((story) => {
@@ -281,7 +281,7 @@ const DesktopSectionTitle = ({
               const title =  story.title;
               return (
                 <div
-                  className=" font-serif py-sm type-preset-6" key={`${anch2}-toc`}
+                  className=" font-serif py-sm type-preset-6 font-light" key={`${anch2}-toc`}
                 >
                   <LinkText
                     href={anch2}
