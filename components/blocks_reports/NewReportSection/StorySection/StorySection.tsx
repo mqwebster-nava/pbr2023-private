@@ -104,13 +104,12 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
     animationHandler({ offsetPct, animationList });
   };
   useEffect(() => {
-    // if (isActive) {
     if (animationList.length == 0) {
       initiateAnimations();
     }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    //  }
+  
 
     return () => window.removeEventListener("scroll", onScroll);
   });
@@ -120,10 +119,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
+
         <ImageBackgroundContainerDesktop
           story={story}
           colorTheme={colorTheme}
         ></ImageBackgroundContainerDesktop>
+
+
         <div
           className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
         >
@@ -136,7 +138,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
             >
               <h3
                 id={`storyTitle-${story.anchor}`}
-                className={`md:type-preset-3 type-preset-4 font-black ${textColor} py-md  opacity-100 `}
+                className={`md:type-preset-3 type-preset-4 font-black ${textColor} pt-md pb-xl  opacity-100 `}
               >
                 {story.title}
               </h3>
@@ -147,7 +149,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
           <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
             <div className="grid grid-cols-12 responsive-container h-auto relative">
               <div
-                className={`lg:col-start-5 lg:col-span-7 col-start-0 col-span-11 pr-xl `}
+                className={`lg:col-start-5 lg:col-span-7 col-start-0 col-span-11  pr-xl `}
               >
                 <div
                   id={`storySummary-${story.anchor}`}
@@ -186,16 +188,16 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
                 </div>
               </div>
 
-              <div className="col-span-1 ">
+              <div className="col-span-1 block">
                 {nextId && (
                   <a
                     id={`${story.anchor}-next-arrow`}
                     href={`#${nextId}`}
-                    className=" w-full sticky top-[calc(100vh_-_120px)] px-md  pb-md opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
+                    className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
                   >
-                    <p className="type-preset-7  opacity-70 text-center">
+                    <p className="type-preset-7  opacity-0 text-center  group-hover:opacity-100">
                       Next story
-                    </p>
+                    </p> 
                     <ArrowDown sectionId={`${story.anchor}`}></ArrowDown>
                   </a>
                 )}
@@ -203,6 +205,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
             </div>
           </div>
         </div>
+       
       </div>
     </section>
   );
@@ -246,6 +249,21 @@ export default StorySection;
 //bg-orange-400 sm:bg-white md:bg-slate-200 lg:bg-blue-500 xl:bg-green-300
 
 /*
+
+ {/* <a id={`${story.anchor}-next-arrow-mobile`}
+                    href={`#${nextId}`} className="
+                    sticky top-[75vh]  h-[70px] 
+                    w-[70px] ml-auto mb-3xl bg-white 
+                    rounded-full z-40 md:hidden mr-xl
+                    group px-md   flex flex-col items-center justify-center
+                    ">
+
+                    <p className="type-preset-7  opacity-70 text-center hidden group-hover:block">
+                      Next story
+                    </p>  *
+                    <ArrowDown sectionId={`${story.anchor}`} hasStem={false}></ArrowDown>
+             
+        </a> 
 import MobileStorySection from "./MobileStorySection";
 import DesktopStorySection from "./DesktopStorySection";
 */

@@ -7,15 +7,17 @@ export interface ArrowDownInterface {
     size?: ArrowSize;
     color?: ArrowColor ;
     sectionId
+    isAnimated?: boolean;
 }
   
 
 
 
-const ArrowDown = ({size="default", color="black", sectionId}: ArrowDownInterface) => {
+const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false}: ArrowDownInterface) => {
     const w = size=="default" ? "37" : "56";
     const h = size=="default" ? "68" : "103";
     useEffect(() => {
+       if(isAnimated){
         document.getElementById(sectionId+"-line").animate(
             [
               
@@ -31,6 +33,7 @@ const ArrowDown = ({size="default", color="black", sectionId}: ArrowDownInterfac
               fill: 'forwards',
             }
           );
+       }
     });
 
   return (
