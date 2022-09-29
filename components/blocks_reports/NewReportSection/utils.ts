@@ -56,7 +56,10 @@ export const animationHandler = ({
   animationList.forEach((animation, i) => {
     // Check Start
     let triggerPct = (animation.triggerPcts && windowSize in animation.triggerPcts ) ? animation.triggerPcts[windowSize] : animation.triggerPct;
+    
+    // Check if it is not active in the current window size
     if (animation.windowSizes && !animation.windowSizes.includes(windowSize)) {
+      // If it is not active but already ran, reverse it so it resets to it's original state
       if (
         animation.animation.playState == "finished" &&
         animation.animation.playbackRate !== -1 &&
@@ -66,8 +69,9 @@ export const animationHandler = ({
       }
       return;
     }
- 
+    // If it is running, do nothing
     if (animation.animation.playState == "running") return;
+    
     if (
       offsetPct > triggerPct &&
       ((animation.animation.playbackRate == -1 &&
@@ -81,7 +85,6 @@ export const animationHandler = ({
       ) {
         animation.animation.reverse();
       } else {
-        //console.log("an started", animation.animation )
         animation.animation.play();
       }
     }

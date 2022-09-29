@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
 type ArrowSize = 'large' | "default";
-type ArrowColor = 'white' | 'black';
+//type ArrowColor = 'white' | 'black';
 
 export interface ArrowDownInterface {
     size?: ArrowSize;
-    color?: ArrowColor ;
+    color?: string ;
     sectionId
     isAnimated?: boolean;
 }
@@ -41,6 +41,7 @@ const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false}:
     <svg
       width={w}
       height={h}
+      className={`stroke-${color}`}
       viewBox="0 0 68 103"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +49,6 @@ const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false}:
       <path
         id={`${sectionId}-line`}
         d="M27.998 1V101.613"
-        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -57,7 +57,6 @@ const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false}:
       />
       <path
         d="M54.9964 74.5254L27.9982 101.614L1 74.5254"
-        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

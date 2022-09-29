@@ -70,36 +70,35 @@ const SectionIntro = ({ section, i}) => {
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px]`}>
       <div
-        className="responsive-container  "
-        id={section.anchor}
+        className="responsive-container"
       >
         <div className="lg:pt-4xl pt-3xl ">
         <p
-            className={`text-${textColor} type-preset-5 pb-sm max-w-screen-md mr-auto font-serif font-light  opacity-0 motion-reduce:opacity-100`}
+            className={`text-${textColor} type-preset-5 pb-sm max-w-screen-md mr-auto font-serif font-light  opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
             id={`themeNum-${section.anchor}`}
           >
             Theme {i}
           </p>
           <h2
-            className={`font-black text-${textColor} md:text-7xl type-preset-1 pb-3xl max-w-screen-md mr-auto opacity-0 motion-reduce:opacity-100`}
+            className={`font-black text-${textColor} md:text-7xl type-preset-1 pb-3xl max-w-screen-md mr-auto opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
             id={`h2-${section.anchor}`}
           >
             {section.title}
           </h2>
           <div
           id={`sectionBody-${section.anchor}`}
-          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg`}>
+          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg focus:opacity-100`}>
             <MarkdownComponent content={section.body} />
           </div>
           <div
           id={`sectionStories-${section.anchor}`}
-          className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100`}>
+          className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100 focus:opacity-100`}>
           <h3 className={`font-bold pb-sm text-${textColor} `}>Scroll to see stories</h3>
           <hr className={`border-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
               return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm" key={`sectionIntro-${story.anchor}`}>
-             <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={ "white"}>
+             <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={ "white"} ariaLabel={`Skip to ${story.title}`}>
               {story.title}
              </LinkText>
               </div>)

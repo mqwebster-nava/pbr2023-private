@@ -3,6 +3,7 @@ import ResponsiveContentContainer from "components/blocks/ResponsiveContentConta
 import React, { useEffect, useState } from "react";
 import { Signatures } from "../ReportBody/Signatures/Signatures";
 import { makeSlideUpAnimation } from "./animations";
+import ArrowDown from "./Atoms/ArrowDown";
 import { animationHandler, getOffsetPct } from "./utils";
 
 export interface TextBodyInterface {
@@ -28,7 +29,7 @@ const IntroductionBlock2021 = ({
   variant,
   signatures,
 }: TextBodyInterface) => {
-
+const nextId = 'pilots';
   return (
     <div id={`${anchor}`} className="bg-purple-50 mt-3xl">
       <div  className="responsive-container  py-2xl grid grid-cols-12 ">
@@ -54,6 +55,21 @@ const IntroductionBlock2021 = ({
           </div>
           <Signatures fullerList={true} isNew={true} />
         </div>
+        <div className="col-span-1 block">
+                {nextId && (
+                  <a
+                    id={`intro-next-arrow`}
+                    href={`#${nextId}`}
+                    aria-label={`Skip to next section`}
+                    className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-100 motion-reduce:opacity-100 flex flex-col items-center"
+                  >
+                    {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
+                      Next <br/>story
+                    </p>  */}
+                    <ArrowDown sectionId={`intro`}></ArrowDown>
+                  </a>
+                )}
+            </div>
       </div>
     </div>
   );

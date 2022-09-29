@@ -273,7 +273,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-5 pt-md pr-xl pb-sm divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100`}
+          className={` col-span-5 pt-md pr-xl pb-sm divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
           {stories &&
             stories.map((story) => {

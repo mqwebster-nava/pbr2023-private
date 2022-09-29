@@ -115,7 +115,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
   });
 
   const textColor =
-    colorTheme == "gold" ? "text-gold-dark" : `text-${colorTheme}-900`;
+    colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
+    const c =
+    colorTheme == "gold" ? "gold-dark" : `${colorTheme}-900`;
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
@@ -193,12 +195,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
                   <a
                     id={`${story.anchor}-next-arrow`}
                     href={`#${nextId}`}
+                    aria-label={`Skip to next story`}
                     className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
                   >
-                    <p className="type-preset-7  opacity-0 text-center  group-hover:opacity-100">
-                      Next story
-                    </p> 
-                    <ArrowDown sectionId={`${story.anchor}`}></ArrowDown>
+                    {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
+                      Next <br/>story
+                    </p>  */}
+                    <ArrowDown sectionId={`${story.anchor}`} color={c}></ArrowDown>
                   </a>
                 )}
               </div>

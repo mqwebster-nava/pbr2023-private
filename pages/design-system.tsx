@@ -28,7 +28,7 @@ export default function DesignSystem(props: PageInterface) {
       <PageTemplate {...page} />
       <div className="responsive-container space-y-2  divide-y divide-black">
         <div>
-          <div className="type-preset-5 font-sans font-black pt-3xl "> Colors </div>
+          <div className="type-preset-5 font-sans font-black pt-3xl stroke-black "> Colors </div>
           <hr className="pb-xl" />
           <div>Purple</div>
           <div className="h-32 flex ">
@@ -94,13 +94,19 @@ export default function DesignSystem(props: PageInterface) {
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50 divid-black fill-gold-900"
+              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50 divid-black fill-gold-900 "
             >
               900
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
               className="bg-gold-dark stroke-gold-dark text-gold-dark border-gold-dark from-gold-50 divid-black fill-gold-dark"
+            >
+              900
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-dark stroke-gold-dark text-gold-darktext border-gold-dark from-gold-50 divid-black fill-gold-dark"
             >
               900
             </div>

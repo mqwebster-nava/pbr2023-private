@@ -6,7 +6,7 @@ const Callout = ({
   attributionRole = null
 }) => {
 
-  const textColor = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
+  const textColor = colorTheme=="gold"? "text-gold-darktext" : `text-${colorTheme}-900`;
   const Color = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
   
   return (
