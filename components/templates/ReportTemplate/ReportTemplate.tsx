@@ -30,13 +30,15 @@ const ReportTemplate: React.FC<PageInterface> = ({
       
       ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry}  />,
       ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} {...entry}  />,
-      ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
+      //ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
           {entry.storiesCollection.items.map((story, j) => {
-           let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
-           if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) nextSection = contentBlocks[index+1].anchor
+          // If another story next
+          let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
+          // if no other story left but 
+          if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) nextSection = contentBlocks[index+1].anchor
            return (
             <StorySection
               key={story.anchor}
@@ -51,7 +53,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
       :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>
-
+      :(entry.type=='Conclusion 2021') ? <ReportConclusion key={index} {...entry}/>
       :null //contentBlocks={contentBlocks}
     };
     return typename in componentMap ? (
@@ -60,6 +62,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       <div key={index}></div>
     );
   };
+
   return (
     <main id="main">
    { slug=="/public-benefit-reports/2021" && <ReportNavbar
@@ -123,6 +126,39 @@ export function getSectionsInfo(contentBlocks) {
   return output;
 }
 
+
+
+export default ReportTemplate;
+
+
+  //const [activeSection, setActiveSection] = useState(null);
+  //const [windowSize, setWindowSize] = useState(null);
+
+  // useEffect(() => {
+  //   // const onScroll = () => {
+  //   //   reportSections.forEach((section, i) => {
+  //   //     if (checkActive({offsetPct:getOffsetPct(section.anchor)}) &&
+  //   //       activeSection != section.anchor)
+  //   //       setActiveSection(section.anchor);
+  //   //   });
+  //   // };
+  //   function handleResize() {
+  //    const size = getScreenSize();
+  //    if(size && size!==windowSize) setWindowSize(size);
+  //   }
+  //   handleResize();
+  //   window.removeEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize, { passive: true });
+  //   // Empty array ensures that effect is only run on mount
+  //  // window.removeEventListener("scroll", onScroll);
+  //  // window.addEventListener("scroll", onScroll, { passive: true });
+  //   return () => {
+  //  //   window.removeEventListener("scroll", onScroll);
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // });
+
+  /*
 export function sortDocIntoH2Sections(contentBlocks) {
   let output = [];
   function addSection(title, anchor, type, storyId, colorTheme) {
@@ -159,35 +195,4 @@ export function sortDocIntoH2Sections(contentBlocks) {
     });
   });
   return output;
-}
-
-
-export default ReportTemplate;
-
-
-  //const [activeSection, setActiveSection] = useState(null);
-  //const [windowSize, setWindowSize] = useState(null);
-
-  // useEffect(() => {
-  //   // const onScroll = () => {
-  //   //   reportSections.forEach((section, i) => {
-  //   //     if (checkActive({offsetPct:getOffsetPct(section.anchor)}) &&
-  //   //       activeSection != section.anchor)
-  //   //       setActiveSection(section.anchor);
-  //   //   });
-  //   // };
-  //   function handleResize() {
-  //    const size = getScreenSize();
-  //    if(size && size!==windowSize) setWindowSize(size);
-  //   }
-  //   handleResize();
-  //   window.removeEventListener("resize", handleResize);
-  //   window.addEventListener("resize", handleResize, { passive: true });
-  //   // Empty array ensures that effect is only run on mount
-  //  // window.removeEventListener("scroll", onScroll);
-  //  // window.addEventListener("scroll", onScroll, { passive: true });
-  //   return () => {
-  //  //   window.removeEventListener("scroll", onScroll);
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // });
+}*/

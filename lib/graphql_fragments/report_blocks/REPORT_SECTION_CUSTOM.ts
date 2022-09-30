@@ -7,6 +7,7 @@ sys {
 title
 anchor
 type
+colorTheme
 richBody{
     ${POST_BODY}
   }

@@ -2,9 +2,10 @@ import { LinkText } from "components/atom";
 import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
 import { useEffect, useState } from "react";
+import PostContent from "components/blocks/PostBody/PostContent";
 
 
-const ReportConclusion = ({title, body}) => {
+const ReportConclusion = ({title, richBody, anchor}) => {
   const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
@@ -12,24 +13,29 @@ const ReportConclusion = ({title, body}) => {
   const initiateAnimations= () =>{
     let ana  = [
       {
-        triggerPct: -20,
+        triggerPct: -30,
         animation: makeSlideUpAnimation("conclusion-text", 0),
+        noRepeat:true,
       },
       {
-        triggerPct: -5,
+        triggerPct: -15,
         animation: makeSlideUpAnimation("conclusion-next", 0),
+        noRepeat:true,
+      },
+      {
+        triggerPct: -15,
+        animation: makeSlideUpAnimation("conclusion-footer1", 0),
+        noRepeat:true,
       },
       {
         triggerPct: -5,
-        animation: makeSlideUpAnimation("conclusion-footer1", 0),
-      },
-      {
-        triggerPct: 5,
         animation: makeSlideUpAnimation("conclusion-footer2", 0),
+        noRepeat:true,
       },
       {
-        triggerPct: 10,
+        triggerPct: 0,
         animation: makeSlideUpAnimation("conclusion-footer3", 0),
+        noRepeat:true,
       }
     ]
   
@@ -40,7 +46,7 @@ const ReportConclusion = ({title, body}) => {
     useEffect(() => {
       const onScroll = () => {
         
-        const offsetPct = getOffsetPct("reportConclusion");
+        const offsetPct = getOffsetPct(anchor);
         const _isActive = offsetPct >= -40 && offsetPct < 100 ;
         if (_isActive !== isActive) setIsActive(_isActive);
         if (!_isActive) return;
@@ -70,7 +76,7 @@ const ReportConclusion = ({title, body}) => {
 
 
   return (
-    <section id="reportConclusion" className="w-full min-h-[150vh] bg-gold-700">
+    <section id={anchor} className="w-full min-h-[150vh] bg-gold-700">
       <div className="responsive-container py-2xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
         <div className="relative h-full">
 
@@ -83,9 +89,12 @@ const ReportConclusion = ({title, body}) => {
         <h2 className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
           {title}
         </h2>
-        <p id={"conclusion-text"} className="type-preset-5 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
-        {body}
-        </p>
+        <div id={"conclusion-text"} className="type-preset-6 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
+        <PostContent
+                      docData={richBody.json}
+                      docLinks={richBody.links}
+                    />
+        </div>
         <p id={"conclusion-next"}  className="type-preset-5 font-bold pt-[70px] pb-sm opacity-0 motion-reduce:opacity-100">Where next?</p>
         <div className="flex gap-lg flex-col md:flex-row pb-2xl">
           <div id={"conclusion-footer1"}className="w-full md:w-1/3 flex flex-col gap-sm pt-xs font-serif divide-y-2 divide-black border-t-2 border-black opacity-0 motion-reduce:opacity-100">
