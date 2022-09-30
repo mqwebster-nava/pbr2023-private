@@ -79,6 +79,17 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
     ];
 
     if (nextId) {
+      
+      const storyOutTrigger = Math.round((100 * (sectionH - screenH)) / sectionH);
+      let nextStoryArrowFade: AnimationObject = {
+        triggerPct: storyOutTrigger ,
+        animation: makeFadeAnimation(
+          `${story.anchor}-next-arrow-container`,
+          0,
+          200
+        ),
+      };
+       ana.push(nextStoryArrowFade);
       let nextStoryArrow: AnimationObject = {
         triggerPct: 1.5*desktopTriggerPct ,
         triggerPcts: {
@@ -190,7 +201,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
                 </div>
               </div>
 
-              <div className="col-span-1 block">
+              <div className="col-span-1 block opacity-100" id={`${story.anchor}-next-arrow-container`} >
                 {nextId && (
                   <a
                     id={`${story.anchor}-next-arrow`}

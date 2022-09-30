@@ -93,11 +93,11 @@ const SectionIntro = ({ section, i}) => {
           <div
           id={`sectionStories-${section.anchor}`}
           className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100 focus:opacity-100`}>
-          <h3 className={`font-bold pb-sm text-${textColor} `}>Scroll to see stories</h3>
+          <h3 className={`font-bold pb-md text-${textColor} `}>See how</h3>
           <hr className={`border-${textColor} `}/>
           <div className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md`}>
             {section.items.map((story)=>{
-              return ( <div className="w-full md:w-1/3  type-preset-6 pr-sm" key={`sectionIntro-${story.anchor}`}>
+              return ( <div className="w-full md:w-1/3  type-preset-6 pr-lg" key={`sectionIntro-${story.anchor}`}>
              <LinkText href={`#${section.anchor}--${story.anchor}`} variant={"default"} hoverStyle="underlined" color={ "white"} ariaLabel={`Skip to ${story.title}`}>
               {story.title}
              </LinkText>

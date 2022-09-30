@@ -4,19 +4,19 @@ import { PageInterface } from "shared_interfaces/page_interface";
 //https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
 
-const dscale= 1.25, mscale = 1.1, droot=18, mroot=16;
-const fontHelper = (size) => {
-  let drem= 1; let mrem =1;
-  if( size > 6) {
-    drem = 1/(Math.pow(dscale,(size-6)));
-    mrem = 1/(Math.pow(mscale,(size-6)));
-  }else if (size<6){
-    drem = Math.pow(dscale,(6-size));
-    mrem = Math.pow(mscale,(6-size));
-  }
-  let m = mrem*mroot, t=mrem*droot, d=drem*droot;
-  return `desktop ${d.toFixed(1)} px / tablet ${t.toFixed(1)} px /mobile ${m.toFixed(1)}px`;
-}
+//const dscale= 1.25, mscale = 1.1, droot=18, mroot=16;
+// const fontHelper = (size) => {
+//   let drem= 1; let mrem =1;
+//   if( size > 6) {
+//     drem = 1/(Math.pow(dscale,(size-6)));
+//     mrem = 1/(Math.pow(mscale,(size-6)));
+//   }else if (size<6){
+//     drem = Math.pow(dscale,(6-size));
+//     mrem = Math.pow(mscale,(6-size));
+//   }
+//   let m = mrem*mroot, t=mrem*droot, d=drem*droot;
+//   return `desktop ${d.toFixed(1)} px / tablet ${t.toFixed(1)} px /mobile ${m.toFixed(1)}px`;
+// }
 
 
 
@@ -34,7 +34,7 @@ export default function DesignSystem(props: PageInterface) {
           <div className="h-32 flex ">
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-50 stroke-purple-50"
+              className="bg-purple-50 stroke-white"
             >
               50
             </div>

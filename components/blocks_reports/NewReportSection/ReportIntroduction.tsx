@@ -1,3 +1,5 @@
+
+
 import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useEffect, useState } from "react";
@@ -50,7 +52,7 @@ const nextId = 'pilots';
                 {title}
               </h2>
           </div>
-          <div id={`${anchor}-body`}className="font-serif text-purple-900 pt-sm lg:pt-xl pb-2xl ">
+          <div id={`${anchor}-body`}className="font-serif font-light text-purple-900 pt-sm lg:pt-xl pb-2xl ">
             <PostContent docData={richBody.json} docLinks={richBody.links} />
           </div>
           <Signatures fullerList={true} isNew={true} />
@@ -66,7 +68,7 @@ const nextId = 'pilots';
                     {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
                       Next <br/>story
                     </p>  */}
-                    <ArrowDown sectionId={`intro`}></ArrowDown>
+                    <ArrowDown sectionId={`intro`} color={"purple-900"}></ArrowDown>
                   </a>
                 )}
             </div>

@@ -101,7 +101,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
           </div>
           <div className=" w-full  lg:w-1/4 h-full flex flex-col justify-between pt-3xl gap-xl">
             <div>
-              <p id="titleLine1" className=" type-preset-5 font-serif text-white font-bold tracking-wide opacity-0 motion-reduce:opacity-100">
+              <p id="titleLine1" className=" type-preset-5  text-white font-bold  opacity-0 motion-reduce:opacity-100">
                 Equity that lasts:
               </p>
               <p id="titleLine2" className="type-preset-5 font-serif text-white font-light tracking-wide opacity-0 motion-reduce:opacity-100">

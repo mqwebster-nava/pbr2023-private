@@ -40,6 +40,7 @@ export interface AnimationObject {
   animation?: any;
   windowSizes?: Array<WindowSize>;
   triggerPcts?: any;
+  doesRepeate?:boolean;
 }
 
 export interface AnimationHandlerInterface {
@@ -71,7 +72,7 @@ export const animationHandler = ({
     }
     // If it is running, do nothing
     if (animation.animation.playState == "running") return;
-    
+
     if (
       offsetPct > triggerPct &&
       ((animation.animation.playbackRate == -1 &&
