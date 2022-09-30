@@ -1,3 +1,13 @@
+// TODO
+// 1 Alignment of intro text with the Theme 1
+// 2. More padding with the for the bottom of stories
+// 3. Arrow to fade in
+// 4. Arrow to be consistent with the the location of the stories
+
+
+
+
+
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import { makeSlideUpAnimation } from "../animations";
@@ -13,11 +23,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
 
   const initiateAnimations= () =>{
     let animations = []
-    let line1Fade: AnimationObject = {
-      triggerPct:3,
-      animation: makeSlideUpAnimation("desktop-description1", 0),
-    };
-    animations.push(line1Fade);
+
 
     //Introing the secitons
     contentBlocks
@@ -29,34 +35,44 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
         let a: AnimationObject = {
           triggerPct:-30 + 10*i,
           animation: makeSlideUpAnimation("themenum-"+ block.anchor, 0),
+          noRepeat:true
         };
         animations.push(a);
       
         let b: AnimationObject = {
           triggerPct:20,
-          animation: makeSlideUpAnimation("stories-"+ block.anchor, 0),
+          animation: makeSlideUpAnimation("stories-"+ block.anchor, i*100),
+          noRepeat:true
         };
         animations.push(b);
       })
       animations.push( {
-        triggerPct:10,
+        triggerPct:0,
         animation: makeSlideUpAnimation("themenum-reportConclusion", 0),
+        noRepeat:true
       });
       animations.push( {
         triggerPct:-30,
         animation: makeSlideUpAnimation("themenum-intro", 0),
+        noRepeat:true
       });
 
-
+      let line1Fade: AnimationObject = {
+        triggerPct:0,
+        animation: makeSlideUpAnimation("desktop-description1", 0),
+        noRepeat:true
+      };
+      animations.push(line1Fade);
       // Part 2
       let line2Fade: AnimationObject = {
         triggerPct:20,
         animation: makeSlideUpAnimation("desktop-description2", 0),
+        noRepeat:true
       };
       animations.push(line2Fade);
   
     setAnimationList(animations);
-      
+      return animations;
   }
 
 
@@ -67,7 +83,12 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
       animationHandler({offsetPct, animationList});
     }
     
-    if(animationList.length==0) initiateAnimations();
+    if(animationList.length==0){
+
+     const a = initiateAnimations();
+     const offsetPct = getOffsetPct(anchor);
+     animationHandler({offsetPct, animationList:a});
+    }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -76,7 +97,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
-    <section className={`w-full lg:h-[200vh] bg-white relative`} id={anchor}>
+    <section className={`w-full lg:h-[150vh] bg-white relative`} id={anchor}>
       <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection contentBlocks={contentBlocks}/>
     </section>
@@ -168,10 +189,10 @@ const MobileSection = ({contentBlocks}) => {
 const DesktopSection = ({contentBlocks}) => {
   return (
     <>
-    <div className="h-[160px]  hidden lg:block"></div>
+    {/* <div className="h-[160px]  hidden lg:block"></div> */}
     <div className="lg:sticky top-[70px] lg:min-h-[calc(100vh_-_70px)] hidden lg:block">
-      <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ">
-        <div className="w-full lg:w-3/4 h-full flex flex-col">
+      <div className="pl-xl md:pl-4xl md:pr-0  flex flex-col-reverse lg:flex-row-reverse gap-lg h-full 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl align-stretch">
+        <div className="w-full lg:w-3/4 flex flex-col">
           <DesktopSectionTitle
             title={"Letter from leadership"}
             anchor={"intro"}
@@ -215,9 +236,10 @@ const DesktopSection = ({contentBlocks}) => {
             fontStyle={"font-serif"}
           />
         </div>
-        <div className="w-full lg:w-1/4 h-full bg-white pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between">
+       
+        <div className="w-full lg:w-1/4 h-full lg:min-h-[calc(100vh_-_70px)]  pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between aling-start">
          <div>
-          <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-sm opacity-0 motion-reduce:opacity-100`}>
+          <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-lg opacity-0 motion-reduce:opacity-100`}>
             Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
           <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
@@ -225,7 +247,7 @@ const DesktopSection = ({contentBlocks}) => {
             worked to build equity by designing public services for all.
           </p>
           </div>
-          <a  id={"tocArrow"} className="hidden md:block pb-[160px] pt-lg" href={"#intro"} aria-label={"skip to Letter from leadership"}>
+          <a  id={"tocArrow"} className="hidden md:block  mb-2xl pt-lg" href={"#intro"} aria-label={"skip to Letter from leadership"}>
               <ArrowDown
                 color="black"
                 size="default"

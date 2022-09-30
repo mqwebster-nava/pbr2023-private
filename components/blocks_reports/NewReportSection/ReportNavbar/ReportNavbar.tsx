@@ -8,8 +8,11 @@ import ReportMenu from "./ReportMenu";
 const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
 const getBottom = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - extraOffset;
 
+const getBottomEnd = (el, extraOffset)=>getTop(el,extraOffset)+ el.offsetHeight - window.innerHeight;
+
 
 const ReportNavbar = ({ reportSections, contentBlocks}) => { //
+
   const [activeSection, setActiveSection] = useState(null);
   const [sectionPct, setSectionPct] = useState(null);
   const [isShowingMenu, setIsShowingMenu] = useState(false);
@@ -43,19 +46,25 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
       reportSections.forEach((section, i ) => {
         checkIfSectionIsActive(section, offset, i);
       });
-      
+     
       if (!activeSection) return;
       const secElement = document.getElementById(activeSection);
       if(!secElement) return;
-      const topTrigger =  getTop(secElement, 30);
-      const bottomTrigger =  getBottom(secElement, 30)
+    
      
-      const offsetPct =  Math.round(
+      const topTrigger =  getTop(secElement, 30);
+       // TODO add a way to adjust bottom for last element, IT should be the offset from the
+       const isEnd = reportSections.findIndex((sec) => sec.anchor === activeSection)===reportSections.length-1;
+      
+      const bottomTrigger =  isEnd ? getBottomEnd(secElement, 30) : getBottom(secElement, 30)
+     
+     let offsetPct =  Math.round(
         (100 * (offset - topTrigger)) /
           (bottomTrigger - topTrigger)
       );
 
-      if(offsetPct < 0  || offsetPct >=100)return;
+  if(isEnd && offsetPct>90) offsetPct=100;
+      if(offsetPct < 0  || offsetPct >100)return;
       setSectionPct(offsetPct);
     };
 

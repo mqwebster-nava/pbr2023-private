@@ -75,7 +75,7 @@ const ReportHero2021 = ({ }:PageHeaderInterface) => { //id, title,
 
   return (
     <header
-      className={`bg-purple-900 w-full lg:h-[125vh] h-[125vh] `}
+      className={`bg-purple-900 w-full lg:h-[125vh] h-[125vh] mb-0 lg:mb-[160px]`}
       id="reportHeader"
     >
       <div

@@ -40,7 +40,7 @@ export interface AnimationObject {
   animation?: any;
   windowSizes?: Array<WindowSize>;
   triggerPcts?: any;
-  doesRepeate?:boolean;
+  noRepeat?:boolean;
 }
 
 export interface AnimationHandlerInterface {
@@ -56,6 +56,7 @@ export const animationHandler = ({
   const windowSize = getScreenSize();
   animationList.forEach((animation, i) => {
     // Check Start
+    if(animation.animation.playState == "finished" && animation.noRepeat)return;
     let triggerPct = (animation.triggerPcts && windowSize in animation.triggerPcts ) ? animation.triggerPcts[windowSize] : animation.triggerPct;
     
     // Check if it is not active in the current window size

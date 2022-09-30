@@ -10,26 +10,30 @@ const SectionIntro = ({ section, i}) => {
       let ana  = []
       const windowSizes:Array<WindowSize> = ["mobile", "tablet", "desktop"]
       let ThemeSlideUp: AnimationObject = {
-        triggerPct: -20,
+        triggerPct: -40,
+        noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-90},
         animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
-        triggerPct:  -10,
+        triggerPct:  -30,
+        noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-80},
         animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
-        triggerPct: 0,
+        triggerPct: -10,
+        noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
       };
       
       let SectionStoriesSlideUp: AnimationObject = {
-        triggerPct:  0,
+        triggerPct:  -10,
+        noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
@@ -49,7 +53,7 @@ const SectionIntro = ({ section, i}) => {
       
       const onScroll = () => {
         const offsetPct = getOffsetPct(section.anchor);
-        if (offsetPct < -75 || offsetPct >= 100) return;
+        if (offsetPct < -75 || offsetPct >= 50) return;
         animationHandler({offsetPct, animationList});
       };
         if(animationList.length==0){
