@@ -37,15 +37,21 @@ const ReportTemplate: React.FC<PageInterface> = ({
           {entry.storiesCollection.items.map((story, j) => {
           // If another story next
           let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
+          let nextSectionTitle =  entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].title : null;
           // if no other story left but 
-          if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) nextSection = contentBlocks[index+1].anchor
-           return (
+          if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) {
+            nextSection = contentBlocks[index+1].anchor;
+            nextSectionTitle = contentBlocks[index+1].title;
+          }
+           
+          return (
             <StorySection
               key={story.anchor}
               story={story}
               colorTheme={entry.colorTheme}
               sectionAnchor={entry.anchor}
               nextSection={nextSection}
+              nextSectionTitle={nextSectionTitle}
             />
           )})}
         </div>

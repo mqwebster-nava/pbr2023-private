@@ -9,6 +9,7 @@ sys {
 title
 anchor
 variant
+colorTheme
 richBody{
     ${REPORT_BODY}
   }

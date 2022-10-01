@@ -70,6 +70,12 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
         noRepeat:true
       };
       animations.push(line2Fade);
+      let arrowFade: AnimationObject = {
+        triggerPct:20,
+        animation: makeSlideUpAnimation("tocArrow", 0),
+        noRepeat:true
+      };
+      animations.push(arrowFade);
   
     setAnimationList(animations);
       return animations;
@@ -247,7 +253,7 @@ const DesktopSection = ({contentBlocks}) => {
             worked to build equity by designing public services for all.
           </p>
           </div>
-          <a  id={"tocArrow"} className="hidden md:block  mb-2xl pt-lg" href={"#intro"} aria-label={"skip to Letter from leadership"}>
+          <a  id={"tocArrow"} className="hidden md:block  mb-4xl pt-lg opacity-0 motion-reduce:opacity-100" href={"#intro"} aria-label={"skip to Letter from leadership"}>
               <ArrowDown
                 color="black"
                 size="default"

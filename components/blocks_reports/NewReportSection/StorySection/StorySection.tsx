@@ -11,9 +11,13 @@ import {
 import Callout from "components/blocks/PostBody/Callout";
 import ArrowDown from "../Atoms/ArrowDown";
 
+
 // TODO  When expand need to initiate animations again to get based on larger size
 
-const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
+
+
+
+const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection; //  && `${sectionAnchor}--${nextSection}`;
   //const isActive = activeSection == storyId;
@@ -206,7 +210,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection }) => {
                   <a
                     id={`${story.anchor}-next-arrow`}
                     href={`#${nextId}`}
-                    aria-label={`Skip to next story`}
+                    aria-label={`Skip to ${nextSectionTitle}`}
                     className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
                   >
                     {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
