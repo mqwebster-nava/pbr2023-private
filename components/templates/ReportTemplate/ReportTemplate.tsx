@@ -38,10 +38,12 @@ const ReportTemplate: React.FC<PageInterface> = ({
           // If another story next
           let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
           let nextSectionTitle =  entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].title : null;
+          let nextSectionType = "story";
           // if no other story left but 
           if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) {
             nextSection = contentBlocks[index+1].anchor;
             nextSectionTitle = contentBlocks[index+1].title;
+            nextSectionType="section"
           }
            
           return (
@@ -52,6 +54,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
               sectionAnchor={entry.anchor}
               nextSection={nextSection}
               nextSectionTitle={nextSectionTitle}
+              nextSectionType={nextSectionType}
             />
           )})}
         </div>

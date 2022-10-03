@@ -17,7 +17,7 @@ import ArrowDown from "../Atoms/ArrowDown";
 
 
 
-const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle }) => {
+const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle, nextSectionType="story" }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection; //  && `${sectionAnchor}--${nextSection}`;
   //const isActive = activeSection == storyId;
@@ -48,14 +48,6 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
       triggerPcts: { mobile: mobileTriggerPct, tablet: mobileTriggerPct },
       animation: makeFadeAnimation("contextImg-" + story.anchor, 0, duration),
     };
-    let calloutIntro: AnimationObject = {
-      triggerPct: desktopTriggerPct,
-      windowSizes: ["desktop"],
-      animation: makeSlideUpAnimation(
-        `storyCallOut-${story.anchor}`,
-        delay + 50
-      ),
-    };
     let summaryIntro: AnimationObject = {
       triggerPct: desktopTriggerPct,
       //triggerPcts: {"mobile":1,  "tablet":1},
@@ -66,6 +58,15 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
       ),
     };
 
+    let calloutIntro: AnimationObject = {
+      triggerPct: desktopTriggerPct,
+      windowSizes: ["desktop"],
+      animation: makeSlideUpAnimation(
+        `storyCallOut-${story.anchor}`,
+        delay + 50
+      ),
+    };
+  
     const titleOutTrigger = Math.round(
       (100 * (sectionH - 0.35 * screenH)) / sectionH
     );
@@ -109,6 +110,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     }
 
     setAnimationList(ana);
+    return ana;
   };
 
   const onScroll = () => {
@@ -120,7 +122,8 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
   };
   useEffect(() => {
     if (animationList.length == 0) {
-      initiateAnimations();
+      const ana = initiateAnimations();
+      animationHandler({ offsetPct: getOffsetPct(storyId), animationList: ana});
     }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -161,7 +164,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
               </h3>
             </div>
           </div>
-          <div className={`lg:h-screen h-[50vh] landscape:h-screen `}></div>
+          <div className={`lg:h-[80vh] h-[50vh] landscape:h-[80vh] `}></div>
 
           <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
             <div className="grid grid-cols-12 responsive-container h-auto relative">
@@ -211,12 +214,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     id={`${story.anchor}-next-arrow`}
                     href={`#${nextId}`}
                     aria-label={`Skip to ${nextSectionTitle}`}
-                    className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
+                    className="group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
                   >
-                    {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
-                      Next <br/>story
-                    </p>  */}
-                    <ArrowDown sectionId={`${story.anchor}`} color={c}></ArrowDown>
+                    <p className={`type-preset-7  text-${c} opacity-100 lg:opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90 lg:rotate-0 w-[100px] lg:w-auto -mb-lg lg:mb-0`}>
+                      Next <br className="hidden lg:block"/>{nextSectionType}
+                    </p> 
+                    <ArrowDown sectionId={`${story.anchor}`} color={c} isMobileHidden={true}></ArrowDown>
+
                   </a>
                 )}
               </div>

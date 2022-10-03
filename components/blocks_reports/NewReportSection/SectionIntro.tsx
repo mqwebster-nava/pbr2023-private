@@ -72,7 +72,7 @@ const SectionIntro = ({ section, i}) => {
     const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
 
     return (
-      <section id={`${section.anchor}`} className="h-auto md:h-[180vh]">
+      <section id={`${section.anchor}`} className="h-auto md:h-[140vh]">
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px]`}>
       <div

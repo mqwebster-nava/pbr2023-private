@@ -254,14 +254,22 @@ const DesktopSection = ({contentBlocks}) => {
             worked to build equity by designing public services for all.
           </p>
           </div>
-          <a  id={"tocArrow"} className="hidden md:block  mb-4xl pt-lg opacity-0 motion-reduce:opacity-100" href={"#intro"} aria-label={"skip to Letter from leadership"}>
+          <a  
+          id={"tocArrow"} 
+          className="group hidden md:block  mb-4xl pt-lg opacity-0 motion-reduce:opacity-100" 
+          href={"#intro"} 
+          aria-label={"skip to Letter from leadership"}
+          >
+            <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90">
+                      Next <br/>section
+                    </p> 
               <ArrowDown
                 color="black"
                 size="default"
                 sectionId={"toc"}
               />
             </a>
-       
+            
         </div>
       </div>
     </div>

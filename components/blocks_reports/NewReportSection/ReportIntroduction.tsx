@@ -65,9 +65,9 @@ const nextId = 'pilots';
                     aria-label={`Skip to next section`}
                     className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-100 motion-reduce:opacity-100 flex flex-col items-center"
                   >
-                    {/* <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100">
-                      Next <br/>story
-                    </p>  */}
+                    <p className="type-preset-7  text-purple-900 opacity-0   group-hover:opacity-100 group-focus:opacity-100">
+                      Next <br/>section
+                    </p> 
                     <ArrowDown sectionId={`intro`} color={"purple-900"}></ArrowDown>
                   </a>
                 )}
