@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
+import SlideDown from "react-slidedown";
 
 
 const getTop = (el, extraOffset)=>el.offsetTop - extraOffset;
@@ -120,12 +121,17 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
         })}
       </div>
       <div className="overflow-scroll">
+      <SlideDown>
         {isShowingMenu ? (
+         
+
+        
           <ReportMenu
             contentBlocks={contentBlocks}
             onClick={() => setIsShowingMenu(false)}
           />
         ) : null}
+          </SlideDown>
       </div>
     </div>
   );

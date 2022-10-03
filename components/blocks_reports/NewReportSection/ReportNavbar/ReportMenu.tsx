@@ -81,7 +81,7 @@ const ReportMenuRow = ({
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           {themeNum && (
-            <p className="type-preset-6 font-serif ">Theme {themeNum}</p>
+            <p className="type-preset-6 font-serif font-light">Theme {themeNum}</p>
           )}
           <h2
             className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
@@ -97,7 +97,7 @@ const ReportMenuRow = ({
               return (
                 <div
                   onClick={onClick}
-                  className="font-serif py-sm"
+                  className="font-serif font-light py-sm"
                   key={`${anch2}-menu`}
                 >
                   <LinkText
@@ -121,12 +121,19 @@ const ReportMenuRow = ({
           <summary
             className={` relative  text-${textColor}  pr-sm   cursor-pointer`}
           >
+            
             <div className="flex flex-row justify-between items-center pt-md pb-3xl">
-              <h3
+      <div>
+      {themeNum && (
+            <p className="type-preset-6 font-serif font-light">Theme {themeNum}</p>
+          )}
+          <h3
                 className={`${fontStyle} text-${textColor} pr-sm type-preset-3`}
               >
                 {title}
               </h3>
+      </div>
+              
               <div className={`chevron`}>
                 <svg
                   width="24"
@@ -148,7 +155,7 @@ const ReportMenuRow = ({
           <SlideDown className={`${styles.mobileSlideDown}`}>
             <div
               onClick={onClick}
-              className={`font-serif py-sm type-preset-6 border-t-2 border-${textColor}`}
+              className={`font-serif font-light py-sm type-preset-6 border-t-2 border-${textColor}`}
             >
               <LinkText
                 href={`#${anchor}`}
@@ -167,7 +174,7 @@ const ReportMenuRow = ({
                 return (
                   <div
                     onClick={onClick}
-                    className={`font-serif py-sm type-preset-6 border-t-2 border-${textColor}`}
+                    className={`font-serif flont-light py-sm type-preset-6 border-t-2 border-${textColor}`}
                     key={`${anch2}-story-report-menu`}
                   >
                     <LinkText
