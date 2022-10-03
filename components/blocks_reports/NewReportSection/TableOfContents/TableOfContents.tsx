@@ -88,8 +88,9 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
       if(offsetPct<-100 || offsetPct > 100) return;
       animationHandler({offsetPct, animationList});
     }
-    
-    if(animationList.length==0){
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if(animationList.length==0  && mediaQuery && !mediaQuery.matches){
 
      const a = initiateAnimations();
      const offsetPct = getOffsetPct(anchor);

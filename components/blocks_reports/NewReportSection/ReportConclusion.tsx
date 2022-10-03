@@ -65,8 +65,10 @@ const ReportConclusion = ({title, richBody, anchor}) => {
        
     
       };
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   
-      if(animationList.length==0 ){
+      if(animationList.length==0 && mediaQuery && !mediaQuery.matches){
           initiateAnimations();
       }
       window.removeEventListener("scroll", onScroll);

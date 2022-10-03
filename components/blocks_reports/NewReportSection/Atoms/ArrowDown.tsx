@@ -17,7 +17,9 @@ const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false}:
     const w = size=="default" ? "37" : "56";
     const h = size=="default" ? "68" : "103";
     useEffect(() => {
-       if(isAnimated){
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+       if(isAnimated && mediaQuery && !mediaQuery.matches){
         document.getElementById(sectionId+"-line").animate(
             [
               

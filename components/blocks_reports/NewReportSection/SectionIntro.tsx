@@ -56,7 +56,9 @@ const SectionIntro = ({ section, i}) => {
         if (offsetPct < -75 || offsetPct >= 50) return;
         animationHandler({offsetPct, animationList});
       };
-        if(animationList.length==0){
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        if(animationList.length==0 && mediaQuery && !mediaQuery.matches){
           initiateAnimations();
         }
         window.removeEventListener("scroll", onScroll);
