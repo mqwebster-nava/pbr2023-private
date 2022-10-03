@@ -41,7 +41,8 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
 
   //const checkSection
   useEffect(() => {
-    const onScroll = () => {
+    const onScroll = (e) => {
+      if(isShowingMenu) {e.preventDefault(); return;}
       const offset = window.pageYOffset;
       reportSections.forEach((section, i ) => {
         checkIfSectionIsActive(section, offset, i);
@@ -69,15 +70,15 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
     };
 
     window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   });
 
 
 
   return (
-    <div className={`block sticky top-0  z-50 w-full bg-white ${!isShowingMenu && "h-[70px] overflow-clip"}`}>
-      <div className=" responsive-container flex flex-wrap items-center  h-[60px] ">
+    <div className={`block sticky top-0 z-50 w-full bg-white ${!isShowingMenu && "h-[70px] overflow-clip"}`}>
+      <div className="responsive-container flex flex-wrap items-center  h-[60px] ">
        <div className="w-1/3">
         <Logo isMobile={true} color="black" />
         </div>
