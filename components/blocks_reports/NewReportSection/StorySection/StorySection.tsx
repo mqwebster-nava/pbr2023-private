@@ -241,7 +241,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       >
         <Image
           id={`storyImg-${story.anchor}`}
-          alt={`${story.illustration.description}`}
+          alt={""}
           src={story.illustration.url}
           layout="fill"
           objectFit="cover"
