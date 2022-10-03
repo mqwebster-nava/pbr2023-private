@@ -65,6 +65,11 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     description:post.shortSummary,
     contentBlocks: [
       // Post body block
+      post.contentType==="Events" && post.eventInfo && post.eventInfo.speakers &&{
+        __typename:"PostEventSpeakersRow",
+        id: `${post.id}-PostEventSpeakersRow`,
+        speakers: post.eventInfo.speakers
+      },
       {
         __typename:"PostBody",
         id: `${post.id}-body`,

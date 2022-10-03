@@ -20,6 +20,10 @@ const CapabilitiesSection  = dynamic(() => import("components/blocks/Capabilitie
 const EmployeeList = dynamic(() => import("components/custom_blocks/EmployeeList/EmployeeList"));
 const OpenRolesComponent  = dynamic(() => import("components/custom_blocks/OpenRolesComponent/OpenRolesComponent"));
 const HighlightedInformationList  = dynamic(() => import("components/blocks/HighlightedInformationList/HighlightedInformationList"));
+const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventSpeakersRow/PostEventSpeakersRow"));
+
+
+
 import { PageInterface } from "shared_interfaces/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
@@ -44,6 +48,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "FloatingButtonBlock":()=><FloatingButtonBlock key={index} {...entry}/>,
+      "PostEventSpeakersRow": ()=><PostEventSpeakersRow key={index} {...entry}/>,
       "HighlightedInformationList": // Highlighted Information Card
          ()=><HighlightedInformationList key={index}  {...entry} />,
       "CustomBlock": ()=> {

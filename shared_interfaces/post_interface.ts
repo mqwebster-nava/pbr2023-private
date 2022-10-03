@@ -1,3 +1,4 @@
+import { PostEventSpeaker } from "components/blocks/PostEventSpeakersRow/PostEventSpeakersRow";
 
 
 export interface ContentfulImageAsset{
@@ -48,5 +49,6 @@ export interface EventInfo {
     eventEndTime: string;
     registrationLink?:string;
     recordingLink?:string;
+    speakers?: Array<PostEventSpeaker>
 }
 
