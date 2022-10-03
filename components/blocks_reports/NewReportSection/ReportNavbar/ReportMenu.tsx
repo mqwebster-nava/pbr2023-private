@@ -2,7 +2,7 @@ import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
 
- const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
+const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
   // Have the bottom rule not have a hr
 
   return (
@@ -22,10 +22,12 @@ import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
           (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
         )
         .map((section, i) => {
-      
           const color = section.colorTheme ?? "purple";
-          const bg = section.colorTheme === "gold" ? `bg-${color}-dark` : `bg-${color}-900`;
-          const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
+          const bg =
+            section.colorTheme === "gold"
+              ? `bg-${color}-dark`
+              : `bg-${color}-900`;
+          const textColor = "white"; //section.colorTheme === "gold" ? "black" : "white";
 
           return (
             <ReportMenuRow
@@ -72,32 +74,38 @@ const ReportMenuRow = ({
       <div
         className={`hidden md:grid responsive-container  text-${textColor} grid-cols-12 gap-lg`}
       >
-        <div className="col-span-4 py-lg">
+        <a
+          onClick={onClick}
+          className="col-span-4 py-lg group"
+          href={`#${anchor}`}
+          aria-label={`Theme ${themeNum}, Section ${title}`}
+        >
           {themeNum && (
             <p className="type-preset-6 font-serif ">Theme {themeNum}</p>
           )}
           <h2
-            onClick={onClick}
-            className={`type-preset-5 ${fontStyle} text-${textColor}`}
+            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
           >
-            <LinkText
-              href={`#${anchor}`}
-              variant={"default"}
-              color={["black", "white"].includes(textColor) ? textColor : null}
-              hoverStyle={"underlined"}
-            >
-              {title}
-            </LinkText>
+            {title}
           </h2>
-        </div>
+        </a>
         <div className={`col-span-8 pt-md divide-y divide-${textColor}`}>
           {stories &&
             stories.map((story) => {
               const anch2 = `#${anchor}--${story.anchor}`;
               const title = story.title;
               return (
-                <div onClick={onClick} className="font-serif py-sm"  key={`${anch2}-menu`}>
-                  <LinkText href={anch2} variant={"default"} color={textColor} hoverStyle={"underlined"}>
+                <div
+                  onClick={onClick}
+                  className="font-serif py-sm"
+                  key={`${anch2}-menu`}
+                >
+                  <LinkText
+                    href={anch2}
+                    variant={"default"}
+                    color={textColor}
+                    hoverStyle={"underlined"}
+                  >
                     {title}
                   </LinkText>
                 </div>
@@ -107,12 +115,16 @@ const ReportMenuRow = ({
       </div>
 
       {stories ? (
-        <details className={` md:hidden block responsive-container ${styles.details} `}>
+        <details
+          className={` md:hidden block responsive-container ${styles.details} `}
+        >
           <summary
             className={` relative  text-${textColor}  pr-sm   cursor-pointer`}
           >
             <div className="flex flex-row justify-between items-center pt-md pb-3xl">
-              <h3 className={`${fontStyle} text-${textColor} pr-sm type-preset-3`}>
+              <h3
+                className={`${fontStyle} text-${textColor} pr-sm type-preset-3`}
+              >
                 {title}
               </h3>
               <div className={`chevron`}>
@@ -134,12 +146,16 @@ const ReportMenuRow = ({
             </div>
           </summary>
           <SlideDown className={`${styles.mobileSlideDown}`}>
-            <div onClick={onClick} className={`font-serif py-sm type-preset-6 border-t-2 border-${textColor}`}>
+            <div
+              onClick={onClick}
+              className={`font-serif py-sm type-preset-6 border-t-2 border-${textColor}`}
+            >
               <LinkText
                 href={`#${anchor}`}
                 variant={"default"}
-                hoverStyle={'underlined'}
+                hoverStyle={"underlined"}
                 color={textColor}
+                ariaLabel={`Theme ${themeNum}, Section ${title} Introduction`}
               >
                 Introduction
               </LinkText>
@@ -172,22 +188,15 @@ const ReportMenuRow = ({
           </SlideDown>
         </details>
       ) : (
-        <div   onClick={onClick} className="responsive-container group md:hidden block pt-md pb-3xl">
-         
-              <h2
-           
-            className={`${fontStyle} text-${textColor} type-preset-3`}
-          >
-            <LinkText
-              href={`#${anchor}`}
-              variant={"default"}
-              color={["black", "white"].includes(textColor) ? textColor : null}
-              hoverStyle={"underlined"}
-            >
+        <a
+          href={`#${anchor}`}
+          onClick={onClick}
+          className="responsive-container group md:hidden block pt-md pb-3xl"
+        >
+          <h2 className={`${fontStyle} text-${textColor} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}>
               {title}
-            </LinkText>
           </h2>
-        </div>
+        </a>
       )}
     </div>
   );

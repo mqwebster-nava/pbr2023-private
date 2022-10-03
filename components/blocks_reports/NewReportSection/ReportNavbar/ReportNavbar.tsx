@@ -93,7 +93,7 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="font-sans text-white  border-grey  "
+            className="h-[60px] flex justify-center items-center px-xl -mr-xl"
           >
             {isShowingMenu ? (
               <CloseSVG/>
