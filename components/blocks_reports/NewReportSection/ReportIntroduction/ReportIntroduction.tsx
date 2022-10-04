@@ -37,7 +37,6 @@ const IntroductionBlock2021 = ({
   signatures,
 }: ReportIntroductionInterface) => {
   const nextId = "pilots";
-  console.log(signatures);
   const [animationList, setAnimationList] = useState([]);
   const initiateAnimations = () => {
     const sectionH = document.getElementById(anchor).offsetHeight;
@@ -47,7 +46,6 @@ const IntroductionBlock2021 = ({
     const desktopTriggerPct = Math.round((50 * screenH) / sectionH);
     const mobileTriggerPct = Math.round((30 * screenH) / sectionH);
     const storyOutTrigger = Math.round((100 * (sectionH - screenH)) / sectionH);
-    console.log(anchor, storyOutTrigger);
     let ana = [
       {
         triggerPct:  desktopTriggerPct,

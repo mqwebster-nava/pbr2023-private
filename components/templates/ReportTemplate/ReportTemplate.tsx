@@ -26,7 +26,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
   let reportSections = getSectionsInfo(contentBlocks);
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
-    if(typename==="ReportIntroduction") console.log(entry)
     const componentMap = {
       //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       
