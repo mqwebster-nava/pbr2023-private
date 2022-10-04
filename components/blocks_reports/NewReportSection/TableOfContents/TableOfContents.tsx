@@ -260,7 +260,7 @@ const DesktopSection = ({contentBlocks}) => {
           href={"#intro"} 
           aria-label={"skip to Letter from leadership"}
           >
-            <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90">
+            <p className="type-preset-7  opacity-0   group-hover:opacity-100 group-focus:opacity-100 ">
                       Next <br/>section
                     </p> 
               <ArrowDown

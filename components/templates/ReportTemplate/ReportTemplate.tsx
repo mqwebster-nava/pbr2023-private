@@ -1,4 +1,4 @@
-import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction";
+import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction/ReportIntroduction";
 import ReportHero from "components/blocks_reports/NewReportSection/ReportHero2021";
 import React, { Children, useEffect, useRef, useState } from "react";
 
@@ -12,6 +12,7 @@ import TableOfContentsSection from "components/blocks_reports/NewReportSection/T
 import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
 import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
 import ShoutoutSection from "components/blocks_reports/ShoutoutSection/ShoutoutSection";
+import { Signatures } from "components/atom";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -25,10 +26,11 @@ const ReportTemplate: React.FC<PageInterface> = ({
   let reportSections = getSectionsInfo(contentBlocks);
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
+    if(typename==="ReportIntroduction") console.log(entry)
     const componentMap = {
       //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       
-      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry}  />,
+      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
       ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} {...entry}  />,
       //ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
       ReportIllustrationOverlaySubsection: (entry) => (
