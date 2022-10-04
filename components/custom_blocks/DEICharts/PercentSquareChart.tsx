@@ -42,7 +42,6 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   const multiKey = `${selectedFilter.id}_Multi`;
 
   const handleFilterClick = (e) => {
-    console.log(e);
     const selectedTotal = dataFilters.find(
       (filter) => filter.id === e.target.value
     ).total;
