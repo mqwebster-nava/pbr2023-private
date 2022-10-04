@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
   const pageData: PageInterface = ("page" in pageProps)? pageProps.page : pageProps;
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-NRQK2XB' });
+    if(window.location.href.includes("www.navapbc.com/"))TagManager.initialize({ gtmId: 'GTM-NRQK2XB' });
 }, []);
   return (
     <>
