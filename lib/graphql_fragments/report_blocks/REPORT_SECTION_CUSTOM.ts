@@ -1,4 +1,4 @@
-import { POST_BODY } from "../POST_FIELDS";
+import { REPORT_BODY } from "./REPORT_BODY";
 
 const REPORT_SECTION_CUSTOM = `
 sys {
@@ -9,7 +9,7 @@ anchor
 type
 colorTheme
 richBody{
-    ${POST_BODY}
+   ${REPORT_BODY}
   }
 `;
 

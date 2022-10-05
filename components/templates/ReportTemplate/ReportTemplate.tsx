@@ -1,5 +1,5 @@
 import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction/ReportIntroduction";
-import ReportHero from "components/blocks_reports/NewReportSection/ReportHero2021";
+import ReportHero from "components/blocks_reports/ReportHeader/ReportHeader2021";
 import React, { Children, useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
@@ -11,8 +11,10 @@ import StorySection from "components/blocks_reports/NewReportSection/StorySectio
 import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
 import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
 import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
-import ShoutoutSection from "components/blocks_reports/ShoutoutSection/ShoutoutSection";
+import ShoutoutSection from "components/blocks_reports/ConclusionSection/ShoutoutSection";
 import { Signatures } from "components/atom";
+import ReportSectionWMetrics from "components/blocks_reports/ReportSectionWMetrics/ReportSectionWMetrics";
+import ConclusionSection2020 from "components/blocks_reports/ConclusionSection/Conclusion2020";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -21,9 +23,19 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
+
   // Want everything to be a section
   //let reportSections = sortDocIntoH2Sections(contentBlocks);
   let reportSections = getSectionsInfo(contentBlocks);
+
+  let links2020 = [
+  { text: "Letter from leadership", id: "intro" },
+  {id: "veterans",  text: "Supporting Veterans",},
+  { id: "california", text: "Delivering unemployment benefits",},
+  {id: "cmsmax", text: "Designing a personal healthcare experience",},
+  {id: "cms", text: "Building human-centered cloud infrastructure",},
+];
+
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -31,7 +43,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       
       ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
       ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} {...entry}  />,
-      //ReportConclusion: (entry) => <ReportConclusion  key={index} {...entry}  />,
+      ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
@@ -63,6 +75,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
       :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>
+      :(entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/>
       :(entry.type=='Conclusion 2021') ? <ReportConclusion key={index} {...entry}/>
       :null //contentBlocks={contentBlocks}
     };
@@ -139,6 +152,9 @@ export function getSectionsInfo(contentBlocks) {
 
 
 export default ReportTemplate;
+
+
+
 
 
   //const [activeSection, setActiveSection] = useState(null);

@@ -7,6 +7,7 @@ import REPORT_ILLUSTRATION_OVERLAY_SUBSECTION from "./report_blocks/ILLUSTRATION
 import REPORT_HERO_FIELDS from "./report_blocks/REPORT_HERO";
 import REPORT_INTRODUCTION from "./report_blocks/REPORT_INTRODUCTION";
 import REPORT_SECTION_CUSTOM from "./report_blocks/REPORT_SECTION_CUSTOM";
+import REPORT_SECTION_W_METRICS from "./report_blocks/REPORT_SECTION_W_METRICS";
 import SPLIT_IMAGE_TEXT_SECTION from "./report_blocks/SPLIT_IMAGE_TEXT_SECTION";
 
 /*
@@ -47,6 +48,9 @@ contentCollection(limit:8) {
         }
         ... on ReportSectionSplitImageText {
             ${SPLIT_IMAGE_TEXT_SECTION}
+        }
+        ... on ReportSectionWithMetrics {
+            ${REPORT_SECTION_W_METRICS}
         }
     }
 }
