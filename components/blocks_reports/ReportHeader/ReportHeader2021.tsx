@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import ArrowDown from "./Atoms/ArrowDown";
-import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
-import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
+import ArrowDown from "../NewReportSection/Atoms/ArrowDown";
+import { animationHandler, AnimationObject, getOffsetPct } from "../NewReportSection/utils";
+import { makeFadeInAnimation, makeSlideUpAnimation } from "../NewReportSection/animations";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
 /*
@@ -11,7 +11,7 @@ TODO
 - Defined Sizing of the title font, align with 
 */
 
-const ReportHero2021 = ({}: PageHeaderInterface) => {
+const ReportHeader2021 = ({}: PageHeaderInterface) => {
   //id, title,
   const [animationList, setAnimationList] = useState([]);
 
@@ -502,4 +502,4 @@ const SVG2 = () => {
     </svg>
   );
 };
-export default ReportHero2021;
+export default ReportHeader2021;

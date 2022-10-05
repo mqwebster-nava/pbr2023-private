@@ -18,7 +18,7 @@ import ReportSections from "../blocks_reports/ReportBody/ReportSection/ReportSec
 import ReportShoutoutSection from "../blocks_reports/ReportBody/ReportSection/ReportShoutoutSection";
 import ReportShoutoutColumns from "../blocks_reports/ReportBody/ReportSection/ReportShoutoutColumns";
 import ReportIntroSection from "../blocks_reports/ReportBody/ReportSection/ReportIntroSection";
-import ReportHeaderHero2019 from "../blocks_reports/ReportHeader/ReportHeaderHero2019";
+import ReportHeaderHero2019 from "../blocks_reports/ReportHeader/ReportHeader2019";
 import ReportHeaderTextOverlay from "../blocks_reports/ReportHeader/ReportHeader2018";
 import ReportHeaderNavy from "../blocks_reports/ReportHeader/ReportHeader2020";
 import ReportSectionHeaderNavy from "../blocks_reports/ReportBody/ReportSection/ReportHeaderSectionNavy";

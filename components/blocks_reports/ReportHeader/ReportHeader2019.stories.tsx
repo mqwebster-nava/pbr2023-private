@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ReportHeaderHero from "./ReportHeaderHero2019";
+import ReportHeaderHero from "./ReportHeader2019";
 
 export default {
   title: "Blocks /  Report Header / Hero",

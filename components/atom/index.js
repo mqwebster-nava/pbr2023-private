@@ -6,7 +6,6 @@ import { CheckBox } from "./CheckBox/CheckBox";
 import { Details } from "./Details/Details";
 import { PullQuote } from "../blocks_reports/ReportBody/PullQuote/PullQuote";
 import { Signatures } from "../blocks_reports/ReportBody/Signatures/Signatures";
-import { TealBar } from "../blocks_reports/ReportHeader/TealBar/TealBar";
 import { PercentSquareGraph } from "../custom_blocks/DEICharts/Graph/PercentSquareGraph";
 import { PercentBarGraph } from "../custom_blocks/DEICharts/Graph/PercentBarGraph";
 export {
@@ -16,7 +15,6 @@ export {
   Button,
   Details,
   LinkText,
-  TealBar,
   PercentBarGraph,
   PercentSquareGraph,
   PullQuote,
