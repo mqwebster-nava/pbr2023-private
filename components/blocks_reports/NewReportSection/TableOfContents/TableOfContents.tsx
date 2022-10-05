@@ -104,7 +104,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
-    <section className={`w-full lg:h-[150vh] bg-white relative`} id={anchor}>
+    <section className={`w-full lg:h-[150vh] bg-white relative`} id={anchor} tabIndex={0}>
       <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection contentBlocks={contentBlocks}/>
     </section>
@@ -297,7 +297,7 @@ const DesktopSectionTitle = ({
               Theme {themeNum }
             </p>
           )}
-          <h2 className={`type-preset-5 ${fontStyle} text-${textColor} pb-xl`}>
+          <h2 className={`type-preset-5 ${fontStyle} text-${textColor} ${themeNum==null && "pb-xl"}`}>
             <LinkText
               href={`#${anchor}`}
               variant={"default"}
@@ -310,7 +310,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-5 pt-md pr-xl pb-sm divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
+          className={` col-span-5 pt-md pr-xl pb-xl divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
           {stories &&
             stories.map((story) => {

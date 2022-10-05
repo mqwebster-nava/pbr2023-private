@@ -1,3 +1,5 @@
+// TODO Paddign on menu should match TOC
+
 import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
@@ -28,7 +30,6 @@ const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
               ? `bg-${color}-dark`
               : `bg-${color}-900`;
           const textColor = "white"; //section.colorTheme === "gold" ? "black" : "white";
-
           return (
             <ReportMenuRow
               key={section.anchor}
@@ -89,7 +90,7 @@ const ReportMenuRow = ({
             {title}
           </h2>
         </a>
-        <div className={`col-span-8 pt-md divide-y divide-${textColor}`}>
+        <div className={`col-span-8 pt-md divide-y divide-${textColor} pb-xl`}>
           {stories &&
             stories.map((story) => {
               const anch2 = `#${anchor}--${story.anchor}`;
