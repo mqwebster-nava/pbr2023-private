@@ -52,17 +52,7 @@ const ReportConclusion = ({title, richBody, anchor}) => {
         if (!_isActive) return;
        
         animationHandler({offsetPct, animationList});
-        // const animBox = document.getElementById("conclusion-box");
-        // const s = animBox.getBoundingClientRect().height;
-        // const pctS = Math.round((s* Math.min(offsetPct, 20)) / 20);
-
-        // const svg = document.getElementById("conclusionSVG");
-        // if(pctS > 0){
-        //   svg.setAttribute('height', `${pctS}`);
-        //   svg.setAttribute('width', `${pctS}`);
-
-        // }
-       
+  
     
       };
       const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -78,7 +68,7 @@ const ReportConclusion = ({title, richBody, anchor}) => {
 
 
   return (
-    <section id={anchor} className="w-full min-h-[125vh] bg-gold-700">
+    <section id={anchor} className="w-full min-h-[125vh] bg-gold-700" tabIndex={0}>
       <div className="responsive-container py-2xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
         <div className="relative h-full">
 
@@ -193,3 +183,15 @@ export default ReportConclusion;
 //   </svg>
 //   )
 // }
+
+      // const animBox = document.getElementById("conclusion-box");
+        // const s = animBox.getBoundingClientRect().height;
+        // const pctS = Math.round((s* Math.min(offsetPct, 20)) / 20);
+
+        // const svg = document.getElementById("conclusionSVG");
+        // if(pctS > 0){
+        //   svg.setAttribute('height', `${pctS}`);
+        //   svg.setAttribute('width', `${pctS}`);
+
+        // }
+       

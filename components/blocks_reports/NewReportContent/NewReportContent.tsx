@@ -10,14 +10,12 @@ const PostBlockQuote  = dynamic(() => import("components/blocks/PostBody/PostBlo
 const PostPullQuote  = dynamic(() => import("components/blocks/PostBody/PostPullQuote"));
 const PostImage  = dynamic(() => import("components/blocks/PostBody/PostImage"));
 const CaptionText  = dynamic(() => import("components/blocks/PostBody/CaptionText"));
-const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/PostSummarySection"));
 
 import MarkdownComponent from "utils/MarkdownComponent";
-import EmbeddedVideo from "./EmbeddedVideo";
-import Callout from "../../blocks_reports/NewReportContent/Callout";
+import Callout from "./Callout";
 
 
-const PostContent = ({docData, docLinks, }) =>{
+const NewReportContent = ({docData, docLinks, variant}) =>{
     const options = {
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
@@ -49,18 +47,12 @@ const PostContent = ({docData, docLinks, }) =>{
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,
-         
           [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
           [INLINES.ASSET_HYPERLINK]: (node, children) =>{
             const id = node.data.target.sys.id;
             const assets = docLinks.assets.hyperlink;
             const asset = assets.find((element) => element.sys.id === id);
              return (asset&&<LinkText href={asset.url} variant={"underlined"}>{children}</LinkText>)},
-          [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
-            const id = data.target.sys.id;
-            const assets = docLinks.assets.block;
-            const asset = assets.find((element) => element.sys.id === id);
-            return <PostImage border={"gray"} image={asset}/>
           },
           [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
             const id = node.data.target.sys.id;
@@ -73,14 +65,12 @@ const PostContent = ({docData, docLinks, }) =>{
               "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostImage": (props) =>  <PostImage {...props} caption={props.caption && <MarkdownComponent content={props.caption}/>}/>,
-              "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>,
-              "EmbeddedVideo": (props)=> <EmbeddedVideo {...props} />,
               "ReportCallout": (props) => <Callout {...props}/>
             }
              if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
           },
-        },
-    };
+        };
+    
     return (<>
      {documentToReactComponents(docData, options)}
     </>)
@@ -88,4 +78,4 @@ const PostContent = ({docData, docLinks, }) =>{
 
 
 
-export default PostContent;
+export default NewReportContent;

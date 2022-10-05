@@ -93,7 +93,7 @@ const SectionIntro = ({ section, i}) => {
           </h2>
           <div
           id={`sectionBody-${section.anchor}`}
-          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg focus:opacity-100`}>
+          className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg focus:opacity-100 `}>
             <MarkdownComponent content={section.body} />
           </div>
           <div

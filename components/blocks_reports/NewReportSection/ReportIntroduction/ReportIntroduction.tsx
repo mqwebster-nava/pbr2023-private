@@ -84,7 +84,7 @@ const IntroductionBlock2021 = ({
     return () => window.removeEventListener("scroll", onScroll);
   });
   return (
-    <div id={`${anchor}`} className="bg-purple-50 mt-3xl">
+    <div id={`${anchor}`} className="bg-purple-50 mt-3xl" tabIndex={0}>
       <div className="responsive-container  py-2xl grid grid-cols-12 ">
         <div className="hidden lg:block lg:col-span-4">
           <div

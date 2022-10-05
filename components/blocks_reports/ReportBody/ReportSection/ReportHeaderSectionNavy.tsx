@@ -1,4 +1,3 @@
-import { TealBar } from "components/atom";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React from "react";
 
@@ -15,5 +14,14 @@ const ReportSectionHeaderNavy = ({ title, titleId = null, introduction }) => {
     </section>
   );
 };
+
+const TealBar = () => (
+  <div className="pt-2xl">
+    <hr
+      style={{ width: "50px" }}
+      className="float-left border border-sage-400"
+    />
+  </div>
+);
 
 export default ReportSectionHeaderNavy;
