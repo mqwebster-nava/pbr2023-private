@@ -175,7 +175,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   id={`storySummary-${story.anchor}`}
                   className={` lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
-                  <div className={`font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
+                  <div className={`font-serif font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
                     <PostContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}
