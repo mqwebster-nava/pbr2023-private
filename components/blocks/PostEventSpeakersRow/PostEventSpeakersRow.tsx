@@ -17,9 +17,11 @@ const PostEventSpeakersRow = ({
   id,
   speakers,
 }: PostEventSpeakersRowInterface) => {
+  const sLen   = speakers && speakers.length;
   return ! speakers|| speakers.length==0 ? null:(
-    <div className="responsive-container py-xl">
-      <div className="border-t-[1px] border-black">
+    <div className="responsive-container py-2xl w-full">
+      <div className={`mt-2xl lg:w-${sLen}/6 w-full h-[1px] bg-gray-300`}/>
+    
         <h3 className="type-preset-3 font-bold pb-md ">Speakers</h3>
         <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-xl">
           {speakers.map((speaker) => {
@@ -45,7 +47,6 @@ const PostEventSpeakersRow = ({
             );
           })}
         </div>
-      </div>
     </div>
   );
 };

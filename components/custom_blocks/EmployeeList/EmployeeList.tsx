@@ -90,14 +90,14 @@ const DepartmentSection = ({ name, teamMembers, open=false }) => {
             height={400}
             className="w-full h-auto aspect-square object-cover bg-navy-50"></Image>
 
-            <h5 className="type-preset-7 font-bold  py-sm">
+            <h5 className={`type-preset-7 font-bold  pt-sm ${!teamMember.fields.Role && "pb-sm"}`}>
               {teamMember.fields.linkedIn ? 
               <LinkText href={teamMember.fields.linkedIn} variant={"underlined"} color={"black"}>{teamMember.fields.Name}</LinkText>
               :teamMember.fields.Name}
             </h5>
-            <p className="type-preset-7 text-gray-700">
+           { teamMember.fields.Role && <p className="type-preset-7 text-gray-700 pb-sm">
               {teamMember.fields.Role}
-            </p>
+            </p>}
           </div>
         );
       })}

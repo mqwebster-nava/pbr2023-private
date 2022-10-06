@@ -144,7 +144,7 @@ const PageHeader = (props: PageHeaderInterface) => {
             <div className={`w-full lg:w-1/3 h-full flex flex-col gap-xl  lg:pl-lg`}>
               {date && (
                 <div>
-                  <p className={`type-preset-4 font-black text-sage-200`}>
+                  <p className={`type-preset-4 font-bold text-sage-200`}>
                     Event Date
                   </p>
                   <p
@@ -156,7 +156,7 @@ const PageHeader = (props: PageHeaderInterface) => {
               )}
               {location && (
                 <div>
-                  <p className={`type-preset-4 font-black text-sage-200`}>
+                  <p className={`type-preset-4 font-bold text-sage-200`}>
                     Location
                   </p>
                   <p
