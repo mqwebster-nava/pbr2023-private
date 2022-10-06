@@ -142,7 +142,7 @@ const PageHeader = (props: PageHeaderInterface) => {
               />
             </div>
            
-            <div className={`col-span-full  lg:col-span-3 lg:col-start-10 lg:border-l-[1px] lg:border-sage-300 h-full flex flex-col gap-xl  lg:pl-lg`}>
+            <div className={`col-span-full  lg:col-span-3 lg:col-start-10 lg:border-l-[1px] lg:border-sage-300 h-full flex flex-col gap-xl  lg:pl-lg lg:-ml-lg`}>
               {date && (
                 <div>
                   <p className={`type-preset-4 font-bold text-sage-200`}>
