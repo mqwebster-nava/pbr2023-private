@@ -35,45 +35,45 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
         let a: AnimationObject = {
           triggerPct:-30 + 10*i,
           animation: makeSlideUpAnimation("themenum-"+ block.anchor, 0),
-          noRepeat:true
+          //noRepeat:true
         };
         animations.push(a);
       
         let b: AnimationObject = {
           triggerPct:20,
           animation: makeSlideUpAnimation("stories-"+ block.anchor, i*100),
-          noRepeat:true
+          //noRepeat:true
         };
         animations.push(b);
       })
       animations.push( {
         triggerPct:0,
         animation: makeSlideUpAnimation("themenum-reportConclusion", 0),
-        noRepeat:true
+        //noRepeat:true
       });
       animations.push( {
         triggerPct:-30,
         animation: makeSlideUpAnimation("themenum-intro", 0),
-        noRepeat:true
+        //noRepeat:true
       });
 
       let line1Fade: AnimationObject = {
         triggerPct:0,
         animation: makeSlideUpAnimation("desktop-description1", 0),
-        noRepeat:true
+        //noRepeat:true
       };
       animations.push(line1Fade);
       // Part 2
       let line2Fade: AnimationObject = {
         triggerPct:20,
         animation: makeSlideUpAnimation("desktop-description2", 0),
-        noRepeat:true
+       // noRepeat:true
       };
       animations.push(line2Fade);
       let arrowFade: AnimationObject = {
         triggerPct:20,
         animation: makeSlideUpAnimation("tocArrow", 0),
-        noRepeat:true
+        //noRepeat:true
       };
       animations.push(arrowFade);
   

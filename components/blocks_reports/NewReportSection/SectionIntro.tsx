@@ -11,21 +11,21 @@ const SectionIntro = ({ section, i}) => {
       const windowSizes:Array<WindowSize> = ["mobile", "tablet", "desktop"]
       let ThemeSlideUp: AnimationObject = {
         triggerPct: -40,
-        noRepeat:true,
+        //noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-90},
         animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
       };
       let TitleSlideUp: AnimationObject = {
         triggerPct:  -30,
-        noRepeat:true,
+        //noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-80},
         animation: makeSlideUpAnimation("h2-" + section.anchor, 0),
       };
       let SectionBodySlideUp: AnimationObject = {
         triggerPct: -10,
-        noRepeat:true,
+        //noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation("sectionBody-" + section.anchor, 0),
@@ -33,7 +33,7 @@ const SectionIntro = ({ section, i}) => {
       
       let SectionStoriesSlideUp: AnimationObject = {
         triggerPct:  -10,
-        noRepeat:true,
+        //noRepeat:true,
         windowSizes:windowSizes,
         triggerPcts:{"mobile":-70},
         animation: makeSlideUpAnimation(`sectionStories-${section.anchor}`, 0),
