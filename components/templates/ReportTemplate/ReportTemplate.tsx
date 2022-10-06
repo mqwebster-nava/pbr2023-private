@@ -1,20 +1,19 @@
-import ReportIntroductionBlock from "components/blocks_reports/NewReportSection/ReportIntroduction/ReportIntroduction";
+import ReportIntroductionBlock from "components/blocks_reports/ReportIntroduction/ReportIntroduction";
 import ReportHero from "components/blocks_reports/ReportHeader/ReportHeader2021";
 import React, { Children, useEffect, useRef, useState } from "react";
 
 import { PageInterface } from "shared_interfaces/page_interface";
 
 import ReportNavbar from "components/blocks_reports/NewReportSection/ReportNavbar/ReportNavbar";
-import ReportConclusion from "components/blocks_reports/NewReportSection/ReportConclusion";
 import SectionIntro from "components/blocks_reports/NewReportSection/SectionIntro";
 import StorySection from "components/blocks_reports/NewReportSection/StorySection/StorySection";
 import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
 import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
 import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
 import ShoutoutSection from "components/blocks_reports/ConclusionSection/ShoutoutSection";
-import { Signatures } from "components/atom";
 import ReportSectionWMetrics from "components/blocks_reports/ReportSectionWMetrics/ReportSectionWMetrics";
 import ConclusionSection2020 from "components/blocks_reports/ConclusionSection/Conclusion2020";
+import ReportConclusion2021 from "components/blocks_reports/NewReportSection/ReportConclusion2021";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -76,7 +75,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
       :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>
       :(entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/>
-      :(entry.type=='Conclusion 2021') ? <ReportConclusion key={index} {...entry}/>
+      :(entry.type=='Conclusion 2021') ? <ReportConclusion2021 key={index} {...entry}/>
       :null //contentBlocks={contentBlocks}
     };
     return typename in componentMap ? (

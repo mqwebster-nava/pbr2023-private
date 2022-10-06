@@ -1,4 +1,4 @@
-import { ReportContent } from "../../../blocks";
+import { ReportContent } from "../../../../blocks";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 

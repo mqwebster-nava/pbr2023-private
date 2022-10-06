@@ -1,8 +1,9 @@
 import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
-import { BlockQuote, LinkText, PullQuote } from "../../../atom";
+import { LinkText, PullQuote } from "../../../../atom";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+import { ReportBlockQuote } from "components/blocks_reports/old/NewReportContent/ReportBlockQuote/ReportBlockQuote";
 
 type Size = "small" | "medium" | "large";
 export interface ReportContentInterface {
@@ -116,7 +117,7 @@ const ReportContent: React.FC<ReportContentInterface> = ({
           return isPullQuote ? (
             <PullQuote>{props.children}</PullQuote>
           ) : (
-            <BlockQuote>{content[1].props.children}</BlockQuote>
+            <ReportBlockQuote>{content[1].props.children}</ReportBlockQuote>
           );
         },
         a: ({ node, ...props }) => (

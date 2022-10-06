@@ -7,7 +7,6 @@ import IllustrationPatternBlock from "./ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
 import React from "react";
 import PostTitleBlock from "./PostTitleBlock";
-import styles from "./PageHeader.module.css";
 
 
 

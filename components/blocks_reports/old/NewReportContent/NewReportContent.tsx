@@ -13,6 +13,7 @@ const CaptionText  = dynamic(() => import("components/blocks/PostBody/CaptionTex
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import Callout from "./Callout";
+import { ReportBlockQuote } from "./ReportBlockQuote/ReportBlockQuote";
 
 
 const NewReportContent = ({docData, docLinks, variant}) =>{
@@ -43,7 +44,11 @@ const NewReportContent = ({docData, docLinks, variant}) =>{
             <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
           ),
           
-          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
+          [BLOCKS.QUOTE]: (node, children) => {
+            
+
+           return <ReportBlockQuote children={children}/>
+        },
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,

@@ -12,6 +12,7 @@ image {
     ${IMAGE_FIELDS}
 }
 intro
+colorTheme
 richBody{
    ${REPORT_BODY}
   }

@@ -1,5 +1,6 @@
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import PostContent from "components/blocks/PostBody/PostContent";
+import { Button } from "components/atom";
 // export interface ReportShoutoutSectionInterface {
 //   title: string;
 //   introduction: string;
@@ -14,6 +15,7 @@ const ConclusionSection2020 = ({ title,anchor,  type, richBody }) => {
         <div className="pb-xl font-serif">
           <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
+        <Button href="/open-roles" variant="default">Browse open roles</Button>
       </ResponsiveContentContainer>
     </section>
   );

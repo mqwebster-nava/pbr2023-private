@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import { ReportContent } from "../../../blocks";
-import { Button } from "../../../atom";
-import { ReportMetrics } from "../../ReportSectionWMetrics/ReportMetrics/ReportMetrics";
+import { ReportContent } from "../../../../blocks";
+import { Button } from "../../../../atom";
+import { ReportMetrics } from "../../../ReportSectionWMetrics/ReportMetrics/ReportMetrics";
 
 type Background = "sea-foam" | "navy" | "white";
 

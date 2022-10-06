@@ -1,4 +1,4 @@
-export const BlockQuote = ({ children }) => {
+export const ReportBlockQuote = ({ children }) => {
   return (
     <blockquote
       className={`py-0 pl-[18px] 

@@ -14,10 +14,17 @@ const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/Pos
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import EmbeddedVideo from "./EmbeddedVideo";
-import Callout from "../../blocks_reports/NewReportContent/Callout";
+import Callout from "../../blocks_reports/old/NewReportContent/Callout";
+
+export type CONTENT_VARIANT = "post" | "report" | "report sage";
+export interface PostContentInterface {
+  docData:any;
+  docLinks:any;
+  variant: CONTENT_VARIANT
+}
 
 
-const PostContent = ({docData, docLinks, }) =>{
+const PostContent = ({docData, docLinks, variant="post" }) =>{
     const options = {
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
@@ -45,7 +52,7 @@ const PostContent = ({docData, docLinks, }) =>{
             <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
           ),
           
-          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
+          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children} variant={variant}/>,
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,

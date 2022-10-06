@@ -5,7 +5,8 @@ import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
 import { Button, LinkText } from "components/atom";
-import NewReportContent from "../NewReportContent/NewReportContent";
+import NewReportContent from "../old/NewReportContent/NewReportContent";
+import PostContent from "components/blocks/PostBody/PostContent";
 
 export interface ReportSectionWMetricsInterface {
   title: string;
@@ -100,19 +101,19 @@ const ReportSectionContentFull = ({
     "bg-navy-800": colorTheme === "navy",
     "bg-white": colorTheme === "white",
   });
-
+  const variant = colorTheme==="sage" ? "report sage": "report";
   return (
     <div
       className={`${backgroundClass} responsive-container py-2xl grid grid-cols-12 `}
     >
       <div className="col-span-12 lg:col-span-8 ">
         {metrics && <ReportMetrics metrics={metrics} />}
-          <div className="">
+          <div className="font-serif">
             {title && <h2 className="type-preset-3 font-bold">{title}</h2>}
-            <NewReportContent
+            <PostContent
               docData={body.json}
               docLinks={body.links}
-              variant={"2020"}
+              variant={variant}
             />
           </div>
       </div>

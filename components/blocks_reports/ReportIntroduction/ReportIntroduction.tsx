@@ -8,9 +8,9 @@ import {
   makeFadeAnimation,
   makeFadeInAnimation,
   makeSlideUpAnimation,
-} from "../animations";
-import ArrowDown from "../Atoms/ArrowDown";
-import { animationHandler, AnimationObject, getOffsetPct } from "../utils";
+} from "../NewReportSection/animations";
+import ArrowDown from "../NewReportSection/Atoms/ArrowDown";
+import { animationHandler, AnimationObject, getOffsetPct } from "../NewReportSection/utils";
 import { SignatureInterface, Signatures } from "./SignaturesBlock";
 
 export interface ReportIntroductionInterface {
@@ -150,7 +150,7 @@ const IntroductionBlock = ({
     <section className="bg-sage-50 " id={anchor}>
       <ResponsiveContentContainer padding="py-4xl" alignment="center">
         <div className="font-serif text-black">
-          <PostContent docData={richBody.json} docLinks={richBody.links} />
+          <PostContent docData={richBody.json} docLinks={richBody.links} variant="report sage" />
         </div>
         <Signatures signatures={signatures} colorTheme={"sage"} />
       </ResponsiveContentContainer>

@@ -8,7 +8,7 @@ import {
   makeSlideOutAnimation,
   makeSlideUpAnimation,
 } from "../animations";
-import Callout from "components/blocks_reports/NewReportContent/Callout";
+import Callout from "components/blocks_reports/old/NewReportContent/Callout";
 import ArrowDown from "../Atoms/ArrowDown";
 
 

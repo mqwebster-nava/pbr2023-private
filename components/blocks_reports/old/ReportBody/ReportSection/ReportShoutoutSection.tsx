@@ -1,5 +1,5 @@
-import { ReportContent } from "../../../blocks";
-import { Details } from "../../../atom";
+import { ReportContent } from "../../../../blocks";
+import { Details } from "../../../../atom";
 import ReportShoutoutColumns from "./ReportShoutoutColumns";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";

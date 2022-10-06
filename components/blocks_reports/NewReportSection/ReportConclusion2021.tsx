@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import PostContent from "components/blocks/PostBody/PostContent";
 
 
-const ReportConclusion = ({title, richBody, anchor}) => {
+const ReportConclusion2021 = ({title, richBody, anchor}) => {
   const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
@@ -137,7 +137,7 @@ const ReportConclusion = ({title, richBody, anchor}) => {
 
 
 
-export default ReportConclusion;
+export default ReportConclusion2021;
 
 
 // const SVGConclusion = () => {
