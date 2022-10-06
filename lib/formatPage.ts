@@ -78,8 +78,6 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         authors: post.authors,
         date: post.date,
         hideSideNav: post.hideSideNav,
-        isEvent: post.contentType=="Events",
-        registrationLink: post.registrationLink,
         eventInfo:  post.eventInfo,
       },
       // more posts block

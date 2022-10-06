@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import ArticleInfoComponent from "./ArticleInfoComponent";
 import React, {useRef} from "react";
-import { AuthorPostInterface } from "shared_interfaces/post_interface";
+import { AuthorPostInterface, EventInfo } from "shared_interfaces/post_interface";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
@@ -20,8 +20,9 @@ export interface PostBodyInterface {
   authors: Array<AuthorPostInterface>;
   date: string;
   hideSideNav?: boolean;
-  registrationLink?: string;
-  isEvent?:boolean;
+  eventInfo?:EventInfo
+  //registrationLink?: string;
+ // isEvent?:boolean;
 }
 
 
@@ -32,10 +33,10 @@ export default function PostBody({
   authors,
   date,
   hideSideNav = false,
-  isEvent = false,
-  registrationLink,
+  eventInfo=null
 }: PostBodyInterface) {
   // need to deconstruct post
+
   const doc = body.json;
   let h2Sections = sortDocIntoH2Sections(doc);
   h2Sections.forEach((h2) => (h2.ref = useRef()));
@@ -72,7 +73,7 @@ export default function PostBody({
 
   // TODO Where should I do the rendering for this post
  
-
+ const isEvent =  eventInfo!==null;
   return (
     <div
       key={id}
@@ -96,7 +97,7 @@ export default function PostBody({
       {/* Article Sidebar Section  */}
       <div className={"w-full md:col-span-3 pt-md "}>
        { isEvent? 
-       <EventInfoComponent date={date} registrationLink={registrationLink} contentTags={contentTags}/> : 
+       <EventInfoComponent eventInfo={eventInfo} date={date} contentTags={contentTags}/> : 
         <ArticleInfoComponent
           authors={authors}
           date={date}

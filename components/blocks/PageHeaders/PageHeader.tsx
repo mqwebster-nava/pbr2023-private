@@ -130,9 +130,9 @@ const PageHeader = (props: PageHeaderInterface) => {
       <header key={props.id} className="overflow-hidden">
         <div className={"bg-sage-900"}>
           <div
-            className={` responsive-container z-10 relative pt-2xl  lg:pt-3xl pb-2xl flex flex-wrap`}
+            className={` responsive-container z-10 relative pt-2xl  lg:pt-3xl pb-2xl grid grid-cols-12`}
           >
-            <div className="w-full lg:w-2/3 lg:border-r-[1px] lg:border-sage-300 lg:pr-sm">
+            <div className="col-span-full lg:col-span-8 ">
               <PostTitleBlock
                 textColor={"text-sage-200"}
                 title={props.title}
@@ -141,7 +141,8 @@ const PageHeader = (props: PageHeaderInterface) => {
                 isEvent={true}
               />
             </div>
-            <div className={`w-full lg:w-1/3 h-full flex flex-col gap-xl  lg:pl-lg`}>
+           
+            <div className={`col-span-full  lg:col-span-3 lg:col-start-10 lg:border-l-[1px] lg:border-sage-300 h-full flex flex-col gap-xl  lg:pl-lg`}>
               {date && (
                 <div>
                   <p className={`type-preset-4 font-bold text-sage-200`}>
