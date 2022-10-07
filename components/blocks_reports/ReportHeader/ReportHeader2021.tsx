@@ -9,11 +9,16 @@ TODO
  - Responsively change box size
  - Accessibility Check
 - Defined Sizing of the title font, align with 
+
+
+TODO
+- Make sure the box disappears when at the top
+- Make sure the box kisses
 */
 
 const ReportHeader2021 = ({}: PageHeaderInterface) => {
   //id, title,
-  const [animationList, setAnimationList] = useState([]);
+  //const [animationList, setAnimationList] = useState([]);
 
   // Figures out the size of the box with the patterns
   function getAnimationBoxHeight() {
@@ -72,7 +77,7 @@ const ReportHeader2021 = ({}: PageHeaderInterface) => {
 
   return (
     <header
-      className={`bg-purple-900 w-full lg:h-[125vh] h-[125vh] mb-0 lg:mb-[160px]`}
+      className={`bg-purple-900 w-full lg:h-[125vh] h-[110vh] mb-0 lg:mb-[160px]`}
       id="reportHeader"
     >
       <div
@@ -94,7 +99,7 @@ const ReportHeader2021 = ({}: PageHeaderInterface) => {
               <SVG2 />
             </div>
           </div>
-          <div className=" w-full  lg:w-1/4 h-full flex flex-col justify-between pt-3xl gap-xl">
+          <div className=" w-11/12 sm:w-2/3 lg:w-1/4 h-full flex flex-col justify-between pt-3xl gap-xl">
             <div>
               <p
                 id="titleLine1"
@@ -104,13 +109,13 @@ const ReportHeader2021 = ({}: PageHeaderInterface) => {
               </p>
               <p
                 id="titleLine2"
-                className="type-preset-5 font-serif text-white font-light tracking-wide opacity-0 motion-reduce:opacity-100"
+                className="type-preset-5 font-serif text-white font-light tracking-[0.015em] opacity-0 motion-reduce:opacity-100"
               >
                 building sustainable government services
               </p>
               <p
                 id="titleLine3"
-                className="type-preset-5 font-serif text-purple-100 opacity-0 pt-xl tracking-wide font-light motion-reduce:opacity-100"
+                className="type-preset-5 font-serif text-purple-100 opacity-0 lg:pt-xl tracking-[0.015em] font-light motion-reduce:opacity-100"
               >
                 Each year, Nava outlines its work and progress in a public
                 benefit report.

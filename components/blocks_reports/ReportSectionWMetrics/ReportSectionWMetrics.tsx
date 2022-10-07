@@ -104,8 +104,9 @@ const ReportSectionContentFull = ({
   const variant = colorTheme==="sage" ? "report sage": "report";
   return (
     <div
-      className={`${backgroundClass} responsive-container py-2xl grid grid-cols-12 `}
+      className={`${backgroundClass}  `}
     >
+      <div className="responsive-container py-2xl grid grid-cols-12">
       <div className="col-span-12 lg:col-span-8 ">
         {metrics && <ReportMetrics metrics={metrics} />}
           <div className="font-serif">
@@ -119,6 +120,7 @@ const ReportSectionContentFull = ({
       </div>
       <div className="hidden lg:block col-start-10 col-span-3  h-full w-full ">
         <ReportSideMenu links={links} activeSection={anchor}/>
+      </div>
       </div>
     </div>
   );

@@ -91,7 +91,7 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
         <Logo isMobile={true} color="black" />
         </div>
         <a href="#reportHeader">
-        <h2 className="type-preset-6 font-serif text-black">
+        <h2 className="type-preset-6 font-serif text-black tracking-[0.015em]">
           Public Benefit Report
         </h2>
         </a>

@@ -82,7 +82,7 @@ const ReportMenuRow = ({
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           {themeNum && (
-            <p className="type-preset-6 font-serif font-light">Theme {themeNum}</p>
+            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">Theme {themeNum}</p>
           )}
           <h2
             className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
@@ -98,7 +98,7 @@ const ReportMenuRow = ({
               return (
                 <div
                   onClick={onClick}
-                  className="font-serif font-light py-sm"
+                  className="font-serif font-light py-sm tracking-[0.015em]"
                   key={`${anch2}-menu`}
                 >
                   <LinkText

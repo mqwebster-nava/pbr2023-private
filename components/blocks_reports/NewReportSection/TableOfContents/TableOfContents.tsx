@@ -127,7 +127,7 @@ const MobileSectionTitle = ({
 
       
           {themeNum != null && (
-            <p className={`type-preset-7 font-serif  text-${textColor}`}>
+            <p className={`type-preset-7 font-serif  text-${textColor} tracking-[0.015em]`}>
               Theme {themeNum + 1}
             </p>
           )}
@@ -293,7 +293,7 @@ const DesktopSectionTitle = ({
       >
         <div  className="col-span-3 lg:py-auto py-lg">
           {themeNum != null && (
-            <p className="type-preset-6 font-serif font-light">
+            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">
               Theme {themeNum }
             </p>
           )}
@@ -318,7 +318,7 @@ const DesktopSectionTitle = ({
               const title =  story.title;
               return (
                 <div
-                  className=" font-serif py-sm type-preset-6 font-light" key={`${anch2}-toc`}
+                  className=" font-serif py-sm type-preset-6 font-light tracking-[0.015em]" key={`${anch2}-toc`}
                 >
                   <LinkText
                     href={anch2}
