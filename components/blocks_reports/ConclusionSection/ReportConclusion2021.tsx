@@ -1,6 +1,6 @@
 import { LinkText } from "components/atom";
-import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
-import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
+import { animationHandler, AnimationObject, getOffsetPct } from "../NewReportSection/utils";
+import { makeFadeInAnimation, makeSlideUpAnimation } from "../NewReportSection/animations";
 import { useEffect, useState } from "react";
 import PostContent from "components/blocks/PostBody/PostContent";
 import NewReportContent from "../NewReportContent/NewReportContent";

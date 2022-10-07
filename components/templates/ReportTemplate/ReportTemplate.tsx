@@ -13,7 +13,7 @@ import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
 import ShoutoutSection from "components/blocks_reports/ConclusionSection/ShoutoutSection";
 import ReportSectionWMetrics from "components/blocks_reports/ReportSectionWMetrics/ReportSectionWMetrics";
 import ConclusionSection2020 from "components/blocks_reports/ConclusionSection/Conclusion2020";
-import ReportConclusion2021 from "components/blocks_reports/NewReportSection/ReportConclusion2021";
+import ReportConclusion2021 from "components/blocks_reports/ConclusionSection/ReportConclusion2021";
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
