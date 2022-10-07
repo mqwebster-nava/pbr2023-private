@@ -217,7 +217,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     id={`${story.anchor}-next-arrow`}
                     href={`#${nextId}`}
                     aria-label={`Skip to ${nextSectionTitle}`}
-                    className="group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
+                    className="group w-full sticky top-[calc(100vh_-_150px)] pl-lg  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-start"
                   >
                     <p className={`type-preset-7  text-${c} opacity-100 lg:opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90 lg:rotate-0 w-[100px] lg:w-auto -mb-lg lg:mb-sm`}>
                       Next <br className="hidden lg:block"/>{nextSectionType}
