@@ -132,7 +132,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           <div
             className={` responsive-container z-10 relative pt-2xl  lg:pt-3xl pb-2xl grid grid-cols-12`}
           >
-            <div className="col-span-full lg:col-span-8 ">
+            <div className="col-span-full lg:col-span-8 lg:-mt-sm">
               <PostTitleBlock
                 textColor={"text-sage-200"}
                 title={props.title}
@@ -145,7 +145,7 @@ const PageHeader = (props: PageHeaderInterface) => {
             <div className={`col-span-full  lg:col-span-3 lg:col-start-10 lg:border-l-[1px] lg:border-sage-300 h-full flex flex-col gap-xl  lg:pl-lg lg:-ml-lg`}>
               {date && (
                 <div>
-                  <p className={`type-preset-4 font-bold text-sage-200`}>
+                  <p className={`type-preset-4 font-bold text-sage-200 lg:-mt-sm`}>
                     Event Date
                   </p>
                   <p
@@ -156,8 +156,8 @@ const PageHeader = (props: PageHeaderInterface) => {
                 </div>
               )}
               {location && (
-                <div>
-                  <p className={`type-preset-4 font-bold text-sage-200`}>
+                <div className="pb-sm">
+                  <p className={`type-preset-4 font-bold text-sage-200 `}>
                     Location
                   </p>
                   <p
