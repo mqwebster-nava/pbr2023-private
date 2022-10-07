@@ -28,14 +28,14 @@ export async function getStaticProps({ params, preview = false }) {
     futureEvents.length>0 && {
       __typename:"ContentBlockArticleList", // Article Feed
       id: "events section",
-      title: "Upcoming Events",
+      title: "Upcoming",
       items:futureEvents,
       layout:"3 card row"
     },
     pastEvents.length>0 && {
       __typename:"ContentBlockArticleList", // Article Feed
       id: "events section",
-      title: "Past Events",
+      title: "Past",
       items: pastEvents,
       layout:"3 card row"
     },
