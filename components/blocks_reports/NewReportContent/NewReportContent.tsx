@@ -13,10 +13,18 @@ const CaptionText  = dynamic(() => import("components/blocks/PostBody/CaptionTex
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import Callout from "./Callout";
-import { ReportBlockQuote } from "./ReportBlockQuote/ReportBlockQuote";
+import { ReportBlockQuote } from "../old/ReportBlockQuote/ReportBlockQuote";
+import { CONTENT_VARIANT } from "components/blocks/PostBody/PostContent";
 
+
+export interface ReportContentInterface {
+  docData:any;
+  docLinks:any;
+  variant: CONTENT_VARIANT
+}
 
 const NewReportContent = ({docData, docLinks, variant}) =>{
+  const fontStyle = "font-bold font-serif pt-lg";
     const options = {
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
@@ -30,24 +38,21 @@ const NewReportContent = ({docData, docLinks, variant}) =>{
             <p className=" py-md type-preset-5">{children}</p>
           ),
           [BLOCKS.HEADING_1]: (node, children) => (
-            <p className="type-preset-3 font-bold font-sans pt-lg">{children}</p>
-          ),
+            <p className={`type-preset-3 ${fontStyle}`}>{children}</p>),
           [BLOCKS.HEADING_2]: (node, children) => {
             return (
-              <h2 className="type-preset-3 font-bold font-sans pt-lg">{children}</h2>
+              <h2 className={`type-preset-3 ${fontStyle}`}>{children}</h2>
             );
           },
           [BLOCKS.HEADING_3]: (node, children) => (
-            <p className="type-preset-4 font-bold font-sans pt-lg">{children}</p>
+            <p className={`type-preset-4 ${fontStyle}`}>{children}</p>
           ),
           [BLOCKS.HEADING_4]: (node, children) => (
-            <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
+            <h4 className={`type-preset-5 ${fontStyle}`}>{children}</h4>
           ),
           
           [BLOCKS.QUOTE]: (node, children) => {
-            
-
-           return <ReportBlockQuote children={children}/>
+           return <PostBlockQuote body={children} variant={variant}/>
         },
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,

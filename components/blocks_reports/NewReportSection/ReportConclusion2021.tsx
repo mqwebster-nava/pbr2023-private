@@ -3,6 +3,7 @@ import { animationHandler, AnimationObject, getOffsetPct } from "./utils";
 import { makeFadeInAnimation, makeSlideUpAnimation } from "./animations";
 import { useEffect, useState } from "react";
 import PostContent from "components/blocks/PostBody/PostContent";
+import NewReportContent from "../NewReportContent/NewReportContent";
 
 
 const ReportConclusion2021 = ({title, richBody, anchor}) => {
@@ -80,9 +81,10 @@ const ReportConclusion2021 = ({title, richBody, anchor}) => {
           {title}
         </h2>
         <div id={"conclusion-text"} className="type-preset-6 font-serif text-black pt-[70px] max-w-screen-md opacity-0 motion-reduce:opacity-100">
-        <PostContent
+        <NewReportContent
                       docData={richBody.json}
                       docLinks={richBody.links}
+                      variant={"report"}
                     />
         </div>
         <p id={"conclusion-next"}  className="type-preset-5 font-bold pt-[70px] pb-sm opacity-0 motion-reduce:opacity-100">Where next?</p>

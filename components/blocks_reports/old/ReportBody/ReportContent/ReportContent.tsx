@@ -3,7 +3,7 @@ import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import { LinkText, PullQuote } from "../../../../atom";
 import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
-import { ReportBlockQuote } from "components/blocks_reports/old/NewReportContent/ReportBlockQuote/ReportBlockQuote";
+import { ReportBlockQuote } from "components/blocks_reports/old/ReportBlockQuote/ReportBlockQuote";
 
 type Size = "small" | "medium" | "large";
 export interface ReportContentInterface {

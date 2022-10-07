@@ -8,8 +8,9 @@ import {
   makeSlideOutAnimation,
   makeSlideUpAnimation,
 } from "../animations";
-import Callout from "components/blocks_reports/old/NewReportContent/Callout";
+import Callout from "components/blocks_reports/NewReportContent/Callout";
 import ArrowDown from "../Atoms/ArrowDown";
+import NewReportContent from "components/blocks_reports/NewReportContent/NewReportContent";
 
 
 // TODO  When expand need to initiate animations again to get based on larger size
@@ -177,9 +178,10 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   className={` lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
                   <div className={`font-serif font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
-                    <PostContent
+                    <NewReportContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}
+                      variant={"report"}
                     />
                   </div>
                 </div>
@@ -217,7 +219,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     aria-label={`Skip to ${nextSectionTitle}`}
                     className="group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col items-center"
                   >
-                    <p className={`type-preset-7  text-${c} opacity-100 lg:opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90 lg:rotate-0 w-[100px] lg:w-auto -mb-lg lg:mb-0`}>
+                    <p className={`type-preset-7  text-${c} opacity-100 lg:opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90 lg:rotate-0 w-[100px] lg:w-auto -mb-lg lg:mb-sm`}>
                       Next <br className="hidden lg:block"/>{nextSectionType}
                     </p> 
                     <ArrowDown sectionId={`${story.anchor}`} color={c} isMobileHidden={true}></ArrowDown>

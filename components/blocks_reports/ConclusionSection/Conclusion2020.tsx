@@ -1,6 +1,7 @@
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
-import PostContent from "components/blocks/PostBody/PostContent";
+
 import { Button } from "components/atom";
+import NewReportContent from "../NewReportContent/NewReportContent";
 // export interface ReportShoutoutSectionInterface {
 //   title: string;
 //   introduction: string;
@@ -13,7 +14,7 @@ const ConclusionSection2020 = ({ title,anchor,  type, richBody }) => {
       <ResponsiveContentContainer padding={"py-2xl"} alignment="left">
         <h2 className="type-preset-3 font-bold">{title}</h2>
         <div className="pb-xl font-serif">
-          <PostContent docData={richBody.json} docLinks={richBody.links} />
+          <NewReportContent docData={richBody.json} docLinks={richBody.links} variant={"report"} />
         </div>
         <Button href="/open-roles" variant="default">Browse open roles</Button>
       </ResponsiveContentContainer>

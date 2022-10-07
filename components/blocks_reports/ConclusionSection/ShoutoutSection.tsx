@@ -3,6 +3,7 @@ import ResponsiveContentContainer from "components/blocks/ResponsiveContentConta
 import { Details } from "components/atom";
 import PostContent from "components/blocks/PostBody/PostContent";
 import { Shoutout2019Data } from "./Shoutout2019Data";
+import NewReportContent from "../NewReportContent/NewReportContent";
 // export interface ReportShoutoutSectionInterface {
 //   title: string;
 //   introduction: string;
@@ -15,7 +16,7 @@ const ShoutoutSection = ({ title, type, richBody }) => {
       <ResponsiveContentContainer padding={"py-2xl"} alignment="center">
         <h2 className="type-preset-3 font-bold">{title}</h2>
         <div className="pb-xl font-serif">
-          <PostContent docData={richBody.json} docLinks={richBody.links} />
+          <NewReportContent docData={richBody.json} docLinks={richBody.links} variant={"report"} />
         </div>
         {type == "Shoutout 2019" && (
           <Details summary="See all shoutouts">

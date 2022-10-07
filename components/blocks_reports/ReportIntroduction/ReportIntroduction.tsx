@@ -4,6 +4,7 @@ import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useEffect, useState } from "react";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import NewReportContent from "../NewReportContent/NewReportContent";
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
@@ -113,7 +114,7 @@ const IntroductionBlock2021 = ({
             id={`${anchor}-body`}
             className="font-serif font-light text-purple-900 pt-sm lg:pt-xl pb-2xl "
           >
-            <PostContent docData={richBody.json} docLinks={richBody.links} />
+            <NewReportContent docData={richBody.json} docLinks={richBody.links}  variant={"report"}/>
           </div>
           <Signatures signatures={signatures} colorTheme={"purple"}/>
         </div>
@@ -150,7 +151,7 @@ const IntroductionBlock = ({
     <section className="bg-sage-50 " id={anchor}>
       <ResponsiveContentContainer padding="py-4xl" alignment="center">
         <div className="font-serif text-black">
-          <PostContent docData={richBody.json} docLinks={richBody.links} variant="report sage" />
+          <NewReportContent docData={richBody.json} docLinks={richBody.links} variant="report sage" />
         </div>
         <Signatures signatures={signatures} colorTheme={"sage"} />
       </ResponsiveContentContainer>

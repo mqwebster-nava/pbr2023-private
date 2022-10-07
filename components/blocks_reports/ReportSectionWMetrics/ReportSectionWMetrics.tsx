@@ -5,7 +5,7 @@ import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
 import { Button, LinkText } from "components/atom";
-import NewReportContent from "../old/NewReportContent/NewReportContent";
+import NewReportContent from "../NewReportContent/NewReportContent";
 import PostContent from "components/blocks/PostBody/PostContent";
 
 export interface ReportSectionWMetricsInterface {
@@ -110,7 +110,7 @@ const ReportSectionContentFull = ({
         {metrics && <ReportMetrics metrics={metrics} />}
           <div className="font-serif">
             {title && <h2 className="type-preset-3 font-bold">{title}</h2>}
-            <PostContent
+            <NewReportContent
               docData={body.json}
               docLinks={body.links}
               variant={variant}
