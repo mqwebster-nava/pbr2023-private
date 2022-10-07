@@ -1,14 +1,10 @@
 // TODO Animation with arrow
-
-import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useEffect, useState } from "react";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import NewReportContent from "../NewReportContent/NewReportContent";
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
-  makeSlideUpAnimation,
 } from "../NewReportSection/animations";
 import ArrowDown from "../NewReportSection/Atoms/ArrowDown";
 import { animationHandler, AnimationObject, getOffsetPct } from "../NewReportSection/utils";
@@ -44,20 +40,15 @@ const IntroductionBlock2021 = ({
     const screenH = window.innerHeight;
 
     // make pct once it gets to full page
-    const desktopTriggerPct = Math.round((50 * screenH) / sectionH);
-    const mobileTriggerPct = Math.round((30 * screenH) / sectionH);
-    const storyOutTrigger = Math.round((100 * (sectionH - screenH)) / sectionH);
+    const arrowFadeInTrigger = Math.round((10 * screenH) / sectionH);
+    const arrowFadeOutTrigger = Math.round((100 * (sectionH - screenH)) / sectionH);
     let ana = [
       {
-        triggerPct:  desktopTriggerPct,
-        triggerPcts: {
-          mobile: mobileTriggerPct,
-          tablet:  mobileTriggerPct,
-        },
+        triggerPct:  arrowFadeInTrigger,
         animation: makeFadeInAnimation(`${anchor}-next-arrow`, 0),
       },
       {
-           triggerPct: storyOutTrigger,
+           triggerPct: arrowFadeOutTrigger,
            animation: makeFadeAnimation(`${anchor}-next-arrow-container`, 0, 200),
       }
     ];
