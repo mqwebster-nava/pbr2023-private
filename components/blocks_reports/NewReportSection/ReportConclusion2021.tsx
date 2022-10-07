@@ -6,7 +6,6 @@ import PostContent from "components/blocks/PostBody/PostContent";
 
 
 const ReportConclusion2021 = ({title, richBody, anchor}) => {
-  const [isActive, setIsActive] = useState(false);
   const [animationList, setAnimationList] = useState([]);
   
 
@@ -48,10 +47,9 @@ const ReportConclusion2021 = ({title, richBody, anchor}) => {
         
         const offsetPct = getOffsetPct(anchor);
         const _isActive = offsetPct >= -40 && offsetPct < 100 ;
-        if (_isActive !== isActive) setIsActive(_isActive);
         if (!_isActive) return;
-       
-        animationHandler({offsetPct, animationList});
+        const inFocus = document.getElementById(anchor).contains(document.activeElement);
+        animationHandler({offsetPct, animationList, inFocus});
   
     
       };

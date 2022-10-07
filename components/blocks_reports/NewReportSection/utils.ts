@@ -40,26 +40,27 @@ export interface AnimationObject {
   animation?: any;
   windowSizes?: Array<WindowSize>;
   triggerPcts?: any;
-  noRepeat?:boolean;
+  noRepeat?: boolean;
 }
 
 export interface AnimationHandlerInterface {
   offsetPct: any;
   animationList: any;
+  inFocus?: boolean;
   //windowSize: string;
   //componentState?: string;
 }
 export const animationHandler = ({
   offsetPct,
   animationList,
+  inFocus=false,
 }: AnimationHandlerInterface) => {
   const windowSize = getScreenSize();
   animationList.forEach((animation, i) => {
-    // Check Start
-    if(animation.animation.playState == "finished" && animation.noRepeat)return;
-    let triggerPct = (animation.triggerPcts && windowSize in animation.triggerPcts ) ? animation.triggerPcts[windowSize] : animation.triggerPct;
-    
-    // Check if it is not active in the current window size
+   
+    // If it is running, do nothing
+    if (animation.animation.playState == "running") return;
+    // Reseting based on window size - Check if it is not active in the current window size
     if (animation.windowSizes && !animation.windowSizes.includes(windowSize)) {
       // If it is not active but already ran, reverse it so it resets to it's original state
       if (
@@ -71,30 +72,29 @@ export const animationHandler = ({
       }
       return;
     }
-    // If it is running, do nothing
-    if (animation.animation.playState == "running") return;
+    // If it isn't repeated and has run, do nothing
+    if (animation.animation.playState == "finished" && animation.noRepeat)
+    return;
 
-    if (
-      offsetPct > triggerPct &&
-      ((animation.animation.playbackRate == -1 &&
-        animation.animation.playState == "finished") ||
-        animation.animation.playState == "paused")
+
+    let triggerPct =
+      animation.triggerPcts && windowSize in animation.triggerPcts
+        ? animation.triggerPcts[windowSize]
+        : animation.triggerPct;
+  
+    
+   
+    // If it is greater than offset pct
+    if ((inFocus || offsetPct >= triggerPct) &&
+        animation.animation.playState == "paused"
     ) {
-      /// console.log("an started", animation.animation )
-      if (
-        animation.animation.playbackRate == -1 &&
-        animation.animation.playState == "finished"
-      ) {
-        animation.animation.reverse();
-      } else {
         animation.animation.play();
-      }
     }
     // Check End
     else if (
-      offsetPct < triggerPct &&
       animation.animation.playState == "finished" &&
-      animation.animation.playbackRate == 1
+      (((!inFocus && offsetPct < triggerPct) && animation.animation.playbackRate == 1)
+        || ((inFocus ||offsetPct >= triggerPct) && animation.animation.playbackRate == -1))
     ) {
       animation.animation.reverse();
     }
@@ -113,9 +113,9 @@ export const debounce = (callback, wait) => {
   };
 };
 
-   // if (
-    //   componentState &&
-    //   animation.componentStates &&
-    //   !animation.includes(componentState)
-    // )
-    //   return;
+// if (
+//   componentState &&
+//   animation.componentStates &&
+//   !animation.includes(componentState)
+// )
+//   return;

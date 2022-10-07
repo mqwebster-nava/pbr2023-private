@@ -1,3 +1,10 @@
+/*
+TODO 
+- test out the sections being clickable
+- having the progress bar start a little after 0% so doesn't look like a glitch
+*/
+
+
 import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
 

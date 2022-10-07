@@ -118,7 +118,8 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     const offsetPct = getOffsetPct(storyId);
 
     if (offsetPct < 0 || offsetPct >= 100) return;
-    animationHandler({ offsetPct, animationList });
+    const inFocus = document.getElementById(storyId).contains(document.activeElement);
+    animationHandler({ offsetPct, animationList, inFocus });
   };
   useEffect(() => {
     if (animationList.length == 0) {

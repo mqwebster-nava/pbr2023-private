@@ -54,7 +54,8 @@ const SectionIntro = ({ section, i}) => {
       const onScroll = () => {
         const offsetPct = getOffsetPct(section.anchor);
         if (offsetPct < -75 || offsetPct >= 50) return;
-        animationHandler({offsetPct, animationList});
+        const inFocus = document.getElementById(section.anchor).contains(document.activeElement);
+        animationHandler({offsetPct, animationList, inFocus});
       };
       const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -72,7 +73,7 @@ const SectionIntro = ({ section, i}) => {
     const textColor = "white" //section.colorTheme === "gold" ? "black" : "white";
 
     return (
-      <section id={`${section.anchor}`} className="h-auto md:h-[140vh]">
+      <section id={`${section.anchor}`} className="h-auto md:h-[140vh]" tabIndex={0}>
         <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px]`}>
       <div
