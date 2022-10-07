@@ -3,6 +3,10 @@
 import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
+/*
+TODO navbar spacing
+*/
+
 
 const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
   // Have the bottom rule not have a hr
