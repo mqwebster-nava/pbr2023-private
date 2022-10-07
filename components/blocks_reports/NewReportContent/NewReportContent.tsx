@@ -52,7 +52,7 @@ const NewReportContent = ({docData, docLinks, variant}) =>{
           ),
           
           [BLOCKS.QUOTE]: (node, children) => {
-           return <PostBlockQuote body={children} variant={variant}/>
+           return <PostPullQuote body={children} variant={variant}/>
         },
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
