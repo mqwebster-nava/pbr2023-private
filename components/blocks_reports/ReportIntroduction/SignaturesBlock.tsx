@@ -34,13 +34,14 @@ export const Signatures: React.FC<SignaturesProps> = ({
   const numberOfSignatures = signatures.length;
 
   const gridColumns = classNames({
-    "grid-cols-2": true,
-    "md:grid-cols-2": numberOfSignatures <= 2,
-    "lg:grid-cols-4": numberOfSignatures > 2,
+    
+    "grid-cols-2 md:grid-cols-2": true,
+    "lg:grid-cols-3": numberOfSignatures <= 3,
+    "lg:grid-cols-4": numberOfSignatures > 3,
   });
 
   return (
-    <div className={`py-xl ${margin}`}>
+    <div className={`pt-2xl pb-xl ${margin}`}>
       <div className={`grid ${gridColumns} w-full`}>
         {signatures.map((signature, index) => (
           <div key={index}>
