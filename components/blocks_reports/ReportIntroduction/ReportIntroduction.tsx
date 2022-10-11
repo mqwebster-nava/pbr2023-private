@@ -1,8 +1,8 @@
 // TODO Animation with arrow
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useEffect, useState } from "react";
-import NewReportContent, { REPORT_YEAR } from "../NewReportContent/NewReportContent";
-import ReportIntroduction2021 from "./ReportIntroduction2021";
+import ReportContent, { REPORT_YEAR } from "../ReportContent/ReportContent";
+import ReportIntroduction2021 from "../report_2021/ReportIntroduction2021";
 import { SignatureInterface, Signatures } from "./SignaturesBlock";
 
 export interface ReportIntroductionInterface {
@@ -34,7 +34,7 @@ const IntroductionBlock = ({
     <section className="bg-sage-50 " id={anchor}>
       <ResponsiveContentContainer padding="py-4xl" alignment="center">
         <div className="font-serif text-black">
-          <NewReportContent 
+          <ReportContent 
           docData={richBody.json} 
           docLinks={richBody.links} 
           variant="report sage"

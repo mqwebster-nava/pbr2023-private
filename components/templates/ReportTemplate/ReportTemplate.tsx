@@ -1,19 +1,26 @@
-import ReportIntroductionBlock from "components/blocks_reports/ReportIntroduction/ReportIntroduction";
-import ReportHero from "components/blocks_reports/ReportHeader/ReportHeader2021";
-import React, { Children, useEffect, useRef, useState } from "react";
-
 import { PageInterface } from "shared_interfaces/page_interface";
+import dynamic from "next/dynamic";
 
-import ReportNavbar from "components/blocks_reports/NewReportSection/ReportNavbar/ReportNavbar";
-import SectionIntro from "components/blocks_reports/NewReportSection/SectionIntro";
-import StorySection from "components/blocks_reports/NewReportSection/StorySection/StorySection";
-import TableOfContentsSection from "components/blocks_reports/NewReportSection/TableOfContents/TableOfContents";
-import SplitImageTextSection from "components/blocks_reports/SplitImageTextSection/SplitImageTextSection";
-import ReportHeader from "components/blocks_reports/ReportHeader/ReportHeader";
-import ShoutoutSection from "components/blocks_reports/ConclusionSection/ShoutoutSection";
-import ReportSectionWMetrics from "components/blocks_reports/ReportSectionWMetrics/ReportSectionWMetrics";
-import ConclusionSection2020 from "components/blocks_reports/ConclusionSection/Conclusion2020";
-import ReportConclusion2021 from "components/blocks_reports/ConclusionSection/ReportConclusion2021";
+// 2021
+const ReportNavbar = dynamic(() => import("components/blocks_reports/report_2021/ReportNavbar/ReportNavbar"));
+const ReportHero2021 = dynamic(() => import("components/blocks_reports/report_2021/ReportHero2021"));
+const ReportIntroduction2021 = dynamic(() => import("components/blocks_reports/report_2021/ReportIntroduction2021"));
+const SectionIntro = dynamic(() => import("components/blocks_reports/report_2021/SectionIntro"));
+const StorySection = dynamic(() => import("components/blocks_reports/report_2021/StorySection/StorySection"));
+const TableOfContentsSection = dynamic(() => import("components/blocks_reports/report_2021/TableOfContents/TableOfContents"));
+const ReportConclusion2021 = dynamic(() => import("components/blocks_reports/report_2021/ReportConclusion2021"));
+
+//2020
+const ReportHero2020 = dynamic(() => import("components/blocks_reports/report_2020/ReportHero2020"));
+const ReportSectionWMetrics = dynamic(() => import("components/blocks_reports/report_2020/ReportSectionWMetrics/ReportSectionWMetrics"));
+const ConclusionSection2020 = dynamic(() => import("components/blocks_reports/report_2020/Conclusion2020"));
+
+// 2018-2019
+const ReportHero2018 = dynamic(() => import("components/blocks_reports/report_2018-2019/ReportHero2018"));
+const ReportHero2019 = dynamic(() => import("components/blocks_reports/report_2018-2019/ReportHero2019"));
+const ReportIntroductionBlock = dynamic(() => import("components/blocks_reports/ReportIntroduction/ReportIntroduction"));
+const SplitImageTextSection = dynamic(() => import("components/blocks_reports/report_2018-2019/SplitImageTextSection/SplitImageTextSection"));
+const ShoutoutSection = dynamic(() => import("components/blocks_reports/report_2018-2019/ShoutoutSection"));
 
 
 const ReportTemplate: React.FC<PageInterface> = ({
@@ -23,8 +30,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   children,
 }) => {
 
-  // Want everything to be a section
-  //let reportSections = sortDocIntoH2Sections(contentBlocks);
+
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2021")?"2021": slug.includes("2020")?"2020":slug.includes("2019")?"2019":slug.includes("2018")?"2018":null;
 
@@ -39,12 +45,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
+
     const componentMap = {
-      //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
-      
-      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
-      ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} reportYear={reportYear} {...entry}  />,
-      ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} reportYear={reportYear} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
+      "2021":{
+      ReportIntroduction: (entry) => <ReportIntroduction2021  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
@@ -75,15 +79,26 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ),
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
-      :(entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>
-      :(entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/>
       :(entry.type=='Conclusion 2021') ? <ReportConclusion2021 key={index} {...entry}/>
       :null //contentBlocks={contentBlocks}
-    };
-    return typename in componentMap ? (
-      componentMap[typename](entry)
+    },
+    "2020": {
+      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
+      ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} reportYear={reportYear} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
+      ReportSectionCustom: (entry) => 
+      (entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/> :null //contentBlocks={contentBlocks}
+    },
+    "2019":{
+      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
+      ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} reportYear={reportYear} {...entry}  />,
+      ReportSectionCustom: (entry) => (entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>:null 
+    }
+  };
+    let yr = reportYear==="2018" ? "2019" : reportYear
+    return typename in componentMap[yr] ? (
+      componentMap[yr][typename](entry)
     ) : (
-      <div key={index}></div>
+      null
     );
   };
 
@@ -93,7 +108,11 @@ const ReportTemplate: React.FC<PageInterface> = ({
         contentBlocks={contentBlocks}
         reportSections={reportSections}
       />}
-       <ReportHeader {...pageHeader}   />
+       {(reportYear==="2018"? <ReportHero2018 {...pageHeader}/>
+         : reportYear==="2019" ? <ReportHero2019  {...pageHeader}/>
+         : reportYear==="2020" ?  <ReportHero2020  {...pageHeader}/>
+         : reportYear==="2021" ? <ReportHero2021  {...pageHeader}/>
+         : null )}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
       </div>

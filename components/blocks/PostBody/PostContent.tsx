@@ -14,7 +14,7 @@ const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/Pos
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import EmbeddedVideo from "./EmbeddedVideo";
-import Callout from "../../blocks_reports/NewReportContent/Callout";
+import Callout from "../../blocks_reports/ReportContent/Callout";
 
 export type CONTENT_VARIANT = "post" | "report" | "report sage";
 export interface PostContentInterface {

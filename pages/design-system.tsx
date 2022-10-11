@@ -52,7 +52,7 @@ export default function DesignSystem(props: PageInterface) {
             </div>
             <div
               style={{ width: "100px", height: "100px" }}
-              className="bg-purple-300 stroke-purple-300 border-l-sage-50 fill-sage-900"
+              className="bg-purple-300 stroke-purple-300 border-l-sage-50 fill-sage-900 text-sage-900"
             >
               300
             </div>
