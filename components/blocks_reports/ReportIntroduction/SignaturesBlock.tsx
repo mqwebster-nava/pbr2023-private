@@ -35,8 +35,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
 
   const gridColumns = classNames({
     
-    "grid-cols-2 md:grid-cols-2": true,
-    "lg:grid-cols-3": numberOfSignatures <= 3,
+    "grid-cols-2 md:grid-cols-3": true,
     "lg:grid-cols-4": numberOfSignatures > 3,
   });
 
@@ -44,7 +43,7 @@ export const Signatures: React.FC<SignaturesProps> = ({
     <div className={`pt-2xl pb-xl ${margin}`}>
       <div className={`grid ${gridColumns} w-full`}>
         {signatures.map((signature, index) => (
-          <div key={index}>
+          <div key={index} className="max-w-[300px]">
             <Image
               src={signature.image.url}
               height={signature.image.height}
