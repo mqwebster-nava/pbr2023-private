@@ -37,9 +37,8 @@ export function getEventDateStr(date) {
 export function isDateAfterNow(date) {
   const eventDate = new Date(`${date}`)
   const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setDate(tomorrow.getDate());
   tomorrow.setHours(0, 0, 0, 0);
-  console
   return eventDate > tomorrow;
 }
 
@@ -56,6 +55,7 @@ export function getContentUrl(contentType, slug) {
   return `/${contentPart}/${slug}`;
 }
 
+// Ensures that the id is a stand alone field and maps collections to a list of items
 export function liftData(data) {
   if (!data) return data;
 

@@ -20,6 +20,10 @@ const CapabilitiesSection  = dynamic(() => import("components/blocks/Capabilitie
 const EmployeeList = dynamic(() => import("components/custom_blocks/EmployeeList/EmployeeList"));
 const OpenRolesComponent  = dynamic(() => import("components/custom_blocks/OpenRolesComponent/OpenRolesComponent"));
 const HighlightedInformationList  = dynamic(() => import("components/blocks/HighlightedInformationList/HighlightedInformationList"));
+const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventSpeakersRow/PostEventSpeakersRow"));
+
+
+
 import { PageInterface } from "shared_interfaces/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
@@ -43,15 +47,16 @@ const PageTemplate: React.FC<PageInterface> = ({
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
       "FloatingButtonBlock":()=><FloatingButtonBlock key={index} {...entry}/>,
+      "PostEventSpeakersRow": ()=><PostEventSpeakersRow key={index} {...entry}/>,
       "HighlightedInformationList": // Highlighted Information Card
          ()=><HighlightedInformationList key={index}  {...entry} />,
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
-        return <div></div>
+        return null
       }
     }
-    return typename in componentMap ? componentMap[typename](entry) : <div></div>
+    return typename in componentMap ? componentMap[typename](entry) : null;
   };
   return (
     <main id="main">

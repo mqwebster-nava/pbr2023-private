@@ -1,6 +1,11 @@
 import { usePopperTooltip } from "react-popper-tooltip";
 import "react-popper-tooltip/dist/styles.css";
-
+// additional JS to look for 
+// How do you notify them when the graph has changed -- 
+// -- For filter by - could include screen reader only text ( like aria label or field set w/ legend)
+//     -- could add hidden span with the text 
+// could wrap graphs into aria-role = "live" 
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
 interface PercentSquareGraphInterface {
   percent: string;
   multiPercent?: number;

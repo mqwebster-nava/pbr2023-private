@@ -12,6 +12,7 @@ interface FilterControlInterface {
   // descriptionKey: string;
   // graphData: Array<any>;
   label?:string;
+  regionID: string;
   theme?: string;
   checkboxValue?: string;
   checkboxLabel?: string;
@@ -22,7 +23,8 @@ interface FilterControlInterface {
 
 export const FilterControl: React.FC<FilterControlInterface> = ({
   filters,
-   label,
+  label,
+  regionID,
   theme = "sage",
   checkboxValue = "",
   checkboxLabel = "",
@@ -32,13 +34,14 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
   children,
 }) => {
   return (
-    <div aria-label={label} >
+    <fieldset aria-label={label} >
       <p className="font-black type-preset-5">Filter by</p>
       <FilterButtonGroup
         filters={filters}
         handleClick={handleFilterClick}
         selectedFilter={selectedFilter}
         theme={theme}
+        regionID={regionID}
       />
       {checkboxValue && (
         <CheckBox
@@ -48,6 +51,6 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
         />
       )}
       {children}
-    </div>
+    </fieldset>
   );
 };
