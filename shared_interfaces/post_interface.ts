@@ -1,3 +1,5 @@
+import { PostEventSpeaker } from "components/blocks/PostEventSpeakersRow/PostEventSpeakersRow";
+
 
 export interface ContentfulImageAsset{
   id:string;
@@ -28,6 +30,7 @@ export interface FullPostInterface extends BasicPostInterface{
     leadImage:ContentfulImageAsset;
     socialImage:ContentfulImageAsset;
     registrationLink: string;
+    eventInfo: EventInfo
 }
 
 export interface AuthorPostInterface{
@@ -39,4 +42,14 @@ export interface AuthorPostInterface{
     posts?:Array<BasicPostInterface>;
 }
 
+
+
+export interface EventInfo {
+    location:string;
+    eventTime:string;
+    eventEndTime: string;
+    registrationLink?:string;
+    recordingLink?:string;
+    speakers?: Array<PostEventSpeaker>
+}
 

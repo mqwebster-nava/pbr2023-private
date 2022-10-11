@@ -1,3 +1,4 @@
+import { PostEventSpeaker } from "components/blocks/PostEventSpeakersRow/PostEventSpeakersRow";
 import { AuthorPostInterface, BasicPostInterface, ContentfulImageAsset, FullPostInterface } from "../shared_interfaces/post_interface";
 
 
@@ -64,7 +65,19 @@ const formatImageAsset = (imgData) => {
       leadImage: ("leadImage" in post) ? formatImageAsset(post.leadImage): null,
       promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
       socialImage: ("socialImage" in post) ? formatImageAsset(post.socialImage): null,
-      registrationLink: post.registrationLink
+      registrationLink: post.registrationLink,
+      eventInfo: post.eventInfo && {
+        ...post.eventInfo,
+        speakers: post.eventInfo.eventSpeakersCollection?.items?.map((speaker)=>{
+          const formattedSpeaker: PostEventSpeaker ={
+            name: speaker.name,
+            role: speaker.role,
+            company: speaker.company,
+            image: formatImageAsset(speaker.image)
+          }
+          return formattedSpeaker;
+        }),
+      }
     }
     return formattedPost;
   }

@@ -20,5 +20,6 @@ image {
     title
     description
 }
+imageShape
 `;
 export default CONTENT_BLOCK;

@@ -11,7 +11,7 @@ const EmbeddedVideo = ({
 }: EmbeddedVideoInterface) => {
    
   return (
-    <div className={`relative w-full pt-[56.25%]`} >
+    <div className={`my-md relative w-full pt-[56.25%]`} >
       <iframe
         className={`absolute top-0 bottom-0 right-0 left-0 h-full w-full`}
         src={`https://www.youtube.com/embed/${linkId}`}

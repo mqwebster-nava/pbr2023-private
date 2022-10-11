@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { AnalyticsLabelType } from "shared_interfaces/Analytics";
-type Variant = "default" | "outlined" | "white" | "dark" | "";
+type Variant = "default" | "outlined" | "white" | "dark" | "outlined white" |"";
 
 export interface ButtonProps {
   href?: string;
@@ -23,6 +23,8 @@ export const Button: React.FC<ButtonProps> = ({
     "text-sage-700 bg-white hover:bg-sage-100": variant == "white",
     "text-sage-700 border border-sage-700 hover:bg-sage-100":
       variant == "outlined",
+    "text-white border border-sage-700 hover:bg-sage-700":
+      variant == "outlined white",
     "text-white  bg-sage-base  hover:bg-sage-900": variant == "default",
     "text-white  bg-sage-900  hover:bg-black": variant == "dark",
   });

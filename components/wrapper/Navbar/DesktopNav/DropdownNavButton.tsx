@@ -14,6 +14,8 @@ import styles from "./desktopnav.module.css";
 // display none leave the containing box while visibility none removes  
 // -- both remove things from the accessibility tree
 
+
+// Get rid of the role of menu at the top level div than add the menu at react slide down
 interface DropdownNavButtonInterface {
   title: string;
   subpages: any;
@@ -29,7 +31,7 @@ const DropdownNavButton = ({
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
 
-  const Chevron = () => (<div className={`chevron mt-[4px]`}>
+  const Chevron = () => (<div className={`chevron mt-[4px]`} aria-hidden={true}>
   <svg
     aria-label=""
     width="8"
@@ -49,7 +51,6 @@ const DropdownNavButton = ({
 
   return (
     <div
-      role={"menu"}
       className={`${styles.dropdownAnimations} relative group my-auto`}
       onMouseEnter={()=>setIsShowingMenu(true)}
       onMouseLeave={()=>setIsShowingMenu(false)}
@@ -70,11 +71,10 @@ const DropdownNavButton = ({
       
         <Chevron/>
       </div>
-      <div className={`absolute -left-[28px] top-[43px] z-1 w-[236px] hidden group-hover:block group-focus-within:block   `}>
+      <div className={`absolute -left-[28px] top-[44px] z-1 w-[236px] hidden group-hover:block group-focus-within:block   `}>
         <SlideDown className={`mt-[19px]  bg-white`}>
           { subpages.map((navitem, i) => (
                 <a
-                  role={"menuitem"}
                   key={navitem.title}
                   href={navitem.slug}
                   className={`text-gray-900 text-left  block  px-[28px] font-sans hover:underline  ${analyticsLabel}

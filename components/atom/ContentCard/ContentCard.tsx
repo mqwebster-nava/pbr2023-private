@@ -1,7 +1,4 @@
 import classNames from "classnames";
-//import CardWithImage from "./CardWithImage";
-import HighlightedCard from "./HighlightedCard";
-//import LargeTextCard from "./LargeTextCard";
 import Image from "next/image";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import { AnalyticsLabelType } from "shared_interfaces/Analytics";

@@ -33,6 +33,7 @@ const NavData = [
       { title: "Team", slug: "/team" },
       { title: "Diversity, equity, and inclusion", slug: "/dei" },
       { title: "News", slug: "/news" },
+      { title: "Events", slug: "/events" },
     ],
   }, 
   {

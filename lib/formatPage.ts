@@ -46,6 +46,7 @@ export function formatPage(page){
 }
 
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
+  const variant =  post.contentType==="Events" ? "Events Post" : "Post"
   const formattedPage: PageInterface =  {
     id: post.id,
     slug: getContentUrl(post.contentType, post.slug),
@@ -55,14 +56,20 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     pageHeader: {
       id: `${post.id}-header`,
       title:post.contentType ,
-      variant:"Post",
+      variant:variant,
       subtitle:post.title,
       body:post.longSummary,
       image:  liftData(post.leadImage),
+      eventInfo: post.eventInfo,
     },
     description:post.shortSummary,
     contentBlocks: [
       // Post body block
+      post.contentType==="Events" && post.eventInfo && post.eventInfo.speakers &&{
+        __typename:"PostEventSpeakersRow",
+        id: `${post.id}-PostEventSpeakersRow`,
+        speakers: post.eventInfo.speakers
+      },
       {
         __typename:"PostBody",
         id: `${post.id}-body`,
@@ -71,8 +78,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         authors: post.authors,
         date: post.date,
         hideSideNav: post.hideSideNav,
-        isEvent: post.contentType=="Events",
-        registrationLink: post.registrationLink
+        eventInfo:  post.eventInfo,
       },
       // more posts block
       post.contentType!=="Events" && {
@@ -99,7 +105,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
           description: ''
         }
       },
-
+     
     ],
  }
  return formattedPage;
