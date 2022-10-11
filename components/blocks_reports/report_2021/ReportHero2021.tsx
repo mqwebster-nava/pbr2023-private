@@ -33,6 +33,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
     if (window.innerWidth < 768 && s > 250) {
       s = 250;
     }
+    if(s<30)s=0;
     const svg = document.getElementById("baseSVG");
     const animBox = document.getElementById("animation-box");
     svg.setAttribute("height", `${s}`);
