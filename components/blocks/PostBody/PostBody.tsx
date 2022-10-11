@@ -8,7 +8,6 @@ import { AuthorPostInterface, EventInfo } from "shared_interfaces/post_interface
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";
 import PostContent from "./PostContent";
-import EventInfoComponent from "./EventInfoComponent";
 // import styles from "./PostBody.module.css" // REmoved endcaps
 import { slugify } from "utils/utils";
 const SideNavComponent  = dynamic(() => import("components/blocks/PostBody/SideNavComponent"));
@@ -96,14 +95,12 @@ export default function PostBody({
       <div className="hidden md:block md:col-span-1"></div>
       {/* Article Sidebar Section  */}
       <div className={"w-full md:col-span-3 pt-md "}>
-       { isEvent? 
-       <EventInfoComponent eventInfo={eventInfo} date={date} contentTags={contentTags}/> : 
         <ArticleInfoComponent
           authors={authors}
           date={date}
           contentTags={contentTags}
+          isEvent={isEvent}
         />
-        }
         {!hideSideNav && (
           <SideNavComponent
             h2Sections={h2Sections}

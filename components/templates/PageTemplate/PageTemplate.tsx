@@ -54,10 +54,10 @@ const PageTemplate: React.FC<PageInterface> = ({
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
-        return <div></div>
+        return null
       }
     }
-    return typename in componentMap ? componentMap[typename](entry) : <div></div>
+    return typename in componentMap ? componentMap[typename](entry) : null;
   };
   return (
     <main id="main">
