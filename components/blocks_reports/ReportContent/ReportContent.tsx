@@ -5,6 +5,8 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { liftData } from "utils/utils";
 
+
+
 const PostBlockQuote = dynamic(
   () => import("components/blocks/PostBody/PostBlockQuote")
 );
@@ -31,7 +33,7 @@ export interface ReportContentInterface {
 }
 
 const ReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentInterface) => {
-  let fontStyle = reportYear == "2021"? "font-bold pt-lg font-serif" : "font-bold pt-lg font-sans" ;
+  let fontStyle = reportYear == "2021"? "font-bold pt-lg pb-md font-serif" : "font-bold pt-lg font-sans" ;
   
   // const variantStyles = classNames({
   //   "": reportYear == "2020",
@@ -65,7 +67,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentI
         <p className={`type-preset-4 ${fontStyle}`}>{children}</p>
       ),
       [BLOCKS.HEADING_4]: (node, children) => (
-        <h4 className={`type-preset-5 ${fontStyle}`}>{children}</h4>
+        <h4 className={`type-preset-5 tracking-normal ${fontStyle}`}>{children}</h4>
       ),
 
       [BLOCKS.QUOTE]: (node, children) => {
