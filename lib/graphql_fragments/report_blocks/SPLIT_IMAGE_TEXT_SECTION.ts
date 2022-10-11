@@ -1,5 +1,5 @@
 import IMAGE_FIELDS from "../IMAGE_FIELDS";
-import { REPORT_BODY } from "./REPORT_BODY";
+import { REPORT_BODY, REPORT_BODY_2019 } from "./REPORT_BODY";
 
 const SPLIT_IMAGE_TEXT_SECTION = `
 sys {
@@ -13,10 +13,10 @@ image {
     ${IMAGE_FIELDS}
 }
 introduction {
-    ${REPORT_BODY}
+    ${REPORT_BODY_2019}
 }
 richBody {
-    ${REPORT_BODY}
+    ${REPORT_BODY_2019}
 }
 `;
 
