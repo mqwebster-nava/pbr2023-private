@@ -90,7 +90,7 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
        <div className="w-1/3">
         <Logo isMobile={true} color="black" />
         </div>
-        <a href="#reportHeader">
+        <a href="#reportHeader" onClick={() => {if(isShowingMenu)setIsShowingMenu(false); }}>
         <h2 className="type-preset-6 font-serif text-black tracking-[0.015em]">
           Public Benefit Report
         </h2>
