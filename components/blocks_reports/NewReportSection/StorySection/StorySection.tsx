@@ -11,11 +11,12 @@ import {
 import Callout from "components/blocks_reports/NewReportContent/Callout";
 import ArrowDown from "../Atoms/ArrowDown";
 import NewReportContent from "components/blocks_reports/NewReportContent/NewReportContent";
+import ArrowDownColumn from "../Atoms/ArrowDownColumn";
 
 
 // TODO  When expand need to initiate animations again to get based on larger size
 
-
+// LG portiat
 
 
 const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle, nextSectionType="story" }) => {
@@ -149,13 +150,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
 
         <div
-          className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:-mt-[calc(100vh_-_70px)] `}
+          className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:landscape:-mt-[calc(100vh_-_70px)] `}
         >
           <div
             className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}
           >
             <div
-              className={`lg:col-start-5 lg:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}
+              className={`lg:landscape:col-start-5 lg:landscape:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}
               id={`storyTitleDiv-${story.anchor}`}
             >
               <h3
@@ -171,7 +172,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
           <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
             <div className="grid grid-cols-12 responsive-container h-auto relative">
               <div
-                className={`lg:col-start-5 lg:col-span-7 col-start-0 col-span-11  pr-xl `}
+                className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11  pr-xl `}
               >
                 <div
                   id={`storySummary-${story.anchor}`}
@@ -211,22 +212,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                 </div>
               </div>
 
-              <div className="col-span-1 block opacity-100" id={`${story.anchor}-next-arrow-container`} >
-                {nextId && (
-                  <a
-                    id={`${story.anchor}-next-arrow`}
-                    href={`#${nextId}`}
-                    aria-label={`Skip to ${nextSectionTitle}`}
-                    className="group w-full sticky top-[calc(100vh_-_150px)] pl-lg  mb-2xl opacity-0 motion-reduce:opacity-100 flex flex-col md:items-start items-center"
-                  >
-                    <p className={`type-preset-7  text-${c} opacity-100 lg:opacity-0   group-hover:opacity-100 group-focus:opacity-100 rotate-90 lg:rotate-0 w-[100px] lg:w-auto -mb-lg lg:mb-sm`}>
-                      Next <br className="hidden lg:block"/>{nextSectionType}
-                    </p> 
-                    <ArrowDown sectionId={`${story.anchor}`} color={c} isMobileHidden={true}></ArrowDown>
-
-                  </a>
-                )}
-              </div>
+          <ArrowDownColumn anchor={story.anchor} color={c} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
             </div>
           </div>
         </div>
@@ -244,7 +230,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
     >
       <div className={`h-[100px] block lg:hidden`}> </div>
       <div
-        className={`relative h-[calc(100vw_*_9_/_16)] lg:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
+        className={`relative h-[calc(100vw_*_9_/_16)] lg:landscape:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
         <Image
           id={`storyImg-${story.anchor}`}
@@ -269,6 +255,33 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
 
 export default StorySection;
 
+
+{/* <div className="col-span-1 block opacity-100" id={`${story.anchor}-next-arrow-container`} >
+{nextId && (
+  <a
+    id={`${story.anchor}-next-arrow`}
+    href={`#${nextId}`}
+    aria-label={`Skip to ${nextSectionTitle}`}
+    className={`
+    group sticky top-[calc(100vh_-_300px)] pt-3xl
+    lg:top-[calc(100vh_-_150px)]   lg:pt-0
+    w-full pl-lg  mb-2xl 
+    opacity-0 motion-reduce:opacity-100 
+    flex flex-col md:items-start items-center`}
+  >
+    <p className={`
+    type-preset-7  text-${c} 
+    w-[100px]  -mb-lg   opacity-100  rotate-90 translate-x-0 md:-translate-x-[32px]
+    lg:w-auto lg:mb-sm  lg:opacity-0  lg:rotate-0 lg:translate-x-0
+    group-hover:opacity-100 group-focus:opacity-100 
+    `}>
+      Next <br className="hidden lg:block"/>{nextSectionType}
+    </p> 
+    <ArrowDown sectionId={`${story.anchor}`} color={c} isMobileHidden={true}></ArrowDown>
+
+  </a>
+)}
+</div> */}
 //windowSize,
 // activeSection,
 //bg-orange-400 sm:bg-white md:bg-slate-200 lg:bg-blue-500 xl:bg-green-300
