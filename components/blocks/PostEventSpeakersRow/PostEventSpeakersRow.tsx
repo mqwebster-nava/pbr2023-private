@@ -33,7 +33,7 @@ const PostEventSpeakersRow = ({
         <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-xl">
           {speakers.map((speaker) => {
             return (
-              <div className="">
+              <div className="" key={speaker.name}>
                 {speaker.image ? (
                   <Image
                     src={speaker.image.url}
