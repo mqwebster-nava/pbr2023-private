@@ -157,7 +157,7 @@ const ReportMenuRow = ({
               </div>
             </div>
           </summary>
-          <SlideDown className={`${styles.mobileSlideDown}`}>
+          <SlideDown className={`${styles.mobileSlideDown} pb-lg`}>
             <div
               onClick={onClick}
               className={`font-serif font-light py-sm type-preset-6 border-t-2 border-${textColor}`}
@@ -179,7 +179,7 @@ const ReportMenuRow = ({
                 return (
                   <div
                     onClick={onClick}
-                    className={`font-serif flont-light py-sm type-preset-6 border-t-2 border-${textColor}`}
+                    className={`font-serif font-light py-sm type-preset-6 border-t-2 border-${textColor} min-h-[48px]`}
                     key={`${anch2}-story-report-menu`}
                   >
                     <LinkText
