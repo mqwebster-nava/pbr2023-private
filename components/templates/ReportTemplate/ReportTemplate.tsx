@@ -26,6 +26,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
   // Want everything to be a section
   //let reportSections = sortDocIntoH2Sections(contentBlocks);
   let reportSections = getSectionsInfo(contentBlocks);
+  let reportYear = slug.includes("2021")?"2021": slug.includes("2020")?"2020":slug.includes("2019")?"2019":slug.includes("2018")?"2018":null;
+
 
   let links2020 = [
   { text: "Letter from leadership", id: "intro" },
@@ -41,8 +43,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
       //TextBodyBlock: () => <ReportIntroductionBlock key={index} {...entry} />,
       
       ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
-      ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} {...entry}  />,
-      ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
+      ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} reportYear={reportYear} {...entry}  />,
+      ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} reportYear={reportYear} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />

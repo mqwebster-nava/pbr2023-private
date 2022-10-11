@@ -5,8 +5,7 @@ import classNames from "classnames";
 import ColorTheme from "shared_interfaces/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
 import { Button, LinkText } from "components/atom";
-import NewReportContent from "../NewReportContent/NewReportContent";
-import PostContent from "components/blocks/PostBody/PostContent";
+import NewReportContent, { REPORT_YEAR } from "../NewReportContent/NewReportContent";
 
 export interface ReportSectionWMetricsInterface {
   title: string;
@@ -17,6 +16,7 @@ export interface ReportSectionWMetricsInterface {
   metrics: Array<MetricInterface>;
   richBody: any;
   links: Array<any>;
+  reportYear: REPORT_YEAR
 }
 export interface MetricInterface {
   number: string;
@@ -31,7 +31,8 @@ const ReportSectionWMetrics = ({
   colorTheme,
   image,
   metrics,
-  links
+  links,
+  reportYear
 }: ReportSectionWMetricsInterface) => {
   return (
     <section id={anchor}>
@@ -115,6 +116,7 @@ const ReportSectionContentFull = ({
               docData={body.json}
               docLinks={body.links}
               variant={variant}
+              reportYear={"2020"}
             />
           </div>
       </div>

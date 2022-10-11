@@ -21,14 +21,21 @@ import Callout from "./Callout";
 import { ReportBlockQuote } from "../old/ReportBlockQuote/ReportBlockQuote";
 import { CONTENT_VARIANT } from "components/blocks/PostBody/PostContent";
 
+export type REPORT_YEAR = "2021" | "2020" | "2019" | "2018";
 export interface ReportContentInterface {
   docData: any;
   docLinks: any;
   variant: CONTENT_VARIANT;
+  reportYear: string;
 }
 
-const NewReportContent = ({ docData, docLinks, variant }) => {
-  const fontStyle = "font-bold font-serif pt-lg";
+const NewReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentInterface) => {
+  let fontStyle = reportYear == "2021"? "font-bold pt-lg font-serif" : "font-bold pt-lg font-sans" ;
+  
+  // const variantStyles = classNames({
+  //   "": reportYear == "2020",
+  // });
+  
   const options = {
     renderMark: {
       [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,

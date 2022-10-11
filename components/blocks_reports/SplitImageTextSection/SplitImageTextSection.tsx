@@ -2,8 +2,7 @@
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
-import PostContent from "components/blocks/PostBody/PostContent";
-import NewReportContent from "../NewReportContent/NewReportContent";
+import NewReportContent, { REPORT_YEAR } from "../NewReportContent/NewReportContent";
 
 
 export interface SplitImageTextSectionInterface {
@@ -13,6 +12,7 @@ export interface SplitImageTextSectionInterface {
   richBody: any;
   textSide:string;
   colorTheme: string;
+  reportYear: REPORT_YEAR
 }
 
 const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
@@ -21,7 +21,8 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
     introduction,
     richBody,
     textSide,
-    colorTheme
+    colorTheme,
+    reportYear
 }) => {
   const variant = colorTheme==="sage" ? "report sage": "report";
   return (
@@ -29,7 +30,12 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
     <ResponsiveContentContainer padding="py-4xl" alignment="center">
         <h2 className="type-preset-3 font-bold  text-sage-pbr">{title}</h2>
        <div className="font-serif type-preset-6">
-        <NewReportContent docData={introduction.json} docLinks={introduction.links}  variant={variant}/>
+        <NewReportContent 
+            docData={introduction.json} 
+            docLinks={introduction.links}  
+            variant={variant}
+            reportYear={reportYear}
+            />
         </div>
        <div className="md:hidden block">
          <Image
@@ -43,7 +49,12 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
       <div className="grid md:grid-cols-2">
         {textSide === "left" && (
           <div className="p-2xl font-serif type-preset-6">
-            <NewReportContent docData={richBody.json} docLinks={richBody.links} variant={variant}/>
+            <NewReportContent 
+            docData={richBody.json} 
+            docLinks={richBody.links} 
+            variant={variant}
+            reportYear={reportYear}
+            />
           </div>
         )}
         <div
@@ -55,7 +66,12 @@ const SplitImageTextSection: React.FC<SplitImageTextSectionInterface> = ({
         />
         {textSide === "right" && (
           <div className="p-2xl font-serif type-preset-6">
-            <NewReportContent docData={richBody.json} docLinks={richBody.links}  variant={variant} />
+            <NewReportContent 
+            docData={richBody.json}
+             docLinks={richBody.links}  
+             variant={variant} 
+             reportYear={reportYear}
+             />
           </div>
         )}
       </div>
