@@ -3,7 +3,7 @@ import ArrowDown from "./ArrowDown";
 
 const ArrowDownColumn = ({anchor,color, nextId,nextSectionTitle, nextSectionType}) => {
 
-         return(   <div className="col-span-1 block opacity-100" id={`${anchor}-next-arrow-container`} >
+         return(   <div className="col-start-12 col-span-1 row-start-1 block opacity-100" id={`${anchor}-next-arrow-container`} >
             {nextId && (
               <a
                 id={`${anchor}-next-arrow`}
