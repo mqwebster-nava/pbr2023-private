@@ -7,6 +7,7 @@ import {
   makeFadeInAnimation,
 } from "../NewReportSection/animations";
 import ArrowDown from "../NewReportSection/Atoms/ArrowDown";
+import ArrowDownColumn from "../NewReportSection/Atoms/ArrowDownColumn";
 import { animationHandler, AnimationObject, getOffsetPct } from "../NewReportSection/utils";
 import { SignatureInterface, Signatures } from "./SignaturesBlock";
 
@@ -33,7 +34,10 @@ const IntroductionBlock2021 = ({
   variant,
   signatures,
 }: ReportIntroductionInterface) => {
+  // TODO not hardcode this
   const nextId = "pilots";
+  const nextSectionTitle = "Small pilots that make a big impact";
+
   const [animationList, setAnimationList] = useState([]);
   const initiateAnimations = () => {
     const sectionH = document.getElementById(anchor).offsetHeight;
@@ -109,23 +113,7 @@ const IntroductionBlock2021 = ({
           </div>
           <Signatures signatures={signatures} colorTheme={"purple"}/>
         </div>
-        <div
-          className="col-span-1 block opacity-100"
-          id={`${anchor}-next-arrow-container`}
-        >
-          <a
-            id={`${anchor}-next-arrow`}
-            href={`#${nextId}`}
-            aria-label={`Skip to next section`}
-            className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl flex flex-col items-center opacity-0 motion-reduce:opacity-100"
-          >
-            <p className="type-preset-7  text-purple-900 opacity-0   group-hover:opacity-100 group-focus:opacity-100">
-              Next <br />
-              section
-            </p>
-            <ArrowDown sectionId={`intro`} color={"purple-900"}></ArrowDown>
-          </a>
-        </div>
+       <ArrowDownColumn anchor={anchor} color={'purple-900'} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={'section'}/>
       </div>
     </div>
   );
@@ -150,4 +138,22 @@ const IntroductionBlock = ({
   );
 };
 
+
+ {/* <div
+          className="col-span-1 block opacity-100"
+          id={`${anchor}-next-arrow-container`}
+        >
+          <a
+            id={`${anchor}-next-arrow`}
+            href={`#${nextId}`}
+            aria-label={`Skip to next section`}
+            className=" group w-full sticky top-[calc(100vh_-_150px)] px-md  mb-2xl flex flex-col items-center opacity-0 motion-reduce:opacity-100"
+          >
+            <p className="type-preset-7  text-purple-900 opacity-0   group-hover:opacity-100 group-focus:opacity-100">
+              Next <br />
+              section
+            </p>
+            <ArrowDown sectionId={`intro`} color={"purple-900"}></ArrowDown>
+          </a>
+        </div> */}
 export default ReportIntroductionBlock;
