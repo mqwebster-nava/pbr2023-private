@@ -57,7 +57,7 @@ const SectionIntro = ({ section, i }) => {
 
     const onScroll = () => {
       const offsetPct = getOffsetPct(section.anchor);
-      if (offsetPct < -75 || offsetPct >= 50) return;
+      if (offsetPct < -110 || offsetPct >= 50) return;
       const inFocus = document
         .getElementById(section.anchor)
         .contains(document.activeElement);

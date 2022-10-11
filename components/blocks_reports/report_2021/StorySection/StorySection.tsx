@@ -117,7 +117,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
 
-    if (offsetPct < 0 || offsetPct >= 100) return;
+    if (offsetPct < -20 || offsetPct >= 100) return;
     const inFocus = document.getElementById(storyId).contains(document.activeElement);
     animationHandler({ offsetPct, animationList, inFocus });
   };
@@ -169,8 +169,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
           <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
             <div className="grid grid-cols-12 responsive-container h-auto relative">
+            <ArrowDownColumn anchor={story.anchor} color={c} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
               <div
-                className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11  pr-xl `}
+                className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl `}
               >
                 <div
                   id={`storySummary-${story.anchor}`}
@@ -213,7 +214,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                 </div>
               </div>
 
-          <ArrowDownColumn anchor={story.anchor} color={c} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
+        
             </div>
           </div>
         </div>
