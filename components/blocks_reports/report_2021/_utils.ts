@@ -8,6 +8,22 @@ export const getScreenSize = () => {
     : null;
 };
 
+export function detectMob() {
+  const toMatch = [
+      /Android/i,
+      /webOS/i,
+      /iPhone/i,
+      /iPad/i,
+      /iPod/i,
+      /BlackBerry/i,
+      /Windows Phone/i
+  ];
+  
+  return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+  });
+}
+
 export const checkActive = ({
   offsetPct,
   lowerBound = 0,
@@ -47,15 +63,20 @@ export interface AnimationHandlerInterface {
   offsetPct: any;
   animationList: any;
   inFocus?: boolean;
-  //windowSize: string;
-  //componentState?: string;
+  isPortaitSameAsTablet?:boolean; // makes desktop portrait mode behave like a tablet since it usually is a tablet
 }
 export const animationHandler = ({
   offsetPct,
   animationList,
   inFocus=false,
+  isPortaitSameAsTablet=false
 }: AnimationHandlerInterface) => {
-  const windowSize = getScreenSize();
+  let windowSize = getScreenSize();
+  const isPortait = (window.matchMedia("(orientation: portrait)").matches);
+  if(isPortait && isPortaitSameAsTablet && windowSize==="desktop"){
+    windowSize="tablet";
+  }
+  
   animationList.forEach((animation, i) => {
    
     // If it is running, do nothing

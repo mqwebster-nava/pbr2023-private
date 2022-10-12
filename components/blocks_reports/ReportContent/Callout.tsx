@@ -10,8 +10,9 @@ const Callout = ({
   const Color = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
   
   return (
+    <div className={`bg-${colorTheme}-50 py-md`}>
     <div
-      className={`bg-${colorTheme}-50  border-y-[2px] border-${colorTheme}-900 w-full pb-md my-md min-h-[100px] md:min-h-[140px]`}
+      className={`  border-y-[2px] border-${colorTheme}-900 w-full pb-md min-h-[100px] md:min-h-[140px]`}
     >
      {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
       <p
@@ -23,6 +24,7 @@ const Callout = ({
       <p className={`font-serif  ${textColor} type-preset-6 pb-lg`}> 
          <b>{attribution}</b>{attributionRole && `, ${attributionRole}`}
       </p>}
+    </div>
     </div>
   );
 };

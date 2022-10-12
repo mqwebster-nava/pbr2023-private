@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { animationHandler, AnimationObject, getOffsetPct } from "../_utils";
+import { animationHandler, AnimationObject, detectMob, getOffsetPct } from "../_utils";
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
@@ -12,9 +12,16 @@ import ReportContent from "components/blocks_reports/ReportContent/ReportContent
 import ArrowDownColumn from "../Atoms/ArrowDownColumn";
 
 
-// TODO  When expand need to initiate animations again to get based on larger size
+/* TODO  
+Logic for the portiat view on larger screens, 
 
-// LG portiat
+Image Height
+Portrait -- Tablet/mobile
+100vw_*_9_/_16
+
+mobile landscape
+
+*/
 
 
 const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle, nextSectionType="story" }) => {
@@ -119,24 +126,22 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
     if (offsetPct < -20 || offsetPct >= 100) return;
     const inFocus = document.getElementById(storyId).contains(document.activeElement);
-    animationHandler({ offsetPct, animationList, inFocus });
+    animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
   };
   useEffect(() => {
     if (animationList.length == 0) {
       const ana = initiateAnimations();
-      animationHandler({ offsetPct: getOffsetPct(storyId), animationList: ana});
+      animationHandler({ offsetPct: getOffsetPct(storyId), animationList: ana, inFocus:false, isPortaitSameAsTablet:true});
     }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
   
-
     return () => window.removeEventListener("scroll", onScroll);
   });
 
-  const textColor =
-    colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
-    const c =
-    colorTheme == "gold" ? "gold-dark" : `${colorTheme}-900`;
+  const textColor =colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
+  const darkColor = colorTheme == "gold" ? "gold-dark" : `${colorTheme}-900`;
+  
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
@@ -148,7 +153,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
 
         <div
-          className={` h-auto  z-30 relative  -mt-[calc(100vw_*_9_/_16_+_100px)] lg:landscape:-mt-[calc(100vh_-_70px)] `}
+          className={` h-auto  z-30 relative  
+          -mt-[calc(100vw_*_9_/_16_+_100px)]
+          landscape:-mt-[calc(100vh_-_70px)] `}
         >
           <div
             className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}
@@ -159,23 +166,23 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
             >
               <h3
                 id={`storyTitle-${story.anchor}`}
-                className={`md:type-preset-3 type-preset-4 font-black ${textColor} pt-md pb-xl  opacity-100 `}
+                className={` md:type-preset-3 type-preset-4 font-black ${textColor} pt-md pb-xl  opacity-100 `}
               >
                 {story.title}
               </h3>
             </div>
           </div>
-          <div className={`lg:h-[80vh] h-[50vh] landscape:h-[80vh] `}></div>
+          <div className={`portrait:h-[50vh] landscape:h-[80vh]`}></div>
 
-          <div className={`w-full bg-${colorTheme}-50 lg:bg-transparent`}>
+          <div className={`w-full bg-${colorTheme}-50 lg:landscape:bg-transparent`}>
             <div className="grid grid-cols-12 responsive-container h-auto relative">
-            <ArrowDownColumn anchor={story.anchor} color={c} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
+            <ArrowDownColumn anchor={story.anchor} color={darkColor} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
               <div
                 className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl `}
               >
                 <div
                   id={`storySummary-${story.anchor}`}
-                  className={` lg:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
+                  className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
                   <div className={`font-serif font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
                     <ReportContent
@@ -189,7 +196,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
                 <div
                   id={`storyCallOut-${story.anchor}`}
-                  className={` lg:opacity-0 motion-reduce:opacity-100  bg-${colorTheme}-50 -mx-sm px-sm`}
+                  className={`bg-${colorTheme}-50 lg:landscape:opacity-0 motion-reduce:opacity-100  -mx-sm px-sm`}
                 >
                   <Callout
                     body={story.featuredCallOut.body}
@@ -230,9 +237,9 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       id={`imageBackground-${story.anchor}`}
       className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
-      <div className={`h-[100px] block lg:hidden`}> </div>
+      <div className={`h-[100px] block lg:landscape:hidden`}> </div>
       <div
-        className={`relative h-[calc(100vw_*_9_/_16)] lg:landscape:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
+        className={`relative h-[calc(100vw_*_9_/_16)] landscape:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
         <Image
           id={`storyImg-${story.anchor}`}

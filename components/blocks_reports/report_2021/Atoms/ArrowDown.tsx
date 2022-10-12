@@ -51,7 +51,7 @@ const ArrowDown = ({size="default", color="black", sectionId, isAnimated=false, 
     >
       <path
         id={`${sectionId}-line`}
-        className={`${isMobileHidden && "hidden lg:block"}`}
+        className={`${isMobileHidden && "hidden lg:block md:portrait:block"}`}
         d="M27.998 1V101.613"
         strokeWidth="2"
         strokeLinecap="round"
