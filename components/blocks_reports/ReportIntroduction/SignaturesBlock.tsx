@@ -35,13 +35,13 @@ export const Signatures: React.FC<SignaturesProps> = ({
 
   const gridColumns = classNames({
     
-    "grid-cols-2 md:grid-cols-3": true,
+    "grid-cols-2 md:grid-cols-3 gap-y-2xl": true,
     "lg:grid-cols-4": numberOfSignatures > 3,
   });
 
   return (
     <div className={`pt-2xl pb-xl ${margin}`}>
-      <div className={`grid ${gridColumns} w-full`}>
+      <div className={`grid ${gridColumns} w-full `}>
         {signatures.map((signature, index) => (
           <div key={index} className="max-w-[300px]">
             <Image

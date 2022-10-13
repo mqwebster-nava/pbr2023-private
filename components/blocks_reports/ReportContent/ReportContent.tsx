@@ -23,6 +23,7 @@ const Callout = dynamic(
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import { CONTENT_VARIANT } from "components/blocks/PostBody/PostContent";
+import classNames from "classnames";
 
 export type REPORT_YEAR = "2021" | "2020" | "2019" | "2018";
 export interface ReportContentInterface {
@@ -30,14 +31,19 @@ export interface ReportContentInterface {
   docLinks: any;
   variant: CONTENT_VARIANT;
   reportYear: string;
+  isMobileLandscape?:boolean
 }
 
-const ReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentInterface) => {
-  let fontStyle = reportYear == "2021"? "font-bold pt-lg pb-md font-serif" : "font-bold pt-lg font-sans" ;
+const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandscape = false }:ReportContentInterface) => {
+ // let fontStyle = reportYear == "2021"? "font-bold pt-lg pb-md font-serif tracking-normal" : "font-bold pt-lg font-sans" ;
   
-  // const variantStyles = classNames({
-  //   "": reportYear == "2020",
-  // });
+   const headerStyle = classNames({
+    "font-bold pt-xl pb-md tracking-normal": true,
+    "font-serif":reportYear == "2021",
+    "font-sans":reportYear != "2021",
+   });
+
+   const pSize = isMobileLandscape? "type-preset-6": "type-preset-5";
   
   const options = {
     renderMark: {
@@ -56,18 +62,18 @@ const ReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentI
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) =>
-        children != "" && <p className=" py-md type-preset-5">{children}</p>,
+        children != "" && <p className={`${pSize} py-md`}>{children}</p>,
       [BLOCKS.HEADING_1]: (node, children) => (
-        <p className={`type-preset-3 ${fontStyle}`}>{children}</p>
+        <p className={`type-preset-3 ${headerStyle}`}>{children}</p>
       ),
       [BLOCKS.HEADING_2]: (node, children) => {
-        return <h2 className={`type-preset-3 ${fontStyle}`}>{children}</h2>;
+        return <h2 className={`type-preset-3 ${headerStyle}`}>{children}</h2>;
       },
       [BLOCKS.HEADING_3]: (node, children) => (
-        <p className={`type-preset-4 ${fontStyle}`}>{children}</p>
+        <p className={`type-preset-4 ${headerStyle}`}>{children}</p>
       ),
       [BLOCKS.HEADING_4]: (node, children) => (
-        <h4 className={`type-preset-5 tracking-normal ${fontStyle}`}>{children}</h4>
+        <h4 className={`type-preset-5 ${headerStyle}`}>{children}</h4>
       ),
 
       [BLOCKS.QUOTE]: (node, children) => {
@@ -131,7 +137,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear }:ReportContentI
             }
           />
         ),
-        ReportCallout: (props) => <Callout {...props} />,
+        ReportCallout: (props) => <Callout {...props} isMobileLandscape={isMobileLandscape} />,
       };
       if (blockData.__typename in embeddedEntries)
         return embeddedEntries[blockData.__typename](blockData);

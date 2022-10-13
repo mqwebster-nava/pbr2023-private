@@ -3,10 +3,10 @@
 import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
+import { LinkListItem } from "../Atoms/LinkListItem";
 /*
 TODO navbar spacing
 */
-
 
 const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
   // Have the bottom rule not have a hr
@@ -74,19 +74,55 @@ const ReportMenuRow = ({
   fontStyle,
   onClick,
 }) => {
-  return (
+  const simpleRow = () => {
+    return (
+      <div className={`w-full flex-1 ${bgColor}`}>
+        <a
+          className={`hidden ${
+            stories !== null ? "md:grid" : "md:block h-full"
+          }  responsive-container  text-${textColor} grid-cols-12 gap-lg py-lg group `}
+          onClick={onClick}
+          href={`#${anchor}`}
+          aria-label={`Theme ${themeNum}, Section ${title}`}
+        >
+          <h2
+            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+          >
+            {title}
+          </h2>
+        </a>
+        <a
+          href={`#${anchor}`}
+          onClick={onClick}
+          className="responsive-container group md:hidden block pt-md pb-3xl"
+        >
+          <h2
+            className={`${fontStyle} text-${textColor} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}
+          >
+            {title}
+          </h2>
+        </a>
+      </div>
+    );
+  };
+
+  return stories == null ? (
+    simpleRow()
+  ) : (
     <div className={`w-full flex-1 ${bgColor}`}>
       <div
-        className={`hidden md:grid responsive-container  text-${textColor} grid-cols-12 gap-lg`}
+        className={`hidden  md:grid  responsive-container  text-${textColor} grid-cols-12 gap-lg`}
       >
         <a
           onClick={onClick}
-          className="col-span-4 py-lg group"
+          className={`col-span-4 block py-lg group my-0 `}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           {themeNum && (
-            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">Theme {themeNum}</p>
+            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">
+              Theme {themeNum}
+            </p>
           )}
           <h2
             className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
@@ -94,270 +130,102 @@ const ReportMenuRow = ({
             {title}
           </h2>
         </a>
-        <div className={`col-span-8 pt-md divide-y divide-${textColor} pb-xl`}>
-          {stories &&
-            stories.map((story) => {
-              const anch2 = `#${anchor}--${story.anchor}`;
-              const title = story.title;
-              return (
-                <div
-                  onClick={onClick}
-                  className="font-serif font-light py-sm tracking-[0.015em]"
-                  key={`${anch2}-menu`}
-                >
-                  <LinkText
-                    href={anch2}
-                    variant={"default"}
-                    color={textColor}
-                    hoverStyle={"underlined"}
-                  >
-                    {title}
-                  </LinkText>
-                </div>
-              );
-            })}
-        </div>
+
+        <ul
+          className={`col-span-8 pt-md  divide-y-[1px] divide-${textColor} pb-xl`}
+        >
+          {stories.map((story) => {
+            const anch2 = `#${anchor}--${story.anchor}`;
+            const title = story.title;
+            return (
+              <LinkListItem
+                key={`${anch2}-menu`}
+                href={anch2}
+                variant={"default"}
+                hoverStyle={"underlined"}
+                ariaLabel={`Theme ${themeNum}, Story ${title}`}
+                onClick={onClick}
+                color={textColor}
+              >
+                {title}
+              </LinkListItem>
+            );
+          })}
+        </ul>
       </div>
 
-      {stories ? (
-        <details
-          className={` md:hidden block responsive-container ${styles.details} `}
+      <details
+        className={` md:hidden block responsive-container ${styles.details} `}
+      >
+        <summary
+          className={` relative  text-${textColor}  pr-sm   cursor-pointer`}
         >
-          <summary
-            className={` relative  text-${textColor}  pr-sm   cursor-pointer`}
-          >
-            
-            <div className="flex flex-row justify-between items-center pt-md pb-3xl">
-      <div>
-      {themeNum && (
-            <p className="type-preset-6 font-serif font-light">Theme {themeNum}</p>
-          )}
-          <h3
+          <div className="flex flex-row justify-between items-center pt-md pb-3xl">
+            <div>
+              {themeNum && (
+                <p className="type-preset-6 font-serif font-light">
+                  Theme {themeNum}
+                </p>
+              )}
+              <h3
                 className={`${fontStyle} text-${textColor} pr-sm type-preset-3`}
               >
                 {title}
               </h3>
-      </div>
-              
-              <div className={`chevron`}>
-                <svg
-                  width="24"
-                  height="12"
-                  viewBox="0 0 20 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19 1L10 10L1 1"
-                    stroke={textColor}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
             </div>
-          </summary>
-          <SlideDown className={`${styles.mobileSlideDown} pb-lg`}>
-            <div
-              onClick={onClick}
-              className={`font-serif font-light py-sm type-preset-6 border-t-2 border-${textColor}`}
-            >
-              <LinkText
-                href={`#${anchor}`}
-                variant={"default"}
-                hoverStyle={"underlined"}
-                color={textColor}
-                ariaLabel={`Theme ${themeNum}, Section ${title} Introduction`}
+
+            <div className={`chevron`}>
+              <svg
+                width="24"
+                height="12"
+                viewBox="0 0 20 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Introduction
-              </LinkText>
+                <path
+                  d="M19 1L10 10L1 1"
+                  stroke={textColor}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
+          </div>
+        </summary>
+        <SlideDown className={`${styles.mobileSlideDown} pb-lg`}>
+          <ul className={` divide-y-[1px] divide-${textColor}`}>
+            <LinkListItem
+              href={`#${anchor}`}
+              variant={"default"}
+              hoverStyle={"underlined"}
+              ariaLabel={`Theme ${themeNum}, Section ${title} Introduction`}
+              onClick={onClick}
+              color={textColor}
+            >
+              Introduction
+            </LinkListItem>
+
             {stories &&
               stories.map((story) => {
                 const anch2 = `#${anchor}--${story.anchor}`;
                 const title = story.title;
                 return (
-                  <div
-                    onClick={onClick}
-                    className={`font-serif font-light py-sm type-preset-6 border-t-2 border-${textColor} min-h-[48px]`}
+                  <LinkListItem
                     key={`${anch2}-story-report-menu`}
+                    href={anch2}
+                    variant={"default"}
+                    hoverStyle={"underlined"}
+                    ariaLabel={`Theme ${themeNum}, Story ${title}`}
+                    onClick={onClick}
+                    color={textColor}
                   >
-                    <LinkText
-                      href={anch2}
-                      variant={"default"}
-                      color={
-                        ["black", "white"].includes(textColor)
-                          ? textColor
-                          : null
-                      }
-                      hoverStyle={"underlined"}
-                    >
-                      {title}
-                    </LinkText>
-                  </div>
+                    {title}
+                  </LinkListItem>
                 );
               })}
-          </SlideDown>
-        </details>
-      ) : (
-        <a
-          href={`#${anchor}`}
-          onClick={onClick}
-          className="responsive-container group md:hidden block pt-md pb-3xl"
-        >
-          <h2 className={`${fontStyle} text-${textColor} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}>
-              {title}
-          </h2>
-        </a>
-      )}
+          </ul>
+        </SlideDown>
+      </details>
     </div>
   );
 };
-// const NavLinksMobile = () => (
-//   <nav
-//     aria-label="main"
-//     className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white z-50 "
-//   >
-//     <SlideDown className={``}>
-//       {isShowingMenu
-//         ? NavData.map((navSection, i) => {
-//             const extraPadding = classNames({
-//               "mt-lg": i == 0,
-//               "mb-lg": i == NavData.length - 1,
-//             });
-//             return "slug" in navSection ? (
-//               <a
-//                 href={navSection.slug}
-//                 className={`group block w-full border-t-[1px] border-black py-lg ${extraPadding} ${analyticsLabel}`}
-//                 key={navSection.title}
-//               >
-//                 <div className="relative inline-block  ">
-//                   <div
-//                     className={`
-//              text-gray-900 font-sans font-bold
-//              mr-3xl
-//              group-hover:border-black border-b-2  border-transparent
-//                `}
-//                   >
-//                     {navSection.title}
-//                   </div>
-//                 </div>
-//               </a>
-//             ) : (
-//               <details
-//                 key={navSection.title}
-//                 className={`${styles.details} ${extraPadding} w-full border-t-[1px] border-black py-lg`}
-//               >
-//                 <summary
-//                   className={` relative  text-gray-900  pr-sm   cursor-pointer`}
-//                 >
-//                   <div className="flex flex-row justify-between items-center">
-//                     <h3 className=" text-gray-900 pr-sm font-sans font-bold ">
-//                       {navSection.title}
-//                     </h3>
-//                     <div className={`chevron`}>
-//                       <svg
-//                         width="18"
-//                         height="9"
-//                         viewBox="0 0 20 11"
-//                         fill="none"
-//                         xmlns="http://www.w3.org/2000/svg"
-//                       >
-//                         <path
-//                           d="M19 1L10 10L1 1"
-//                           stroke="#111827"
-//                           strokeLinecap="round"
-//                           strokeLinejoin="round"
-//                         />
-//                       </svg>
-//                     </div>
-//                   </div>
-//                 </summary>
-//                 <SlideDown className={`${styles.mobileSlideDown}`}>
-//                   {navSection.subpages.map((navitem) => (
-//                     <a
-//                       key={navitem.title}
-//                       href={navitem.slug}
-//                       className={`block hover:bg-green px-4 cursor-pointer ${analyticsLabel}`}
-//                     >
-//                       <p className="font-sans text-gray-900 hover:underline py-2 pl-5">
-//                         {navitem.title}
-//                       </p>
-//                     </a>
-//                   ))}
-//                 </SlideDown>
-//               </details>
-//             );
-//           })
-//         : null}
-//     </SlideDown>
-//   </nav>
-// );
-
-/* <div className={`w-full flex-1 bg-white `}>
-               <div
-                 className={`responsive-container  text-black grid grid-cols-12 gap-lg`}
-               >
-                 <h2 className="col-span-4 type-preset-3 font-bold pt-sm">
-                 <LinkText
-                           href={``}
-                           variant={"default"}
-                           color={'black'}
-                         >
-                  Download PDF
-                   </LinkText>
-                 </h2>
-             
-               </div>
-             </div> */
-
-/* {contentBlocks
-        .filter(
-          (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
-        )
-        .map((section, i) => {
-          const color = section.colorTheme ?? "purple";
-          const textColor = section.colorTheme === "gold" ? "black" : "white";
-          return (
-            <div className={`w-full flex-1 bg-${color}-900 `}>
-              <div
-                className={`responsive-container  text-white grid grid-cols-12 gap-lg`}
-              >
-                <div className="col-span-4 ">
-                  <p className="type-preset-6 font-serif pt-sm">
-                    Theme {i + 1}
-                  </p>
-
-                  <h2 className="type-preset-4 font-bold pt-sm">
-                    <LinkText
-                      href={`#${section.anchor}`}
-                      variant={"default"}
-                      color={textColor}
-                    >
-                      {section.title}
-                    </LinkText>
-                  </h2>
-                </div>
-                <div
-                  className={`col-span-8 pt-md divide-y divide-${textColor}`}
-                >
-                  {section.storiesCollection.items.map((story) => {
-                    const anch2 = `#${section.anchor}--${story.anchor}`;
-                    const title = story.shortTitle ?? story.title;
-                    return (
-                      <div onClick={onClick} className="font-serif py-sm">
-                        <LinkText
-                          href={anch2}
-                          variant={"default"}
-                          color={textColor}
-                        >
-                          {title}
-                        </LinkText>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          );
-        })} */

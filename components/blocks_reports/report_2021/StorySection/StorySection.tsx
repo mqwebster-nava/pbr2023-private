@@ -30,6 +30,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
   //const isActive = activeSection == storyId;
   const [animationList, setAnimationList] = useState([]);
 
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
+
+
   const initiateAnimations = () => {
     let ana = [];
     const sectionH = document.getElementById(storyId).offsetHeight;
@@ -120,19 +123,27 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     return ana;
   };
 
+
+
   const onScroll = () => {
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
 
+console.log(window.matchMedia("(orientation: landscape)").matches, window.innerWidth)
     if (offsetPct < -20 || offsetPct >= 100) return;
     const inFocus = document.getElementById(storyId).contains(document.activeElement);
     animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
   };
+
+
   useEffect(() => {
     if (animationList.length == 0) {
       const ana = initiateAnimations();
       animationHandler({ offsetPct: getOffsetPct(storyId), animationList: ana, inFocus:false, isPortaitSameAsTablet:true});
     }
+    const _isMobLan = detectMob() && window.matchMedia("(orientation: landscape)").matches;
+    if(_isMobLan!==isMobileLandscape) setIsMobileLandscape(_isMobLan);
+
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
   
@@ -150,8 +161,6 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
           story={story}
           colorTheme={colorTheme}
         ></ImageBackgroundContainerDesktop>
-
-
         <div
           className={` h-auto  z-30 relative  
           -mt-[calc(100vw_*_9_/_16_+_100px)]
@@ -166,7 +175,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
             >
               <h3
                 id={`storyTitle-${story.anchor}`}
-                className={` md:type-preset-3 type-preset-4 font-black ${textColor} pt-md pb-xl  opacity-100 `}
+                className={`${isMobileLandscape? "type-preset-5": "md:type-preset-3 type-preset-4"} font-black ${textColor} pt-md pb-xl  opacity-100 `}
               >
                 {story.title}
               </h3>
@@ -184,12 +193,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   id={`storySummary-${story.anchor}`}
                   className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
-                  <div className={`font-serif font-bold ${textColor} border-t-[2px] border-${colorTheme}-900 type-preset-6`}>
+                  <div className={`font-serif font-bold ${textColor} border-t-[1px] border-${colorTheme}-900 type-preset-6`}>
                     <ReportContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}
                       variant={"report"}
                       reportYear={"2021"}
+                      isMobileLandscape={isMobileLandscape}
                     />
                   </div>
                 </div>
@@ -204,11 +214,12 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     colorTheme={colorTheme}
                     variant={story.featuredCallOut.variant}
                     attributionRole={story.featuredCallOut.attributionRole}
+                    isMobileLandscape={isMobileLandscape}
                   ></Callout>
                 </div>
                 <div
                   id={`storyContent-${story.anchor}`}
-                  className={` font-serif type-preset-6 tracking-wide font-light ${textColor} bg-${colorTheme}-50 
+                  className={` font-serif type-preset-6 tracking-[0.015em] font-light ${textColor} bg-${colorTheme}-50 
               block pb-[200px] -mx-sm px-sm
             `}
                 >
@@ -217,6 +228,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     docLinks={story.body.links}
                     variant={"report"}
                     reportYear={"2021"}
+                    isMobileLandscape={isMobileLandscape}
                   />
                 </div>
               </div>
@@ -237,7 +249,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       id={`imageBackground-${story.anchor}`}
       className={`imageBackground sticky w-screen bg-${colorTheme}-50 top-[70px] z-10 overflow-hidden `} // h-[calc(100vh_-_70px)]
     >
-      <div className={`h-[100px] block lg:landscape:hidden`}> </div>
+      <div className={`h-[100px] block landscape:hidden`}> </div>
       <div
         className={`relative h-[calc(100vw_*_9_/_16)] landscape:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >

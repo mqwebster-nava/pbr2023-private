@@ -3,20 +3,21 @@ const Callout = ({
   colorTheme,
   variant = "statistic",
   attribution = null,
-  attributionRole = null
+  attributionRole = null,
+  isMobileLandscape = false
 }) => {
 
   const textColor = colorTheme=="gold"? "text-gold-darktext" : `text-${colorTheme}-900`;
   const Color = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
   
   return (
-    <div className={`bg-${colorTheme}-50 py-md`}>
+    <div className={`bg-${colorTheme}-50 pt-md pb-lg`}>
     <div
-      className={`  border-y-[2px] border-${colorTheme}-900 w-full pb-md min-h-[100px] md:min-h-[140px]`}
+      className={`  border-y-[1px] border-${colorTheme}-900 w-full pb-md min-h-[100px] md:min-h-[140px]`}
     >
      {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
       <p
-        className={`py-md type-preset-3 font-serif font-light ${textColor}`}
+        className={`${isMobileLandscape? "type-preset-5": "type-preset-3"} py-md font-serif font-light ${textColor}`}
       >
         {body}
       </p>

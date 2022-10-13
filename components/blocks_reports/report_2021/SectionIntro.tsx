@@ -1,16 +1,21 @@
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import MarkdownComponent from "utils/MarkdownComponent";
+import { LinkListItem } from "./Atoms/LinkListItem";
 import { makeSlideUpAnimation } from "./_animations";
 import {
   animationHandler,
   AnimationObject,
+  detectMob,
   getOffsetPct,
   WindowSize,
 } from "./_utils";
 
 const SectionIntro = ({ section, i }) => {
   const [animationList, setAnimationList] = useState([]);
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
+
+
   const initiateAnimations = () => {
     let ana = [];
     const windowSizes: Array<WindowSize> = ["mobile", "tablet", "desktop"];
@@ -68,6 +73,9 @@ const SectionIntro = ({ section, i }) => {
     if (animationList.length == 0 && mediaQuery && !mediaQuery.matches) {
       initiateAnimations();
     }
+    const _isMobLan = detectMob() && window.matchMedia("(orientation: landscape)").matches;
+    if(_isMobLan!==isMobileLandscape) setIsMobileLandscape(_isMobLan);
+
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -100,14 +108,14 @@ const SectionIntro = ({ section, i }) => {
               Theme {i}
             </p>
             <h2
-              className={`font-black text-${textColor} md:text-7xl type-preset-1 pb-3xl max-w-screen-md mr-auto opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
+              className={`${isMobileLandscape? "type-preset-3": "md:text-7xl type-preset-1"} font-black text-${textColor}  pb-3xl max-w-screen-md mr-auto opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
               id={`h2-${section.anchor}`}
             >
               {section.title}
             </h2>
             <div
               id={`sectionBody-${section.anchor}`}
-              className={`type-preset-5 font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg focus:opacity-100 tracking-[0.015em] `}
+              className={`${isMobileLandscape? "type-preset-6": "type-preset-5"} font-serif font-light text-${textColor} max-w-screen-md opacity-0 motion-reduce:opacity-100 pb-lg focus:opacity-100 tracking-[0.015em] `}
             >
               <MarkdownComponent content={section.body} />
             </div>
@@ -121,28 +129,25 @@ const SectionIntro = ({ section, i }) => {
                 See how
               </h3>
               <hr className={`border-${textColor} `} />
-              <div
-                className={`flex flex-col md:flex-row gap-xl  text-${textColor} font-serif pt-md `}
+              <ul
+                className={`grid grid-cols-1 md:grid-cols-3 gap-x-xl pt-xs gap-y-xs
+                divide-y-[1px] md:divide-y-0`}
               >
                 {section.items.map((story) => {
                   return (
-                    <div
-                      className="w-full md:w-1/3  type-preset-6 pr-lg tracking-[0.015em]"
-                      key={`sectionIntro-${story.anchor}`}
-                    >
-                      <LinkText
-                        href={`#${section.anchor}--${story.anchor}`}
-                        variant={"default"}
-                        hoverStyle="underlined"
-                        color={"white"}
-                        ariaLabel={`Skip to ${story.title}`}
-                      >
-                        {story.title}
-                      </LinkText>
-                    </div>
+                    <LinkListItem
+                    key={`sectionIntro-${story.anchor}`}
+                    href={`#${section.anchor}--${story.anchor}`}
+                    variant={"default"}
+                    hoverStyle={"underlined"}
+                    ariaLabel={`Skip to ${story.title}`}
+                    color={"white"}
+                  >
+                    {story.title}
+                  </LinkListItem>
                   );
                 })}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -152,3 +157,20 @@ const SectionIntro = ({ section, i }) => {
 };
 
 export default SectionIntro;
+
+  // <div
+                    //   className="w-full md:w-1/3  pt-md type-preset-6 pr-lg tracking-[0.015em]"
+                     
+                    // >
+                    //   <LinkText
+                    //     href={`#${section.anchor}--${story.anchor}`}
+                    //     variant={"default"}
+                    //     hoverStyle="underlined"
+                    //     color={"white"}
+                    //     ariaLabel={`Skip to ${story.title}`}
+                    //     linkSpan={"full width"}
+                    //   >
+
+                    //     {story.title}
+                    //   </LinkText>
+                    // </div>
