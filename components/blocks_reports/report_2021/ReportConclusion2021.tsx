@@ -95,7 +95,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
           <div className="flex gap-xl flex-col md:flex-row pb-2xl">
           {[
             [
-              ["/public-benefit-reports/2020", "Download PDF"],
+              ["/files/2021NavaPublicBenefitReport.pdf", "Download PDF"],
               ["#reportHeader", "Back to top"],
             ],
             [
