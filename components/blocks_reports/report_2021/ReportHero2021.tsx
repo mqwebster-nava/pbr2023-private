@@ -30,8 +30,8 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
     if (window.innerWidth < 1024 && s > 400) {
       s = 400;
     }
-    if (window.innerWidth < 768 && s > 250) {
-      s = 250;
+    if (window.innerWidth < 768 && s > 350) {
+      s = 350;
     }
     if(s<30)s=0;
     const svg = document.getElementById("baseSVG");
@@ -88,7 +88,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
           <div className="w-full lg:w-3/4 relative h-auto">
             <h1
               id={"reportHeader-titleBox"}
-              className="pt-2xl lg:pb-3xl -ml-sm md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100"
+              className="pt-xl md:pt-2xl lg:pb-3xl -ml-xs md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100"
             >
               Public <br /> Benefit <br /> Report
             </h1>
@@ -100,7 +100,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
               <SVG2 />
             </div>
           </div>
-          <div className=" w-11/12 sm:w-2/3 lg:w-1/4 h-full flex flex-col justify-between pt-3xl gap-xl">
+          <div className=" w-11/12 sm:w-2/3 lg:w-1/4 h-full flex flex-col justify-between pt-[120px] md:pt-3xl gap-xl">
             <div>
               <p
                 id="titleLine1"
