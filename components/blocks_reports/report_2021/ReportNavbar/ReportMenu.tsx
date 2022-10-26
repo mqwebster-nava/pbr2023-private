@@ -8,9 +8,8 @@ import { LinkListItem } from "../Atoms/LinkListItem";
 TODO navbar spacing
 */
 
-const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
+const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
   // Have the bottom rule not have a hr
-
   return (
     <section className={` w-full flex flex-col h-[calc(100vh_-_70px)]`}>
       <ReportMenuRow
@@ -22,6 +21,7 @@ const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
         fontStyle={"font-serif"}
         stories={null}
         onClick={onClick}
+        activeSection={activeSection}
       />
       {contentBlocks
         .filter(
@@ -45,6 +45,7 @@ const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
               fontStyle={"font-bold"}
               stories={section.items}
               onClick={onClick}
+              activeSection={activeSection}
             />
           );
         })}
@@ -57,6 +58,7 @@ const ReportMenu = ({ contentBlocks, onClick = () => {} }) => {
         fontStyle={"font-serif"}
         stories={null}
         onClick={onClick}
+        activeSection={activeSection}
       />
     </section>
   );
@@ -73,8 +75,10 @@ const ReportMenuRow = ({
   stories,
   fontStyle,
   onClick,
+  activeSection = null
 }) => {
   const simpleRow = () => {
+   
     return (
       <div className={`w-full flex-1 ${bgColor}`}>
         <a
@@ -115,25 +119,28 @@ const ReportMenuRow = ({
       >
         <a
           onClick={onClick}
-          className={`col-span-4 block py-lg group my-0 `}
+          className={`col-span-4 block py-lg group my-0 divide-y divide-white`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           {themeNum && (
-            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">
+            <p className="type-preset-6 font-serif font-light tracking-[0.015em] pb-sm">
               Theme {themeNum}
             </p>
           )}
           <h2
-            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
           >
             {title}
           </h2>
         </a>
 
         <ul
-          className={`col-span-8 pt-md  divide-y-[1px] divide-${textColor} pb-xl`}
+          className={`col-span-8 pt-lg  divide-y-[1px] divide-${textColor} pb-xl`}
         >
+            <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
+              Stories
+            </p>
           {stories.map((story) => {
             const anch2 = `#${anchor}--${story.anchor}`;
             const title = story.title;
@@ -146,6 +153,7 @@ const ReportMenuRow = ({
                 ariaLabel={`Theme ${themeNum}, Story ${title}`}
                 onClick={onClick}
                 color={textColor}
+                isBolded={`#${activeSection}`==anch2}
               >
                 {title}
               </LinkListItem>

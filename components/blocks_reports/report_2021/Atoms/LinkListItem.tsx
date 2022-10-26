@@ -13,6 +13,7 @@ export interface LinkTextProps {
   hoverStyle?: LinkHover;
   analyticsLabel?: AnalyticsLabelType;
   ariaLabel?: string;
+  isBolded?: boolean
 }
 
 export const LinkListItem: React.FC<LinkTextProps> = ({
@@ -24,6 +25,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
   hoverStyle = null,
   analyticsLabel = "",
   ariaLabel = null,
+  isBolded = false
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
   const loc = href.substr(0, 1);
@@ -57,7 +59,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
     >
       <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
         <p
-          className={`font-serif font-light type-preset-6  ${colorStyles} ${variantStyles} ${hoverStyles} ${analyticsLabel}`}
+          className={`font-serif ${isBolded?"font-bold":"font-light"} type-preset-6  ${colorStyles} ${variantStyles} ${hoverStyles} ${analyticsLabel}`}
         >
           {children}
         </p>
