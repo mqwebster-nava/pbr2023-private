@@ -21,9 +21,8 @@ export async function getStaticProps({ params, preview = false }) {
   
   let posts: Array<BasicPostInterface> = await getPostsByContentType("Events");
 
-  posts = posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
-  const futureEvents = posts.filter((e)=> isDateAfterNow(e.date));
-  const pastEvents = posts.filter((e)=> !isDateAfterNow(e.date));
+  const futureEvents = posts.filter((e)=> isDateAfterNow(e.date)).sort((a,b)=> new Date(a.date).getTime() - new Date(b.date).getTime());
+  const pastEvents = posts.filter((e)=> !isDateAfterNow(e.date)).sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
   res.contentBlocks = [
     futureEvents.length>0 && {
       __typename:"ContentBlockArticleList", // Article Feed
