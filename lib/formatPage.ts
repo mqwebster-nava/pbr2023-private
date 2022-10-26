@@ -51,7 +51,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
     id: post.id,
     slug: getContentUrl(post.contentType, post.slug),
     title: post.title,
-    socialImage: liftData(post.promoImage)?? defaultSocialImage,
+    socialImage: liftData(post.socialImage) ?? liftData(post.promoImage)?? defaultSocialImage,
     isBottomCTA: true,
     pageHeader: {
       id: `${post.id}-header`,

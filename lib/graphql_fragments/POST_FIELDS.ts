@@ -25,9 +25,6 @@ export const POST_CORE_FIELDS = `
     promoImage {
       ${IMAGE_FIELDS}
     }
-    leadImage {
-      ${IMAGE_FIELDS}
-    }
 `;
 export const AUTHOR_CORE_FIELDS =`
     name
@@ -112,6 +109,13 @@ export const POST_ALL_FIELDS = `
     body {
       ${POST_BODY}
     }
+    socialImage {
+      ${IMAGE_FIELDS}
+    }
+    leadImage {
+      ${IMAGE_FIELDS}
+    }
+    registrationLink
     eventInfo {
       ${EVENT_INFO}
     }

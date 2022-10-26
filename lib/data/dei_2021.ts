@@ -258,7 +258,7 @@ export const race = {
 
 export const gender = {
   "title": "Gender",
-  "content": "Because some people selected multiple options to describe their race and ethnicity,* the numbers below add up to more than 100 percent.**",
+  "content": "Because some people selected multiple options to describe their gender,* the numbers below add up to more than 100 percent.**",
   "selfReported": "* Self-reported identities include: Agender.",
   "noAnswer": "** Two percent prefer not to answer.",
   "statistics": [
