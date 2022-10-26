@@ -15,9 +15,9 @@ const PostTitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, but
           {subtitle}
         </p>
         {body && (
-          <p className={`animate-titleSlideC font-serif font-light type-preset-4 py-lg text-white w-full ${!isEvent && "xl:w-3/4"}`}>
+          <div className={`animate-titleSlideC font-serif font-light type-preset-4 py-lg text-white w-full ${!isEvent && "xl:w-3/4"}`}>
             <MarkdownComponent content={body}/>
-          </p>
+          </div>
         )}
         {buttonPath && <Button href={buttonPath} analyticsLabel="page-header">{buttonText}</Button>}
       </div>
