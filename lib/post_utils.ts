@@ -64,7 +64,6 @@ const formatImageAsset = (imgData) => {
       shortSummary: post.shortSummary,
       leadImage: ("leadImage" in post) ? formatImageAsset(post.leadImage): null,
       promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
-      registrationLink: post.registrationLink,
       eventInfo: post.eventInfo && {
         ...post.eventInfo,
         speakers: post.eventInfo.eventSpeakersCollection?.items?.map((speaker)=>{

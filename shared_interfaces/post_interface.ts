@@ -28,7 +28,6 @@ export interface FullPostInterface extends BasicPostInterface{
     authors:Array<AuthorPostInterface>;
     body:any;
     leadImage:ContentfulImageAsset;
-    registrationLink: string;
     eventInfo: EventInfo
 }
 

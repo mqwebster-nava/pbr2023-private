@@ -1,5 +1,6 @@
 import { Button } from "components/atom";
 import React from "react";
+import MarkdownComponent from "utils/MarkdownComponent";
 
 const PostTitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonText=null, isEvent }) => {
     return (
@@ -15,7 +16,7 @@ const PostTitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, but
         </p>
         {body && (
           <p className={`animate-titleSlideC font-serif font-light type-preset-4 py-lg text-white w-full ${!isEvent && "xl:w-3/4"}`}>
-            {body}
+            <MarkdownComponent content={body}/>
           </p>
         )}
         {buttonPath && <Button href={buttonPath} analyticsLabel="page-header">{buttonText}</Button>}
