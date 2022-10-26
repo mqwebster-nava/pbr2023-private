@@ -129,7 +129,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
 
-console.log(window.matchMedia("(orientation: landscape)").matches, window.innerWidth)
+//console.log(window.matchMedia("(orientation: landscape)").matches, window.innerWidth)
     if (offsetPct < -20 || offsetPct >= 100) return;
     const inFocus = document.getElementById(storyId).contains(document.activeElement);
     animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
@@ -256,6 +256,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
         <Image
           id={`storyImg-${story.anchor}`}
           alt={""}
+          quality={'85'}
           src={story.illustration.url}
           layout="fill"
           objectFit="cover"
@@ -266,6 +267,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           alt={`${story.contextIllustration.description}`}
           src={story.contextIllustration.url}
           layout="fill"
+          quality={'85'}
           objectFit="cover"
           className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block}`}
         ></Image>
