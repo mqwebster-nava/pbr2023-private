@@ -291,13 +291,13 @@ const DesktopSectionTitle = ({
       <div
         className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className="col-span-3 lg:py-auto py-lg">
+        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] divide-white`}>
           {themeNum != null && (
-            <p className="type-preset-6 font-serif font-light tracking-[0.015em]">
+            <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm  ">
               Theme {themeNum }
             </p>
           )}
-          <h2 className={`type-preset-5 ${fontStyle} text-${textColor} ${themeNum==null && "pb-xl"}`}>
+          <h2 className={`type-preset-5 pt-sm ${fontStyle} text-${textColor} ${themeNum==null && "pb-xl"}`}>
             <LinkText
               href={`#${anchor}`}
               variant={"default"}
@@ -310,8 +310,12 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-5 pt-md pr-xl pb-xl divide-y divide-${textColor} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
+          className={` col-span-5 pt-lg pr-xl pb-xl divide-y divide-white opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
+           <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
+              Stories
+            </p>
+         
           {stories &&
             stories.map((story) => {
               const anch2 = `#${anchor}--${story.anchor}`;
@@ -327,7 +331,8 @@ const DesktopSectionTitle = ({
                     hoverStyle={"underlined"}
                   >
                     {title}
-                  </LinkText>
+                   
+                  </LinkText> 
                 </div>
               );
             })}

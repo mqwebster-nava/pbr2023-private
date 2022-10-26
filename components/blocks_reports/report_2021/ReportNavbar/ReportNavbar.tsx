@@ -134,6 +134,7 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
 
         
           <ReportMenu
+            activeSection={activeSection}
             contentBlocks={contentBlocks}
             onClick={() => setIsShowingMenu(false)}
           />
