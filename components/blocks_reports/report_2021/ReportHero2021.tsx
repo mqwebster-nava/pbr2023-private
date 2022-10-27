@@ -100,8 +100,11 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
               <SVG2 />
             </div>
           </div>
-          <div className=" w-11/12 sm:w-2/3 lg:w-1/4 h-full flex flex-col justify-between pt-[120px] md:pt-3xl gap-xl">
-            <div>
+          <div className="
+              h-full w-12/12 lg:w-1/4 
+              flex justify-between lg:flex-col flex-row  
+              pt-[120px] md:pt-3xl gap-xl pb-3xl">
+            <div className="max-w-[400px]">
               <p
                 id="titleLine1"
                 className=" type-preset-5  text-white font-bold  opacity-0 motion-reduce:opacity-100"
