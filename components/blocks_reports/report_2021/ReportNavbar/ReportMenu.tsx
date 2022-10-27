@@ -1,5 +1,6 @@
 // TODO Paddign on menu should match TOC
 
+import classNames from "classnames";
 import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
@@ -41,6 +42,7 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
               anchor={section.anchor}
               themeNum={i + 1}
               bgColor={bg}
+              colorTheme={color}
               textColor={textColor}
               fontStyle={"font-bold"}
               stories={section.items}
@@ -75,8 +77,17 @@ const ReportMenuRow = ({
   stories,
   fontStyle,
   onClick,
-  activeSection = null
+  activeSection = null,
+  colorTheme=null
 }) => {
+
+  const dividerColor = classNames({
+    "divide-plum-500":colorTheme==="plum",
+    "divide-sage-500":colorTheme==="sage",
+     "divide-navy-300":colorTheme==="navy",
+    "divide-gold-800": colorTheme==="gold",
+  });
+
   const simpleRow = () => {
    
     return (
@@ -119,7 +130,7 @@ const ReportMenuRow = ({
       >
         <a
           onClick={onClick}
-          className={`col-span-4 block py-lg group my-0 divide-y divide-white`}
+          className={`col-span-4 block py-lg group my-0 divide-y ${dividerColor}`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
@@ -136,7 +147,7 @@ const ReportMenuRow = ({
         </a>
 
         <ul
-          className={`col-span-8 pt-lg  divide-y-[1px] divide-${textColor} pb-xl`}
+          className={`col-span-8 pt-lg  divide-y ${dividerColor} pb-xl`}
         >
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories

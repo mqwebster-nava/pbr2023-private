@@ -4,6 +4,15 @@
 // 3. Arrow to fade in
 // 4. Arrow to be consistent with the the location of the stories
 
+/*
+Divider colors
+plum 500
+ sage 500
+ navy 300
+ gold 800
+
+ - update on hamburger too
+*/
 
 
 
@@ -14,6 +23,7 @@ import { makeSlideUpAnimation } from "../_animations";
 import ArrowDown from "../Atoms/ArrowDown";
 
 import { animationHandler, AnimationObject, getOffsetPct } from "../_utils";
+import classNames from "classnames";
 
 
 // Components that can be animated
@@ -253,6 +263,7 @@ const DesktopSection = ({contentBlocks}) => {
                   title={section.title}
                   anchor={section.anchor}
                   themeNum={i + 1}
+                  colorTheme={color}
                   bgColor={bg}
                   textColor={textColor}
                   stories={section.storiesCollection.items}
@@ -284,14 +295,24 @@ const DesktopSectionTitle = ({
   bgColor,
   textColor,
   stories,
-  fontStyle
+  fontStyle,
+  colorTheme=null
 }) => {
+
+ 
+  const dividerColor = classNames({
+    "divide-plum-500":colorTheme==="plum",
+    "divide-sage-500":colorTheme==="sage",
+     "divide-navy-300":colorTheme==="navy",
+    "divide-gold-800": colorTheme==="gold",
+  });
+
   return (
     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
       <div
         className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] divide-white`}>
+        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] ${dividerColor}`}>
           {themeNum != null && (
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm  ">
               Theme {themeNum }
@@ -310,7 +331,7 @@ const DesktopSectionTitle = ({
         </div>
         <div
         id={`stories-${anchor}`}
-          className={` col-span-5 pt-lg pr-xl pb-xl divide-y divide-white opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
+          className={` col-span-5 pt-lg pr-xl pb-xl divide-y ${dividerColor} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
            <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
