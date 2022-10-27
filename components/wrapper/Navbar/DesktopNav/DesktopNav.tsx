@@ -36,7 +36,7 @@ const DesktopNavBar = ({ NavData }) => {
         <a className="absolute -left-[1000px] focus:left-0 top-0 bg-white p-sm" href="#main">Skip Navigation Links</a>
         <Logo />
         <nav className=" flex items-baseline w-auto" aria-label="main">
-          {NavData.map((navSection) => {
+          {NavData?.map((navSection) => {
             return "slug" in navSection ? (
               <NavButton
                 key={navSection.title}
