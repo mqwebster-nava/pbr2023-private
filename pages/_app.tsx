@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         )}
 
         <meta name="twitter:card" content="summary_large_image"></meta>
+        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MCXK4VH"></script>
       </Head>
       <div className="flex flex-col h-screen ">
         <Navbar />
