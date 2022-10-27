@@ -12,6 +12,8 @@ import React from "react";
 import PostTitleBlock from "./PostTitleBlock";
 import { getEventDateStr, isDateAfterNow } from "utils/utils";
 import { Button } from "components/atom";
+import dynamic from "next/dynamic";
+const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 
 type PageHeaderVariant =
   | "Primary"
@@ -159,11 +161,11 @@ const PageHeader = (props: PageHeaderInterface) => {
                   <p className={`type-preset-4 font-bold text-sage-200 `}>
                     Location
                   </p>
-                  <p
+                  <div
                     className={`type-preset-4 font-serif font-light text-white`}
                   >
-                    {location}
-                  </p>
+                    <MarkdownComponent content={location}/>
+                  </div>
                 </div>
               )}
               {registrationLink && (

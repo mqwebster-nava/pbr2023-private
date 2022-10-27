@@ -29,7 +29,6 @@ export interface FullPostInterface extends BasicPostInterface{
     body:any;
     leadImage:ContentfulImageAsset;
     socialImage:ContentfulImageAsset;
-    registrationLink: string;
     eventInfo: EventInfo
 }
 

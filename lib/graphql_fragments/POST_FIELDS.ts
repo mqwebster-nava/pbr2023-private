@@ -119,7 +119,6 @@ export const POST_ALL_FIELDS = `
     leadImage {
       ${IMAGE_FIELDS}
     }
-    registrationLink
     eventInfo {
       ${EVENT_INFO}
     }

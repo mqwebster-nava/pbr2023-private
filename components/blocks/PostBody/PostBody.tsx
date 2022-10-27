@@ -19,9 +19,7 @@ export interface PostBodyInterface {
   authors: Array<AuthorPostInterface>;
   date: string;
   hideSideNav?: boolean;
-  eventInfo?:EventInfo
-  //registrationLink?: string;
- // isEvent?:boolean;
+  eventInfo?:EventInfo;
 }
 
 
