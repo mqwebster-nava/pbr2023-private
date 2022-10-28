@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 export const getScreenSize = () => {
   return window.innerWidth < 768 //|| window.innerHeight < 650
     ? "mobile"
@@ -123,6 +125,24 @@ export const animationHandler = ({
 
   return null;
 };
+
+/*
+Divider colors based on color themes, used by Table of Contents, Nav Menu, & Section Intro
+*/
+export const dividerColor = (colorTheme)=>classNames({
+  "divide-plum-500":colorTheme==="plum",
+  "divide-sage-500":colorTheme==="sage",
+   "divide-navy-300":colorTheme==="navy",
+  "divide-gold-800": colorTheme==="gold",
+});
+export const borderColor = (colorTheme)=>classNames({
+  "border-plum-500":colorTheme==="plum",
+  "border-sage-500":colorTheme==="sage",
+  "border-navy-300":colorTheme==="navy",
+  "border-gold-800": colorTheme==="gold",
+});
+
+
 
 export const debounce = (callback, wait) => {
   let timeoutId = null;

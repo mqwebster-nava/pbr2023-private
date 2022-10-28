@@ -6,10 +6,14 @@ import { makeSlideUpAnimation } from "./_animations";
 import {
   animationHandler,
   AnimationObject,
+  borderColor,
   detectMob,
+  dividerColor,
   getOffsetPct,
   WindowSize,
 } from "./_utils";
+
+// TODO change the color of the lines to match table of context color
 
 const SectionIntro = ({ section, i }) => {
   const [animationList, setAnimationList] = useState([]);
@@ -102,7 +106,7 @@ const SectionIntro = ({ section, i }) => {
         <div className="responsive-container">
           <div className="lg:pt-4xl pt-3xl ">
             <p
-              className={`text-${textColor} type-preset-5 pb-sm max-w-screen-md mr-auto font-serif font-light  opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
+              className={`text-${textColor} type-preset-6 pb-sm max-w-screen-md mr-auto font-serif font-normal  opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
               id={`themeNum-${section.anchor}`}
             >
               Theme {i}
@@ -124,14 +128,14 @@ const SectionIntro = ({ section, i }) => {
               className={`type-preset-6 font-serif font-light pb-[160px] max-w-screen-md opacity-0 motion-reduce:opacity-100 focus:opacity-100 `}
             >
               <h3
-                className={`font-bold pb-md text-${textColor} tracking-[0.015em]`}
+                className={`font-normal type-preset-6 pb-md text-${textColor} tracking-[0.015em]`}
               >
-                See how
+                Stories
               </h3>
-              <hr className={`border-${textColor} `} />
+              <hr className={`${borderColor(colorTheme)} `} />
               <ul
                 className={`grid grid-cols-1 md:grid-cols-3 gap-x-xl pt-xs gap-y-xs
-                divide-y-[1px] md:divide-y-0`}
+                divide-y-[1px] md:divide-y-0 ${dividerColor(colorTheme)}`}
               >
                 {section.items.map((story) => {
                   return (

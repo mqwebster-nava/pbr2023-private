@@ -22,7 +22,7 @@ import { useEffect, useState } from "react";
 import { makeSlideUpAnimation } from "../_animations";
 import ArrowDown from "../Atoms/ArrowDown";
 
-import { animationHandler, AnimationObject, getOffsetPct } from "../_utils";
+import { animationHandler, AnimationObject, dividerColor, getOffsetPct } from "../_utils";
 import classNames from "classnames";
 
 
@@ -300,19 +300,14 @@ const DesktopSectionTitle = ({
 }) => {
 
  
-  const dividerColor = classNames({
-    "divide-plum-500":colorTheme==="plum",
-    "divide-sage-500":colorTheme==="sage",
-     "divide-navy-300":colorTheme==="navy",
-    "divide-gold-800": colorTheme==="gold",
-  });
+
 
   return (
     <div className={`w-full grow ${bgColor} opacity-0 motion-reduce:opacity-100`} id={`themenum-${anchor}`}>
       <div
         className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] ${dividerColor}`}>
+        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] ${dividerColor(colorTheme)}`}>
           {themeNum != null && (
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm  ">
               Theme {themeNum }

@@ -5,6 +5,7 @@ import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
 import { LinkListItem } from "../Atoms/LinkListItem";
+import { dividerColor } from "../_utils";
 /*
 TODO navbar spacing
 */
@@ -81,12 +82,6 @@ const ReportMenuRow = ({
   colorTheme=null
 }) => {
 
-  const dividerColor = classNames({
-    "divide-plum-500":colorTheme==="plum",
-    "divide-sage-500":colorTheme==="sage",
-     "divide-navy-300":colorTheme==="navy",
-    "divide-gold-800": colorTheme==="gold",
-  });
 
   const simpleRow = () => {
    
@@ -130,7 +125,7 @@ const ReportMenuRow = ({
       >
         <a
           onClick={onClick}
-          className={`col-span-4 block py-lg group my-0 divide-y ${dividerColor}`}
+          className={`col-span-4 block py-lg group my-0 divide-y ${dividerColor(colorTheme)}`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
@@ -147,7 +142,7 @@ const ReportMenuRow = ({
         </a>
 
         <ul
-          className={`col-span-8 pt-lg  divide-y ${dividerColor} pb-xl`}
+          className={`col-span-8 pt-lg  divide-y ${dividerColor(colorTheme)} pb-xl`}
         >
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
@@ -212,7 +207,7 @@ const ReportMenuRow = ({
           </div>
         </summary>
         <SlideDown className={`${styles.mobileSlideDown} pb-lg`}>
-          <ul className={` divide-y-[1px] divide-${textColor}`}>
+          <ul className={` divide-y-[1px] ${dividerColor(colorTheme)}`}>
             <LinkListItem
               href={`#${anchor}`}
               variant={"default"}
