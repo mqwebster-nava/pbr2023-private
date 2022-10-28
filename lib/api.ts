@@ -11,19 +11,24 @@
  */
 
 import { PageInterface } from "shared_interfaces/page_interface";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
+import { BasicPostInterface, FullPostInterface } from "shared_interfaces/post_interface";
 import { slugify } from "utils/utils";
 import getAllTags from "./contentful/getAllTags";
+import getMorePosts from "./contentful/getMorePosts";
 import getPageDataBySlug from "./contentful/getPageDataBySlug";
 import getPostBySlug from "./contentful/getPostBySlug";
 import getPostsByAuthor from "./contentful/getPostsByAuthor";
 import getPostsByTag from "./contentful/getPostsByTag";
-import {
-  formatAuthorPage,
-  formatPage,
-  formatPostPage,
-  formatTagsPage,
-} from "./formatPage";
+import { formatAuthorPage } from "./formatters/formatAuthorPage";
+import { formatFullPost } from "./formatters/formatFullPost";
+import { formatPage, formatPostPage } from "./formatters/formatPage";
+import { formatTagsPage } from "./formatters/formatTagsPage";
+// import {
+//   formatAuthorPage,
+//   formatPage,
+//   formatPostPage,
+//   formatTagsPage,
+// } from "./formatPage";
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.
@@ -68,8 +73,9 @@ export async function getPageDataFromContentful({
   if (variant == "post") {
     // Get the post data
     try {
-      const res = await getPostBySlug(slug, {preview});
-      const { post, morePosts } = res;
+      const post = await getPostBySlug(slug, {preview});
+      const formattedPost:FullPostInterface = formatFullPost(post);
+      const morePosts = await getMorePosts(formattedPost,{preview});
       const formattedPage: PageInterface = formatPostPage(post, morePosts);
       return formattedPage;
     } catch (e) {

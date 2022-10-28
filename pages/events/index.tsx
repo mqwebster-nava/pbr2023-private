@@ -5,6 +5,7 @@ import getPostsByContentType from "lib/contentful/getPostsByContentType";
 import { BasicPostInterface } from "shared_interfaces/post_interface";
 import React from "react";
 import { isDateAfterNow } from "utils/utils";
+import { formatPosts } from "lib/formatters/formatPosts";
 
 export default function Events(props:PageInterface) {
  
@@ -19,8 +20,8 @@ export async function getStaticProps({ params, preview = false }) {
   });
  
   
-  let posts: Array<BasicPostInterface> = await getPostsByContentType("Events");
-
+  let _posts = await getPostsByContentType("Events");
+  const posts: Array<BasicPostInterface> = formatPosts(_posts);
   const futureEvents = posts.filter((e)=> isDateAfterNow(e.date)).sort((a,b)=> new Date(a.date).getTime() - new Date(b.date).getTime());
   const pastEvents = posts.filter((e)=> !isDateAfterNow(e.date)).sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
   res.contentBlocks = [

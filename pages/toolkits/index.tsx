@@ -10,7 +10,6 @@ export default function Toolkits(props: PageInterface) {
 
 
 export async function getStaticProps({ params, preview = false }) {
-    //const posts = await ContentfulApi.getPostsByContentType("Toolkit");
     const page: PageInterface = await getPageDataFromContentful(
       {slug:"/toolkits",
       preview: preview,
