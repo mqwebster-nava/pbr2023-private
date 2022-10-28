@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, } from "react";
 import ArrowDown from "./Atoms/ArrowDown";
-import { animationHandler, AnimationObject, getOffsetPct } from "./_utils";
+import { getOffsetPct } from "./_utils";
 import { makeFadeInAnimation, makeSlideUpAnimation } from "./_animations";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
@@ -40,8 +40,21 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
     svg.setAttribute("width", `${s}`);
     animBox.style.height = `${s}px`;
     animBox.style.width = `${s}px`;
+    onScroll();
   }
 
+  const onScroll = () => {
+    let offsetPct = getOffsetPct("reportHeader");
+    if (offsetPct > 100) return;
+    if(offsetPct<0) offsetPct=0;
+    //animationHandler({offsetPct, animationList});
+    const animBox = document.getElementById("animation-box");
+    const s = animBox.getBoundingClientRect().height;
+    const svg = document.getElementById("box2");
+    const pctS = Math.round((s * Math.min(offsetPct, 50)) / 50);
+    svg.setAttribute("height", `${pctS}`);
+    svg.setAttribute("width", `${pctS}`);
+  };
   const initiateAnimations = () => {
     makeSlideUpAnimation("reportHeader-titleBox", 0).play();
     makeSlideUpAnimation("titleLine1", 200).play();
@@ -50,28 +63,19 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
     makeFadeInAnimation("heroArrow", 900).play();
   };
   useEffect(() => {
-    const onScroll = () => {
-      let offsetPct = getOffsetPct("reportHeader");
-      if (offsetPct > 100) return;
-      if(offsetPct<0) offsetPct=0;
-      //animationHandler({offsetPct, animationList});
-      const animBox = document.getElementById("animation-box");
-      const s = animBox.getBoundingClientRect().height;
-      const svg = document.getElementById("box2");
-      const pctS = Math.round((s * Math.min(offsetPct, 50)) / 50);
-      svg.setAttribute("height", `${pctS}`);
-      svg.setAttribute("width", `${pctS}`);
-    };
-
     getAnimationBoxHeight();
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
     if (mediaQuery && !mediaQuery.matches) {
       initiateAnimations();
     }
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", getAnimationBoxHeight);
+    window.addEventListener("resize", getAnimationBoxHeight);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", getAnimationBoxHeight);
+    }
   });
 
   return (
