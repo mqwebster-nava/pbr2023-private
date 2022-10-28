@@ -51,11 +51,9 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
   };
   useEffect(() => {
     const onScroll = () => {
-      const offsetPct = getOffsetPct("reportHeader");
-      const _isActive = offsetPct >= 0 && offsetPct < 100;
-      if (!_isActive) return;
-
-      if (offsetPct < 0 || offsetPct >= 100) return;
+      let offsetPct = getOffsetPct("reportHeader");
+      if (offsetPct > 100) return;
+      if(offsetPct<0) offsetPct=0;
       //animationHandler({offsetPct, animationList});
       const animBox = document.getElementById("animation-box");
       const s = animBox.getBoundingClientRect().height;
