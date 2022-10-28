@@ -27,25 +27,34 @@ function MyApp({ Component, pageProps }: AppProps) {
       gtmId: "GTM-NRQK2XB",
       dataLayer: { event: "optimize.activate" },
     });
+    //  if (variant==undefined && v==undefined)
     initOptimize(() => {
+      const v = localStorage.getItem("variantAB");
+      if (v !== "undefined" && v) {
+        console.log("from local", v);
+        setVariant(v);
+      }
       let interval = setInterval(() => {
-        console.log("init");
         if (window.google_optimize !== undefined) {
-          console.log(window.google_optimize);
-          const variant = window.google_optimize.get("jt2l8vXiQO2JDyFut6Ji_w");
-          if (typeof variant !== "undefined") setVariant(variant);
+          const _variant = window.google_optimize.get("jt2l8vXiQO2JDyFut6Ji_w");
+          console.log(_variant);
+          if (typeof _variant !== "undefined" ) {
+            console.log("changing time", variant, _variant);
+            setVariant(_variant);
+            localStorage.setItem("variantAB", _variant);
+          }else if (variant == "undefined" || variant==null){
+            setVariant(0);
+            localStorage.setItem("variantAB",0);
+          }
           clearInterval(interval);
         }
       }, 100);
     });
-    //@ts-ignore
-    // window.dataLayer.push({ event: "optimize.activate" });
   }, []);
 
   return (
     <>
       <Head>
-   
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />
         <meta property="og:type" content="website" />
@@ -83,14 +92,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
-       <div className="flex flex-col h-screen ">
-        <Navbar variant={variant}/>
+      <div className="flex flex-col h-screen ">
+        <Navbar variant={variant} />
 
         <div className="flex-grow ">
           <Component {...pageProps} />
         </div>
         <Footer isBottomCTA={pageProps.isBottomCTA} />
- 
       </div>
     </>
   );
