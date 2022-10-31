@@ -22,6 +22,7 @@ import getPostsByTag from "./contentful/getPostsByTag";
 import { formatAuthorPage } from "./formatters/formatAuthorPage";
 import { formatFullPost } from "./formatters/formatFullPost";
 import { formatPage, formatPostPage } from "./formatters/formatPage";
+import { formatPosts } from "./formatters/formatPosts";
 import { formatTagsPage } from "./formatters/formatTagsPage";
 // import {
 //   formatAuthorPage,
@@ -66,7 +67,6 @@ export async function getPageDataFromContentful({
         })
       );
     return formattedPage;
-    
   }
 
   // If it is a post, we create the page interface data from the post content
@@ -75,7 +75,8 @@ export async function getPageDataFromContentful({
     try {
       const post = await getPostBySlug(slug, {preview});
       const formattedPost:FullPostInterface = formatFullPost(post);
-      const morePosts = await getMorePosts(formattedPost,{preview});
+      let morePosts = await getMorePosts(formattedPost,{preview});
+      morePosts = formatPosts(morePosts);
       const formattedPage: PageInterface = formatPostPage(post, morePosts);
       return formattedPage;
     } catch (e) {

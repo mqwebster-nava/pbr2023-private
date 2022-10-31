@@ -6,7 +6,7 @@ import {
   ReportShoutoutSection,
   ReportIntroSection,
 } from "components/blocks";
-import { getMarkdownByFilename } from "../../lib/markdown";
+import { getMarkdownByFilename } from "../../utils/markdown_parser";
 import { PageInterface } from "shared_interfaces/page_interface";
 
 export async function getStaticProps() {

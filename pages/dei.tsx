@@ -5,7 +5,7 @@ import {
   gender,
   additionalIdentities,
 } from "../lib/data/dei_2021";
-import { getMarkdownByFilename } from "../lib/markdown";
+import { getMarkdownByFilename } from "../utils/markdown_parser";
 import {
   PercentBarChart,
   ReportContent,
