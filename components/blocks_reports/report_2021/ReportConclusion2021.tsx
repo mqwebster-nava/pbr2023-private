@@ -7,7 +7,7 @@ import { LinkListItem } from "./Atoms/LinkListItem";
 
 const ReportConclusion2021 = ({ title, richBody, anchor }) => {
   const [animationList, setAnimationList] = useState([]);
-
+  let currentYear = new Date().getFullYear();
   const initiateAnimations = () => {
     let ana = [
       {
@@ -63,10 +63,10 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
   return (
     <section
       id={anchor}
-      className="w-full min-h-[125vh] bg-gold-700"
+      className="w-full min-h-[125vh] bg-gold-700 relative"
       tabIndex={0}
     >
-      <div className="responsive-container py-2xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
+      <div className="responsive-container pt-2xl pb-4xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
         <div className="relative h-full">
           <div
             id="conclusion-box"
@@ -125,6 +125,22 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
         </div>
         </div>
       </div>
+      <div className="bg-black py-xl absolute bottom-0 left-0 right-0  width-full">
+          <div
+            className={
+              "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
+            }
+          >
+            <p className="text-white font-sans type-preset-8 pt-md sm:pt-0">
+              {`© ${currentYear} Nava PBC. All rights reserved.`}
+            </p>
+            {/* <div className="flex gap-2xl  type-preset-7">
+            <LinkText href={"https://twitter.com/NavaPBC"} variant={"default"} color={"white"} analyticsLabel={"footer"}> Twitter</LinkText>
+            <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"default"} color={"white"} analyticsLabel={"footer"}>LinkedIn</LinkText>
+            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"} analyticsLabel={"footer"} >  YouTube</LinkText>
+            </div> */}
+          </div>
+        </div>
     </section>
   );
 };
