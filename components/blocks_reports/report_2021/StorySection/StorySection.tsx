@@ -10,6 +10,7 @@ import {
 import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
 import ArrowDownColumn from "../Atoms/ArrowDownColumn";
+import classNames from "classnames";
 
 
 /* TODO  
@@ -152,7 +153,16 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
 
   const textColor =colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
   const darkColor = colorTheme == "gold" ? "gold-dark" : `${colorTheme}-900`;
-  
+  const borderColor = classNames({
+    "border-t-plum-700":colorTheme==="plum",
+    "border-t-sage-800":colorTheme==="sage",
+     "border-t-navy-600":colorTheme==="navy",
+    "border-t-gold-700": colorTheme==="gold",
+  });
+
+
+
+
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
@@ -193,7 +203,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   id={`storySummary-${story.anchor}`}
                   className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
-                  <div className={`font-serif font-bold ${textColor} border-t-[1px] border-${colorTheme}-700 type-preset-6`}>
+                  <div className={`font-serif font-bold ${textColor} border-t-[2px] ${borderColor} type-preset-6`}>
                     <ReportContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}

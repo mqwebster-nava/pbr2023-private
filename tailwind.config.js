@@ -118,7 +118,8 @@ module.exports = {
           800: "#f69f09",
           900: "#f37100",
           dark: "#BE5800",
-          darktext:"#B55400"
+          darktext:"#B55400",
+          pbrcustom:"#E8D5C4"
         },
 
         navy: {

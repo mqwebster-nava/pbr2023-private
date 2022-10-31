@@ -13,15 +13,15 @@ const Callout = ({
   
   const borderColor = classNames({
     "border-t-plum-700 border-b-plum-100":colorTheme==="plum",
-    "border-t-sage-700 border-b-sage-100":colorTheme==="sage",
-     "border-t-navy-700 border-b-navy-100":colorTheme==="navy",
-    "border-t-gold-700 border-b-gold-400": colorTheme==="gold",
+    "border-t-sage-800 border-b-sage-100":colorTheme==="sage",
+     "border-t-navy-600 border-b-navy-100":colorTheme==="navy",
+    "border-t-gold-700 border-b-gold-pbrcustom": colorTheme==="gold",
   });
 
 
 
   return (
-    <div className={`bg-${colorTheme}-50 pt-md pb-lg`}>
+    <div className={`bg-${colorTheme}-50 pt-md pb-lg `}>
     <div
       className={` border-y-[1px] ${borderColor} w-full pb-md min-h-[100px] md:min-h-[140px]`}
     >
