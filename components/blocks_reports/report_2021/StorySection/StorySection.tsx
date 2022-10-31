@@ -259,8 +259,6 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           quality={'85'}
           src={story.illustration.url}
           layout="fill"
-          height={story.illustration.height}
-          width={story.illustration.width}
           objectFit="cover"
           className="storyImg absolute top-0 left-0 w-screen opacity-100 object-left-top"
         ></Image>
@@ -269,8 +267,6 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           alt={`${story.contextIllustration.description}`}
           src={story.contextIllustration.url}
           layout="fill"
-          height={story.contextIllustration.height}
-          width={story.contextIllustration.width}
           quality={'85'}
           objectFit="cover"
           className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block`}
