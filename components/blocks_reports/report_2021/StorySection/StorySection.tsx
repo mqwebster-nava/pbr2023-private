@@ -193,7 +193,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   id={`storySummary-${story.anchor}`}
                   className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
-                  <div className={`font-serif font-bold ${textColor} border-t-[1px] border-${colorTheme}-900 type-preset-6`}>
+                  <div className={`font-serif font-bold ${textColor} border-t-[1px] border-${colorTheme}-700 type-preset-6`}>
                     <ReportContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}

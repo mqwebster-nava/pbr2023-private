@@ -10,17 +10,12 @@ const Callout = ({
 }) => {
 
   const textColor = colorTheme=="gold"? "text-gold-darktext" : `text-${colorTheme}-900`;
-  const Color = colorTheme=="gold"? "text-gold-dark" : `text-${colorTheme}-900`;
   
   const borderColor = classNames({
-    "border-t-plum-700 border-b-plum-500":colorTheme==="plum",
-    "border-t-sage-900 border-b-sage-500":colorTheme==="sage",
-     "border-t-navy-700 border-b-navy-500":colorTheme==="navy",
-    "border-t-gold-700 border-b-gold-500": colorTheme==="gold",
-  });
-  const borderThickness = classNames({
-    "border-t-[1px] border-b-[1px]":true,
-    //"border-t-[px] border-b-[1px]":variant==="quote",
+    "border-t-plum-700 border-b-plum-100":colorTheme==="plum",
+    "border-t-sage-700 border-b-sage-100":colorTheme==="sage",
+     "border-t-navy-700 border-b-navy-100":colorTheme==="navy",
+    "border-t-gold-700 border-b-gold-400": colorTheme==="gold",
   });
 
 
@@ -28,7 +23,7 @@ const Callout = ({
   return (
     <div className={`bg-${colorTheme}-50 pt-md pb-lg`}>
     <div
-      className={` ${borderThickness} ${borderColor} w-full pb-md min-h-[100px] md:min-h-[140px]`}
+      className={` border-y-[1px] ${borderColor} w-full pb-md min-h-[100px] md:min-h-[140px]`}
     >
      {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
       <p
