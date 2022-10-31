@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./EmployeeList.module.css";
 import AuthorFiller from "/public/images/Missing images on our People V02.svg"

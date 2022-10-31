@@ -163,3 +163,10 @@ body {
     #ffffff
   );
 }
+
+.fading-gradient:after { 
+  background: linear-gradient(to top,
+  rgba(255,255,255, 1) 20%, 
+  rgba(255,255,255, 0) 80%
+);
+}

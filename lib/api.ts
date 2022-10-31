@@ -21,15 +21,10 @@ import getPostsByAuthor from "./contentful/getPostsByAuthor";
 import getPostsByTag from "./contentful/getPostsByTag";
 import { formatAuthorPage } from "./formatters/formatAuthorPage";
 import { formatFullPost } from "./formatters/formatFullPost";
-import { formatPage, formatPostPage } from "./formatters/formatPage";
+import { formatPage, formatPostPage, formatReportPage } from "./formatters/formatPage";
 import { formatPosts } from "./formatters/formatPosts";
 import { formatTagsPage } from "./formatters/formatTagsPage";
-// import {
-//   formatAuthorPage,
-//   formatPage,
-//   formatPostPage,
-//   formatTagsPage,
-// } from "./formatPage";
+import getReportDataBySlug from "./contentful/getReportDataBySlug";
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.
@@ -37,7 +32,7 @@ const defaultOptions = {
   preview: false,
 };
 
-type PageVariant = "default" | "post" | "tags" | "author";
+type PageVariant = "default" | "post" | "tags" | "author" | "report";
 
 export interface PageQueryInterface {
   slug: string;
@@ -66,6 +61,12 @@ export async function getPageDataFromContentful({
           }
         })
       );
+    return formattedPage;
+  }
+
+  if (variant == "report") {
+    const page = await getReportDataBySlug({ slug, preview });
+    let formattedPage: PageInterface = formatReportPage(page);
     return formattedPage;
   }
 

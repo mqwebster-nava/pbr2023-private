@@ -31,7 +31,6 @@ const PageTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
