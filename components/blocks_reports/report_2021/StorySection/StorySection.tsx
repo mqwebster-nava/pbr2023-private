@@ -253,24 +253,24 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
       <div
         className={`relative h-[calc(100vw_*_9_/_16)] landscape:h-[calc(100vh_-_70px)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
-        <Image
+        <img
           id={`storyImg-${story.anchor}`}
           alt={""}
-          quality={'85'}
+          //quality={'85'}
           src={story.illustration.url}
-          layout="fill"
-          objectFit="cover"
-          className="storyImg absolute top-0 left-0 w-screen opacity-100 object-left-top"
-        ></Image>
-        <Image
+          //layout="fill"
+        //  objectFit="cover"
+          className="storyImg absolute top-0 left-0 w-screen opacity-100 object-left-top object-cover"
+        ></img>
+        <img
           id={`contextImg-${story.anchor}`}
           alt={`${story.contextIllustration.description}`}
           src={story.contextIllustration.url}
-          layout="fill"
-          quality={'85'}
-          objectFit="cover"
-          className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block}`}
-        ></Image>
+         // layout="fill"
+          //quality={'85'}
+          //objectFit="cover"
+          className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block object-cover`}
+        ></img>
       </div>
     </div>
   );

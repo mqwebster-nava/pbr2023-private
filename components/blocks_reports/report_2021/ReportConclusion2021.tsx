@@ -107,6 +107,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
           ].map((row, i) => (
             <ul
               id={`conclusion-footer${i + 1}`}
+              key={`conclusion-footer${i + 1}`}
               className="w-full md:w-1/3 flex flex-col gap-md pt-xs font-serif font-light divide-y-[1px] divide-black border-t-[1px] border-black opacity-0 motion-reduce:opacity-100"
             >
               {row.map((link) => (
