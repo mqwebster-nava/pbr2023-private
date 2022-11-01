@@ -2,7 +2,7 @@ import ResponsiveContentContainer from "components/blocks/ResponsiveContentConta
 import { ContentfulImageAsset } from "shared_interfaces/post_interface";
 import Image from "next/image";
 import classNames from "classnames";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
 import { Button, LinkText } from "components/atom";
 import ReportContent, { REPORT_YEAR } from "../../ReportContent/ReportContent";

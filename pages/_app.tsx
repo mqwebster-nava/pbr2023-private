@@ -2,7 +2,7 @@ import "../styles/tailwind.css";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { Navbar, Footer } from "components/wrapper/index";
 import Head from "next/head";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import React, { useEffect } from "react";
 import TagManager from 'react-gtm-module';
 

@@ -24,7 +24,7 @@ const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventS
 
 
 
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,

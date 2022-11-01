@@ -1,4 +1,4 @@
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
 
 // 2021

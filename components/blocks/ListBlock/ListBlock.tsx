@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import React from "react";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
 interface ListBlockInterface {
     id:string;
     title?: string;

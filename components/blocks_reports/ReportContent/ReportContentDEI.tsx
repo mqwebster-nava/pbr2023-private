@@ -2,8 +2,19 @@ import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
 import { LinkText } from "../../atom";
-import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
 import PostPullQuote from "components/blocks/PostBody/PostPullQuote";
+
+
+interface ReportThemeInterface {
+  sage: {
+    text: string;
+    background: string;
+  };
+  default: {
+    text: string;
+    background: string;
+  };
+}
 
 type Size = "small" | "medium" | "large";
 export interface ReportContentInterface {

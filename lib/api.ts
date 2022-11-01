@@ -10,8 +10,7 @@
  *
  */
 
-import { PageInterface } from "shared_interfaces/page_interface";
-import { BasicPostInterface, FullPostInterface } from "shared_interfaces/post_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import { slugify } from "utils/utils";
 import getAllTags from "./contentful/getAllTags";
 import getMorePosts from "./contentful/getMorePosts";
@@ -19,12 +18,15 @@ import getPageDataBySlug from "./contentful/getPageDataBySlug";
 import getPostBySlug from "./contentful/getPostBySlug";
 import getPostsByAuthor from "./contentful/getPostsByAuthor";
 import getPostsByTag from "./contentful/getPostsByTag";
-import { formatAuthorPage } from "./formatters/formatAuthorPage";
-import { formatFullPost } from "./formatters/formatFullPost";
-import { formatPage, formatPostPage, formatReportPage } from "./formatters/formatPage";
+import { formatAuthorPage } from "./formatters/formatPageAuthor";
+import { formatFullPost } from "./formatters/formatPost";
 import { formatPosts } from "./formatters/formatPosts";
-import { formatTagsPage } from "./formatters/formatTagsPage";
+import { formatTagsPage } from "./formatters/formatPageTags";
 import getReportDataBySlug from "./contentful/getReportDataBySlug";
+import { formatReportPage } from "./formatters/formatPageReport";
+import { BasicPostInterface, FullPostInterface } from "./data_models/post_interface";
+import { formatPostPage } from "./formatters/formatPagePost";
+import { formatPage } from "./formatters/formatPageDefault";
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.

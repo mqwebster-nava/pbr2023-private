@@ -2,7 +2,7 @@
 import ContactSection from "components/custom_blocks/ContactSection/ContactSection";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { getPageDataFromContentful } from "lib/api";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 
 
 //TODO potentially add a captcha https://developers.google.com/recaptcha/docs/v3

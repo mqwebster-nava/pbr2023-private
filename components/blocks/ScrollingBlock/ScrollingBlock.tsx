@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Button } from "components/atom";
 import React from "react";
 import { useState } from "react";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
 import ResponsiveContentContainer from "../ResponsiveContentContainer/ResponsiveContentContainer";
 import styles from "./main.module.css";
 // TODO move as much to tailwind

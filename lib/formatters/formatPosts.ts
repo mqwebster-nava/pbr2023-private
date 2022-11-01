@@ -1,6 +1,6 @@
-import { BasicPostInterface } from "shared_interfaces/post_interface";
-import { formatImageAsset } from "./formatImageAsset";
 
+import { BasicPostInterface } from "lib/data_models/post_interface";
+import { formatImageAsset } from "./formatImageAsset";
   export const formatPosts = (posts) =>{
     return posts.map((post)=>{
       const newPost: BasicPostInterface = {

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import classNames from "classnames";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 
 
 export interface SignaturesProps {

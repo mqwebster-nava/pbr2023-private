@@ -1,4 +1,4 @@
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import { capitalize } from "utils/utils";
 import { sortPostsByDate } from "./utils";
 

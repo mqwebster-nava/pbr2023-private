@@ -1,14 +1,9 @@
-import { ReportThemeInterface } from "shared_interfaces/report_theme_interface";
+
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import { Details } from "components/atom";
-import PostContent from "components/blocks/PostBody/PostContent";
 import { Shoutout2019Data } from "./Shoutout2019Data";
 import ReportContent from "../ReportContent/ReportContent";
-// export interface ReportShoutoutSectionInterface {
-//   title: string;
-//   introduction: string;
-//   lists: Array<object>;
-// }
+
 
 const ShoutoutSection = ({ title, type, richBody }) => {
   return (

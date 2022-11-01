@@ -1,4 +1,4 @@
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import OpenRolesComponent from "components/custom_blocks/OpenRolesComponent/OpenRolesComponent";

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 
 type LinkTextVariant = "default" | "" | "underlined";
 type LinkColor = "black" | "sage" | "white" | "gray" | "";

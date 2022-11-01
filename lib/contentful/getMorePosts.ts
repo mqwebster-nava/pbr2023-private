@@ -1,6 +1,6 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
+import { FullPostInterface } from "lib/data_models/post_interface";
 import { POST_CORE_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
-import { BasicPostInterface, FullPostInterface } from "shared_interfaces/post_interface";
 
  /*
  This gets 3 posts that have similar tags to the post the user is currently reading 
