@@ -147,7 +147,7 @@ const ReportMenuRow = ({
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
             </p>
-          {stories.map((story) => {
+          {stories.filter((story)=>story.hideStory!==true).map((story) => {
             const anch2 = `#${anchor}--${story.anchor}`;
             const title = story.title;
             return (

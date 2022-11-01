@@ -333,7 +333,7 @@ const DesktopSectionTitle = ({
             </p>
          
           {stories &&
-            stories.map((story) => {
+            stories.filter((story)=>story.hideStory!==true).map((story) => {
               const anch2 = `#${anchor}--${story.anchor}`;
               const title =  story.title;
               return (
