@@ -23,9 +23,6 @@ illustration{
 contextIllustration{
     ${IMAGE_FIELDS}
 }
-callOut {
-    ${IMAGE_FIELDS}
-}
 featuredCallOut {
     ${CALLOUT}
 }
