@@ -1,5 +1,5 @@
 import React from "react";
-import NavData, { NavData2 } from "./navbar_data";
+import getNavData from "./navbar_data";
 import "react-slidedown/lib/slidedown.css";
 import MobileNavBar from "./MobileNav/MobileNav";
 import DesktopNavBar from "./DesktopNav/DesktopNav";
@@ -7,7 +7,7 @@ import DesktopNavBar from "./DesktopNav/DesktopNav";
 const Navbar = ({ variant = null }) => {
   // Gets the current breakpoint to determine the navbar
   console.log(variant)
-  const variantData = variant==null?[]: variant == 0 ? NavData : NavData2;
+  const variantData = variant==null?[]:getNavData(variant);
   return (
     <header className={`bg-white w-full z-50  `}>
       <DesktopNavBar NavData={variantData} />

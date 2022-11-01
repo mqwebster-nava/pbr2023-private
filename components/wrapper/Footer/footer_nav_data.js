@@ -1,12 +1,13 @@
-
-const FooterNavData = [
+const getFooterNavData = (variant) => [
   [
-  { title: "Impact", slug: "/impact" },
-  { title: "Values", slug: "/values" },
-  { title: "Services", slug: "/services" },
-      { title: "Case studies", slug: "/case-studies" },
-      { title: "Toolkits", slug: "/toolkits" },
-      { title: "Insights", slug: "/insights" },
+    { title: "Impact", slug: "/impact" },
+    { title: "Values", slug: "/values" },
+    { title: "Services", slug: "/services" },
+    { title: "Case studies", slug: "/case-studies" },
+    { title: "Toolkits", slug: "/toolkits" },
+    variant == "stories"
+      ? { title: "Stories", slug: "/stories" }
+      : { title: "Insights", slug: "/insights" },
   ],
   [
     { title: "Careers", slug: "/careers" },
@@ -17,7 +18,7 @@ const FooterNavData = [
     { title: "News", slug: "/news" },
     { title: "Events", slug: "/events" },
     { title: "Get in touch", slug: "/contact" },
-  ]
+  ],
 ];
 
-export default FooterNavData;
+export default getFooterNavData;

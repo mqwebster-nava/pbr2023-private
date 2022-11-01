@@ -4,13 +4,13 @@ import { formatImageAsset } from "./formatImageAsset";
 import { defaultSocialImage } from "./utils";
 
 export function formatPage(page){
-  
+  console.log(page)
     let formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,
         title: page.title,
         socialImage:formatImageAsset(page.socialImage),
-        pageHeader:formatImageAsset(page.socialImage),
+        pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
         isBottomCTA: false

@@ -30,7 +30,10 @@ const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
   contentBlocks,
   children,
+  variantAB
 }) => {
+  console.log(variantAB);
+ console.log(pageHeader)
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -58,9 +61,10 @@ const PageTemplate: React.FC<PageInterface> = ({
     }
     return typename in componentMap ? componentMap[typename](entry) : null;
   };
+
   return (
     <main id="main">
-      <PageHeader {...pageHeader}/>
+      <PageHeader {...pageHeader} variantAB={variantAB} />
       <div className="animate-fadeIn2">
       {children}
       {contentBlocks.map((block,i) =>  getComponent(block,i))}
@@ -68,5 +72,7 @@ const PageTemplate: React.FC<PageInterface> = ({
     </main>
   );
 };
+
+//variantAB={variantAB}
 
 export default PageTemplate;

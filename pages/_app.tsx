@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import { PageInterface } from "lib/data_models/page_interface";
 
+const variantAB = ["insights", "stories"]
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [variant, setVariant] = useState();
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
@@ -28,21 +30,22 @@ function MyApp({ Component, pageProps }: AppProps) {
     //  if (variant==undefined && v==undefined)
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
-      if (v !== "undefined" && v) {
+      if (v !== "undefined" && v ) {
         console.log("from local", v);
         setVariant(v);
       }
       let interval = setInterval(() => {
+
         if (window.google_optimize !== undefined) {
           const _variant = window.google_optimize.get("jt2l8vXiQO2JDyFut6Ji_w");
-          console.log(_variant);
+          console.log(variantAB[_variant]);
           if (typeof _variant !== "undefined" ) {
             console.log("changing time", variant, _variant);
-            setVariant(_variant);
-            localStorage.setItem("variantAB", _variant);
+            setVariant(variantAB[_variant]);
+            localStorage.setItem("variantAB", variantAB[_variant]);
           }else if (variant == "undefined" || variant==null){
-            setVariant(0);
-            localStorage.setItem("variantAB",0);
+            setVariant(variantAB[0]);
+            localStorage.setItem("variantAB",variantAB[0]);
           }
           clearInterval(interval);
         }
@@ -51,7 +54,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   
-
   return (
     <>
       <Head>
@@ -96,12 +98,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&  <Navbar variant={variant} /> }
 
         <div className="flex-grow ">
-          <Component {...pageProps} />
+          <Component {...pageProps} variantAB={variant} />
         </div>
         {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&   <Footer isBottomCTA={pageProps.isBottomCTA} variant={variant}/> }
       </div>
     </>
   );
 }
+
+//variantAB={variant}
 //G-BVP54XXLSE
 export default MyApp;

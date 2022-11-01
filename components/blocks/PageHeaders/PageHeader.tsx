@@ -1,7 +1,4 @@
-import {
-  ContentfulImageAsset,
-  EventInfo,
-} from "shared_interfaces/post_interface";
+
 //import React from "react";
 import SecondaryPatternBlock from "./SecondaryPatternBlock";
 import TitleBlock from "./TitleBlock";
@@ -13,6 +10,8 @@ import PostTitleBlock from "./PostTitleBlock";
 import { getEventDateStr, isDateAfterNow } from "utils/utils";
 import { Button } from "components/atom";
 import dynamic from "next/dynamic";
+import { ContentfulImageAsset, EventInfo } from "lib/data_models/post_interface";
+import { VARIANTTYPE } from "lib/data_models/page_interface";
 const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 
 type PageHeaderVariant =
@@ -33,9 +32,13 @@ export interface PageHeaderInterface {
   buttonPath?: string;
   buttonText?: string;
   eventInfo?: EventInfo;
+  variantAB?: VARIANTTYPE
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
+  console.log(props.variantAB)
+  const title = (props.title=="Insights" && props.variantAB=="stories") ? "Stories" :props.title; 
+console.log(props)
   if (props.variant == "Home") {
     return <HomePageHeader {...props} />;
   }
@@ -48,7 +51,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           >
             <TitleBlock
               textColor={"text-navy-200"}
-              title={props.title}
+              title={title}
               subtitle={props.subtitle}
               body={props.body}
             />
@@ -67,7 +70,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           >
             <TitleBlock
               textColor={"text-purple-200"}
-              title={props.title}
+              title={title}
               subtitle={props.subtitle}
               body={props.body}
               buttonText={props.buttonText}
