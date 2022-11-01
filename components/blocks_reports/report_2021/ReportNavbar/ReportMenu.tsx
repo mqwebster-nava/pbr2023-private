@@ -46,7 +46,7 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
               colorTheme={color}
               textColor={textColor}
               fontStyle={"font-bold"}
-              stories={section.items}
+              stories={section.items.filter((story)=>story.hideStory!==true)}
               onClick={onClick}
               activeSection={activeSection}
             />

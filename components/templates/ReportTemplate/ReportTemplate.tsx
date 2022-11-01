@@ -52,10 +52,12 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
-          {entry.storiesCollection.items.map((story, j) => {
+          {entry.storiesCollection.items.filter((story)=>story.hideStory!==true).map((story, j) => {
           // If another story next
-          let nextSection =  entry.storiesCollection.items.length>j+1 ? `${entry.anchor}--${entry.storiesCollection.items[j+1].anchor}` : null;
-          let nextSectionTitle =  entry.storiesCollection.items.length>j+1 ? entry.storiesCollection.items[j+1].title : null;
+          const shownStories = entry.storiesCollection.items.filter((story)=>story.hideStory!==true)
+
+          let nextSection = shownStories.length>j+1 ? `${entry.anchor}--${shownStories[j+1].anchor}` : null;
+          let nextSectionTitle =  shownStories.length>j+1 ? shownStories[j+1].title : null;
           let nextSectionType = "story";
           // if no other story left but 
           if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) {
@@ -147,6 +149,7 @@ export function getSectionsInfo(contentBlocks) {
         null,
     );
       section.storiesCollection.items.forEach((story, i) => {
+        if(!story.hideStory)
           addSection(
             story.title,
             `${section.anchor}--${story.anchor}`,

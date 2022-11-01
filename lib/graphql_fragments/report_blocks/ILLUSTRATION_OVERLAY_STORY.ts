@@ -9,7 +9,7 @@ sys {
     id
 }
 title
-shortTitle
+hideStory
 anchor
 intro {
     ${REPORT_BODY_2021}

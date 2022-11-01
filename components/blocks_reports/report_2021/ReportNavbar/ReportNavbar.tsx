@@ -88,7 +88,7 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
     <div className={`block sticky top-0 z-50 w-full bg-white ${!isShowingMenu && "h-[70px] overflow-clip"}`}>
       <div className="responsive-container flex flex-wrap items-center  h-[60px] ">
        <div className="w-1/3">
-        <Logo isMobile={true} color="black" />
+        <Logo isMobile={true}  />
         </div>
         <a href="#reportHeader" onClick={() => {if(isShowingMenu)setIsShowingMenu(false); }}>
         <h2 className="type-preset-6 font-serif text-black tracking-[0.015em]">
@@ -130,9 +130,6 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
       <div className="overflow-scroll">
       <SlideDown>
         {isShowingMenu ? (
-         
-
-        
           <ReportMenu
             activeSection={activeSection}
             contentBlocks={contentBlocks}

@@ -137,7 +137,7 @@ const SectionIntro = ({ section, i }) => {
                 className={`grid grid-cols-1 md:grid-cols-3 gap-x-xl pt-xs gap-y-xs
                 divide-y-[1px] md:divide-y-0 ${dividerColor(colorTheme)}`}
               >
-                {section.items.map((story) => {
+                {section.items.filter((story)=>story.hideStory!==true).map((story) => {
                   return (
                     <LinkListItem
                     key={`sectionIntro-${story.anchor}`}
