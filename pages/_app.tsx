@@ -2,11 +2,9 @@ import "../styles/tailwind.css";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { Navbar, Footer } from "components/wrapper/index";
 import Head from "next/head";
-import { PageInterface } from "shared_interfaces/page_interface";
 import React, { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
-import Script from "next/script";
-//import useOptimizeAB from "utils/Optimize"
+import { PageInterface } from "lib/data_models/page_interface";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [variant, setVariant] = useState();
@@ -52,6 +50,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
   }, []);
 
+  
+
   return (
     <>
       <Head>
@@ -93,12 +93,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <div className="flex flex-col h-screen ">
-        <Navbar variant={variant} />
+      {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&  <Navbar variant={variant} /> }
 
         <div className="flex-grow ">
           <Component {...pageProps} />
         </div>
-        <Footer isBottomCTA={pageProps.isBottomCTA} />
+        {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&   <Footer isBottomCTA={pageProps.isBottomCTA} variant={variant}/> }
       </div>
     </>
   );

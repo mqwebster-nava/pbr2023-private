@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import SlideDown from "react-slidedown";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 import Logo from "../Logo";
 import styles from "./mobilenav.module.css";
 

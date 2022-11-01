@@ -1,7 +1,18 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
 import { POST_ALL_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
-import { formatFullPost } from "lib/post_utils";
 import getMorePosts from "./getMorePosts";
+
+/**
+ * getPostBySlug
+ * 
+ * Recieves all the specific data for a single post page so it can be rendered. 
+ * This includes all types of posts such as case studies and toolkits
+ * 
+ * In addition to getting the post data, it calls getMorePosts, to get recommended posts related to it's tags
+ * 
+ * called by the api.ts file
+ */
+
 
 
 export default async function getPostBySlug(slug, options=defaultOptions) {
@@ -23,10 +34,12 @@ export default async function getPostBySlug(slug, options=defaultOptions) {
     }
     if(!response.data.postCollection.items) return null;
     const post =  response.data.postCollection.items.pop();
-    const formattedPost = formatFullPost(post);
-    const morePosts = await getMorePosts(formattedPost, options);
-    return {
-      post:formattedPost,
-      morePosts
-    };
+    return post;
   }
+
+     // const formattedPost = formatFullPost(post);
+    // const morePosts = await getMorePosts(formattedPost, options);
+    // return {
+    //   post:formattedPost,
+    //   morePosts
+    // };

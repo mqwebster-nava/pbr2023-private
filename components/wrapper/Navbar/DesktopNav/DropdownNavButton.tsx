@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 import styles from "./desktopnav.module.css";
 
 

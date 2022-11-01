@@ -20,7 +20,7 @@ type PageHeaderVariant =
   | "Secondary"
   | "Home"
   | "Post"
-  | "Events Post";
+  | "Events Post" | "2018" | "2019"| "2020"|"2021";
 
 export interface PageHeaderInterface {
   id: string;

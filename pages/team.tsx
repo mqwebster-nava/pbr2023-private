@@ -1,6 +1,6 @@
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 //https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
 

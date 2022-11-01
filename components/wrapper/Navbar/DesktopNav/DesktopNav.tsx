@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../Logo";
 import NavButton from "./NavButton";
 import DropdownNavButton from "./DropdownNavButton";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 
 /*
 Notes

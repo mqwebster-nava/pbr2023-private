@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 type Variant = "default" | "outlined" | "white" | "dark" | "outlined white" |"";
 
 export interface ButtonProps {

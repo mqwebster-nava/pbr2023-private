@@ -1,24 +1,22 @@
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "shared_interfaces/page_interface";
-import { PageHeader } from "components/blocks";
-import { ContentCard, Button, LinkText } from "components/atom";
+import { PageInterface } from "lib/data_models/page_interface";
 //https://docs.google.com/document/d/140sOP1bOThae4tYF-HXv2gh9v6PCZV8RQJrwo83yGZE/edit#
 
 
-const dscale= 1.25, mscale = 1.1, droot=18, mroot=16;
-const fontHelper = (size) => {
-  let drem= 1; let mrem =1;
-  if( size > 6) {
-    drem = 1/(Math.pow(dscale,(size-6)));
-    mrem = 1/(Math.pow(mscale,(size-6)));
-  }else if (size<6){
-    drem = Math.pow(dscale,(6-size));
-    mrem = Math.pow(mscale,(6-size));
-  }
-  let m = mrem*mroot, t=mrem*droot, d=drem*droot;
-  return `desktop ${d.toFixed(1)} px / tablet ${t.toFixed(1)} px /mobile ${m.toFixed(1)}px`;
-}
+//const dscale= 1.25, mscale = 1.1, droot=18, mroot=16;
+// const fontHelper = (size) => {
+//   let drem= 1; let mrem =1;
+//   if( size > 6) {
+//     drem = 1/(Math.pow(dscale,(size-6)));
+//     mrem = 1/(Math.pow(mscale,(size-6)));
+//   }else if (size<6){
+//     drem = Math.pow(dscale,(6-size));
+//     mrem = Math.pow(mscale,(6-size));
+//   }
+//   let m = mrem*mroot, t=mrem*droot, d=drem*droot;
+//   return `desktop ${d.toFixed(1)} px / tablet ${t.toFixed(1)} px /mobile ${m.toFixed(1)}px`;
+// }
 
 
 
@@ -28,6 +26,93 @@ export default function DesignSystem(props: PageInterface) {
     <div>
     
       <PageTemplate {...page} />
+      <div className="responsive-container space-y-2  divide-y divide-black">
+        <div>
+          <div className="type-preset-5 font-sans font-black pt-3xl stroke-black "> Colors </div>
+          <hr className="pb-xl" />
+          <div>Purple</div>
+          <div className="h-32 flex ">
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-50 stroke-white"
+            >
+              50
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-100 stroke-purple-100 fill-plum-400"
+            >
+              100
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-200 stroke-purple-200 fill-sage-400"
+            >
+              200
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-300 stroke-purple-300 border-l-sage-50 fill-sage-900 text-sage-900"
+            >
+              300
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-400 stroke-purple-400 border-l-sage-900"
+            >
+              400
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-500 stroke-purple-500"
+            >
+              500
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-600 stroke-navy-900 border-navy-900 from-navy-50 fill-navy-900"
+            >
+              600
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-700 stroke-plum-900 border-plum-900 from-plum-50 fill-plum-900"
+            >
+              700
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-800 stroke-sage-900 border-sage-900 from-sage-50 fill-sage-900"
+            >
+              800
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-purple-900 stroke-purple-900 border-purple-900 from-purple-50 divide-white fill-purple-900"
+            >
+              900
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-900 stroke-gold-900 text-gold-900 border-gold-900 from-gold-50 divid-black fill-gold-900 "
+            >
+              900
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-dark stroke-gold-dark text-gold-dark border-gold-dark from-gold-50 divid-black fill-gold-dark"
+            >
+              900
+            </div>
+            <div
+              style={{ width: "100px", height: "100px" }}
+              className="bg-gold-dark stroke-gold-dark text-gold-darktext border-gold-dark from-gold-50 divid-black fill-gold-dark"
+            >
+              900
+            </div>
+            </div>
+            </div>
+    </div>
     </div>
   ) : (
     <div>Error</div>

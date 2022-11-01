@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { LinkText } from "components/atom";
 import Image from "next/image";
 import logo from "public/images/N logo.png";
