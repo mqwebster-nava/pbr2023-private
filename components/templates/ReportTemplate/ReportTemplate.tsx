@@ -48,8 +48,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
     const componentMap = {
       "2021":{
-      ReportIntroduction: (entry) => <ReportIntroduction2021  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
-      ReportIllustrationOverlaySubsection: (entry) => (
+       ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
           <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
           {entry.storiesCollection.items.filter((story)=>story.hideStory!==true).map((story, j) => {
@@ -81,19 +80,22 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ),
       ReportSectionCustom: (entry) => 
       (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
+      :(entry.type=='Introduction 2021') ? <ReportIntroduction2021  key={index} {...entry} signatures={entry.signaturesCollection?.items}/>
       :(entry.type=='Conclusion 2021') ? <ReportConclusion2021 key={index} {...entry}/>
+      
       :null //contentBlocks={contentBlocks}
     },
     "2020": {
-      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
       ReportSectionWithMetrics: () => <ReportSectionWMetrics key={index} reportYear={reportYear} {...entry} links={links2020} metrics={entry.metricsCollection?.items} />,
       ReportSectionCustom: (entry) => 
-      (entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/> :null //contentBlocks={contentBlocks}
+      (entry.type=='Conclusion 2020') ? <ConclusionSection2020 key={index} {...entry}/> :
+      (entry.type=='Introduction 2020') ? <ReportIntroductionBlock  key={index} {...entry}  signatures={entry.signaturesCollection?.items}/>:null //contentBlocks={contentBlocks}
     },
     "2019":{
-      ReportIntroduction: (entry) => <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />,
       ReportSectionSplitImageText: (entry) => <SplitImageTextSection key={index} reportYear={reportYear} {...entry}  />,
-      ReportSectionCustom: (entry) => (entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>:null 
+      ReportSectionCustom: (entry) => 
+      (entry.type=='Shoutout 2019' ||entry.type=='Shoutout 2018') ? <ShoutoutSection key={index} {...entry}/>:
+      (entry.type=='Introduction 2019' ||entry.type=='Introduction 2018') ? <ReportIntroductionBlock  key={index} {...entry} signatures={entry.signaturesCollection?.items} />: null 
     }
   };
     let yr = reportYear==="2018" ? "2019" : reportYear
