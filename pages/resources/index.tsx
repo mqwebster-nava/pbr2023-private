@@ -4,7 +4,7 @@ import { PageInterface } from "lib/data_models/page_interface";
 import FloatingButtonBlock from "components/blocks/FloatingButtonBlock/FloatingButtonBlock";
 
 
-export default function Insights(props:PageInterface) {
+export default function Resources(props:PageInterface) {
  
   return props ? (
     <PageTemplate {...props}>
@@ -19,7 +19,7 @@ export async function getStaticProps({ params, preview = false }) {
   //   await ContentfulApi.getPostsByContentType("Insights");
 
   const page: PageInterface = await getPageDataFromContentful(
-    {slug: "/stories", 
+    {slug: "/resources", 
     preview: preview,
   });
   return {

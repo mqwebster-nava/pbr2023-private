@@ -4,7 +4,7 @@ import { formatImageAsset } from "./formatImageAsset";
 import { defaultSocialImage } from "./utils";
 
 export function formatPage(page){
-  console.log(page)
+ // console.log(page)
     let formattedPage: PageInterface = {
         id: page.sys.id,
         slug: page.slug,

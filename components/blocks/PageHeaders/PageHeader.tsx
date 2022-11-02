@@ -32,13 +32,10 @@ export interface PageHeaderInterface {
   buttonPath?: string;
   buttonText?: string;
   eventInfo?: EventInfo;
-  variantAB?: VARIANTTYPE
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
-  console.log(props.variantAB)
-  const title = (props.title=="Insights" && props.variantAB=="stories") ? "Stories" :props.title; 
-console.log(props)
+  
   if (props.variant == "Home") {
     return <HomePageHeader {...props} />;
   }
@@ -51,7 +48,7 @@ console.log(props)
           >
             <TitleBlock
               textColor={"text-navy-200"}
-              title={title}
+              title={props.title}
               subtitle={props.subtitle}
               body={props.body}
             />
@@ -70,7 +67,7 @@ console.log(props)
           >
             <TitleBlock
               textColor={"text-purple-200"}
-              title={title}
+              title={props.title}
               subtitle={props.subtitle}
               body={props.body}
               buttonText={props.buttonText}

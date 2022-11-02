@@ -5,8 +5,8 @@ const getFooterNavData = (variant) => [
     { title: "Services", slug: "/services" },
     { title: "Case studies", slug: "/case-studies" },
     { title: "Toolkits", slug: "/toolkits" },
-    variant == "stories"
-      ? { title: "Stories", slug: "/stories" }
+    variant == "resources"
+      ? { title: "Resources", slug: "/resources" }
       : { title: "Insights", slug: "/insights" },
   ],
   [

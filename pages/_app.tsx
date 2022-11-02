@@ -6,10 +6,10 @@ import React, { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import { PageInterface } from "lib/data_models/page_interface";
 
-const variantAB = ["insights", "stories"]
+const variantAB = ["insights", "resources"]
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [variant, setVariant] = useState();
+  const [variant, setVariant] = useState(null);
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
   const pageData: PageInterface =
     "page" in pageProps ? pageProps.page : pageProps;
@@ -31,16 +31,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
       if (v !== "undefined" && v ) {
-        console.log("from local", v);
+       // console.log("from local", v);
         setVariant(v);
       }
       let interval = setInterval(() => {
 
         if (window.google_optimize !== undefined) {
-          const _variant = window.google_optimize.get("jt2l8vXiQO2JDyFut6Ji_w");
-          console.log(variantAB[_variant]);
+          const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
+        //  console.log("from exp", _variant, variantAB[_variant]);
           if (typeof _variant !== "undefined" ) {
-            console.log("changing time", variant, _variant);
+           // console.log("changing time", variant, _variant);
             setVariant(variantAB[_variant]);
             localStorage.setItem("variantAB", variantAB[_variant]);
           }else if (variant == "undefined" || variant==null){

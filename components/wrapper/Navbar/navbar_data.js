@@ -15,10 +15,10 @@ const getNavData = (variant)=> [
       { title: "Toolkits", slug: "/toolkits" },
     ],
   },
-  variant=="stories"?
+  variant=="resources"?
   {
-    title: "Stories",
-    slug: "/stories",
+    title: "Resouces",
+    slug: "/resources",
   }:{
     title: "Insights",
     slug: "/insights",

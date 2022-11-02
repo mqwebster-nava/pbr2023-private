@@ -6,7 +6,7 @@ import React from "react";
 import { formatPosts } from "lib/formatters/formatPosts";
 import { BasicPostInterface } from "lib/data_models/post_interface";
 
-export default function AllInsights(props:PageInterface) {
+export default function AllResources(props:PageInterface) {
  
   return (
   <PageTemplate {...props}>
@@ -14,7 +14,7 @@ export default function AllInsights(props:PageInterface) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  let res: PageInterface = await getPageDataFromContentful({slug:"/stories/all",
+  let res: PageInterface = await getPageDataFromContentful({slug:"/resources/all",
     preview: preview,
   });
  
