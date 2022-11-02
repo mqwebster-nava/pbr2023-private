@@ -1,5 +1,4 @@
 import IMAGE_FIELDS from "../IMAGE_FIELDS";
-import METRIC from "./METRIC";
 import { REPORT_BODY } from "./REPORT_BODY";
 
 const REPORT_SECTION_W_METRICS = `
@@ -16,11 +15,7 @@ colorTheme
 richBody{
    ${REPORT_BODY}
   }
-metricsCollection {
-    items {
-        ${METRIC}
-    }
-}
+sectionMetrics
 `;
 
 export default REPORT_SECTION_W_METRICS;
