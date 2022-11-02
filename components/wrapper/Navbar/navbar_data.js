@@ -17,7 +17,7 @@ const getNavData = (variant)=> [
   },
   variant=="resources"?
   {
-    title: "Resouces",
+    title: "Resources",
     slug: "/resources",
   }:{
     title: "Insights",
