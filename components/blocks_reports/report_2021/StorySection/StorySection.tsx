@@ -27,8 +27,7 @@ mobile landscape
 
 const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle, nextSectionType="story" }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
-  const nextId = nextSection; //  && `${sectionAnchor}--${nextSection}`;
-  //const isActive = activeSection == storyId;
+  const nextId = nextSection; 
   const [animationList, setAnimationList] = useState([]);
 
   const [isMobileLandscape, setIsMobileLandscape] = useState(false);
@@ -41,8 +40,6 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     // make pct once it gets to full page
     const desktopTriggerPct = Math.round((35 * screenH) / sectionH);
     const mobileTriggerPct = Math.round((15 * screenH) / sectionH);
-    //let fadeInPct = f;
-    //let fadeOutPct = f;
     let delay = 0;
     let duration = 200;
 

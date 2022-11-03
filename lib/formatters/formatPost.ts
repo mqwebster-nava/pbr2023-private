@@ -1,5 +1,5 @@
 import { PostEventSpeaker } from "components/blocks/PostEventSpeakersRow/PostEventSpeakersRow";
-import { AuthorPostInterface, FullPostInterface } from "shared_interfaces/post_interface";
+import { AuthorPostInterface, FullPostInterface } from "lib/data_models/post_interface";
 import { formatImageAsset } from "./formatImageAsset";
 
   export const formatFullPost = (post) =>{

@@ -1,6 +1,6 @@
 import { Button } from "../../atom/Button/Button";
 import Image from "next/image";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 
 interface CTABlockInterface {
   id: string;

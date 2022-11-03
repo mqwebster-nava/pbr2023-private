@@ -1,6 +1,6 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
 import { POST_CORE_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
+import { BasicPostInterface } from "lib/data_models/post_interface";
 
 /**
  * getPostsByContentType
@@ -31,6 +31,4 @@ export default async function getPostsByContentType(contentType, options=default
     }
     const posts = response.data.postCollection.items;
     return posts;
-    // const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
-    // return formattedPosts;
   }

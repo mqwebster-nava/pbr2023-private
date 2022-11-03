@@ -1,29 +1,9 @@
-// TODO
-// 1 Alignment of intro text with the Theme 1
-// 2. More padding with the for the bottom of stories
-// 3. Arrow to fade in
-// 4. Arrow to be consistent with the the location of the stories
-
-/*
-Divider colors
-plum 500
- sage 500
- navy 300
- gold 800
-
- - update on hamburger too
-*/
-
-
-
-
 import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import { makeSlideUpAnimation } from "../_animations";
 import ArrowDown from "../Atoms/ArrowDown";
 
 import { animationHandler, AnimationObject, dividerColor, getOffsetPct } from "../_utils";
-import classNames from "classnames";
 
 
 // Components that can be animated

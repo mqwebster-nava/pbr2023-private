@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   useEffect(() => {
+    // @ts-ignore 
     TagManager.initialize({
       gtmId: "GTM-NRQK2XB",
       dataLayer: { event: "optimize.activate" },
@@ -33,8 +34,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         setVariant(v);
       }
       let interval = setInterval(() => {
-
+    // @ts-ignore 
         if (window.google_optimize !== undefined) {
+          // @ts-ignore 
           const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
           if (typeof _variant !== "undefined" ) {
             setVariant(variantAB[_variant]);

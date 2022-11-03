@@ -1,4 +1,4 @@
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 
 export const sortPostsByDate= (posts) =>  posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
 

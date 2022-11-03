@@ -149,7 +149,7 @@ export default ReportNavbar;
 // import SlideDown from "react-slidedown";
 
 // import classNames from "classnames";
-// import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+// import { AnalyticsLabelType } from "lib/data_models/Analytics";
 // import styles from "./mobilenav.module.css";
   // if (activeSection){
   //   const sectionInfo = reportSections.find(

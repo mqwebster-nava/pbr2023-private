@@ -37,7 +37,7 @@ export async function getStaticProps({ params, preview = false }) {
 //   ReportIntroSection,
 // } from "components/blocks";
 // import { getMarkdownByFilename } from "../../lib/markdown";
-// import { PageInterface } from "shared_interfaces/page_interface";
+// import { PageInterface } from "lib/data_models/page_interface";
 
 // export async function getStaticProps() {
 //   const report = getMarkdownByFilename("public-benefit-reports", 2018);

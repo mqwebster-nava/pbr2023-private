@@ -2,7 +2,7 @@ import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageInterface } from "lib/data_models/page_interface";
 import getPostsByContentType from "lib/contentful/getPostsByContentType";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
+import { BasicPostInterface } from "lib/data_models/post_interface";
 import React from "react";
 import { formatPosts } from "lib/formatters/formatPosts";
 

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import ArticleInfoComponent from "./ArticleInfoComponent";
 import React, {useRef} from "react";
-import { AuthorPostInterface, EventInfo } from "shared_interfaces/post_interface";
+import { AuthorPostInterface, EventInfo } from "lib/data_models/post_interface";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorBios from "./AuthorBiosSection";
 import useCurrentSectionHook from "./useCurrentSectionHook";

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "../../atom/Button/Button";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
 
 type ContentBlockType = "default" | "left repeater" | "right repeater";

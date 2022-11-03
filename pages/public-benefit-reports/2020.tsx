@@ -44,7 +44,7 @@ export async function getStaticProps({ params, preview = false }) {
 //   ReportSectionStacked,
 //   ReportSection,
 // } from "components/blocks";
-// import { PageInterface } from "shared_interfaces/page_interface";
+// import { PageInterface } from "lib/data_models/page_interface";
 // import useCurrentSectionHook from "components/blocks/PostBody/useCurrentSectionHook";
 // import { ReportIntroSectionFull } from "components/blocks_reports/ReportSection/ReportIntroSectionFull";
 

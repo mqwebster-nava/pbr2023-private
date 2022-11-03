@@ -1,7 +1,7 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
 import { formatPosts } from "lib/formatters/formatPosts";
 import { POST_CORE_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
+import { BasicPostInterface } from "lib/data_models/post_interface";
 
 /**
  * getPostsByTag

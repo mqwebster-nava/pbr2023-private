@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import { AuthorPostInterface } from "shared_interfaces/post_interface";
+import { AuthorPostInterface } from "lib/data_models/post_interface";
 //https://blog.logrocket.com/next-js-automatic-image-optimization-next-image/
 import AuthorFiller from "public/images/author-filler.png"
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";

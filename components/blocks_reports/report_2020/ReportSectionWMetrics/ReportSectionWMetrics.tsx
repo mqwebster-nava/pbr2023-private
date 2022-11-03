@@ -1,5 +1,5 @@
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import Image from "next/image";
 import classNames from "classnames";
 import ColorTheme from "utils/ColorThemes";

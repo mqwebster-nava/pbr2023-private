@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { imageOptimizer } from "next/dist/server/image-optimizer";
 import Image from "next/image";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 
 export interface PostEventSpeaker {
   name: string;
