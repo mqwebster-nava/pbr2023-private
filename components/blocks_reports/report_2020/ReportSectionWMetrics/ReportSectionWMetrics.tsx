@@ -4,7 +4,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import ColorTheme from "utils/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
-import { Button, LinkText } from "components/atom";
+import {  LinkText } from "components/atom";
 import ReportContent, { REPORT_YEAR } from "../../ReportContent/ReportContent";
 
 export interface ReportSectionWMetricsInterface {
@@ -13,7 +13,7 @@ export interface ReportSectionWMetricsInterface {
   colorTheme: ColorTheme;
   image: ContentfulImageAsset;
   intro: string;
-  metrics: Array<MetricInterface>;
+  sectionMetrics: Array<MetricInterface>;
   richBody: any;
   links: Array<any>;
   reportYear: REPORT_YEAR
@@ -30,7 +30,7 @@ const ReportSectionWMetrics = ({
   anchor,
   colorTheme,
   image,
-  metrics,
+  sectionMetrics,
   links,
   reportYear
 }: ReportSectionWMetricsInterface) => {
@@ -48,7 +48,7 @@ const ReportSectionWMetrics = ({
         body={richBody}
         anchor={anchor}
         colorTheme={colorTheme}
-        metrics={metrics}
+        sectionMetrics={sectionMetrics}
         links={links}
         
       />
@@ -84,7 +84,7 @@ interface ReportSectionContentFull {
   title?: string;
   anchor:string;
   body: any;
-  metrics: Array<MetricInterface>;
+  sectionMetrics: Array<MetricInterface>;
   links: Array<any>;
 }
 
@@ -93,7 +93,7 @@ const ReportSectionContentFull = ({
   title = null,
   body,
   anchor,
-  metrics = null,
+  sectionMetrics = null,
   links
 
 }: ReportSectionContentFull) => {
@@ -109,7 +109,7 @@ const ReportSectionContentFull = ({
     >
       <div className="responsive-container py-2xl grid grid-cols-12">
       <div className="col-span-12 lg:col-span-8 ">
-        {metrics && <ReportMetrics metrics={metrics} />}
+        {sectionMetrics && <ReportMetrics metrics={sectionMetrics} />}
           <div className="font-serif">
             {title && <h2 className="type-preset-3 font-bold">{title}</h2>}
             <ReportContent

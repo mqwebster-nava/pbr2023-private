@@ -157,7 +157,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     "border-t-plum-700":colorTheme==="plum",
     "border-t-sage-800":colorTheme==="sage",
      "border-t-navy-600":colorTheme==="navy",
-    "border-t-gold-700": colorTheme==="gold",
+    "border-t-gold-pbrcustomdark": colorTheme==="gold",
   });
 
 

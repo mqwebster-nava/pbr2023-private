@@ -15,7 +15,7 @@ const Callout = ({
     "border-t-plum-700 border-b-plum-100":colorTheme==="plum",
     "border-t-sage-800 border-b-sage-100":colorTheme==="sage",
      "border-t-navy-600 border-b-navy-100":colorTheme==="navy",
-    "border-t-gold-700 border-b-gold-pbrcustom": colorTheme==="gold",
+    "border-t-gold-pbrcustomdark border-b-gold-pbrcustomlight": colorTheme==="gold",
   });
 
 

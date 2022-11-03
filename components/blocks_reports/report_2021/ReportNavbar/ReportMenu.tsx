@@ -46,7 +46,7 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
               colorTheme={color}
               textColor={textColor}
               fontStyle={"font-bold"}
-              stories={section.items}
+              stories={section.items.filter((story)=>story.hideStory!==true)}
               onClick={onClick}
               activeSection={activeSection}
             />
@@ -147,7 +147,7 @@ const ReportMenuRow = ({
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
             </p>
-          {stories.map((story) => {
+          {stories.filter((story)=>story.hideStory!==true).map((story) => {
             const anch2 = `#${anchor}--${story.anchor}`;
             const title = story.title;
             return (
@@ -220,7 +220,7 @@ const ReportMenuRow = ({
             </LinkListItem>
 
             {stories &&
-              stories.map((story) => {
+              stories.filter((story)=>story.hideStory!==true).map((story) => {
                 const anch2 = `#${anchor}--${story.anchor}`;
                 const title = story.title;
                 return (

@@ -126,13 +126,13 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
         </div>
         </div>
       </div>
-      <div className="bg-black py-xl absolute bottom-0 left-0 right-0  width-full">
+      <div className=" py-xl absolute bottom-0 left-0 right-0  width-full">
           <div
             className={
               "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
             }
           >
-            <p className="text-white font-sans type-preset-8 pt-md sm:pt-0">
+            <p className="text-black font-sans type-preset-8 pt-md sm:pt-0">
               {`© ${currentYear} Nava PBC. All rights reserved.`}
             </p>
             {/* <div className="flex gap-2xl  type-preset-7">

@@ -9,7 +9,7 @@ sys {
     id
 }
 title
-shortTitle
+hideStory
 anchor
 intro {
     ${REPORT_BODY_2021}
@@ -21,9 +21,6 @@ illustration{
     ${IMAGE_FIELDS}
 }
 contextIllustration{
-    ${IMAGE_FIELDS}
-}
-callOut {
     ${IMAGE_FIELDS}
 }
 featuredCallOut {
