@@ -28,6 +28,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       gtmId: "GTM-NRQK2XB",
       dataLayer: { event: "optimize.activate" },
     });
+    if(pageData.slug.includes("public-benefit-reports/2021"))return;
+    console.log("initialize");
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
       if (v !== "undefined" && v ) {
@@ -48,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           clearInterval(interval);
         }
       }, 100);
-    });
+   });
   }, []);
 
   
