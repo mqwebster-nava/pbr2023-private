@@ -10,7 +10,7 @@ export function formatReportPage(page){
         slug: page.slug,
         title: page.title,
         socialImage: formatImageAsset(page.socialImage),
-        pageHeader:formatImageAsset(page.pageHeader),
+        pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
         isBottomCTA: false
