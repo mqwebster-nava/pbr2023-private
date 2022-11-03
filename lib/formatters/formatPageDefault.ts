@@ -1,7 +1,6 @@
 import { PageInterface } from "lib/data_models/page_interface";
-import { getContentUrl, liftData } from "utils/utils";
+import { liftData } from "utils/utils";
 import { formatImageAsset } from "./formatImageAsset";
-import { defaultSocialImage } from "./utils";
 
 export function formatPage(page){
     let formattedPage: PageInterface = {

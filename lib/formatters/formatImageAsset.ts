@@ -4,7 +4,7 @@ export const formatImageAsset = (imgData) => {
     if(!imgData) return null;
   
     const imgAsset: ContentfulImageAsset =  {
-      id: imgData.sys.id,
+      id:  "id" in imgData ? imgData.id : ("sys" in imgData) ? imgData.sys.id : null ,
       url: imgData.url,
       title:imgData.title,
       description:imgData.description,

@@ -75,19 +75,16 @@ export async function getPageDataFromContentful({
   // If it is a post, we create the page interface data from the post content
   if (variant == "post") {
     // Get the post data
+  
     try {
-
       const post = await getPostBySlug(slug, {preview});
-      
       const formattedPost:FullPostInterface = formatFullPost(post);
-      
       let morePosts = await getMorePosts(formattedPost,{preview});
-      console.log("more", morePosts);
       morePosts = formatPosts(morePosts);
-      
-      const formattedPage: PageInterface = formatPostPage(post, morePosts);
+      const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
       return formattedPage;
     } catch (e) {
+      console.log("issue", e)
       return null;
     }
   }

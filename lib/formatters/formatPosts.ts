@@ -1,8 +1,11 @@
 
 import { BasicPostInterface } from "lib/data_models/post_interface";
 import { formatImageAsset } from "./formatImageAsset";
-  export const formatPosts = (posts) =>{
-    return posts.map((post)=>{
+  
+
+export const formatPosts = (posts) =>{
+
+    const p =  posts.map((post)=>{
       const newPost: BasicPostInterface = {
         __typename:"Post",
         id: post.sys.id,
@@ -16,7 +19,9 @@ import { formatImageAsset } from "./formatImageAsset";
         promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
         
       }
+
       return newPost;
     })
+return p;
   }
   

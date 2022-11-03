@@ -29,10 +29,10 @@ export default async function getMorePosts(
   const posts = response.data.postCollection.items
     ? response.data.postCollection.items
     : [];
-  const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+ // const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
   // Filter by tags -- if no matches then get 3 random post
   const filteredPosts = post.contentTags //: Array<BasicPostInterface>
-    ? formattedPosts
+    ? posts
         .filter(
           (_post) =>
             _post.contentTags &&
