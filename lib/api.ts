@@ -76,10 +76,15 @@ export async function getPageDataFromContentful({
   if (variant == "post") {
     // Get the post data
     try {
+
       const post = await getPostBySlug(slug, {preview});
+      
       const formattedPost:FullPostInterface = formatFullPost(post);
+      
       let morePosts = await getMorePosts(formattedPost,{preview});
+      console.log("more", morePosts);
       morePosts = formatPosts(morePosts);
+      
       const formattedPage: PageInterface = formatPostPage(post, morePosts);
       return formattedPage;
     } catch (e) {
