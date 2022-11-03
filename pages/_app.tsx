@@ -2,56 +2,110 @@ import "../styles/tailwind.css";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { Navbar, Footer } from "components/wrapper/index";
 import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import TagManager from "react-gtm-module";
 import { PageInterface } from "lib/data_models/page_interface";
-import React, { useEffect } from "react";
-import TagManager from 'react-gtm-module';
+
+const variantAB = ["insights", "resources"]
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [variant, setVariant] = useState(null);
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
-  const pageData: PageInterface = ("page" in pageProps)? pageProps.page : pageProps;
+  const pageData: PageInterface =
+    "page" in pageProps ? pageProps.page : pageProps;
+
+  const initOptimize = (callback) => {
+    const script = document.createElement("script");
+    script.src = `https://www.googleoptimize.com/optimize.js?id=OPT-MCXK4VH`;
+    script.id = "google-optimize";
+    script.onload = callback;
+    document.body.appendChild(script);
+  };
+
   useEffect(() => {
-    if(window.location.href.includes("www.navapbc.com/"))TagManager.initialize({ gtmId: 'GTM-NRQK2XB' });
-}, []);
+    TagManager.initialize({
+      gtmId: "GTM-NRQK2XB",
+      dataLayer: { event: "optimize.activate" },
+    });
+    //  if (variant==undefined && v==undefined)
+    initOptimize(() => {
+      const v = localStorage.getItem("variantAB");
+      if (v !== "undefined" && v ) {
+       // console.log("from local", v);
+        setVariant(v);
+      }
+      let interval = setInterval(() => {
+
+        if (window.google_optimize !== undefined) {
+          const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
+        //  console.log("from exp", _variant, variantAB[_variant]);
+          if (typeof _variant !== "undefined" ) {
+           // console.log("changing time", variant, _variant);
+            setVariant(variantAB[_variant]);
+            localStorage.setItem("variantAB", variantAB[_variant]);
+          }else if (variant == "undefined" || variant==null){
+            setVariant(variantAB[0]);
+            localStorage.setItem("variantAB",variantAB[0]);
+          }
+          clearInterval(interval);
+        }
+      }, 100);
+    });
+  }, []);
+
+  
   return (
     <>
       <Head>
         <title>{pageData.title ?? ""}</title>
         <link rel="icon" href="/favicon.svg" type="image/x-icon" />
         <meta property="og:type" content="website" />
-       
-       <meta property="og:title" content={pageData.title} /> 
-       <link rel="canonical" href={`https://www.navapbc.com${pageData.slug}`} />
-        <meta property="og:url" content={`https://www.navapbc.com${pageData.slug}`} />
+
+        <meta property="og:title" content={pageData.title} />
+        <link
+          rel="canonical"
+          href={`https://www.navapbc.com${pageData.slug}`}
+        />
+        <meta
+          property="og:url"
+          content={`https://www.navapbc.com${pageData.slug}`}
+        />
         <meta property="og:site_name" content="Nava PBC" />
 
-        {pageData.description && 
-        <>
-        <meta property="og:description" content={pageData.description } />
-        <meta name="twitter:card" content="summary" />
-         <meta name="twitter:title" content={pageData.title} />
-          <meta name="twitter:description" content={pageData.description} /> 
-          <meta name="description" content={pageData.description } />
-          </>}
-     
+        {pageData.description && (
+          <>
+            <meta property="og:description" content={pageData.description} />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content={pageData.title} />
+            <meta name="twitter:description" content={pageData.description} />
+            <meta name="description" content={pageData.description} />
+          </>
+        )}
+
         {pageData.socialImage && (
           <>
-          <meta property="og:image" content={pageData.socialImage.url} />
-          <meta name="twitter:image" content={pageData.socialImage.url}></meta>
+            <meta property="og:image" content={pageData.socialImage.url} />
+            <meta
+              name="twitter:image"
+              content={pageData.socialImage.url}
+            ></meta>
           </>
         )}
 
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <div className="flex flex-col h-screen ">
-      {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&  <Navbar /> }
+      {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&  <Navbar variant={variant} /> }
 
         <div className="flex-grow ">
-          <Component {...pageProps} />
+          <Component {...pageProps} variantAB={variant} />
         </div>
-        {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&   <Footer isBottomCTA={pageProps.isBottomCTA}/> }
+        {(!pageData || pageData.slug!=="/public-benefit-reports/2021") &&   <Footer isBottomCTA={pageProps.isBottomCTA} variant={variant}/> }
       </div>
     </>
   );
 }
+
+//variantAB={variant}
 //G-BVP54XXLSE
 export default MyApp;

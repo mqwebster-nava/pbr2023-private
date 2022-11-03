@@ -17,7 +17,7 @@ const MobileNavBar = ({ NavData }) => {
     >
       <SlideDown className={``}>
         {isShowingMenu
-          ? NavData.map((navSection, i) => {
+          ? NavData?.map((navSection, i) => {
               const extraPadding = classNames({
                 "mt-lg": i == 0,
                 "mb-lg": i == NavData.length - 1,

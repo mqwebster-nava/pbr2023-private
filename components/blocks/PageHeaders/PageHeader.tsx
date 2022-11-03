@@ -1,7 +1,4 @@
-import {
-  ContentfulImageAsset,
-  EventInfo,
-} from "shared_interfaces/post_interface";
+
 //import React from "react";
 import SecondaryPatternBlock from "./SecondaryPatternBlock";
 import TitleBlock from "./TitleBlock";
@@ -13,6 +10,8 @@ import PostTitleBlock from "./PostTitleBlock";
 import { getEventDateStr, isDateAfterNow } from "utils/utils";
 import { Button } from "components/atom";
 import dynamic from "next/dynamic";
+import { ContentfulImageAsset, EventInfo } from "lib/data_models/post_interface";
+import { VARIANTTYPE } from "lib/data_models/page_interface";
 const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 
 type PageHeaderVariant =
@@ -36,6 +35,7 @@ export interface PageHeaderInterface {
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
+  
   if (props.variant == "Home") {
     return <HomePageHeader {...props} />;
   }

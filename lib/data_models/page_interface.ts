@@ -5,6 +5,8 @@ import {ContentfulImageAsset} from "./post_interface";
 This contains all the interfaces for page level data
 
 */
+// AB Testing for insights vs stories
+export type VARIANTTYPE = "insights" | "resources"
 
 export interface PageInterface {
   id: string;
@@ -16,4 +18,5 @@ export interface PageInterface {
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
   isBottomCTA?: boolean;
+  variantAB?: VARIANTTYPE
 }

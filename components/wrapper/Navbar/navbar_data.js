@@ -1,5 +1,5 @@
 
-const NavData = [
+const getNavData = (variant)=> [
   {
     title: "Mission",
     subpages: [
@@ -15,10 +15,14 @@ const NavData = [
       { title: "Toolkits", slug: "/toolkits" },
     ],
   },
+  variant=="resources"?
   {
+    title: "Resources",
+    slug: "/resources",
+  }:{
     title: "Insights",
     slug: "/insights",
-  },
+  } ,
   {
     title: "Careers",
     subpages: [
@@ -42,4 +46,4 @@ const NavData = [
   },
 ];
 
-export default NavData;
+export default getNavData;
