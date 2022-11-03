@@ -1,9 +1,15 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
 import { POST_CORE_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
 import { BasicPostInterface } from "shared_interfaces/post_interface";
-import { formatPosts } from "lib/post_utils";
 
-
+/**
+ * getPostsByContentType
+ * 
+ * Queries contentful to get posts of a specific content type, like case studies or toolkits, 
+ * this is used to get posts to displace on content type specific pages like /case-studies  
+ * 
+ * called by the api.ts file
+ */
 
 export default async function getPostsByContentType(contentType, options=defaultOptions) {
     const variables = {contentType, keepHidden:false };
@@ -24,6 +30,7 @@ export default async function getPostsByContentType(contentType, options=default
       return null;
     }
     const posts = response.data.postCollection.items;
-    const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
-    return formattedPosts;
+    return posts;
+    // const formattedPosts: Array<BasicPostInterface> = formatPosts(posts);
+    // return formattedPosts;
   }

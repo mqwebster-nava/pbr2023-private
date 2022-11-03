@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Button } from "components/atom";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
 
 // TODO move as much to tailwind
 

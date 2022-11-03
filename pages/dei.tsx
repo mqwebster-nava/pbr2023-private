@@ -5,10 +5,9 @@ import {
   gender,
   additionalIdentities,
 } from "../lib/data/dei_2021";
-import { getMarkdownByFilename } from "../lib/markdown";
+import { getMarkdownByFilename } from "../utils/markdown_parser";
 import {
   PercentBarChart,
-  ReportContent,
   ResourceGroups,
   PercentSquareChart,
   PercentSquareChartFixed,
@@ -16,8 +15,11 @@ import {
 import React from "react";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { getPageDataFromContentful } from "lib/api";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
+import PostContent from "components/blocks/PostBody/PostContent";
+import MarkdownComponent from "utils/MarkdownComponent";
+import ReportContentDEI from "components/blocks_reports/ReportContent/ReportContentDEI";
 
 interface DEIPageInterface {
   page: PageInterface;
@@ -44,7 +46,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center">
             <div className="w-full">
               <p className="type-preset-5 font-serif">{content.lead}</p>
-              <ReportContent content={content.introduction} />
+              <ReportContentDEI content={content.introduction} />
             </div>
             <img
               src="/images/dei/side_illustration.png"
@@ -58,7 +60,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
 
       <section className="bg-sage-50 py-4xl">
         <ResponsiveContentContainer alignment={"left"}>
-          <ReportContent content={content.overview} />
+          <ReportContentDEI content={content.overview} />
           <PercentBarChart
             description="How we’re doing in 2021"
             graphs={overview}
@@ -67,7 +69,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
       </section>
       <section className="bg-white">
         <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
-          <ReportContent content={content.body} />
+          <ReportContentDEI  content={content.body} />
         </ResponsiveContentContainer>
         <PercentSquareChart
           title={race.title}
@@ -99,7 +101,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
 
       <section className="bg-sage-50">
       <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
-          <ReportContent content={content.resources.introduction} />
+          <MarkdownComponent content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
       </ResponsiveContentContainer>
       </section>

@@ -9,6 +9,7 @@ import POST_IMAGE from "./post_blocks/POST_IMAGE";
 import POST_PULL_QUOTE from "./post_blocks/POST_PULL_QUOTE";
 import POST_SUMMARY_SECTION from "./post_blocks/POST_SUMMARY_SECTION";
 import EMBEDDED_VIDEO from "./post_blocks/EMBEDDED_VIDEO";
+import CALLOUT from "./report_blocks/CALLOUT";
 import EVENT_INFO from "./post_blocks/EVENT_INFO";
 
 export const POST_CORE_FIELDS = `
@@ -75,6 +76,9 @@ export const POST_BODY = `
         }
         ... on EmbeddedVideo {
           ${EMBEDDED_VIDEO}
+        }
+        ... on ReportCallout {
+          ${CALLOUT}
         }
       }
     }
