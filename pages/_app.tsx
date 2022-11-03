@@ -27,20 +27,16 @@ function MyApp({ Component, pageProps }: AppProps) {
       gtmId: "GTM-NRQK2XB",
       dataLayer: { event: "optimize.activate" },
     });
-    //  if (variant==undefined && v==undefined)
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
       if (v !== "undefined" && v ) {
-       // console.log("from local", v);
         setVariant(v);
       }
       let interval = setInterval(() => {
 
         if (window.google_optimize !== undefined) {
           const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
-        //  console.log("from exp", _variant, variantAB[_variant]);
           if (typeof _variant !== "undefined" ) {
-           // console.log("changing time", variant, _variant);
             setVariant(variantAB[_variant]);
             localStorage.setItem("variantAB", variantAB[_variant]);
           }else if (variant == "undefined" || variant==null){

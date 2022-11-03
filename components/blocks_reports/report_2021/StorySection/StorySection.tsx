@@ -129,8 +129,6 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
   const onScroll = () => {
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
-
-//console.log(window.matchMedia("(orientation: landscape)").matches, window.innerWidth)
     if (offsetPct < -20 || offsetPct >= 100) return;
     const inFocus = document.getElementById(storyId).contains(document.activeElement);
     animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
