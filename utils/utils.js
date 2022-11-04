@@ -25,13 +25,26 @@ export function getDateStr(date) {
   return dateStr;
 }
 
-export function getEventDateStr(date) {
-  const fmtdate = new Date(`${date}`).toLocaleTimeString("en-US", {
-    timeZone: "America/New_York",
-    hour:"numeric",
-    minute: '2-digit'
-  });
-  return `${getDateStr(date)} at ${fmtdate} EST`;
+const dateToTime = date => {
+  let fmtdate  =  new Date(`${date}`).toLocaleString('en-US', {
+  hour: 'numeric',
+  minute: '2-digit',
+  timeZoneName:'short'
+});
+//if( fmtdate.includes(" PM") ) fmtdate =fmtdate.replace(" PM", "pm")
+//if( fmtdate.includes(" AM") ) fmtdate =fmtdate.replace(" AM", "am")
+return fmtdate
+}
+
+export function getEventDateStr(date, endDate=null) {
+  let fmtdate = dateToTime(date)
+ 
+  if(endDate!==null){
+    let [startTime, startAMPM, startTimeZone] = fmtdate.split(" ")
+    let [endTime, endAMPM, endTimeZone]= dateToTime(endDate).split(" ")
+    fmtdate =`${startTime}–${endTime} ${endAMPM} ${endTimeZone}`
+  }
+  return `${getDateStr(date)} at ${fmtdate}`;
 }
 
 export function isDateAfterNow(date) {

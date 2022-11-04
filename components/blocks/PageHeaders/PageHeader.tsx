@@ -152,7 +152,7 @@ const PageHeader = (props: PageHeaderInterface) => {
                   <p
                     className={`type-preset-4 font-serif font-light text-white`}
                   >
-                    {getEventDateStr(props.eventInfo.eventTime)}
+                    {getEventDateStr(props.eventInfo.eventTime, props.eventInfo.eventEndTime)}
                   </p>
                 </div>
               )}
