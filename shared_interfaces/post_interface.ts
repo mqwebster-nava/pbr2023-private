@@ -29,7 +29,8 @@ export interface FullPostInterface extends BasicPostInterface{
     body:any;
     leadImage:ContentfulImageAsset;
     socialImage:ContentfulImageAsset;
-    eventInfo: EventInfo
+    eventInfo: EventInfo;
+    hideHeroPattern: boolean
 }
 
 export interface AuthorPostInterface{

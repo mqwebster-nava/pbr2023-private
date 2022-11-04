@@ -48,6 +48,7 @@ const formatImageAsset = (imgData) => {
       clientName: post.clientName,
       longSummary: post.longSummary,
       hideSideNav:post.hideSideNav,
+      hideHeroPattern:post.hideHeroPattern,
       authors: post.authorsCollection?.items?.map((author)=>{
         const formattedAuthor: AuthorPostInterface ={
           name: author.name,

@@ -33,6 +33,7 @@ export interface PageHeaderInterface {
   buttonPath?: string;
   buttonText?: string;
   eventInfo?: EventInfo;
+  hideHeroPattern?:boolean;
 }
 
 const PageHeader = (props: PageHeaderInterface) => {
@@ -101,7 +102,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           </div>
         </div>
         {props.image != null ? (
-          <IllustrationPatternBlock image={props.image} colorTheme={"sage"} />
+          <IllustrationPatternBlock image={props.image} colorTheme={"sage"} hideHeroPattern={props.hideHeroPattern} />
         ) : (
           <SecondaryPatternBlock bgColor={"bg-sage-900"} bgBase={"sage"} />
         )}
@@ -182,7 +183,7 @@ const PageHeader = (props: PageHeaderInterface) => {
           </div>
         </div>
         {props.image != null ? (
-          <IllustrationPatternBlock image={props.image} colorTheme={"sage"} />
+          <IllustrationPatternBlock image={props.image} colorTheme={"sage"} hideHeroPattern={props.hideHeroPattern} />
         ) : (
           <SecondaryPatternBlock bgColor={"bg-sage-900"} bgBase={"sage"} />
         )}

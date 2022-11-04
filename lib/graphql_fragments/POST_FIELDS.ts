@@ -101,6 +101,7 @@ export const POST_ALL_FIELDS = `
     ${POST_CORE_FIELDS}
     longSummary
     hideSideNav
+    hideHeroPattern
     authorsCollection(limit:5) {
         items {
             ${AUTHOR_CORE_FIELDS}
