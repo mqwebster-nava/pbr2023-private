@@ -57,7 +57,7 @@ const ContentGrid = ({
                            item.contentType == "Events" ? getEventDateStr(item.date): null;
 
             return (
-              <div className={`w-full self-stretch ${feature}`} key={item.id}>
+              <div className={`w-full self-stretch ${feature}`} key={`${item.id}-${item.title}`}>
                 { item["__typename"] == "Post" ?
                 (
                   <ContentCard
