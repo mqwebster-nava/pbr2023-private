@@ -16,40 +16,15 @@ links {
       ... on PostBlockQuote {
         ${POST_BLOCK_QUOTE}
       }
+      ... on PostPullQuote {
+        ${POST_PULL_QUOTE}
+      }
       ... on PostImage {
         ${POST_IMAGE}
       }
       ... on PostPullQuote {
         ${POST_PULL_QUOTE}
       }
-    }
-  }
-  assets {
-    block {
-      ${IMAGE_FIELDS}
-    }
-    hyperlink{
-      sys {
-        id
-      }
-      title
-      contentType
-      description
-      url
-    }
-  }
-}
-`
-
-export const REPORT_BODY_2021 = `
-json
-links {
-  entries {
-    block {
-      sys {
-        id
-      }
-      __typename
       ... on ReportCallout {
         ${CALLOUT}
       }
@@ -72,33 +47,64 @@ links {
 }
 `
 
-export const REPORT_BODY_2019 = `
-json
-links {
-  entries {
-    block {
-      sys {
-        id
-      }
-      __typename
-      ... on PostImage {
-        ${POST_IMAGE}
-      }
-    }
-  }
-  assets {
-    block {
-      ${IMAGE_FIELDS}
-    }
-    hyperlink{
-      sys {
-        id
-      }
-      title
-      contentType
-      description
-      url
-    }
-  }
-}
-`
+// export const REPORT_BODY_2021 = `
+// json
+// links {
+//   entries {
+//     block {
+//       sys {
+//         id
+//       }
+//       __typename
+//       ... on ReportCallout {
+//         ${CALLOUT}
+//       }
+//     }
+//   }
+//   assets {
+//     block {
+//       ${IMAGE_FIELDS}
+//     }
+//     hyperlink{
+//       sys {
+//         id
+//       }
+//       title
+//       contentType
+//       description
+//       url
+//     }
+//   }
+// }
+// `
+
+// export const REPORT_BODY_2019 = `
+// json
+// links {
+//   entries {
+//     block {
+//       sys {
+//         id
+//       }
+//       __typename
+//       ... on PostImage {
+//         ${POST_IMAGE}
+//       }
+//     }
+//   }
+//   assets {
+//     block {
+//       ${IMAGE_FIELDS}
+//     }
+//     hyperlink{
+//       sys {
+//         id
+//       }
+//       title
+//       contentType
+//       description
+//       url
+//     }
+//   }
+// }
+// `

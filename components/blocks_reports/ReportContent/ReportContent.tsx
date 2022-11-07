@@ -128,7 +128,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandsca
             body={<MarkdownComponent content={props.body}  />}
           />
         ),
-        //"PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
+        PostPullQuote:(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
         PostImage: (props) => (
           <PostImage
             {...props}
