@@ -144,16 +144,3 @@ const ReportNavbar = ({ reportSections, contentBlocks}) => { //
 
 export default ReportNavbar;
 
-
- // import { LinkText } from "components/atom";
-// import SlideDown from "react-slidedown";
-
-// import classNames from "classnames";
-// import { AnalyticsLabelType } from "lib/data_models/Analytics";
-// import styles from "./mobilenav.module.css";
-  // if (activeSection){
-  //   const sectionInfo = reportSections.find(
-  //     (section) => section.anchor === activeSection
-  //   );
-  //   navBG = sectionInfo.colorTheme;
-  // }

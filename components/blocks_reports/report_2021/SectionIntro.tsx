@@ -1,4 +1,3 @@
-import { LinkText } from "components/atom";
 import { useEffect, useState } from "react";
 import MarkdownComponent from "utils/MarkdownComponent";
 import { LinkListItem } from "./Atoms/LinkListItem";
@@ -161,20 +160,3 @@ const SectionIntro = ({ section, i }) => {
 };
 
 export default SectionIntro;
-
-  // <div
-                    //   className="w-full md:w-1/3  pt-md type-preset-6 pr-lg tracking-[0.015em]"
-                     
-                    // >
-                    //   <LinkText
-                    //     href={`#${section.anchor}--${story.anchor}`}
-                    //     variant={"default"}
-                    //     hoverStyle="underlined"
-                    //     color={"white"}
-                    //     ariaLabel={`Skip to ${story.title}`}
-                    //     linkSpan={"full width"}
-                    //   >
-
-                    //     {story.title}
-                    //   </LinkText>
-                    // </div>

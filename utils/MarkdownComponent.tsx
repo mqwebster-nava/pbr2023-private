@@ -1,6 +1,6 @@
 
 
-import { LinkText } from 'components/atom'
+import { LinkText } from 'components/atom/LinkText/LinkText';
 import ReactMarkdown from 'react-markdown'
 
 export default function MarkdownComponent({ content, removePadding=false }) {

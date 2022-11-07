@@ -1,4 +1,4 @@
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 
 const TitleBlock = ({ title, subtitle, body, textColor, buttonPath=null, buttonText=null }) => {
     return (

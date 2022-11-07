@@ -1,4 +1,4 @@
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 import Image from "next/image";
 

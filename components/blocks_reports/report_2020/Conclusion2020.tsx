@@ -1,6 +1,6 @@
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import ReportContent from "../ReportContent/ReportContent";
 
 const ConclusionSection2020 = ({ title,anchor,  type, richBody }) => {

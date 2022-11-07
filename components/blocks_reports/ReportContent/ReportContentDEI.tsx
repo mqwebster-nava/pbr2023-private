@@ -1,8 +1,8 @@
 import rehypeSlug from "rehype-slug";
 import classNames from "classnames";
 import ReactMarkdown from "react-markdown";
-import { LinkText } from "../../atom";
 import PostPullQuote from "components/blocks/PostBody/PostPullQuote";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 
 interface ReportThemeInterface {

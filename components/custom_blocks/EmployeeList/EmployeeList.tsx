@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./EmployeeList.module.css";
 import AuthorFiller from "/public/images/Missing images on our People V02.svg"
 import SlideDown from "react-slidedown";
-import { LinkText } from "components/atom";
+import { LinkText } from "components/atom/LinkText/LinkText";
 /*
 Moved to the backend so employee list will load faster
 // TODO add error checking and a backup list to default to if there are errors detected with the airtable one

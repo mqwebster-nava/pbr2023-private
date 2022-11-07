@@ -5,7 +5,7 @@ import { AuthorPostInterface } from "lib/data_models/post_interface";
 import AuthorFiller from "public/images/author-filler.png"
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import React from "react";
-import { LinkText } from "components/atom";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 interface AuthorBioInterface {
     authors: Array<AuthorPostInterface>

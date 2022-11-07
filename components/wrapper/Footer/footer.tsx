@@ -1,4 +1,4 @@
-import { LinkText } from "components/atom";
+import { LinkText } from "components/atom/LinkText/LinkText";
 import Image from "next/image";
 import logo from "public/images/N logo.png";
 import getFooterNavData from "./footer_nav_data.js";

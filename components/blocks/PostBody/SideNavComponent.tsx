@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { LinkText } from "components/atom";
+import { LinkText } from "components/atom/LinkText/LinkText";
 import { slugify } from "utils/utils";
 
 const SideNavComponent = ({h2Sections, activeSection}) => {

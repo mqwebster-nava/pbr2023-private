@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import React from "react";
 import { useState } from "react";
 import ColorTheme from "utils/ColorThemes";

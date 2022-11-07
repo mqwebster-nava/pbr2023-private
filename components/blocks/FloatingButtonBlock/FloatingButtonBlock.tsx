@@ -1,7 +1,4 @@
-import { Button } from "components/atom";
-
-
-
+import { Button } from "components/atom/Button/Button";
 
 interface FloatingButtonInterface {
   id: string;

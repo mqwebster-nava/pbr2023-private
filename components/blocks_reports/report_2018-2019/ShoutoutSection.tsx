@@ -1,8 +1,9 @@
 
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
-import { Details } from "components/atom";
+
 import { Shoutout2019Data } from "./Shoutout2019Data";
 import ReportContent from "../ReportContent/ReportContent";
+import { Details } from "components/atom/Details/Details";
 
 
 const ShoutoutSection = ({ title, type, richBody }) => {

@@ -1,5 +1,5 @@
-import { PercentSquareGraph } from "components/atom";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
+import { PercentSquareGraph } from "./Graph/PercentSquareGraph";
 
 export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
   return (

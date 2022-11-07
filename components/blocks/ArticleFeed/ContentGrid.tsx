@@ -1,7 +1,7 @@
 import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
-import { ContentCard, } from "components/atom";
 import classNames from "classnames";
 import ColorTheme from "utils/ColorThemes";
+import ContentCard from "components/atom/ContentCard/ContentCard";
 
 /*
 Content Grid sets up the layout and background color 

@@ -1,7 +1,4 @@
 // TODO Paddign on menu should match TOC
-
-import classNames from "classnames";
-import { LinkText } from "components/atom";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
 import { LinkListItem } from "../Atoms/LinkListItem";

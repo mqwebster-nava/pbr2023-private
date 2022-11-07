@@ -1,9 +1,10 @@
-import { LinkText } from "components/atom";
+
 import { useEffect, useState } from "react";
 import { makeSlideUpAnimation } from "../_animations";
 import ArrowDown from "../Atoms/ArrowDown";
 
 import { animationHandler, AnimationObject, dividerColor, getOffsetPct } from "../_utils";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 
 // Components that can be animated

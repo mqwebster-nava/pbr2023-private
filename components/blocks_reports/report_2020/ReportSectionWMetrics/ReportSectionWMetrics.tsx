@@ -4,8 +4,8 @@ import Image from "next/image";
 import classNames from "classnames";
 import ColorTheme from "utils/ColorThemes";
 import { ReportMetrics } from "./ReportMetrics/ReportMetrics";
-import {  LinkText } from "components/atom";
 import ReportContent, { REPORT_YEAR } from "../../ReportContent/ReportContent";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 export interface ReportSectionWMetricsInterface {
   title: string;

@@ -1,6 +1,6 @@
 
-import {  LinkText } from "components/atom";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
+import { LinkText } from "components/atom/LinkText/LinkText";
 import React from "react";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";

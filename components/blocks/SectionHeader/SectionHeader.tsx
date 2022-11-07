@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import ColorTheme from "utils/ColorThemes";
 
 // TODO move as much to tailwind

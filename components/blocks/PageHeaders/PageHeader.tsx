@@ -8,10 +8,10 @@ import HomePageHeader from "./HomePageHeader";
 import React from "react";
 import PostTitleBlock from "./PostTitleBlock";
 import { getEventDateStr, isDateAfterNow } from "utils/utils";
-import { Button } from "components/atom";
 import dynamic from "next/dynamic";
 import { ContentfulImageAsset, EventInfo } from "lib/data_models/post_interface";
 import { VARIANTTYPE } from "lib/data_models/page_interface";
+import { Button } from "components/atom/Button/Button";
 const MarkdownComponent  = dynamic(() => import("utils/MarkdownComponent"));
 
 type PageHeaderVariant =

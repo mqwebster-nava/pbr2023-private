@@ -1,4 +1,4 @@
-import { LinkText } from "components/atom";
+
 import { animationHandler, AnimationObject, getOffsetPct } from "./_utils";
 import { makeFadeInAnimation, makeSlideUpAnimation } from "./_animations";
 import { useEffect, useState } from "react";
@@ -135,11 +135,6 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
             <p className="text-black font-sans type-preset-8 pt-md sm:pt-0">
               {`© ${currentYear} Nava PBC. All rights reserved.`}
             </p>
-            {/* <div className="flex gap-2xl  type-preset-7">
-            <LinkText href={"https://twitter.com/NavaPBC"} variant={"default"} color={"white"} analyticsLabel={"footer"}> Twitter</LinkText>
-            <LinkText href={"https://www.linkedin.com/company/nava-pbc"} variant={"default"} color={"white"} analyticsLabel={"footer"}>LinkedIn</LinkText>
-            <LinkText href={"https://www.youtube.com/channel/UClJmJSvy2G_7JPrjlr_taGg/featured"} variant={"default"} color={"white"} analyticsLabel={"footer"} >  YouTube</LinkText>
-            </div> */}
           </div>
         </div>
     </section>
