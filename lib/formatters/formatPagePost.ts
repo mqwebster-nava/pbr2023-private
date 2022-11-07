@@ -22,6 +22,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
         body:post.longSummary,
         image:  formatImageAsset(post.leadImage),
         eventInfo: post.eventInfo,
+        hideHeroPattern:post.hideHeroPattern
       },
       description:post.shortSummary,
       contentBlocks: [
