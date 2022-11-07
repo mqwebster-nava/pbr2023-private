@@ -51,6 +51,14 @@ export default async function preview(req, res) {
     redirectUrl = `${redirectPrefix}${req.query.slug}`;
 
   }
+  if(req.query.type=="report"){
+    preview = await getPageDataFromContentful({slug:req.query.slug, 
+      variant:"report",
+      preview: true,
+    });
+    redirectUrl = `${preview.slug}`;
+
+  }
   if (req.query.type=="page"){
     preview = await getPageDataFromContentful({slug:req.query.slug, 
       preview: true,

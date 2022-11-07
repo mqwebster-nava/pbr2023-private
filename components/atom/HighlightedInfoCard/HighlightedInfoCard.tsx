@@ -1,4 +1,5 @@
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import Image from "next/image";
 interface HighlightedInfoCardInterface {
     id?: string;

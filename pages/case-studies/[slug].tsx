@@ -1,6 +1,6 @@
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import getAllPostSlugs from "lib/contentful/getAllPostSlugs";
 
 const CaseStudyPost= (props: PageInterface)=> {

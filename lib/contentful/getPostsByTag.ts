@@ -1,7 +1,16 @@
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
+import { formatPosts } from "lib/formatters/formatPosts";
 import { POST_CORE_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
-import { formatPosts } from "lib/post_utils";
+import { BasicPostInterface } from "lib/data_models/post_interface";
+
+/**
+ * getPostsByTag
+ * 
+ * Queries contentful to get the most recent 20 posts that contain a specific tag
+ * This is called by "Tag" pages, which have a list of all articles with a given tag
+ * 
+ * called by the api.ts file
+ */
 
 export default async function getPostsByTag(tag, options=defaultOptions) {
     const variables = { tag, };

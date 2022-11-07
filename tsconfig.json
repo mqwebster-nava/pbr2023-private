@@ -22,6 +22,6 @@
     "**/*.tsx",
     "styles/brand_patterns.stories.js",
     "components/templates/PageTemplate/PageTemplate.js",
-    "setupTests.js",  "components/atom/AnchorLink/AnchorLink.jsx"  ],
+    "setupTests.js",  "components/atom/AnchorLink/AnchorLink.jsx", "utils/Optimize.jsx"  ],
   "exclude": ["node_modules"]
 }

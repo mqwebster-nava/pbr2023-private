@@ -1,4 +1,4 @@
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import React from "react";
 import MarkdownComponent from "utils/MarkdownComponent";
 

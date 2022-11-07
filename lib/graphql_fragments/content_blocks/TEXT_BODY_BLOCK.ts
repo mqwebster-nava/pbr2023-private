@@ -6,8 +6,10 @@ sys {
     id
   }
 title
+type
 richBody{
   ${POST_BODY}
 }
+colorTheme
 `;
 export default TEXT_BODY_BLOCK;

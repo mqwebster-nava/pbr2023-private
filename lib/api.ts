@@ -10,20 +10,23 @@
  *
  */
 
-import { PageInterface } from "shared_interfaces/page_interface";
-import { BasicPostInterface } from "shared_interfaces/post_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 import { slugify } from "utils/utils";
 import getAllTags from "./contentful/getAllTags";
+import getMorePosts from "./contentful/getMorePosts";
 import getPageDataBySlug from "./contentful/getPageDataBySlug";
 import getPostBySlug from "./contentful/getPostBySlug";
 import getPostsByAuthor from "./contentful/getPostsByAuthor";
 import getPostsByTag from "./contentful/getPostsByTag";
-import {
-  formatAuthorPage,
-  formatPage,
-  formatPostPage,
-  formatTagsPage,
-} from "./formatPage";
+import { formatAuthorPage } from "./formatters/formatPageAuthor";
+import { formatFullPost } from "./formatters/formatPost";
+import { formatPosts } from "./formatters/formatPosts";
+import { formatTagsPage } from "./formatters/formatPageTags";
+import getReportDataBySlug from "./contentful/getReportDataBySlug";
+import { formatReportPage } from "./formatters/formatPageReport";
+import { BasicPostInterface, FullPostInterface } from "./data_models/post_interface";
+import { formatPostPage } from "./formatters/formatPagePost";
+import { formatPage } from "./formatters/formatPageDefault";
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.
@@ -31,7 +34,7 @@ const defaultOptions = {
   preview: false,
 };
 
-type PageVariant = "default" | "post" | "tags" | "author";
+type PageVariant = "default" | "post" | "tags" | "author" | "report";
 
 export interface PageQueryInterface {
   slug: string;
@@ -61,18 +64,27 @@ export async function getPageDataFromContentful({
         })
       );
     return formattedPage;
-    
+  }
+
+  if (variant == "report") {
+    const page = await getReportDataBySlug({ slug, preview });
+    let formattedPage: PageInterface = formatReportPage(page);
+    return formattedPage;
   }
 
   // If it is a post, we create the page interface data from the post content
   if (variant == "post") {
     // Get the post data
+  
     try {
-      const res = await getPostBySlug(slug, {preview});
-      const { post, morePosts } = res;
-      const formattedPage: PageInterface = formatPostPage(post, morePosts);
+      const post = await getPostBySlug(slug, {preview});
+      const formattedPost:FullPostInterface = formatFullPost(post);
+      let morePosts = await getMorePosts(formattedPost,{preview});
+      morePosts = formatPosts(morePosts);
+      const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
       return formattedPage;
     } catch (e) {
+      console.log("issue", e)
       return null;
     }
   }

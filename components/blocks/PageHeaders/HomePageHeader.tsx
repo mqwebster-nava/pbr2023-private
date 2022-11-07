@@ -1,5 +1,5 @@
 import { PageHeaderInterface } from "./PageHeader";
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import headerIllustration1 from "public/images/Home-Portrait-1-880x660-V1.png";
 import headerIllustration2 from "public/images/Home-Portrait-2-880x660-V1.png";
 import headerIllustration3 from "public/images/Home-Portrait-3-880x660-V1.png";

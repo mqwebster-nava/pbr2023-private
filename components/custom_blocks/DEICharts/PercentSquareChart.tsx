@@ -1,7 +1,7 @@
-import { PercentSquareGraph } from "components/atom";
 import { FilterControl} from "components/blocks";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useState } from "react";
+import { PercentSquareGraph } from "./Graph/PercentSquareGraph";
 
 interface CheckboxInterface {
   value: string;

@@ -1,7 +1,7 @@
 import classNames from "classnames";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import Image from "next/image";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 
 
 type CardSize = "half" |"quarter" | "full" | "third";

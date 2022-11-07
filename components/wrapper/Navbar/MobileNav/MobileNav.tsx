@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import SlideDown from "react-slidedown";
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 import Logo from "../Logo";
 import styles from "./mobilenav.module.css";
 
@@ -17,7 +17,7 @@ const MobileNavBar = ({ NavData }) => {
     >
       <SlideDown className={``}>
         {isShowingMenu
-          ? NavData.map((navSection, i) => {
+          ? NavData?.map((navSection, i) => {
               const extraPadding = classNames({
                 "mt-lg": i == 0,
                 "mb-lg": i == NavData.length - 1,

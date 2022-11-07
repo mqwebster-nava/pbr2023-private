@@ -1,7 +1,7 @@
 import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
-import { ContentCard, } from "components/atom";
 import classNames from "classnames";
-import ColorTheme from "shared_interfaces/ColorThemes";
+import ColorTheme from "utils/ColorThemes";
+import ContentCard from "components/atom/ContentCard/ContentCard";
 
 /*
 Content Grid sets up the layout and background color 
@@ -57,7 +57,7 @@ const ContentGrid = ({
                            item.contentType == "Events" ? getEventDateStr(item.date): null;
 
             return (
-              <div className={`w-full self-stretch ${feature}`} key={item.id}>
+              <div className={`w-full self-stretch ${feature}`} key={`${item.id}-${item.title}`}>
                 { item["__typename"] == "Post" ?
                 (
                   <ContentCard

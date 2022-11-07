@@ -1,4 +1,4 @@
-import { CheckBox, PercentSquareGraph } from "components/atom";
+import { CheckBox } from "components/atom/CheckBox/CheckBox";
 import { FilterButtonGroup } from "./FilterButtonGroup";
 
 export interface FilterInterface {

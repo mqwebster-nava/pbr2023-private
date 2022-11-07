@@ -24,7 +24,7 @@ const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventS
 
 
 
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 
 const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
@@ -59,9 +59,10 @@ const PageTemplate: React.FC<PageInterface> = ({
     }
     return typename in componentMap ? componentMap[typename](entry) : null;
   };
+
   return (
     <main id="main">
-      <PageHeader {...pageHeader}/>
+      <PageHeader {...pageHeader} />
       <div className="animate-fadeIn2">
       {children}
       {contentBlocks.map((block,i) =>  getComponent(block,i))}
@@ -69,5 +70,7 @@ const PageTemplate: React.FC<PageInterface> = ({
     </main>
   );
 };
+
+//variantAB={variantAB}
 
 export default PageTemplate;

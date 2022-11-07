@@ -1,5 +1,5 @@
 /* For Mobile Navbar */
-.details[open]>summary> div > div{
+.details[open]>summary> div > :last-child{
     transform: rotate(180deg);
     transition-duration: .25s;
   }

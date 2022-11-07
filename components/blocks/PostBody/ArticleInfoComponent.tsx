@@ -1,6 +1,6 @@
 import { getDateStr, slugify } from "utils/utils";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import { AuthorPostInterface } from "shared_interfaces/post_interface";
+import { AuthorPostInterface } from "lib/data_models/post_interface";
 
 interface ArticleInfoComponentProps {
   date: string;

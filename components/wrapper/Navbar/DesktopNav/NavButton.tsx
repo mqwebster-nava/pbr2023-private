@@ -1,5 +1,5 @@
 
-import { AnalyticsLabelType } from "shared_interfaces/Analytics";
+import { AnalyticsLabelType } from "utils/Analytics";
 import styles from "./desktopnav.module.css";
 
 interface NavButtonnInterface {

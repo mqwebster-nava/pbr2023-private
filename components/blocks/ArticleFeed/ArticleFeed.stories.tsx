@@ -1,7 +1,6 @@
 // Button.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import  ArticleFeed  from './ArticleFeed';
-import { ContentCard } from '../../atom';
 export default {
   /* 👇 The title prop is optional.
   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading

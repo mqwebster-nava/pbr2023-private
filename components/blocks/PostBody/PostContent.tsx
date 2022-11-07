@@ -14,9 +14,17 @@ const PostSummarySection  = dynamic(() => import("components/blocks/PostBody/Pos
 
 import MarkdownComponent from "utils/MarkdownComponent";
 import EmbeddedVideo from "./EmbeddedVideo";
+import Callout from "../../blocks_reports/ReportContent/Callout";
+
+export type CONTENT_VARIANT = "post" | "report" | "report sage";
+export interface PostContentInterface {
+  docData:any;
+  docLinks:any;
+  variant: CONTENT_VARIANT
+}
 
 
-const PostContent = ({docData, docLinks, }) =>{
+const PostContent = ({docData, docLinks, variant="post" }) =>{
     const options = {
         renderMark: {
           [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
@@ -34,17 +42,17 @@ const PostContent = ({docData, docLinks, }) =>{
           ),
           [BLOCKS.HEADING_2]: (node, children) => {
             return (
-              <h2 className="type-preset-3 font-bold font-sans pt-lg">{children}</h2>
+              <h2 className="type-preset-3 font-bold font-sans pt-lg pb-md">{children}</h2>
             );
           },
           [BLOCKS.HEADING_3]: (node, children) => (
-            <p className="type-preset-4 font-bold font-sans pt-lg">{children}</p>
+            <p className="type-preset-4 font-bold font-sans pt-lg pb-md">{children}</p>
           ),
           [BLOCKS.HEADING_4]: (node, children) => (
-            <h4 className="type-preset-5 font-bold font-sans pt-lg">{children}</h4>
+            <h4 className="type-preset-5 font-bold font-sans pt-lg pb-md">{children}</h4>
           ),
           
-          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children}/>,
+          [BLOCKS.QUOTE]: (node, children) => <PostBlockQuote body={children} variant={"post"}/>,
           [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-disc ml-lg pb-md">{children}</ul> ),
           [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal ml-lg pb-md">{children}</ol>,
           [BLOCKS.LIST_ITEM]: (node, children) => <li className="[&>p]:py-xs">{children}</li>,
@@ -66,13 +74,15 @@ const PostContent = ({docData, docLinks, }) =>{
             const entryBlocks =docLinks.entries.block;
             let blockData = entryBlocks.find((element) => element.sys.id === id);
             blockData = liftData(blockData); // rises ID to top of map
+            
             const embeddedEntries = {
               "CaptionText": (props)=><CaptionText {...props} caption={<MarkdownComponent content={props.caption} removePadding={true}/>} />,
               "PostBlockQuote": (props)=><PostBlockQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostPullQuote":(props)=><PostPullQuote {...props} body={<MarkdownComponent content={props.body}/>}/>,
               "PostImage": (props) =>  <PostImage {...props} caption={props.caption && <MarkdownComponent content={props.caption}/>}/>,
               "PostSummarySection": (props)=> <PostSummarySection {...props} body={<MarkdownComponent content={props.body}/>}/>,
-              "EmbeddedVideo": (props)=> <EmbeddedVideo {...props} />
+              "EmbeddedVideo": (props)=> <EmbeddedVideo {...props} />,
+              "ReportCallout": (props) => <Callout {...props}/>
             }
              if(blockData.__typename in embeddedEntries) return embeddedEntries[blockData.__typename](blockData);
           },

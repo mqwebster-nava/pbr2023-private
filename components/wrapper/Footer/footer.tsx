@@ -1,12 +1,12 @@
-import classNames from "classnames";
-import { LinkText } from "components/atom";
+import { LinkText } from "components/atom/LinkText/LinkText";
 import Image from "next/image";
 import logo from "public/images/N logo.png";
-import FooterNavData from "./footer_nav_data.js";
+import getFooterNavData from "./footer_nav_data.js";
 import NavaDigest from "./NavaDigest";
 
-const Footer = ({isBottomCTA=false}) => {
+const Footer = ({isBottomCTA=false, variant=null}) => {
   let currentYear = new Date().getFullYear();
+  const FooterNavData = getFooterNavData(variant)
   return (
     <footer>
       <NavaDigest isBottomCTA={isBottomCTA}/>

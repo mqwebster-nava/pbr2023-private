@@ -1,4 +1,3 @@
-import { Button } from "../";
 import styles from "./Details.module.css";
 
 export interface ButtonProps {

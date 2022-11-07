@@ -1,7 +1,7 @@
-import { Button } from "components/atom";
+import { Button } from "components/atom/Button/Button";
 import React from "react";
 import ill from "public/images/Not-Found-Image.png";
-import { ContentfulImageAsset } from "shared_interfaces/post_interface";
+import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import Image from "next/image";
 
 const image: ContentfulImageAsset = {

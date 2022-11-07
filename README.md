@@ -110,7 +110,7 @@ yarn run chromatic
 │
 ├── pages                 site pages 
 ├── public                site assets
-├── shared_interfaces     
+├── lib/data_models     
 ├── tests                 (not set up)
 ├── styles                site-level styles
 ├── utils                 misc helpers

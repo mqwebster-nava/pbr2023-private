@@ -1,12 +1,11 @@
 
 import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
-import { PageInterface } from "shared_interfaces/page_interface";
+import { PageInterface } from "lib/data_models/page_interface";
 //https://docs.google.com/document/d/1SWVZyiBQ0xPpmFcVuZFwyqtYOQlV5ujWZejTJ4d8Cs4/edit#
 
 export default function Story(props:PageInterface ) {
-  return props? (<PageTemplate {...props}/>): <div>Error</div>
-  ;
+  return props? (<PageTemplate {...props}/>): <div>Error</div>;
 }
 
 export async function getStaticProps({ params, preview = false }) {
