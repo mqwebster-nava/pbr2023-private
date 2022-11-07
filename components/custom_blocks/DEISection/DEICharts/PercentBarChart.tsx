@@ -1,4 +1,4 @@
-import { PercentBarGraph, PercentBarGraphInterface } from "components/custom_blocks/DEICharts/Graph/PercentBarGraph";
+import { PercentBarGraph, PercentBarGraphInterface } from "components/custom_blocks/DEISection/DEICharts/Graph/PercentBarGraph";
 interface PercentBarChartInterface {
   description: string;
   graphs: Array<PercentBarGraphInterface>;

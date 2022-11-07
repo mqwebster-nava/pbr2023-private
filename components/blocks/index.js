@@ -5,11 +5,11 @@ import ContentBlock from "./ContentBlock/ContentBlock";
 import ArticleFeed from "./ArticleFeed/ArticleFeed";
 import CTABlock from "./CTABlock/CTABlock";
 import QuoteBlock from "./QuoteBlock/QuoteBlock";
-import { ResourceGroups } from "../custom_blocks/DEIResourceGroupBlock/ResourceGroups";
-import { PercentBarChart } from "../custom_blocks/DEICharts/PercentBarChart";
-import { PercentSquareChart } from "../custom_blocks/DEICharts/PercentSquareChart";
-import { PercentSquareChartFixed } from "../custom_blocks/DEICharts/PercentSquareChartFixed";
-import { FilterControl } from "../custom_blocks/DEICharts/FilterControl";
+import { ResourceGroups } from "../custom_blocks/DEISection/DEIResourceGroupBlock/ResourceGroups";
+import { PercentBarChart } from "../custom_blocks/DEISection/DEICharts/PercentBarChart";
+import { PercentSquareChart } from "../custom_blocks/DEISection/DEICharts/PercentSquareChart";
+import { PercentSquareChartFixed } from "../custom_blocks/DEISection/DEICharts/PercentSquareChartFixed";
+import { FilterControl } from "../custom_blocks/DEISection/DEICharts/FilterControl";
 
 
 export {
