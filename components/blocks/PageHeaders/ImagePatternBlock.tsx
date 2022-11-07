@@ -11,6 +11,7 @@ export interface ImagePatternBlockInterface {
   pattern?: ContentfulImageAsset;
   image?: ContentfulImageAsset;
   colorTheme?: ColorTheme;
+  hideHeroPattern?:boolean
 }
 
 const defaultIllustration: ContentfulImageAsset = {
@@ -43,6 +44,7 @@ const IllustrationPatternBlock = ({
   image = defaultIllustration,
   pattern = defaultPattern,
   colorTheme = "purple",
+  hideHeroPattern=false
 }: ImagePatternBlockInterface) => {
   image ??= defaultIllustration;
   pattern ?? defaultPattern;
@@ -71,7 +73,8 @@ const IllustrationPatternBlock = ({
           alt={image.description}
           priority
         ></Image>
-        <div
+       
+       {!hideHeroPattern && <div
           className={`${
             colorTheme == "sage"
               ? "w-[128px] md:w-[192px] lg:w-[256px]"
@@ -87,7 +90,7 @@ const IllustrationPatternBlock = ({
             alt={""}
             priority
           ></Image>
-        </div>
+        </div>}
       </div>
       </div>
     </div>
