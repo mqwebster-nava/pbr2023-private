@@ -191,11 +191,11 @@ const DesktopSection = ({contentBlocks}) => {
       
         <div className="w-full lg:w-1/4 h-full lg:min-h-[calc(100vh_-_70px)]  pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between aling-start">
          <div>
-          <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-lg opacity-0 motion-reduce:opacity-100`}>
+          <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-lg opacity-0 motion-reduce:opacity-100`}>           
             Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
           <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
-            Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava
+            Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava 
             worked to build equity by designing public services for all.
           </p>
           </div>
