@@ -8,7 +8,7 @@ const ArrowDownColumn = ({anchor,color, nextId,nextSectionTitle, nextSectionType
               <a
                 id={`${anchor}-next-arrow`}
                 href={`#${nextId}`}
-                aria-label={`Skip to ${nextSectionTitle}`}
+                aria-label={`Next ${nextSectionType}, Skip to ${nextSectionTitle}`}
                 className={`
                 group sticky top-[70vh] landscape:top-[60vh] pt-3xl
                 lg:top-[calc(100vh_-_150px)]  lg:landscape:top-[80vh] lg:pt-0
