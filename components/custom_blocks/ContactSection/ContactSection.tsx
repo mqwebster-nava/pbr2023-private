@@ -1,4 +1,5 @@
-import FormInputButton from "components/atom/Button/FormInputButton";
+
+import FormInputButton from "components/atom/FormInputButton/FormInputButton";
 import { LinkText } from "components/atom/LinkText/LinkText";
 
 const AddressBlock = ({ title, addrLine1, addrLine2 }) => {

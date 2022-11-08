@@ -1,10 +1,10 @@
 import styles from "./Details.module.css";
 
-export interface ButtonProps {
+export interface DetailsProps {
   summary: string;
 }
 
-export const Details: React.FC<ButtonProps> = ({ summary, children }) => {
+export const Details: React.FC<DetailsProps> = ({ summary, children }) => {
   return (
     <details className={`${styles.details} `}>
       <summary className="font-sans font-bold md:h-[70px]

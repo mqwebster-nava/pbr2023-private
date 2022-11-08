@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import FormInputButton from "components/atom/Button/FormInputButton";
+import FormInputButton from "components/atom/FormInputButton/FormInputButton";
 
 const SignupBrand = "/images/Sign-up-Brand-pattern-V02.svg";
 

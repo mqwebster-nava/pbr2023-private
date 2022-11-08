@@ -11,11 +11,12 @@ Object.defineProperty(NextImage, "default", {
 
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  //actions: { argTypesRegex: "^on[A-Z].*" },
+ // controls: { expanded: true },
   layout: 'fullscreen',
   options: {
     storySort: {
-      order: ['Design System','Styles', 'Atoms','Wrappers','Blocks', 'Templates'],
+      order: ['Design System','Styles', 'Wrappers','Atoms','Blocks', 'Templates'],
     },  
   },
 };
