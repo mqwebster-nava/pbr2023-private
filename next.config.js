@@ -7,7 +7,7 @@ module.exports = withBundleAnalyzer({
     defaultLocale: "en",
   },
   images: {
-    domains: ["images.ctfassets.net", "dl.airtable.com"],
+    domains: ["images.ctfassets.net", "dl.airtable.com", "v5.airtableusercontent.com"],
   },
   async redirects() {
     return [
