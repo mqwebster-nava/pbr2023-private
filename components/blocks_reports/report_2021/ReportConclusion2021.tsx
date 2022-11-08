@@ -103,7 +103,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
               ["/case-studies", "Case Studies"],
               ["/public-benefit-reports/2020", "2020 Public Benefit Report"],
             ],
-            [["/contact", "Get in touch"]],
+            [["/contact", "Get in touch"], ["https://navapbc.us10.list-manage.com/subscribe?u=c69eb1fd5475fa5122ef55965&id=a994830182","Sign up for our newsletter", ]],
           ].map((row, i) => (
             <ul
               id={`conclusion-footer${i + 1}`}

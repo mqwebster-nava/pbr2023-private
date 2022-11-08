@@ -123,8 +123,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
                 id="titleLine3"
                 className="type-preset-5 font-serif text-purple-100 opacity-0 lg:pt-xl tracking-[0.015em] font-light motion-reduce:opacity-100"
               >
-                Each year, Nava outlines its work and progress in a public
-                benefit report.
+                As a public benefit corporation, Nava outlines our impact in our annual public benefit report.
               </p>
             </div>
             <a
