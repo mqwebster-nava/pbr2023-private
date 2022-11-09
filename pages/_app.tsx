@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       gtmId: "GTM-NRQK2XB",
       dataLayer: { event: "optimize.activate" },
     });
-    if (pageData.slug.includes("public-benefit-reports/2021")) return;
+    if (pageData && pageData.slug && pageData.slug.includes("public-benefit-reports/2021")) return;
 
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
