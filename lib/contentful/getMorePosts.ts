@@ -10,6 +10,7 @@ export default async function getMorePosts(
   post: FullPostInterface,
   options = defaultOptions
 ) {
+  if(!post) return null;
   const variables = { slug: post.slug, preview: options.preview };
   const query = `query GetMorePosts($slug: String!, $preview: Boolean!) {
       postCollection( where: { slug_not_in: [ $slug ] }, preview: $preview) {
