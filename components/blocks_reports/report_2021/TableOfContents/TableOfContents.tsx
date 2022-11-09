@@ -114,7 +114,7 @@ const MobileSectionTitle = ({
   return (
     <div className={`w-full grow ${bgColor}`} >
       <a  href={`#${anchor}`}>
-       <div className={`px-xl md:px-4xl py-md`}>
+       <div className={`px-xl md:px-4xl py-lg`}>
 
       
           {themeNum != null && (
@@ -139,8 +139,8 @@ const MobileSection = ({contentBlocks}) => {
         Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
         </p>
         <p className="type-preset-5 font-serif ">
-        It’s a privilege to work alongside public servants to help make government services simple, accessible, and equitable. We’re honored to share stories about these projects that illustrate our collective impact.
-        </p>
+        Through these <b className="font-bold">stories about our projects</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
+         </p>
       </div>
       <MobileSectionTitle
         title={"Letter from leadership"}
@@ -196,7 +196,7 @@ const DesktopSection = ({contentBlocks}) => {
             Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
           <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
-            Through <b className="font-bold">project-specific stories</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
+            Through these <b className="font-bold">stories about our projects</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
           </p>
           </div>
           <a  
@@ -287,7 +287,7 @@ const DesktopSectionTitle = ({
       <div
         className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className={`col-span-3 lg:py-auto py-md divide-y-[1px] ${dividerColor(colorTheme)}`}>
+        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] ${dividerColor(colorTheme)}`}>
           {themeNum != null && (
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm  ">
               Theme {themeNum }
