@@ -127,7 +127,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
     if (offsetPct < -20 || offsetPct >= 100) return;
-    const inFocus = document.getElementById(storyId).contains(document.activeElement);
+    let inFocus = document.getElementById(storyId).contains(document.activeElement);
+    if(inFocus){
+      if( document.activeElement.id.includes("next-arrow")) inFocus=false;
+      
+    }
+
+    // Issue with in focus
     animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
   };
 
