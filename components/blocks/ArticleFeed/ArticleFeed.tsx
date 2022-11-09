@@ -8,7 +8,7 @@ import ContentGrid, { ListLayout } from "./ContentGrid";
 
 
 interface ArticleFeedInterface {
-  id: string;
+  id?: string;
   title?: string;
   buttonText?: string;
   buttonPath?: string;
@@ -31,8 +31,8 @@ const ArticleFeed = ({
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
   return (
-    <section key={id} className="pt-xl pb-4xl" >
-      <div className="responsive-container" key={id}>
+    <section className="pt-xl pb-4xl" >
+      <div className="responsive-container" >
       {title &&  <HorizontalLine variant="light"/>}
         <div className={`w-full pt-md flex justify-between `}>
           <div className="md:w-3/4 ">

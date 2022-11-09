@@ -4,6 +4,13 @@ import  HighlightedInformationList from './HighlightedInformationList';
 export default {
   title: 'Blocks /  Highlighted Information List',
   component: HighlightedInformationList,
+  argTypes: {
+    id: {
+      table: {
+        disable: true,
+      },
+    }
+  },
 } as ComponentMeta<typeof HighlightedInformationList>;
 
 //👇 We create a “template” of how args map to rendering
@@ -12,10 +19,7 @@ const Template: ComponentStory<typeof HighlightedInformationList> = (args) => <H
 export const Primary = Template.bind({});
 
 Primary.args = {
-  "__typename": "HighlightedInformationList",
-  "id": "info list",
    "items": [
-    
         {
             "id": "3hutAfeQ6RfeBCPBRCVt92",
             "__typename": "FeatureCard",
