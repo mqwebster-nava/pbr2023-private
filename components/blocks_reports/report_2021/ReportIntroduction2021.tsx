@@ -65,7 +65,9 @@ const ReportIntroduction2021 = ({
     return (
       <div id={`${anchor}`} className="bg-purple-50 mt-3xl" tabIndex={0}>
         <div className="responsive-container  py-2xl grid grid-cols-12 ">
-          <div className="hidden lg:block lg:col-span-4">
+        <ArrowDownColumn anchor={anchor} color={'purple-900'} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={'section'}/>
+      
+          <div className="hidden lg:block  lg:col-start-1 col-span-4 row-start-1">
             <div
               id={`${anchor}-desktop-title`}
               className=" text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 "
@@ -77,7 +79,7 @@ const ReportIntroduction2021 = ({
               </h2>
             </div>
           </div>
-          <div className="lg:col-span-7 col-start-0 col-span-11 pr-xl">
+          <div className="lg:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl">
             <div
               id={`${anchor}-mobile-title`}
               className="font-serif text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 lg:hidden "
@@ -101,8 +103,7 @@ const ReportIntroduction2021 = ({
             </div>
             <Signatures signatures={signatures} colorTheme={"purple"}/>
           </div>
-         <ArrowDownColumn anchor={anchor} color={'purple-900'} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={'section'}/>
-        </div>
+           </div>
       </div>
     );
   };
