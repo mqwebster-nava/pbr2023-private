@@ -23,7 +23,7 @@ const Callout = ({
     <blockquote
       className={` border-y-[1px] ${borderColor} w-full pb-md min-h-[100px] md:min-h-[140px]`}
     >
-     {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme}/></div>}
+     {variant==="quote" && <div className="pt-lg"><QuoteMarkSVG colorTheme={colorTheme} /></div>}
       <p
         className={`${isMobileLandscape? "type-preset-5": "type-preset-3"} py-md font-serif font-light ${textColor}`}
       >
@@ -43,6 +43,7 @@ export default Callout;
 const QuoteMarkSVG = ({colorTheme="sage"}) => {
   return (
     <svg
+    aria-label=""
       width="68"
       height="38"
       viewBox="0 0 68 38"
