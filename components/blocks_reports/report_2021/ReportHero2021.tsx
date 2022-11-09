@@ -117,7 +117,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
                 id="titleLine2"
                 className="type-preset-5 font-serif text-white font-light tracking-[0.015em] opacity-0 motion-reduce:opacity-100"
               >
-                building sustainable government services
+                Building sustainable government services
               </p>
               <p
                 id="titleLine3"

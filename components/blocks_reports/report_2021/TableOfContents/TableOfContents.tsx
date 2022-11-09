@@ -29,7 +29,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
         animations.push(a);
       
         let b: AnimationObject = {
-          triggerPct:20,
+          triggerPct:10,
           animation: makeSlideUpAnimation("stories-"+ block.anchor, i*100),
           //noRepeat:true
         };
@@ -54,7 +54,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
       animations.push(line1Fade);
       // Part 2
       let line2Fade: AnimationObject = {
-        triggerPct:20,
+        triggerPct:10,
         animation: makeSlideUpAnimation("desktop-description2", 0),
        // noRepeat:true
       };
@@ -114,7 +114,7 @@ const MobileSectionTitle = ({
   return (
     <div className={`w-full grow ${bgColor}`} >
       <a  href={`#${anchor}`}>
-       <div className={`px-xl md:px-4xl py-lg`}>
+       <div className={`px-xl md:px-4xl py-md`}>
 
       
           {themeNum != null && (
@@ -136,10 +136,10 @@ const MobileSection = ({contentBlocks}) => {
     <div className="block lg:hidden">
       <div className="w-full h-full bg-white pt-lg pb-3xl px-xl md:px-4xl  ">
         <p className="type-preset-5 font-serif pb-md">
-        Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
+        Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
         </p>
         <p className="type-preset-5 font-serif ">
-        Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava worked to build equity by designing public services for all.
+        It’s a privilege to work alongside public servants to help make government services simple, accessible, and equitable. We’re honored to share stories about these projects that illustrate our collective impact.
         </p>
       </div>
       <MobileSectionTitle
@@ -193,11 +193,10 @@ const DesktopSection = ({contentBlocks}) => {
         <div className="w-full lg:w-1/4 h-full lg:min-h-[calc(100vh_-_70px)]  pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between aling-start">
          <div>
           <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-lg opacity-0 motion-reduce:opacity-100`}>           
-            Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
+            Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
           <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
-            Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava 
-            worked to build equity by designing public services for all.
+            Through <b className="font-bold">project-specific stories</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
           </p>
           </div>
           <a  
@@ -288,7 +287,7 @@ const DesktopSectionTitle = ({
       <div
         className={`  xl:ml-[88px] ml-xl text-${textColor} grid grid-cols-8  gap-lg `}
       >
-        <div  className={`col-span-3 lg:py-auto py-lg divide-y-[1px] ${dividerColor(colorTheme)}`}>
+        <div  className={`col-span-3 lg:py-auto py-md divide-y-[1px] ${dividerColor(colorTheme)}`}>
           {themeNum != null && (
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm  ">
               Theme {themeNum }
