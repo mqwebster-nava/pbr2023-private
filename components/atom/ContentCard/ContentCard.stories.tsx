@@ -6,7 +6,6 @@ export default {
   component: ContentCard,
   argTypes: {
     summary: { control: "text", description: "Button text" },
-    
     size: {
       options: ["quarter", "third", "half"],
       control: { type: "radio" },
