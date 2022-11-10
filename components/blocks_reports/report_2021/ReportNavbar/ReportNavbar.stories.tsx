@@ -4,7 +4,7 @@ import React from 'react';
 import ReportNavbar from './ReportNavbar';
 
 export default {
-  title: 'Report Blocks/PBR 2021/Report Navbar',
+  title: 'Report Blocks/(2021)Report Navbar',
   component: ReportNavbar,
   args: {
     reportSections: 'any' as unknown as any,

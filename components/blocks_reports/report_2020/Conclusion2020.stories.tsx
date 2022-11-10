@@ -4,7 +4,7 @@ import React from 'react';
 import Conclusion2020 from './Conclusion2020';
 
 export default {
-  title: 'Report Blocks/PBR 2020/Conclusion 2020',
+  title: 'Report Blocks/Custom Section/(2020)Conclusion',
   component: Conclusion2020,
   args: {
     title: 'any' as unknown as any,

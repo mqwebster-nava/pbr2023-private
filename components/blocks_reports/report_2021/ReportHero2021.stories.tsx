@@ -4,7 +4,7 @@ import React from 'react';
 import ReportHero2021 from './ReportHero2021';
 
 export default {
-  title: 'Report Blocks/PBR 2021/Report Hero 2021',
+  title: 'Report Blocks/Report Hero/2021',
   component: ReportHero2021,
   args: {
 
@@ -16,4 +16,13 @@ const Template: ComponentStory<typeof ReportHero2021> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    "id": "4Wo5JdCBSpapOC40xIoPpM",
+    "title": "Public Benefit Report 2021",
+    "subtitle": null,
+    "variant": "PBR 2021",
+    "image": null,
+    "pattern": null,
+    "buttonPath": null,
+    "buttonText": null
+};

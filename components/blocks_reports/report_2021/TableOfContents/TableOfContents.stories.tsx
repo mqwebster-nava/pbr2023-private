@@ -4,7 +4,7 @@ import React from 'react';
 import TableOfContents from './TableOfContents';
 
 export default {
-  title: 'Report Blocks/PBR 2021/Table Of Contents',
+  title: 'Report Blocks/Custom Section/(2021)Table Of Contents',
   component: TableOfContents,
   args: {
     title: 'any' as unknown as any,
@@ -18,4 +18,10 @@ const Template: ComponentStory<typeof TableOfContents> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    "id": "3SO3qwB3VQtT9MCozqJoQ",
+    "title": "Table of contents",
+    "anchor": "toc",
+    "type": "Table of Contents",
+    "colorTheme": "purple",
+};
