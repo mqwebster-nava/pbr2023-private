@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof OpenRolesComponent>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof OpenRolesComponent> = (args) => <OpenRolesComponent {...args} />;
+const Template: ComponentStory<typeof OpenRolesComponent> = (args) => <OpenRolesComponent />;
 
 export const Default = Template.bind({});
 
