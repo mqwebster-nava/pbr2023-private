@@ -500,6 +500,11 @@ module.exports = withBundleAnalyzer({
           "http://navahq.github.io/glossary/",
         permanent: true,
       },
+      {
+        source: "/insights/use-us-web-design-system",
+        destination: "/insights/us-web-design-system",
+        permanent: true,
+      },
     ];
   },
 });
