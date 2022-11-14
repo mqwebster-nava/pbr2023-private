@@ -70,7 +70,7 @@ const ReportIntroduction2021 = ({
           <div className="hidden lg:block  lg:col-start-1 col-span-4 row-start-1">
             <div
               id={`${anchor}-desktop-title`}
-              className=" text-purple-900 sticky top-[70px] bg-purple-50 pt-md z-20 "
+              className=" text-purple-900 sticky top-[70px] bg-purple-special50 pt-md z-20 "
             >
               <h2
                 className={`font-serif font-light xl:text-7xl type-preset-1  pb-2xl`}

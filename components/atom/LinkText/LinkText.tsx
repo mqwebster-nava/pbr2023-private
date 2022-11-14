@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { AnalyticsLabelType } from "utils/Analytics";
 
 type LinkTextVariant = "default" | "" |"underlined";
-type LinkColor = "black" |"sage" | "white" |"gray" | "";
+type LinkColor = "black" |"sage" | "white" |"gray" | "" | "inherit";
 type LinkHover = "underlined" | "sage" ;
 
 export interface LinkTextProps {

@@ -73,6 +73,7 @@ module.exports = {
       colors: {
         purple: {
           50: "#f5e4f0",
+          special50:"#f2e5ef",
           lightest: "#F5E4F0",
           100: "#dfbde5",
           200: "#cb92d5",

@@ -26,6 +26,7 @@ contextIllustration{
 featuredCallOut {
     ${CALLOUT}
 }
+linkedPostUrl
 `;
 
 export default REPORT_ILLUSTRATION_OVERLAY_STORY;

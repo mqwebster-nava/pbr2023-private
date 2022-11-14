@@ -11,6 +11,7 @@ import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
 import ArrowDownColumn from "../Atoms/ArrowDownColumn";
 import classNames from "classnames";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 
 /* TODO  
@@ -29,10 +30,8 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection; 
   const [animationList, setAnimationList] = useState([]);
-
   const [isMobileLandscape, setIsMobileLandscape] = useState(false);
-
-
+//linkedPostUrl
   const initiateAnimations = () => {
     let ana = [];
     const sectionH = document.getElementById(storyId).offsetHeight;
@@ -160,6 +159,13 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
      "border-t-navy-600":colorTheme==="navy",
     "border-t-gold-pbrcustomdark": colorTheme==="gold",
   });
+  const LinkedPost = ({url})=>{
+    if(!url)return null;
+    const linkText = url.includes("/insights/") ? "Insights article." : "case study."
+    return (<p className={`type-preset-6 font-bold font-serif pt-md`}>To learn more, read our <LinkText href={url} variant={"underlined"} color={"inherit"} hoverStyle={"sage"}>{linkText}</LinkText></p>)
+  
+  }
+
 
 
 
@@ -241,7 +247,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                     reportYear={"2021"}
                     isMobileLandscape={isMobileLandscape}
                   />
+                    {story.linkedPostUrl && <LinkedPost url={story.linkedPostUrl}/>}
                 </div>
+              
               </div>
 
         
