@@ -22,13 +22,7 @@ const SectionIntro = ({ section, i }) => {
   const initiateAnimations = () => {
     let ana = [];
     const windowSizes: Array<WindowSize> = ["mobile", "tablet", "desktop"];
-    let ThemeSlideUp: AnimationObject = {
-      triggerPct: -40,
-      //noRepeat:true,
-      windowSizes: windowSizes,
-      triggerPcts: { mobile: -90 },
-      animation: makeSlideUpAnimation("themeNum-" + section.anchor, 0),
-    };
+  
     let TitleSlideUp: AnimationObject = {
       triggerPct: -30,
       //noRepeat:true,
@@ -53,7 +47,6 @@ const SectionIntro = ({ section, i }) => {
     };
 
     ana.push(TitleSlideUp);
-    ana.push(ThemeSlideUp);
     ana.push(SectionBodySlideUp);
     ana.push(SectionStoriesSlideUp);
 
@@ -104,12 +97,6 @@ const SectionIntro = ({ section, i }) => {
       >
         <div className="responsive-container">
           <div className="lg:pt-4xl pt-3xl ">
-            <p
-              className={`text-${textColor} type-preset-6 pb-sm max-w-screen-md mr-auto font-serif font-normal  opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
-              id={`themeNum-${section.anchor}`}
-            >
-              Theme {i}
-            </p>
             <h2
               className={`${isMobileLandscape? "type-preset-3": "md:text-7xl type-preset-1"} font-black text-${textColor}  pb-3xl max-w-screen-md mr-auto opacity-0 motion-reduce:opacity-100 focus:opacity-100`}
               id={`h2-${section.anchor}`}
