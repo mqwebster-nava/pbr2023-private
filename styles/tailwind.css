@@ -52,6 +52,7 @@ html {
   font-size: 18px;
   font-family: "GTAmerica";
   scroll-behavior: smooth;
+  font-feature-settings: "liga" 1, "dlig" 1; 
   --typescale: 1.25;
   --base-font-size: 1rem;
   --big-line-height:1.3;
