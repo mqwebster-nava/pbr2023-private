@@ -52,6 +52,9 @@ const ContentBlock = ({
             layout={"responsive"}
             src={image.url}
             alt={image.description}
+            sizes={`(max-width: 768px) 100vw,
+            (max-width: 1264px) 50vw,
+            600px`}
           />
         </div>
         <div className={`w-full md:w-1/2 flex justify-center flex-col`}>

@@ -272,6 +272,8 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           layout="fill"
           objectFit="cover"
           className="storyImg absolute top-0 left-0 w-screen opacity-100 object-left-top"
+          sizes={`(max-width: 2000px) 100vw,
+              2000px`}
         ></Image>
         <Image
           id={`contextImg-${story.anchor}`}
@@ -281,6 +283,8 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           quality={'85'}
           objectFit="cover"
           className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block`}
+          sizes={`(max-width: 2000px) 100vw,
+              2000px`}
         ></Image>
       </div>
     </div>
@@ -289,67 +293,3 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
 
 export default StorySection;
 
-
-{/* <div className="col-span-1 block opacity-100" id={`${story.anchor}-next-arrow-container`} >
-{nextId && (
-  <a
-    id={`${story.anchor}-next-arrow`}
-    href={`#${nextId}`}
-    aria-label={`Skip to ${nextSectionTitle}`}
-    className={`
-    group sticky top-[calc(100vh_-_300px)] pt-3xl
-    lg:top-[calc(100vh_-_150px)]   lg:pt-0
-    w-full pl-lg  mb-2xl 
-    opacity-0 motion-reduce:opacity-100 
-    flex flex-col md:items-start items-center`}
-  >
-    <p className={`
-    type-preset-7  text-${c} 
-    w-[100px]  -mb-lg   opacity-100  rotate-90 translate-x-0 md:-translate-x-[32px]
-    lg:w-auto lg:mb-sm  lg:opacity-0  lg:rotate-0 lg:translate-x-0
-    group-hover:opacity-100 group-focus:opacity-100 
-    `}>
-      Next <br className="hidden lg:block"/>{nextSectionType}
-    </p> 
-    <ArrowDown sectionId={`${story.anchor}`} color={c} isMobileHidden={true}></ArrowDown>
-
-  </a>
-)}
-</div> */}
-//windowSize,
-// activeSection,
-//bg-orange-400 sm:bg-white md:bg-slate-200 lg:bg-blue-500 xl:bg-green-300
-
-/*
-
- {/* <a id={`${story.anchor}-next-arrow-mobile`}
-                    href={`#${nextId}`} className="
-                    sticky top-[75vh]  h-[70px] 
-                    w-[70px] ml-auto mb-3xl bg-white 
-                    rounded-full z-40 md:hidden mr-xl
-                    group px-md   flex flex-col items-center justify-center
-                    ">
-
-                    <p className="type-preset-7  opacity-70 text-center hidden group-hover:block">
-                      Next story
-                    </p>  *
-                    <ArrowDown sectionId={`${story.anchor}`} hasStem={false}></ArrowDown>
-             
-        </a> 
-import MobileStorySection from "./MobileStorySection";
-import DesktopStorySection from "./DesktopStorySection";
-*/
-// // TODO  When expand need to initiate animations again to get based on larger size
-// const StorySection = ({
-//   story,
-//   colorTheme,
-//   sectionAnchor,
-//   windowSize,
-//   activeSection,
-// }) => {
-//   return (
-//     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-//       <DesktopStorySection  story={story} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeSection={activeSection} windowSize={windowSize}/>
-//     </section>
-//   );
-// };
