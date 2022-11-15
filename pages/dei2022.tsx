@@ -22,23 +22,3 @@
       props:  res
     };
   }
-  
-
-
-
-  const createFilters = (dataKey, data, categories) => {
-    const filterKeys = Object.keys(data).filter(
-      (key) => !key.includes("_Multi") && !key.includes(dataKey)
-    );
-  
-    const filters = filterKeys.map((key) => {
-      return {
-        id: key,
-        text: categories[key].display,
-        total: categories[key].total,
-      };
-    });
-    return filters;
-  };
-  
-  

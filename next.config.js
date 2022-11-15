@@ -504,9 +504,7 @@ module.exports = withBundleAnalyzer({
         source: "/insights/use-us-web-design-system",
         destination: "/insights/us-web-design-system",
         permanent: true,
-      },
+      }
     ];
   },
 });
-
-https://www.navapbc.com/insights/use-us-web-design-system
