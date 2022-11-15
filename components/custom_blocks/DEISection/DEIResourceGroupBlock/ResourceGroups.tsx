@@ -11,7 +11,7 @@ export const ResourceGroups: React.FC<ResourceGroupsInterface> = ({
   groups,
 }) => {
   return (
-    <div className="flex flex-wrap">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-x-md md:gap-x-2xl gap-y-2xl mt-xl ">
       {groups.map((group, index) => {
         return (
           <ResourceGroupBlock

@@ -19,7 +19,7 @@ const DEISection = ({title, richBody, data, colorTheme}) => {
         return data?.map((sectionData, i)=>{
             if(!("type" in sectionData))return null;
             if(sectionData.type == "groups") return<ResponsiveContentContainer alignment={"left"}  padding={"py-xl"}> <ResourceGroups groups={sectionData.groups} /></ResponsiveContentContainer>
-            if(sectionData.type =="PercentBarChart") return <PercentBarChart key={`${i}`} description={sectionData.description} graphs={sectionData.graphs}/> 
+            if(sectionData.type =="PercentBarChart") return <div className="responsive-container"><PercentBarChart key={`${i}`} description={sectionData.description} graphs={sectionData.graphs}/></div>
             if(sectionData.type == "PercentSquareChart") 
             return <PercentSquareChart {...sectionData} 
             dataFilters={createFilters(
@@ -42,9 +42,7 @@ const DEISection = ({title, richBody, data, colorTheme}) => {
         </div>
        
         </ResponsiveContentContainer>
-        <div className="responsive-container">
         {getDataSections()}
-        </div>
     </div>
     );
 }
