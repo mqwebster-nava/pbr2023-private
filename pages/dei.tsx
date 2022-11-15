@@ -101,7 +101,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
 
       <section className="bg-sage-50">
       <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
-          <MarkdownComponent content={content.resources.introduction} />
+          <ReportContentDEI  content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
       </ResponsiveContentContainer>
       </section>
