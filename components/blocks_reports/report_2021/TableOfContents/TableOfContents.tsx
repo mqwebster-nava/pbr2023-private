@@ -308,9 +308,9 @@ const DesktopSectionTitle = ({
         id={`stories-${anchor}`}
           className={` col-span-5 pt-lg pr-xl pb-xl divide-y ${dividerColor(colorTheme)} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
-           <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
+          {stories && <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
-            </p>
+            </p> }
          
           {stories &&
             stories.filter((story)=>story.hideStory!==true).map((story) => {
