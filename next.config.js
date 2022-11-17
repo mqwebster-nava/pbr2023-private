@@ -506,6 +506,11 @@ module.exports = withBundleAnalyzer({
         destination: "/insights/us-web-design-system",
         permanent: true,
       },
+      {
+        source:  "/events/reducing-processing-time-with-va-deputy-cto",
+        destination: "/events",
+        permanent: false,
+      },
     ];
   },
 });
