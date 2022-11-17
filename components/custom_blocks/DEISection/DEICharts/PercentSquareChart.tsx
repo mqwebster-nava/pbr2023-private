@@ -53,12 +53,12 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   };
 
   return (
-   <ResponsiveContentContainer>
+   <ResponsiveContentContainer alignment="left" padding="pb-xl">
       <div className="pt-2xl">
-        <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
+        <h3 className="type-preset-4 font-bold border-b-2 border-gray-300">
           {title}
         </h3>
-        <p className="py-2xl">{content}</p>
+        <p className="py-lg type-preset-6">{content}</p>
       </div>
 
       <FilterControl
@@ -72,7 +72,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
-        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5"
+        <div className="pt-lg grid grid-cols-2 md:grid-cols-5"
          role="region" 
          aria-live="polite"
           id={regionId}
@@ -90,11 +90,11 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
           ))}
         </div>
       </FilterControl>
-        <div className="mx-0">
+        <div className="mx-0 py-md type-preset-7">
           {context.map((text, index) => (
             <p
               key={`chart_context_${index}`}
-              className={`py-md ${index !== 0 ? "font-bold" : ""}`}
+              className={` ${index !== 0 ? "font-bold" : ""}`}
             >
               {text}
             </p>
