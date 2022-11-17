@@ -95,7 +95,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
-    <section className={`w-full lg:h-[150vh] bg-white relative`} id={anchor} tabIndex={0}>
+    <section className={`w-full lg:h-[150vh] bg-white relative scroll-mt-[70px]`} id={anchor} tabIndex={0}>
       <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection contentBlocks={contentBlocks}/>
     </section>

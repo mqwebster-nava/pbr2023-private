@@ -63,7 +63,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
   return (
     <section
       id={anchor}
-      className="w-full min-h-[125vh] bg-gold-700 relative"
+      className="w-full min-h-[125vh] bg-gold-700 relative scroll-mt-[70px]"
       tabIndex={0}
     >
       <div className="responsive-container pt-2xl pb-4xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">

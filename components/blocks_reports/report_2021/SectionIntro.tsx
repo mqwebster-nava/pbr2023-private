@@ -88,12 +88,12 @@ const SectionIntro = ({ section, i }) => {
   return (
     <section
       id={`${section.anchor}`}
-      className="h-auto md:h-[140vh]"
+      className="h-auto md:h-[140vh] scroll-mt-[70px]"
       tabIndex={0}
     >
       <div className={`hidden lg:h-[100px] bg-${colorTheme}-900`}></div>
       <div
-        className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px]`}
+        className={`${bg} w-full md:min-h-screen block md:sticky md:top-[70px] `}
       >
         <div className="responsive-container">
           <div className="lg:pt-4xl pt-3xl ">

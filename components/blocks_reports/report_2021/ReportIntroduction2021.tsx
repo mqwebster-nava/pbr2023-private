@@ -63,7 +63,7 @@ const ReportIntroduction2021 = ({
       return () => window.removeEventListener("scroll", onScroll);
     });
     return (
-      <div id={`${anchor}`} className="bg-purple-50 mt-3xl" tabIndex={0}>
+      <div id={`${anchor}`} className="bg-purple-50 mt-3xl scroll-mt-[70px]" tabIndex={0}>
         <div className="responsive-container  py-2xl grid grid-cols-12 ">
         <ArrowDownColumn anchor={anchor} color={'purple-900'} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={'section'}/>
       
