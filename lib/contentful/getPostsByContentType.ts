@@ -38,7 +38,7 @@ export default async function getPostsByContentType(contentType, options=default
     const query =
     ` query GetPosts( $keepHidden: Boolean!)
     {
-      postCollection(limit: 100, where: {  keepHidden: $keepHidden }  ) 
+      postCollection(limit: 120, where: {  keepHidden: $keepHidden }  ) 
       {
         items {
           ${POST_CORE_FIELDS}

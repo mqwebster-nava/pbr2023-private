@@ -3,7 +3,7 @@ import { useState } from "react";
 const FilterBar = ({ tags, filterBarState, setFilterBarState }) => {
   const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
-  const contentTypes = ["Insight", "Case Study", "Toolkit", "News", "Events"];
+  const contentTypes = ["Insight", "Case Study", "Toolkit", "News", "Events", "Working at Nava"];
 
   const handleContentTypeChange = (e, option) => {
     console.log(e.checked, option);
@@ -83,7 +83,7 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
   <button
     id="dropdownCheckboxButton"
     data-dropdown-toggle="dropdownDefaultCheckbox"
-    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    className="text-white bg-sage-700 hover:bg-sage-800 focus:ring-4 focus:outline-none focus:ring-sage-300 font-medium rounded-xs text-sm px-4 py-2.5 text-center inline-flex items-center "
     type="button"
     onClick={() => {
       setIsOpen(!isOpen);
@@ -144,7 +144,7 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
                 id={`${item}-checkbox`}
                 type="checkbox"
                 value={item}
-                className={`${type}CheckBox w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500`}
+                className={`${type}CheckBox w-4 h-4  bg-gray-100 rounded border-gray-300  `}
               />
               <label
                 htmlFor={`${item}-checkbox`}
@@ -162,7 +162,7 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
 
 
 const ActiveFilterItems= ({handleChange, activeItems}) =>(
-<div className="flex gap-md py-sm">
+<div className="flex gap-md py-sm flex-wrap w-full">
 {activeItems.map((item) => {
   return (
     <button
