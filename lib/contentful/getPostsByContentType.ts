@@ -32,3 +32,25 @@ export default async function getPostsByContentType(contentType, options=default
     const posts = response.data.postCollection.items;
     return posts;
   }
+
+  export  async function getPosts(options=defaultOptions) {
+    const variables = { keepHidden:false };
+    const query =
+    ` query GetPosts( $keepHidden: Boolean!)
+    {
+      postCollection(limit: 100, where: {  keepHidden: $keepHidden }  ) 
+      {
+        items {
+          ${POST_CORE_FIELDS}
+        }
+      }
+    }
+  `;
+    const response = await callContentful(query, variables, options);
+    if ("errors" in response){
+      console.error(response);
+      return null;
+    }
+    const posts = response.data.postCollection.items;
+    return posts;
+  }

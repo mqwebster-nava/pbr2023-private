@@ -1,11 +1,9 @@
-
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
-
-
+import FilterBar from "./FilterBar";
 
 interface ArticleFeedInterface {
   id: string;
@@ -16,6 +14,8 @@ interface ArticleFeedInterface {
   items: any;
   max?: number;
   layout?: ListLayout;
+  filterable?: boolean;
+  tags?:Array<String>
 }
 
 const ArticleFeed = ({
@@ -27,13 +27,39 @@ const ArticleFeed = ({
   buttonText,
   max = 6,
   layout,
+  filterable = false,
+  tags=[]
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
+  const [filterBarState, setFilterBarState ] = useState({
+    contentTypes:[],
+    tags:[]
+  });
+  const [displayedPosts, setDisplayedPosts] =  useState(items);
+
+ 
+  useEffect(() => {
+   console.log("state change");
+   let _items = items;
+   if(filterBarState.contentTypes.length>0){
+    _items = _items.filter((it)=> { 
+      return filterBarState.contentTypes.includes(it.contentType)
+    })
+   }
+   if(filterBarState.tags.length>0){
+    _items = _items.filter((it)=> { 
+      return it.contentTags && it.contentTags.some((tag)=>filterBarState.tags.includes(tag))
+    })
+   }
+
+   if(_items!==displayedPosts) setDisplayedPosts(_items);
+
+  }, [filterBarState])
   return (
-    <section key={id} className="pt-xl pb-4xl" >
+    <section key={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
-      {title &&  <HorizontalLine variant="light"/>}
+        {title && <HorizontalLine variant="light" />}
         <div className={`w-full pt-md flex justify-between `}>
           <div className="md:w-3/4 ">
             {title && (
@@ -48,31 +74,52 @@ const ArticleFeed = ({
             )}
           </div>
           <div className="hidden md:inline-block">
-          {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
-            {buttonText ?? "See more"}
-          </LinkText>
-      )}
+            {buttonPath != null && (
+              <LinkText
+                href={buttonPath}
+                variant="default"
+                color="sage"
+                analyticsLabel="article-feed"
+              >
+                {buttonText ?? "See more"}
+              </LinkText>
+            )}
           </div>
         </div>
+      { filterable && 
+      <>
+      
+   
+      <FilterBar
+        tags={tags}
+        filterBarState={filterBarState}
+        setFilterBarState={setFilterBarState}
+       />
+        <p>{`${displayedPosts.length} posts found`}</p>
+         </>}
       </div>
       <div className="pt-xl">
-      <ContentGrid
-        id={"id"}
-        items={items}
-        contentType={"posts"}
-        layout={layout}
-      />
-       <div className="responsive-container md:hidden  py-lg flex justify-end">
+        <ContentGrid
+          id={"id"}
+          items={displayedPosts}
+          contentType={"posts"}
+          layout={layout}
+        />
+        <div className="responsive-container md:hidden  py-lg flex justify-end">
           {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
-            {buttonText ?? "See more"}
-          </LinkText>
-      )}
-          </div>
-     </div>
+            <LinkText
+              href={buttonPath}
+              variant="default"
+              color="sage"
+              analyticsLabel="article-feed"
+            >
+              {buttonText ?? "See more"}
+            </LinkText>
+          )}
+        </div>
+      </div>
     </section>
   );
 };
-
 export default ArticleFeed;
+
