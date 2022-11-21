@@ -16,6 +16,7 @@ export interface ContentBlockInterface {
   type?: ContentBlockType;
   image: ContentfulImageAsset;
   imageShape?: ImageShapeType;
+  useSerifInBody?:boolean;
 }
 
 const ContentBlock = ({
@@ -28,6 +29,7 @@ const ContentBlock = ({
   buttonPath,
   buttonText,
   buttonAriaLabel,
+  useSerifInBody=false
 }: ContentBlockInterface) => {
   const direction = classNames({
     "md:flex-row-reverse": type == "left repeater",
@@ -59,7 +61,7 @@ const ContentBlock = ({
             <h3 className={`font-sans type-preset-3 font-bold `}>{title} </h3>
           )}
           <div
-            className={`font-sans pt-lg type-preset-5 text-gray-700 pb-lg md:pb-xl`}
+            className={`${useSerifInBody?"font-serif":"font-sans"} pt-lg type-preset-5 text-gray-700 pb-lg md:pb-xl`}
           >
             {body}
           </div>

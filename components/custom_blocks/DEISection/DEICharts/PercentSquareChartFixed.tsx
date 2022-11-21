@@ -5,7 +5,7 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
   return (
     <ResponsiveContentContainer alignment="left" padding="pb-xl">
        <div className="pt-2xl">
-      <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
+      <h3 className="type-preset-4 font-bold font-sans border-b-2 border-gray-300">
         {title}
       </h3>
       </div>

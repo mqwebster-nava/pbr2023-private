@@ -1,3 +1,4 @@
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { FilterControl} from "components/blocks";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useState } from "react";
@@ -55,9 +56,10 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   return (
    <ResponsiveContentContainer alignment="left" padding="pb-xl">
       <div className="pt-2xl">
-        <h3 className="type-preset-4 font-bold border-b-2 border-gray-300">
+        <h3 className="type-preset-4 font-bold font-sans pb-md">
           {title}
         </h3>
+        <HorizontalLine  variant={"light"} hideFromVoiceOver/>
         <p className="py-lg type-preset-6">{content}</p>
       </div>
 
