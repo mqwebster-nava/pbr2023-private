@@ -9,22 +9,22 @@ import { PageInterface } from "lib/data_models/page_interface";
 const variantAB = ["insights", "resources"];
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [variant, setVariant] = useState(null);
+  const [variant, setVariant] = useState("insights");
   // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
   const pageData: PageInterface =
     "page" in pageProps ? pageProps.page : pageProps;
 
-  const initOptimize = (callback) => {
-    const script = document.createElement("script");
-    script.src = `https://www.googleoptimize.com/optimize.js?id=OPT-MCXK4VH`;
-    script.id = "google-optimize";
-    script.onload = callback;
-    script.onerror = () => {
-      setVariant(variantAB[0]);
-      localStorage.setItem("variantAB", variantAB[0]);
-    };
-    document.body.appendChild(script);
-  };
+  // const initOptimize = (callback) => {
+  //   const script = document.createElement("script");
+  //   script.src = `https://www.googleoptimize.com/optimize.js?id=OPT-MCXK4VH`;
+  //   script.id = "google-optimize";
+  //   script.onload = callback;
+  //   script.onerror = () => {
+  //     setVariant(variantAB[0]);
+  //     localStorage.setItem("variantAB", variantAB[0]);
+  //   };
+  //   document.body.appendChild(script);
+  // };
 
   useEffect(() => {
     // @ts-ignore
@@ -34,27 +34,27 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
     if (pageData && pageData.slug && pageData.slug.includes("public-benefit-reports/2021")) return;
 
-    initOptimize(() => {
-      const v = localStorage.getItem("variantAB");
-      if (v !== "undefined" && v) {
-        setVariant(v);
-      }
-      let interval = setInterval(() => {
-        // @ts-ignore
-        if (window.google_optimize !== undefined) {
-          // @ts-ignore
-          const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
-          if (typeof _variant !== "undefined") {
-            setVariant(variantAB[_variant]);
-            localStorage.setItem("variantAB", variantAB[_variant]);
-          } else if (variant == "undefined" || variant == null) {
-            setVariant(variantAB[0]);
-            localStorage.setItem("variantAB", variantAB[0]);
-          }
-          clearInterval(interval);
-        } 
-      }, 100);
-    });
+    // initOptimize(() => {
+    //   const v = localStorage.getItem("variantAB");
+    //   if (v !== "undefined" && v) {
+    //     setVariant(v);
+    //   }
+    //   let interval = setInterval(() => {
+    //     // @ts-ignore
+    //     if (window.google_optimize !== undefined) {
+    //       // @ts-ignore
+    //       const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
+    //       if (typeof _variant !== "undefined") {
+    //         setVariant(variantAB[_variant]);
+    //         localStorage.setItem("variantAB", variantAB[_variant]);
+    //       } else if (variant == "undefined" || variant == null) {
+    //         setVariant(variantAB[0]);
+    //         localStorage.setItem("variantAB", variantAB[0]);
+    //       }
+    //       clearInterval(interval);
+    //     } 
+    //   }, 100);
+    // });
   }, []);
 
   return (
