@@ -94,6 +94,7 @@ const ArticleFeed = ({
         tags={tags}
         filterBarState={filterBarState}
         setFilterBarState={setFilterBarState}
+        numResults={displayedPosts.length}
        />
         <p>{`${displayedPosts.length} posts found`}</p>
          </>}

@@ -1,9 +1,16 @@
 import { useState } from "react";
 
-const FilterBar = ({ tags, filterBarState, setFilterBarState }) => {
+const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
   const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
-  const contentTypes = ["Insight", "Case Study", "Toolkit", "News", "Events", "Working at Nava"];
+  const contentTypes = [
+    "Insight",
+    "Case Study",
+    "Toolkit",
+    "News",
+    "Events",
+    "Working at Nava",
+  ];
 
   const handleContentTypeChange = (e, option) => {
     if (e.checked) {
@@ -41,36 +48,71 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState }) => {
   };
 
   return (
-    <div className="grid grid-cols-2">
-      <div className="relative col-span-1">
+    <div className="grid grid-cols-12">
+      <div className="relative col-span-6">
         <div>
           <FilterButton
             isOpen={isTagsOpen}
             setIsOpen={setIsTagsOpen}
             title={"Topics"}
           />
-          <ResetFilterButton type={"tag"} title={filterBarState.tags.length>0?"Show all":"Showing all topics"} onClick={()=>setFilterBarState((previousState) => {
+          <ResetFilterButton
+            type={"tag"}
+            title={
+              filterBarState.tags.length > 0 ? "Show all" : "Showing all topics"
+            }
+            onClick={() =>
+              setFilterBarState((previousState) => {
                 return { ...previousState, tags: [] };
-              })}/>
+              })
+            }
+          />
         </div>
-        <FilterDropdownList type={"tag"} isOpen={isTagsOpen} handleChange={handleTagChange} items={tags} />
-        <ActiveFilterItems handleChange={handleTagChange} activeItems={filterBarState.tags}/>
-       
+        <FilterDropdownList
+          type={"tag"}
+          isOpen={isTagsOpen}
+          handleChange={handleTagChange}
+          items={tags}
+        />
+        <ActiveFilterItems
+          handleChange={handleTagChange}
+          activeItems={filterBarState.tags}
+        />
       </div>
-      <div className="relative">
+      <div className="relative  col-span-5">
         <div>
           <FilterButton
             isOpen={isContentTypeOpen}
             setIsOpen={setIsContentTypeOpen}
             title={"Content Types"}
           />
-            <ResetFilterButton type={"contentType"} title={filterBarState.contentTypes.length>0?"Show all":"Showing all types"} onClick={()=>setFilterBarState((previousState) => {
+          <ResetFilterButton
+            type={"contentType"}
+            title={
+              filterBarState.contentTypes.length > 0
+                ? "Show all"
+                : "Showing all types"
+            }
+            onClick={() =>
+              setFilterBarState((previousState) => {
                 return { ...previousState, contentTypes: [] };
-              })}/>
+              })
+            }
+          />
         </div>
-        <FilterDropdownList type={"contentType"} isOpen={isContentTypeOpen} handleChange={handleContentTypeChange} items={contentTypes} />
-        <ActiveFilterItems handleChange={handleContentTypeChange} activeItems={filterBarState.contentTypes}/>
-       
+        <FilterDropdownList
+          type={"contentType"}
+          isOpen={isContentTypeOpen}
+          handleChange={handleContentTypeChange}
+          items={contentTypes}
+        />
+        <ActiveFilterItems
+          handleChange={handleContentTypeChange}
+          activeItems={filterBarState.contentTypes}
+        />
+      </div>
+      <div className="col-span-1">
+      <p>{`${numResults} posts found`}</p>
       </div>
     </div>
   );
@@ -123,9 +165,9 @@ const ResetFilterButton = ({ type, onClick, title }) => (
     {title}
   </button>
 );
-const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
-    // TODO 
-    <div
+const FilterDropdownList = ({ isOpen, handleChange, items, type }) => (
+  // TODO
+  <div
     className={`${
       !isOpen && "hidden"
     } absolute z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
@@ -134,7 +176,7 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
       className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
       aria-labelledby="dropdownCheckboxButton"
     >
-      {items.map((item,i) => {
+      {items.map((item, i) => {
         return (
           <li key={i}>
             <div className="flex items-center">
@@ -159,22 +201,56 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
   </div>
 );
 
-
-const ActiveFilterItems= ({handleChange, activeItems}) =>(
-<div className="flex gap-md py-sm flex-wrap w-full">
-{activeItems.map((item) => {
-  return (
-    <button
-      className="bg-navy-50 p-sm type-preset-7"
-      onClick={() => {
-        let checkbox = document.getElementById(`${item}-checkbox`);
-        // @ts-ignore
-        checkbox.checked = false;
-        handleChange(checkbox,item);
-      }}
-    >
-      {item} x
-    </button>
-  );
-})}
-</div>);
+const ActiveFilterItems = ({ handleChange, activeItems }) => (
+  <div className="flex gap-md py-sm flex-wrap w-full">
+    {activeItems.map((item) => {
+      return (
+        <button
+          className={` group
+          border-gray-400 border-2 p-sm type-preset-7 flex gap-md items-center
+           hover:bg-gray-100`}
+          onClick={() => {
+            let checkbox = document.getElementById(`${item}-checkbox`);
+            // @ts-ignore
+            checkbox.checked = false;
+            handleChange(checkbox, item);
+          }}
+        >
+          <div>{item} </div>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="pt-xs  stroke-black group-hover:stroke-red-700 "
+          >
+            <g clip-path="url(#clip0_334_3846)">
+              <line
+                x1="3"
+                y1="44.4645"
+                x2="44.4645"
+                y2="3"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="3.53553"
+                y1="3"
+                x2="45"
+                y2="44.4645"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_334_3846">
+                <rect width="48" height="48" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      );
+    })}
+  </div>
+);
