@@ -6,7 +6,6 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState }) => {
   const contentTypes = ["Insight", "Case Study", "Toolkit", "News", "Events", "Working at Nava"];
 
   const handleContentTypeChange = (e, option) => {
-    console.log(e.checked, option);
     if (e.checked) {
       setFilterBarState((previousState) => {
         let contentTypes = [...previousState.contentTypes];
@@ -83,7 +82,7 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
   <button
     id="dropdownCheckboxButton"
     data-dropdown-toggle="dropdownDefaultCheckbox"
-    className="text-white bg-sage-700 hover:bg-sage-800 focus:ring-4 focus:outline-none focus:ring-sage-300 font-medium rounded-xs text-sm px-4 py-2.5 text-center inline-flex items-center "
+    className="text-white bg-sage-700 hover:bg-sage-800 focus:ring-4 focus:outline-none focus:ring-sage-300 font-medium rounded-xs type-preset-7 px-4 py-2.5 text-center inline-flex items-center "
     type="button"
     onClick={() => {
       setIsOpen(!isOpen);
@@ -135,9 +134,9 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
       className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
       aria-labelledby="dropdownCheckboxButton"
     >
-      {items.map((item) => {
+      {items.map((item,i) => {
         return (
-          <li>
+          <li key={i}>
             <div className="flex items-center">
               <input
                 onChange={(e) => handleChange(e.target, item)}
@@ -148,7 +147,7 @@ const FilterDropdownList= ({ isOpen, handleChange, items, type}) =>(
               />
               <label
                 htmlFor={`${item}-checkbox`}
-                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="ml-2 type-preset-6 font-medium text-gray-900 dark:text-gray-300"
               >
                 {item}
               </label>
@@ -166,7 +165,7 @@ const ActiveFilterItems= ({handleChange, activeItems}) =>(
 {activeItems.map((item) => {
   return (
     <button
-      className="bg-navy-50 p-sm"
+      className="bg-navy-50 p-sm type-preset-7"
       onClick={() => {
         let checkbox = document.getElementById(`${item}-checkbox`);
         // @ts-ignore
