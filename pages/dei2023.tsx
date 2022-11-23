@@ -6,7 +6,7 @@
   import { PageInterface } from "lib/data_models/page_interface";
 
 
-  export default function DEI(props:PageInterface) {
+  export default function DEI2023(props:PageInterface) {
     return (
       <PageTemplate {...props}>
       </PageTemplate>
@@ -16,7 +16,7 @@
   export async function getStaticProps({ params, preview = false }) {
     
     const res: PageInterface = await getPageDataFromContentful({
-      slug: "/dei2022",
+      slug: "/dei2023",
       preview: preview,
     });
     return {
