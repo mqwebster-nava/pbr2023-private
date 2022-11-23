@@ -15,11 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     "page" in pageProps ? pageProps.page : pageProps;
 
   const initOptimize = (callback) => {
+    console.log("init");
     const script = document.createElement("script");
     script.src = `https://www.googleoptimize.com/optimize.js?id=OPT-MCXK4VH`;
     script.id = "google-optimize";
     script.onload = callback;
     script.onerror = () => {
+      console.log("error");
       setVariant(variantAB[0]);
       localStorage.setItem("variantAB", variantAB[0]);
     };
@@ -36,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     initOptimize(() => {
       const v = localStorage.getItem("variantAB");
+      console.log(v);
       if (v !== "undefined" && v) {
         setVariant(v);
       }
@@ -45,6 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           // @ts-ignore
           const _variant = window.google_optimize.get("McXqflc5SwGUWzU7HKnh7w");
           if (typeof _variant !== "undefined") {
+            console.log(_variant);
             setVariant(variantAB[_variant]);
             localStorage.setItem("variantAB", variantAB[_variant]);
           } else if (variant == "undefined" || variant == null) {
