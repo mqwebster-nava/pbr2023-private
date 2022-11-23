@@ -7,7 +7,8 @@ module.exports = withBundleAnalyzer({
     defaultLocale: "en",
   },
   images: {
-    domains: ["images.ctfassets.net", "dl.airtable.com"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    domains: ["images.ctfassets.net", "dl.airtable.com", "v5.airtableusercontent.com"],
   },
   async redirects() {
     return [
@@ -504,7 +505,12 @@ module.exports = withBundleAnalyzer({
         source: "/insights/use-us-web-design-system",
         destination: "/insights/us-web-design-system",
         permanent: true,
-      }
+      },
+      {
+        source:  "/events/reducing-processing-time-with-va-deputy-cto",
+        destination: "/events",
+        permanent: false,
+      },
     ];
   },
 });

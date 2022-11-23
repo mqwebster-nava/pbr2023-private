@@ -3,7 +3,7 @@ import { AuthorPostInterface, FullPostInterface } from "lib/data_models/post_int
 import { formatImageAsset } from "./formatImageAsset";
 
   export const formatFullPost = (post) =>{
-   
+   if(!post) return null;
     const formattedPost: FullPostInterface = {
       __typename:"Post",
       id: post.sys.id,

@@ -90,7 +90,7 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
           <div className="w-full lg:w-3/4 relative h-auto">
             <h1
               id={"reportHeader-titleBox"}
-              className="pt-xl md:pt-2xl lg:pb-3xl -ml-xs md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100"
+              className="pt-xl md:pt-2xl lg:pb-3xl -ml-xs md:-ml-md xl:text-[200px] lg:text-[170px] md:text-[140px] text-[80px] font-black text-white  leading-[0.8]  opacity-0 motion-reduce:opacity-100 tracking-[-.02em]"
             >
               Public <br /> Benefit <br /> Report
             </h1>
@@ -117,14 +117,13 @@ const ReportHero2021 = ({}: PageHeaderInterface) => {
                 id="titleLine2"
                 className="type-preset-5 font-serif text-white font-light tracking-[0.015em] opacity-0 motion-reduce:opacity-100"
               >
-                building sustainable government services
+                Building sustainable government services
               </p>
               <p
                 id="titleLine3"
                 className="type-preset-5 font-serif text-purple-100 opacity-0 lg:pt-xl tracking-[0.015em] font-light motion-reduce:opacity-100"
               >
-                Each year, Nava outlines its work and progress in a public
-                benefit report.
+                As a public benefit corporation, Nava outlines our impact in our annual Public Benefit Report.
               </p>
             </div>
             <a

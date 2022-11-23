@@ -11,6 +11,6 @@ export default {
 } as ComponentMeta<typeof ContactSection>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof ContactSection> = (args) => <ContactSection {...args} />;
+const Template: ComponentStory<typeof ContactSection> = (args) => <ContactSection />;
 
 export const Default = Template.bind({});

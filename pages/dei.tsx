@@ -69,7 +69,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
       </section>
       <section className="bg-white">
         <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
-          <ReportContentDEI  content={content.body} />
+          <ReportContentDEI content={content.body} />
         </ResponsiveContentContainer>
         <PercentSquareChart
           title={race.title}
@@ -103,7 +103,7 @@ export default function DEI({ page, reportData }: DEIPageInterface) {
       <ResponsiveContentContainer alignment={"left"} padding="py-3xl">
           <ReportContentDEI  content={content.resources.introduction} />
           <ResourceGroups groups={content.resources.groups} />
-      </ResponsiveContentContainer>
+        </ResponsiveContentContainer>
       </section>
     </PageTemplate>
   );
@@ -145,4 +145,3 @@ const createFilters = (dataKey, data, categories) => {
   });
   return filters;
 };
-
