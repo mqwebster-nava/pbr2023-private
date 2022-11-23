@@ -105,3 +105,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
     </ResponsiveContentContainer>
   );
 };
+
+
+// if wanted to sort by #/%
+//  stats.sort((a,b)=>b[selectedFilter.id]-a[selectedFilter.id] ).map
