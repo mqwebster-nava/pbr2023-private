@@ -11,10 +11,11 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
     "bg-gold-50": colorTheme == "gold",
     "bg-sage-50": colorTheme == "sage",
   });
-
   const getDataSections = () => {
+  
     const filtersData =
       data.find((sectionData) => sectionData.type == "categories") ?? null;
+
     return data?.map((sectionData, i) => {
       if (!("type" in sectionData)) return null;
       if (sectionData.type == "groups")
@@ -83,9 +84,8 @@ export default DEISection;
 
 const createFilters = (dataKey, data, categories) => {
   const filterKeys = Object.keys(data).filter(
-    (key) => !key.includes("_Multi") && !key.includes(dataKey)
+    (key) => !key.includes("_Multi") && !key.includes(dataKey) && (key in categories)
   );
-
   const filters = filterKeys.map((key) => {
     return {
       id: key,
