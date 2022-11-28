@@ -10,7 +10,7 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
       </h3>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-5 py-lg">
-        {stats.map((graph, index) => (
+        {stats.sort((a,b)=> b.percentage-a.percentage).map((graph, index) => (
           <PercentSquareGraph
             key={`percent_square_graph_${index}`}
             percent={graph.percentage}
