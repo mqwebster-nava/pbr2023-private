@@ -6,7 +6,7 @@ This contains all the interfaces for page level data
 
 */
 // AB Testing for insights vs stories
-export type VARIANTTYPE = "insights" | "resources"
+export type VARIANTTYPE = "insights" | "library"
 
 export interface PageInterface {
   id: string;

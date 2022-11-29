@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import { PageInterface } from "lib/data_models/page_interface";
 
-const variantAB = ["insights", "resources"];
+const variantAB = ["insights", "library"];
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [variant, setVariant] = useState(null);
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         // @ts-ignore
         if (window.google_optimize !== undefined) {
           // @ts-ignore
-          const _variant = window.google_optimize.get("rnlDMIF-ReeeJ1klTSa88g");
+          const _variant = window.google_optimize.get("McXqflc5SwGUWzU7HKnh7w");
           if (typeof _variant !== "undefined") {
             setVariant(variantAB[_variant]);
             localStorage.setItem("variantAB", variantAB[_variant]);
