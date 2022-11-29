@@ -25,6 +25,7 @@ const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventS
 
 
 import { PageInterface } from "lib/data_models/page_interface";
+import DEISection from "components/custom_blocks/DEISection/DEISection";
 
 const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
@@ -54,6 +55,7 @@ const PageTemplate: React.FC<PageInterface> = ({
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
+        if(entry.type == "DEI Section") return <DEISection key={index} {...entry} />
         return null
       }
     }

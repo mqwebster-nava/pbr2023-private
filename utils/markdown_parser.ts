@@ -1,3 +1,13 @@
+/*
+! NO LONGER USED
+
+This was a way to parse markdown files for the Public benefit and DE&I reports content.
+
+I've since moved those into contentful so they aren't stored as markdown files.
+
+Temporarily keeping this in case it's useful in the future
+*/
+
 import fs from "fs";
 import path from "path";
 import fm from "front-matter";

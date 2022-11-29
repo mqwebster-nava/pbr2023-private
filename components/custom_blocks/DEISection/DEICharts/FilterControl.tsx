@@ -35,7 +35,8 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
 }) => {
   return (
     <fieldset aria-label={label} >
-      <p className="font-black type-preset-5">Filter by</p>
+      <div className="pt-lg">
+      <p className="font-bold type-preset-6">Filter by</p>
       <FilterButtonGroup
         filters={filters}
         handleClick={handleFilterClick}
@@ -50,6 +51,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
           handleClick={handleCheckboxClick}
         />
       )}
+      </div>
       {children}
     </fieldset>
   );
