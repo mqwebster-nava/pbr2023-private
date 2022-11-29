@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useState } from "react";
 
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
@@ -49,8 +50,8 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
   };
 
   return (
-    <div className="grid grid-cols-12">
-      <div className="relative col-span-6">
+    <div className="flex relative">
+      <div className="">
         <div>
           <FilterButton
             isOpen={isTagsOpen}
@@ -59,9 +60,9 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
           />
           <ResetFilterButton
             type={"tag"}
-            title={
-              filterBarState.tags.length > 0 ? "Show all" : "Showing all topics"
-            }
+            activetitle={ "Show all"}
+            inactiveTitle={"Showing all topics"}
+            isActive={filterBarState.tags.length > 0}
             onClick={() =>
               setFilterBarState((previousState) => {
                 return { ...previousState, tags: [] };
@@ -80,7 +81,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
           activeItems={filterBarState.tags}
         />
       </div>
-      <div className="relative  col-span-5">
+      <div className="">
         <div>
           <FilterButton
             isOpen={isContentTypeOpen}
@@ -89,11 +90,9 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
           />
           <ResetFilterButton
             type={"contentType"}
-            title={
-              filterBarState.contentTypes.length > 0
-                ? "Show all"
-                : "Showing all types"
-            }
+            activetitle={ "Show all"}
+            inactiveTitle={"Showing all types"}
+            isActive={filterBarState.contentTypes.length > 0}
             onClick={() =>
               setFilterBarState((previousState) => {
                 return { ...previousState, contentTypes: [] };
@@ -112,7 +111,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
           activeItems={filterBarState.contentTypes}
         />
       </div>
-      <div className="col-span-1">
+      <div className="">
       <p>{`${numResults} posts found`}</p>
       </div>
     </div>
@@ -150,9 +149,16 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
   </button>
 );
 
-const ResetFilterButton = ({ type, onClick, title }) => (
+const ResetFilterButton = ({ type, onClick, activetitle, inactiveTitle, isActive }) => {
+  const styles = classNames({
+    "underline hover:text-sage-700": isActive,
+    "text-gray-700 ": !isActive
+  });
+
+  return (
   <button
-    className="underline px-md hover:text-sage-700"
+    disabled={!isActive}
+    className={` px-md ${styles}`}
     onClick={() => {
       Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
         (el) => {
@@ -163,18 +169,22 @@ const ResetFilterButton = ({ type, onClick, title }) => (
       onClick();
     }}
   >
-    {title}
+    {isActive?activetitle:inactiveTitle}
   </button>
-);
+)};
 const FilterDropdownList = ({ isOpen, handleChange, items, type }) => (
   // TODO
   <div
     className={`${
       !isOpen && "hidden"
-    } absolute z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
+    } absolute z-10  left-0 right-0 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
   >
+    <div className="flex justify-between p-lg">
+      <p className="">Filter By X</p>
+      <button>Clear all</button>
+    </div>
     <ul
-      className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+      className="p-3 flex w-full flex-wrap gap-lg"
       aria-labelledby="dropdownCheckboxButton"
     >
       {items.map((item, i) => {
