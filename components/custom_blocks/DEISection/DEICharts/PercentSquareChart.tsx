@@ -1,3 +1,4 @@
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { FilterControl} from "components/blocks";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import React, { useState } from "react";
@@ -30,12 +31,13 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   theme = "sage",
 }) => {
   // Default to first item in filter selected.
+  dataFilters = dataFilters.sort((a,b)=>b.total-a.total)
   const defaultFilter = dataFilters[0];
   const regionId = `${title}Charts`;
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
-
+ 
   const [multiSelected, setMultiSelected] = useState(false);
 
   // Two more selections made in data has the key suffixed with "_Multi"
@@ -53,12 +55,13 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   };
 
   return (
-   <ResponsiveContentContainer>
+   <ResponsiveContentContainer alignment="left" padding="pb-xl">
       <div className="pt-2xl">
-        <h3 className="type-preset-4 font-black border-b-2 border-gray-300">
+        <h3 className="type-preset-4 font-bold font-sans pb-md">
           {title}
         </h3>
-        <p className="py-2xl">{content}</p>
+        <HorizontalLine  variant={"light"} hideFromVoiceOver/>
+        <p className="py-lg type-preset-6">{content}</p>
       </div>
 
       <FilterControl
@@ -72,13 +75,13 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
-        <div className="pt-3xl grid grid-cols-2 md:grid-cols-5"
+        <div className="pt-lg grid grid-cols-2 md:grid-cols-5"
          role="region" 
          aria-live="polite"
           id={regionId}
           aria-label={`${title} data, filtered by ${selectedFilter.text}`}
         >
-          {stats.map((graph, index) => (
+          {stats.sort((a,b)=>b["employee"]-a["employee"] ).map((graph, index) => (
             <PercentSquareGraph
               key={`percent_square_graph_${index}`}
               percent={graph[selectedFilter.id]}
@@ -90,11 +93,11 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
           ))}
         </div>
       </FilterControl>
-        <div className="mx-0">
+        <div className="mx-0 py-md type-preset-7">
           {context.map((text, index) => (
             <p
               key={`chart_context_${index}`}
-              className={`py-md ${index !== 0 ? "font-bold" : ""}`}
+              className={` ${index !== 0 ? "font-bold" : ""}`}
             >
               {text}
             </p>
@@ -103,3 +106,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
     </ResponsiveContentContainer>
   );
 };
+
+
+// if wanted to sort by #/%
+//  stats.sort((a,b)=>b[selectedFilter.id]-a[selectedFilter.id] ).map

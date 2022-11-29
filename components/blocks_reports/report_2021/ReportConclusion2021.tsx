@@ -63,7 +63,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
   return (
     <section
       id={anchor}
-      className="w-full min-h-[125vh] bg-gold-700 relative"
+      className="w-full min-h-[125vh] bg-gold-700 relative scroll-mt-[70px]"
       tabIndex={0}
     >
       <div className="responsive-container pt-2xl pb-4xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
@@ -103,7 +103,7 @@ const ReportConclusion2021 = ({ title, richBody, anchor }) => {
               ["/case-studies", "Case Studies"],
               ["/public-benefit-reports/2020", "2020 Public Benefit Report"],
             ],
-            [["/contact", "Get in touch"]],
+            [["/contact", "Get in touch"], ["https://navapbc.us10.list-manage.com/subscribe?u=c69eb1fd5475fa5122ef55965&id=a994830182","Sign up for our newsletter", ]],
           ].map((row, i) => (
             <ul
               id={`conclusion-footer${i + 1}`}

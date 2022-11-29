@@ -21,5 +21,6 @@ image {
     description
 }
 imageShape
+useSerifInBody
 `;
 export default CONTENT_BLOCK;

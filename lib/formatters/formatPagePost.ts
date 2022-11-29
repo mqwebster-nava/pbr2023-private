@@ -7,6 +7,7 @@ import { defaultSocialImage } from "./utils";
 
 
 export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPostInterface> ){
+    if(!post) return null;
     const variant =  post.contentType==="Events" ? "Events Post" : "Post"
     const formattedPage: PageInterface =  {
       id: post.id,

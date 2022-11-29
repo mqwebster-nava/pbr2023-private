@@ -154,9 +154,3 @@ export const debounce = (callback, wait) => {
   };
 };
 
-// if (
-//   componentState &&
-//   animation.componentStates &&
-//   !animation.includes(componentState)
-// )
-//   return;

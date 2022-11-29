@@ -28,6 +28,12 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
     variant:"post"
   });
+  //console.log("resres);
+  if (!res) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: res,
     // Next.js will attempt to re-generate the page:

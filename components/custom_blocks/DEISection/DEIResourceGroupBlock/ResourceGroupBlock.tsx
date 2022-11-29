@@ -31,7 +31,7 @@ export const ResourceGroupBlock: React.FC<ResourceGroupBlockInterface> = ({
   const background = color[title] ? color[title].bg : "";
   const textColor = color[title] ? color[title].title : "";
   return (
-    <div className="md:max-w-[45%] flex-grow flex flex-col items-stretch  mt-4 mr-4">
+    <div className=" flex flex-col items-stretch ">
       <div className={`h-[10px] ${background}`} />
       <div className="flex-grow flex flex-col items-stretch bg-white p-6">
         <h3 className={`font-bold type-preset-5 mb-lg ${textColor}`}>{title}</h3>

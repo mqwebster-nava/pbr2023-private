@@ -29,7 +29,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
         animations.push(a);
       
         let b: AnimationObject = {
-          triggerPct:20,
+          triggerPct:10,
           animation: makeSlideUpAnimation("stories-"+ block.anchor, i*100),
           //noRepeat:true
         };
@@ -54,7 +54,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
       animations.push(line1Fade);
       // Part 2
       let line2Fade: AnimationObject = {
-        triggerPct:20,
+        triggerPct:10,
         animation: makeSlideUpAnimation("desktop-description2", 0),
        // noRepeat:true
       };
@@ -95,7 +95,7 @@ const TableOfContentsSection = ({ title, anchor, contentBlocks}) => { //activeSe
 
   //@apply px-xl md:px-4xl 2xl:px-0 2xl:mx-auto 2xl:max-w-screen-xl ;
   return (
-    <section className={`w-full lg:h-[150vh] bg-white relative`} id={anchor} tabIndex={0}>
+    <section className={`w-full lg:h-[150vh] bg-white relative scroll-mt-[70px]`} id={anchor} tabIndex={0}>
       <DesktopSection contentBlocks={contentBlocks}/>
       <MobileSection contentBlocks={contentBlocks}/>
     </section>
@@ -136,11 +136,11 @@ const MobileSection = ({contentBlocks}) => {
     <div className="block lg:hidden">
       <div className="w-full h-full bg-white pt-lg pb-3xl px-xl md:px-4xl  ">
         <p className="type-preset-5 font-serif pb-md">
-        Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
+        Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
         </p>
         <p className="type-preset-5 font-serif ">
-        Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava worked to build equity by designing public services for all.
-        </p>
+        Through these <b className="font-bold">stories about our projects</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
+         </p>
       </div>
       <MobileSectionTitle
         title={"Letter from leadership"}
@@ -193,11 +193,10 @@ const DesktopSection = ({contentBlocks}) => {
         <div className="w-full lg:w-1/4 h-full lg:min-h-[calc(100vh_-_70px)]  pt-[88px] px-xl md:px-4xl lg:px-0 lg:max-w-[316px] flex flex-col justify-between aling-start">
          <div>
           <div id={"desktop-description1"} className={`type-preset-5 font-serif font-light pt-lg opacity-0 motion-reduce:opacity-100`}>           
-            Our 2021 report is <b className="font-bold">themed</b> around building equity through strong public services.
+            Our annual report is <b className="font-bold">themed</b> around building equity through strong public services.
           </div>
           <p id={"desktop-description2"} className={`pt-xl type-preset-5 font-serif font-light opacity-0 motion-reduce:opacity-100`} >
-            Through <b className="font-bold">project-specific stories</b>, the 2021 report details how Nava 
-            worked to build equity by designing public services for all.
+            Through these <b className="font-bold">stories about our projects</b>, we detail how Nava has worked alongside public servants to help make government services simple, accessible, and equitable.
           </p>
           </div>
           <a  
@@ -309,9 +308,9 @@ const DesktopSectionTitle = ({
         id={`stories-${anchor}`}
           className={` col-span-5 pt-lg pr-xl pb-xl divide-y ${dividerColor(colorTheme)} opacity-0 motion-reduce:opacity-100 focus-within:opacity-100`}
         >
-           <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
+          {stories && <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories
-            </p>
+            </p> }
          
           {stories &&
             stories.filter((story)=>story.hideStory!==true).map((story) => {

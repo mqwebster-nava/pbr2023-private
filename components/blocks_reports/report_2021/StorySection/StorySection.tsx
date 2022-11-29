@@ -16,6 +16,7 @@ import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
 import ArrowDownColumn from "../Atoms/ArrowDownColumn";
 import classNames from "classnames";
+import { LinkText } from "components/atom/LinkText/LinkText";
 
 /* TODO  
 Logic for the portiat view on larger screens, 
@@ -39,9 +40,8 @@ const StorySection = ({
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection;
   const [animationList, setAnimationList] = useState([]);
-
   const [isMobileLandscape, setIsMobileLandscape] = useState(false);
-
+//linkedPostUrl
   const initiateAnimations = () => {
     let ana = [];
     const sectionH = document.getElementById(storyId).offsetHeight;
@@ -132,15 +132,14 @@ const StorySection = ({
     //if (!isActive) return;
     const offsetPct = getOffsetPct(storyId);
     if (offsetPct < -20 || offsetPct >= 100) return;
-    const inFocus = document
-      .getElementById(storyId)
-      .contains(document.activeElement);
-    animationHandler({
-      offsetPct,
-      animationList,
-      inFocus,
-      isPortaitSameAsTablet: true,
-    });
+    let inFocus = document.getElementById(storyId).contains(document.activeElement);
+    if(inFocus){
+      if( document.activeElement.id.includes("next-arrow")) inFocus=false;
+      
+    }
+
+    // Issue with in focus
+    animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
   };
 
   useEffect(() => {
@@ -172,6 +171,13 @@ const StorySection = ({
     "border-t-navy-600": colorTheme === "navy",
     "border-t-gold-pbrcustomdark": colorTheme === "gold",
   });
+  const LinkedPost = ({url})=>{
+    if(!url)return null;
+    const linkText = url.includes("/insights/") ? "Insights article." : "case study."
+    return (<p className={`type-preset-6 font-bold font-serif pt-md`}>To learn more, read our <LinkText href={url} variant={"underlined"} color={"inherit"} hoverStyle={"sage"}>{linkText}</LinkText></p>)
+  
+  }
+
 
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
@@ -263,7 +269,9 @@ const StorySection = ({
                     reportYear={"2021"}
                     isMobileLandscape={isMobileLandscape}
                   />
+                    {story.linkedPostUrl && <LinkedPost url={story.linkedPostUrl}/>}
                 </div>
+              
               </div>
             </div>
           </div>
@@ -291,6 +299,8 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           layout="fill"
           objectFit="cover"
           className="storyImg absolute top-0 left-0 w-screen opacity-100 object-left-top"
+          sizes={`(max-width: 2000px) 100vw,
+              2000px`}
         ></Image>
         <Image
           id={`contextImg-${story.anchor}`}
@@ -300,6 +310,8 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           quality={"85"}
           objectFit="cover"
           className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block`}
+          sizes={`(max-width: 2000px) 100vw,
+              2000px`}
         ></Image>
       </div>
     </div>
