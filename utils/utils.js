@@ -57,15 +57,16 @@ export function isDateAfterNow(date) {
 
 export function getContentUrl(contentType, slug) {
   const contentMap = {
-    Insight: "insights",
-    "Case Study": "case-studies",
-    Toolkit: "toolkits",
-    "Working at Nava": "working-at-nava",
-    News: "news",
-    Events:"events"
+    Insight: "/insights",
+    "Case Study": "/case-studies",
+    Toolkit: "/toolkits",
+    "Working at Nava": "/working-at-nava",
+    News: "/news",
+    Events:"/events",
+    "Public Benefit Report":""
   };
   const contentPart = contentMap[contentType];
-  return `/${contentPart}/${slug}`;
+  return `${contentPart}/${slug}`;
 }
 
 // Ensures that the id is a stand alone field and maps collections to a list of items

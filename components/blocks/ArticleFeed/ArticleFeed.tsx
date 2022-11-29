@@ -40,7 +40,6 @@ const ArticleFeed = ({
 
  
   useEffect(() => {
-   console.log("state change");
    let _items = items;
    if(filterBarState.contentTypes.length>0){
     _items = _items.filter((it)=> { 

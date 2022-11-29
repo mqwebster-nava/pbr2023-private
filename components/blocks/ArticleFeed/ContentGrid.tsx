@@ -52,14 +52,15 @@ const ContentGrid = ({
             const feature = classNames({
               "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,
             });
-            const kicker = item.contentType == "Case Study" ? item.clientName :
+            const kicker = item.kicker ? item.kicker :
+             item.contentType == "Case Study" ? item.clientName :
                            item.contentType == "News" ? getDateStr(item.date) :
                            item.contentType == "Events" ? getEventDateStr(item.date): null;
 
             return (
               <div className={`w-full self-stretch ${feature}`} key={`${item.id}-${item.title}`}>
-                { item["__typename"] == "Post" ?
-                (
+            
+                
                   <ContentCard
                     size={
                       layout =="3 card row" || i > 3
@@ -75,19 +76,7 @@ const ContentGrid = ({
                     summary={item.shortSummary}
                     analyticsLabel="article-feed"
                  />
-                )
-                 :(
-                  <ContentCard
-                    size={
-                      layout =="3 card row" || i > 3
-                        ? "third"
-                        : i == 0
-                        ? "half"
-                        : "quarter"
-                    }
-                    {...item}
-                  />
-                )}
+                
               </div>
             );
           })}

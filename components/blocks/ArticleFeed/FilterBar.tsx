@@ -10,6 +10,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
     "News",
     "Events",
     "Working at Nava",
+    "Public Benefit Report"
   ];
 
   const handleContentTypeChange = (e, option) => {

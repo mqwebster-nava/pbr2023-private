@@ -5,11 +5,17 @@ const CONTENT_CARD = `
     id
   }
   title
-  summary
   kicker
-  image{
+  date
+  slug
+  contentType
+  keepHidden
+  contentTags
+  shortSummary
+  promoImage{
     ${IMAGE_FIELDS}
   }
-  path
+
 `;
+
 export default CONTENT_CARD;
