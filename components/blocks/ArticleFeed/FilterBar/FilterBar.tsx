@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FilterDropdownList from "./FilterDropdownList";
 
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
   const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
@@ -11,39 +12,39 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
     "News",
     "Events",
     "Working at Nava",
-    "Public Benefit Report"
+    "Public Benefit Report",
   ];
 
-  const handleContentTypeChange = (e, option) => {
-    if (e.checked) {
+  const handleContentTypeChange = (checkboxElement, name) => {
+    if (checkboxElement.checked && !filterBarState.contentTypes.includes(name)) {
       setFilterBarState((previousState) => {
         let contentTypes = [...previousState.contentTypes];
-        contentTypes.push(option);
+        contentTypes.push(name);
         return { ...previousState, contentTypes };
       });
-    } else {
+    } else if(!checkboxElement.checked){
       setFilterBarState((previousState) => {
         return {
           ...previousState,
           contentTypes: previousState.contentTypes.filter(
-            (type) => option != type
+            (type) => name != type
           ),
         };
       });
     }
   };
-  const handleTagChange = (e, option) => {
-    if (e.checked) {
+  const handleTagChange = (checkboxElement, name) => {
+    if (checkboxElement.checked && !filterBarState.tags.includes(name)) {
       setFilterBarState((previousState) => {
         let tags = [...previousState.tags];
-        tags.push(option);
+        tags.push(name);
         return { ...previousState, tags };
       });
-    } else {
+    } else if(!checkboxElement.checked){
       setFilterBarState((previousState) => {
         return {
           ...previousState,
-          tags: previousState.tags.filter((tag) => option != tag),
+          tags: previousState.tags.filter((tag) => name != tag),
         };
       });
     }
@@ -55,12 +56,15 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         <div>
           <FilterButton
             isOpen={isTagsOpen}
-            setIsOpen={setIsTagsOpen}
+            setIsOpen={(open)=>{
+              setIsTagsOpen(open)
+              setIsContentTypeOpen(false)
+            }}
             title={"Topics"}
           />
           <ResetFilterButton
             type={"tag"}
-            activetitle={ "Show all"}
+            activetitle={"Show all"}
             inactiveTitle={"Showing all topics"}
             isActive={filterBarState.tags.length > 0}
             onClick={() =>
@@ -73,8 +77,14 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         <FilterDropdownList
           type={"tag"}
           isOpen={isTagsOpen}
+          setIsOpen={(open)=>{
+            setIsTagsOpen(open)
+            setIsContentTypeOpen(false)
+          }}
           handleChange={handleTagChange}
+          currentlyActive={filterBarState.tags}
           items={tags}
+          
         />
         <ActiveFilterItems
           handleChange={handleTagChange}
@@ -85,12 +95,15 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         <div>
           <FilterButton
             isOpen={isContentTypeOpen}
-            setIsOpen={setIsContentTypeOpen}
+            setIsOpen={(open)=>{
+              setIsContentTypeOpen(open)
+              setIsTagsOpen(false)
+            }}
             title={"Content Types"}
           />
           <ResetFilterButton
             type={"contentType"}
-            activetitle={ "Show all"}
+            activetitle={"Show all"}
             inactiveTitle={"Showing all types"}
             isActive={filterBarState.contentTypes.length > 0}
             onClick={() =>
@@ -103,16 +116,18 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         <FilterDropdownList
           type={"contentType"}
           isOpen={isContentTypeOpen}
+          setIsOpen={(open)=>{
+            setIsContentTypeOpen(open)
+            setIsTagsOpen(false)
+          }}
           handleChange={handleContentTypeChange}
           items={contentTypes}
+          currentlyActive={filterBarState.contentTypes}
         />
         <ActiveFilterItems
           handleChange={handleContentTypeChange}
           activeItems={filterBarState.contentTypes}
         />
-      </div>
-      <div className="">
-      <p>{`${numResults} posts found`}</p>
       </div>
     </div>
   );
@@ -149,68 +164,36 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
   </button>
 );
 
-const ResetFilterButton = ({ type, onClick, activetitle, inactiveTitle, isActive }) => {
+const ResetFilterButton = ({
+  type,
+  onClick,
+  activetitle,
+  inactiveTitle,
+  isActive,
+}) => {
   const styles = classNames({
     "underline hover:text-sage-700": isActive,
-    "text-gray-700 ": !isActive
+    "text-gray-700 ": !isActive,
   });
 
   return (
-  <button
-    disabled={!isActive}
-    className={` px-md ${styles}`}
-    onClick={() => {
-      Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
-        (el) => {
-          // @ts-ignore
-          el.checked = false;
-        }
-      );
-      onClick();
-    }}
-  >
-    {isActive?activetitle:inactiveTitle}
-  </button>
-)};
-const FilterDropdownList = ({ isOpen, handleChange, items, type }) => (
-  // TODO
-  <div
-    className={`${
-      !isOpen && "hidden"
-    } absolute z-10  left-0 right-0 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
-  >
-    <div className="flex justify-between p-lg">
-      <p className="">Filter By X</p>
-      <button>Clear all</button>
-    </div>
-    <ul
-      className="p-3 flex w-full flex-wrap gap-lg"
-      aria-labelledby="dropdownCheckboxButton"
-    >
-      {items.map((item, i) => {
-        return (
-          <li key={i}>
-            <div className="flex items-center">
-              <input
-                onChange={(e) => handleChange(e.target, item)}
-                id={`${item}-checkbox`}
-                type="checkbox"
-                value={item}
-                className={`${type}CheckBox w-4 h-4  bg-gray-100 rounded border-gray-300  `}
-              />
-              <label
-                htmlFor={`${item}-checkbox`}
-                className="ml-2 type-preset-6 font-medium text-gray-900 dark:text-gray-300"
-              >
-                {item}
-              </label>
-            </div>
-          </li>
+    <button
+      disabled={!isActive}
+      className={` px-md ${styles}`}
+      onClick={() => {
+        Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
+          (el) => {
+            // @ts-ignore
+            el.checked = false;
+          }
         );
-      })}
-    </ul>
-  </div>
-);
+        onClick();
+      }}
+    >
+      {isActive ? activetitle : inactiveTitle}
+    </button>
+  );
+};
 
 const ActiveFilterItems = ({ handleChange, activeItems }) => (
   <div className="flex gap-md py-sm flex-wrap w-full">

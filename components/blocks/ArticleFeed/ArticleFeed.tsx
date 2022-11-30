@@ -3,7 +3,7 @@ import { LinkText } from "components/atom/LinkText/LinkText";
 import React, { useEffect, useState } from "react";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
-import FilterBar from "./FilterBar";
+import FilterBar from "./FilterBar/FilterBar";
 
 interface ArticleFeedInterface {
   id: string;
