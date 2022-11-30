@@ -42,6 +42,7 @@ const ArticleFeed = ({
   useEffect(() => {
    let _items = items;
    if(filterBarState.contentTypes.length>0){
+    
     _items = _items.filter((it)=> { 
       return filterBarState.contentTypes.includes(it.contentType)
     })
@@ -86,17 +87,15 @@ const ArticleFeed = ({
           </div>
         </div>
       { filterable && 
-      <>
       
-   
       <FilterBar
         tags={tags}
         filterBarState={filterBarState}
         setFilterBarState={setFilterBarState}
         numResults={displayedPosts.length}
        />
-        <p>{`${displayedPosts.length} posts found`}</p>
-         </>}
+        
+       }
       </div>
       <div className="pt-xl">
         <ContentGrid

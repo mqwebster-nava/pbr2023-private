@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
+import ResetFilterButton from "./ResetFilterButton";
 
 
-const FilterDropdownList = ({ isOpen, setIsOpen, handleChange, items, type, currentlyActive=[]}) => {
+const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClearClick, items, type, currentlyActive=[]}) => {
     const [changes, setChanges] = useState([]);
     // handleChange(e.target, item)
     const applyChanges = () => {
-      changes.forEach((change)=>{
-        handleChange(change[0], change[1])
-      })
+      handleChange(type, changes);
       setIsOpen(false)
     }
 
@@ -15,10 +14,11 @@ const FilterDropdownList = ({ isOpen, setIsOpen, handleChange, items, type, curr
       Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
         (el) => {
           const itemName = el.id.replace("-checkbox", "")
-           // @ts-ignore
+           // @ts-ignore // would ned to change to a button
            el.checked =(currentlyActive.includes(itemName))
         }
       );
+      setChanges([]);
     }, [isOpen]);
   
   
@@ -27,17 +27,17 @@ const FilterDropdownList = ({ isOpen, setIsOpen, handleChange, items, type, curr
       <div
         className={`${
           !isOpen && "hidden"
-        } absolute z-10  left-0 right-0 bg-gray-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`}
+        } absolute z-10  left-0 right-0 bg-gray-100 shadow mt-sm p-lg min-h-[200px]`}
       >
-        <div className="flex justify-between p-lg">
-          <p className="">Filter By X</p>
+        <div className="flex justify-between">
+          <p className="pb-md font-bold">Filter by {title}</p>
           <div >
-            <button className="px-sm">Clear all</button>
-            <button onClick={applyChanges}>Apply</button>
+           <ResetFilterButton type={type} onClick={()=>{handleClearClick(); setIsOpen(false)}} title={"Clear all"} isActive={true}/>
+            <button className="text-white bg-sage-700 hover:bg-sage-800 type-preset-7 px-md py-sm text-center inline-flex items-center " onClick={applyChanges}>Apply</button>
           </div>
         </div>
         <ul
-          className="p-3 flex w-full flex-wrap gap-lg"
+          className=" flex w-full flex-wrap gap-lg"
           aria-labelledby="dropdownCheckboxButton"
         >
           {items.map((item, i) => {
@@ -45,6 +45,7 @@ const FilterDropdownList = ({ isOpen, setIsOpen, handleChange, items, type, curr
               <li key={i}>
                 <div className="flex items-center">
                   <input
+                    
                     onChange={(e) =>{
                         if (changes.find((change)=>change[1]==item)) {
                           const newChanges = changes.filter((change)=>change[1]!=item)
@@ -57,7 +58,7 @@ const FilterDropdownList = ({ isOpen, setIsOpen, handleChange, items, type, curr
                     id={`${item}-checkbox`}
                     type="checkbox"
                     value={item}
-                    className={`${type}CheckBox w-4 h-4  bg-gray-100 rounded border-gray-300  `}
+                    className={`${type}CheckBox w-4 h-4  bg-gray-100 rounded border-gray-300   `}
                   />
                   <label
                     htmlFor={`${item}-checkbox`}
