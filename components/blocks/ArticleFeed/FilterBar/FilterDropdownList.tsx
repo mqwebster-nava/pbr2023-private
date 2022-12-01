@@ -4,6 +4,7 @@ import ResetFilterButton from "./ResetFilterButton";
 
 const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClearClick, items, type, currentlyActive=[]}) => {
     const [changes, setChanges] = useState([]);
+    const [newActive, setNewActive] = useState(currentlyActive);
     // handleChange(e.target, item)
     const applyChanges = () => {
       handleChange(type, changes);
@@ -18,6 +19,7 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
            el.checked =(currentlyActive.includes(itemName))
         }
       );
+      setNewActive(currentlyActive);
       setChanges([]);
     }, [isOpen]);
   
@@ -41,11 +43,19 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
           aria-labelledby="dropdownCheckboxButton"
         >
           {items.map((item, i) => {
+            const ac = newActive.includes(item) ? "bg-white" : null;
+            let acD = newActive.includes(item) ? "bg-sage-900" : "bg-sage-100";
             return (
               <li key={i}>
-                <div className="flex items-center">
+                <div className={`flex items-center border-gray-400 border-[1px] p-sm type-preset-7 ${ac}`}>
+                <label
+                    htmlFor={`${item}-checkbox`}
+                    className="mr-2 font-medium text-gray-900 "
+                  >
+                    {item}
+                  </label>
+                  <div className="relative">
                   <input
-                    
                     onChange={(e) =>{
                         if (changes.find((change)=>change[1]==item)) {
                           const newChanges = changes.filter((change)=>change[1]!=item)
@@ -54,18 +64,18 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
                         else{
                           setChanges([...changes, [e.target, item]]);
                         }
-                      }}
+                        if(newActive.includes(item))setNewActive(newActive.filter((it)=>it!==item))
+                        else setNewActive([...newActive, item])
+                        
+                    }}
                     id={`${item}-checkbox`}
                     type="checkbox"
                     value={item}
-                    className={`${type}CheckBox w-4 h-4  bg-gray-100 rounded border-gray-300   `}
+                    className={`${type}CheckBox relative w-4 h-4 opacity-0 z-10 `}
                   />
-                  <label
-                    htmlFor={`${item}-checkbox`}
-                    className="ml-2 type-preset-6 font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    {item}
-                  </label>
+                  <span className={` h-4 w-4  ${acD} absolute left-0 `}></span>
+                  
+                  </div>
                 </div>
               </li>
             );

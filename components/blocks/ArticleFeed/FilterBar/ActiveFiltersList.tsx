@@ -5,7 +5,7 @@ const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, active
     <div className="pt-sm">
         <HorizontalLine/>
         <div className="flex justify-between pt-sm">
-            <p className="type-preset-7">Selected {title} ({activeItems.length})</p>
+            <p className="type-preset-7">Selected {title}</p>
             <ResetFilterButton type={type} onClick={handleClearClick} title={"Clear all"} isActive={true}/>
         </div>
 
@@ -14,7 +14,7 @@ const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, active
         return (
           <button
             className={` group
-            border-gray-400 border-2 p-sm type-preset-7 flex gap-md items-center
+            border-gray-400 border-[1px] p-sm type-preset-7 flex gap-md items-center
              hover:bg-gray-100`}
             onClick={() => {
               let checkbox = document.getElementById(`${item}-checkbox`);

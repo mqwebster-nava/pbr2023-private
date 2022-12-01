@@ -101,7 +101,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         />
         <ActiveFilterItems
           title={"content types"}
-          type={"contentType"}
+          type={"contentTypes"}
           handleClearClick={()=>handleClear("contentTypes")}
           handleChange={handleChanges}
           activeItems={filterBarState.contentTypes}
