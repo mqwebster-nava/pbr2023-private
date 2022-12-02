@@ -14,7 +14,7 @@ export interface BasicPostInterface{
     id:string;
     slug:string;
     title:string;
-    kicker: string;
+    kicker?: string;
     date:string;
     contentType:string;
     clientName:string;
