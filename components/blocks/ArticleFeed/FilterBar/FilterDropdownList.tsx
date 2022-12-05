@@ -1,6 +1,40 @@
 import { useEffect, useState } from "react";
 import ResetFilterButton from "./ResetFilterButton";
 
+const categories = {
+  Sector: [
+    "healthcare",
+    "integrated benefits",
+    "paid family medical leave",
+    "unemployment insurance",
+    "Veterans",
+    "WIC",
+  ],
+  Capability: [
+    "accessibility and equity",
+    "adapting to change",
+    "agile development",
+    "APIs and documentation",
+    "backend engineering",
+    "cloud infrastructure",
+    "content strategy",
+    "continuous improvement",
+    "crisis response",
+    "frontend engineering",
+    "human-centered design",
+    "modernization",
+    "policy",
+    "product management",
+    "program management",
+    "program outcomes",
+    "rapid delivery",
+    "reducing risk",
+    "scalable solutions",
+    "user experience research",
+    "mission and impact",
+  ],
+  Other: ["a day at Nava", "careers", "what we're learning"],
+};
 
 const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClearClick, items, type, currentlyActive=[]}) => {
     const [changes, setChanges] = useState([]);
@@ -38,11 +72,15 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
             <button className="text-white bg-sage-700 hover:bg-sage-800 type-preset-7 px-md py-sm text-center inline-flex items-center " onClick={applyChanges}>Apply</button>
           </div>
         </div>
-        <ul
+       
+          {Object.keys(categories).map((cat)=>{
+            return <div>
+              <div className="pt-lg pb-md">{cat}</div>
+              <ul
           className=" flex w-full flex-wrap gap-lg"
           aria-labelledby="dropdownCheckboxButton"
         >
-          {items.map((item, i) => {
+              {categories[cat].map((item, i) => {
             const ac = newActive.includes(item) ? "bg-white" : null;
             let acD = newActive.includes(item) ? "bg-sage-900" : "bg-sage-100";
             return (
@@ -60,7 +98,7 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
                         if (changes.find((change)=>change[1]==item)) {
                           const newChanges = changes.filter((change)=>change[1]!=item)
                           setChanges(newChanges);
-                        }
+             ``           }
                         else{
                           setChanges([...changes, [e.target, item]]);
                         }
@@ -80,7 +118,12 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
               </li>
             );
           })}
-        </ul>
+          </ul>
+            </div>
+
+          })}
+          
+        
       </div>
     );
   };

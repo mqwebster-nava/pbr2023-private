@@ -1,15 +1,19 @@
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import ResetFilterButton from "./ResetFilterButton";
 
+
+
+
 const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, activeItems }) => activeItems.length>0 &&(
     <div className="pt-sm">
-        <HorizontalLine/>
+       
         <div className="flex justify-between pt-sm">
             <p className="type-preset-7">Selected {title}</p>
             <ResetFilterButton type={type} onClick={handleClearClick} title={"Clear all"} isActive={true}/>
         </div>
 
     <div className="flex gap-md py-sm flex-wrap w-full">
+
       {activeItems.map((item) => {
         return (
           <button
@@ -60,6 +64,7 @@ const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, active
         );
       })}
     </div>
+    {/* <HorizontalLine/> */}
     </div>
   );
 

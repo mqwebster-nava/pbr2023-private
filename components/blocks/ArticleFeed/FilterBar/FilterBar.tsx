@@ -3,42 +3,43 @@ import { useEffect, useState } from "react";
 import ActiveFilterItems from "./ActiveFiltersList";
 import FilterDropdownList from "./FilterDropdownList";
 
+
+
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
-  const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
+  //const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
-  const contentTypes = [
-    "Insight",
-    "Case Study",
-    "Toolkit",
-    "News",
-    "Events",
-    "Working at Nava",
-    "Public Benefit Report",
-  ];
-  const handleChanges= (type, changes)=>{
-    let currentList = filterBarState[type]
-    changes.forEach(([checkboxElement, name])=>{
-      if(checkboxElement.checked && !filterBarState[type].includes(name)){
-        currentList.push(name)
-      }else if (!checkboxElement.checked){
-        currentList = currentList.filter( (n) => name != n)
+  // const contentTypes = [
+  //   "Insight",
+  //   "Case Study",
+  //   "Toolkit",
+  //   "News",
+  //   "Events",
+  //   "Working at Nava",
+  //   "Public Benefit Report",
+  // ];
+  const handleChanges = (type, changes) => {
+    let currentList = filterBarState[type];
+    changes.forEach(([checkboxElement, name]) => {
+      if (checkboxElement.checked && !filterBarState[type].includes(name)) {
+        currentList.push(name);
+      } else if (!checkboxElement.checked) {
+        currentList = currentList.filter((n) => name != n);
       }
     });
-      setFilterBarState((previousState) => {
-        let r = { ...previousState }
-        r[type] = currentList
-        return r;
-      });
-    
-  }
+    setFilterBarState((previousState) => {
+      let r = { ...previousState };
+      r[type] = currentList;
+      return r;
+    });
+  };
 
   const handleClear = (type) => {
     setFilterBarState((previousState) => {
-      let v=  { ...previousState };
-      v[type]=[]
+      let v = { ...previousState };
+      v[type] = [];
       return v;
-    })}
-  
+    });
+  };
 
   return (
     <div className="relative ">
@@ -46,40 +47,41 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
         <div className="flex gap-x-xl">
           <FilterButton
             isOpen={isTagsOpen}
-            setIsOpen={(open)=>{
-              setIsTagsOpen(open)
-              setIsContentTypeOpen(false)
+            setIsOpen={(open) => {
+              setIsTagsOpen(open);
+              //setIsContentTypeOpen(false)
             }}
-            title={`Topics ${filterBarState.tags.length>0 ? "("+filterBarState.tags.length+")": ""}`}
+            title={`Filters ${
+              filterBarState.tags.length > 0
+                ? "(" + filterBarState.tags.length + ")"
+                : ""
+            }`}
           />
-          <FilterButton
+          {/* <FilterButton
             isOpen={isContentTypeOpen}
             setIsOpen={(open)=>{
               setIsContentTypeOpen(open)
               setIsTagsOpen(false)
             }}
             title={`Content Types ${filterBarState.contentTypes.length>0 ? "("+filterBarState.contentTypes.length+")": ""}`}
-          />
-         
+          /> */}
         </div>
       </div>
       <div className="">
-        
-      <FilterDropdownList
+        <FilterDropdownList
           title={"topic"}
           type={"tags"}
           isOpen={isTagsOpen}
-          setIsOpen={(open)=>{
-            setIsTagsOpen(open)
-            setIsContentTypeOpen(false)
+          setIsOpen={(open) => {
+            setIsTagsOpen(open);
+            // setIsContentTypeOpen(false)
           }}
           handleChange={handleChanges}
-          handleClearClick={()=>handleClear("tags")}
+          handleClearClick={() => handleClear("tags")}
           currentlyActive={filterBarState.tags}
           items={tags}
-          
         />
-        <FilterDropdownList
+        {/* <FilterDropdownList
           title={"content type"}
           type={"contentTypes"}
           isOpen={isContentTypeOpen}
@@ -91,27 +93,26 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
           handleClearClick={()=> handleClear("contentTypes")}
           items={contentTypes}
           currentlyActive={filterBarState.contentTypes}
-        />
+        /> */}
         <ActiveFilterItems
           title={"topics"}
           type={"tags"}
-          handleClearClick={()=>handleClear("tags")}
+          handleClearClick={() => handleClear("tags")}
           handleChange={handleChanges}
           activeItems={filterBarState.tags}
         />
-        <ActiveFilterItems
+        {/* <ActiveFilterItems
           title={"content types"}
           type={"contentTypes"}
           handleClearClick={()=>handleClear("contentTypes")}
           handleChange={handleChanges}
           activeItems={filterBarState.contentTypes}
-        />
+        /> */}
       </div>
       <div className="pt-sm">
-      <p >{`${numResults} posts found`}</p>
+        <p>{`${numResults} posts found`}</p>
       </div>
     </div>
-
   );
 };
 
@@ -146,10 +147,8 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
   </button>
 );
 
-
-
-
-{/* <ResetFilterButton
+{
+  /* <ResetFilterButton
 type={"contentType"}
 activetitle={"Show all"}
 inactiveTitle={"Showing all types"}
@@ -179,40 +178,40 @@ onClick={() =>
         </div>
        
       
-      */}
+      */
+}
 
-
-        // const handleContentTypeChange = (checkboxElement, name) => {
-  //   if (checkboxElement.checked && !filterBarState.contentTypes.includes(name)) {
-  //     setFilterBarState((previousState) => {
-  //       let contentTypes = [...previousState.contentTypes];
-  //       contentTypes.push(name);
-  //       return { ...previousState, contentTypes };
-  //     });
-  //   } else if(!checkboxElement.checked){
-  //     setFilterBarState((previousState) => {
-  //       return {
-  //         ...previousState,
-  //         contentTypes: previousState.contentTypes.filter(
-  //           (type) => name != type
-  //         ),
-  //       };
-  //     });
-  //   }
-  // };
-  // const handleTagChange = (checkboxElement, name) => {
-  //   if (checkboxElement.checked && !filterBarState.tags.includes(name)) {
-  //     setFilterBarState((previousState) => {
-  //       let tags = [...previousState.tags];
-  //       tags.push(name);
-  //       return { ...previousState, tags };
-  //     });
-  //   } else if(!checkboxElement.checked){
-  //     setFilterBarState((previousState) => {
-  //       return {
-  //         ...previousState,
-  //         tags: previousState.tags.filter((tag) => name != tag),
-  //       };
-  //     });
-  //   }
-  // };
+// const handleContentTypeChange = (checkboxElement, name) => {
+//   if (checkboxElement.checked && !filterBarState.contentTypes.includes(name)) {
+//     setFilterBarState((previousState) => {
+//       let contentTypes = [...previousState.contentTypes];
+//       contentTypes.push(name);
+//       return { ...previousState, contentTypes };
+//     });
+//   } else if(!checkboxElement.checked){
+//     setFilterBarState((previousState) => {
+//       return {
+//         ...previousState,
+//         contentTypes: previousState.contentTypes.filter(
+//           (type) => name != type
+//         ),
+//       };
+//     });
+//   }
+// };
+// const handleTagChange = (checkboxElement, name) => {
+//   if (checkboxElement.checked && !filterBarState.tags.includes(name)) {
+//     setFilterBarState((previousState) => {
+//       let tags = [...previousState.tags];
+//       tags.push(name);
+//       return { ...previousState, tags };
+//     });
+//   } else if(!checkboxElement.checked){
+//     setFilterBarState((previousState) => {
+//       return {
+//         ...previousState,
+//         tags: previousState.tags.filter((tag) => name != tag),
+//       };
+//     });
+//   }
+// };

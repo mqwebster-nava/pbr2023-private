@@ -33,7 +33,7 @@ const ArticleFeed = ({
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
   const [filterBarState, setFilterBarState ] = useState({
-    contentTypes:[],
+   // contentTypes:[],
     tags:[]
   });
   const [displayedPosts, setDisplayedPosts] =  useState(items);
@@ -41,12 +41,12 @@ const ArticleFeed = ({
  
   useEffect(() => {
    let _items = items;
-   if(filterBarState.contentTypes.length>0){
+  //  if(filterBarState.contentTypes.length>0){
     
-    _items = _items.filter((it)=> { 
-      return filterBarState.contentTypes.includes(it.contentType)
-    })
-   }
+  //   _items = _items.filter((it)=> { 
+  //     return filterBarState.contentTypes.includes(it.contentType)
+  //   })
+  //  }
    if(filterBarState.tags.length>0){
     _items = _items.filter((it)=> { 
       return it.contentTags && it.contentTags.some((tag)=>filterBarState.tags.includes(tag))
