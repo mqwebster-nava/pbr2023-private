@@ -87,7 +87,7 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) :  filterable!= null ?    <div className="flex gap-x-md">
+            ) :  filterable== true ?    <div className="flex gap-x-md">
                 { filterBarState.tags.length > 0 && 
              <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
             }
