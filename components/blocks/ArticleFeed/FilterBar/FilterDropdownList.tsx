@@ -63,7 +63,7 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
       <div
         className={`${
           !isOpen && "hidden"
-        } absolute z-10  -left-[16px] -right-[16px] bg-gray-100 shadow mt-sm p-lg min-h-[200px]`}
+        } absolute z-10  -left-[16px] -right-[16px] bg-white mt-sm p-lg min-h-[200px] pb-xl`}
       >
         <div className="flex justify-between">
           <p className="pb-md font-bold">Filter by {title}</p>
@@ -75,7 +75,7 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
        
           {Object.keys(categories).map((cat)=>{
             return <div>
-              <div className="pt-lg pb-md">{cat}</div>
+              <div className="pt-lg pb-md font-bold type-preset-6">{cat}</div>
               <ul
           className=" flex w-full flex-wrap gap-lg"
           aria-labelledby="dropdownCheckboxButton"
@@ -83,14 +83,14 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
               {categories[cat].map((item, i) => {
                 let isActive = newActive.includes(item)
                 
-            const ac = isActive ? "bg-white" : "hover:bg-white";
+            const ac = isActive ? "bg-sage-50 text-gray-900" : "bg-gray-50 text-gray-600 hover:bg-white";
             let acD = isActive? "stroke-black group-hover:stroke-red-700" : " stroke-gray-700 rotate-45 group-hover:stroke-sage-900";
             return (
               <li key={i}>
                 <div className={`flex group items-center border-gray-400 border-[1px] p-sm type-preset-7 ${ac}`}>
                 <label
                     htmlFor={`${item}-checkbox`}
-                    className="mr-2 font-medium text-gray-900 "
+                    className="mr-2 font-medium  "
                   >
                     {item}
                   </label>

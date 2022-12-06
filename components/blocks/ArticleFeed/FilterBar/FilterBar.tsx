@@ -126,7 +126,7 @@ export const FilterButton = ({ isOpen, setIsOpen, title }) => (
   <button
     id="dropdownCheckboxButton"
     data-dropdown-toggle="dropdownDefaultCheckbox"
-    className="text-white bg-sage-700 hover:bg-sage-800 type-preset-7 px-4 py-2.5 text-center inline-flex items-center "
+    className="text-white bg-sage-700 hover:bg-sage-800 type-preset-6  px-4 py-md text-center inline-flex items-center "
     type="button"
     onClick={() => {
       setIsOpen(!isOpen);

@@ -65,7 +65,7 @@ const ArticleFeed = ({
       <div className="responsive-container" key={id}>
         {title && <HorizontalLine variant="light" />}
         <div className={`w-full pt-md flex justify-between `}>
-          <div className="md:w-3/4 ">
+          <div className="md:w-2/3 ">
             {title && (
               <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
             )}

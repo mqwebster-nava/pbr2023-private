@@ -14,7 +14,7 @@ const ResetFilterButton = ({
     return (
       <button
         disabled={!isActive}
-        className={` px-md ${styles} type-preset-7`}
+        className={` px-md ${styles} type-preset-6`}
         onClick={() => {
           Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
             (el) => {
