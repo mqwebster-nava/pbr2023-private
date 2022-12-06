@@ -2,12 +2,13 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import ActiveFilterItems from "./ActiveFiltersList";
 import FilterDropdownList from "./FilterDropdownList";
+import ResetFilterButton from "./ResetFilterButton";
 
 
 
-const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
+const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, isTagsOpen, setIsTagsOpen }) => {
   //const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
-  const [isTagsOpen, setIsTagsOpen] = useState(false);
+ // const [isTagsOpen, setIsTagsOpen] = useState(false);
   // const contentTypes = [
   //   "Insight",
   //   "Case Study",
@@ -42,9 +43,9 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
   };
 
   return (
-    <div className="relative ">
+    <div className="relative pt-xl ">
       <div className="flex justify-between align-bottom">
-        <div className="flex gap-x-xl">
+        {/* <div className="flex gap-x-md">
           <FilterButton
             isOpen={isTagsOpen}
             setIsOpen={(open) => {
@@ -57,15 +58,18 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
                 : ""
             }`}
           />
-          {/* <FilterButton
+          { filterBarState.tags.length > 0 && 
+           <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+          }
+           {/ <FilterButton
             isOpen={isContentTypeOpen}
             setIsOpen={(open)=>{
               setIsContentTypeOpen(open)
               setIsTagsOpen(false)
             }}
             title={`Content Types ${filterBarState.contentTypes.length>0 ? "("+filterBarState.contentTypes.length+")": ""}`}
-          /> */}
-        </div>
+          /> /}
+        </div> */}
       </div>
       <div className="">
         <FilterDropdownList
@@ -118,7 +122,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults }) => {
 
 export default FilterBar;
 
-const FilterButton = ({ isOpen, setIsOpen, title }) => (
+export const FilterButton = ({ isOpen, setIsOpen, title }) => (
   <button
     id="dropdownCheckboxButton"
     data-dropdown-toggle="dropdownDefaultCheckbox"

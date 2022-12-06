@@ -30,6 +30,7 @@ export async function getStaticProps({ params, preview = false }) {
       id: "news section",
       items: posts,
       layout:"3 card row",
+      title:"All resource",
       filterable:true,
       tags:tags
     },

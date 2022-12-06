@@ -63,7 +63,7 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
       <div
         className={`${
           !isOpen && "hidden"
-        } absolute z-10  left-0 right-0 bg-gray-100 shadow mt-sm p-lg min-h-[200px]`}
+        } absolute z-10  -left-[16px] -right-[16px] bg-gray-100 shadow mt-sm p-lg min-h-[200px]`}
       >
         <div className="flex justify-between">
           <p className="pb-md font-bold">Filter by {title}</p>
@@ -81,18 +81,20 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
           aria-labelledby="dropdownCheckboxButton"
         >
               {categories[cat].map((item, i) => {
-            const ac = newActive.includes(item) ? "bg-white" : null;
-            let acD = newActive.includes(item) ? "bg-sage-900" : "bg-sage-100";
+                let isActive = newActive.includes(item)
+                
+            const ac = isActive ? "bg-white" : "hover:bg-white";
+            let acD = isActive? "stroke-black group-hover:stroke-red-700" : " stroke-gray-700 rotate-45 group-hover:stroke-sage-900";
             return (
               <li key={i}>
-                <div className={`flex items-center border-gray-400 border-[1px] p-sm type-preset-7 ${ac}`}>
+                <div className={`flex group items-center border-gray-400 border-[1px] p-sm type-preset-7 ${ac}`}>
                 <label
                     htmlFor={`${item}-checkbox`}
                     className="mr-2 font-medium text-gray-900 "
                   >
                     {item}
                   </label>
-                  <div className="relative">
+                  <div className="relative h-[12px]">
                   <input
                     onChange={(e) =>{
                         if (changes.find((change)=>change[1]==item)) {
@@ -109,9 +111,42 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
                     id={`${item}-checkbox`}
                     type="checkbox"
                     value={item}
-                    className={`${type}CheckBox relative w-4 h-4 opacity-0 z-10 `}
+                    className={`${type}CheckBox relative h-[12px] w-[12px] opacity-0 z-10 `}
                   />
-                  <span className={` h-4 w-4  ${acD} absolute left-0 `}></span>
+                  <span className={` h-[12px] w-[12px]   absolute left-0 `}>
+                 <svg
+              width="12"
+              height="12"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`pt-xs     ${acD} `}
+            >
+              <g clip-path="url(#clip0_334_3846)">
+                <line
+                  x1="3"
+                  y1="44.4645"
+                  x2="44.4645"
+                  y2="3"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="3.53553"
+                  y1="3"
+                  x2="45"
+                  y2="44.4645"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_334_3846">
+                  <rect width="48" height="48" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>  
+                  </span>
                   
                   </div>
                 </div>

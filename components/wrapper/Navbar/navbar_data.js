@@ -12,17 +12,10 @@ const getNavData = (variant)=> [
     subpages: [
       { title: "Services", slug: "/services" },
       { title: "Case studies", slug: "/case-studies" },
+      { title: "Insights",slug: "/insights", },
       { title: "Toolkits", slug: "/toolkits" },
     ],
   },
-  variant=="library"?
-  {
-    title: "Library",
-    slug: "/library",
-  }:{
-    title: "Insights",
-    slug: "/insights",
-  } ,
   {
     title: "Careers",
     subpages: [
@@ -40,6 +33,10 @@ const getNavData = (variant)=> [
       { title: "Events", slug: "/events" },
     ],
   }, 
+  {
+    title: "Library",
+    slug: "/library",
+  },
   {
     title: "Get in touch",
     slug: "/contact"

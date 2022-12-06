@@ -4,13 +4,13 @@ import ResetFilterButton from "./ResetFilterButton";
 
 
 
-const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, activeItems }) => activeItems.length>0 &&(
+const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, activeItems, }) => activeItems.length>0 &&(
     <div className="pt-sm">
        
-        <div className="flex justify-between pt-sm">
+        {/* <div className="flex justify-between pt-sm">
             <p className="type-preset-7">Selected {title}</p>
             <ResetFilterButton type={type} onClick={handleClearClick} title={"Clear all"} isActive={true}/>
-        </div>
+        </div> */}
 
     <div className="flex gap-md py-sm flex-wrap w-full">
 
