@@ -16,7 +16,8 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
             percent={graph.percentage}
             description={graph.category}
             theme={theme}
-            showTooltip={false}
+            tooltipText={("tooltipText" in graph) && graph.tooltipText }
+            showTooltip={("tooltipText" in graph)}
             fixed          />
         ))}
       </div>

@@ -14,6 +14,7 @@ export const PercentBarGraph: React.FC<PercentBarGraphInterface> = ({
   const insideBar = classNames({
     "bg-sage-700": insideBarColor === "sage",
     "bg-navy-900": insideBarColor === "navy",
+    "bg-plum-900": insideBarColor === "plum",
   });
   return (
     <div className="min-h-[140px] w-full mb-xl bg-sage-50">

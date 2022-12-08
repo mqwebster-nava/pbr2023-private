@@ -13,6 +13,7 @@ interface PercentSquareGraphInterface {
   category?: string;
   theme?: string;
   showTooltip?: boolean;
+  tooltipText?:string;
   fixed?: boolean;
 }
 
@@ -31,7 +32,7 @@ const colors = {
 
 const GraphTooltip = ({ text, setRef, getProps, getArrowProps }) => {
   return (
-    <div ref={setRef} {...getProps({ className: "tooltip-container" })}>
+    <div ref={setRef} {...getProps({ className: "tooltip-container max-w-[50vw] ml-sm" })}>
       <p className="type-preset-6">{text}</p>
       <div {...getArrowProps({ className: "tooltip-arrow" })} />
     </div>
@@ -45,6 +46,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   category = "All employees",
   theme = "sage",
   showTooltip = true,
+  tooltipText=null,
   fixed = false,
 }) => {
   const {
@@ -55,7 +57,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
     visible,
   } = usePopperTooltip({ placement: "top" });
 
-  const tooltipText = `${percent}% of ${category} identify as ${description}.`;
+  tooltipText = tooltipText ?? `${percent}% of ${category} identify as ${description}.`;
 
   return (
     <div className="my-2 mr-2" aria-label={tooltipText}>

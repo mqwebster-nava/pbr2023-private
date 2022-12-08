@@ -81,7 +81,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
           id={regionId}
           aria-label={`${title} data, filtered by ${selectedFilter.text}`}
         >
-          {stats.sort((a,b)=>b["employee"]-a["employee"] ).map((graph, index) => (
+          {stats.map((graph, index) => (
             <PercentSquareGraph
               key={`percent_square_graph_${index}`}
               percent={graph[selectedFilter.id]}
