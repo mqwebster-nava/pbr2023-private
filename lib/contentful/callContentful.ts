@@ -1,17 +1,23 @@
-/**
- * This class constructs GraphQL queries for blog posts, page content and other data
- * and calls out to the Contentful GraphQL API.
- *
- * Contentful GraphQL API docs:
- * https://www.contentful.com/developers/docs/references/graphql/
- *
- * Explore the GraphQL API in depth in the GraphiQL Playground:
- * https://graphql.contentful.com/content/v1/spaces/{SPACE_ID}/explore?access_token={ACCESS_TOKEN}
- *
- */
 
-// When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
-// Preview is used to render previews of the page within the contentful interface.
+
+/** 
+The callContentful function is a helper function that allows the application to connect to the Contentful API and fetch data. 
+
+The function accepts three arguments:
+  query: A string representing the GraphQL query that will be sent to the Contentful API. 
+    This query is used to specify which data to retrieve from the API.
+  variables: An optional object containing variables that will be passed to the GraphQL query. 
+    These variables can be used to customize the data that is retrieved from the API.
+  options: An optional object containing options that can be used to configure the behavior of the function. 
+    The defaultOptions object defines the default values for these options, and the preview option can be used to specify whether the function should retrieve preview data from the API instead of published data.
+
+
+The function uses the fetch API to send a HTTP POST request to the Contentful API with the provided query and variables. 
+If the request is successful, the response data is returned as a JavaScript object. Otherwise, an error is thrown. 
+The function also uses environment variables to retrieve the necessary authentication information and the ID of the Contentful space to query.
+
+*/
+
 export const defaultOptions = {
   preview: false,
 };
