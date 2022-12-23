@@ -31,13 +31,13 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   theme = "sage",
 }) => {
   // Default to first item in filter selected.
-  dataFilters = dataFilters.sort((a,b)=>b.total-a.total)
   const defaultFilter = dataFilters[0];
   const regionId = `${title}Charts`;
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
  
+
   const [multiSelected, setMultiSelected] = useState(false);
 
   // Two more selections made in data has the key suffixed with "_Multi"
@@ -107,6 +107,3 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   );
 };
 
-
-// if wanted to sort by #/%
-//  stats.sort((a,b)=>b[selectedFilter.id]-a[selectedFilter.id] ).map
