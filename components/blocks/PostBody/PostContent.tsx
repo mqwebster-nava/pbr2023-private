@@ -95,4 +95,30 @@ const PostContent = ({docData, docLinks, variant="post" }) =>{
 
 
 
+export const ListContent = ({docData }) =>{
+  const options = {
+      renderMark: {
+        [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
+        [MARKS.ITALIC]: (text) => <span className="italic ">{text}</span>,
+        [MARKS.UNDERLINE]: (text) => <span className=" underline decoration-1 underline-offset-2">{text}</span>,
+          
+      },
+      renderNode: {
+        [BLOCKS.PARAGRAPH]: (node, children) => children!="" &&(
+          <p className=" py-md">{children}</p>
+        ),
+        [BLOCKS.UL_LIST]: (node, children) => ( <ul className="list-style">{children}</ul> ),
+        [BLOCKS.LIST_ITEM]: (node, children) => <li className="pb-sm">{children}</li>,
+       
+        [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
+      
+      },
+  };
+  return (<>
+   {documentToReactComponents(docData, options)}
+  </>)
+}
+
+
+
 export default PostContent;
