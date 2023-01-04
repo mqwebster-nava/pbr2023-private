@@ -83,15 +83,18 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
 export default DEISection;
 
 const createFilters = (dataKey, data, categories) => {
-  const filterKeys = Object.keys(data).filter(
-    (key) => !key.includes("_Multi") && !key.includes(dataKey) && (key in categories)
-  );
-  const filters = filterKeys.map((key) => {
-    return {
-      id: key,
-      text: categories[key].display,
-      total: categories[key].total,
-    };
+  const categoriesList = [];
+  const order = ["employee", "Individual_contributor", "management", "Team_lead", "Manager", "Director", "VP_&_C_Suite"];
+
+  order.forEach(key => {
+    if( key in categories){
+      categoriesList.push({
+        id: key,
+        text: categories[key].display,
+        total: categories[key].total
+      });
+    }
   });
-  return filters;
+  return categoriesList;
 };
+
