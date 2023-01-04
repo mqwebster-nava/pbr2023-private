@@ -2,6 +2,7 @@ import classNames from "classnames";
 import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import { PercentBarChart } from "./DEICharts/PercentBarChart";
+import { PercentBarChartYOY } from "./DEICharts/PercentBarChartYOY";
 import { PercentSquareChart } from "./DEICharts/PercentSquareChart";
 import { PercentSquareChartFixed } from "./DEICharts/PercentSquareChartFixed";
 import { ResourceGroups } from "./DEIResourceGroupBlock/ResourceGroups";
@@ -27,6 +28,16 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
           >
             <ResourceGroups groups={sectionData.groups} />
           </ResponsiveContentContainer>
+        );
+        if (sectionData.type == "PercentBarChartYOY")
+        return (
+          <div className="responsive-container" key={`dei-sec-${i}`}>
+            <PercentBarChartYOY
+              key={`${i}`}
+              description={sectionData.description}
+              graphs={sectionData.graphs}
+            />
+          </div>
         );
       if (sectionData.type == "PercentBarChart")
         return (
