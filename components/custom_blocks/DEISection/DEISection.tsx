@@ -39,16 +39,17 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
             />
           </div>
         );
-      if (sectionData.type == "PercentBarChart")
-        return (
-          <div className="responsive-container" key={`dei-sec-${i}`}>
-            <PercentBarChart
-              key={`${i}`}
-              description={sectionData.description}
-              graphs={sectionData.graphs}
-            />
-          </div>
-        );
+        // !TEMPORARY - NEED TO REMOVE BEFORE PUSHING
+      // if (sectionData.type == "PercentBarChart")
+      //   return (
+      //     <div className="responsive-container" key={`dei-sec-${i}`}>
+      //       <PercentBarChart
+      //         key={`${i}`}
+      //         description={sectionData.description}
+      //         graphs={sectionData.graphs}
+      //       />
+      //     </div>
+      //   );
       if (sectionData.type == "PercentSquareChart")
         return (
           <PercentSquareChart

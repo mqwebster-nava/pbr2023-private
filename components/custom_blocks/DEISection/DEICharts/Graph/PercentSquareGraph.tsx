@@ -87,7 +87,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
           className={`
             absolute bottom-0 left-0 
             ${colors.innerColor[theme]}
-            w-full overflow-clip
+            w-full overflow-hidden
             transition-all ease-in-out duration-300
           `}
           style={{ height: `${percent}%` }}
