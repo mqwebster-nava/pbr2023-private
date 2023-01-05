@@ -6,7 +6,6 @@ import DesktopNavBar from "./DesktopNav/DesktopNav";
 // TODO: a11y - all links must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Navbar = ({ variant = null }) => {
   // Gets the current breakpoint to determine the navbar
-  //console.log("navbar",variant)
   const variantData = variant==null?[]:getNavData(variant);
   return (
     <header className={`bg-white w-full z-50  `}>

@@ -1,7 +1,9 @@
 
+import { ContentCardInterface } from "components/atom/ContentCard/ContentCard";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import React from "react";
+import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
 
@@ -30,6 +32,28 @@ const ArticleFeed = ({
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
+  // Convert all items to Content 
+  let contentCards: Array<ContentCardInterface> = []
+  items.forEach((item)=>{
+    if(item["__typename"] == "Post" ){
+      const kicker = item.contentType == "Case Study" ? item.clientName :
+                           item.contentType == "News" ? getDateStr(item.date) :
+                           item.contentType == "Events" ? getEventDateStr(item.date): null;
+      let contentCard : ContentCardInterface = {
+        id:item.id,
+        kicker:kicker,
+        title: item.title,
+        path: getContentUrl(item.contentType, item.slug),
+        image: item.promoImage,
+        summary: item.shortSummary
+      }
+      contentCards.push(contentCard)
+    }
+    else contentCards.push(item)
+  })
+
+
+
   return (
     <section className="pt-xl pb-4xl" >
       <div className="responsive-container" >
@@ -59,7 +83,7 @@ const ArticleFeed = ({
       <div className="pt-xl">
       <ContentGrid
         id={"id"}
-        items={items}
+        items={contentCards}
         contentType={"posts"}
         layout={layout}
       />

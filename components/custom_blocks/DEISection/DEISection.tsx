@@ -2,6 +2,7 @@ import classNames from "classnames";
 import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";
 import { PercentBarChart } from "./DEICharts/PercentBarChart";
+import { PercentBarChartYOY } from "./DEICharts/PercentBarChartYOY";
 import { PercentSquareChart } from "./DEICharts/PercentSquareChart";
 import { PercentSquareChartFixed } from "./DEICharts/PercentSquareChartFixed";
 import { ResourceGroups } from "./DEIResourceGroupBlock/ResourceGroups";
@@ -28,6 +29,17 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
             <ResourceGroups groups={sectionData.groups} />
           </ResponsiveContentContainer>
         );
+        if (sectionData.type == "PercentBarChartYOY")
+        return (
+          <div className="responsive-container" key={`dei-sec-${i}`}>
+            <PercentBarChartYOY
+              key={`${i}`}
+              description={sectionData.description}
+              graphs={sectionData.graphs}
+            />
+          </div>
+        );
+      
       if (sectionData.type == "PercentBarChart")
         return (
           <div className="responsive-container" key={`dei-sec-${i}`}>
@@ -83,15 +95,18 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
 export default DEISection;
 
 const createFilters = (dataKey, data, categories) => {
-  const filterKeys = Object.keys(data).filter(
-    (key) => !key.includes("_Multi") && !key.includes(dataKey) && (key in categories)
-  );
-  const filters = filterKeys.map((key) => {
-    return {
-      id: key,
-      text: categories[key].display,
-      total: categories[key].total,
-    };
+  const categoriesList = [];
+  const order = ["employee", "Individual_contributor", "management", "Team_lead", "Manager", "Director", "VP_&_C_Suite"];
+
+  order.forEach(key => {
+    if( key in categories){
+      categoriesList.push({
+        id: key,
+        text: categories[key].display,
+        total: categories[key].total
+      });
+    }
   });
-  return filters;
+  return categoriesList;
 };
+

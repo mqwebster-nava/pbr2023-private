@@ -45,11 +45,11 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
         regionID={regionID}
       />
       {checkboxValue && (
-        <CheckBox
+       <div className="pt-sm"> <CheckBox
           value={checkboxValue}
           label={checkboxLabel}
           handleClick={handleCheckboxClick}
-        />
+        /></div>
       )}
       </div>
       {children}
