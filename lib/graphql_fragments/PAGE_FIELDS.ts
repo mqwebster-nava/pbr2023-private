@@ -11,7 +11,6 @@ import QUOTE_BLOCK from "./content_blocks/QUOTE_BLOCK";
 import SECTION_HEADER_FIELDS from "./content_blocks/SECTION_HEADER_FIELDS";
 import TEXT_BODY_BLOCK from "./content_blocks/TEXT_BODY_BLOCK";
 import  IMAGE_FIELDS  from "./IMAGE_FIELDS";
-import LIST_BLOCK from "./content_blocks/LIST_BLOCK";
 import FLOATING_BUTTON_BLOCK from "./content_blocks/FLOATING_BUTTON_BLOCK";
 
 /*
@@ -42,9 +41,6 @@ contentCollection(limit:20) {
         __typename
         ... on SectionHeader {
             ${SECTION_HEADER_FIELDS}
-        }
-        ... on ListBlock {
-            ${LIST_BLOCK}
         }
         ... on ContentBlockLinkToPage{ 
             ${CONTENT_BLOCK}
