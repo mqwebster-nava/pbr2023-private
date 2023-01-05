@@ -1,19 +1,18 @@
 import { ContentfulImageAsset } from "lib/data_models/post_interface";
-import Image from "next/image";
 import React from "react";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 interface CapabilitiesInterface {
   icon: ContentfulImageAsset;
   body: string;
 }
-interface CapabilitiesSectionInterface {
+export interface CapabilitiesSectionProps {
   title?: string;
   capabilityTitle: string;
   body: string;
   items: Array<CapabilitiesInterface>;
 }
 
-const defaultIcon: ContentfulImageAsset = {
+export const defaultIcon: ContentfulImageAsset = {
   id: "3hBHof0lL9fl2Ui7QQdGnD",
   url: "https://images.ctfassets.net/t2ekr6eg3fr3/3hBHof0lL9fl2Ui7QQdGnD/031cc4c1e72fb98b335ae54f3e2840eb/icon-house.svg",
   width: 38,
@@ -27,7 +26,7 @@ const CapabilitiesSection = ({
   capabilityTitle,
   body,
   items,
-}: CapabilitiesSectionInterface) => {
+}: CapabilitiesSectionProps) => {
   return (
     <div className="bg-sage-50">
       <div className="responsive-container py-xl">

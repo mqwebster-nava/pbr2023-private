@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { animationHandler, AnimationObject, detectMob, getOffsetPct } from "../_utils";
+import {
+  animationHandler,
+  AnimationObject,
+  detectMob,
+  getOffsetPct,
+} from "../_utils";
 import {
   makeFadeAnimation,
   makeFadeInAnimation,
@@ -13,7 +18,6 @@ import ArrowDownColumn from "../Atoms/ArrowDownColumn";
 import classNames from "classnames";
 import { LinkText } from "components/atom/LinkText/LinkText";
 
-
 /* TODO  
 Logic for the portiat view on larger screens, 
 
@@ -25,10 +29,16 @@ mobile landscape
 
 */
 
-
-const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSectionTitle, nextSectionType="story" }) => {
+const StorySection = ({
+  story,
+  colorTheme,
+  sectionAnchor,
+  nextSection,
+  nextSectionTitle,
+  nextSectionType = "story",
+}) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
-  const nextId = nextSection; 
+  const nextId = nextSection;
   const [animationList, setAnimationList] = useState([]);
   const [isMobileLandscape, setIsMobileLandscape] = useState(false);
 //linkedPostUrl
@@ -73,7 +83,7 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
         delay + 50
       ),
     };
-  
+
     const titleOutTrigger = Math.round(
       (100 * (sectionH - 0.35 * screenH)) / sectionH
     );
@@ -91,27 +101,25 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     ];
 
     if (nextId) {
-      
-      const storyOutTrigger = Math.round((100 * (sectionH - screenH)) / sectionH);
+      const storyOutTrigger = Math.round(
+        (100 * (sectionH - screenH)) / sectionH
+      );
       let nextStoryArrowFade: AnimationObject = {
-        triggerPct: storyOutTrigger ,
+        triggerPct: storyOutTrigger,
         animation: makeFadeAnimation(
           `${story.anchor}-next-arrow-container`,
           0,
           200
         ),
       };
-       ana.push(nextStoryArrowFade);
+      ana.push(nextStoryArrowFade);
       let nextStoryArrow: AnimationObject = {
-        triggerPct: 1.5*desktopTriggerPct ,
+        triggerPct: 1.5 * desktopTriggerPct,
         triggerPcts: {
-          mobile: 1.5*mobileTriggerPct ,
-          tablet: 1.5*mobileTriggerPct ,
+          mobile: 1.5 * mobileTriggerPct,
+          tablet: 1.5 * mobileTriggerPct,
         },
-        animation: makeFadeInAnimation(
-          `${story.anchor}-next-arrow`,
-          delay
-        ),
+        animation: makeFadeInAnimation(`${story.anchor}-next-arrow`, delay),
       };
       ana.push(nextStoryArrow);
     }
@@ -119,8 +127,6 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     setAnimationList(ana);
     return ana;
   };
-
-
 
   const onScroll = () => {
     //if (!isActive) return;
@@ -136,28 +142,34 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
     animationHandler({ offsetPct, animationList, inFocus, isPortaitSameAsTablet:true });
   };
 
-
   useEffect(() => {
     if (animationList.length == 0) {
       const ana = initiateAnimations();
-      animationHandler({ offsetPct: getOffsetPct(storyId), animationList: ana, inFocus:false, isPortaitSameAsTablet:true});
+      animationHandler({
+        offsetPct: getOffsetPct(storyId),
+        animationList: ana,
+        inFocus: false,
+        isPortaitSameAsTablet: true,
+      });
     }
-    const _isMobLan = detectMob() && window.matchMedia("(orientation: landscape)").matches;
-    if(_isMobLan!==isMobileLandscape) setIsMobileLandscape(_isMobLan);
+    const _isMobLan =
+      detectMob() && window.matchMedia("(orientation: landscape)").matches;
+    if (_isMobLan !== isMobileLandscape) setIsMobileLandscape(_isMobLan);
 
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-  
+
     return () => window.removeEventListener("scroll", onScroll);
   });
 
-  const textColor =colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
+  const textColor =
+    colorTheme == "gold" ? "text-gold-darktext" : `text-${colorTheme}-900`;
   const darkColor = colorTheme == "gold" ? "gold-dark" : `${colorTheme}-900`;
   const borderColor = classNames({
-    "border-t-plum-700":colorTheme==="plum",
-    "border-t-sage-800":colorTheme==="sage",
-     "border-t-navy-600":colorTheme==="navy",
-    "border-t-gold-pbrcustomdark": colorTheme==="gold",
+    "border-t-plum-700": colorTheme === "plum",
+    "border-t-sage-800": colorTheme === "sage",
+    "border-t-navy-600": colorTheme === "navy",
+    "border-t-gold-pbrcustomdark": colorTheme === "gold",
   });
   const LinkedPost = ({url})=>{
     if(!url)return null;
@@ -167,13 +179,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
   }
 
 
-
-
-
   return (
     <section className="" id={`${sectionAnchor}--${story.anchor}`}>
       <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
-
         <ImageBackgroundContainerDesktop
           story={story}
           colorTheme={colorTheme}
@@ -192,7 +200,11 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
             >
               <h3
                 id={`storyTitle-${story.anchor}`}
-                className={`${isMobileLandscape? "type-preset-5": "md:type-preset-3 type-preset-4"} font-black ${textColor} pt-md pb-xl  opacity-100 `}
+                className={`${
+                  isMobileLandscape
+                    ? "type-preset-5"
+                    : "md:type-preset-3 type-preset-4"
+                } font-black ${textColor} pt-md pb-xl  opacity-100 `}
               >
                 {story.title}
               </h3>
@@ -200,9 +212,17 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
           </div>
           <div className={`portrait:h-[50vh] landscape:h-[80vh]`}></div>
 
-          <div className={`w-full bg-${colorTheme}-50 lg:landscape:bg-transparent`}>
+          <div
+            className={`w-full bg-${colorTheme}-50 lg:landscape:bg-transparent`}
+          >
             <div className="grid grid-cols-12 responsive-container h-auto relative">
-            <ArrowDownColumn anchor={story.anchor} color={darkColor} nextId={nextId} nextSectionTitle={nextSectionTitle} nextSectionType={nextSectionType} />
+              <ArrowDownColumn
+                anchor={story.anchor}
+                color={darkColor}
+                nextId={nextId}
+                nextSectionTitle={nextSectionTitle}
+                nextSectionType={nextSectionType}
+              />
               <div
                 className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl `}
               >
@@ -210,7 +230,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                   id={`storySummary-${story.anchor}`}
                   className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
                 >
-                  <div className={`font-serif font-bold ${textColor} border-t-[2px] ${borderColor} type-preset-6`}>
+                  <div
+                    className={`font-serif font-bold ${textColor} border-t-[2px] ${borderColor} type-preset-6`}
+                  >
                     <ReportContent
                       docData={story.intro.json}
                       docLinks={story.intro.links}
@@ -251,12 +273,9 @@ const StorySection = ({ story, colorTheme, sectionAnchor, nextSection, nextSecti
                 </div>
               
               </div>
-
-        
             </div>
           </div>
         </div>
-       
       </div>
     </section>
   );
@@ -275,7 +294,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
         <Image
           id={`storyImg-${story.anchor}`}
           alt={""}
-          quality={'85'}
+          quality={"85"}
           src={story.illustration.url}
           layout="fill"
           objectFit="cover"
@@ -288,7 +307,7 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
           alt={`${story.contextIllustration.description}`}
           src={story.contextIllustration.url}
           layout="fill"
-          quality={'85'}
+          quality={"85"}
           objectFit="cover"
           className={`w-screen absolute top-0 left-0 opacity-100 object-left-top block`}
           sizes={`(max-width: 2000px) 100vw,
@@ -300,4 +319,3 @@ const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
 };
 
 export default StorySection;
-

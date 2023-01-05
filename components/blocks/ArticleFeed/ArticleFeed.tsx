@@ -10,7 +10,7 @@ import ContentGrid, { ListLayout } from "./ContentGrid";
 
 
 interface ArticleFeedInterface {
-  id: string;
+  id?: string;
   title?: string;
   buttonText?: string;
   buttonPath?: string;
@@ -55,8 +55,8 @@ const ArticleFeed = ({
 
 
   return (
-    <section key={id} className="pt-xl pb-4xl" >
-      <div className="responsive-container" key={id}>
+    <section className="pt-xl pb-4xl" >
+      <div className="responsive-container" >
       {title &&  <HorizontalLine variant="light"/>}
         <div className={`w-full pt-md flex justify-between `}>
           <div className="md:w-3/4 ">

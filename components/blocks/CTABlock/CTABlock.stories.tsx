@@ -5,6 +5,13 @@ export default {
 
   title: 'Blocks /  CTA Block',
   component: CTABlock,
+  argTypes: {
+    id: {
+      table: {
+        disable: true,
+      },
+    }
+  },
 } as ComponentMeta<typeof CTABlock>;
 
 //👇 We create a “template” of how args map to rendering

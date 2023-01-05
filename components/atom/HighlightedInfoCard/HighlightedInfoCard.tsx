@@ -1,17 +1,17 @@
 
 import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import Image from "next/image";
-interface HighlightedInfoCardInterface {
+export interface HighlightedInfoCardProps {
     id?: string;
     icon?: ContentfulImageAsset; // TODO what to do with the icon selection (?),
     title: string;
     body: string;
 }
 
-const defaultIcon:ContentfulImageAsset = 
+export const defaultIcon:ContentfulImageAsset = 
     {
         "id": "3hBHof0lL9fl2Ui7QQdGnD",
-        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/3hBHof0lL9fl2Ui7QQdGnD/031cc4c1e72fb98b335ae54f3e2840eb/icon-house.svg",
+        "url": "https://images.ctfassets.net/t2ekr6eg3fr3/3FosxQMrAo3C045k4ndLpv/c2fb4aec736d8694bd2082df1ddf137e/Customer_experiences_icon_V2.svg",
         "width": 38,
         "height": 38,
         "title": "icon-house",
@@ -19,7 +19,7 @@ const defaultIcon:ContentfulImageAsset =
     }
 
 
-const HighlightedInfoCard = ({id, icon, title, body}:HighlightedInfoCardInterface) => {
+const HighlightedInfoCard = ({id, icon, title, body}:HighlightedInfoCardProps) => {
    
     icon = icon ?? defaultIcon;
     return (

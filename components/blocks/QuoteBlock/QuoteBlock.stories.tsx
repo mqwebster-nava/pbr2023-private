@@ -10,6 +10,11 @@ export default {
   title: 'Blocks /  Quote Block',
   component: QuoteBlock,
   argTypes: {
+    id: {
+      table: {
+        disable: true,
+      },
+    },
     color: {
       options: ['gold', 'purple'],
       control: { type: 'radio' },
