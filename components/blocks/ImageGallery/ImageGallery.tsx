@@ -1,9 +1,19 @@
 import Image from "next/image";
 import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
+import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
+
+/*
+Rotating Image
+
+*/
 
 type ImageGalleryColorTheme = "default" | "navy";
-type ImageGalleryLayout = "Four image grid" | "Three image row" | "Single image";
+type ImageGalleryLayout =
+  | "Four image grid"
+  | "Three image row"
+  | "Single image"
+  | "Rotating image";
 interface ImageGalleryInterface {
   id: string;
   images?: Array<ContentfulImageAsset>;
@@ -15,13 +25,17 @@ const ImageGalleryBlock = ({
   id,
   images,
   colorTheme = "default",
-  layout="Single image",
+  layout = "Single image",
 }: ImageGalleryInterface) => {
   const bgColor = classNames({
     "bg-navy-900": colorTheme == "navy",
   });
+  const yPadding = classNames({
+    "": layout == "Rotating image",
+    "py-4xl": layout != "Rotating image",
+  });
   //TODO-  For transition - to remove once contentful is updated
-  
+
   const FourImageGrid = () => {
     if (!images || images.length < 3) return <div></div>;
     return (
@@ -70,6 +84,25 @@ const ImageGalleryBlock = ({
     );
   };
 
+  const RotatingImage = () => {
+    if (!images) return <div></div>;
+    // NOTE: Only works for images with a 16:9 dimension ratio
+   // const ratio = (100* images[0].height / images[0].width).toPrecision(4)
+    return (
+      <div
+        className={`w-full  pb-[56.47%]  `}
+      >
+        <CrossfadeCarousel
+          interval={2000}
+          transition={2000}
+          images={images.map((im) => {
+            return { src: im.url, ...im };
+          })}
+        />
+      </div>
+    );
+  };
+
   const SingleImage = () => {
     if (!images || images.length != 1) return <div></div>;
     return (
@@ -87,26 +120,26 @@ const ImageGalleryBlock = ({
   const ThreeImageRow = () => {
     if (!images || images.length < 2) return <div></div>;
     return (
-        <div className="flex justify-start">
-          <div className="hidden sm:block sm:w-5/12">
-            <Image
-              src={images[0].url}
-              layout="responsive"
-              height={images[0].height}
-              width={images[0].width}
-              alt={images[0].description}
-            ></Image>
-          </div>
-          <div className="hidden sm:block sm:w-3/12 self-start  px-md md:px-2xl">
-            <Image
-              src={images[1].url}
-              layout="responsive"
-              height={images[1].height}
-              width={images[1].width}
-              alt={images[1].description}
-            ></Image>
-          </div>
-      
+      <div className="flex justify-start">
+        <div className="hidden sm:block sm:w-5/12">
+          <Image
+            src={images[0].url}
+            layout="responsive"
+            height={images[0].height}
+            width={images[0].width}
+            alt={images[0].description}
+          ></Image>
+        </div>
+        <div className="hidden sm:block sm:w-3/12 self-start  px-md md:px-2xl">
+          <Image
+            src={images[1].url}
+            layout="responsive"
+            height={images[1].height}
+            width={images[1].width}
+            alt={images[1].description}
+          ></Image>
+        </div>
+
         <div className="w-full sm:w-4/12  self-end">
           <Image
             src={images[2].url}
@@ -116,18 +149,23 @@ const ImageGalleryBlock = ({
             alt={images[2].description}
           ></Image>
         </div>
-        </div>
+      </div>
     );
   };
 
   return (
     <div className={`w-full ${bgColor}`} key={id}>
-      <div className="responsive-container w-full u-py-block-default">
-        {layout == "Four image grid" 
-        ? <FourImageGrid /> 
-       : layout == "Three image row"
-        ? <ThreeImageRow />
-        : <SingleImage/>}
+      <div className={`responsive-container w-full ${yPadding}`}>
+        {layout == "Four image grid" ? (
+          <FourImageGrid />
+        ) : layout == "Three image row" ? (
+          <ThreeImageRow />
+        ) : layout == "Rotating image" ? (
+          <RotatingImage />
+        ) :
+        (
+          <SingleImage />
+        )}
       </div>
     </div>
   );
@@ -135,8 +173,7 @@ const ImageGalleryBlock = ({
 
 export default ImageGalleryBlock;
 
-
-  /* <Image
+/* <Image
             className=""
             src={image.url}
             layout="responsive"
@@ -144,4 +181,3 @@ export default ImageGalleryBlock;
             width={image.width}
             alt={image.description}
           ></Image> */
-
