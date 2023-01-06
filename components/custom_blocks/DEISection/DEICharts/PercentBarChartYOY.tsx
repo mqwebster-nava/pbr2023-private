@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import CountUp from "react-countup";
+import CountUp, { useCountUp } from "react-countup";
 import React, { useState, useEffect } from "react";
 
 interface PercentBarChartYOYInterface {
@@ -48,7 +48,18 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   startDelay = 1500,
   endDelay = 1500,
 }) => {
+  const countUpRef = React.useRef(null);
   //const [width, setWidth] = useState(startingPercent);
+  const { start, pauseResume, reset, update } = useCountUp({
+    ref: countUpRef,
+    start: startingPercent,
+    end: endingPercent,
+    delay: startDelay / 1000,
+    duration: duration / 1000,
+  });
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   useEffect(() => {
     const an = makeSlideUpAnimation(
@@ -58,21 +69,24 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
       duration,
       startDelay
     );
-    an.play();
-    an.onfinish = (e) => {
-      setTimeout(() => an.play(), endDelay);
-    };
-    const loop = ()=> setTimeout(()=>{
-      const label = document.getElementById(`labelText-${startingPercent}`)
-      label.innerText = textEnd;
-      setTimeout(()=>{
-        label.innerText = textStart;
-        loop();
-      }, duration+endDelay)
-    }, startDelay);
-    loop();
 
-    
+    const startCycle = () =>{
+      const label = document.getElementById(`labelText-${startingPercent}`);
+      an.play();
+      start()
+      label.innerText = textStart;
+      sleep(startDelay).then(() => {
+        label.innerText = textEnd;
+      });
+    }
+
+    const intervalID = setInterval(() => {
+      startCycle()
+    }, startDelay + duration + endDelay);
+
+    startCycle()
+
+    return () => clearInterval(intervalID);
   }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
 
   const insideBar = classNames({
@@ -89,15 +103,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
       >
         <p id={`labelText-${startingPercent}`}>2021</p>
         <p className="type-preset-3 font-black inline-block">
-          <CountUp
-            start={startingPercent}
-            end={endingPercent}
-            delay={startDelay / 1000}
-            duration={duration / 1000}
-            onEnd={(e)=>{
-              setTimeout(() => { e.start()}, endDelay);
-            }}
-          />
+          <span ref={countUpRef} >{startingPercent}</span>
           %
         </p>
         <p>{description}</p>
@@ -176,3 +182,104 @@ const makeSlideUpAnimation = (
 
 // setTimeout(startAnimation, startDelay);
 // setTimeout(endAnimation, endDelay );
+
+/*
+
+export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
+  startingPercent,
+  endingPercent,
+  textEnd = "2022",
+  textStart = "2021",
+  description,
+  insideBarColor = "sage",
+  duration = 500,
+  startDelay = 1500,
+  endDelay = 1500,
+}) => {
+  //const [width, setWidth] = useState(startingPercent);
+
+  useEffect(() => {
+    const an = makeSlideUpAnimation(
+      `animation-${startingPercent}`,
+      startingPercent,
+      endingPercent,
+      duration,
+      startDelay
+    );
+    an.play();
+    an.addEventListener("animationiteration", 
+    ()=>{
+      console.log()
+
+    }, false);
+    an.onfinish = (e) => {
+      setTimeout(() => an.play(), endDelay);
+    };
+    const loop = ()=> setTimeout(()=>{
+      const label = document.getElementById(`labelText-${startingPercent}`)
+      label.innerText = textEnd;
+      setTimeout(()=>{
+        label.innerText = textStart;
+        loop();
+      }, duration+endDelay)
+    }, startDelay);
+    loop();
+
+    
+  }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
+
+  const insideBar = classNames({
+    "bg-sage-700": insideBarColor === "sage",
+    "bg-navy-900": insideBarColor === "navy",
+    "bg-plum-900": insideBarColor === "plum",
+  });
+  return (
+    <div className="min-h-[140px] w-full mb-xl bg-sage-50">
+      <div
+        id={`animation-${startingPercent}`}
+        className={`${insideBar} min-h-[inherit] px-2 py-4 text-white`}
+        style={{ width: `${startingPercent}%` }}
+      >
+        <p id={`labelText-${startingPercent}`}>2021</p>
+        <p className="type-preset-3 font-black inline-block">
+          <CountUp
+            start={startingPercent}
+            end={endingPercent}
+            delay={startDelay / 1000}
+            duration={duration / 1000}
+            onEnd={(e)=>{
+              setTimeout(() => { e.start()}, endDelay);
+            }}
+          />
+          %
+        </p>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};
+
+const makeSlideUpAnimation = (
+  elementId,
+  startingPercent,
+  endingPercent,
+  duration,
+  delay
+) => {
+  console.log(startingPercent);
+  let an = document
+    .getElementById(elementId)
+    .animate(
+      [{ width: `${startingPercent}%` }, { width: `${endingPercent}%` }],
+      {
+        duration: duration,
+        fill: "forwards",
+        iterations: 1,
+        delay: delay,
+      }
+    );
+  an.pause();
+  return an;
+};
+
+*/
