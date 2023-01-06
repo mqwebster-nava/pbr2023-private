@@ -7,7 +7,7 @@ import NavaDigest from "./NavaDigest";
 
 const Footer = ({isBottomCTA=false, experiments=null}) => {
   let currentYear = new Date().getFullYear();
-  const variant = getExperimentValue(experiments, "Insights Library AB Test")
+  const variant = experiments && getExperimentValue(experiments, "Insights Library AB Test") 
   const FooterNavData = getFooterNavData(variant)
   return (
     <footer>

@@ -7,8 +7,8 @@ import { getExperimentValue } from "utils/useOptimizely";
 // TODO: a11y - all links must have discernable text: https://dequeuniversity.com/rules/axe/4.4/link-name?application=axeAPI
 const Navbar = ({ experiments = null }) => {
   // Gets the current breakpoint to determine the navbar
-  const variant = getExperimentValue(experiments, "Insights Library AB Test")
-  const variantData = variant==null?[]:getNavData(variant);
+  const variant = experiments && getExperimentValue(experiments, "Insights Library AB Test")
+  const variantData = (variant==null && experiments)?[]:getNavData(variant);
 
   return (
     <header className={`bg-white w-full z-50  `}>
