@@ -59,12 +59,12 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
     setTriggerRef,
     visible,
   } = usePopperTooltip({ placement: "top" });
-
+  const percentLabel = (Number(percent)<1 && Number(percent)>0) ? "<1%":`${percent}%`;
   tooltipText =
     tooltipText ?? `${percent}% of ${category} identify as ${description}.`;
 
   return (
-    <div className="my-2 mr-2" aria-label={tooltipText}>
+    <div className="" aria-label={tooltipText}>
       {showTooltip && visible && (
         <GraphTooltip
           text={tooltipText}
@@ -109,7 +109,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
         )}
       </div>
       <p className="type-preset-4" aria-hidden={true}>
-        {percent}%
+        {percentLabel}
       </p>
       <p className="type-preset-6" aria-hidden={true}>
         {description}

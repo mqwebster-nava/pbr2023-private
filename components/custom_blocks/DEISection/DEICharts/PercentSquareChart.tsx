@@ -75,7 +75,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
-        <div className="pt-lg grid grid-cols-2 md:grid-cols-5"
+        <div className="pt-lg grid grid-cols-2 md:grid-cols-5 gap-sm "
          role="region" 
          aria-live="polite"
           id={regionId}

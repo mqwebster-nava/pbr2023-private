@@ -11,7 +11,7 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
       </h3>
       <HorizontalLine  variant={"light"} hideFromVoiceOver/>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 py-lg">
+      <div className="grid grid-cols-2 md:grid-cols-5 py-lg gap-sm">
         {stats.sort((a,b)=> b.percentage-a.percentage).map((graph, index) => (
           <PercentSquareGraph
             key={`percent_square_graph_${index}`}

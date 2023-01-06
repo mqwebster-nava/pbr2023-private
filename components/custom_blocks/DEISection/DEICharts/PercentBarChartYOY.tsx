@@ -95,7 +95,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
             delay={startDelay / 1000}
             duration={duration / 1000}
             onEnd={(e)=>{
-              setTimeout(() => {e.reset(); e.start()}, endDelay);
+              setTimeout(() => { e.start()}, endDelay);
             }}
           />
           %
