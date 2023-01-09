@@ -20,7 +20,8 @@
       preview: preview,
     });
     return {
-      props:  res
+      props:  res,
+      revalidate: 60, // In seconds
     };
   }
 
