@@ -50,7 +50,6 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   const isIncreasing = endingPercent>startingPercent;
   const endW = isIncreasing ? 100 : (100*(1-(startingPercent-endingPercent)/startingPercent))
   const startW = isIncreasing ? 100*startingPercent/endingPercent : 100;
-  console.log(duration)
   const countUpRef = React.useRef(null);
   const animationRef = React.useRef(null);
   const { start } = useCountUp({
@@ -73,9 +72,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
     );
     const observer = new IntersectionObserver((entries, observer) => {
       const entry = entries[0];
-      console.log('entry', an.playState);
-      console.log('entry.isIntersecting', entry.isIntersecting);
-      
+ 
       if(entry.isIntersecting && an.playState == "paused"){
         an.play()
         start()
