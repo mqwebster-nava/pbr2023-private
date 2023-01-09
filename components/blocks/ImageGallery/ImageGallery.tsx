@@ -93,8 +93,8 @@ const ImageGalleryBlock = ({
         className={`w-full  pb-[56.47%]  `}
       >
         <CrossfadeCarousel
-          interval={2000}
-          transition={2000}
+          interval={1000}
+          transition={1000}
           images={images.map((im) => {
             return { src: im.url, ...im };
           })}
