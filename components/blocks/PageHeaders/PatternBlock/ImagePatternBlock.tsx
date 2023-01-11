@@ -3,7 +3,7 @@ import Image from "next/image";
 import brandDefault from "public/images/header-pattern-block.png";
 import brandDefaultArticle from "public/images/Article-Pattern.png";
 import ill from "public/images/illo.png";
-import styles from "./PageHeader.module.css";
+import styles from "./../PageHeader.module.css";
 
 type ColorTheme = "purple" | "plum" | "sage";
 
