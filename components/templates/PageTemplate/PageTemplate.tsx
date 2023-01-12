@@ -1,7 +1,7 @@
 
 import FloatingButtonBlock from "components/blocks/FloatingButtonBlock/FloatingButtonBlock";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 const ContentBlock = dynamic(() => import("components/blocks/ContentBlock/ContentBlock"));
@@ -32,12 +32,16 @@ const PageTemplate: React.FC<PageInterface> = ({
   children,
   slug
 }) => {
-
-  // TODO fix urls
   const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
   const pageColors = ["gold", "navy", "sage", "purple","plum"]
-  const pageColor = pageColors[Math.floor(Math.random() * pageColors.length)];
-
+  const [DEIpageColor, setDEIpageColor] = useState(null)
+  // TODO fix urls
+  useEffect(() => {
+    if(isDEI2022){
+      setDEIpageColor(pageColors[Math.floor(Math.random() * pageColors.length)])
+    }
+  },[]);
+  
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -50,14 +54,14 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ImageGallery": ()=> {
         if (!isDEI2022) return <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items} />
         let imgs  = entry.imagesCollection.items;
-        imgs = (pageColor=="navy") ? imgs.slice(0,3)
-              :(pageColor=="plum") ? imgs.slice(3,6)
-              :(pageColor=="purple") ? imgs.slice(6,9)
-              :(pageColor=="gold") ? imgs.slice(9,12)
+        imgs = (DEIpageColor=="navy") ? imgs.slice(0,3)
+              :(DEIpageColor=="plum") ? imgs.slice(3,6)
+              :(DEIpageColor=="purple") ? imgs.slice(6,9)
+              :(DEIpageColor=="gold") ? imgs.slice(9,12)
               : imgs.slice(12,15);
-        return <ImageGalleryBlock key={index} {...entry} images={imgs} background={pageColor}/>
+        return <ImageGalleryBlock key={index} {...entry} images={imgs} background={DEIpageColor}/>
       },
-      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry} colorTheme={isDEI2022?pageColor:entry.colorTheme}/>,
+      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry} colorTheme={isDEI2022?DEIpageColor:entry.colorTheme}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
@@ -69,7 +73,7 @@ const PageTemplate: React.FC<PageInterface> = ({
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
         if(entry.type == "DEI Section") 
-          return  <DEISection key={index} {...entry} colorTheme={entry.colorTheme=="white"?entry.colorTheme:pageColor}/>
+          return  <DEISection key={index} {...entry} colorTheme={entry.colorTheme=="white"?entry.colorTheme:DEIpageColor}/>
         
         return null
       }

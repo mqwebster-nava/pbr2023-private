@@ -2,16 +2,20 @@ import classNames from "classnames";
 import CountUp, { useCountUp } from "react-countup";
 import React, { useState, useEffect } from "react";
 import BrandPatternTerrain from "components/atom/BrandPattern/BrandPatternTerrain";
+import ColorTheme from "utils/ColorThemes";
 
 interface PercentBarChartYOYInterface {
   description: string;
   graphs: Array<AnimatedBarChartInterface>;
+  colorTheme: ColorTheme
 }
 
 export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
   description,
   graphs,
+  colorTheme
 }) => {
+
   return (
     <>
       <p className="font-bold py-md">{description}</p>
@@ -19,7 +23,8 @@ export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
         <AnimatedBarChart
           key={`percent_bar_graph_${index}`}
           {...graph}
-          //duration={1500}
+          colorTheme={colorTheme}
+          index={index}
         />
       ))}
     </>
@@ -29,11 +34,9 @@ export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
 export interface AnimatedBarChartInterface {
   startingPercent: number;
   endingPercent: number;
-  //textStart: string;
-  //textEnd: string;
   description: string;
-  insideBarColor?: string;
- // duration: number;
+  colorTheme: ColorTheme;
+  index: number;
   startDelay?: number;
   endDelay?: number;
 }
@@ -42,9 +45,10 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   startingPercent,
   endingPercent,
   description,
-  insideBarColor = "sage",
+  colorTheme = "sage",
   startDelay = 1000,
   endDelay = 1500,
+  index
 }) => {
 
   const duration = Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
@@ -87,16 +91,27 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
 
   const insideBar = classNames({
-    "bg-sage-700 ": insideBarColor === "sage",
-    "bg-navy-900 ": insideBarColor === "navy",
+    "bg-sage-900 ": colorTheme === "sage" && index==0,
+    "bg-sage-700": colorTheme === "sage" && index==1,
+    "bg-navy-900 ": colorTheme === "navy" && index==0,
+    "bg-navy-700 ": colorTheme === "navy" && index==1,
+    "bg-plum-900 ": colorTheme === "plum" && index==0,
+    "bg-plum-700 ": colorTheme === "plum" && index==1,
+    "bg-gold-900 ": colorTheme === "gold" && index==0,
+    "bg-gold-700 ": colorTheme === "gold" && index==1,
+    "bg-purple-900 ": colorTheme === "purple" && index==0,
+    "bg-purple-700 ": colorTheme === "purple" && index==1,
   });
   const bBar = classNames({
-    "bg-sage-300": insideBarColor === "sage",
-    "bg-navy-200": insideBarColor === "navy",
+    "bg-sage-300": colorTheme === "sage",
+    "bg-navy-200": colorTheme === "navy",
+    "bg-plum-200": colorTheme === "plum",
+    "bg-gold-200": colorTheme === "gold",
+    "bg-purple-200": colorTheme === "purple",
   });
  
   return (
-    <div className="min-h-[140px] w-full mb-xl bg-sage-50 flex">
+    <div className="min-h-[140px] w-full mb-xl  flex">
 
       <div style={{ width: `${startingPercent}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
       <div

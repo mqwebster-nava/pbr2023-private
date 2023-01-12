@@ -40,6 +40,7 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
               key={`${i}`}
               description={sectionData.description}
               graphs={sectionData.graphs}
+              colorTheme={colorTheme}
             />
           </div>
         );
