@@ -50,7 +50,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   index
 }) => {
 
-  const duration = Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
+  const duration = 1000;//Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
   const isIncreasing = endingPercent>startingPercent;
   const patternWidth = Math.abs(startingPercent-endingPercent).toFixed(2)
 
@@ -76,16 +76,16 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
     );
     const observer = new IntersectionObserver((entries, observer) => {
       const entry = entries[0];
- 
-      if(entry.isIntersecting && an.playState == "paused"){
+      if(entry.isIntersecting && (an.playState == "paused" || an.playState == "finished")){
         an.play()
         start()
-
       }
+      
+     
     });
     observer.observe(animationRef.current)
 
-  }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
+  }, []);
 
   const insideBar = classNames({
     "bg-sage-900 ": colorTheme === "sage" && index==0,
@@ -162,6 +162,7 @@ const makeSlideUpAnimation = (
       {
         duration: duration,
         fill: "forwards",
+        easing: 'ease-in-out',
         iterations: 1,
         delay: delay,
       }
@@ -379,7 +380,6 @@ const makeSlideUpAnimation = (
   duration,
   delay
 ) => {
-  console.log(startingPercent);
   let an = document
     .getElementById(elementId)
     .animate(
