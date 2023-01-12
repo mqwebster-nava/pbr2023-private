@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import DEI from "../pages/dei";
+import DEI from "../pages/dei/2021";
 import { render } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 
