@@ -12,7 +12,7 @@ export const formatPosts = (posts) =>{
         contentTags:post.contentTags,
         slug: post.slug,
         title: post.title,
-        date: post.date,
+        date:  post.date ?? post.sys.firstPublishedAt,
         kicker: ("kicker" in post) && post.kicker,
         clientName: ("clientName" in post) && post.clientName,
         contentType: post.contentType,

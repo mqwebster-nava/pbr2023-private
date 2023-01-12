@@ -3,6 +3,7 @@ import IMAGE_FIELDS from "../IMAGE_FIELDS";
 const CONTENT_CARD = `
   sys {
     id
+    firstPublishedAt
   }
   title
   kicker

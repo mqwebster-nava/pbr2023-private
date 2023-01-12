@@ -38,6 +38,8 @@ const ArticleFeed = ({
    // contentTypes:[],
     tags:[]
   });
+
+  // TODO could format posts here
   const [displayedPosts, setDisplayedPosts] =  useState(items);
 
   const handleClear = (type) => {

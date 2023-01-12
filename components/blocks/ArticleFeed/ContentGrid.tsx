@@ -54,7 +54,7 @@ const ContentGrid = ({
             });
             const cardLayout = "3 card row" || i > 3 ? "third" : i == 0 ? "half" : "quarter"
             const kicker = item.kicker ? item.kicker : 
-             item.contentType == "Case Study" ? item.clientName :
+            item.contentType == "Case Study" ? item.clientName :
                            item.contentType == "News" ? getDateStr(item.date) :
                            item.contentType == "Events" ? getEventDateStr(item.date): null;
 
@@ -64,11 +64,11 @@ const ContentGrid = ({
                 
                   <ContentCard
                     size={cardLayout}
-                    kicker={item.kicker}
+                    kicker={kicker}
                     title={item.title}
-                    image={item.image}
-                    path={item.path}
-                    summary={item.summary}
+                    image={item.image?? item.promoImage}
+                    path={item.path?? getContentUrl(item.contentType,item.slug)}
+                    summary={item.summary ?? item.shortSummary}
                     analyticsLabel="article-feed"
                  />
                 
