@@ -17,7 +17,7 @@ const SecondaryPatternBlock = ({bgColor, bgBase, hideHeroPattern=false}:ImagePat
       <div className={`${bgColor}`}>
         <div className=" responsive-container pt-3xl">
      
-     {!hideHeroPattern && <div className=" w-1/4">
+     <div className={`w-1/4 ${hideHeroPattern && "opacity-0"}`}>
       <div className="flex items-stretch">
         <div className={`bg-${bgBase}-800 max-h-4xl h-full text-[0px]`}>
           <Image
@@ -39,7 +39,7 @@ const SecondaryPatternBlock = ({bgColor, bgBase, hideHeroPattern=false}:ImagePat
         </div>
         <div className={`bg-${bgBase}-200 max-h-4xl w-4xl `}> </div>
       </div>
-    </div>}
+    </div>
     </div>
     </div>);
 }
