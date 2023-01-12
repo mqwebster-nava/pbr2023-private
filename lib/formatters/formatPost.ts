@@ -25,7 +25,7 @@ import { formatImageAsset } from "./formatImageAsset";
         return formattedAuthor;
       }),
       body: post.body,
-      date: post.date,
+      date: post.date ?? post.sys.firstPublishedAt,
       contentType: post.contentType,
       shortSummary: post.shortSummary,
       leadImage: ("leadImage" in post) ? formatImageAsset(post.leadImage): null,

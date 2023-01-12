@@ -12,14 +12,12 @@ export const formatPosts = (posts) =>{
         contentTags:post.contentTags,
         slug: post.slug,
         title: post.title,
-        date: post.date,
+        date: post.date ?? post.sys.firstPublishedAt,
         clientName: post.clientName,
         contentType: post.contentType,
         shortSummary: post.shortSummary,
         promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
-        
       }
-
       return newPost;
     })
 return p;
