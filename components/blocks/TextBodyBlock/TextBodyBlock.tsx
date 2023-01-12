@@ -18,7 +18,10 @@ const TextBodyBlock = (props:TextBodyInterface)=>{
 const DefaultTextBodyBlock = ({title, richBody, colorTheme="default"}:TextBodyInterface) => {
   const bg = classNames({
     "bg-gold-50": colorTheme=="gold",
-    "bg-sage-50": colorTheme=="sage"
+    "bg-sage-50": colorTheme=="sage",
+    "bg-navy-50": colorTheme=="navy",
+    "bg-plum-50": colorTheme=="plum",
+    "bg-purple-50": colorTheme=="purple",
   })
 
     return (
