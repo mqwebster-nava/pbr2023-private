@@ -53,9 +53,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
 
   const duration = Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
   const isIncreasing = endingPercent>startingPercent;
-  const endW = isIncreasing ? 100 : (100*(1-(startingPercent-endingPercent)/startingPercent))
-  const startW = isIncreasing ? 100*startingPercent/endingPercent : 100;
-  const patternWidth = Math.abs(startW-endW).toFixed(2)
+  const patternWidth = Math.abs(startingPercent-endingPercent).toFixed(2)
 
   const countUpRef = React.useRef(null);
   const animationRef = React.useRef(null);
