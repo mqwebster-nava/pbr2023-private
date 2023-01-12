@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import CountUp, { useCountUp } from "react-countup";
 import React, { useState, useEffect } from "react";
-import BrandPatternTerrain from "components/atom/BrandPattern/BrandPatternTerrain";
 import ColorTheme from "utils/ColorThemes";
 
 interface PercentBarChartYOYInterface {
@@ -116,7 +115,7 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
         className={`absolute ${insideBar} min-h-[inherit] px-2 py-4 text-white z-10`}
         style={{ width: `${100}%` }}
       >
-        <p className="type-preset-3 font-sans font-bold inline-block">
+        <p className=" type-preset-1 font-sans font-bold inline-block">
           <span ref={countUpRef} >{startingPercent}</span>
           %
         </p>

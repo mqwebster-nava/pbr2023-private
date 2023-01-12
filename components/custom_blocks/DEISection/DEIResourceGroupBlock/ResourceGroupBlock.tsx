@@ -1,5 +1,11 @@
-import brandDirection from "public/images/Nava-Brand-Pattern-Direction1-Heavy-White-V01@4x-3.svg";
-import brandTerrain from "public/images/Nava-Brand-Pattern-Terrain3-Medium-White-V01@4x-2.svg";
+import brandDirection1 from "public/images/brand-patterns/Nava-Brand-Pattern-Direction1-Heavy-White.svg";
+import brandDirection2 from "public/images/brand-patterns/Nava-Brand-Pattern-Direction2-Light-White.svg";
+import brandDirection3 from "public/images/brand-patterns/Nava-Brand-Pattern-Direction3-Medium-White.svg";
+import brandTerrain1 from "public/images/brand-patterns/Nava-Brand-Pattern-Terrain1-Heavy-White.svg";
+import brandTerrain2 from "public/images/brand-patterns/Nava-Brand-Pattern-Terrain2-Light-White.svg";
+import brandTerrain3 from "public/images/brand-patterns/Nava-Brand-Pattern-Terrain3-Medium-White.svg";
+
+
 import Image from "next/image";
 /*
 TODO have it only do gradient til the pattern then have the pattern be the last of the gradient
@@ -17,22 +23,31 @@ const color = {
   earthtones: {
     title: "text-dei-brown-base",
     bg: "bg-gradient-to-r from-dei-brown-dark via-dei-brown-light to-dei-brown-lightest",
-    endBg: "bg-dei-brown-lightest"
+    endBg: "bg-dei-brown-lightest",
+    pattern1: brandDirection1,
+    pattern2: brandTerrain1,
+
   },
   "Gender equity": {
     title: "text-dei-green-base",
     bg: "bg-gradient-to-r from-dei-green-base to-dei-green-base",
-    endBg: "bg-dei-green-base"
+    endBg: "bg-dei-green-base",
+    pattern1: brandDirection2,
+    pattern2: brandTerrain2,
   },
   Juntos: {
     title: "text-dei-pink-base",
     bg: "bg-gradient-to-r from-dei-blue-lightest via-dei-pink-light to-dei-green-light",
-    endBg: "bg-dei-green-light"
+    endBg: "bg-dei-green-light",
+    pattern1: brandDirection3,
+    pattern2: brandTerrain3,
   },
   Kaleidoscope: {
     title: "text-dei-blue-dark",
     bg: "rainbow-gradient",
-    endBg: "bg-dei-rainbow-end"
+    endBg: "bg-dei-rainbow-end",
+    pattern1: brandDirection1,
+    pattern2: brandTerrain1,
   },
 };
 
@@ -44,6 +59,9 @@ export const ResourceGroupBlock: React.FC<ResourceGroupBlockInterface> = ({
   const background = color[title] ? color[title].bg : "";
   const endBg = color[title] ? color[title].endBg : "";
   const textColor = color[title] ? color[title].title : "";
+  const brandDirection = color[title] ? color[title].pattern1 : brandDirection1;
+  const brandTerrain = color[title] ? color[title].pattern2 : brandTerrain1;
+
   return (
     <div className=" flex flex-col items-stretch ">
 
