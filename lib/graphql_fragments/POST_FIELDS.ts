@@ -15,6 +15,7 @@ import EVENT_INFO from "./post_blocks/EVENT_INFO";
 export const POST_CORE_FIELDS = `
     sys {
       id
+      firstPublishedAt
     }
     date
     title
