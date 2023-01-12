@@ -15,18 +15,23 @@ export default function CrossfadeCarousel({
   const [firstTransitionIsDone, setFirstTransitionIsDone] = useState(false)
   useEffect(() => {
     if (!cycle) return
+    let mounted = true;
     const timeout = setTimeout(() => {
       async function startImageTransition() {
         if (firstTransitionIsDone) await wait(transition)
-        setActive(active === images.length - 1 ? 0 : active + 1)
-        setFirstTransitionIsDone(true)
+        if(mounted){
+          setActive(active === images.length - 1 ? 0 : active + 1)
+          setFirstTransitionIsDone(true)
+        }
       }
       if (cycle) {
         startImageTransition()
       }
     }, interval)
 
-    return () => clearTimeout(timeout)
+    return () => {
+      mounted=false;
+      clearTimeout(timeout)}
   }, [active, cycle, transition, interval, images])
 
   return (

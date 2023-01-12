@@ -38,10 +38,11 @@ const PageTemplate: React.FC<PageInterface> = ({
   // TODO fix urls
   useEffect(() => {
     if(isDEI2022){
-      setDEIpageColor(pageColors[Math.floor(Math.random() * pageColors.length)])
+      const c = pageColors[Math.floor(Math.random() * pageColors.length)];
+      setDEIpageColor(c)
     }
   },[]);
-  
+
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
@@ -56,7 +57,7 @@ const PageTemplate: React.FC<PageInterface> = ({
         let imgs  = entry.imagesCollection.items;
         imgs = (DEIpageColor=="navy") ? imgs.slice(0,3)
               :(DEIpageColor=="plum") ? imgs.slice(3,6)
-              :(DEIpageColor=="purple") ? imgs.slice(6,9)
+              :(DEIpageColor=="sage") ? imgs.slice(6,9)
               :(DEIpageColor=="gold") ? imgs.slice(9,12)
               : imgs.slice(12,15);
         return <ImageGalleryBlock key={index} {...entry} images={imgs} background={DEIpageColor}/>
