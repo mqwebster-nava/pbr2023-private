@@ -15,6 +15,7 @@ pattern {
 }
 buttonPath
 buttonText
+hideHeroPattern
 `;
 
 export default PAGE_HEADER_FIELDS;

@@ -84,7 +84,7 @@ export async function getPageDataFromContentful({
       const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
       return formattedPage;
     } catch (e) {
-      console.log("issue", e)
+      console.error("issue", e)
       return null;
     }
   }

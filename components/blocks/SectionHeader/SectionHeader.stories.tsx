@@ -13,6 +13,11 @@ export default {
       options: ['default', 'gold', 'navy', 'sage'],
       control: { type: 'radio' },
     },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof SectionHeader>;
 

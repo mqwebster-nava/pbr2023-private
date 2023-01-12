@@ -6,29 +6,24 @@ export default {
   title: 'Atoms/Button',
   component: Button,
   argTypes: {
+    href: { control: 'text' },
+    children: { control: 'text' },
     variant: {
       options: ['default', 'outlined',"white", "dark"],
       control: { type: 'radio' },
     },
+    buttonAriaLabel: { control: 'text' },
+    analyticsLabel: { control: 'text' }
   },
 } as Meta
 
-const Template: Story<ButtonProps> = (args) => <Button {...args}>Default Button</Button>
+const Template: Story<ButtonProps> = (args) => <Button {...args}/>
 
 export const Basic: Story<ButtonProps> = Template.bind({})
 
 Basic.args = {
   variant: 'default',
-  
+    // @ts-ignore 
+  children:"Default Button",
+  href: "/",
 }
-
-// export const Outlined: Story<ButtonProps> = Template.bind({})
-
-// export const Black: Story<ButtonProps> = Template.bind({})
-
-// Outlined.args = {
-//   variant: 'outlined',
-// }
-// Black.args = {
-//   variant:"black"
-// }

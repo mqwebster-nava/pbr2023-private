@@ -28,7 +28,6 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
     variant:"post"
   });
-  //console.log("resres);
   if (!res) {
     return {
       notFound: true,

@@ -6,6 +6,7 @@ import { AnalyticsLabelType } from "utils/Analytics";
 
 type CardSize = "half" |"quarter" | "full" | "third";
 export interface ContentCardInterface {
+  id?:string
   title: string;
   path: string;
   summary?: any;

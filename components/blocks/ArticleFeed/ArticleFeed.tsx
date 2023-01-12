@@ -7,7 +7,7 @@ import FilterBar, { FilterButton } from "./FilterBar/FilterBar";
 import ResetFilterButton from "./FilterBar/ResetFilterButton";
 
 interface ArticleFeedInterface {
-  id: string;
+  id?: string;
   title?: string;
   buttonText?: string;
   buttonPath?: string;
@@ -143,12 +143,6 @@ const ArticleFeed = ({
       </div>
     </section>
   );
-};
-export default ArticleFeed;
 
-  //  if(filterBarState.contentTypes.length>0){
-    
-  //   _items = _items.filter((it)=> { 
-  //     return filterBarState.contentTypes.includes(it.contentType)
-  //   })
-  //  }
+}
+export default ArticleFeed;

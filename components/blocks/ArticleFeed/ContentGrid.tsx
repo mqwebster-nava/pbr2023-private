@@ -1,7 +1,7 @@
 import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
 import classNames from "classnames";
 import ColorTheme from "utils/ColorThemes";
-import ContentCard from "components/atom/ContentCard/ContentCard";
+import ContentCard, { ContentCardInterface } from "components/atom/ContentCard/ContentCard";
 
 /*
 Content Grid sets up the layout and background color 
@@ -14,7 +14,7 @@ type ContentType = "default" | "posts";
 
 interface ContentGridInterface {
   id: string;
-  items: any;
+  items: Array<any>;
   layout?: ListLayout;
   contentType?: ContentType;
   colorTheme?: ColorTheme;
@@ -52,7 +52,8 @@ const ContentGrid = ({
             const feature = classNames({
               "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,
             });
-            const kicker = item.kicker ? item.kicker :
+            const cardLayout = "3 card row" || i > 3 ? "third" : i == 0 ? "half" : "quarter"
+            const kicker = item.kicker ? item.kicker : 
              item.contentType == "Case Study" ? item.clientName :
                            item.contentType == "News" ? getDateStr(item.date) :
                            item.contentType == "Events" ? getEventDateStr(item.date): null;
@@ -62,18 +63,12 @@ const ContentGrid = ({
             
                 
                   <ContentCard
-                    size={
-                      layout =="3 card row" || i > 3
-                        ? "third"
-                        : i == 0
-                        ? "half"
-                        : "quarter"
-                    }
-                    kicker={kicker}
+                    size={cardLayout}
+                    kicker={item.kicker}
                     title={item.title}
-                    image={item.promoImage}
-                    path={getContentUrl(item.contentType, item.slug)}
-                    summary={item.shortSummary}
+                    image={item.image}
+                    path={item.path}
+                    summary={item.summary}
                     analyticsLabel="article-feed"
                  />
                 

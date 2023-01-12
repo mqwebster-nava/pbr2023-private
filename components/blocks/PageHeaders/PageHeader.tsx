@@ -1,9 +1,9 @@
 
 //import React from "react";
-import SecondaryPatternBlock from "./SecondaryPatternBlock";
+import SecondaryPatternBlock from "./PatternBlock/SecondaryPatternBlock";
 import TitleBlock from "./TitleBlock";
 //import ImagePatternBlock from "./ImagePatternBlock";
-import IllustrationPatternBlock from "./ImagePatternBlock";
+import IllustrationPatternBlock from "./PatternBlock/ImagePatternBlock";
 import HomePageHeader from "./HomePageHeader";
 import React from "react";
 import PostTitleBlock from "./PostTitleBlock";
@@ -55,7 +55,7 @@ const PageHeader = (props: PageHeaderInterface) => {
             />
           </div>
         </div>
-        <SecondaryPatternBlock bgColor={"bg-navy-900"} bgBase={"navy"} />
+       <SecondaryPatternBlock bgColor={"bg-navy-900"} bgBase={"navy"} hideHeroPattern={props.hideHeroPattern} />
       </header>
     );
   }

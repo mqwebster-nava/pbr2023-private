@@ -1,7 +1,7 @@
 
 import FloatingButtonBlock from "components/blocks/FloatingButtonBlock/FloatingButtonBlock";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 const ContentBlock = dynamic(() => import("components/blocks/ContentBlock/ContentBlock"));
@@ -9,7 +9,6 @@ const QuoteBlock= dynamic(() => import("components/blocks/QuoteBlock/QuoteBlock"
 const ArticleFeed= dynamic(() => import("components/blocks/ArticleFeed/ArticleFeed"));
 const CTABlock= dynamic(() => import("components/blocks/CTABlock/CTABlock"));
 const PageHeader= dynamic(() => import("components/blocks/PageHeaders/PageHeader"));
-const ListBlock = dynamic(() => import("components/blocks/ListBlock/ListBlock"));
 const SectionHeader = dynamic(() => import("components/blocks/SectionHeader/SectionHeader"));
 const PostBody = dynamic(() => import("components/blocks/PostBody/PostBody"));
 const ImageGalleryBlock  = dynamic(() => import("components/blocks/ImageGallery/ImageGallery"));
@@ -25,25 +24,44 @@ const PostEventSpeakersRow  = dynamic(() => import("components/blocks/PostEventS
 
 
 import { PageInterface } from "lib/data_models/page_interface";
+import DEISection from "components/custom_blocks/DEISection/DEISection";
 
 const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
   contentBlocks,
   children,
+  slug
 }) => {
-
+  const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
+  const pageColors = ["gold", "navy", "sage", "purple","plum"]
+  const [DEIpageColor, setDEIpageColor] = useState(null)
+  // TODO fix urls
+  useEffect(() => {
+    if(isDEI2022){
+      setDEIpageColor(pageColors[Math.floor(Math.random() * pageColors.length)])
+    }
+  },[]);
+  
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
     const componentMap = {
       "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />),
-      "ListBlock": ()=> <ListBlock key={index} {...entry} body={<MarkdownComponent content={entry.body}/>}/>,
       "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
       "ContentBlock": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />,
       "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
       "ContentBlockArticleList": ()=>  <ArticleFeed key={index} {...entry} />,
-      "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items}/>,
-      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
+      "ImageGallery": ()=> {
+        if (!isDEI2022) return <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items} />
+        let imgs  = entry.imagesCollection.items;
+        imgs = (DEIpageColor=="navy") ? imgs.slice(0,3)
+              :(DEIpageColor=="plum") ? imgs.slice(3,6)
+              :(DEIpageColor=="purple") ? imgs.slice(6,9)
+              :(DEIpageColor=="gold") ? imgs.slice(9,12)
+              : imgs.slice(12,15);
+        return <ImageGalleryBlock key={index} {...entry} images={imgs} background={DEIpageColor}/>
+      },
+      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry} colorTheme={isDEI2022?DEIpageColor:entry.colorTheme}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
@@ -54,6 +72,9 @@ const PageTemplate: React.FC<PageInterface> = ({
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
+        if(entry.type == "DEI Section") 
+          return  <DEISection key={index} {...entry} colorTheme={entry.colorTheme=="white"?entry.colorTheme:DEIpageColor}/>
+        
         return null
       }
     }

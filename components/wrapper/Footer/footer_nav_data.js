@@ -21,4 +21,5 @@ const getFooterNavData = (variant) => [
   ],
 ];
 
+
 export default getFooterNavData;

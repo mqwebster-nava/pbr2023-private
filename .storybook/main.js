@@ -20,6 +20,7 @@ module.exports = {
     "@storybook/addon-docs",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
+    "@storybook/addon-controls"
   ],
   features: {
     postcss: false,

@@ -1,4 +1,5 @@
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
+import { ExperimentInterface } from "utils/useOptimizely";
 import {ContentfulImageAsset} from "./post_interface";
 
 /*
@@ -18,5 +19,5 @@ export interface PageInterface {
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
   isBottomCTA?: boolean;
-  variantAB?: VARIANTTYPE
+  experiments?: Array<ExperimentInterface>
 }
