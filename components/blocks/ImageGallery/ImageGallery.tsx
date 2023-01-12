@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
+import ColorTheme from "utils/ColorThemes";
 
 /*
 Rotating Image
@@ -14,11 +15,14 @@ type ImageGalleryLayout =
   | "Three image row"
   | "Single image"
   | "Rotating image";
+
+
 interface ImageGalleryInterface {
   id: string;
   images?: Array<ContentfulImageAsset>;
   colorTheme?: ImageGalleryColorTheme;
   layout?: ImageGalleryLayout;
+  background?: ColorTheme
 }
 
 const ImageGalleryBlock = ({
@@ -26,9 +30,15 @@ const ImageGalleryBlock = ({
   images,
   colorTheme = "default",
   layout = "Single image",
+  background
 }: ImageGalleryInterface) => {
   const bgColor = classNames({
     "bg-navy-900": colorTheme == "navy",
+    "bg-navy-50": background == "navy",
+    "bg-plum-50": background == "plum",
+    "bg-sage-50": background == "sage",
+    "bg-purple-50": background == "purple",
+    "bg-gold-50": background == "gold",
   });
   const yPadding = classNames({
     "": layout == "Rotating image",

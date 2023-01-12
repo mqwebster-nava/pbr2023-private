@@ -511,6 +511,11 @@ module.exports = withBundleAnalyzer({
         destination: "/events",
         permanent: false,
       },
+      {
+        source: "/dei2023",
+        destination: "/dei/2022",
+        permanent: true,
+      },
     ];
   },
 });

@@ -11,7 +11,11 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
   const bg = classNames({
     "bg-gold-50": colorTheme == "gold",
     "bg-sage-50": colorTheme == "sage",
+    "bg-purple-50": colorTheme == "purple",
+    "bg-plum-50": colorTheme == "plum",
+    "bg-navy-50": colorTheme == "navy",
   });
+
   const getDataSections = () => {
   
     const filtersData =

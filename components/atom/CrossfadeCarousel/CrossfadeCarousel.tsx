@@ -8,7 +8,9 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 export default function CrossfadeCarousel({ 
   cycle = true,
   interval=  2000,
-  transition= 2000, images }) {
+  transition= 2000, 
+  images
+ }) {
   const [active, setActive] = useState(0)
   const [firstTransitionIsDone, setFirstTransitionIsDone] = useState(false)
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function CrossfadeCarousel({
   }, [active, cycle, transition, interval, images])
 
   return (
-    <div  className="relative  w-full h-full">
+    <div  className="relative w-full h-full">
       {images.map((image, index) => (
         <div className={` absolute object-cover `} key={`${image}-${index}`} >
         <Image

@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import CountUp, { useCountUp } from "react-countup";
 import React, { useState, useEffect } from "react";
+import BrandPatternTerrain from "components/atom/BrandPattern/BrandPatternTerrain";
 
 interface PercentBarChartYOYInterface {
   description: string;
@@ -50,6 +51,8 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   const isIncreasing = endingPercent>startingPercent;
   const endW = isIncreasing ? 100 : (100*(1-(startingPercent-endingPercent)/startingPercent))
   const startW = isIncreasing ? 100*startingPercent/endingPercent : 100;
+  const patternWidth = Math.abs(startW-endW).toFixed(2)
+
   const countUpRef = React.useRef(null);
   const animationRef = React.useRef(null);
   const { start } = useCountUp({
@@ -65,8 +68,8 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   useEffect(() => {
     const an = makeSlideUpAnimation(
       `animation-${startingPercent}`,
-      startW,
-      endW,
+      isIncreasing?0:100, 
+      isIncreasing?100:0,
       duration,
       startDelay
     );
@@ -84,21 +87,21 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
 
   const insideBar = classNames({
-    "bg-sage-700": insideBarColor === "sage",
-    "bg-navy-900": insideBarColor === "navy",
+    "bg-sage-700 ": insideBarColor === "sage",
+    "bg-navy-900 ": insideBarColor === "navy",
   });
   const bBar = classNames({
     "bg-sage-300": insideBarColor === "sage",
     "bg-navy-200": insideBarColor === "navy",
   });
+ 
   return (
-    <div className="min-h-[140px] w-full mb-xl bg-sage-50">
-     <div style={{ width: `${startingPercent}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
+    <div className="min-h-[140px] w-full mb-xl bg-sage-50 flex">
+
+      <div style={{ width: `${startingPercent}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
       <div
-        ref={animationRef}
-        id={`animation-${startingPercent}`}
         className={`absolute ${insideBar} min-h-[inherit] px-2 py-4 text-white z-10`}
-        style={{ width: `${startW}%` }}
+        style={{ width: `${100}%` }}
       >
         <p className="type-preset-3 font-sans font-bold inline-block">
           <span ref={countUpRef} >{startingPercent}</span>
@@ -106,9 +109,20 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
         </p>
         <p>{description} </p>
       </div>
-      <div  className={` absolute top-0  right-0 bottom-0 opacity-90 `}>
-        <Pattern/>
+   
+      </div> 
+      <div style={{ width: `${patternWidth}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
+      <div
+        ref={animationRef}
+        id={`animation-${startingPercent}`}
+        className={`absolute ${insideBar} min-h-[inherit]  z-10`}
+        style={{ width: `${isIncreasing?0:100}%` }}
+      >
+      </div>
+      <div  className={` absolute top-0 left-0 bottom-0 opacity-70  overflow-hidden z-20`} >
+         <Pattern/> 
        </div>
+      
       </div>
     </div>
   );
@@ -147,7 +161,8 @@ const makeSlideUpAnimation = (
 
 
 const Pattern = () => {
-  return (<svg width="401" height="401" viewBox="0 0 401 401" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return (<svg 
+  width="401" height="401" viewBox="0 0 401 401" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_573_10495)">
   <path d="M-343.837 367.206L367.206 -343.837" stroke="white" strokeWidth="2.00196"/>
   <path d="M-332.042 379.001L379.001 -332.042" stroke="white" strokeWidth="2.00196"/>

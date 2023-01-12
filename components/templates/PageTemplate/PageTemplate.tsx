@@ -30,7 +30,13 @@ const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
   contentBlocks,
   children,
+  slug
 }) => {
+
+  // TODO fix urls
+  const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
+  const pageColors = ["gold", "navy", "sage", "purple","plum"]
+  const pageColor = pageColors[Math.floor(Math.random() * pageColors.length)];
 
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
@@ -41,8 +47,17 @@ const PageTemplate: React.FC<PageInterface> = ({
       "ContentBlockLinkToPage": ()=> <ContentBlock key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>}  />,
       "QuoteBlock": ()=> <QuoteBlock key={index} {...entry}/>,
       "ContentBlockArticleList": ()=>  <ArticleFeed key={index} {...entry} />,
-      "ImageGallery": ()=> <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items}/>,
-      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry}/>,
+      "ImageGallery": ()=> {
+        if (!isDEI2022) return <ImageGalleryBlock key={index} {...entry} images={entry.imagesCollection.items} />
+        let imgs  = entry.imagesCollection.items;
+        imgs = (pageColor=="navy") ? imgs.slice(0,3)
+              :(pageColor=="plum") ? imgs.slice(3,6)
+              :(pageColor=="purple") ? imgs.slice(6,9)
+              :(pageColor=="gold") ? imgs.slice(9,12)
+              : imgs.slice(12,15);
+        return <ImageGalleryBlock key={index} {...entry} images={imgs} background={pageColor}/>
+      },
+      "TextBodyBlock": () => <TextBodyBlock key={index} {...entry} colorTheme={isDEI2022?pageColor:entry.colorTheme}/>,
       "PostBody":()=><PostBody key={`${index}`} {...entry}/>,
       "AuthorBioBlock":()=><AuthorBioBlock key={index} {...entry}/>,
       "CapabilitiesSection":()=><CapabilitiesSection key={index} {...entry}/>,
@@ -53,7 +68,9 @@ const PageTemplate: React.FC<PageInterface> = ({
       "CustomBlock": ()=> {
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
-        if(entry.type == "DEI Section") return <DEISection key={index} {...entry} />
+        if(entry.type == "DEI Section") 
+          return  <DEISection key={index} {...entry} colorTheme={entry.colorTheme=="white"?entry.colorTheme:pageColor}/>
+        
         return null
       }
     }

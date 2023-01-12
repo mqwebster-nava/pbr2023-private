@@ -195,6 +195,9 @@ module.exports = {
             base: "#259B62",
             light: "#25F15E",
           },
+          rainbow: {
+            end: "#e99cbd"
+          }
         },
         pbr: {
           ecru: {
