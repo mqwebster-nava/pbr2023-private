@@ -100,7 +100,7 @@ const ImageGalleryBlock = ({
    // const ratio = (100* images[0].height / images[0].width).toPrecision(4)
     return (
       <div
-        className={`w-full  pb-[56.47%]  `}
+        className={`  pb-[56.47%] 3xl:pb-0 3xl:h-[calc(2000px_*_9_/_16)] h-[calc(100vw_*_9_/_16)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
         <CrossfadeCarousel
           interval={1000}
@@ -165,23 +165,25 @@ const ImageGalleryBlock = ({
 
   return (
     <div className={`w-full ${bgColor}`} key={id}>
+      {layout == "Rotating image" ? (
+          <RotatingImage />
+        ) :
       <div className={`responsive-container w-full ${yPadding}`}>
         {layout == "Four image grid" ? (
           <FourImageGrid />
         ) : layout == "Three image row" ? (
           <ThreeImageRow />
-        ) : layout == "Rotating image" ? (
-          <RotatingImage />
-        ) :
+        ) : 
         (
           <SingleImage />
         )}
-      </div>
+      </div>}
     </div>
   );
 };
 
 export default ImageGalleryBlock;
+
 
 /* <Image
             className=""
