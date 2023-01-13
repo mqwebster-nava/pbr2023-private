@@ -16,14 +16,30 @@ const ex:ExperimentInterface = {
   defaultValue: 0
 }
 
+// const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
+const pageColors = ["gold", "navy", "sage", "purple","plum"]
+// const [DEIpageColor, setDEIpageColor] = useState(null)
+// // TODO fix urls
 
 function MyApp({ Component, pageProps }: AppProps) {
  
-  // Formatting page for metadata -- DEI page doesn't have same format so needs extra check
+
   const pageData: PageInterface =
     "page" in pageProps ? pageProps.page : pageProps;
   
+
   const experiments = useOptimizely({pageData, optimizeExperiments:[ex]});
+
+  // Recent DE&I specific code to set a random color. Needs to be this high so doesn't rerender
+  const [DEIpageColor, setDEIpageColor] = useState(null)
+
+  useEffect(() => {
+    if(pageProps.slug.includes("dei/2022")){
+      const c = pageColors[Math.floor(Math.random() * pageColors.length)];
+      setDEIpageColor(c)
+    }
+  },[]);
+
 
   return (
     <>
@@ -71,10 +87,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         )}
 
         <div className="flex-grow ">
-          <Component {...pageProps} experiments={experiments} />
+          <Component {...pageProps} experiments={experiments} DEIpageColor={DEIpageColor} />
         </div>
         {(!pageData || pageData.slug !== "/public-benefit-reports/2021") && (
-          <Footer isBottomCTA={pageProps.isBottomCTA} experiments={experiments} />
+          <Footer isBottomGapRemoved={pageProps.isBottomGapRemoved} experiments={experiments} />
         )}
       </div>
     </>
