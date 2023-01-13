@@ -1,4 +1,5 @@
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
+import ColorTheme from "utils/ColorThemes";
 import { ExperimentInterface } from "utils/useOptimizely";
 import {ContentfulImageAsset} from "./post_interface";
 
@@ -18,6 +19,7 @@ export interface PageInterface {
   preview?: boolean;
   pageHeader: PageHeaderInterface;
   contentBlocks: any;
-  isBottomCTA?: boolean;
-  experiments?: Array<ExperimentInterface>
+  isBottomGapRemoved?: boolean;
+  experiments?: Array<ExperimentInterface>;
+  DEIpageColor?:ColorTheme
 }

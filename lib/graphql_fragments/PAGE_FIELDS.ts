@@ -30,6 +30,7 @@ sys {
 title
 description
 slug
+isBottomGapRemoved
 socialImage {
     ${IMAGE_FIELDS}
 }

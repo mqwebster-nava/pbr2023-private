@@ -16,7 +16,7 @@ export function formatAuthorPage(slug, author){
         title: 'Author Social',
         description: ''
       },
-      isBottomCTA: false,
+      isBottomGapRemoved: false,
       pageHeader: {
         id: `${slug}-header`,
         variant:"Secondary",

@@ -11,14 +11,14 @@ export function formatPage(page){
         pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
-        isBottomCTA: false
+        isBottomGapRemoved: page.isBottomGapRemoved ?? false
     }
     if(!formattedPage.contentBlocks || formattedPage.contentBlocks.length<1) return formattedPage;
     // Check for CTA block at bottom bc it requires extra formatting
     const lastBlockIndex = formattedPage.contentBlocks.length-1;
     if ( formattedPage.contentBlocks[lastBlockIndex]["__typename"]=="SectionCtaBlock"){
       formattedPage.contentBlocks[lastBlockIndex].isBottom=true;
-      formattedPage.isBottomCTA =  true
+      formattedPage.isBottomGapRemoved =  true
     }
     return formattedPage; 
 }

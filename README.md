@@ -132,7 +132,7 @@ export interface PageInterface {
   preview?: boolean;
   pageHeader: PageHeaderInterface;
   contentBlocks: any; // data for page components
-  isBottomCTA?: boolean;
+  isBottomGapRemoved?: boolean;
 }
 ```
 

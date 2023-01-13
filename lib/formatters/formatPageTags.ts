@@ -19,7 +19,7 @@ export function formatTagsPage(slug, tagName, posts){
           description: ''
         },
       description:`Posts related to ${tagName}`,
-      isBottomCTA: false,
+      isBottomGapRemoved: false,
       pageHeader: {
         id: `${slug}-header`,
         variant:"Secondary",
