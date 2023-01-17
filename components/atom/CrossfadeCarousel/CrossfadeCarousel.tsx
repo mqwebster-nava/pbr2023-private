@@ -9,7 +9,8 @@ export default function CrossfadeCarousel({
   cycle = true,
   interval=  2000,
   transition= 2000, 
-  images
+  images,
+  groupAltText=""
  }) {
   const [active, setActive] = useState(0)
   const [firstTransitionIsDone, setFirstTransitionIsDone] = useState(false)
@@ -42,7 +43,7 @@ export default function CrossfadeCarousel({
           src={image} 
           height={image.height}
           width={image.width}
-          alt={""}
+          alt={groupAltText ?? ""}
           className={`transition-opacity  duration-[2000ms] ease-in-out ${active === index ? "opacity-100": "opacity-0"}`}      
             
         />
