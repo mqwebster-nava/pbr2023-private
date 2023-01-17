@@ -31,8 +31,9 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   theme = "sage",
 }) => {
   // Default to first item in filter selected.
-  const defaultFilter = dataFilters[0];
+ 
   const regionId = title.replace(/[" "]/g, "")+`Charts`;
+  const defaultFilter = dataFilters[0];
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
