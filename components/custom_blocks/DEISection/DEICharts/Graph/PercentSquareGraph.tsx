@@ -15,7 +15,9 @@ interface PercentSquareGraphInterface {
   showTooltip?: boolean;
   tooltipText?: string;
   fixed?: boolean;
+  ariaLabel?:string;
 }
+
 
 const colors = {
   innerColor: {
@@ -51,6 +53,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   showTooltip = true,
   tooltipText = null,
   fixed = false,
+  ariaLabel
 }) => {
   const {
     getArrowProps,
@@ -62,9 +65,11 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
   const percentLabel = (Number(percent)<1 && Number(percent)>0) ? "<1%":`${percent}%`;
   tooltipText =
     tooltipText ?? `${percent}% of ${category} identify as ${description}.`;
+  
+  ariaLabel ??=tooltipText
 
   return (
-    <div className="" aria-label={tooltipText}>
+    <div className="" aria-label={ariaLabel}>
       {showTooltip && visible && (
         <GraphTooltip
           text={tooltipText}
@@ -92,7 +97,7 @@ export const PercentSquareGraph: React.FC<PercentSquareGraphInterface> = ({
           `}
           style={{ height: `${percent}%` }}
         >
-          <Pattern/>
+          {/* <Pattern/> */}
         </div>
         {multiPercent !== null && (
           <div
@@ -130,10 +135,7 @@ const Pattern = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_518_7112)">
-        <g clipPath="url(#clip1_518_7112)">
-          <g clipPath="url(#clip2_518_7112)">
-            <g clipPath="url(#clip3_518_7112)">
+
               <path
                 d="M-208.686 223.275L223.564 -208.975"
                 stroke="white"
@@ -299,44 +301,8 @@ const Pattern = () => {
                 stroke="white"
                 strokeWidth="1"
               />
-            </g>
-          </g>
-        </g>
-      </g>
-      <defs>
-        <clipPath id="clip0_518_7112">
-          <rect
-            width="243.402"
-            height="243.402"
-            fill="white"
-            transform="translate(0.335938 0.046875)"
-          />
-        </clipPath>
-        <clipPath id="clip1_518_7112">
-          <rect
-            width="243.402"
-            height="243.402"
-            fill="white"
-            transform="translate(0.335938 0.046875)"
-          />
-        </clipPath>
-        <clipPath id="clip2_518_7112">
-          <rect
-            width="243.402"
-            height="243.402"
-            fill="white"
-            transform="translate(0.335938 0.046875)"
-          />
-        </clipPath>
-        <clipPath id="clip3_518_7112">
-          <rect
-            width="662.055"
-            height="662.055"
-            fill="white"
-            transform="translate(-208.99 -209.279)"
-          />
-        </clipPath>
-      </defs>
+        
+    
     </svg>
     </div>
   );
