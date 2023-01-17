@@ -62,7 +62,7 @@ export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
   return (
     <div id={"yoy-chart"}>
       <p className="font-bold py-md">{description}</p>
-       <div className="pb-sm">
+       <div className="pb-lg">
       <FilterButtonGroup
         filters={filters}
         handleClick={handleFilterClick}
@@ -149,8 +149,8 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
     "bg-navy-700 ": colorTheme === "navy" && index==1,
     "bg-plum-900 ": colorTheme === "plum" && index==0,
     "bg-plum-700 ": colorTheme === "plum" && index==1,
-    "bg-gold-900 ": colorTheme === "gold" && index==0,
-    "bg-gold-700 ": colorTheme === "gold" && index==1,
+    "bg-gold-pbrcustomdark ": colorTheme === "gold" && index==0,
+    "bg-gold-900 ": colorTheme === "gold" && index==1,
     "bg-purple-900 ": colorTheme === "purple" && index==0,
     "bg-purple-700 ": colorTheme === "purple" && index==1,
   });
@@ -163,10 +163,10 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   });
  
   return (
-    <div className="min-h-[140px] w-full mb-xl  flex" aria-label={ariaLabel}>
+    <div className="min-h-[140px] w-full mb-lg  flex" aria-label={ariaLabel}>
       <div style={{ width: `${startingPercent}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
       <div
-        className={`absolute ${insideBar} min-h-[inherit] p-xl text-white z-10`}
+        className={`absolute ${insideBar} min-h-[inherit] py-md px-xl text-white z-10`}
         style={{ width: `${100}%` }}
       >
         <p className=" type-preset-1 font-sans font-bold inline-block" aria-hidden>
