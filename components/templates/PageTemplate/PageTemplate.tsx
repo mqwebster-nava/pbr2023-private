@@ -71,7 +71,7 @@ const PageTemplate: React.FC<PageInterface> = ({
         if(entry.type == "DEI Section") 
           return  <DEISection 
                       key={index} {...entry} 
-                      colorTheme={entry.colorTheme=="white"?entry.colorTheme:DEIpageColor} 
+                      colorTheme={!isDEI2022?entry.colorTheme: entry.colorTheme=="white"?entry.colorTheme:DEIpageColor} 
                       isBottomAndUnderFooter={isBottomAndUnderFooter}/>
         return null
       }
