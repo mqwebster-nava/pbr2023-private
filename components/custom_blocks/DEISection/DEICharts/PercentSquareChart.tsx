@@ -32,7 +32,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
 }) => {
   // Default to first item in filter selected.
   const defaultFilter = dataFilters[0];
-  const regionId = `${title.replaceAll(" ", "")}Charts`;
+  const regionId = title&&title.replaceAll(" ", "")+`Charts`;
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
