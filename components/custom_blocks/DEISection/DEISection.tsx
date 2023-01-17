@@ -85,9 +85,9 @@ const DEISection = ({ title, richBody, data, colorTheme, isBottomAndUnderFooter=
       <ResponsiveContentContainer alignment={"left"} padding={"pb-xl"}>
         <div className="font-serif">
           {title && (
-            <h3 className={`font-sans type-preset-3 font-bold pb-lg`}>
-              {title}{" "}
-            </h3>
+            <h2 className={`font-sans type-preset-3 font-bold pb-lg`}>
+              {title}
+            </h2>
           )}
           <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
