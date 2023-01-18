@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [DEIpageColor, setDEIpageColor] = useState(null)
 
   useEffect(() => {
-    if(pageProps.slug.includes("dei/2022")){
+    if(pageProps.slug?.includes("dei/2022")){
       const c = pageColors[Math.floor(Math.random() * pageColors.length)];
       setDEIpageColor(c)
     }

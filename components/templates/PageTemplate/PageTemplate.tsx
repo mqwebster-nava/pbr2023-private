@@ -34,7 +34,7 @@ const PageTemplate: React.FC<PageInterface> = ({
   DEIpageColor,
   isBottomGapRemoved
 }) => {
-  const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
+  const isDEI2022 = slug?.includes("dei/2022") ||slug?.includes("dei2023")
 
 
   const getComponent = (entry: any, index) => {
