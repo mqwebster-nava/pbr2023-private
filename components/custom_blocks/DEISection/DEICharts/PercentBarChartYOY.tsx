@@ -30,11 +30,23 @@ export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
   graphs,
   colorTheme
 }) => {
- 
   const [selectedFilter, updateFilter] = useState({
-    ...filters[0],
+    ...filters[1],
   });
-  const [isDone, setIsDone] = useState(false);
+  //const [isDone, setIsDone] = useState(false);
+  // useEffect(() => {
+  //   const d = document.getElementById("yoy-chart");
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //     const entry = entries[0];
+  //     if(entry.isIntersecting && !isDone){
+  //       setIsDone(true)
+  //       wait(1000).then(()=>updateFilter(filters[1]))
+  //     } 
+  //   });
+  //   observer.observe(d)
+  //   return observer.disconnect()
+  // }, []);
+
   const handleFilterClick = (e) => {
     const selectedTotal = filters.find(
       (filter) => filter.id === e.target.value
@@ -46,18 +58,6 @@ export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
     });
   };
 
-
-  useEffect(() => {
-    const d = document.getElementById("yoy-chart");
-    const observer = new IntersectionObserver((entries, observer) => {
-      const entry = entries[0];
-      if(entry.isIntersecting && !isDone){
-        setIsDone(true)
-        wait(1000).then(()=>updateFilter(filters[1]))
-      } 
-    });
-    observer.observe(d)
-  }, []);
 
   return (
     <div id={"yoy-chart"}>
