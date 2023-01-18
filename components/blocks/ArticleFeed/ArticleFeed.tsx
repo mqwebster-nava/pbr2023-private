@@ -35,8 +35,9 @@ const ArticleFeed = ({
   items = items.filter((post) => post != null);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
   const [filterBarState, setFilterBarState ] = useState({
-   // contentTypes:[],
-    tags:[]
+    contentTypes:[],
+    sectors:[],
+    capabilities: []
   });
 
   // TODO could format posts here
@@ -53,9 +54,19 @@ const ArticleFeed = ({
   useEffect(() => {
    let _items = items;
 
-   if(filterBarState.tags.length>0){
+   if(filterBarState.sectors.length>0){
     _items = _items.filter((it)=> { 
-      return it.contentTags && it.contentTags.some((tag)=>filterBarState.tags.includes(tag))
+      return it.contentTags && it.contentTags.some((tag)=>filterBarState.sectors.includes(tag))
+    })
+   }
+   if(filterBarState.capabilities.length>0){
+    _items = _items.filter((it)=> { 
+      return it.contentTags && it.contentTags.some((tag)=>filterBarState.capabilities.includes(tag))
+    })
+   }
+   if(filterBarState.contentTypes.length>0){
+    _items = _items.filter((it)=> { 
+      return it.contentType && filterBarState.contentTypes.includes(it.contentType)
     })
    }
 
@@ -89,24 +100,25 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) :  filterable== true ?    <div className="flex gap-x-md">
-                { filterBarState.tags.length > 0 && 
-             <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-            }
-            <FilterButton
-              isOpen={isTagsOpen}
-              setIsOpen={(open) => {
-                setIsTagsOpen(open);
-                //setIsContentTypeOpen(false)
-              }}
-              title={`Filters ${
-                filterBarState.tags.length > 0
-                  ? "(" + filterBarState.tags.length + ")"
-                  : ""
-              }`}
-            />
+            ) : null
+          //     filterable== true ?    <div className="flex gap-x-md">
+          //       { filterBarState.tags.length > 0 && 
+          //    <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+          //   }
+          //   <FilterButton
+          //     isOpen={isTagsOpen}
+          //     setIsOpen={(open) => {
+          //       setIsTagsOpen(open);
+          //       //setIsContentTypeOpen(false)
+          //     }}
+          //     title={`Filters ${
+          //       filterBarState.tags.length > 0
+          //         ? "(" + filterBarState.tags.length + ")"
+          //         : ""
+          //     }`}
+          //   />
           
-          </div>: null
+          // </div>: null
             }
           </div>
         </div>
@@ -117,8 +129,8 @@ const ArticleFeed = ({
         filterBarState={filterBarState}
         setFilterBarState={setFilterBarState}
         numResults={displayedPosts.length}
-        isTagsOpen={isTagsOpen}
-        setIsTagsOpen={setIsTagsOpen}
+        // isTagsOpen={isTagsOpen}
+        // setIsTagsOpen={setIsTagsOpen}
        />
         
        }

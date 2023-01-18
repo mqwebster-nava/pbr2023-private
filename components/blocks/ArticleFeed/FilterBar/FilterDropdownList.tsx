@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ResetFilterButton from "./ResetFilterButton";
 
 const categories = {
-  Sector: [
+  sectors: [
     "healthcare",
     "integrated benefits",
     "paid family medical leave",
@@ -10,7 +10,7 @@ const categories = {
     "Veterans",
     "WIC",
   ],
-  Capability: [
+  capabilities: [
     "accessibility and equity",
     "adapting to change",
     "agile development",
@@ -33,8 +33,18 @@ const categories = {
     "user experience research",
     "mission and impact",
   ],
-  Other: ["a day at Nava", "careers", "what we're learning"],
+  contentTypes: [
+    "Insight",
+    "Case Study",
+    "Toolkit",
+    "News",
+    "Events", 
+    "Working at Nava",
+    "Public Benefit Report"
+  ]
+ // Other: ["a day at Nava", "careers", "what we're learning"],
 };
+
 
 const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClearClick, items, type, currentlyActive=[]}) => {
     const [changes, setChanges] = useState([]);
@@ -73,14 +83,15 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
           </div>
         </div>
        
-          {Object.keys(categories).map((cat)=>{
+          {/* {Object.keys(categories).map((cat)=>{
             return <div>
               <div className="pt-lg pb-md font-bold type-preset-6">{cat}</div>
+              */}
               <ul
           className=" flex w-full flex-wrap gap-lg"
           aria-labelledby="dropdownCheckboxButton"
-        >
-              {categories[cat].map((item, i) => {
+        > 
+              {categories[type].map((item, i) => {
                 let isActive = newActive.includes(item)
                 
             const ac = isActive ? "bg-sage-50 text-gray-900" : "bg-gray-50 text-gray-600 hover:bg-white";
@@ -153,10 +164,11 @@ const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClea
               </li>
             );
           })}
-          </ul>
+           </ul>
+          {/*
             </div>
 
-          })}
+          })} */}
           
         
       </div>

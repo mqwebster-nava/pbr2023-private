@@ -6,18 +6,22 @@ import ResetFilterButton from "./ResetFilterButton";
 
 
 
-const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, isTagsOpen, setIsTagsOpen }) => {
-  //const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
- // const [isTagsOpen, setIsTagsOpen] = useState(false);
-  // const contentTypes = [
-  //   "Insight",
-  //   "Case Study",
-  //   "Toolkit",
-  //   "News",
-  //   "Events",
-  //   "Working at Nava",
-  //   "Public Benefit Report",
-  // ];
+const contentTypes = [
+  "Insight",
+  "Case Study",
+  "Toolkit",
+  "News",
+  "Events",
+  "Working at Nava",
+  "Public Benefit Report",
+];
+
+
+const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => {
+  const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
+  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false);
+  const [isSectorsOpen, setIsSectorsOpen] = useState(false);
+  
   const handleChanges = (type, changes) => {
     let currentList = filterBarState[type];
     changes.forEach(([checkboxElement, name]) => {
@@ -45,73 +49,112 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, isTags
   return (
     <div className="relative pt-xl ">
       <div className="flex justify-between align-bottom">
-        {/* <div className="flex gap-x-md">
+        <div className="flex gap-x-md">
           <FilterButton
-            isOpen={isTagsOpen}
+            isOpen={isSectorsOpen}
             setIsOpen={(open) => {
-              setIsTagsOpen(open);
-              //setIsContentTypeOpen(false)
+              setIsSectorsOpen(open);
+              setIsCapabilitiesOpen(false)
+              setIsContentTypeOpen(false)
             }}
-            title={`Filters ${
-              filterBarState.tags.length > 0
-                ? "(" + filterBarState.tags.length + ")"
+            title={`Sectors ${
+              filterBarState.sectors.length > 0
+                ? "(" + filterBarState.sectors.length + ")"
                 : ""
             }`}
           />
-          { filterBarState.tags.length > 0 && 
-           <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-          }
-           {/ <FilterButton
+          <FilterButton
+            isOpen={isCapabilitiesOpen}
+            setIsOpen={(open) => {
+              setIsCapabilitiesOpen(open);
+              setIsContentTypeOpen(false)
+              setIsSectorsOpen(false)
+            }}
+            title={`Capabilities ${
+              filterBarState.capabilities.length > 0
+                ? "(" + filterBarState.capabilities.length + ")"
+                : ""
+            }`}
+          />
+           <FilterButton
             isOpen={isContentTypeOpen}
             setIsOpen={(open)=>{
               setIsContentTypeOpen(open)
-              setIsTagsOpen(false)
+              setIsCapabilitiesOpen(false)
+              setIsSectorsOpen(false)
             }}
             title={`Content Types ${filterBarState.contentTypes.length>0 ? "("+filterBarState.contentTypes.length+")": ""}`}
-          /> /}
-        </div> */}
+          /> 
+          { (filterBarState.sectors.length > 0 || filterBarState.capabilities.length > 0  || filterBarState.contentTypes.length > 0  ) && 
+           <ResetFilterButton type={"tags"} onClick={() =>{ handleClear("contentTypes");  handleClear("sectors");  handleClear("capabilities")}} title={"Clear all"} isActive={true}/>
+          }
+        </div>
       </div>
       <div className="">
         <FilterDropdownList
-          title={"topic"}
-          type={"tags"}
-          isOpen={isTagsOpen}
+          title={"Sector"}
+          type={"sectors"}
+          isOpen={isSectorsOpen}
           setIsOpen={(open) => {
-            setIsTagsOpen(open);
+            setIsSectorsOpen(open);
             // setIsContentTypeOpen(false)
           }}
           handleChange={handleChanges}
-          handleClearClick={() => handleClear("tags")}
-          currentlyActive={filterBarState.tags}
-          items={tags}
+          handleClearClick={() => handleClear("sectors")}
+          currentlyActive={filterBarState.sectors}
+          items={[]}
         />
-        {/* <FilterDropdownList
+        <FilterDropdownList
+          title={"Capabilities"}
+          type={"capabilities"}
+          isOpen={isCapabilitiesOpen}
+          setIsOpen={(open)=>{
+            setIsCapabilitiesOpen(open)
+            
+          }}
+          handleChange={handleChanges}
+          handleClearClick={()=> handleClear("capabilities")}
+          items={[]}
+          currentlyActive={filterBarState.capabilities}
+        />
+        <FilterDropdownList
           title={"content type"}
           type={"contentTypes"}
           isOpen={isContentTypeOpen}
           setIsOpen={(open)=>{
             setIsContentTypeOpen(open)
-            setIsTagsOpen(false)
           }}
           handleChange={handleChanges}
           handleClearClick={()=> handleClear("contentTypes")}
           items={contentTypes}
           currentlyActive={filterBarState.contentTypes}
-        /> */}
-        <ActiveFilterItems
-          title={"topics"}
-          type={"tags"}
-          handleClearClick={() => handleClear("tags")}
-          handleChange={handleChanges}
-          activeItems={filterBarState.tags}
         />
-        {/* <ActiveFilterItems
+         <div className="pt-sm">
+       
+           <div className="flex gap-md py-sm flex-wrap w-full">
+
+        <ActiveFilterItems
+          title={"sectors"}
+          type={"sectors"}
+          handleClearClick={() => handleClear("sectors")}
+          handleChange={handleChanges}
+          activeItems={filterBarState.sectors}
+        />
+        <ActiveFilterItems
+          title={"capabilities"}
+          type={"capabilities"}
+          handleClearClick={() => handleClear("capabilities")}
+          handleChange={handleChanges}
+          activeItems={filterBarState.capabilities}
+        />
+        <ActiveFilterItems
           title={"content types"}
           type={"contentTypes"}
           handleClearClick={()=>handleClear("contentTypes")}
           handleChange={handleChanges}
           activeItems={filterBarState.contentTypes}
-        /> */}
+        />
+        </div></div>
       </div>
       <div className="pt-sm">
         <p>{`${numResults} posts found`}</p>
