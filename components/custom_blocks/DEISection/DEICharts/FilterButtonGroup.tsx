@@ -8,6 +8,7 @@ interface FilterButtonGroupInterface {
   selectedFilter: FilterInterface;
   theme: string;
   regionID?:string;
+  showRespondents?: boolean;
 }
 
 export const FilterButtonGroup: React.FC<FilterButtonGroupInterface> = ({
@@ -15,7 +16,8 @@ export const FilterButtonGroup: React.FC<FilterButtonGroupInterface> = ({
   handleClick,
   selectedFilter,
   theme,
-  regionID
+  regionID,
+  showRespondents=true
 }) => {
   return (
     <div className="flex flex-wrap">
@@ -31,7 +33,7 @@ export const FilterButtonGroup: React.FC<FilterButtonGroupInterface> = ({
           {filter.text}
         </FilterButton>
       ))}
-      <p className="block mt-lg">{selectedFilter.total} respondents</p>
+      {showRespondents && <p className="block mt-lg">{selectedFilter.total} respondents</p>}
     </div>
   );
 };

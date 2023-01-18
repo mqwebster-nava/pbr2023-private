@@ -14,7 +14,7 @@ export function formatPostPage(post:FullPostInterface, morePosts:Array<BasicPost
       slug: getContentUrl(post.contentType, post.slug),
       title: post.title,
       socialImage: formatImageAsset(post.socialImage) ?? formatImageAsset(post.promoImage)?? defaultSocialImage,
-      isBottomCTA: true,
+      isBottomGapRemoved: true,
       pageHeader: {
         id: `${post.id}-header`,
         title:post.contentType ,

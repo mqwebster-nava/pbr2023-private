@@ -5,13 +5,13 @@ import { getExperimentValue } from "utils/useOptimizely";
 import getFooterNavData from "./footer_nav_data.js";
 import NavaDigest from "./NavaDigest";
 
-const Footer = ({isBottomCTA=false, experiments=null}) => {
+const Footer = ({isBottomGapRemoved=false, experiments=null}) => {
   let currentYear = new Date().getFullYear();
   const variant = experiments && getExperimentValue(experiments, "Insights Library AB Test") 
   const FooterNavData = getFooterNavData(variant)
   return (
     <footer>
-      <NavaDigest isBottomCTA={isBottomCTA}/>
+      <NavaDigest isBottomGapRemoved={isBottomGapRemoved}/>
       <div className={"bg-navy-900 relative z-4 "}>
         <nav
           aria-label={"secondary"}

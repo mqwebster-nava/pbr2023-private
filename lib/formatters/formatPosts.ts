@@ -18,9 +18,7 @@ export const formatPosts = (posts) =>{
         contentType: post.contentType,
         shortSummary: post.shortSummary,
         promoImage: ("promoImage" in post) ? formatImageAsset(post.promoImage): null,
-        
       }
-
       return newPost;
     })
 return p;

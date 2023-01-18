@@ -16,7 +16,6 @@ const CONTENT_CARD = `
   promoImage{
     ${IMAGE_FIELDS}
   }
-
 `;
 
 export default CONTENT_CARD;

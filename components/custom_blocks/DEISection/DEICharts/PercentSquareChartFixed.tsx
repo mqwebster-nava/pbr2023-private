@@ -17,6 +17,7 @@ export const PercentSquareChartFixed = ({ title, stats, theme = "teal" }) => {
             key={`percent_square_graph_${index}`}
             percent={graph.percentage}
             description={graph.category}
+            ariaLabel={`${graph.percentage}% of employees identify as ${graph.category}. ${("tooltipText" in graph) && graph.tooltipText}`}
             theme={theme}
             tooltipText={("tooltipText" in graph) && graph.tooltipText }
             showTooltip={("tooltipText" in graph)}

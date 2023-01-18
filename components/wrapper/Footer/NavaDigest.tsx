@@ -6,10 +6,10 @@ const SignupBrand = "/images/Sign-up-Brand-pattern-V02.svg";
 /*
 TODO finish properly connecting it to Mailchimp and adding error/success text
 */
-const NavaDigest = ({isBottomCTA=false}) => {
+const NavaDigest = ({isBottomGapRemoved=false}) => {
 
   const topPadding = classNames({
-    "pt-xl md:pt-3xl": !isBottomCTA
+    "pt-xl md:pt-3xl": !isBottomGapRemoved
   });
   return (
     <div className={`${topPadding} relative`}>

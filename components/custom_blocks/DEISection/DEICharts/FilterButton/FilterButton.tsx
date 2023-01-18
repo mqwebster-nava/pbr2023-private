@@ -11,7 +11,9 @@ const colors = {
   selected: {
     sage: "bg-sage-700 text-white",
     gold: "bg-gold-900 text-gray-900",
-    purple: "bg-purple-600 text-white"
+    purple: "bg-purple-800 text-white",
+    plum: "bg-plum-800 text-white",
+    navy: "bg-navy-800 text-white"
   },
 };
 

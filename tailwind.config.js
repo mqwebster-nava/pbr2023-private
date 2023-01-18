@@ -69,6 +69,7 @@ module.exports = {
         md: "768px",
         "xl":"1264px",
         "2xl": "1440px", // => @media (min-width: 1440px) { ... }
+        "3xl": "2000px"
       },
       colors: {
         purple: {

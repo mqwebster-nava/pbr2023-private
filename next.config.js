@@ -515,7 +515,7 @@ module.exports = withBundleAnalyzer({
         source: "/dei2023",
         destination: "/dei/2022",
         permanent: true,
-      },
+      }
     ];
   },
 });

@@ -2,6 +2,9 @@ import classNames from "classnames";
 import CountUp, { useCountUp } from "react-countup";
 import React, { useState, useEffect } from "react";
 import ColorTheme from "utils/ColorThemes";
+import { FilterButtonGroup } from "./FilterButtonGroup";
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 interface PercentBarChartYOYInterface {
   description: string;
@@ -9,24 +12,76 @@ interface PercentBarChartYOYInterface {
   colorTheme: ColorTheme
 }
 
+const filters = [
+  {
+      id: "2021",
+      text: "2021",
+      total:"10"
+  },
+  {
+    id: "2022",
+    text: "2022",
+    total:"10"
+  }
+]
+
 export const PercentBarChartYOY: React.FC<PercentBarChartYOYInterface> = ({
   description,
   graphs,
   colorTheme
 }) => {
+  const [selectedFilter, updateFilter] = useState({
+    ...filters[1],
+  });
+  //const [isDone, setIsDone] = useState(false);
+  // useEffect(() => {
+  //   const d = document.getElementById("yoy-chart");
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //     const entry = entries[0];
+  //     if(entry.isIntersecting && !isDone){
+  //       setIsDone(true)
+  //       wait(1000).then(()=>updateFilter(filters[1]))
+  //     } 
+  //   });
+  //   observer.observe(d)
+  //   return observer.disconnect()
+  // }, []);
+
+  const handleFilterClick = (e) => {
+    const selectedTotal = filters.find(
+      (filter) => filter.id === e.target.value
+    ).total;
+    updateFilter({
+      id: e.target.value,
+      text: e.target.innerText,
+      total: selectedTotal,
+    });
+  };
+
 
   return (
-    <>
+    <div id={"yoy-chart"}>
       <p className="font-bold py-md">{description}</p>
+       <div className="pb-lg">
+      <FilterButtonGroup
+        filters={filters}
+        handleClick={handleFilterClick}
+        selectedFilter={selectedFilter}
+        theme={colorTheme}
+        regionID={"animated-chart"}
+        showRespondents={false}
+      />
+      </div> 
       {graphs.map((graph, index) => (
         <AnimatedBarChart
           key={`percent_bar_graph_${index}`}
           {...graph}
           colorTheme={colorTheme}
+          selectedFilter={selectedFilter}
           index={index}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -37,7 +92,8 @@ export interface AnimatedBarChartInterface {
   colorTheme: ColorTheme;
   index: number;
   startDelay?: number;
-  endDelay?: number;
+  ariaLabel?:string;
+  selectedFilter?:any;
 }
 
 export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
@@ -45,28 +101,34 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   endingPercent,
   description,
   colorTheme = "sage",
-  startDelay = 1000,
-  endDelay = 1500,
-  index
+  startDelay = 500,
+  ariaLabel="",
+  index,
+  selectedFilter
 }) => {
 
-  const duration = Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
-  const isIncreasing = endingPercent>startingPercent;
+
+  const isForwards =  selectedFilter.id=="2022"
+ 
+  const duration = 1000;//Math.max(Math.abs(startingPercent-endingPercent)*80, 300)
+  const isIncreasing = (endingPercent>startingPercent && isForwards)|| (endingPercent<startingPercent && !isForwards);
   const patternWidth = Math.abs(startingPercent-endingPercent).toFixed(2)
 
   const countUpRef = React.useRef(null);
   const animationRef = React.useRef(null);
   const { start } = useCountUp({
     ref: countUpRef,
-    start: startingPercent,
-    end: endingPercent,
+    start: isForwards? startingPercent : endingPercent,
+    end: isForwards? endingPercent: startingPercent,
     delay: startDelay / 1000,
     duration: duration / 1000,
-    startOnMount: false
+    startOnMount: true,
+    
   });
-
+ 
 
   useEffect(() => {
+
     const an = makeSlideUpAnimation(
       `animation-${startingPercent}`,
       isIncreasing?0:100, 
@@ -74,18 +136,11 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
       duration,
       startDelay
     );
-    const observer = new IntersectionObserver((entries, observer) => {
-      const entry = entries[0];
+    an.play()
+    countUpRef.current.innerText = isForwards? startingPercent : endingPercent;
  
-      if(entry.isIntersecting && an.playState == "paused"){
-        an.play()
-        start()
 
-      }
-    });
-    observer.observe(animationRef.current)
-
-  }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
+  }, [selectedFilter]);
 
   const insideBar = classNames({
     "bg-sage-900 ": colorTheme === "sage" && index==0,
@@ -94,8 +149,8 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
     "bg-navy-700 ": colorTheme === "navy" && index==1,
     "bg-plum-900 ": colorTheme === "plum" && index==0,
     "bg-plum-700 ": colorTheme === "plum" && index==1,
-    "bg-gold-900 ": colorTheme === "gold" && index==0,
-    "bg-gold-700 ": colorTheme === "gold" && index==1,
+    "bg-gold-pbrcustomdark ": colorTheme === "gold" && index==0,
+    "bg-gold-900 ": colorTheme === "gold" && index==1,
     "bg-purple-900 ": colorTheme === "purple" && index==0,
     "bg-purple-700 ": colorTheme === "purple" && index==1,
   });
@@ -108,14 +163,13 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
   });
  
   return (
-    <div className="min-h-[140px] w-full mb-xl  flex">
-
+    <div className="min-h-[140px] w-full mb-lg  flex" aria-label={ariaLabel}>
       <div style={{ width: `${startingPercent}%`}} className={` ${bBar} min-h-[140px] relative overflow-hidden`}>
       <div
-        className={`absolute ${insideBar} min-h-[inherit] px-2 py-4 text-white z-10`}
+        className={`absolute ${insideBar} min-h-[inherit] py-md px-xl text-white z-10`}
         style={{ width: `${100}%` }}
       >
-        <p className=" type-preset-1 font-sans font-bold inline-block">
+        <p className=" type-preset-1 font-sans font-bold inline-block" aria-hidden>
           <span ref={countUpRef} >{startingPercent}</span>
           %
         </p>
@@ -134,7 +188,6 @@ export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
       <div  className={` absolute top-0 left-0 bottom-0 opacity-70  overflow-hidden z-20`} >
          <Pattern/> 
        </div>
-      
       </div>
     </div>
   );
@@ -147,13 +200,7 @@ const makeSlideUpAnimation = (
   duration,
   delay
 ) => {
-  /*
-  portion of the whole box
-  [___|_]
-  56 % of 100 = x % of 73
-  56/73 = x/73
-  x = 56*73 / 100
-  */
+ 
   
   let an = document
     .getElementById(elementId)
@@ -162,6 +209,7 @@ const makeSlideUpAnimation = (
       {
         duration: duration,
         fill: "forwards",
+        easing: 'ease-in-out',
         iterations: 1,
         delay: delay,
       }
@@ -173,9 +221,9 @@ const makeSlideUpAnimation = (
 
 
 const Pattern = () => {
-  return (<svg 
+  return (<svg aria-hidden
   width="401" height="401" viewBox="0 0 401 401" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g clipPath="url(#clip0_573_10495)">
+
   <path d="M-343.837 367.206L367.206 -343.837" stroke="white" strokeWidth="2.00196"/>
   <path d="M-332.042 379.001L379.001 -332.042" stroke="white" strokeWidth="2.00196"/>
   <path d="M-320.305 390.794L390.794 -320.305" stroke="white" strokeWidth="2.00196"/>
@@ -209,190 +257,19 @@ const Pattern = () => {
   <path d="M9.59961 720.642L720.642 9.59961" stroke="white" strokeWidth="2.00196"/>
   <path d="M21.3916 732.434L732.434 21.3916" stroke="white" strokeWidth="2.00196"/>
   <path d="M33.1299 744.228L744.228 33.1299" stroke="white" strokeWidth="2.00196"/>
-  </g>
-  <defs>
-  <clipPath id="clip0_573_10495">
-  <rect width="400.392" height="400.392" fill="white"/>
-  </clipPath>
-  </defs>
   </svg>
   )
 }
 
-  // function sleep(ms) {
-  //   return new Promise((resolve) => setTimeout(resolve, ms));
-  // }
-
-    //an.play();
-
-    // const startCycle = () =>{
-    //   //const label = document.getElementById(`labelText-${startingPercent}`);
-    //   an.play();
-    //   start()
-    //   //label.innerText = textStart;
-    //   sleep(startDelay).then(() => {
-    //     //label.innerText = "";
-    //     sleep(duration).then(()=>{
-    //       //label.innerText = textEnd;
-
-    //     })
-    //   })
-    // }
-
-    // const intervalID = setInterval(() => {
-    //   startCycle()
-    // }, startDelay + duration + endDelay);
-
-    // startCycle()
-
-    //return () => clearInterval(intervalID);
-
-//<span id={`labelText-${startingPercent}`}>2021</span>
-//   (function loop() {
-
-//       sleep(1000).then(()=>
-//       {
-//         i = setInterval(() => {
-//           setWidth((prevWidth) => {
-//             if (prevWidth === endingPercent) {
-//               return startingPercent;
-//             }
-//             if (endingPercent < prevWidth) return prevWidth - 1;
-//             if (prevWidth === 100) return prevWidth;
-//             return prevWidth + 1;
-//           });
-//       }, (duration / ( Math.abs(endingPercent - startingPercent))));
-
-//       }).then(()=>{
-//         clearInterval(i)
-//         sleep(1000).then(()=>loop())
-//       })
-
-//  })();
-
-// function getInterval() {
-//     return setInterval(() => {
-//         setWidth((prevWidth) => {
-//           if (prevWidth === endingPercent) {
-//             return startingPercent;
-//           }
-//           if (endingPercent < prevWidth) return prevWidth - 1;
-//           if (prevWidth === 100) return prevWidth;
-//           return prevWidth + 1;
-//         });
-//     }, (duration / ( Math.abs(endingPercent - startingPercent))));
-
-//   }
-
-// const startAnimation = () => {
-//    i = getInterval()
-// };
-
-// const endAnimation = () => {
-//     clearInterval(i);
-//     setTimeout(startAnimation, endDelay * 1000);
-// };
-
-// setTimeout(startAnimation, startDelay);
-// setTimeout(endAnimation, endDelay );
-
-/*
-
-export const AnimatedBarChart: React.FC<AnimatedBarChartInterface> = ({
-  startingPercent,
-  endingPercent,
-  textEnd = "2022",
-  textStart = "2021",
-  description,
-  insideBarColor = "sage",
-  duration = 500,
-  startDelay = 1500,
-  endDelay = 1500,
-}) => {
-  //const [width, setWidth] = useState(startingPercent);
-
-  useEffect(() => {
-    const an = makeSlideUpAnimation(
-      `animation-${startingPercent}`,
-      startingPercent,
-      endingPercent,
-      duration,
-      startDelay
-    );
-    an.play();
-    an.addEventListener("animationiteration", 
-    ()=>{
-      console.log()
-
-    }, false);
-    an.onfinish = (e) => {
-      setTimeout(() => an.play(), endDelay);
-    };
-    const loop = ()=> setTimeout(()=>{
-      const label = document.getElementById(`labelText-${startingPercent}`)
-      label.innerText = textEnd;
-      setTimeout(()=>{
-        label.innerText = textStart;
-        loop();
-      }, duration+endDelay)
-    }, startDelay);
-    loop();
-
-    
-  }, [endingPercent, startDelay, duration, endDelay, startingPercent]);
-
-  const insideBar = classNames({
-    "bg-sage-700": insideBarColor === "sage",
-    "bg-navy-900": insideBarColor === "navy",
-    "bg-plum-900": insideBarColor === "plum",
-  });
-  return (
-    <div className="min-h-[140px] w-full mb-xl bg-sage-50">
-      <div
-        id={`animation-${startingPercent}`}
-        className={`${insideBar} min-h-[inherit] px-2 py-4 text-white`}
-        style={{ width: `${startingPercent}%` }}
-      >
-        <p id={`labelText-${startingPercent}`}>2021</p>
-        <p className="type-preset-3 font-black inline-block">
-          <CountUp
-            start={startingPercent}
-            end={endingPercent}
-            delay={startDelay / 1000}
-            duration={duration / 1000}
-            onEnd={(e)=>{
-              setTimeout(() => { e.start()}, endDelay);
-            }}
-          />
-          %
-        </p>
-        <p>{description}</p>
-      </div>
-    </div>
-  );
-};
-
-const makeSlideUpAnimation = (
-  elementId,
-  startingPercent,
-  endingPercent,
-  duration,
-  delay
-) => {
-  console.log(startingPercent);
-  let an = document
-    .getElementById(elementId)
-    .animate(
-      [{ width: `${startingPercent}%` }, { width: `${endingPercent}%` }],
-      {
-        duration: duration,
-        fill: "forwards",
-        iterations: 1,
-        delay: delay,
-      }
-    );
-  an.pause();
-  return an;
-};
-
-*/
+   //start()
+    // const observer = new IntersectionObserver((entries, observer) => {
+    //   const entry = entries[0];
+    //   if(entry.isIntersecting && (an.playState == "paused" || an.playState == "finished")){
+    //     an.play()
+    //     start()
+    //   }
+    // });
+    // observer.observe(animationRef.current)
+        // else {
+      //   wait(1000).then(()=>updateFilter(filters[1]))
+      // }

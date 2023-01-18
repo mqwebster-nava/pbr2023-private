@@ -7,7 +7,7 @@ import { PercentSquareChart } from "./DEICharts/PercentSquareChart";
 import { PercentSquareChartFixed } from "./DEICharts/PercentSquareChartFixed";
 import { ResourceGroups } from "./DEIResourceGroupBlock/ResourceGroups";
 
-const DEISection = ({ title, richBody, data, colorTheme }) => {
+const DEISection = ({ title, richBody, data, colorTheme, isBottomAndUnderFooter=false }) => {
   const bg = classNames({
     "bg-gold-50": colorTheme == "gold",
     "bg-sage-50": colorTheme == "sage",
@@ -81,19 +81,23 @@ const DEISection = ({ title, richBody, data, colorTheme }) => {
   };
 
   return (
-    <div className={`${bg} py-2xl`}>
+    <section className={`${bg} py-2xl relative`}>
       <ResponsiveContentContainer alignment={"left"} padding={"pb-xl"}>
         <div className="font-serif">
           {title && (
-            <h3 className={`font-sans type-preset-3 font-bold pb-lg`}>
-              {title}{" "}
-            </h3>
+            <h2 className={`font-sans type-preset-3 font-bold pb-lg`}>
+              {title}
+            </h2>
           )}
           <PostContent docData={richBody.json} docLinks={richBody.links} />
         </div>
       </ResponsiveContentContainer>
       {getDataSections()}
-    </div>
+      { isBottomAndUnderFooter &&
+      <div className={`absolute left-0 right-0 -bottom-[200px] h-[200px] -z-20 ${bg}`}>
+      </div>
+     }
+    </section>
   );
 };
 

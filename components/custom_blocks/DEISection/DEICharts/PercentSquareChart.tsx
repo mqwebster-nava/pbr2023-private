@@ -31,13 +31,12 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
   theme = "sage",
 }) => {
   // Default to first item in filter selected.
+ 
+  const regionId = title.replace(/[" "]/g, "")+`Charts`;
   const defaultFilter = dataFilters[0];
-  const regionId = `${title}Charts`;
   const [selectedFilter, updateFilter] = useState({
     ...defaultFilter,
   });
- 
-
   const [multiSelected, setMultiSelected] = useState(false);
 
   // Two more selections made in data has the key suffixed with "_Multi"
@@ -75,6 +74,7 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
         handleCheckboxClick={() => setMultiSelected(!multiSelected)}
         selectedFilter={selectedFilter}
       >
+        </FilterControl>
         <div className="pt-lg grid grid-cols-2 md:grid-cols-5 gap-sm "
          role="region" 
          aria-live="polite"
@@ -92,12 +92,12 @@ export const PercentSquareChart: React.FC<PercentSquareChartInterface> = ({
             />
           ))}
         </div>
-      </FilterControl>
+      
         <div className="mx-0 py-md type-preset-7">
           {context.map((text, index) => (
             <p
               key={`chart_context_${index}`}
-              className={` ${index !== 0 ? "font-bold" : ""}`}
+              
             >
               {text}
             </p>

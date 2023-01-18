@@ -9,24 +9,30 @@ export default function CrossfadeCarousel({
   cycle = true,
   interval=  2000,
   transition= 2000, 
-  images
+  images,
+  groupAltText=""
  }) {
   const [active, setActive] = useState(0)
   const [firstTransitionIsDone, setFirstTransitionIsDone] = useState(false)
   useEffect(() => {
     if (!cycle) return
+    let mounted = true;
     const timeout = setTimeout(() => {
       async function startImageTransition() {
         if (firstTransitionIsDone) await wait(transition)
-        setActive(active === images.length - 1 ? 0 : active + 1)
-        setFirstTransitionIsDone(true)
+        if(mounted){
+          setActive(active === images.length - 1 ? 0 : active + 1)
+          setFirstTransitionIsDone(true)
+        }
       }
       if (cycle) {
         startImageTransition()
       }
     }, interval)
 
-    return () => clearTimeout(timeout)
+    return () => {
+      mounted=false;
+      clearTimeout(timeout)}
   }, [active, cycle, transition, interval, images])
 
   return (
@@ -37,7 +43,7 @@ export default function CrossfadeCarousel({
           src={image} 
           height={image.height}
           width={image.width}
-          alt={""}
+          alt={groupAltText ?? ""}
           className={`transition-opacity  duration-[2000ms] ease-in-out ${active === index ? "opacity-100": "opacity-0"}`}      
             
         />

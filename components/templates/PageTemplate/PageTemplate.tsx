@@ -30,20 +30,16 @@ const PageTemplate: React.FC<PageInterface> = ({
   pageHeader,
   contentBlocks,
   children,
-  slug
+  slug,
+  DEIpageColor,
+  isBottomGapRemoved
 }) => {
   const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
-  const pageColors = ["gold", "navy", "sage", "purple","plum"]
-  const [DEIpageColor, setDEIpageColor] = useState(null)
-  // TODO fix urls
-  useEffect(() => {
-    if(isDEI2022){
-      setDEIpageColor(pageColors[Math.floor(Math.random() * pageColors.length)])
-    }
-  },[]);
-  
+
+
   const getComponent = (entry: any, index) => {
     const typename = entry.__typename;
+    const isBottomAndUnderFooter = contentBlocks.length-1 == index && isBottomGapRemoved;
     const componentMap = {
       "SectionHeader": (entry)=>(<SectionHeader key={index} {...entry} body={entry.body && <MarkdownComponent content={entry.body}/>} />),
       "SectionCtaBlock": ()=> <CTABlock key={index} {...entry}/>,
@@ -56,7 +52,7 @@ const PageTemplate: React.FC<PageInterface> = ({
         let imgs  = entry.imagesCollection.items;
         imgs = (DEIpageColor=="navy") ? imgs.slice(0,3)
               :(DEIpageColor=="plum") ? imgs.slice(3,6)
-              :(DEIpageColor=="purple") ? imgs.slice(6,9)
+              :(DEIpageColor=="sage") ? imgs.slice(6,9)
               :(DEIpageColor=="gold") ? imgs.slice(9,12)
               : imgs.slice(12,15);
         return <ImageGalleryBlock key={index} {...entry} images={imgs} background={DEIpageColor}/>
@@ -73,8 +69,10 @@ const PageTemplate: React.FC<PageInterface> = ({
         if (entry.type == "Employee List") return <EmployeeList key={index}  {...entry} />
         if (entry.type == "Open Roles") return <OpenRolesComponent key={index} {...entry}/>
         if(entry.type == "DEI Section") 
-          return  <DEISection key={index} {...entry} colorTheme={entry.colorTheme=="white"?entry.colorTheme:DEIpageColor}/>
-        
+          return  <DEISection 
+                      key={index} {...entry} 
+                      colorTheme={!isDEI2022?entry.colorTheme: entry.colorTheme=="white"?entry.colorTheme:DEIpageColor} 
+                      isBottomAndUnderFooter={isBottomAndUnderFooter}/>
         return null
       }
     }

@@ -13,7 +13,7 @@ export function formatReportPage(page){
         pageHeader:liftData(page.pageHeader),
         contentBlocks: page.contentCollection.items.map((item)=>liftData({...item})),
         description: page.description,
-        isBottomCTA: false
+        isBottomGapRemoved: false
     }
     if(!formattedPage.contentBlocks || formattedPage.contentBlocks.length<1) return formattedPage;
     // Check for CTA block at bottom bc it requires extra formatting

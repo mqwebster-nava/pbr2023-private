@@ -6,6 +6,7 @@ sys {
 }
 colorTheme
 layout
+groupAltText
 imagesCollection {
     items {
         ${IMAGE_FIELDS}
