@@ -14,7 +14,7 @@ export interface ImagePatternBlockInterface {
 const SecondaryPatternBlock = ({bgColor, bgBase, hideHeroPattern=false}:ImagePatternBlockInterface) => {
 
     return (
-      <div className={`${bgColor}`}>
+      <div className={`${bgColor} hide-in-print`}>
         <div className=" responsive-container pt-3xl">
      
      <div className={`w-1/4 ${hideHeroPattern && "opacity-0"}`}>
