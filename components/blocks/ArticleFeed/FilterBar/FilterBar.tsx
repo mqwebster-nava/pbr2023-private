@@ -5,16 +5,49 @@ import FilterDropdownList from "./FilterDropdownList";
 import ResetFilterButton from "./ResetFilterButton";
 
 
-
-const contentTypes = [
-  "Insight",
-  "Case Study",
-  "Toolkit",
-  "News",
-  "Events",
-  "Working at Nava",
-  "Public Benefit Report",
-];
+const categories = {
+  sectors: [
+    "healthcare",
+    "integrated benefits",
+    "paid family medical leave",
+    "unemployment insurance",
+    "Veterans",
+    "WIC",
+  ],
+  capabilities: [
+    "accessibility and equity",
+    "adapting to change",
+    "agile development",
+    "APIs and documentation",
+    "backend engineering",
+    "cloud infrastructure",
+    "content strategy",
+    "continuous improvement",
+    "crisis response",
+    "frontend engineering",
+    "human-centered design",
+    "modernization",
+    "policy",
+    "product management",
+    "program management",
+    "program outcomes",
+    "rapid delivery",
+    "reducing risk",
+    "scalable solutions",
+    "user experience research",
+    "mission and impact",
+  ],
+  contentTypes: [
+    "Insight",
+    "Case Study",
+    "Toolkit",
+    "News",
+    "Events",
+    "Working at Nava",
+    "Public Benefit Report",
+  ],
+  // Other: ["a day at Nava", "careers", "what we're learning"],
+};
 
 
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displayedPosts }) => {
@@ -44,6 +77,16 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
     });
   };
 
+  const getCount = (type, item) => {
+    let l =  type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item) : displayedPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item));
+    // Object.keys(categories).map((cat)=>{ 
+    //   if(cat!==type){
+    //     l = 
+    //   }
+    // });
+    return l.length;
+
+  };
 
   return (
     <div className="relative pt-xl"
@@ -117,8 +160,8 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
           handleChange={handleChange}
           handleClearClick={() => handleClear("sectors")}
           currentlyActive={filterBarState.sectors}
-          items={[]}
-          displayedPosts={displayedPosts}
+          items={categories.sectors}
+          getCount={getCount}
         />
         <FilterDropdownList
           title={"Capabilities"}
@@ -128,11 +171,12 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
             setIsCapabilitiesOpen(open)
             
           }}
+
           handleChange={handleChange}
           handleClearClick={()=> handleClear("capabilities")}
-          items={[]}
+          items={categories.capabilities}
           currentlyActive={filterBarState.capabilities}
-          displayedPosts={displayedPosts}
+          getCount={getCount}
         />
         <FilterDropdownList
           title={"content type"}
@@ -143,9 +187,9 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
           }}
           handleChange={handleChange}
           handleClearClick={()=> handleClear("contentTypes")}
-          items={contentTypes}
+          items={categories.contentTypes}
           currentlyActive={filterBarState.contentTypes}
-          displayedPosts={displayedPosts}
+          getCount={getCount}
         />
        
       </div>

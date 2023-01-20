@@ -1,60 +1,18 @@
 import { useEffect, useState } from "react";
 import ResetFilterButton from "./ResetFilterButton";
 
-const categories = {
-  sectors: [
-    "healthcare",
-    "integrated benefits",
-    "paid family medical leave",
-    "unemployment insurance",
-    "Veterans",
-    "WIC",
-  ],
-  capabilities: [
-    "accessibility and equity",
-    "adapting to change",
-    "agile development",
-    "APIs and documentation",
-    "backend engineering",
-    "cloud infrastructure",
-    "content strategy",
-    "continuous improvement",
-    "crisis response",
-    "frontend engineering",
-    "human-centered design",
-    "modernization",
-    "policy",
-    "product management",
-    "program management",
-    "program outcomes",
-    "rapid delivery",
-    "reducing risk",
-    "scalable solutions",
-    "user experience research",
-    "mission and impact",
-  ],
-  contentTypes: [
-    "Insight",
-    "Case Study",
-    "Toolkit",
-    "News",
-    "Events",
-    "Working at Nava",
-    "Public Benefit Report",
-  ],
-  // Other: ["a day at Nava", "careers", "what we're learning"],
-};
+
 
 const FilterDropdownList = ({
   title,
   isOpen,
   setIsOpen,
+  getCount,
   handleChange,
   handleClearClick,
   items,
   type,
-  currentlyActive = [],
-  displayedPosts
+  currentlyActive = []
 }) => {
 
 //  console.log(displayedPosts);
@@ -87,13 +45,13 @@ const FilterDropdownList = ({
         className="grid grid-cols-3 w-full gap-lg"
         aria-labelledby="dropdownCheckboxButton"
       >
-        {splitIntoColumns(categories[type], 3).map((column, j) => {
+        {splitIntoColumns(items, 3).map((column, j) => {
           
           return (
             <div className="flex flex-col divide-y-[1px]">
               {column.map((item, i) => {
                 let isActive = currentlyActive.includes(item);
-                let resultNum= type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item).length : displayedPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item)).length;
+                let resultNum= getCount(type, item)
                 const ac = isActive
                   ? "bg-sage-50 text-gray-900"
                   : "bg-gray-50 text-gray-600 hover:bg-white";
