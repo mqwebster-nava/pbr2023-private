@@ -43,13 +43,7 @@ const ArticleFeed = ({
   // TODO could format posts here
   const [displayedPosts, setDisplayedPosts] =  useState(items);
 
-  const handleClear = (type) => {
-    setFilterBarState((previousState) => {
-      let v = { ...previousState };
-      v[type] = [];
-      return v;
-    });
-  };
+
  
   useEffect(() => {
    let _items = items;
@@ -101,24 +95,7 @@ const ArticleFeed = ({
                 {buttonText ?? "See more"}
               </LinkText>
             ) : null
-          //     filterable== true ?    <div className="flex gap-x-md">
-          //       { filterBarState.tags.length > 0 && 
-          //    <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-          //   }
-          //   <FilterButton
-          //     isOpen={isTagsOpen}
-          //     setIsOpen={(open) => {
-          //       setIsTagsOpen(open);
-          //       //setIsContentTypeOpen(false)
-          //     }}
-          //     title={`Filters ${
-          //       filterBarState.tags.length > 0
-          //         ? "(" + filterBarState.tags.length + ")"
-          //         : ""
-          //     }`}
-          //   />
-          
-          // </div>: null
+     
             }
           </div>
         </div>
@@ -129,8 +106,7 @@ const ArticleFeed = ({
         filterBarState={filterBarState}
         setFilterBarState={setFilterBarState}
         numResults={displayedPosts.length}
-        // isTagsOpen={isTagsOpen}
-        // setIsTagsOpen={setIsTagsOpen}
+        displayedPosts={items}
        />
         
        }
@@ -160,3 +136,31 @@ const ArticleFeed = ({
 
 }
 export default ArticleFeed;
+
+
+  // const handleClear = (type) => {
+  //   setFilterBarState((previousState) => {
+  //     let v = { ...previousState };
+  //     v[type] = [];
+  //     return v;
+  //   });
+  // };
+
+     //     filterable== true ?    <div className="flex gap-x-md">
+          //       { filterBarState.tags.length > 0 && 
+          //    <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+          //   }
+          //   <FilterButton
+          //     isOpen={isTagsOpen}
+          //     setIsOpen={(open) => {
+          //       setIsTagsOpen(open);
+          //       //setIsContentTypeOpen(false)
+          //     }}
+          //     title={`Filters ${
+          //       filterBarState.tags.length > 0
+          //         ? "(" + filterBarState.tags.length + ")"
+          //         : ""
+          //     }`}
+          //   />
+          
+          // </div>: null

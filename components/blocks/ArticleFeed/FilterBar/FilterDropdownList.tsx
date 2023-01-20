@@ -38,141 +38,172 @@ const categories = {
     "Case Study",
     "Toolkit",
     "News",
-    "Events", 
+    "Events",
     "Working at Nava",
-    "Public Benefit Report"
-  ]
- // Other: ["a day at Nava", "careers", "what we're learning"],
+    "Public Benefit Report",
+  ],
+  // Other: ["a day at Nava", "careers", "what we're learning"],
 };
 
+const FilterDropdownList = ({
+  title,
+  isOpen,
+  setIsOpen,
+  handleChange,
+  handleClearClick,
+  items,
+  type,
+  currentlyActive = [],
+  displayedPosts
+}) => {
 
-const FilterDropdownList = ({ title, isOpen, setIsOpen, handleChange, handleClearClick, items, type, currentlyActive=[]}) => {
-    const [changes, setChanges] = useState([]);
-    const [newActive, setNewActive] = useState(currentlyActive);
-    // handleChange(e.target, item)
-    const applyChanges = () => {
-      handleChange(type, changes);
-      setIsOpen(false)
-    }
-
-    useEffect(() => {
-      Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
-        (el) => {
-          const itemName = el.id.replace("-checkbox", "")
-           // @ts-ignore // would ned to change to a button
-           el.checked =(currentlyActive.includes(itemName))
-        }
-      );
-      setNewActive(currentlyActive);
-      setChanges([]);
-    }, [isOpen]);
-  
-  
-   
-    return (
-      <div
-        className={`${
-          !isOpen && "hidden"
-        } absolute z-10  -left-[16px] -right-[16px] bg-white mt-sm p-lg min-h-[200px] pb-xl`}
-      >
-        <div className="flex justify-between">
-          <p className="pb-md font-bold">Filter by {title}</p>
-          <div >
-           <ResetFilterButton type={type} onClick={()=>{handleClearClick(); setIsOpen(false)}} title={"Clear all"} isActive={true}/>
-            <button className="text-white bg-sage-700 hover:bg-sage-800 type-preset-7 px-md py-sm text-center inline-flex items-center " onClick={applyChanges}>Apply</button>
-          </div>
-        </div>
-       
-          {/* {Object.keys(categories).map((cat)=>{
-            return <div>
-              <div className="pt-lg pb-md font-bold type-preset-6">{cat}</div>
-              */}
-              <ul
-          className=" flex w-full flex-wrap gap-lg"
-          aria-labelledby="dropdownCheckboxButton"
-        > 
-              {categories[type].map((item, i) => {
-                let isActive = newActive.includes(item)
-                
-            const ac = isActive ? "bg-sage-50 text-gray-900" : "bg-gray-50 text-gray-600 hover:bg-white";
-            let acD = isActive? "stroke-black group-hover:stroke-red-700" : " stroke-gray-700 rotate-45 group-hover:stroke-sage-900";
-            return (
-              <li key={i}>
-                <div className={`flex group items-center border-gray-400 border-[1px] p-sm type-preset-7 ${ac}`}>
-                <label
-                    htmlFor={`${item}-checkbox`}
-                    className="mr-2 font-medium  "
-                  >
-                    {item}
-                  </label>
-                  <div className="relative h-[12px]">
-                  <input
-                    onChange={(e) =>{
-                        if (changes.find((change)=>change[1]==item)) {
-                          const newChanges = changes.filter((change)=>change[1]!=item)
-                          setChanges(newChanges);
-             ``           }
-                        else{
-                          setChanges([...changes, [e.target, item]]);
-                        }
-                        if(newActive.includes(item))setNewActive(newActive.filter((it)=>it!==item))
-                        else setNewActive([...newActive, item])
-                        
-                    }}
-                    id={`${item}-checkbox`}
-                    type="checkbox"
-                    value={item}
-                    className={`${type}CheckBox relative h-[12px] w-[12px] opacity-0 z-10 `}
-                  />
-                  <span className={` h-[12px] w-[12px]   absolute left-0 `}>
-                 <svg
-              width="12"
-              height="12"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={`pt-xs     ${acD} `}
-            >
-              <g clip-path="url(#clip0_334_3846)">
-                <line
-                  x1="3"
-                  y1="44.4645"
-                  x2="44.4645"
-                  y2="3"
-                  stroke-width="5"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="3.53553"
-                  y1="3"
-                  x2="45"
-                  y2="44.4645"
-                  stroke-width="5"
-                  stroke-linecap="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_334_3846">
-                  <rect width="48" height="48" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>  
-                  </span>
-                  
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-           </ul>
-          {/*
-            </div>
-
-          })} */}
-          
-        
-      </div>
+//  console.log(displayedPosts);
+  useEffect(() => {
+    Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
+      (el) => {
+        const itemName = el.id.replace("-checkbox", "");
+        // @ts-ignore // would ned to change to a button
+        el.checked = currentlyActive.includes(itemName);
+      }
     );
-  };
+  }, [isOpen, currentlyActive]);
 
-  export default FilterDropdownList
+  function splitIntoColumns(arr, size) {
+    const len = arr.length;
+    var myArray = [arr.slice(0, Math.ceil(len/3)),arr.slice(Math.ceil(len/3), Math.ceil(2*len/3)), arr.slice( Math.ceil(2*len/3), len),];
+    return myArray;
+  }
+
+  return (
+    <div
+      className={`${
+        !isOpen && "hidden"
+      } absolute z-10  -left-[16px] -right-[16px] bg-gray-50 mt-sm p-lg min-h-[200px] pb-xl`}
+    >
+      <div className="flex justify-between">
+        <p className="pb-md font-bold">Filter by {title}</p>
+      </div>
+      <div
+        className="grid grid-cols-3 w-full gap-lg"
+        aria-labelledby="dropdownCheckboxButton"
+      >
+        {splitIntoColumns(categories[type], 3).map((column, j) => {
+          
+          return (
+            <div className="flex flex-col divide-y-[1px]">
+              {column.map((item, i) => {
+                let isActive = currentlyActive.includes(item);
+                let resultNum= type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item).length : displayedPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item)).length;
+                const ac = isActive
+                  ? "bg-sage-50 text-gray-900"
+                  : "bg-gray-50 text-gray-600 hover:bg-white";
+                let acD = isActive
+                  ? "stroke-black group-hover:stroke-red-700"
+                  : " stroke-gray-700 rotate-45 group-hover:stroke-sage-900";
+                return (
+                    <div
+                    key={i}
+                      className={`flex group items-center p-sm type-preset-6 ${ac}`}
+                    >
+                      <label
+                        htmlFor={`${item}-checkbox`}
+                        className="font-medium w-full "
+                      >
+                        {`${item} (${resultNum})`}
+                      </label>
+                     
+                        <input
+                          onChange={(e) => {
+                            handleChange(type, e.target, item);
+                          }}
+                          id={`${item}-checkbox`}
+                          type="checkbox"
+                          value={item}
+                          className={`${type}CheckBox h-[14px] w-[14px]  `}
+                        />
+                    </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default FilterDropdownList;
+/*
+Get post numbers
+1. Which type its on
+2. What it's value is
+
+goes through and gets all the ones that matches it's type. ( currently doing) 
+
+Then goes through the other types and makes sure one is in there
+
+
+
+*/
+// const [changes, setChanges] = useState([]);
+//const [newActive, setNewActive] = useState(currentlyActive);
+// handleChange(e.target, item)
+// const applyChanges = () => {
+//   handleChange(type, changes);
+//   setIsOpen(false)
+// }
+
+//             if (changes.find((change)=>change[1]==item)) {
+//               const newChanges = changes.filter((change)=>change[1]!=item)
+//               setChanges(newChanges);
+//  ``          }
+//             else{
+//               setChanges([...changes, [e.target, item]]);
+//             }
+//             if(newActive.includes(item))setNewActive(newActive.filter((it)=>it!==item))
+//             else setNewActive([...newActive, item])
+/* {Object.keys(categories).map((cat)=>{
+return <div>
+  <div className="pt-lg pb-md font-bold type-preset-6">{cat}</div>
+  */
+/* <div >
+      <ResetFilterButton type={type} onClick={()=>{handleClearClick(); setIsOpen(false)}} title={"Clear all"} isActive={true}/>
+      <button className="text-white bg-sage-700 hover:bg-sage-800 type-preset-7 px-md py-sm text-center inline-flex items-center " onClick={applyChanges}>Apply</button>
+    </div> */
+
+    /* <span
+                          className={` h-[12px] w-[12px]   absolute left-0 `}
+                        >
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`pt-xs     ${acD} `}
+                          >
+                            <g clip-path="url(#clip0_334_3846)">
+                              <line
+                                x1="3"
+                                y1="44.4645"
+                                x2="44.4645"
+                                y2="3"
+                                stroke-width="5"
+                                stroke-linecap="round"
+                              />
+                              <line
+                                x1="3.53553"
+                                y1="3"
+                                x2="45"
+                                y2="44.4645"
+                                stroke-width="5"
+                                stroke-linecap="round"
+                              />
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_334_3846">
+                                <rect width="48" height="48" fill="white" />
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </span> */

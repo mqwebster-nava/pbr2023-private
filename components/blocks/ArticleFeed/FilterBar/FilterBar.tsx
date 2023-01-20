@@ -17,27 +17,25 @@ const contentTypes = [
 ];
 
 
-const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => {
+const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displayedPosts }) => {
   const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
   const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false);
   const [isSectorsOpen, setIsSectorsOpen] = useState(false);
   
-  const handleChanges = (type, changes) => {
+
+  const handleChange = (type, checkboxElement, name) => {
     let currentList = filterBarState[type];
-    changes.forEach(([checkboxElement, name]) => {
-      if (checkboxElement.checked && !filterBarState[type].includes(name)) {
-        currentList.push(name);
-      } else if (!checkboxElement.checked) {
-        currentList = currentList.filter((n) => name != n);
-      }
-    });
+    if (checkboxElement.checked && !filterBarState[type].includes(name)) {
+      currentList.push(name);
+    } else if (!checkboxElement.checked) {
+      currentList = currentList.filter((n) => name != n);
+    }
     setFilterBarState((previousState) => {
       let r = { ...previousState };
       r[type] = currentList;
       return r;
     });
   };
-
   const handleClear = (type) => {
     setFilterBarState((previousState) => {
       let v = { ...previousState };
@@ -46,10 +44,17 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
     });
   };
 
+
   return (
-    <div className="relative pt-xl ">
-      <div className="flex justify-between align-bottom">
-        <div className="flex gap-x-md">
+    <div className="relative pt-xl"
+    onMouseLeave={()=>{
+      setIsSectorsOpen(false);
+      setIsCapabilitiesOpen(false)
+      setIsContentTypeOpen(false)
+    }}
+    >
+      <div className="flex justify-between align-bottom gap-x-md">
+       
           <FilterButton
             isOpen={isSectorsOpen}
             setIsOpen={(open) => {
@@ -85,10 +90,21 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
             }}
             title={`Content Types ${filterBarState.contentTypes.length>0 ? "("+filterBarState.contentTypes.length+")": ""}`}
           /> 
+          
+     
+        <div className="w-full "
+         onMouseEnter={()=>{
+          setIsSectorsOpen(false);
+          setIsCapabilitiesOpen(false)
+          setIsContentTypeOpen(false)
+        }}
+        >
+
+      
           { (filterBarState.sectors.length > 0 || filterBarState.capabilities.length > 0  || filterBarState.contentTypes.length > 0  ) && 
            <ResetFilterButton type={"tags"} onClick={() =>{ handleClear("contentTypes");  handleClear("sectors");  handleClear("capabilities")}} title={"Clear all"} isActive={true}/>
           }
-        </div>
+            </div>
       </div>
       <div className="">
         <FilterDropdownList
@@ -97,12 +113,12 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
           isOpen={isSectorsOpen}
           setIsOpen={(open) => {
             setIsSectorsOpen(open);
-            // setIsContentTypeOpen(false)
           }}
-          handleChange={handleChanges}
+          handleChange={handleChange}
           handleClearClick={() => handleClear("sectors")}
           currentlyActive={filterBarState.sectors}
           items={[]}
+          displayedPosts={displayedPosts}
         />
         <FilterDropdownList
           title={"Capabilities"}
@@ -112,10 +128,11 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
             setIsCapabilitiesOpen(open)
             
           }}
-          handleChange={handleChanges}
+          handleChange={handleChange}
           handleClearClick={()=> handleClear("capabilities")}
           items={[]}
           currentlyActive={filterBarState.capabilities}
+          displayedPosts={displayedPosts}
         />
         <FilterDropdownList
           title={"content type"}
@@ -124,12 +141,73 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
           setIsOpen={(open)=>{
             setIsContentTypeOpen(open)
           }}
-          handleChange={handleChanges}
+          handleChange={handleChange}
           handleClearClick={()=> handleClear("contentTypes")}
           items={contentTypes}
           currentlyActive={filterBarState.contentTypes}
+          displayedPosts={displayedPosts}
         />
-         <div className="pt-sm">
+       
+      </div>
+      <div className="pt-sm">
+        <p>{`${numResults} posts found`}</p>
+      </div>
+    </div>
+  );
+};
+
+export default FilterBar;
+
+export const FilterButton = ({ isOpen, setIsOpen, title }) => (
+  <button
+    id="dropdownCheckboxButton"
+    data-dropdown-toggle="dropdownDefaultCheckbox"
+    className={`min-w-[200px] text-black border-black border-[1px] ${isOpen&&"bg-sage-100"} hover:bg-sage-100 type-preset-6  px-md py-sm  inline-flex items-center justify-between`}
+    type="button"
+    onMouseEnter={()=>setIsOpen(true)}
+    onFocus={()=>setIsOpen(true)}
+    onClick={() => {
+      setIsOpen(!isOpen);
+    }}
+  >
+    {title}
+    <svg
+      className={`ml-2 w-4 h-4 transition ${isOpen&& "rotate-180"}`}
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </button>
+);
+
+
+
+  // const handleChanges = (type, changes) => {
+  //   let currentList = filterBarState[type];
+  //   changes.forEach(([checkboxElement, name]) => {
+  //     if (checkboxElement.checked && !filterBarState[type].includes(name)) {
+  //       currentList.push(name);
+  //     } else if (!checkboxElement.checked) {
+  //       currentList = currentList.filter((n) => name != n);
+  //     }
+  //   });
+  //   setFilterBarState((previousState) => {
+  //     let r = { ...previousState };
+  //     r[type] = currentList;
+  //     return r;
+  //   });
+  // };
+
+    {/* <div className="pt-sm">
        
            <div className="flex gap-md py-sm flex-wrap w-full">
 
@@ -154,46 +232,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, }) => 
           handleChange={handleChanges}
           activeItems={filterBarState.contentTypes}
         />
-        </div></div>
-      </div>
-      <div className="pt-sm">
-        <p>{`${numResults} posts found`}</p>
-      </div>
-    </div>
-  );
-};
-
-export default FilterBar;
-
-export const FilterButton = ({ isOpen, setIsOpen, title }) => (
-  <button
-    id="dropdownCheckboxButton"
-    data-dropdown-toggle="dropdownDefaultCheckbox"
-    className="text-white bg-sage-700 hover:bg-sage-800 type-preset-6  px-4 py-md text-center inline-flex items-center "
-    type="button"
-    onClick={() => {
-      setIsOpen(!isOpen);
-    }}
-  >
-    {title}
-    <svg
-      className="ml-2 w-4 h-4"
-      aria-hidden="true"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M19 9l-7 7-7-7"
-      ></path>
-    </svg>
-  </button>
-);
-
+        </div></div> */}
 {
   /* <ResetFilterButton
 type={"contentType"}
