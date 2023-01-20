@@ -15,11 +15,9 @@ const ex:ExperimentInterface = {
   value:0,
   defaultValue: 0
 }
+// Maybe add a hideWrappers prop so don't do the specific check
 
-// const isDEI2022 = slug.includes("dei/2022") ||slug.includes("dei2023")
 const pageColors = ["gold", "navy", "sage", "purple","plum"]
-// const [DEIpageColor, setDEIpageColor] = useState(null)
-// // TODO fix urls
 
 function MyApp({ Component, pageProps }: AppProps) {
  
@@ -28,13 +26,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     "page" in pageProps ? pageProps.page : pageProps;
   
 
-  const experiments = useOptimizely({pageData, optimizeExperiments:[ex]});
+  const experiments = [] //useOptimizely({pageData, optimizeExperiments:[ex]});
 
   // Recent DE&I specific code to set a random color. Needs to be this high so doesn't rerender
   const [DEIpageColor, setDEIpageColor] = useState(null)
 
   useEffect(() => {
-    if(pageProps.slug?.includes("dei/2022")){
+    if(pageProps && pageProps.slug?.includes("dei/2022")){
       const c = pageColors[Math.floor(Math.random() * pageColors.length)];
       setDEIpageColor(c)
     }
