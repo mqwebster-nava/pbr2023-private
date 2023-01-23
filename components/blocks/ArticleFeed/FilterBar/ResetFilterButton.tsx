@@ -14,7 +14,7 @@ const ResetFilterButton = ({
     return (
       <button
         disabled={!isActive}
-        className={`  ${styles} type-preset-6 text-black border-black border-[1px] hover:bg-sage-100 type-preset-6  px-4 py-md text-center inline-flex items-center`}
+        className={`  ${styles} type-preset-6 text-black border-black border-[1px] hover:bg-sage-100 type-preset-6  px-md py-sm text-center inline-flex items-center`}
         onClick={() => {
           Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
             (el) => {

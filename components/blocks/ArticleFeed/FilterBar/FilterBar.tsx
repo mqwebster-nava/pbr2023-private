@@ -79,11 +79,16 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
 
   const getCount = (type, item) => {
     let l =  type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item) : displayedPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item));
-    // Object.keys(categories).map((cat)=>{ 
-    //   if(cat!==type){
-    //     l = 
-    //   }
-    // });
+    Object.keys(categories).map((cat)=>{ 
+      if(cat!==type && filterBarState[cat].length>0){
+        if(cat=="contentTypes"){
+          l = l.filter((post)=>filterBarState[cat].includes(post.contentType))
+        } else{
+          l = l.filter((post)=>post?.contentTags?.some((tag)=>filterBarState[cat].includes(tag)));
+        }
+      }
+
+    });
     return l.length;
 
   };
@@ -216,7 +221,7 @@ export const FilterButton = ({ isOpen, setIsOpen, title }) => (
   >
     {title}
     <svg
-      className={`ml-2 w-4 h-4 transition ${isOpen&& "rotate-180"}`}
+      className={`ml-2 w-4 h-4 transition duration-300 ${isOpen&& "rotate-180"}`}
       aria-hidden="true"
       fill="none"
       stroke="currentColor"

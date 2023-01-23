@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import ResetFilterButton from "./ResetFilterButton";
 
@@ -52,16 +53,15 @@ const FilterDropdownList = ({
               {column.map((item, i) => {
                 let isActive = currentlyActive.includes(item);
                 let resultNum= getCount(type, item)
-                const ac = isActive
-                  ? "bg-sage-50 text-gray-900"
-                  : "bg-gray-50 text-gray-600 hover:bg-white";
-                let acD = isActive
-                  ? "stroke-black group-hover:stroke-red-700"
-                  : " stroke-gray-700 rotate-45 group-hover:stroke-sage-900";
+                const styles = classNames({
+                  "bg-sage-50 text-gray-900": isActive,
+                  "bg-gray-50 text-gray-600 hover:bg-white ": !isActive && resultNum!=0,
+                  "bg-gray-100 text-gray-400 ": resultNum==0
+                });
                 return (
                     <div
                     key={i}
-                      className={`flex group items-center p-sm type-preset-6 ${ac}`}
+                      className={`flex group items-center p-sm type-preset-6 ${styles}`}
                     >
                       <label
                         htmlFor={`${item}-checkbox`}
@@ -74,6 +74,7 @@ const FilterDropdownList = ({
                           onChange={(e) => {
                             handleChange(type, e.target, item);
                           }}
+                          disabled={resultNum==0}
                           id={`${item}-checkbox`}
                           type="checkbox"
                           value={item}
