@@ -88,8 +88,8 @@ const DepartmentSection = ({ name, teamMembers, open=false }) => {
             objectFit={"cover"}
             width={400}
             height={400}
+            unoptimized
             className="w-full h-auto aspect-square object-cover bg-navy-50"></Image>
-
             <h5 className={`type-preset-7 font-bold  pt-sm ${!teamMember.fields.Role && "pb-sm"}`}>
               {teamMember.fields.linkedIn ? 
               <LinkText href={teamMember.fields.linkedIn} variant={"underlined"} color={"black"}>{teamMember.fields.Name}</LinkText>
