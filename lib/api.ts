@@ -79,9 +79,11 @@ export async function getPageDataFromContentful({
     try {
       const post = await getPostBySlug(slug, {preview});
       const formattedPost:FullPostInterface = formatFullPost(post);
+      console.log(formattedPost)
       let morePosts = await getMorePosts(formattedPost,{preview});
       morePosts = formatPosts(morePosts);
       const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
+     
       return formattedPage;
     } catch (e) {
       console.error("issue", e)

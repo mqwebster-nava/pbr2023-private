@@ -21,8 +21,12 @@ export interface BasicPostInterface{
     contentTags:Array<string>;
     shortSummary:string;
     promoImage:ContentfulImageAsset;
+   // contentTagsV2:any;
     
 }
+export interface ContentTagInterface{
+    name:string;
+  }
 export interface FullPostInterface extends BasicPostInterface{
     longSummary:string;
     hideSideNav:boolean;

@@ -41,7 +41,8 @@ import CONTENT_CARD from "lib/graphql_fragments/cards/CONTENT_CARD";
       console.error(response2);
       return null;
     }
-    let posts = [...response.data.postCollection.items, ...response2.data.contentCardCollection.items];
+    const r2 = response2.data.contentCardCollection.items.map((i)=> {return {contentTags:[], ...i}})
+    let posts = [...response.data.postCollection.items, ...r2];
 
     return posts;
   }

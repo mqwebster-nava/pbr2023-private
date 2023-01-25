@@ -12,6 +12,11 @@ import EMBEDDED_VIDEO from "./post_blocks/EMBEDDED_VIDEO";
 import CALLOUT from "./report_blocks/CALLOUT";
 import EVENT_INFO from "./post_blocks/EVENT_INFO";
 
+
+export const TAG_FIELDS =`
+    name
+`
+
 export const POST_CORE_FIELDS = `
     sys {
       id
@@ -23,11 +28,19 @@ export const POST_CORE_FIELDS = `
     contentType
     shortSummary
     contentTags
+    contentTagsV2Collection(limit:8) {
+      items {
+          ${TAG_FIELDS}
+      }
+  }
     clientName
     promoImage {
       ${IMAGE_FIELDS}
     }
 `;
+
+
+
 export const AUTHOR_CORE_FIELDS =`
     name
     role

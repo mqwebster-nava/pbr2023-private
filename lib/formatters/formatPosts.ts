@@ -1,5 +1,5 @@
 
-import { BasicPostInterface } from "lib/data_models/post_interface";
+import { BasicPostInterface, ContentTagInterface } from "lib/data_models/post_interface";
 import { formatImageAsset } from "./formatImageAsset";
   
 
@@ -9,7 +9,12 @@ export const formatPosts = (posts) =>{
       const newPost: BasicPostInterface = {
         __typename:"Post",
         id: post.sys.id,
-        contentTags:post.contentTags,
+        contentTags: post.contentTagsV2Collection?.items?.map((tag)=>{
+          // const formattedTag:ContentTagInterface ={
+          //   name: tag.name,
+          // }
+          return tag.name;
+        }),
         slug: post.slug,
         title: post.title,
         date:  post.date ?? post.sys.firstPublishedAt,

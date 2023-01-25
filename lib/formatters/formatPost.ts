@@ -1,5 +1,5 @@
 import { PostEventSpeaker } from "components/blocks/PostEventSpeakersRow/PostEventSpeakersRow";
-import { AuthorPostInterface, FullPostInterface } from "lib/data_models/post_interface";
+import { AuthorPostInterface, ContentTagInterface, FullPostInterface } from "lib/data_models/post_interface";
 import { formatImageAsset } from "./formatImageAsset";
 
   export const formatFullPost = (post) =>{
@@ -9,7 +9,12 @@ import { formatImageAsset } from "./formatImageAsset";
       id: post.sys.id,
       slug: post.slug,
       title: post.title,
-      contentTags:post.contentTags,
+      contentTags: post.contentTagsV2Collection?.items?.map((tag)=>{
+        // const formattedTag:ContentTagInterface ={
+        //   name: tag.name,
+        // }
+        return tag.name;
+      }),
       clientName: post.clientName,
       longSummary: post.longSummary,
       hideSideNav:post.hideSideNav,

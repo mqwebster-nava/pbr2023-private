@@ -43,10 +43,10 @@ const ArticleFeed = ({
   // TODO could format posts here
   const [displayedPosts, setDisplayedPosts] =  useState(items);
 
-
  
   useEffect(() => {
    let _items = items;
+
 
    if(filterBarState.sectors.length>0){
     _items = _items.filter((it)=> { 

@@ -20,12 +20,17 @@ export async function getStaticProps({ params, preview = false }) {
   });
  
   let _posts = await getPosts();
+ 
   let tags = await getAllTags();
+
   let posts: Array<BasicPostInterface> = formatPosts(_posts);
   posts = posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime()).filter((a)=>new Date(a.date).getTime()< new Date().getTime());
-
+posts = posts.map((p)=>{
+  if(p.contentTags==undefined) p.contentTags=[]
+  return p
+})
   const filterEx = posts.slice(4, 7);
-
+console.log(posts[14])
   res.contentBlocks = [
     {
       

@@ -1,3 +1,5 @@
+//TODO WOULD NEED TO CHANGE
+
 const contentful = require("contentful");
 
 export default async function getAllTags() {
