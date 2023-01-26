@@ -15,8 +15,6 @@ const FilterDropdownList = ({
   type,
   currentlyActive = []
 }) => {
-
-//  console.log(displayedPosts);
   useEffect(() => {
     Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
       (el) => {

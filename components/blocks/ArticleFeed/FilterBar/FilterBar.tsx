@@ -5,55 +5,65 @@ import FilterDropdownList from "./FilterDropdownList";
 import ResetFilterButton from "./ResetFilterButton";
 
 
-const categories = {
-  sectors: [
-    "healthcare",
-    "integrated benefits",
-    "paid family medical leave",
-    "unemployment insurance",
-    "Veterans",
-    "WIC",
-  ],
-  capabilities: [
-    "accessibility and equity",
-    "adapting to change",
-    "agile development",
-    "APIs and documentation",
-    "backend engineering",
-    "cloud infrastructure",
-    "content strategy",
-    "continuous improvement",
-    "crisis response",
-    "frontend engineering",
-    "human-centered design",
-    "modernization",
-    "policy",
-    "product management",
-    "program management",
-    "program outcomes",
-    "rapid delivery",
-    "reducing risk",
-    "scalable solutions",
-    "user experience research",
-    "mission and impact",
-  ],
-  contentTypes: [
-    "Insight",
-    "Case Study",
-    "Toolkit",
-    "News",
-    "Events",
-    "Working at Nava",
-    "Public Benefit Report",
-  ],
-  // Other: ["a day at Nava", "careers", "what we're learning"],
-};
+// const categories = {
+//   sectors: [
+//     "healthcare",
+//     "integrated benefits",
+//     "paid family medical leave",
+//     "unemployment insurance",
+//     "Veterans",
+//     "WIC",
+//   ],
+//   capabilities: [
+//     "accessibility and equity",
+//     "adapting to change",
+//     "agile development",
+//     "APIs and documentation",
+//     "backend engineering",
+//     "cloud infrastructure",
+//     "content strategy",
+//     "continuous improvement",
+//     "crisis response",
+//     "frontend engineering",
+//     "human-centered design",
+//     "modernization",
+//     "policy",
+//     "product management",
+//     "program management",
+//     "program outcomes",
+//     "rapid delivery",
+//     "reducing risk",
+//     "scalable solutions",
+//     "user experience research",
+//     "mission and impact",
+//   ],
+//   contentTypes: [
+//     "Insight",
+//     "Case Study",
+//     "Toolkit",
+//     "News",
+//     "Events",
+//     "Working at Nava",
+//     "Public Benefit Report",
+//   ],
+//   // Other: ["a day at Nava", "careers", "what we're learning"],
+// };
 
 
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displayedPosts }) => {
-  const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
-  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false);
-  const [isSectorsOpen, setIsSectorsOpen] = useState(false);
+ // const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
+  //const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  let categories = {}
+  tags.forEach((t)=>{
+    if(!t.type) return
+    if(!(t.type in categories)){
+      categories[t.type]=[]
+    }
+    categories[t.type].push(t.name)
+
+  })
+  console.log(categories)
   
 
   const handleChange = (type, checkboxElement, name) => {
@@ -84,7 +94,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
         if(cat=="contentTypes"){
           l = l.filter((post)=>filterBarState[cat].includes(post.contentType))
         } else{
-          l = l.filter((post)=>post?.contentTags?.some((tag)=>filterBarState[cat].includes(tag)));
+          l = l.filter((post)=>post?.contentTag?.some((tag)=>filterBarState[cat].includes(tag)));
         }
       }
 
@@ -96,27 +106,27 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
   return (
     <div className="relative pt-xl"
     onMouseLeave={()=>{
-      setIsSectorsOpen(false);
-      setIsCapabilitiesOpen(false)
-      setIsContentTypeOpen(false)
+      setIsMenuOpen(false);
+      //setIsCapabilitiesOpen(false)
+     // setIsContentTypeOpen(false)
     }}
     >
       <div className="flex justify-between align-bottom gap-x-md">
        
           <FilterButton
-            isOpen={isSectorsOpen}
+            isOpen={isMenuOpen}
             setIsOpen={(open) => {
-              setIsSectorsOpen(open);
-              setIsCapabilitiesOpen(false)
-              setIsContentTypeOpen(false)
+              setIsMenuOpen(open);
+              //setIsCapabilitiesOpen(false)
+              //setIsContentTypeOpen(false)
             }}
-            title={`Sectors ${
-              filterBarState.sectors.length > 0
-                ? "(" + filterBarState.sectors.length + ")"
+            title={`Filters ${
+              filterBarState.sector.length > 0
+                ? "(" + filterBarState.sector.length + ")"
                 : ""
             }`}
           />
-          <FilterButton
+          {/* <FilterButton
             isOpen={isCapabilitiesOpen}
             setIsOpen={(open) => {
               setIsCapabilitiesOpen(open);
@@ -138,37 +148,35 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
             }}
             title={`Content Types ${filterBarState.contentTypes.length>0 ? "("+filterBarState.contentTypes.length+")": ""}`}
           /> 
-          
+           */}
      
         <div className="w-full "
          onMouseEnter={()=>{
-          setIsSectorsOpen(false);
-          setIsCapabilitiesOpen(false)
-          setIsContentTypeOpen(false)
+          setIsMenuOpen(false);
         }}
         >
 
       
-          { (filterBarState.sectors.length > 0 || filterBarState.capabilities.length > 0  || filterBarState.contentTypes.length > 0  ) && 
-           <ResetFilterButton type={"tags"} onClick={() =>{ handleClear("contentTypes");  handleClear("sectors");  handleClear("capabilities")}} title={"Clear all"} isActive={true}/>
+          { (filterBarState.sector.length > 0 || filterBarState.capability.length > 0  || filterBarState.contentType.length > 0  ) && 
+           <ResetFilterButton type={"tags"} onClick={() =>{   handleClear("sector"); }} title={"Clear all"} isActive={true}/>
           }
             </div>
       </div>
       <div className="">
         <FilterDropdownList
-          title={"Sector"}
-          type={"sectors"}
-          isOpen={isSectorsOpen}
+          title={"Filters"}
+          type={"sector"}
+          isOpen={isMenuOpen}
           setIsOpen={(open) => {
-            setIsSectorsOpen(open);
+            setIsMenuOpen(open);
           }}
           handleChange={handleChange}
-          handleClearClick={() => handleClear("sectors")}
-          currentlyActive={filterBarState.sectors}
-          items={categories.sectors}
+          handleClearClick={() => handleClear("sector")}
+          currentlyActive={filterBarState.sector}
+          items={categories['sector']}
           getCount={getCount}
         />
-        <FilterDropdownList
+        {/* <FilterDropdownList
           title={"Capabilities"}
           type={"capabilities"}
           isOpen={isCapabilitiesOpen}
@@ -182,8 +190,8 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
           items={categories.capabilities}
           currentlyActive={filterBarState.capabilities}
           getCount={getCount}
-        />
-        <FilterDropdownList
+        /> */}
+        {/* <FilterDropdownList
           title={"content type"}
           type={"contentTypes"}
           isOpen={isContentTypeOpen}
@@ -195,7 +203,7 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displa
           items={categories.contentTypes}
           currentlyActive={filterBarState.contentTypes}
           getCount={getCount}
-        />
+        /> */}
        
       </div>
       <div className="pt-sm">

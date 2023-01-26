@@ -30,7 +30,6 @@ posts = posts.map((p)=>{
   return p
 })
   const filterEx = posts.slice(4, 7);
-console.log(posts[14])
   res.contentBlocks = [
     {
       

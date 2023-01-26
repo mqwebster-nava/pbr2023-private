@@ -79,7 +79,6 @@ export async function getPageDataFromContentful({
     try {
       const post = await getPostBySlug(slug, {preview});
       const formattedPost:FullPostInterface = formatFullPost(post);
-      console.log(formattedPost)
       let morePosts = await getMorePosts(formattedPost,{preview});
       morePosts = formatPosts(morePosts);
       const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
@@ -101,7 +100,7 @@ export async function getPageDataFromContentful({
     const tags = await getAllTags();
       // check somewhere to see if there's a page connected to that tag
      // if there use use that data, otherwise do the default way
-    const tagName = tags.find((tag) => slugify(tag) === slug);
+    const tagName = tags.find((tag) => slugify(tag.name) === slug)?.name;
     const posts: Array<BasicPostInterface> = await getPostsByTag(tagName);
 
     const formattedPage: PageInterface = formatTagsPage(slug, tagName, posts);

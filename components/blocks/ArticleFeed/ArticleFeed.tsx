@@ -1,5 +1,6 @@
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { LinkText } from "components/atom/LinkText/LinkText";
+import { ContentTagInterface } from "lib/data_models/post_interface";
 import React, { useEffect, useState } from "react";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
@@ -16,7 +17,7 @@ interface ArticleFeedInterface {
   max?: number;
   layout?: ListLayout;
   filterable?: boolean;
-  tags?:Array<String>
+  tags?:Array<ContentTagInterface>
 }
 
 const ArticleFeed = ({
@@ -35,32 +36,29 @@ const ArticleFeed = ({
   items = items.filter((post) => post != null);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
   const [filterBarState, setFilterBarState ] = useState({
-    contentTypes:[],
-    sectors:[],
-    capabilities: []
+    contentType:[],
+    sector:[],
+    capability: []
   });
 
   // TODO could format posts here
   const [displayedPosts, setDisplayedPosts] =  useState(items);
-
- 
   useEffect(() => {
    let _items = items;
 
-
-   if(filterBarState.sectors.length>0){
+   if(filterBarState.sector.length>0){
     _items = _items.filter((it)=> { 
-      return it.contentTags && it.contentTags.some((tag)=>filterBarState.sectors.includes(tag))
+      return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
     })
    }
-   if(filterBarState.capabilities.length>0){
+   if(filterBarState.capability.length>0){
     _items = _items.filter((it)=> { 
-      return it.contentTags && it.contentTags.some((tag)=>filterBarState.capabilities.includes(tag))
+      return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
     })
    }
-   if(filterBarState.contentTypes.length>0){
+   if(filterBarState.contentType.length>0){
     _items = _items.filter((it)=> { 
-      return it.contentType && filterBarState.contentTypes.includes(it.contentType)
+      return it.contentType && filterBarState.contentType.includes(it.contentType)
     })
    }
 

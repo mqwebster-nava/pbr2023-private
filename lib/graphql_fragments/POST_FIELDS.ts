@@ -15,6 +15,7 @@ import EVENT_INFO from "./post_blocks/EVENT_INFO";
 
 export const TAG_FIELDS =`
     name
+    type
 `
 
 export const POST_CORE_FIELDS = `
@@ -53,6 +54,17 @@ export const AUTHOR_CORE_FIELDS =`
 
 export const AUTHOR_ALL_FIELDS =`
     ${AUTHOR_CORE_FIELDS}
+    linkedFrom {
+        postCollection(limit:10){
+        items{
+            __typename
+            ${POST_CORE_FIELDS}
+        }
+        }
+    }
+`;
+export const TAGS_POST_FIELDS =`
+    ${TAG_FIELDS}
     linkedFrom {
         postCollection(limit:10){
         items{
