@@ -28,7 +28,6 @@ export const POST_CORE_FIELDS = `
     slug
     contentType
     shortSummary
-    contentTags
     contentTagsV2Collection(limit:8) {
       items {
           ${TAG_FIELDS}

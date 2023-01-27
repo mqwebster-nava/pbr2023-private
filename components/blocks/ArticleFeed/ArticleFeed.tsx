@@ -17,7 +17,7 @@ interface ArticleFeedInterface {
   max?: number;
   layout?: ListLayout;
   filterable?: boolean;
-  tags?:Array<ContentTagInterface>
+  tags?: Array<ContentTagInterface>;
 }
 
 const ArticleFeed = ({
@@ -30,41 +30,52 @@ const ArticleFeed = ({
   max = 6,
   layout,
   filterable = false,
-  tags=[]
+  tags = [],
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
   const [isTagsOpen, setIsTagsOpen] = useState(false);
-  const [filterBarState, setFilterBarState ] = useState({
-    contentType:[],
-    sector:[],
-    capability: []
+
+  const [filterBarState, setFilterBarState] = useState({
+    tags: [],
   });
+  // const [filterBarState, setFilterBarState ] = useState({
+  //   contentType:[],
+  //   sector:[],
+  //   capability: []
+  // });
 
   // TODO could format posts here
-  const [displayedPosts, setDisplayedPosts] =  useState(items);
+  const [displayedPosts, setDisplayedPosts] = useState(items);
   useEffect(() => {
-   let _items = items;
+    let _items = items;
+    if (filterBarState.tags.length > 0) {
+      _items = _items.filter((it) => {
+        return (
+          it.contentTags &&
+          it.contentTags.some((tag) => filterBarState.tags.includes(tag))
+        );
+      });
+    }
 
-   if(filterBarState.sector.length>0){
-    _items = _items.filter((it)=> { 
-      return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
-    })
-   }
-   if(filterBarState.capability.length>0){
-    _items = _items.filter((it)=> { 
-      return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
-    })
-   }
-   if(filterBarState.contentType.length>0){
-    _items = _items.filter((it)=> { 
-      return it.contentType && filterBarState.contentType.includes(it.contentType)
-    })
-   }
+    //  if(filterBarState.sector.length>0){
+    //   _items = _items.filter((it)=> {
+    //     return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
+    //   })
+    //  }
+    //  if(filterBarState.capability.length>0){
+    //   _items = _items.filter((it)=> {
+    //     return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
+    //   })
+    //  }
+    //  if(filterBarState.contentType.length>0){
+    //   _items = _items.filter((it)=> {
+    //     return it.contentType && filterBarState.contentType.includes(it.contentType)
+    //   })
+    //  }
 
-   if(_items!==displayedPosts) setDisplayedPosts(_items);
-
-  }, [filterBarState])
+    if (_items !== displayedPosts) setDisplayedPosts(_items);
+  }, [filterBarState]);
   return (
     <section key={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
@@ -92,22 +103,18 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) : null
-     
-            }
+            ) : null}
           </div>
         </div>
-      { filterable && 
-      
-      <FilterBar
-        tags={tags}
-        filterBarState={filterBarState}
-        setFilterBarState={setFilterBarState}
-        numResults={displayedPosts.length}
-        displayedPosts={items}
-       />
-        
-       }
+        {filterable && (
+          <FilterBar
+            tags={tags}
+            filterBarState={filterBarState}
+            setFilterBarState={setFilterBarState}
+            numResults={displayedPosts.length}
+            allPosts={items}
+          />
+        )}
       </div>
       <div className="pt-xl">
         <ContentGrid
@@ -131,34 +138,32 @@ const ArticleFeed = ({
       </div>
     </section>
   );
-
-}
+};
 export default ArticleFeed;
 
+// const handleClear = (type) => {
+//   setFilterBarState((previousState) => {
+//     let v = { ...previousState };
+//     v[type] = [];
+//     return v;
+//   });
+// };
 
-  // const handleClear = (type) => {
-  //   setFilterBarState((previousState) => {
-  //     let v = { ...previousState };
-  //     v[type] = [];
-  //     return v;
-  //   });
-  // };
+//     filterable== true ?    <div className="flex gap-x-md">
+//       { filterBarState.tags.length > 0 &&
+//    <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+//   }
+//   <FilterButton
+//     isOpen={isTagsOpen}
+//     setIsOpen={(open) => {
+//       setIsTagsOpen(open);
+//       //setIsContentTypeOpen(false)
+//     }}
+//     title={`Filters ${
+//       filterBarState.tags.length > 0
+//         ? "(" + filterBarState.tags.length + ")"
+//         : ""
+//     }`}
+//   />
 
-     //     filterable== true ?    <div className="flex gap-x-md">
-          //       { filterBarState.tags.length > 0 && 
-          //    <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-          //   }
-          //   <FilterButton
-          //     isOpen={isTagsOpen}
-          //     setIsOpen={(open) => {
-          //       setIsTagsOpen(open);
-          //       //setIsContentTypeOpen(false)
-          //     }}
-          //     title={`Filters ${
-          //       filterBarState.tags.length > 0
-          //         ? "(" + filterBarState.tags.length + ")"
-          //         : ""
-          //     }`}
-          //   />
-          
-          // </div>: null
+// </div>: null

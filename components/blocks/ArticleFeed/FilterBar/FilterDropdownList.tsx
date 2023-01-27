@@ -11,7 +11,7 @@ const FilterDropdownList = ({
   getCount,
   handleChange,
   handleClearClick,
-  items,
+  categories,
   type,
   currentlyActive = []
 }) => {
@@ -37,15 +37,16 @@ const FilterDropdownList = ({
         !isOpen && "hidden"
       } absolute z-10  -left-[16px] -right-[16px] bg-gray-50 mt-sm p-lg min-h-[200px] pb-xl`}
     >
-      <div className="flex justify-between">
-        <p className="pb-md font-bold">Filter by {title}</p>
+       { Object.keys(categories).map((catName) =>
+       <>
+       <div className="flex justify-between">
+        <p className="py-md font-bold">Filter by {catName}</p>
       </div>
       <div
         className="grid grid-cols-3 w-full gap-lg"
         aria-labelledby="dropdownCheckboxButton"
       >
-        {splitIntoColumns(items, 3).map((column, j) => {
-          
+        {splitIntoColumns(categories[catName], 3).map((column, j) => {
           return (
             <div className="flex flex-col divide-y-[1px]">
               {column.map((item, i) => {
@@ -83,8 +84,10 @@ const FilterDropdownList = ({
               })}
             </div>
           );
-        })}
+        }) }
       </div>
+      </>
+      )}
     </div>
   );
 };
