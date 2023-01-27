@@ -43,3 +43,4 @@ export async function getStaticProps({ params, preview = false }) {
     revalidate: 60, // In seconds
   }
 }
+
