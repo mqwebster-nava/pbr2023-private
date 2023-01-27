@@ -20,7 +20,6 @@ const ex:ExperimentInterface = {
 const pageColors = ["gold", "navy", "sage", "purple","plum"]
 
 function MyApp({ Component, pageProps }: AppProps) {
- 
 
   const pageData: PageInterface =
     "page" in pageProps ? pageProps.page : pageProps;
@@ -49,11 +48,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:title" content={pageData.title} />
         <link
           rel="canonical"
-          href={`https://www.navapbc.com${pageData.slug}`}
+          href={pageData.slug ?`https://www.navapbc.com${pageData.slug}`: `https://www.navapbc.com/404`}
         />
         <meta
           property="og:url"
-          content={`https://www.navapbc.com${pageData.slug}`}
+          content={pageData.slug ?`https://www.navapbc.com${pageData.slug}`: `https://www.navapbc.com/404`}
         />
         <meta property="og:site_name" content="Nava PBC" />
 
@@ -88,7 +87,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} experiments={experiments} DEIpageColor={DEIpageColor} />
         </div>
         {(!pageData || pageData.slug !== "/public-benefit-reports/2021") && (
-          <Footer isBottomGapRemoved={pageProps.isBottomGapRemoved} experiments={experiments} />
+          <Footer isBottomGapRemoved={pageProps.isBottomGapRemoved??false} experiments={experiments} />
         )}
       </div>
     </>
