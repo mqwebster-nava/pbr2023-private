@@ -512,9 +512,9 @@ module.exports = withBundleAnalyzer({
         permanent: false,
       },
       {
-        source: "/dei2023",
+        source: "/dei",
         destination: "/dei/2022",
-        permanent: true,
+        permanent: false,
       }
     ];
   },

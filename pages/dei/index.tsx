@@ -16,7 +16,7 @@
   export async function getStaticProps({ params, preview = false }) {
     
     const res: PageInterface = await getPageDataFromContentful({
-      slug: "/dei/2021",
+      slug: "/dei/2022",
       preview: preview,
     });
     return {
