@@ -8,6 +8,7 @@ const getFooterNavData = (variant) => [
     variant == "library"
       ? { title: "Library", slug: "/library" }
       : { title: "Insights", slug: "/insights" },
+    {title: "Contract vehicles", slug:"/contract-vehicles"}
   ],
   [
     { title: "Careers", slug: "/careers" },
