@@ -24,11 +24,12 @@ export function formatAuthorPage(slug, author){
         subtitle:author.role,
       },
       contentBlocks: [
-        {
-          __typename:"AuthorBioBlock",
-          id: `${slug}-bio`,
-          ...author
-        },
+        // {
+        //   ...author,
+        //   __typename:"AuthorBioBlock",
+        //   id: `${slug}-bio`
+          
+        // },
         {
           __typename:"ContentBlockArticleList",
           id: `${slug}-posts`,
