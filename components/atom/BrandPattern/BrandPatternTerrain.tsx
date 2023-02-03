@@ -9,12 +9,6 @@ interface BrandPatternTerrainInterface{
 }
 
 
-// const BrandPatternTerrain = () => {
-
-
-
-// };
-
 
 const BrandPatternTerrain  = ({strokeWidth, strokeColor}) => {
     const 

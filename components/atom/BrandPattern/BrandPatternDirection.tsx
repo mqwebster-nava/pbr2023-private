@@ -1,6 +1,27 @@
 type LINETHICKNESS = "heavy" | "medium" | "light";
 type LINESEPERATION = "tight" | "normal" | "loose";
 
+// TODO try implementing this version
+export const Lines = ({ count=40, thickness=".5" }) => {
+  console.log(count, thickness)
+  return (
+    <svg viewBox="0 0 100 100" width="150px" height="150px">
+      {Array.from(Array(count).keys()).map((i) => (
+        <line
+          x1={-20 + i*140/count}
+          y1={-100}
+          x2={-20+ i*140/count}
+          y2={ 200 }
+          stroke="black"
+          strokeWidth={thickness}
+          strokeLinecap="square"
+          transform={`rotate(45, 50, 50)`}
+        />
+      ))}
+    </svg>
+  );
+};
+
 interface BrandPatternInterface {
   lineThickness: LINETHICKNESS;
   lineSeperation:LINESEPERATION;
@@ -18,6 +39,7 @@ const BrandPattern = ({lineThickness, lineSeperation}:BrandPatternInterface) => 
 };
 export default BrandPattern;
 
+//export default Line;
 
 
 
