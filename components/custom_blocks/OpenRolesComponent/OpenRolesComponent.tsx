@@ -1,10 +1,3 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-
-//https://www.digitalocean.com/community/tutorials/react-axios-react
-import { LinkText } from "components/atom/LinkText/LinkText";
-import { slugify } from "utils/utils";
-import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 /*
 In the open positions page, we are getting Nava's open positions from Lever's API,
 since all the roles are updated there.
@@ -12,6 +5,15 @@ since all the roles are updated there.
 We use axios to call the api at page load and display them in groupings.
 
 */
+
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+//https://www.digitalocean.com/community/tutorials/react-axios-react
+import { LinkText } from "components/atom/LinkText/LinkText";
+import { slugify } from "utils/utils";
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
+
 interface JobPostingInterface {
   id: string;
   applyUrl: string;

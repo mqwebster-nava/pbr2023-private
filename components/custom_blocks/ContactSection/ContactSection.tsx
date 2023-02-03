@@ -1,4 +1,12 @@
+/*
 
+Contact section ( )
+- Allows people to submit message to us via a formspree (https://formspree.io/f/xknpbovg)
+- Is set up as a `[Section] Custom Block` content type
+- Requires no props
+- Locations shown here are are hard coded ( In the future, could use the "Data" field)
+
+*/
 import FormInputButton from "components/atom/FormInputButton/FormInputButton";
 import { LinkText } from "components/atom/LinkText/LinkText";
 
@@ -107,16 +115,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-/* <div className="py-md">
-            <label className="uppercase type-preset-7 pb-sm" htmlFor="reason">
-              Reason
-            </label>
-            <br />
-            <input
-              className="border border-gray-900 p-md w-full"
-              type="text"
-              id="reason"
-              name="reason"
-              required
-            />
-          </div> */
