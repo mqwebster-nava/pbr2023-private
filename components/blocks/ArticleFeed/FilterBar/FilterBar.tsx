@@ -5,50 +5,6 @@ import FilterDropdownList from "./FilterDropdownList";
 import ResetFilterButton from "./ResetFilterButton";
 
 
-// const categories = {
-//   sectors: [
-//     "healthcare",
-//     "integrated benefits",
-//     "paid family medical leave",
-//     "unemployment insurance",
-//     "Veterans",
-//     "WIC",
-//   ],
-//   capabilities: [
-//     "accessibility and equity",
-//     "adapting to change",
-//     "agile development",
-//     "APIs and documentation",
-//     "backend engineering",
-//     "cloud infrastructure",
-//     "content strategy",
-//     "continuous improvement",
-//     "crisis response",
-//     "frontend engineering",
-//     "human-centered design",
-//     "modernization",
-//     "policy",
-//     "product management",
-//     "program management",
-//     "program outcomes",
-//     "rapid delivery",
-//     "reducing risk",
-//     "scalable solutions",
-//     "user experience research",
-//     "mission and impact",
-//   ],
-//   contentTypes: [
-//     "Insight",
-//     "Case Study",
-//     "Toolkit",
-//     "News",
-//     "Events",
-//     "Working at Nava",
-//     "Public Benefit Report",
-//   ],
-//   // Other: ["a day at Nava", "careers", "what we're learning"],
-// };
-
 
 const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, allPosts }) => {
  // const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
@@ -209,6 +165,52 @@ export const FilterButton = ({ isOpen, setIsOpen, title }) => (
   </button>
 );
 
+
+
+
+// const categories = {
+//   sectors: [
+//     "healthcare",
+//     "integrated benefits",
+//     "paid family medical leave",
+//     "unemployment insurance",
+//     "Veterans",
+//     "WIC",
+//   ],
+//   capabilities: [
+//     "accessibility and equity",
+//     "adapting to change",
+//     "agile development",
+//     "APIs and documentation",
+//     "backend engineering",
+//     "cloud infrastructure",
+//     "content strategy",
+//     "continuous improvement",
+//     "crisis response",
+//     "frontend engineering",
+//     "human-centered design",
+//     "modernization",
+//     "policy",
+//     "product management",
+//     "program management",
+//     "program outcomes",
+//     "rapid delivery",
+//     "reducing risk",
+//     "scalable solutions",
+//     "user experience research",
+//     "mission and impact",
+//   ],
+//   contentTypes: [
+//     "Insight",
+//     "Case Study",
+//     "Toolkit",
+//     "News",
+//     "Events",
+//     "Working at Nava",
+//     "Public Benefit Report",
+//   ],
+//   // Other: ["a day at Nava", "careers", "what we're learning"],
+// };
 
 // const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, displayedPosts }) => {
 //  // const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
