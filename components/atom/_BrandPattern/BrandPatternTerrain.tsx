@@ -1,19 +1,12 @@
-
+/*
+Never completed
+- Wanted an easier way for use to create and use brand patterns throughout the site, rather than using custom SVG files
+- Proved to be difficult
+*/
 
 type LINETHICKNESS = "heavy" | "medium" | "light";
 type PATTERNVARIANT = "one" | "two" |"three"
 
-interface BrandPatternTerrainInterface{
- 
-
-}
-
-
-// const BrandPatternTerrain = () => {
-
-
-
-// };
 
 
 const BrandPatternTerrain  = ({strokeWidth, strokeColor}) => {

@@ -35,7 +35,7 @@ export const FilterControl: React.FC<FilterControlInterface> = ({
 }) => {
   return (
     <fieldset aria-label={label} >
-      <legend className="pt-lg font-bold type-preset-6">Filter by</legend >
+      <legend className=" font-bold type-preset-6 py-md">Filter by</legend >
       <div >
       
       <FilterButtonGroup

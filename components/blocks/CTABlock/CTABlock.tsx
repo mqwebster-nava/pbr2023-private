@@ -22,7 +22,7 @@ const CTABlock = ({
   isBottom=false
 }:CTABlockInterface) => {
   return (
-    <section className={`relative w-full bg-plum-50`}  key={id}>
+    <section className={`relative w-full bg-plum-50 hide-in-print`}  key={id}>
       <div className={`responsive-container pt-md flex flex-col md:flex-row justify-start`} >
       <div className={`w-full md:w-1/2  pt-3xl pb-md md:pt-4xl md:pb-3xl `}>
           <h3 className={` type-preset-3 font-bold text-plum-900`}>{title} </h3>

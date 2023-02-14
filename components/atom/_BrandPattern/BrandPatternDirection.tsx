@@ -1,5 +1,32 @@
+/*
+Never completed
+- Wanted an easier way for use to create and use brand patterns throughout the site, rather than using custom SVG files
+- Proved to be difficult
+*/
+
 type LINETHICKNESS = "heavy" | "medium" | "light";
 type LINESEPERATION = "tight" | "normal" | "loose";
+
+// TODO try implementing this version
+export const Lines = ({ count=40, thickness=".5", color="black", height="150px", width="150px", direction="left"}) => {
+  const angle = direction=="left" ? 45 : -45;
+  return (
+    <svg viewBox="0 0 100 100" width={width} height={height}>
+      {Array.from(Array(count).keys()).map((i) => (
+        <line
+          x1={-20 + i*140/count}
+          y1={-100}
+          x2={-20+ i*140/count}
+          y2={ 200 }
+          stroke={color}
+          strokeWidth={thickness}
+          strokeLinecap="square"
+          transform={`rotate(${angle}, 50, 50)`}
+        />
+      ))}
+    </svg>
+  );
+};
 
 interface BrandPatternInterface {
   lineThickness: LINETHICKNESS;
@@ -18,6 +45,7 @@ const BrandPattern = ({lineThickness, lineSeperation}:BrandPatternInterface) => 
 };
 export default BrandPattern;
 
+//export default Line;
 
 
 

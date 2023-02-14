@@ -1,3 +1,11 @@
+/*
+Page Not Found
+
+- Block shown on the /404 and /500 pages when the user goes to pages that don't exist
+- It's set up in the 404 and 500 pages rather than being in contentful
+*/
+
+
 import { Button } from "components/atom/Button/Button";
 import React from "react";
 import ill from "public/images/Not-Found-Image.png";

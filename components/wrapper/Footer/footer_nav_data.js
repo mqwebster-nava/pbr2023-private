@@ -14,7 +14,7 @@ const getFooterNavData = (variant) => [
     { title: "Open roles", slug: "/open-roles" },
     { title: "Our story", slug: "/story" },
     { title: "Team", slug: "/team" },
-    { title: "Diversity, equity, and inclusion", slug: "/dei" },
+    { title: "Diversity, equity, and inclusion", slug: "/dei/2022" },
     { title: "News", slug: "/news" },
     { title: "Events", slug: "/events" },
     { title: "Get in touch", slug: "/contact" },

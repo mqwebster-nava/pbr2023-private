@@ -35,7 +35,7 @@ export const FilterButton: React.FC<FilterButtonInterface> = ({
       className={`
       w-fit
       whitespace-nowrap
-      mt-2 mr-2 py-1 px-2 
+      py-xs px-sm 
       border border-gray-400 
       hover:bg-gray-500 hover:text-white
       ${selected ? `${colors.selected[theme]}` : ""}

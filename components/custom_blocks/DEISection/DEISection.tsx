@@ -1,3 +1,9 @@
+/*
+DEI Sections is a multi-purpose "Custom Block" that can display different data
+- It uses the "Data" section of the Custom Block to pass in data for different chart types
+
+*/
+
 import classNames from "classnames";
 import PostContent from "components/blocks/PostBody/PostContent";
 import ResponsiveContentContainer from "components/blocks/ResponsiveContentContainer/ResponsiveContentContainer";

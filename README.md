@@ -151,6 +151,11 @@ The title, description, slug, and promo image are used for metadata for the page
 
 The page header and content fields contain Contentful models that are used to render the components on the page. They are formatted in the `lib` file, then rendered in `components/templates/PageTemplates`
 
+**How to create a new site page **
+1. Create an new `[Site] Page Content` entry in contentful, make sure to include the slug you plan to use for the page
+2. Create a new page in `/pages` folder following the pattern of the other pages. Make sure the SLUG in the code matches the one in contentful 
+![New Page Code](/public/readme/new-page-code.png)*Page content model in contentful*
+
 <br/>
 
 ### **Article Pages**
@@ -171,8 +176,18 @@ The PBR 2018, PBR 2019, PBR 2020, and DEI pages were migrated over from the past
 
 <br/>
 
+
+
+
 ## Blocks (Components)
 Each page is built from stacking `blocks` on top of each other. Each block corresponds to a `[Section]` data model in Contentful. 
+
+**Block Types**
+
+- `blocks` - General block components used throughout the site. They usually match up directly with content models in contentful
+- `custom_blocks` - Block components used on only 1 or 2 pages that often have some addition logic involved to set them up. (Ex open roles component pulls from the lever api)
+- `report_blocks` - Blocks only used in the Public Benefit Reports. These reports have unique looks which often require special components.
+
 
 **How to create a Block - ex Quote Block**
 
@@ -224,6 +239,8 @@ const PageTemplate = ({
 };
 ```
 
+
+### Blocks
 
 ## Resources
 

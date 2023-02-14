@@ -103,7 +103,7 @@ const ImageGalleryBlock = ({
     return (
       <div
         
-        className={`  pb-[56.47%] 3xl:pb-0 3xl:h-[calc(2000px_*_9_/_16)] h-[calc(100vw_*_9_/_16)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
+        className={`pb-[56.47%] 3xl:pb-[calc(2000px_*_9_/_16)] 3xl:h-[calc(2000px_*_9_/_16)] h-[calc(100vw_*_9_/_16)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
         <CrossfadeCarousel
           interval={1000}

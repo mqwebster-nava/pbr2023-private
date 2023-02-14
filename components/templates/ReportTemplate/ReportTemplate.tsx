@@ -1,3 +1,11 @@
+/*
+A special page building template for PBR reports
+Even though the reports are build using the [Site] Page Content model, 
+they need special logic to set up full page navs so that logic is done here
+
+*/
+
+
 import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
 
@@ -124,9 +132,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
   );
 };
 
-// Report Sections replacing content blocks
-// - need Title, anchor, type
-
 export function getSectionsInfo(contentBlocks) {
   let output = [];
 
@@ -177,73 +182,3 @@ export function getSectionsInfo(contentBlocks) {
 
 
 export default ReportTemplate;
-
-
-
-
-
-  //const [activeSection, setActiveSection] = useState(null);
-  //const [windowSize, setWindowSize] = useState(null);
-
-  // useEffect(() => {
-  //   // const onScroll = () => {
-  //   //   reportSections.forEach((section, i) => {
-  //   //     if (checkActive({offsetPct:getOffsetPct(section.anchor)}) &&
-  //   //       activeSection != section.anchor)
-  //   //       setActiveSection(section.anchor);
-  //   //   });
-  //   // };
-  //   function handleResize() {
-  //    const size = getScreenSize();
-  //    if(size && size!==windowSize) setWindowSize(size);
-  //   }
-  //   handleResize();
-  //   window.removeEventListener("resize", handleResize);
-  //   window.addEventListener("resize", handleResize, { passive: true });
-  //   // Empty array ensures that effect is only run on mount
-  //  // window.removeEventListener("scroll", onScroll);
-  //  // window.addEventListener("scroll", onScroll, { passive: true });
-  //   return () => {
-  //  //   window.removeEventListener("scroll", onScroll);
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // });
-
-  /*
-export function sortDocIntoH2Sections(contentBlocks) {
-  let output = [];
-  function addSection(title, anchor, type, storyId, colorTheme) {
-    output.push({
-      title: title,
-      anchor: anchor,
-      storyId: storyId,
-      type: type,
-      colorTheme: colorTheme,
-    });
-  }
-  addSection("Hero", "reportHeader", null, null, "purple");
-  addSection("TOC", "toc", null, null, "purple");
-  addSection("Intro", "intro", null, null, "purple");
-
-  contentBlocks.forEach((subsection) => {
-    const typename = subsection.__typename;
-    if (typename !== "ReportIllustrationOverlaySubsection") return;
-    addSection(
-      subsection.title,
-      `${subsection.anchor}`,
-      "section",
-      null,
-      subsection.colorTheme
-    );
-    subsection.storiesCollection.items.forEach((story, i) => {
-      addSection(
-        story.title,
-        `${subsection.anchor}--${story.anchor}`,
-        "story",
-        story.anchor,
-        subsection.colorTheme
-      );
-    });
-  });
-  return output;
-}*/

@@ -28,10 +28,12 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
     variant:"post"
   });
+  
   if (!res) {
-    return {
-      notFound: true,
-    };
+    // If there is a server error, you might want to
+    // throw an error instead of returning so that the cache is not updated
+    // until the next successful request.
+    throw new Error(`Failed to fetch posts, received status `)
   }
   return {
     props: res,
@@ -41,3 +43,4 @@ export async function getStaticProps({ params, preview = false }) {
     revalidate: 60, // In seconds
   }
 }
+
