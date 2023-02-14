@@ -19,8 +19,6 @@ const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, allPos
     categories[t.type].push(t.name)
 
   })
-  console.log(categories)
-  
 
   const handleChange = (type, checkboxElement, name) => {
     let currentList = filterBarState["tags"];

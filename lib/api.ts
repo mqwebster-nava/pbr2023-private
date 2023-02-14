@@ -80,7 +80,7 @@ export async function getPageDataFromContentful({
       const post = await getPostBySlug(slug, {preview});
       const formattedPost:FullPostInterface = formatFullPost(post);
       let morePosts = await getMorePosts(formattedPost,{preview});
-      morePosts = formatPosts(morePosts);
+  
       const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
      
       return formattedPage;
