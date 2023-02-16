@@ -20,7 +20,7 @@ export async function getStaticProps({ params, preview = false }) {
   });
  
   let _posts = await getPosts();
- 
+ console.log(_posts[15].contentTagsV2Collection.items)
   let tags = await getAllTags();
 
   let posts: Array<BasicPostInterface> = formatPosts(_posts);

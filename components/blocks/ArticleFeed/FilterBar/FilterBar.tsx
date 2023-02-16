@@ -1,130 +1,94 @@
 import classNames from "classnames";
+import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { useEffect, useState } from "react";
+import { clearArrays, combineArrays } from "utils/utils";
 import ActiveFilterItems from "./ActiveFiltersList";
-import FilterDropdownList from "./FilterDropdownList";
+import FilterModal from "./FilterModal";
+import FilterDropdownList from "./FilterModal";
 import ResetFilterButton from "./ResetFilterButton";
 
 
 
-const FilterBar = ({ tags, filterBarState, setFilterBarState, numResults, allPosts }) => {
- // const [isContentTypeOpen, setIsContentTypeOpen] = useState(false);
-  //const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  let categories = {}
-  tags.forEach((t)=>{
-    if(!t.type) return
-    if(!(t.type in categories)){
-      categories[t.type]=[]
-    }
-    categories[t.type].push(t.name)
 
-  })
+const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, isMenuOpen, setIsMenuOpen }) => {
+ 
+ // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleChange = (type, checkboxElement, name) => {
-    let currentList = filterBarState["tags"];
-    if (checkboxElement.checked && !filterBarState["tags"].includes(name)) {
+    let currentList = filterBarState[type];
+    if (checkboxElement.checked && !filterBarState[type].includes(name)) {
       currentList.push(name);
     } else if (!checkboxElement.checked) {
       currentList = currentList.filter((n) => name != n);
     }
     setFilterBarState((previousState) => {
       let r = { ...previousState };
-      r["tags"] = currentList;
+      r[type] = currentList;
       return r;
     });
   };
   const handleClear = () => {
     setFilterBarState((previousState) => {
-      let v = { ...previousState };
-      v["tags"] = [];
-      return v;
+      return clearArrays({ ...previousState });
     });
   };
-  const getCount = (type, item) => {
-    //let l =  type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item) : 
-    let l =  allPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item));
-    // Object.keys(categories).map((cat)=>{ 
-    //   if(cat!==type && filterBarState[cat].length>0){
-    //     if(cat=="contentTypes"){
-    //       l = l.filter((post)=>filterBarState[cat].includes(post.contentType))
-    //     } else{
-    //       l = l.filter((post)=>post?.contentTag?.some((tag)=>filterBarState[cat].includes(tag)));
-    //     }
-    //   }
 
-    // });
-    return l.length;
-
-  };
-
-  // const getCount = (type, item) => {
-  //   let l =  type=="contentTypes" ? displayedPosts?.filter((post)=>post.contentType==item) : displayedPosts?.filter((post)=>post.contentTags&&post.contentTags.includes(item));
-  //   Object.keys(categories).map((cat)=>{ 
-  //     if(cat!==type && filterBarState[cat].length>0){
-  //       if(cat=="contentTypes"){
-  //         l = l.filter((post)=>filterBarState[cat].includes(post.contentType))
-  //       } else{
-  //         l = l.filter((post)=>post?.contentTag?.some((tag)=>filterBarState[cat].includes(tag)));
-  //       }
-  //     }
-
-  //   });
-  //   return l.length;
-
-  // };
 
   return (
-    <div className="relative pt-xl"
-    onMouseLeave={()=>{
-      setIsMenuOpen(false);
-      //setIsCapabilitiesOpen(false)
-     // setIsContentTypeOpen(false)
-    }}
+    <div className="pt-xl"
+
     >
-      <div className="flex justify-between align-bottom gap-x-md">
+      {/* <div className="flex justify-between align-bottom gap-x-md">
        
           <FilterButton
             isOpen={isMenuOpen}
             setIsOpen={(open) => {
               setIsMenuOpen(open);
-              //setIsCapabilitiesOpen(false)
-              //setIsContentTypeOpen(false)
             }}
             title={`Filters ${
-              filterBarState.tags.length > 0
-                ? "(" + filterBarState.tags.length + ")"
+              combineArrays(filterBarState).length > 0
+                ? "(" + combineArrays(filterBarState).length + ")"
                 : ""
             }`}
           />
         <div className="w-full "
-         onMouseEnter={()=>{
-          setIsMenuOpen(false);
-        }}
         >
 
-      
-          { (filterBarState.tags.length > 0 /* || filterBarState.capability.length > 0  || filterBarState.contentType.length > 0  */) && 
+          { (combineArrays(filterBarState).length > 0) && 
            <ResetFilterButton type={"tags"} onClick={() =>{   handleClear(); }} title={"Clear all"} isActive={true}/>
           }
             </div>
-      </div>
+      </div> */}
       <div className="">
-        <FilterDropdownList
+        <FilterModal
           title={"Filters"}
-          type={"tags"}
           isOpen={isMenuOpen}
           setIsOpen={(open) => {
             setIsMenuOpen(open);
-          }}
+          } }
           handleChange={handleChange}
           handleClearClick={() => handleClear()}
-          currentlyActive={filterBarState.tags}
+          currentlyActive={combineArrays(filterBarState)}
           categories={categories}
-          getCount={getCount}
-        />
+          getCount={getCount}         />
       </div>
       <div className="pt-sm">
-        <p>{`${numResults} posts found`}</p>
+        <p>{`${getCount()} posts found`}</p>
+      </div>
+       <div className="pt-sm">
+     <div className="flex gap-md py-sm flex-wrap w-full">
+        {
+          Object.keys(filterBarState).map((key) => {
+            return filterBarState[key].length>0 && <ActiveFilterItems
+            type={key}
+            handleClearClick={() => handleClear()}
+            handleChange={handleChange}
+            activeItems={filterBarState[key]}
+          />
+          })
+        }
+      </div>
+     
       </div>
     </div>
   );
@@ -138,8 +102,6 @@ export const FilterButton = ({ isOpen, setIsOpen, title }) => (
     data-dropdown-toggle="dropdownDefaultCheckbox"
     className={`min-w-[200px] text-black border-black border-[1px] ${isOpen&&"bg-sage-100"} hover:bg-sage-100 type-preset-6  px-md py-sm  inline-flex items-center justify-between`}
     type="button"
-    onMouseEnter={()=>setIsOpen(true)}
-    onFocus={()=>setIsOpen(true)}
     onClick={() => {
       setIsOpen(!isOpen);
     }}
@@ -164,7 +126,15 @@ export const FilterButton = ({ isOpen, setIsOpen, title }) => (
 );
 
 
-
+  // let categories = {"Type":["Case Study", "Insight", "News", "Working at Nava", "Event", "Toolkit"],}
+  // tags.forEach((t)=>{
+  //   if(!t.type) return
+  //   if(!(t.type in categories)){
+  //     categories[t.type]=[]
+  //   }
+  //   categories[t.type].push(t.name)
+  // })
+  // console.log(categories)
 
 // const categories = {
 //   sectors: [

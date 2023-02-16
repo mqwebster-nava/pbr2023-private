@@ -26,6 +26,7 @@ export interface BasicPostInterface{
 }
 export interface ContentTagInterface{
     name:string;
+    type:string;
   }
 export interface FullPostInterface extends BasicPostInterface{
     longSummary:string;

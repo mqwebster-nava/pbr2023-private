@@ -4,9 +4,8 @@ import ResetFilterButton from "./ResetFilterButton";
 
 
 
-const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, activeItems, }) => activeItems.length>0 &&(
-    // <div className="pt-sm">
-    // <div className="flex gap-md py-sm flex-wrap w-full">
+const ActiveFilterItems = ({  type, handleClearClick, handleChange, activeItems, }) => activeItems.length>0 &&(
+   
 <>
       {activeItems.map((item) => {
         return (
@@ -18,7 +17,7 @@ const ActiveFilterItems = ({ title, type, handleClearClick, handleChange, active
               let checkbox = document.getElementById(`${item}-checkbox`);
               // @ts-ignore
               checkbox.checked = false;
-              handleChange(type,[[checkbox, item]]);
+              handleChange(type,checkbox, item);
             }}
           >
             <div>{item} </div>
