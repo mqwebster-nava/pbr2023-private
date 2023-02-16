@@ -7,7 +7,8 @@ export interface ButtonProps {
   href?: string;
   variant?: Variant;
   buttonAriaLabel?:string;
-  analyticsLabel?:AnalyticsLabelType
+  analyticsLabel?:AnalyticsLabelType;
+  onClick?: () => void;
 }
 
 // TODO button
@@ -17,7 +18,8 @@ export const Button: React.FC<ButtonProps> = ({
   href,
   variant = "default",
   buttonAriaLabel=null,
-  analyticsLabel=""
+  analyticsLabel="",
+  onClick=null
 }) => {
   const variantStyles = classNames({
     "text-sage-700 bg-white hover:bg-sage-100": variant == "white",
@@ -33,14 +35,14 @@ export const Button: React.FC<ButtonProps> = ({
     <div>
     <button 
     aria-label={buttonAriaLabel}
-    onClick={()=> {location.href = href;}}
+    onClick={()=> {onClick?onClick() :location.href = href;}}
     className={
           `font-sans font-bold h-[55px] md:h-[70px]
           inline-flex items-center justify-center 
           px-2xl py-sm  
           mr-auto
           type-preset-7 md:type-preset-6 leading-6
-          transition duration-150 ease-in-out flex-col
+          transition duration-150 ease-in-out flex-row
           cursor-pointer
           ${variantStyles}
           ${analyticsLabel}`}

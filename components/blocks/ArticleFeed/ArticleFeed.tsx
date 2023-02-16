@@ -1,3 +1,4 @@
+import { Button } from "components/atom/Button/Button";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import { ContentTagInterface } from "lib/data_models/post_interface";
@@ -5,7 +6,8 @@ import React, { useEffect, useState } from "react";
 import { clearArrays, combineArrays } from "utils/utils";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
-import FilterBar, { FilterButton } from "./FilterBar/FilterBar";
+import FilterBar from "./FilterBar/FilterBar";
+import FilterButton from "./FilterBar/FilterButton";
 import ResetFilterButton from "./FilterBar/ResetFilterButton";
 import useFilteredPosts from "./filteredPostsHook";
 
@@ -34,7 +36,6 @@ const ArticleFeed = ({
   filterable = false,
   tags = [],
 }: ArticleFeedInterface) => {
-
   layout ??= "1 large 2 small cards row";
   items = items.filter((post) => post != null);
 
@@ -56,15 +57,62 @@ const ArticleFeed = ({
     categories[t.type].push(t.name);
   });
 
-  const [displayedPosts, filterBarState, setFilterBarState, getCount] = useFilteredPosts(items,categories, filterable)
+  const [displayedPosts, filterBarState, setFilterBarState, getCount] =
+    useFilteredPosts(items, categories, filterable);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const FilterButtons = () => {
+    return (
+      <div className="flex gap-x-md">
+        {combineArrays(filterBarState).length > 0 && (
+          <ResetFilterButton
+            type={"tags"}
+            onClick={() => {
+              setFilterBarState(clearArrays(filterBarState));
+            }}
+            title={"Clear all"}
+            isActive={true}
+          />
+        )}
+        <Button
+          onClick={() => {
+            setIsMenuOpen(true);
+            
+          }}
+          >
+           {`Filters ${
+            combineArrays(filterBarState).length > 0
+              ? "(" + combineArrays(filterBarState).length + ")"
+              : ""
+          }`}
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="22"
+  height="20"
+  viewBox="0 0 26 24"
+  fill="none"
+  className="ml-sm"
+>
+  <path
+    d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
+    stroke="white"
+    stroke-linejoin="round"
+  />
+</svg>
+          </Button>
+       
+      </div>
+    )
+  }
+
 
 
   return (
     <section key={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
         {title && <HorizontalLine variant="light" />}
-        <div className={`w-full pt-md flex justify-between `}>
+        <div className={`w-full pt-md flex justify-between items-center `}>
           <div className="md:w-2/3 ">
             {title && (
               <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
@@ -87,29 +135,14 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) : filterable ? 
-            ( <div className="flex gap-x-md">
-            { combineArrays(filterBarState).length > 0 &&
-         <ResetFilterButton type={"tags"} onClick={() => {setFilterBarState(clearArrays(filterBarState))}} title={"Clear all"} isActive={true}/>
-        }
-        <FilterButton
-          isOpen={isMenuOpen}
-          setIsOpen={(open) => {
-            setIsMenuOpen(open);
-            //setIsContentTypeOpen(false)
-          }}
-          title={`Filters ${
-            combineArrays(filterBarState).length > 0
-              ? "(" + combineArrays(filterBarState).length + ")"
-              : ""
-          }`}
-        />
-      
-       </div>)
-            :null}
+            ) : filterable ? <FilterButtons/> : null}
           </div>
         </div>
         {filterable && (
+          <>
+            <div className="md:hidden  pt-lg ">
+            <FilterButtons/>
+          </div>
           <FilterBar
             categories={categories}
             filterBarState={filterBarState}
@@ -118,9 +151,11 @@ const ArticleFeed = ({
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
+          </>
         )}
       </div>
       <div className="pt-xl">
+      
         <ContentGrid
           id={"id"}
           items={displayedPosts}
@@ -137,7 +172,7 @@ const ArticleFeed = ({
             >
               {buttonText ?? "See more"}
             </LinkText>
-          )}
+          ) }
         </div>
       </div>
     </section>
@@ -153,22 +188,22 @@ export default ArticleFeed;
 //   });
 // };
 
-  //   filterable== true ?    <div className="flex gap-x-md">
-  //     { filterBarState.tags.length > 0 &&
-  //  <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-  // }
-  // <FilterButton
-  //   isOpen={isTagsOpen}
-  //   setIsOpen={(open) => {
-  //     setIsTagsOpen(open);
-  //     //setIsContentTypeOpen(false)
-  //   }}
-  //   title={`Filters ${
-  //     filterBarState.tags.length > 0
-  //       ? "(" + filterBarState.tags.length + ")"
-  //       : ""
-  //   }`}
-  // />
+//   filterable== true ?    <div className="flex gap-x-md">
+//     { filterBarState.tags.length > 0 &&
+//  <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+// }
+// <FilterButton
+//   isOpen={isTagsOpen}
+//   setIsOpen={(open) => {
+//     setIsTagsOpen(open);
+//     //setIsContentTypeOpen(false)
+//   }}
+//   title={`Filters ${
+//     filterBarState.tags.length > 0
+//       ? "(" + filterBarState.tags.length + ")"
+//       : ""
+//   }`}
+// />
 
 // </div>: null
 

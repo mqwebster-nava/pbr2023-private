@@ -1,12 +1,14 @@
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
+import { FILTER_CHANGE } from "./FilterModal";
 import ResetFilterButton from "./ResetFilterButton";
 
 
 
 
-const ActiveFilterItems = ({  type, handleClearClick, handleChange, activeItems, }) => activeItems.length>0 &&(
+const ActiveFilterItems = ({  type, handleClearClick, handleChanges, activeItems, i }) => activeItems.length>0 &&(
    
-<>
+<div className={`flex gap-md ${i!=0 && "pl-md"}`}>
+
       {activeItems.map((item) => {
         return (
           <button
@@ -14,10 +16,11 @@ const ActiveFilterItems = ({  type, handleClearClick, handleChange, activeItems,
             border-gray-400 border-[1px] p-sm type-preset-7 flex gap-md items-center
              hover:bg-gray-100`}
             onClick={() => {
-              let checkbox = document.getElementById(`${item}-checkbox`);
+              let checkboxElement = document.getElementById(`${item}-checkbox`);
               // @ts-ignore
-              checkbox.checked = false;
-              handleChange(type,checkbox, item);
+              checkboxElement.checked = false;
+              const change: FILTER_CHANGE = {type,checkboxElement, name:item}
+              handleChanges([change]);
             }}
           >
             <div>{item} </div>
@@ -56,7 +59,7 @@ const ActiveFilterItems = ({  type, handleClearClick, handleChange, activeItems,
           </button>
         );
       })}
-      </>
+      </div>
     // </div>
     // {/* <HorizontalLine/> */}
     // </div>

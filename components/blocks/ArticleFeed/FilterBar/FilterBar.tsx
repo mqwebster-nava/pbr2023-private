@@ -1,32 +1,27 @@
-import classNames from "classnames";
-import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
-import { useEffect, useState } from "react";
+
 import { clearArrays, combineArrays } from "utils/utils";
 import ActiveFilterItems from "./ActiveFiltersList";
-import FilterModal from "./FilterModal";
-import FilterDropdownList from "./FilterModal";
-import ResetFilterButton from "./ResetFilterButton";
-
-
+import FilterModal, { FILTER_CHANGE } from "./FilterModal";
 
 
 const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, isMenuOpen, setIsMenuOpen }) => {
  
- // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleChange = (type, checkboxElement, name) => {
-    let currentList = filterBarState[type];
-    if (checkboxElement.checked && !filterBarState[type].includes(name)) {
-      currentList.push(name);
-    } else if (!checkboxElement.checked) {
-      currentList = currentList.filter((n) => name != n);
-    }
-    setFilterBarState((previousState) => {
-      let r = { ...previousState };
-      r[type] = currentList;
-      return r;
-    });
+  const handleChanges = (changes:Array<FILTER_CHANGE>) => {
+    let newFilterBarState = { ...filterBarState };
+    changes.forEach((change) => {
+      if (change.checkboxElement.checked && !filterBarState[change.type].includes(change.name)) {
+        newFilterBarState[change.type].push(change.name);
+        // Add an event here to track the filter
+      } else if (!change.checkboxElement.checked) {
+        newFilterBarState[change.type] =newFilterBarState[change.type].filter((n) => change.name != n);
+      }
+    })
+    setFilterBarState(newFilterBarState);
   };
+
+
+
   const handleClear = () => {
     setFilterBarState((previousState) => {
       return clearArrays({ ...previousState });
@@ -35,10 +30,65 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
 
 
   return (
-    <div className="pt-xl"
+    <div className="md:pt-xl "
 
     >
-      {/* <div className="flex justify-between align-bottom gap-x-md">
+    
+      <div className="">
+        <FilterModal
+          title={"Filters"}
+          isOpen={isMenuOpen}
+          setIsOpen={(open) => {
+            setIsMenuOpen(open);
+          } }
+          handleChanges={handleChanges}
+          handleClearClick={() => handleClear()}
+          currentlyActive={combineArrays(filterBarState)}
+          categories={categories}
+          getCount={getCount}         />
+      </div>
+      {/* <div className="pt-sm">
+        <p>{`${getCount()} posts found`}</p>
+      </div> */}
+       <div className="pt-sm">
+     <div className="flex gap-md py-sm flex-wrap w-full divide-x-[1px] divide-black ">
+        {
+          Object.keys(filterBarState).filter((key)=>filterBarState[key].length>0).map((key, i) => {
+            return  <ActiveFilterItems
+            type={key}
+            handleClearClick={() => handleClear()}
+            handleChanges={handleChanges}
+            activeItems={filterBarState[key]}
+            i={i}
+          />
+          })
+        }
+      </div>
+     
+      </div>
+    </div>
+  );
+};
+
+export default FilterBar;
+
+
+
+
+  // const handleChange = (type, checkboxElement, name) => {
+  //   let currentList = filterBarState[type];
+  //   if (checkboxElement.checked && !filterBarState[type].includes(name)) {
+  //     currentList.push(name);
+  //   } else if (!checkboxElement.checked) {
+  //     currentList = currentList.filter((n) => name != n);
+  //   }
+  //   setFilterBarState((previousState) => {
+  //     let r = { ...previousState };
+  //     r[type] = currentList;
+  //     return r;
+  //   });
+  // };
+  {/* <div className="flex justify-between align-bottom gap-x-md">
        
           <FilterButton
             isOpen={isMenuOpen}
@@ -59,72 +109,6 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
           }
             </div>
       </div> */}
-      <div className="">
-        <FilterModal
-          title={"Filters"}
-          isOpen={isMenuOpen}
-          setIsOpen={(open) => {
-            setIsMenuOpen(open);
-          } }
-          handleChange={handleChange}
-          handleClearClick={() => handleClear()}
-          currentlyActive={combineArrays(filterBarState)}
-          categories={categories}
-          getCount={getCount}         />
-      </div>
-      <div className="pt-sm">
-        <p>{`${getCount()} posts found`}</p>
-      </div>
-       <div className="pt-sm">
-     <div className="flex gap-md py-sm flex-wrap w-full">
-        {
-          Object.keys(filterBarState).map((key) => {
-            return filterBarState[key].length>0 && <ActiveFilterItems
-            type={key}
-            handleClearClick={() => handleClear()}
-            handleChange={handleChange}
-            activeItems={filterBarState[key]}
-          />
-          })
-        }
-      </div>
-     
-      </div>
-    </div>
-  );
-};
-
-export default FilterBar;
-
-export const FilterButton = ({ isOpen, setIsOpen, title }) => (
-  <button
-    id="dropdownCheckboxButton"
-    data-dropdown-toggle="dropdownDefaultCheckbox"
-    className={`min-w-[200px] text-black border-black border-[1px] ${isOpen&&"bg-sage-100"} hover:bg-sage-100 type-preset-6  px-md py-sm  inline-flex items-center justify-between`}
-    type="button"
-    onClick={() => {
-      setIsOpen(!isOpen);
-    }}
-  >
-    {title}
-    <svg
-      className={`ml-2 w-4 h-4 transition duration-300 ${isOpen&& "rotate-180"}`}
-      aria-hidden="true"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M19 9l-7 7-7-7"
-      ></path>
-    </svg>
-  </button>
-);
-
 
   // let categories = {"Type":["Case Study", "Insight", "News", "Working at Nava", "Event", "Toolkit"],}
   // tags.forEach((t)=>{
