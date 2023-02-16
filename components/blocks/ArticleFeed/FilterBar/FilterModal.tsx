@@ -23,9 +23,6 @@ const FilterModal = ({
   currentlyActive = []
 }) => {
 
-  const [active, setActive] = useState();
-
-
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
