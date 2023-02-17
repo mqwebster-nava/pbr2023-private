@@ -35,24 +35,29 @@ const FilterModal = ({
   currentlyActive = [],
 }) => {
   
+
+
   const [changeLog, setChangeLog] = useState<Array<FILTER_CHANGE> | undefined>([]);
 
   const handleChange = (type, checkboxElement, name ) => {
     const change:FILTER_CHANGE = {type, checkboxElement, name};
+    //handleChanges([change]);
     setChangeLog([...changeLog, change]);
+    if (!changeLog.filter((c) => c.name == change.name).length) {
+      setChangeLog([...changeLog, change]);
+    }
   }
 
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
         const itemName = el.id.replace("-checkbox", "");
-        console.log(itemName);
         // @ts-ignore // would ned to change to a button
         el.checked = currentlyActive.includes(itemName);
       }
     );
-  }, [isOpen, currentlyActive]);
 
+  }, [isOpen, currentlyActive]);
   return (
     <div
       className={`${
@@ -64,7 +69,11 @@ const FilterModal = ({
           <div>
             <h3 className="type-preset-5 font-bold">Filter by</h3>
           </div>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
+          <button onClick={() => {
+           
+            setChangeLog([]);
+            setIsOpen(false)
+            }}>Cancel</button>
         </div>
         <div className="overflow-y-scroll grow responsive-container">
           {Object.keys(categories).map((catName) => (
@@ -74,28 +83,29 @@ const FilterModal = ({
               getCount={getCount}
               handleChange={handleChange}
               currentlyActive={currentlyActive}
+              changeLog={changeLog}
             />
           ))}
         </div>
         <div className=" responsive-container flex justify-between w-full my-2xl gap-x-md items-center">
           <div>
-            {getCount()==1? `${getCount()} found post`: `${getCount()} found posts`}
+            {getCount({changeLog})==1? `${getCount({changeLog})} found post`: `${getCount({changeLog})} found posts`}
           </div>
           <div className="flex gap-md">
             <ResetFilterButton
               type={undefined}
               onClick={() => {
-                setIsOpen(false);
+                setChangeLog([]);
+                handleClearClick();
               }}
               title={"Clear all"}
               isActive={true}
             />
             <Button
-              
+              height="slim"
               onClick={() => {
-                
-                console.log(changeLog)
                 handleChanges(changeLog);
+                setChangeLog([]);
                 setIsOpen(false);
               }}
               
@@ -115,6 +125,7 @@ const FilterTypeRow = ({
   getCount,
   handleChange,
   currentlyActive,
+  changeLog
 }) => {
   return (
     <details open={false}>
@@ -143,15 +154,16 @@ const FilterTypeRow = ({
       </summary>
 
       <div
-        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg divide-y-[1px] md:divide-y-0"
+        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg divide-y-[1px] md:divide-y-0 pb-2xl"
         aria-labelledby="dropdownCheckboxButton"
       >
         {splitIntoColumns(catTags, 3).map((column, j) => {
           return (
             <div className="flex flex-col divide-y-[1px]">
               {column.map((item, i) => {
-                let isActive = currentlyActive.includes(item);
-                let resultNum = getCount(catName, item);
+                let changeItem = changeLog.filter((c) => (c.name == item))
+                let isActive = changeItem.length ? changeItem[0].checkboxElement.checked : currentlyActive.includes(item)
+                let resultNum = getCount({type:catName, item, changeLog});
                 const styles = classNames({
                   "bg-sage-50 text-gray-900": isActive,
                   "bg-white text-gray-600 hover:bg-white ":
@@ -192,3 +204,9 @@ const FilterTypeRow = ({
 };
 
 export default FilterModal;
+
+  //   setChangeLog([...changeLog, change]);
+    //   // Add an event here to track the filter
+    // } else {
+    //   setChangeLog(changeLog.filter((c) => c.name != change.name));
+    // }

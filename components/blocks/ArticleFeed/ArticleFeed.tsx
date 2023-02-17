@@ -9,7 +9,7 @@ import ContentGrid, { ListLayout } from "./ContentGrid";
 import FilterBar from "./FilterBar/FilterBar";
 import FilterButton from "./FilterBar/FilterButton";
 import ResetFilterButton from "./FilterBar/ResetFilterButton";
-import useFilteredPosts from "./filteredPostsHook";
+import useFilteredPosts from "./FilterBar/filteredPostsHook";
 
 interface ArticleFeedInterface {
   id?: string;
@@ -37,8 +37,7 @@ const ArticleFeed = ({
   tags = [],
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
-  items = items.filter((post) => post != null);
-
+ 
   let categories = {
     Type: [
       "Case Study",
@@ -59,6 +58,7 @@ const ArticleFeed = ({
 
   const [displayedPosts, filterBarState, setFilterBarState, getCount] =
     useFilteredPosts(items, categories, filterable);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const FilterButtons = () => {
@@ -75,6 +75,7 @@ const ArticleFeed = ({
           />
         )}
         <Button
+        height="slim"
           onClick={() => {
             setIsMenuOpen(true);
             

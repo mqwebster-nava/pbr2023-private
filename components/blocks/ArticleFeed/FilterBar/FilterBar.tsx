@@ -1,6 +1,7 @@
 
 import { clearArrays, combineArrays } from "utils/utils";
 import ActiveFilterItems from "./ActiveFiltersList";
+import { getActiveFilters } from "./filteredPostsHook";
 import FilterModal, { FILTER_CHANGE } from "./FilterModal";
 
 
@@ -8,16 +9,8 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
  
 
   const handleChanges = (changes:Array<FILTER_CHANGE>) => {
-    let newFilterBarState = { ...filterBarState };
-    changes.forEach((change) => {
-      if (change.checkboxElement.checked && !filterBarState[change.type].includes(change.name)) {
-        newFilterBarState[change.type].push(change.name);
-        // Add an event here to track the filter
-      } else if (!change.checkboxElement.checked) {
-        newFilterBarState[change.type] =newFilterBarState[change.type].filter((n) => change.name != n);
-      }
-    })
-    setFilterBarState(newFilterBarState);
+    let newFilterBarState = getActiveFilters({filters:filterBarState, changes:changes })
+     setFilterBarState(newFilterBarState);
   };
 
 
