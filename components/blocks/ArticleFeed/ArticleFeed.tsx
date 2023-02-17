@@ -98,7 +98,7 @@ const ArticleFeed = ({
   <path
     d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
     stroke="white"
-    stroke-linejoin="round"
+    strokeLinejoin="round"
   />
 </svg>
           </Button>

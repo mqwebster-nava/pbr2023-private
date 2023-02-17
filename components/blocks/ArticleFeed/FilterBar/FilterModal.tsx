@@ -78,6 +78,7 @@ const FilterModal = ({
         <div className="overflow-y-scroll grow responsive-container">
           {Object.keys(categories).map((catName) => (
             <FilterTypeRow
+            key={catName}
               catName={catName}
               catTags={categories[catName]}
               getCount={getCount}
@@ -159,7 +160,7 @@ const FilterTypeRow = ({
       >
         {splitIntoColumns(catTags, 3).map((column, j) => {
           return (
-            <div className="flex flex-col divide-y-[1px]">
+            <div className="flex flex-col divide-y-[1px]" key={`filter-col-${j}`}>
               {column.map((item, i) => {
                 let changeItem = changeLog.filter((c) => (c.name == item))
                 let isActive = changeItem.length ? changeItem[0].checkboxElement.checked : currentlyActive.includes(item)
@@ -172,7 +173,7 @@ const FilterTypeRow = ({
                 });
                 return (
                   <div
-                    key={i}
+                    key={`filter-${i}-${j}`}
                     className={`flex group items-center p-sm type-preset-6 ${styles}`}
                   >
                     <label

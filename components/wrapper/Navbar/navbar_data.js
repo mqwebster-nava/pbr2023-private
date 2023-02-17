@@ -34,8 +34,8 @@ const getNavData = (variant)=> [
     ],
   }, 
   {
-    title: "Library",
-    slug: "/library",
+    title: "Insights",
+    slug: "/insights",
   },
   {
     title: "Get in touch",

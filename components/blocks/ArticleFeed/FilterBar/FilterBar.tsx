@@ -48,6 +48,7 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
         {
           Object.keys(filterBarState).filter((key)=>filterBarState[key].length>0).map((key, i) => {
             return  <ActiveFilterItems
+            key={`activeitems-${key}`}
             type={key}
             handleClearClick={() => handleClear()}
             handleChanges={handleChanges}

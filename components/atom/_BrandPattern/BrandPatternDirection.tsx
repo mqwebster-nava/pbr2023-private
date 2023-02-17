@@ -58,9 +58,9 @@ const LooseSeperation = ({strokeWidth, strokeColor}) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1054_5926)">
-        <g clip-path="url(#clip1_1054_5926)">
-          <g clip-path="url(#clip2_1054_5926)">
+      <g clipPath="url(#clip0_1054_5926)">
+        <g clipPath="url(#clip1_1054_5926)">
+          <g clipPath="url(#clip2_1054_5926)">
             <path
               d="M-171.75 183.423L183.423 -171.75"
               stroke={strokeColor}
@@ -257,10 +257,10 @@ const NormalSeperation = ({strokeWidth, strokeColor}) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1054_5883)">
-        <g clip-path="url(#clip1_1054_5883)">
-          <g clip-path="url(#clip2_1054_5883)">
-            <g clip-path="url(#clip3_1054_5883)">
+      <g clipPath="url(#clip0_1054_5883)">
+        <g clipPath="url(#clip1_1054_5883)">
+          <g clipPath="url(#clip2_1054_5883)">
+            <g clipPath="url(#clip3_1054_5883)">
               <path
                 d="M-166.75 189.281L188.941 -167.749"
                 stroke={strokeColor}
@@ -376,10 +376,10 @@ const TightSeperation = ({strokeWidth, strokeColor}) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1054_5883)">
-        <g clip-path="url(#clip1_1054_5883)">
-          <g clip-path="url(#clip2_1054_5883)">
-            <g clip-path="url(#clip3_1054_5883)">
+      <g clipPath="url(#clip0_1054_5883)">
+        <g clipPath="url(#clip1_1054_5883)">
+          <g clipPath="url(#clip2_1054_5883)">
+            <g clipPath="url(#clip3_1054_5883)">
               <path
                 d="M-166.75 189.281L188.941 -167.749"
                 stroke={strokeColor}

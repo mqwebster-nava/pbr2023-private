@@ -44,7 +44,7 @@ posts = posts.map((p)=>{
       id: "news section",
       items: posts,
       layout:"3 card row",
-      title:"All resource",
+      title:"All resources",
       filterable:true,
       tags:tags
     }
