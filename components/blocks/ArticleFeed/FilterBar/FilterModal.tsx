@@ -41,11 +41,11 @@ const FilterModal = ({
 
   const handleChange = (type, checkboxElement, name ) => {
     const change:FILTER_CHANGE = {type, checkboxElement, name};
-    //handleChanges([change]);
-    setChangeLog([...changeLog, change]);
-    if (!changeLog.filter((c) => c.name == change.name).length) {
-      setChangeLog([...changeLog, change]);
-    }
+    let changes = [...changeLog];
+    if (!changeLog.filter((c) => c.name == change.name).length) 
+      changes.push(change);
+    setChangeLog(changes)
+    
   }
 
   useEffect(() => {
