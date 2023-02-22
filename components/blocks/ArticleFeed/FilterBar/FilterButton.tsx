@@ -6,7 +6,7 @@ const FilterButton = ({ isOpen, setIsOpen, title }) => (
     } hover:bg-sage-100 type-preset-6  px-md py-sm  inline-flex items-center justify-between`}
     type="button"
     onClick={() => {
-      setIsOpen(!isOpen);
+     setIsOpen(!isOpen);
     }}
   >
     {title}

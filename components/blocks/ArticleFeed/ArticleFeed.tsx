@@ -37,7 +37,6 @@ const ArticleFeed = ({
   tags = [],
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
- 
   let categories = {
     Type: [
       "Case Study",
@@ -77,7 +76,9 @@ const ArticleFeed = ({
         <Button
         height="slim"
           onClick={() => {
-            setIsMenuOpen(true);
+            var element_to_scroll_to = document.getElementById(id);
+            element_to_scroll_to.scrollIntoView();
+           setIsMenuOpen(true);
             
           }}
           >
@@ -110,7 +111,7 @@ const ArticleFeed = ({
 
 
   return (
-    <section key={id} className="pt-xl pb-4xl">
+    <section key={id} id={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
         {title && <HorizontalLine variant="light" />}
         <div className={`w-full pt-md flex justify-between items-center `}>
@@ -150,7 +151,11 @@ const ArticleFeed = ({
             setFilterBarState={setFilterBarState}
             getCount={getCount}
             isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
+            setIsMenuOpen={(_isOpen)=>{
+              var element_to_scroll_to = document.getElementById(id);
+              element_to_scroll_to.scrollIntoView();
+              setIsMenuOpen(_isOpen)
+            }}
           />
           </>
         )}
