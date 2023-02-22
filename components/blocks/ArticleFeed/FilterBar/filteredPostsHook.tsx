@@ -100,14 +100,14 @@ export default function useFilteredPosts(allPosts, categories, filterable) {
     }
   }, [filterBarState]);
 
-  const getCount = ({ type, item, changeLog }) => {
+  const getCount = ({ type=null, item=null }) => {
     const _filters = {...filterBarState};
-    if(changeLog!=undefined && (!type || !item)) {
-      const active = getActiveFilters({filters: _filters, changes: changeLog});
-      return filterPosts(allPosts,active).length;
-    }
+    // if(changeLog!=undefined && (!type || !item)) {
+    //   const active = getActiveFilters({filters: _filters, changes: changeLog});
+    //   return filterPosts(allPosts,active).length;
+    // }
     if (!type || !item) return displayedPosts?.length;
-    if(changeLog!=undefined)return filterOverlap({ posts: allPosts, filters: getActiveFilters({filters: _filters, changes: changeLog}), type, item }).length
+   // if(changeLog!=undefined)return filterOverlap({ posts: allPosts, filters: getActiveFilters({filters: _filters, changes: changeLog}), type, item }).length
     return filterOverlap({ posts: allPosts, filters: _filters, type, item }).length
   };
 

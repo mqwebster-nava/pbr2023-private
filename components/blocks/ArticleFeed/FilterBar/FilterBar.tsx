@@ -8,9 +8,22 @@ import FilterModal, { FILTER_CHANGE } from "./FilterModal";
 const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, isMenuOpen, setIsMenuOpen }) => {
  
 
-  const handleChanges = (changes:Array<FILTER_CHANGE>) => {
-    let newFilterBarState = getActiveFilters({filters:filterBarState, changes:changes })
-     setFilterBarState(newFilterBarState);
+  // const handleChanges = (changes:Array<FILTER_CHANGE>) => {
+  //   let newFilterBarState = getActiveFilters({filters:filterBarState, changes:changes })
+  //    setFilterBarState(newFilterBarState);
+  // };
+  const handleChange = ({type, checkboxElement, name}:FILTER_CHANGE) => {
+    let currentList = filterBarState[type];
+    if (checkboxElement.checked && !filterBarState[type].includes(name)) {
+      currentList.push(name);
+    } else if (!checkboxElement.checked) {
+      currentList = currentList.filter((n) => name != n);
+    }
+    setFilterBarState((previousState) => {
+      let r = { ...previousState };
+      r[type] = currentList;
+      return r;
+    });
   };
 
 
@@ -23,42 +36,44 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
 
 
   return (
-    <div className="md:pt-xl "
-
-    >
-    
-      <div className="">
-        <FilterModal
-          title={"Filters"}
-          isOpen={isMenuOpen}
-          setIsOpen={(open) => {
-            setIsMenuOpen(open);
-          } }
-          handleChanges={handleChanges}
-          handleClearClick={() => handleClear()}
-          currentlyActive={combineArrays(filterBarState)}
-          categories={categories}
-          getCount={getCount}         />
-      </div>
-      {/* <div className="pt-sm">
-        <p>{`${getCount()} posts found`}</p>
-      </div> */}
-       <div className="pt-sm">
-     <div className="flex gap-md py-sm flex-wrap w-full divide-x-[1px] divide-black ">
+    <div className="md:pt-xl " >
+       <div className="w-full grid md:grid-cols-12">
+         <div className="flex gap-md py-sm flex-wrap w-full divide-x-[1px] divide-black md:col-span-10">
         {
           Object.keys(filterBarState).filter((key)=>filterBarState[key].length>0).map((key, i) => {
             return  <ActiveFilterItems
             key={`activeitems-${key}`}
             type={key}
             handleClearClick={() => handleClear()}
-            handleChanges={handleChanges}
+            handleChange={handleChange}
             activeItems={filterBarState[key]}
             i={i}
           />
           })
         }
       </div>
+      <div className=" hidden md:flex md:col-span-2 justify-end">
+        {`${getCount({})} posts found`}
+      </div>
+      </div>
      
+    
+      <div className="pt-sm">
+        <FilterModal
+          title={"Filters"}
+          isOpen={isMenuOpen}
+          setIsOpen={(open) => {
+            setIsMenuOpen(open);
+          } }
+          handleChange={handleChange}
+          handleClearClick={() => handleClear()}
+          currentlyActive={combineArrays(filterBarState)}
+          categories={categories}
+          getCount={getCount}         />
+      </div>
+     
+       <div className="pt-sm">
+  
       </div>
     </div>
   );

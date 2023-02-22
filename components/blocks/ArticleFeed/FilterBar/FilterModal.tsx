@@ -29,7 +29,7 @@ const FilterModal = ({
   isOpen,
   setIsOpen,
   getCount,
-  handleChanges,
+  handleChange,
   handleClearClick,
   categories,
   currentlyActive = [],
@@ -37,16 +37,16 @@ const FilterModal = ({
   
 
 
-  const [changeLog, setChangeLog] = useState<Array<FILTER_CHANGE> | undefined>([]);
+  //const [changeLog, setChangeLog] = useState<Array<FILTER_CHANGE> | undefined>([]);
 
-  const handleChange = (type, checkboxElement, name ) => {
-    const change:FILTER_CHANGE = {type, checkboxElement, name};
-    let changes = [...changeLog];
-    if (!changeLog.filter((c) => c.name == change.name).length) 
-      changes.push(change);
-    setChangeLog(changes)
+  // const handleChange = (type, checkboxElement, name ) => {
+  //   const change:FILTER_CHANGE = {type, checkboxElement, name};
+  //   let changes = [...changeLog];
+  //   if (!changeLog.filter((c) => c.name == change.name).length) 
+  //     changes.push(change);
+  //   setChangeLog(changes)
     
-  }
+  // }
 
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
@@ -62,20 +62,19 @@ const FilterModal = ({
     <div
       className={`${
         !isOpen && "hidden"
-      } z-50  fixed left-0 right-0 top-0 bottom-0 bg-white  p-lg min-h-[200px] pb-xl `}
+      }  bg-white  pt-lg min-h-[200px] pb-xl `}
     >
-      <div className=" flex flex-col h-[100vh]">
-        <div className="flex justify-between responsive-container">
+      <div className=" flex flex-col ">
+        <div className="flex justify-between ">
           <div>
             <h3 className="type-preset-5 font-bold">Filter by</h3>
           </div>
           <button onClick={() => {
-           
-            setChangeLog([]);
+            //setChangeLog([]);
             setIsOpen(false)
-            }}>Cancel</button>
+            }}>Close</button>
         </div>
-        <div className="overflow-y-scroll grow responsive-container">
+        <div className="overflow-y-scroll grow ">
           {Object.keys(categories).map((catName) => (
             <FilterTypeRow
             key={catName}
@@ -84,19 +83,20 @@ const FilterModal = ({
               getCount={getCount}
               handleChange={handleChange}
               currentlyActive={currentlyActive}
-              changeLog={changeLog}
+              //changeLog={changeLog}
             />
           ))}
         </div>
-        <div className=" responsive-container flex justify-between w-full my-2xl gap-x-md items-center">
+        <div className=" flex justify-between w-full my-2xl gap-x-md items-center">
           <div>
-            {getCount({changeLog})==1? `${getCount({changeLog})} found post`: `${getCount({changeLog})} found posts`}
+          {/* {getCount()==1? `${getCount()} found post`: `${getCount()} found posts`} */}
+            {/* {getCount({changeLog})==1? `${getCount({changeLog})} found post`: `${getCount({changeLog})} found posts`} */}
           </div>
-          <div className="flex gap-md">
+          {/* <div className="flex gap-md">
             <ResetFilterButton
               type={undefined}
               onClick={() => {
-                setChangeLog([]);
+                //setChangeLog([]);
                 handleClearClick();
               }}
               title={"Clear all"}
@@ -113,7 +113,7 @@ const FilterModal = ({
             >
               {"Apply"}
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
@@ -125,8 +125,8 @@ const FilterTypeRow = ({
   catTags,
   getCount,
   handleChange,
-  currentlyActive,
-  changeLog
+  currentlyActive
+  //changeLog
 }) => {
   return (
     <details open={false}>
@@ -162,9 +162,10 @@ const FilterTypeRow = ({
           return (
             <div className="flex flex-col divide-y-[1px]" key={`filter-col-${j}`}>
               {column.map((item, i) => {
-                let changeItem = changeLog.filter((c) => (c.name == item))
-                let isActive = changeItem.length ? changeItem[0].checkboxElement.checked : currentlyActive.includes(item)
-                let resultNum = getCount({type:catName, item, changeLog});
+                //let changeItem = changeLog.filter((c) => (c.name == item))
+               // let isActive = changeItem.length ? changeItem[0].checkboxElement.checked : currentlyActive.includes(item)
+                let isActive = currentlyActive.includes(item)
+                let resultNum = getCount({type:catName, item});
                 const styles = classNames({
                   "bg-sage-50 text-gray-900": isActive,
                   "bg-white text-gray-600 hover:bg-white ":
@@ -185,7 +186,7 @@ const FilterTypeRow = ({
 
                     <input
                       onChange={(e) => {
-                        handleChange(catName, e.target, item);
+                        handleChange({type:catName,checkboxElement: e.target, name:item});
                       }}
                       disabled={resultNum == 0}
                       id={`${item}-checkbox`}
