@@ -10,7 +10,7 @@ export default function ContractVehicles(props:PageInterface ) {
 
 export async function getStaticProps({ params, preview = false }) {
   const res: PageInterface = await getPageDataFromContentful({
-    slug:"/labs", 
+    slug:"/nava-labs", 
     preview: preview,
   });
   return {

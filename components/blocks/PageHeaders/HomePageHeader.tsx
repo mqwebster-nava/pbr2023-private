@@ -4,7 +4,7 @@ import headerIllustration1 from "public/images/Home-Portrait-1-880x660-V1.png";
 import headerIllustration2 from "public/images/Home-Portrait-2-880x660-V1.png";
 import headerIllustration3 from "public/images/Home-Portrait-3-880x660-V1.png";
 import headerIllustration4 from "public/images/Home-Portrait-4-880x660-V1.png";
-import Pattern2 from "/public/images/Home-Brand-Pattern-Direction-only-V1.svg";
+import Pattern2 from "/public/images/brand-patterns/Home-Brand-Pattern-Direction-only-V1.svg";
 import React, { useState, useEffect } from 'react'
 import Image from "next/image";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
@@ -13,8 +13,8 @@ const header =
   {
     bg: "bg-plum-900",
     illBg:"bg-plum-50",
-    pattern: "/images/Home-Brand-Pattern-Terrain-only-V2.svg",
-    pattern2:"/images/Home-Brand-Pattern-Direction-only-V1.svg",
+    pattern: "/images/brand-patterns/Home-Brand-Pattern-Terrain-only-V2.svg",
+    pattern2:"/images/brand-patterns/Home-Brand-Pattern-Direction-only-V1.svg",
   }
 ;
 
