@@ -24,7 +24,7 @@ const QuoteBlock = ({
     "bg-purple-700": variant =="Nava Labs(Plum)"
   })
   const textColor = classNames ({
-    "text-gray-700": variant !="Nava Labs(Plum)",
+    "text-gray-900": variant !="Nava Labs(Plum)",
     "text-white": variant =="Nava Labs(Plum)"
   })
 

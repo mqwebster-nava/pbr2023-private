@@ -12,7 +12,6 @@ const getNavData = (variant)=> [
     subpages: [
       { title: "Services", slug: "/services" },
       { title: "Case studies", slug: "/case-studies" },
-      { title: "Insights",slug: "/insights", },
       { title: "Toolkits", slug: "/toolkits" },
     ],
   },
