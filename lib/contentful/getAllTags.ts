@@ -1,7 +1,6 @@
 
 import callContentful, { defaultOptions } from "lib/contentful/callContentful";
-import CONTENT_CARD from "lib/graphql_fragments/cards/CONTENT_CARD";
-  import { POST_CORE_FIELDS, TAG_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
+  import { TAG_FIELDS } from "lib/graphql_fragments/POST_FIELDS";
   
   export default async function getAllTags(options=defaultOptions) {
     const queryLimit = 100;

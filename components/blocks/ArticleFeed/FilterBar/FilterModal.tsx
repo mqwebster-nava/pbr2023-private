@@ -75,7 +75,7 @@ const FilterModal = ({
             }}>Close</button>
         </div>
         <div className="overflow-y-scroll grow ">
-          {Object.keys(categories).map((catName) => (
+          {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
             <FilterTypeRow
             key={catName}
               catName={catName}

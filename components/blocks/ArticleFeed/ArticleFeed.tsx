@@ -45,6 +45,7 @@ const ArticleFeed = ({
       "Working at Nava",
       "Events",
       "Toolkit",
+      "Public Benefit Report"
     ],
   };
   tags.forEach((t) => {
