@@ -5,5 +5,6 @@ sys {
 body
 authorName
 authorRole
+variant
 `;
 export default QUOTE_BLOCK;

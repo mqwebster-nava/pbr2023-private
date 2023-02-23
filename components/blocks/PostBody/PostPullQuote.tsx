@@ -1,6 +1,4 @@
-import quotemarks from "public/images/quote marks.png";
-import quotemarksSage from "public/images/pbrs/quote_mark.svg";
-import Image from "next/image";
+
 import { CONTENT_VARIANT } from "./PostContent";
 
 interface PostPullQuoteInterface {
