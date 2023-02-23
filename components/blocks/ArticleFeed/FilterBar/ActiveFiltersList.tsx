@@ -9,13 +9,16 @@ const ActiveFilterItems = ({
   activeItems,
   i,
 }) =>
-  activeItems.length > 0 && (
+{
+  const analyticsLabel = "filterTag"
+  return activeItems.length > 0 && (
     <div className={`flex gap-md flex-wrap ${i != 0 && "pl-md"}`}>
       {activeItems.map((item, j) => {
         return (
           <div
             key={`filter-${i}-${j}`}
-            className={`flex group items-center p-sm type-preset-6 bg-sage-50 text-gray-900`}
+            id={item}
+            className={`flex group items-center p-sm type-preset-6 bg-sage-50 text-gray-900 ${analyticsLabel}`}
           >
             <label htmlFor={`${item}-checkbox`} className="font-medium w-full pr-sm">
               {`${item} `}
@@ -40,6 +43,7 @@ const ActiveFilterItems = ({
       })}
     </div>
   );
+}
 
 export default ActiveFilterItems;
 

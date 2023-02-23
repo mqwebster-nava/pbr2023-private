@@ -162,9 +162,8 @@ const FilterTypeRow = ({
           return (
             <div className="flex flex-col divide-y-[1px]" key={`filter-col-${j}`}>
               {column.map((item, i) => {
-                //let changeItem = changeLog.filter((c) => (c.name == item))
-               // let isActive = changeItem.length ? changeItem[0].checkboxElement.checked : currentlyActive.includes(item)
-                let isActive = currentlyActive.includes(item)
+               const analyticsLabel = "filterTag"
+               let isActive = currentlyActive.includes(item)
                 let resultNum = getCount({type:catName, item});
                 const styles = classNames({
                   "bg-sage-50 text-gray-900": isActive,
@@ -175,7 +174,7 @@ const FilterTypeRow = ({
                 return (
                   <div
                     key={`filter-${i}-${j}`}
-                    className={`flex group items-center p-sm type-preset-6 ${styles}`}
+                    className={`flex group items-center p-sm type-preset-6 ${styles} ${analyticsLabel}`}
                   >
                     <label
                       htmlFor={`${item}-checkbox`}

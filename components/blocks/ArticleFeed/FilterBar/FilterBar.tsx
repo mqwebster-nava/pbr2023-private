@@ -7,11 +7,6 @@ import FilterModal, { FILTER_CHANGE } from "./FilterModal";
 
 const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, isMenuOpen, setIsMenuOpen }) => {
  
-
-  // const handleChanges = (changes:Array<FILTER_CHANGE>) => {
-  //   let newFilterBarState = getActiveFilters({filters:filterBarState, changes:changes })
-  //    setFilterBarState(newFilterBarState);
-  // };
   const handleChange = ({type, checkboxElement, name}:FILTER_CHANGE) => {
     let currentList = filterBarState[type];
     if (checkboxElement.checked && !filterBarState[type].includes(name)) {
@@ -83,6 +78,10 @@ export default FilterBar;
 
 
 
+  // const handleChanges = (changes:Array<FILTER_CHANGE>) => {
+  //   let newFilterBarState = getActiveFilters({filters:filterBarState, changes:changes })
+  //    setFilterBarState(newFilterBarState);
+  // };
 
   // const handleChange = (type, checkboxElement, name) => {
   //   let currentList = filterBarState[type];
