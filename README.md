@@ -242,6 +242,9 @@ const PageTemplate = ({
 
 ### Blocks
 
+## Google Analytics
+Google analytics is set up for this project using 
+
 ## Resources
 
 https://github.com/dazuaz/nextjs-tailwindcss-storybook-typescript

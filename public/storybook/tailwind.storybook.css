@@ -3595,3 +3595,7 @@ body {
     display: none;
   }
 }
+
+.list-none::-webkit-details-marker {
+  display: none;
+}

@@ -18,9 +18,9 @@ const ActiveFilterItems = ({
           <div
             key={`filter-${i}-${j}`}
             id={item}
-            className={`flex group items-center p-sm type-preset-6 bg-sage-50 text-gray-900 ${analyticsLabel}`}
+            className={`flex group items-center p-sm type-preset-6 bg-sage-50 text-gray-900 `}
           >
-            <label htmlFor={`${item}-checkbox`} className="font-medium w-full pr-sm">
+            <label htmlFor={`${item}-checkbox`} className={`font-medium w-full pr-sm ${analyticsLabel}`}>
               {`${item} `}
             </label>
 
