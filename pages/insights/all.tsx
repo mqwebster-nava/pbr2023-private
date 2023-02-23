@@ -2,11 +2,11 @@ import { getPageDataFromContentful } from "lib/api";
 import PageTemplate from "components/templates/PageTemplate/PageTemplate";
 import { PageInterface } from "lib/data_models/page_interface";
 import getPostsByContentType from "lib/contentful/getPostsByContentType";
+import { BasicPostInterface } from "lib/data_models/post_interface";
 import React from "react";
 import { formatPosts } from "lib/formatters/formatPosts";
-import { BasicPostInterface } from "lib/data_models/post_interface";
 
-export default function AllResources(props:PageInterface) {
+export default function AllInsights(props:PageInterface) {
  
   return (
   <PageTemplate {...props}>
@@ -14,7 +14,7 @@ export default function AllResources(props:PageInterface) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  let res: PageInterface = await getPageDataFromContentful({slug:"/resources/all",
+  let res: PageInterface = await getPageDataFromContentful({slug:"/insights/all",
     preview: preview,
   });
  
