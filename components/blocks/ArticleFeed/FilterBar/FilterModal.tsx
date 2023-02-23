@@ -129,7 +129,7 @@ const FilterTypeRow = ({
   //changeLog
 }) => {
   return (
-    <details open={false}>
+    <details open={false} className="list-none">
       <summary className="pt-md list-none cursor-pointer w-full">
         <HorizontalLine />
         <div className="flex flex-row justify-between items-center w-full">
