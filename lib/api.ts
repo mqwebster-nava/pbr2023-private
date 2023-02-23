@@ -24,9 +24,13 @@ import { formatPosts } from "./formatters/formatPosts";
 import { formatTagsPage } from "./formatters/formatPageTags";
 import getReportDataBySlug from "./contentful/getReportDataBySlug";
 import { formatReportPage } from "./formatters/formatPageReport";
-import { BasicPostInterface, FullPostInterface } from "./data_models/post_interface";
+import {
+  BasicPostInterface,
+  FullPostInterface,
+} from "./data_models/post_interface";
 import { formatPostPage } from "./formatters/formatPagePost";
 import { formatPage } from "./formatters/formatPageDefault";
+import { getPosts } from "./contentful/getPostsAll";
 
 // When preview is true, content that are in "draft" state will be renderered. Otherwise it is hidden
 // Preview is used to render previews of the page within the contentful interface.
@@ -45,24 +49,43 @@ export interface PageQueryInterface {
 export async function getPageDataFromContentful({
   slug,
   variant = "default",
-  preview =false,
+  preview = false,
 }: PageQueryInterface) {
   // If it is a default page, then there should be a corresponding Page Content model in
   // Contentful with page info
   if (variant == "default") {
     const page = await getPageDataBySlug({ slug, preview });
-  
+
     // Checks for errors and formats
     let formattedPage: PageInterface = formatPage(page);
     // check to see if employee list is one of the blocks and add data there
-   await Promise.all(
-        formattedPage.contentBlocks.map(async (block, i) => {
-          if (block["__typename"] == "CustomBlock" && block.type == "Employee List") {
-              const employeeData = await getEmployeeListFromAirtable();
-              formattedPage.contentBlocks[i] = { ...block, employeeData };
-          }
-        })
-      );
+    await Promise.all(
+      formattedPage.contentBlocks.map(async (block, i) => {
+        if (
+          block["__typename"] == "CustomBlock" &&
+          block.type == "Employee List"
+        ) {
+          const employeeData = await getEmployeeListFromAirtable();
+          formattedPage.contentBlocks[i] = { ...block, employeeData };
+        }
+        if (
+          block["__typename"] == "ContentBlockArticleList" &&
+          block.type == "Filterable List All Posts"
+        ) {
+         
+          let _posts = await getPosts();
+          let tags = await getAllTags();
+          let posts: Array<BasicPostInterface> = formatPosts(_posts);
+          posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .filter((a) => new Date(a.date).getTime() < new Date().getTime());
+          posts = posts.map((p) => {
+            if (p.contentTags == undefined) p.contentTags = [];
+            return p;
+          });
+          formattedPage.contentBlocks[i] = { ...block, filterable:true, items:posts, tags };
+        }
+      })
+    );
     return formattedPage;
   }
 
@@ -75,17 +98,20 @@ export async function getPageDataFromContentful({
   // If it is a post, we create the page interface data from the post content
   if (variant == "post") {
     // Get the post data
-  
+
     try {
-      const post = await getPostBySlug(slug, {preview});
-      const formattedPost:FullPostInterface = formatFullPost(post);
-      let morePosts = await getMorePosts(formattedPost,{preview});
-  
-      const formattedPage: PageInterface = formatPostPage(formattedPost, morePosts);
-     
+      const post = await getPostBySlug(slug, { preview });
+      const formattedPost: FullPostInterface = formatFullPost(post);
+      let morePosts = await getMorePosts(formattedPost, { preview });
+
+      const formattedPage: PageInterface = formatPostPage(
+        formattedPost,
+        morePosts
+      );
+
       return formattedPage;
     } catch (e) {
-      console.error("issue", e)
+      console.error("issue", e);
       return null;
     }
   }
@@ -98,13 +124,13 @@ export async function getPageDataFromContentful({
 
   if (variant == "tags") {
     const tags = await getAllTags();
-      // check somewhere to see if there's a page connected to that tag
-     // if there use use that data, otherwise do the default way
+    // check somewhere to see if there's a page connected to that tag
+    // if there use use that data, otherwise do the default way
     const tagName = tags.find((tag) => slugify(tag.name) === slug)?.name;
     const posts: Array<BasicPostInterface> = await getPostsByTag(tagName);
 
     const formattedPage: PageInterface = formatTagsPage(slug, tagName, posts);
-   
+
     return formattedPage;
   }
 }

@@ -11,6 +11,7 @@ body
 layout
 buttonPath
 buttonText
+type
 postsCollection(limit:10) {
     items{
         __typename

@@ -16,6 +16,7 @@ const CONTENT_CARD = `
     items {
         ${TAG_FIELDS}
     }
+  }
   shortSummary
   promoImage{
     ${IMAGE_FIELDS}

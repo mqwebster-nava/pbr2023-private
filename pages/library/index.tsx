@@ -19,36 +19,6 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
   });
  
-  let _posts = await getPosts();
-  let tags = await getAllTags();
-
-  let posts: Array<BasicPostInterface> = formatPosts(_posts);
-  posts = posts.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime()).filter((a)=>new Date(a.date).getTime()< new Date().getTime());
-posts = posts.map((p)=>{
-  if(p.contentTags==undefined) p.contentTags=[]
-  return p
-})
-  const filterEx = posts.slice(4, 7);
-  res.contentBlocks = [
-    {
-      
-      __typename:"ContentBlockArticleList", // Article Feed
-      id: "new section",
-      items:filterEx,
-      layout:"1 large 2 small cards row",
-      title:"Featured"
-    },
-    {
-      
-      __typename:"ContentBlockArticleList", // Article Feed
-      id: "news section",
-      items: posts,
-      layout:"3 card row",
-      title:"All resources",
-      filterable:true,
-      tags:tags
-    }
-  ]
  return {
    props:res,
    // Next.js will attempt to re-generate the page:
