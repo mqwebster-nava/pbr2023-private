@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 import { PageInterface } from "lib/data_models/page_interface";
 import useOptimizely, { ExperimentInterface } from "utils/useOptimizely";
+import TagManager from "react-gtm-module";
 
 const ex:ExperimentInterface = {
   name:"Insights Library AB Test",
@@ -25,12 +26,20 @@ function MyApp({ Component, pageProps }: AppProps) {
     "page" in pageProps ? pageProps.page : pageProps;
   
 
-  const experiments = [] //useOptimizely({pageData, optimizeExperiments:[ex]});
+  // This also sets the google analytics, which is kind of dumb
+  // I added a check in the use effect, to turn on analytics if this doesn't run
+  const experiments =[] //useOptimizely({pageData, optimizeExperiments:[ex]});
 
   // Recent DE&I specific code to set a random color. Needs to be this high so doesn't rerender
   const [DEIpageColor, setDEIpageColor] = useState(null)
 
   useEffect(() => {
+     // @ts-ignore
+    if(!window.dataLayer){
+    TagManager.initialize({
+      gtmId: "GTM-NRQK2XB",
+    });
+  }
     if(pageProps && pageProps.slug?.includes("dei/2022")){
       const c = pageColors[Math.floor(Math.random() * pageColors.length)];
       setDEIpageColor(c)
