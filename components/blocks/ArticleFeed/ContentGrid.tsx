@@ -14,7 +14,7 @@ type ContentType = "default" | "posts";
 
 interface ContentGridInterface {
   id: string;
-  items: Array<ContentCardInterface>;
+  items: Array<any>;
   layout?: ListLayout;
   contentType?: ContentType;
   colorTheme?: ColorTheme;
@@ -53,16 +53,22 @@ const ContentGrid = ({
               "lg:col-span-2": layout === "1 large 2 small cards row" && i == 0,
             });
             const cardLayout = "3 card row" || i > 3 ? "third" : i == 0 ? "half" : "quarter"
+            const kicker = item.kicker ? item.kicker : 
+            item.contentType == "Case Study" ? item.clientName :
+                           item.contentType == "News" ? getDateStr(item.date) :
+                           item.contentType == "Events" ? getEventDateStr(item.date): null;
+
             return (
               <div className={`w-full self-stretch ${feature}`} key={`${item.id}-${item.title}`}>
+            
                 
                   <ContentCard
                     size={cardLayout}
-                    kicker={item.kicker}
+                    kicker={kicker}
                     title={item.title}
-                    image={item.image}
-                    path={item.path}
-                    summary={item.summary}
+                    image={item.image?? item.promoImage}
+                    path={item.path?? getContentUrl(item.contentType,item.slug)}
+                    summary={item.summary ?? item.shortSummary}
                     analyticsLabel="article-feed"
                  />
                 

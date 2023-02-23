@@ -8,7 +8,7 @@ module.exports = withBundleAnalyzer({
   },
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-    domains: ["images.ctfassets.net", "dl.airtable.com", "v5.airtableusercontent.com"],
+    domains: [ "images.ctfassets.net", "dl.airtable.com", "v5.airtableusercontent.com"],
   },
   async redirects() {
     return [

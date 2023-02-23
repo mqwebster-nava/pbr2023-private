@@ -14,14 +14,20 @@ export interface BasicPostInterface{
     id:string;
     slug:string;
     title:string;
+    kicker?: string;
     date:string;
     contentType:string;
     clientName:string;
     contentTags:Array<string>;
     shortSummary:string;
     promoImage:ContentfulImageAsset;
+   // contentTagsV2:any;
     
 }
+export interface ContentTagInterface{
+    name:string;
+    type:string;
+  }
 export interface FullPostInterface extends BasicPostInterface{
     longSummary:string;
     hideSideNav:boolean;

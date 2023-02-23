@@ -24,7 +24,7 @@ const BrandPatternTerrain  = ({strokeWidth, strokeColor}) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_1620_173)">
+        <g clipPath="url(#clip0_1620_173)">
         {Array.from(Array(100).keys()).map((i)=>{
             const f = mult*i , mf = multm*i;
             const d = `M-${m + mf} ${n+f}L${o+f} ${p+f}`

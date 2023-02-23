@@ -12,6 +12,12 @@ import EMBEDDED_VIDEO from "./post_blocks/EMBEDDED_VIDEO";
 import CALLOUT from "./report_blocks/CALLOUT";
 import EVENT_INFO from "./post_blocks/EVENT_INFO";
 
+
+export const TAG_FIELDS =`
+    name
+    type
+`
+
 export const POST_CORE_FIELDS = `
     sys {
       id
@@ -22,12 +28,19 @@ export const POST_CORE_FIELDS = `
     slug
     contentType
     shortSummary
-    contentTags
+    contentTagsV2Collection(limit:8) {
+      items {
+          ${TAG_FIELDS}
+      }
+  }
     clientName
     promoImage {
       ${IMAGE_FIELDS}
     }
 `;
+
+
+
 export const AUTHOR_CORE_FIELDS =`
     name
     role
@@ -40,6 +53,17 @@ export const AUTHOR_CORE_FIELDS =`
 
 export const AUTHOR_ALL_FIELDS =`
     ${AUTHOR_CORE_FIELDS}
+    linkedFrom {
+        postCollection(limit:10){
+        items{
+            __typename
+            ${POST_CORE_FIELDS}
+        }
+        }
+    }
+`;
+export const TAGS_POST_FIELDS =`
+    ${TAG_FIELDS}
     linkedFrom {
         postCollection(limit:10){
         items{

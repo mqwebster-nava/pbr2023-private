@@ -57,15 +57,16 @@ export function isDateAfterNow(date) {
 
 export function getContentUrl(contentType, slug) {
   const contentMap = {
-    Insight: "insights",
-    "Case Study": "case-studies",
-    Toolkit: "toolkits",
-    "Working at Nava": "working-at-nava",
-    News: "news",
-    Events:"events"
+    Insight: "/insights",
+    "Case Study": "/case-studies",
+    Toolkit: "/toolkits",
+    "Working at Nava": "/working-at-nava",
+    News: "/news",
+    Events:"/events",
+    "Public Benefit Report":""
   };
   const contentPart = contentMap[contentType];
-  return `/${contentPart}/${slug}`;
+  return `${contentPart}/${slug}`;
 }
 
 // Ensures that the id is a stand alone field and maps collections to a list of items
@@ -110,3 +111,21 @@ export function capitalize(str) {
 
   return str.substring(0, 1).toUpperCase() + str.substring(1);
 }
+
+
+// function where the input is a map of arrays and the output is a single array that combines all the arrays in the map
+export const combineArrays = (map) => {
+  let arr = [];
+  Object.keys(map).map((key) => {
+    arr = arr.concat(map[key]);
+  });
+  return arr;
+};
+
+export const clearArrays = (map) => {
+  let newMap = {};
+  Object.keys(map).map((key) => {
+    newMap[key] = [];
+  });
+  return newMap;
+};

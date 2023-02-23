@@ -1,13 +1,15 @@
-
-import { ContentCardInterface } from "components/atom/ContentCard/ContentCard";
+import { Button } from "components/atom/Button/Button";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import React from "react";
-import { getContentUrl, getDateStr, getEventDateStr } from "utils/utils";
+import { ContentTagInterface } from "lib/data_models/post_interface";
+import React, { useEffect, useState } from "react";
+import { clearArrays, combineArrays } from "utils/utils";
 
 import ContentGrid, { ListLayout } from "./ContentGrid";
-
-
+import FilterBar from "./FilterBar/FilterBar";
+import FilterButton from "./FilterBar/FilterButton";
+import ResetFilterButton from "./FilterBar/ResetFilterButton";
+import useFilteredPosts from "./FilterBar/filteredPostsHook";
 
 interface ArticleFeedInterface {
   id?: string;
@@ -18,6 +20,8 @@ interface ArticleFeedInterface {
   items: any;
   max?: number;
   layout?: ListLayout;
+  filterable?: boolean;
+  tags?: Array<ContentTagInterface>;
 }
 
 const ArticleFeed = ({
@@ -29,37 +33,89 @@ const ArticleFeed = ({
   buttonText,
   max = 6,
   layout,
+  filterable = false,
+  tags = [],
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
-  items = items.filter((post) => post != null);
-  // Convert all items to Content 
-  let contentCards: Array<ContentCardInterface> = []
-  items.forEach((item)=>{
-    if(item["__typename"] == "Post" ){
-      const kicker = item.contentType == "Case Study" ? item.clientName :
-                           item.contentType == "News" ? getDateStr(item.date) :
-                           item.contentType == "Events" ? getEventDateStr(item.date): null;
-      let contentCard : ContentCardInterface = {
-        id:item.id,
-        kicker:kicker,
-        title: item.title,
-        path: getContentUrl(item.contentType, item.slug),
-        image: item.promoImage,
-        summary: item.shortSummary
-      }
-      contentCards.push(contentCard)
+  let categories = {
+    Type: [
+      "Case Study",
+      "Insight",
+      "News",
+      "Working at Nava",
+      "Events",
+      "Toolkit",
+    ],
+  };
+  tags.forEach((t) => {
+    if (!t.type) return;
+    if (!(t.type in categories)) {
+      categories[t.type] = [];
     }
-    else contentCards.push(item)
-  })
+    categories[t.type].push(t.name);
+  });
+
+  const [displayedPosts, filterBarState, setFilterBarState, getCount] =
+    useFilteredPosts(items, categories, filterable);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const FilterButtons = () => {
+    return (
+      <div className="flex gap-x-md">
+        {combineArrays(filterBarState).length > 0 && (
+          <ResetFilterButton
+            type={"tags"}
+            onClick={() => {
+              setFilterBarState(clearArrays(filterBarState));
+            }}
+            title={"Clear all"}
+            isActive={true}
+          />
+        )}
+        <Button
+        height="slim"
+          onClick={() => {
+            var element_to_scroll_to = document.getElementById(id);
+            element_to_scroll_to.scrollIntoView();
+           setIsMenuOpen((prevState)=> !prevState);
+            
+          }}
+          >
+           {`Filters ${
+            combineArrays(filterBarState).length > 0
+              ? "(" + combineArrays(filterBarState).length + ")"
+              : ""
+          }`}
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="22"
+  height="20"
+  viewBox="0 0 26 24"
+  fill="none"
+  className="ml-sm"
+>
+  <path
+    d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
+    stroke="white"
+    strokeLinejoin="round"
+  />
+</svg>
+          </Button>
+       
+      </div>
+    )
+  }
 
 
 
   return (
-    <section className="pt-xl pb-4xl" >
-      <div className="responsive-container" >
-      {title &&  <HorizontalLine variant="light"/>}
-        <div className={`w-full pt-md flex justify-between `}>
-          <div className="md:w-3/4 ">
+    <section key={id} id={id} className="pt-xl pb-4xl">
+      <div className="responsive-container" key={id}>
+        {title && <HorizontalLine variant="light" />}
+        <div className={`w-full pt-md flex justify-between items-center `}>
+          <div className="md:w-2/3 ">
             {title && (
               <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
             )}
@@ -72,31 +128,112 @@ const ArticleFeed = ({
             )}
           </div>
           <div className="hidden md:inline-block">
-          {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
-            {buttonText ?? "See more"}
-          </LinkText>
-      )}
+            {buttonPath != null ? (
+              <LinkText
+                href={buttonPath}
+                variant="default"
+                color="sage"
+                analyticsLabel="article-feed"
+              >
+                {buttonText ?? "See more"}
+              </LinkText>
+            ) : filterable ? <FilterButtons/> : null}
           </div>
         </div>
+        {filterable && (
+          <>
+            <div className="md:hidden  pt-lg ">
+            <FilterButtons/>
+          </div>
+          <FilterBar
+            categories={categories}
+            filterBarState={filterBarState}
+            setFilterBarState={setFilterBarState}
+            getCount={getCount}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={(_isOpen)=>{
+              var element_to_scroll_to = document.getElementById(id);
+              element_to_scroll_to.scrollIntoView();
+              setIsMenuOpen(_isOpen)
+            }}
+          />
+          </>
+        )}
       </div>
       <div className="pt-xl">
-      <ContentGrid
-        id={"id"}
-        items={contentCards}
-        contentType={"posts"}
-        layout={layout}
-      />
-       <div className="responsive-container md:hidden  py-lg flex justify-end">
+      
+        <ContentGrid
+          id={"id"}
+          items={displayedPosts}
+          contentType={"posts"}
+          layout={layout}
+        />
+        <div className="responsive-container md:hidden  py-lg flex justify-end">
           {buttonPath != null && (
-          <LinkText href={buttonPath} variant="default" color="sage" analyticsLabel="article-feed">
-            {buttonText ?? "See more"}
-          </LinkText>
-      )}
-          </div>
-     </div>
+            <LinkText
+              href={buttonPath}
+              variant="default"
+              color="sage"
+              analyticsLabel="article-feed"
+            >
+              {buttonText ?? "See more"}
+            </LinkText>
+          ) }
+        </div>
+      </div>
     </section>
   );
 };
-
 export default ArticleFeed;
+
+// const handleClear = (type) => {
+//   setFilterBarState((previousState) => {
+//     let v = { ...previousState };
+//     v[type] = [];
+//     return v;
+//   });
+// };
+
+//   filterable== true ?    <div className="flex gap-x-md">
+//     { filterBarState.tags.length > 0 &&
+//  <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
+// }
+// <FilterButton
+//   isOpen={isTagsOpen}
+//   setIsOpen={(open) => {
+//     setIsTagsOpen(open);
+//     //setIsContentTypeOpen(false)
+//   }}
+//   title={`Filters ${
+//     filterBarState.tags.length > 0
+//       ? "(" + filterBarState.tags.length + ")"
+//       : ""
+//   }`}
+// />
+
+// </div>: null
+
+// if (filterBarState.tags.length > 0) {
+//   _items = _items.filter((it) => {
+//     return (
+//       it.contentTags &&
+//       it.contentTags.some((tag) => filterBarState.tags.includes(tag))
+//     );
+//   });
+// }
+
+//  if(filterBarState.sector.length>0){
+//   _items = _items.filter((it)=> {
+//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
+//   })
+//  }
+//  if(filterBarState.capability.length>0){
+//   _items = _items.filter((it)=> {
+//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
+//   })
+//  }
+//  if(filterBarState.contentType.length>0){
+//   _items = _items.filter((it)=> {
+//     return it.contentType && filterBarState.contentType.includes(it.contentType)
+//   })
+//  }

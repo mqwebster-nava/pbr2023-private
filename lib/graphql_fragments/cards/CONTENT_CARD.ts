@@ -6,12 +6,16 @@ const CONTENT_CARD = `
     firstPublishedAt
   }
   title
-  summary
   kicker
-  image{
+  date
+  slug
+  contentType
+  keepHidden
+  contentTags
+  shortSummary
+  promoImage{
     ${IMAGE_FIELDS}
   }
-  date
-  path
 `;
+
 export default CONTENT_CARD;

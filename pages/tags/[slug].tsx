@@ -14,7 +14,7 @@ import { slugify } from "utils/utils";
   // Gets all of the tags that are used in the content and creates a page for each one
 export async function getStaticPaths({ params, preview = null }) {
   const tags = await getAllTags();
-  const paths = tags.map((tag)=>{ return {params: { slug:slugify(tag), tag } }});
+  const paths = tags.map((tag)=>{ return {params: { slug:slugify(tag.name), tag:tag.name } }});
     return {
       paths,
       fallback: 'blocking'
