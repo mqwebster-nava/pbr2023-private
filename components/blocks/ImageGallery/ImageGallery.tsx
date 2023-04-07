@@ -14,8 +14,8 @@ type ImageGalleryLayout =
   | "Four image grid"
   | "Three image row"
   | "Single image"
-  | "Rotating image";
-
+  | "Rotating image"
+  | "Nava labs header";
 
 interface ImageGalleryInterface {
   id: string;
@@ -23,7 +23,7 @@ interface ImageGalleryInterface {
   colorTheme?: ImageGalleryColorTheme;
   layout?: ImageGalleryLayout;
   background?: ColorTheme;
-  groupAltText?:string;
+  groupAltText?: string;
 }
 
 const ImageGalleryBlock = ({
@@ -32,7 +32,7 @@ const ImageGalleryBlock = ({
   colorTheme = "default",
   layout = "Single image",
   background,
-  groupAltText=""
+  groupAltText = "",
 }: ImageGalleryInterface) => {
   const bgColor = classNames({
     "bg-navy-900": colorTheme == "navy",
@@ -99,10 +99,9 @@ const ImageGalleryBlock = ({
   const RotatingImage = () => {
     if (!images) return <div></div>;
     // NOTE: Only works for images with a 16:9 dimension ratio
-   // const ratio = (100* images[0].height / images[0].width).toPrecision(4)
+    // const ratio = (100* images[0].height / images[0].width).toPrecision(4)
     return (
       <div
-        
         className={`pb-[56.47%] 3xl:pb-[calc(2000px_*_9_/_16)] 3xl:h-[calc(2000px_*_9_/_16)] h-[calc(100vw_*_9_/_16)] md:max-h-screen w-screen mx-auto max-w-[2000px] `}
       >
         <CrossfadeCarousel
@@ -117,17 +116,37 @@ const ImageGalleryBlock = ({
     );
   };
 
+  const NavaLabsHeader = () => {
+    if (!images) return <div></div>;
+
+    return (
+      <>
+        <div>Hello World!</div>
+        <div>
+          <Image
+            className=""
+            src={images[0].url}
+            layout="responsive"
+            height={images[0].height}
+            width={images[0].width}
+            alt={images[0].description}
+          />
+        </div>
+      </>
+    );
+  };
+
   const SingleImage = () => {
     if (!images || images.length != 1) return <div></div>;
     return (
       <Image
-      className=""
-      src={images[0].url}
-      layout="responsive"
-      height={images[0].height}
-      width={images[0].width}
-      alt={images[0].description}
-    ></Image>
+        className=""
+        src={images[0].url}
+        layout="responsive"
+        height={images[0].height}
+        width={images[0].width}
+        alt={images[0].description}
+      ></Image>
     );
   };
 
@@ -170,24 +189,25 @@ const ImageGalleryBlock = ({
   return (
     <div className={`w-full ${bgColor}`} key={id}>
       {layout == "Rotating image" ? (
-          <RotatingImage />
-        ) :
-      <div className={`responsive-container w-full ${yPadding}`}>
-        {layout == "Four image grid" ? (
-          <FourImageGrid />
-        ) : layout == "Three image row" ? (
-          <ThreeImageRow />
-        ) : 
-        (
-          <SingleImage />
-        )}
-      </div>}
+        <RotatingImage />
+      ) : layout == "Nava labs header" ? (
+        <NavaLabsHeader />
+      ) : (
+        <div className={`responsive-container w-full ${yPadding}`}>
+          {layout == "Four image grid" ? (
+            <FourImageGrid />
+          ) : layout == "Three image row" ? (
+            <ThreeImageRow />
+          ) : (
+            <SingleImage />
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
 export default ImageGalleryBlock;
-
 
 /* <Image
             className=""
