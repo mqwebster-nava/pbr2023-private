@@ -4,11 +4,10 @@ import ColorTheme from "utils/ColorThemes";
 
 // TODO move as much to tailwind
 
-
 export interface SectionHeaderInterface {
   title: string;
   id: string;
-  body?:any;
+  body?: any;
   colorTheme?: ColorTheme;
   buttonText?: string;
   buttonPath?: string;
@@ -18,25 +17,30 @@ const SectionHeader = ({
   id,
   title,
   body,
-  colorTheme="default",
+  colorTheme = "default",
   buttonText,
-  buttonPath
-}:SectionHeaderInterface) => {
+  buttonPath,
+}: SectionHeaderInterface) => {
   const bg = classNames({
-    "bg-gold-50": colorTheme=="gold",
-    "bg-sage-50": colorTheme=="sage",
-    "bg-navy-900": colorTheme=="navy",
-    "bg-purple-900": colorTheme=="purple",
+    "bg-gold-50": colorTheme == "gold",
+    "bg-sage-50": colorTheme == "sage",
+    "bg-navy-900": colorTheme == "navy",
+    "bg-purple-900": colorTheme == "purple",
+    "bg-plum-900": colorTheme == "plum",
   });
   let LineColor = classNames({
-    "bg-gold-900":colorTheme == "gold",
-    "bg-sage-700":colorTheme =="sage",
-    "bg-purple-500":colorTheme=="purple",
-    "bg-navy-200":colorTheme == "navy",
-    "bg-plum-400 ": colorTheme=="default" || colorTheme==null
-  })
+    "bg-gold-900": colorTheme == "gold",
+    "bg-sage-700": colorTheme == "sage",
+    "bg-purple-500": colorTheme == "purple",
+    "bg-navy-200": colorTheme == "navy",
+    "bg-plum-300": colorTheme == "plum",
+    "bg-plum-400 ": colorTheme == "default" || colorTheme == null,
+  });
 
-  const TextColor =  (colorTheme=="navy" ||colorTheme=="purple")? "text-white":"text-gray-900";
+  const TextColor =
+    colorTheme == "navy" || colorTheme == "purple" || colorTheme == "plum"
+      ? "text-white"
+      : "text-gray-900";
 
   const TitleBlock = () => {
     return (
@@ -49,29 +53,39 @@ const SectionHeader = ({
       </div>
     );
   };
-  const BodyBlock = ({text}) => {
+  const BodyBlock = ({ text }) => {
     return (
       <div className={`flex pb-xl`}>
         <div className={`lg:w-3/4 type-preset-3  font-serif ${TextColor}`}>
-         {text}
+          {text}
         </div>
       </div>
     );
   };
-  
+
   return (
     <section className={`${bg}`} key={id}>
-    <div className={`responsive-container pt-3xl pb-xl`} >
-      <TitleBlock />
-       <div className={`flex ${ body && "mb-xl"}`}>
-       <div className={`${LineColor} h-[5px] w-[65px]`}></div>
-        {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
-      </div> 
-      {body && <BodyBlock text={body}/>}
-      {buttonText &&<div className="pt-2xl"> <Button  href={buttonPath} variant="white" analyticsLabel="section-header">{buttonText}</Button> </div>}
-    </div>
+      <div className={`responsive-container pt-3xl pb-xl`}>
+        <TitleBlock />
+        <div className={`flex ${body && "mb-xl"}`}>
+          <div className={`${LineColor} h-[5px] w-[65px]`}></div>
+          {/* <div className="bg-gray-900 h-[8px] w-[138px]"></div> */}
+        </div>
+        {body && <BodyBlock text={body} />}
+        {buttonText && (
+          <div className="pt-2xl">
+            {" "}
+            <Button
+              href={buttonPath}
+              variant="white"
+              analyticsLabel="section-header"
+            >
+              {buttonText}
+            </Button>{" "}
+          </div>
+        )}
+      </div>
     </section>
   );
-
 };
 export default SectionHeader;

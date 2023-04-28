@@ -42,6 +42,7 @@ const ImageGalleryBlock = ({
     "bg-purple-50": background == "purple",
     "bg-gold-50": background == "gold",
   });
+
   const yPadding = classNames({
     "": layout == "Rotating image" || "Nava Labs",
     "py-4xl": layout != "Rotating image",
@@ -116,7 +117,7 @@ const ImageGalleryBlock = ({
     );
   };
 
-  const NavaLabsHeader = () => {
+  const NavaLabs = () => {
     if (!images) return <div></div>;
 
     console.log(images);
@@ -192,7 +193,7 @@ const ImageGalleryBlock = ({
       {layout == "Rotating image" ? (
         <RotatingImage />
       ) : layout == "Nava Labs" ? (
-        <NavaLabsHeader />
+        <NavaLabs />
       ) : (
         <div className={`responsive-container w-full ${yPadding}`}>
           {layout == "Four image grid" ? (
