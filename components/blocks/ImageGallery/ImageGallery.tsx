@@ -15,7 +15,7 @@ type ImageGalleryLayout =
   | "Three image row"
   | "Single image"
   | "Rotating image"
-  | "Nava labs header";
+  | "Nava Labs";
 
 interface ImageGalleryInterface {
   id: string;
@@ -43,8 +43,8 @@ const ImageGalleryBlock = ({
     "bg-gold-50": background == "gold",
   });
   const yPadding = classNames({
-    "": layout == "Rotating image",
-    "py-4xl": layout != "Rotating image",
+    "": layout == "Rotating image" || "Nava Labs",
+    "py-4xl": layout != "Rotating image" || "Nava Labs",
   });
   //TODO-  For transition - to remove once contentful is updated
 
@@ -96,6 +96,21 @@ const ImageGalleryBlock = ({
     );
   };
 
+  const NavaLabs = () => {
+    if (!images) return <div></div>;
+
+    return (
+      <Image
+        className=""
+        src={images[0].url}
+        layout="responsive"
+        height={images[0].height}
+        width={images[0].width}
+        alt={images[0].description}
+      ></Image>
+    );
+  };
+
   const RotatingImage = () => {
     if (!images) return <div></div>;
     // NOTE: Only works for images with a 16:9 dimension ratio
@@ -114,12 +129,6 @@ const ImageGalleryBlock = ({
         />
       </div>
     );
-  };
-
-  const NavaLabsHeader = () => {
-    if (!images) return <div></div>;
-
-    return <div>Hello world!</div>;
   };
 
   const SingleImage = () => {
@@ -176,8 +185,8 @@ const ImageGalleryBlock = ({
     <div className={`w-full ${bgColor}`} key={id}>
       {layout == "Rotating image" ? (
         <RotatingImage />
-      ) : layout == "Nava labs header" ? (
-        <NavaLabsHeader />
+      ) : layout == "Nava Labs" ? (
+        <NavaLabs />
       ) : (
         <div className={`responsive-container w-full ${yPadding}`}>
           {layout == "Four image grid" ? (
