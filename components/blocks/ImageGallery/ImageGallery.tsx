@@ -120,8 +120,6 @@ const ImageGalleryBlock = ({
   const NavaLabs = () => {
     if (!images) return <div></div>;
 
-    console.log(images);
-
     return (
       <>
         <div className={``}>
