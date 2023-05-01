@@ -3,6 +3,7 @@ import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 import ColorTheme from "utils/ColorThemes";
+import NavaLabsLogo from "pages/nava-labs/Logo";
 
 /*
 Rotating Image
@@ -106,7 +107,7 @@ const ImageGalleryBlock = ({
           className={`flex flex-row min-w-full h-[calc(100vh_*_4_/_5)] bg-plum-900`}
         >
           <div className="w-1/2 text-6xl responsive-container pt-3xl pb-xl text-white">
-            Nava Labs
+            <NavaLabsLogo />
           </div>
 
           <div className="w-1/2 relative overflow-hidden">
