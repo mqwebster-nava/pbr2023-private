@@ -97,6 +97,33 @@ const ImageGalleryBlock = ({
     );
   };
 
+  const NavaLabs = () => {
+    if (!images) return <div></div>;
+
+    return (
+      <>
+        <div
+          className={`flex flex-row min-w-full h-[calc(100vh_*_4_/_5)] bg-plum-900`}
+        >
+          <div className="w-1/2 text-6xl responsive-container pt-3xl pb-xl text-white">
+            Nava Labs
+          </div>
+
+          <div className="w-1/2 relative overflow-hidden">
+            <CrossfadeCarousel
+              interval={3000}
+              transition={1000}
+              groupAltText={groupAltText}
+              images={images.map((im) => {
+                return { src: im.url, ...im };
+              })}
+            />
+          </div>
+        </div>
+      </>
+    );
+  };
+
   const RotatingImage = () => {
     if (!images) return <div></div>;
     // NOTE: Only works for images with a 16:9 dimension ratio
@@ -114,25 +141,6 @@ const ImageGalleryBlock = ({
           })}
         />
       </div>
-    );
-  };
-
-  const NavaLabs = () => {
-    if (!images) return <div></div>;
-
-    return (
-      <>
-        <div className={``}>
-          <Image
-            className=""
-            src={images[0].url}
-            layout="responsive"
-            height={images[0].height}
-            width={images[0].width}
-            alt={images[0].description}
-          />
-        </div>
-      </>
     );
   };
 
