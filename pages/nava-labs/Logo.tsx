@@ -16,12 +16,9 @@ const dotsPath = [
 ];
 
 const NavaLabsLogo = ({ animated = false }) => {
-  useEffect(() => {}, []);
-
   return (
     <svg
-      width="400"
-      height="93"
+      className="flex w-[160px] md:w-[280px] lg:w-[400px]"
       viewBox="0 0 400 93"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

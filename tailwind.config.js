@@ -38,9 +38,9 @@ module.exports = {
         titleSlideC: "slideDelayButton 0.6s ease-out",
         fadeIn: "fadeIn 0.7s ease-out",
         fadeIn2: "fadeIn2 1.0s ease-out",
-        dotOne: "fadeIn 1000ms ease-in-out 400ms forwards",
-        dotTwo: "fadeIn 1000ms ease-in-out 3000ms forwards",
-        dotThree: "fadeIn 1000ms ease-in-out 6000ms forwards",
+        dotOne: "fadeIn 1000ms ease-in-out forwards",
+        dotTwo: "fadeIn 1000ms ease-in-out 2000ms forwards",
+        dotThree: "fadeIn 1000ms ease-in-out 4000ms forwards",
       },
       listStyleType: {
         dash: "square",
