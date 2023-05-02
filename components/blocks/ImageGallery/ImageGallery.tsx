@@ -104,13 +104,13 @@ const ImageGalleryBlock = ({
     return (
       <>
         <div
-          className={`flex flex-row w-full h-[calc(100vh_*_4_/_5)] bg-plum-900`}
+          className={`flex flex-row w-full h-[calc(100vw_*_7_/_16)] bg-plum-900`}
         >
-          <div className="responsive-container pt-3xl pb-xl text-white bg-blue-500">
+          <div className="w-1/2 responsive-container pt-3xl pb-xl text-white">
             <NavaLabsLogo animated />
           </div>
 
-          <div className="flex flex-grow relative overflow-hidden">
+          <div className="flex w-1/2 relative overflow-hidden">
             <CrossfadeCarousel
               interval={2000}
               transition={1000}
