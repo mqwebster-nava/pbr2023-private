@@ -7,39 +7,40 @@ module.exports = {
   plugins: [],
   theme: {
     extend: {
-  
       keyframes: {
         slide: {
-          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
-          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+          "0%": { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+          "100%": { opacity: 1, transform: "translate3d(0, 0, 0)" },
         },
         slideDelay: {
-          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
-          '25%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
-          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+          "0%": { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+          "25%": { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+          "100%": { opacity: 1, transform: "translate3d(0, 0, 0)" },
         },
         slideDelayButton: {
-          '0%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
-          '50%': { opacity: 0, transform: 'translate3d(0, 50px, 0)' },
-          '100%': { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+          "0%": { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+          "50%": { opacity: 0, transform: "translate3d(0, 50px, 0)" },
+          "100%": { opacity: 1, transform: "translate3d(0, 0, 0)" },
         },
         fadeIn: {
-          '0%': { opacity: 0, },
-          '100%': { opacity: 1,}
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
         fadeIn2: {
-          '0%': { opacity: 0, },
-          '40%': { opacity: 0, },
-          '100%': { opacity: 1,}
+          "0%": { opacity: 0 },
+          "40%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
-       
       },
       animation: {
-        'titleSlide': 'slide 0.4s ease-out',
-        'titleSlideB': 'slideDelay 0.5s ease-out',
-        'titleSlideC': 'slideDelayButton 0.6s ease-out',
-        'fadeIn': 'fadeIn 0.7s ease-out',
-        'fadeIn2': 'fadeIn2 1.0s ease-out',
+        titleSlide: "slide 0.4s ease-out",
+        titleSlideB: "slideDelay 0.5s ease-out",
+        titleSlideC: "slideDelayButton 0.6s ease-out",
+        fadeIn: "fadeIn 0.7s ease-out",
+        fadeIn2: "fadeIn2 1.0s ease-out",
+        dotOne: "fadeIn 1000ms ease-in-out 400ms forwards",
+        dotTwo: "fadeIn 1000ms ease-in-out 3000ms forwards",
+        dotThree: "fadeIn 1000ms ease-in-out 6000ms forwards",
       },
       listStyleType: {
         dash: "square",
@@ -67,14 +68,14 @@ module.exports = {
       screens: {
         sm: "540px", // => @media (min-width: 540px) { ... }
         md: "768px",
-        "xl":"1264px",
+        xl: "1264px",
         "2xl": "1440px", // => @media (min-width: 1440px) { ... }
-        "3xl": "2000px"
+        "3xl": "2000px",
       },
       colors: {
         purple: {
           50: "#f5e4f0",
-          special50:"#f2e5ef",
+          special50: "#f2e5ef",
           lightest: "#F5E4F0",
           100: "#dfbde5",
           200: "#cb92d5",
@@ -120,9 +121,9 @@ module.exports = {
           800: "#f69f09",
           900: "#f37100",
           dark: "#BE5800",
-          darktext:"#B55400",
-          pbrcustomdark:"#B55400",
-          pbrcustomlight:"#E8D5C4"
+          darktext: "#B55400",
+          pbrcustomdark: "#B55400",
+          pbrcustomlight: "#E8D5C4",
         },
 
         navy: {
@@ -197,21 +198,20 @@ module.exports = {
             light: "#25F15E",
           },
           rainbow: {
-            end: "#e99cbd"
-          }
+            end: "#e99cbd",
+          },
         },
         pbr: {
           ecru: {
-            "base": "#F3EDE1",
+            base: "#F3EDE1",
           },
-        }
-        
+        },
       },
 
       height: {
         128: "32rem",
       },
-     
+
       spacing: {
         xs: "4px",
         sm: "8px",
