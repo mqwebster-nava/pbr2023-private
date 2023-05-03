@@ -37,12 +37,12 @@ const HighlightedInfoCard = ({
       )}
       <p
         className={`type-preset-4 md:type-preset-5 lg:type-preset-4 font-sans font-bold pt-lg pb-4xl xl:pb-5xl ${
-          colorTheme == "Nava Labs" ? "text-plum-100" : "text-purple-800"
+          colorTheme == "Nava Labs" ? "text-plum-200" : "text-purple-800"
         }`}
       >
         <span
           className={
-            colorTheme == "Nava Labs" ? "text-plum-300" : "text-purple-500"
+            colorTheme == "Nava Labs" ? "text-white" : "text-purple-500"
           }
         >{`${title} `}</span>
         {body}
