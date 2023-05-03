@@ -1,20 +1,3 @@
-import { useEffect } from "react";
-
-const dotsPath = [
-  {
-    d: "M280.292 76.2031H214.34V91.8423H230.749L230.828 76.2031Z",
-    id: "dot1",
-  },
-  {
-    d: "M280.292 76.2031H239.091V91.8423H255.579V76.2031ZM230.828",
-    id: "dot2",
-  },
-  {
-    d: "M280.292 76.2031H263.804V91.8423H280.292V76.2031ZM255.579",
-    id: "dot3",
-  },
-];
-
 const NavaLabsLogo = ({ animated = false }) => {
   return (
     <svg
