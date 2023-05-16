@@ -104,10 +104,12 @@ const ImageGalleryBlock = ({
     return (
       <>
         <div
-          className={`flex flex-row w-full h-[calc(100vw_*_7_/_16)] bg-plum-900`}
+          className={`flex flex-row align-bottom w-full h-[calc(100vw_*_7_/_16)] bg-plum-900`}
         >
-          <div className="w-1/2 responsive-container pt-3xl pb-xl text-white">
-            <NavaLabsLogo animated />
+          <div className="flex flex-col justify-end w-1/2 h-full responsive-container pt-3xl pb-xl text-white">
+            <div>
+              <NavaLabsLogo animated />
+            </div>
           </div>
 
           <div className="flex w-1/2 relative overflow-hidden">
