@@ -1,7 +1,7 @@
 const NavaLabsLogo = ({ animated = false }) => {
   return (
     <svg
-      className="flex w-[160px] md:w-[280px] lg:w-[400px]"
+      className="flex w-[120px] md:w-[240px] lg:w-[360px]"
       viewBox="0 0 400 93"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
