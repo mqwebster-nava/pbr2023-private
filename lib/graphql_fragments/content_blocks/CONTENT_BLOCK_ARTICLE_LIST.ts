@@ -1,7 +1,6 @@
 import CONTENT_CARD from "../cards/CONTENT_CARD";
 import { POST_CORE_FIELDS } from "../POST_FIELDS";
 
-
 const CONTENT_BLOCK_ARTICLE_LIST = `
 sys {
     id
@@ -12,7 +11,7 @@ layout
 buttonPath
 buttonText
 type
-postsCollection(limit:10) {
+postsCollection(limit:20) {
     items{
         __typename
         ... on Post {
