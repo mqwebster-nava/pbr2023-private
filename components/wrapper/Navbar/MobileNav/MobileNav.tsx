@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import SlideDown from "react-slidedown";
 import { AnalyticsLabelType } from "utils/Analytics";
-import Logo from "../../../atom/Logos/Nava";
+import Logo from "../Logo";
 import styles from "./mobilenav.module.css";
 
 const MobileNavBar = ({ NavData }) => {

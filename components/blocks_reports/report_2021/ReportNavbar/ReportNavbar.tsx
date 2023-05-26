@@ -4,7 +4,7 @@ TODO
 - having the progress bar start a little after 0% so doesn't look like a glitch
 */
 
-import Logo from "components/atom/Logos/Nava";
+import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
 
 import { CloseSVG, OpenSVG } from "./SVGs";

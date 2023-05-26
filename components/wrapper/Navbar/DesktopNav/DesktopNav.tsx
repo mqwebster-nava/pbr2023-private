@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../../atom/Logos/Nava";
+import Logo from "../Logo";
 import NavButton from "./NavButton";
 import DropdownNavButton from "./DropdownNavButton";
 import { AnalyticsLabelType } from "utils/Analytics";
