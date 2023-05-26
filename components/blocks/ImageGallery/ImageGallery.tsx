@@ -103,24 +103,24 @@ const ImageGalleryBlock = ({
 
     return (
       <>
-        <div
-          className={`flex flex-row align-bottom w-full h-[calc(100vw_*_1_/_2)] bg-plum-900 overflow-hidden`}
-        >
-          <div className="flex flex-1 flex-col justify-end h-full responsive-container pt-3xl pb-xl text-white">
-            <div>
-              <NavaLabsLogo animated />
+        <div className={`flex justify-center w-full bg-plum-900`}>
+          <div className="flex flex-row justify-between w-full responsive-container">
+            <div className="flex flex-col justify-end w-full">
+              <div>
+                <NavaLabsLogo animated />
+              </div>
             </div>
-          </div>
 
-          <div className="flex w-[calc(100vw_*_1_/_2)] relative">
-            <CrossfadeCarousel
-              interval={2000}
-              transition={1000}
-              groupAltText={groupAltText}
-              images={images.map((im) => {
-                return { src: im.url, ...im };
-              })}
-            />
+            <div className="w-full aspect-square">
+              <CrossfadeCarousel
+                interval={2000}
+                transition={1000}
+                groupAltText={groupAltText}
+                images={images.map((im) => {
+                  return { src: im.url, ...im };
+                })}
+              />
+            </div>
           </div>
         </div>
       </>
