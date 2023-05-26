@@ -3,7 +3,7 @@ import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 import ColorTheme from "utils/ColorThemes";
-import NavaLabsLogo from "pages/nava-labs/Logo";
+import NavaLabsLogo from "components/atom/Logos/NavaLabs";
 
 /*
 Rotating Image

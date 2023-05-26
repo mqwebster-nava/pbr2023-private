@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import SlideDown from "react-slidedown";
 import { AnalyticsLabelType } from "utils/Analytics";
-import Logo from "../Logo";
+import Logo from "../../../atom/Logos/Nava";
 import styles from "./mobilenav.module.css";
 
 const MobileNavBar = ({ NavData }) => {
@@ -10,7 +10,6 @@ const MobileNavBar = ({ NavData }) => {
   const analyticsLabel: AnalyticsLabelType = "navbar";
 
   const NavLinksMobile = () => (
-    
     <nav
       aria-label="main"
       className=" absolute left-0 top-[60px] responsive-container w-full flex flex-col  bg-white z-50 "
@@ -91,13 +90,13 @@ const MobileNavBar = ({ NavData }) => {
     </nav>
   );
   return (
-    <div  className="lg:hidden block ">
+    <div className="lg:hidden block ">
       <div className=" responsive-container flex flex-wrap items-center justify-between h-[60px]">
         <Logo isMobile={true} />
         <div className="block ">
           <button
             aria-label="menu"
-            aria-expanded={isShowingMenu?"true":"false"}
+            aria-expanded={isShowingMenu ? "true" : "false"}
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
