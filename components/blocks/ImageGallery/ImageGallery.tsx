@@ -3,6 +3,7 @@ import { ContentfulImageAsset } from "lib/data_models/post_interface";
 import classNames from "classnames";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 import ColorTheme from "utils/ColorThemes";
+import NavaLabsLogo from "pages/nava-labs/Logo";
 
 /*
 Rotating Image
@@ -42,9 +43,10 @@ const ImageGalleryBlock = ({
     "bg-purple-50": background == "purple",
     "bg-gold-50": background == "gold",
   });
+
   const yPadding = classNames({
     "": layout == "Rotating image" || "Nava Labs",
-    "py-4xl": layout != "Rotating image" || "Nava Labs",
+    "py-4xl": layout != "Rotating image",
   });
   //TODO-  For transition - to remove once contentful is updated
 
@@ -97,17 +99,31 @@ const ImageGalleryBlock = ({
   };
 
   const NavaLabs = () => {
-    if (!images) return <div></div>;
-
     return (
-      <Image
-        className=""
-        src={images[0].url}
-        layout="responsive"
-        height={images[0].height}
-        width={images[0].width}
-        alt={images[0].description}
-      ></Image>
+      <>
+        <div className={`flex justify-center w-full bg-plum-900`}>
+          <div className="flex flex-row justify-between w-full responsive-container">
+            <div className="flex flex-col justify-end w-full">
+              <div>
+                <NavaLabsLogo animated />
+              </div>
+            </div>
+
+            {images && (
+              <div className="w-full aspect-square">
+                <CrossfadeCarousel
+                  interval={2000}
+                  transition={1000}
+                  groupAltText={groupAltText}
+                  images={images.map((im) => {
+                    return { src: im.url, ...im };
+                  })}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </>
     );
   };
 
@@ -203,12 +219,3 @@ const ImageGalleryBlock = ({
 };
 
 export default ImageGalleryBlock;
-
-/* <Image
-            className=""
-            src={image.url}
-            layout="responsive"
-            height={image.height}
-            width={image.width}
-            alt={image.description}
-          ></Image> */

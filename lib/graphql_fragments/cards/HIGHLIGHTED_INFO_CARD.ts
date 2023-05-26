@@ -6,6 +6,7 @@ const HIGHLIGHTED_INFO_CARD = `
   }
   title
   body
+  colorTheme
   icon{
     ${IMAGE_FIELDS}
   }

@@ -1,9 +1,9 @@
-
 import HIGHLIGHTED_INFO_CARD from "../cards/HIGHLIGHTED_INFO_CARD";
 const HIGHLIGHTED_INFORMATION_LIST = `
 sys {
     id
 }
+colorTheme
 highlightedInfoCardsCollection(limit:10) {
     items{
         __typename
