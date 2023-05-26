@@ -99,8 +99,6 @@ const ImageGalleryBlock = ({
   };
 
   const NavaLabs = () => {
-    if (!images) return <div></div>;
-
     return (
       <>
         <div className={`flex justify-center w-full bg-plum-900`}>
@@ -111,16 +109,18 @@ const ImageGalleryBlock = ({
               </div>
             </div>
 
-            <div className="w-full aspect-square">
-              <CrossfadeCarousel
-                interval={2000}
-                transition={1000}
-                groupAltText={groupAltText}
-                images={images.map((im) => {
-                  return { src: im.url, ...im };
-                })}
-              />
-            </div>
+            {images && (
+              <div className="w-full aspect-square">
+                <CrossfadeCarousel
+                  interval={2000}
+                  transition={1000}
+                  groupAltText={groupAltText}
+                  images={images.map((im) => {
+                    return { src: im.url, ...im };
+                  })}
+                />
+              </div>
+            )}
           </div>
         </div>
       </>
