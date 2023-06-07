@@ -1,29 +1,30 @@
-import { Button } from './Button'
-import type { ButtonProps } from './Button'
-import type { Story, Meta } from '@storybook/react/types-6-0'
+import { ReactChildren } from "react";
+import { Button } from "./Button";
+import type { ButtonProps } from "./Button";
+import type { StoryFn, Meta } from "@storybook/react";
 
 export default {
-  title: 'Atoms/Button',
+  title: "Atoms/Button",
   component: Button,
   argTypes: {
-    href: { control: 'text' },
-    children: { control: 'text' },
+    href: { control: "text" },
+    children: { control: "text" },
     variant: {
-      options: ['default', 'outlined',"white", "dark"],
-      control: { type: 'radio' },
+      options: ["default", "outlined", "white", "dark"],
+      control: { type: "radio" },
     },
-    buttonAriaLabel: { control: 'text' },
-    analyticsLabel: { control: 'text' }
+    buttonAriaLabel: { control: "text" },
+    analyticsLabel: { control: "text" },
   },
-} as Meta
+} as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args}/>
+const Template: StoryFn<ButtonProps> = (args) => <Button {...args} />;
 
-export const Basic: Story<ButtonProps> = Template.bind({})
+export const Basic: StoryFn<ButtonProps> = Template.bind({});
 
 Basic.args = {
-  variant: 'default',
-    // @ts-ignore 
-  children:"Default Button",
+  variant: "default",
+  // @ts-ignore
+  children: "Default Button",
   href: "/",
-}
+};
