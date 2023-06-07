@@ -104,7 +104,7 @@ const ImageGalleryBlock = ({
         <div className={`flex justify-center w-full bg-plum-900`}>
           <div className="flex flex-row justify-between w-full responsive-container">
             <div className="flex flex-col justify-end w-full">
-              <div>
+              <div className="w-[120px] md:w-[240px] lg:w-[360px]">
                 <NavaLabsLogo animated />
               </div>
             </div>
