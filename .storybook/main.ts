@@ -1,11 +1,15 @@
+import type { StorybookConfig } from "@storybook/nextjs";
 const path = require("path");
 
-module.exports = {
+const sbConfig: StorybookConfig = {
   stories: [
     "../Intro.stories.mdx",
     "../components/**/*.stories.mdx",
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
     "../styles/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  staticDirs: [
+    "../public",
   ],
   refs: {
     "chromatic-published-Storybook": {
@@ -15,23 +19,24 @@ module.exports = {
       url: "https://navapbc.chromatic.com",
     },
   },
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-docs",
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-controls"
-  ],
-  features: {
-    postcss: false,
-  },
   webpackFinal: async (config, { configType }) => {
-    config.resolve.modules.push(path.resolve(__dirname, ".."));
-
+    config.resolve?.modules?.push(path.resolve(__dirname, ".."));
     return config;
   },
-  // webpackFinal is modified by nextjs/storybook-plugin to include node-modules and nextjs/babel
-  typescript: {
-    reactDocgen: "react-docgen",
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
+    "@storybook/addon-controls",
+  ],
+  framework: {
+    name: "@storybook/nextjs",
+    options: {},
+  },
+  docs: {
+    autodocs: "tag",
   },
 };
+export default sbConfig;
+

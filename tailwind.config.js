@@ -31,6 +31,10 @@ module.exports = {
           "40%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        }
       },
       animation: {
         titleSlide: "slide 0.4s ease-out",
@@ -38,6 +42,7 @@ module.exports = {
         titleSlideC: "slideDelayButton 0.6s ease-out",
         fadeIn: "fadeIn 0.7s ease-out",
         fadeIn2: "fadeIn2 1.0s ease-out",
+        fadeOut: "fadeOut 0.7s ease-out",
         dotOne: "fadeIn 1000ms ease-in-out forwards",
         dotTwo: "fadeIn 1000ms ease-in-out 2000ms forwards",
         dotThree: "fadeIn 1000ms ease-in-out 4000ms forwards",

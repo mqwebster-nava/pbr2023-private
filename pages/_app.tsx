@@ -22,9 +22,7 @@ const pageColors = ["gold", "navy", "sage", "purple","plum"]
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  const pageData: PageInterface =
-    "page" in pageProps ? pageProps.page : pageProps;
-  
+  const pageData: PageInterface = ("page" in pageProps ? pageProps.page : pageProps);
 
   // This also sets the google analytics, which is kind of dumb
   // I added a check in the use effect, to turn on analytics if this doesn't run

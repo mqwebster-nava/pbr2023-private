@@ -5,7 +5,7 @@ import CapabilitiesSection, {
 import type { StoryFn, Meta } from "@storybook/react/";
 
 export default {
-  title: "Atoms/Highlighted Info Card",
+  title: "Atoms/Capabilities Section",
   component: CapabilitiesSection,
   argTypes: {},
 } as Meta;

@@ -6,10 +6,10 @@ const NavaLabsLogo = ({ animated = false }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1837_38674)">
+      <g clipPath="url(#clip0_1837_38674)">
         <mask
           id="mask0_1837_38674"
-          // style="mask-type:luminance"
+          style={{maskType:"luminance"}}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -27,7 +27,7 @@ const NavaLabsLogo = ({ animated = false }) => {
         <path d="M510.2 194.102H0V235.502H510.2V194.102Z" fill="white" />
         <mask
           id="mask1_1837_38674"
-          // style="mask-type:luminance"
+          style={{maskType:"luminance"}}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"

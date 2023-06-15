@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { useRef } from "react";
 import { ContentfulImageAsset } from "lib/data_models/post_interface";
+import ColorTheme from "utils/ColorThemes";
+import { useOnScreen } from "utils/useOnScreen";
 import classNames from "classnames";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
-import ColorTheme from "utils/ColorThemes";
 import NavaLabsLogo from "components/atom/Logos/NavaLabs";
 
 /*
@@ -99,31 +101,48 @@ const ImageGalleryBlock = ({
   };
 
   const NavaLabs = () => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    const isOnScreen = useOnScreen(elementRef);
+
     return (
-      <>
-        <div className={`flex justify-center w-full bg-plum-900`}>
-          <div className="flex flex-row justify-between w-full responsive-container">
-            <div className="flex flex-col justify-end w-full">
-              <div className="w-[120px] md:w-[240px] lg:w-[360px]">
+      <div>
+        <div className={`flex flex-col justify-center w-full bg-plum-900`}>
+          <div className="flex flex-row relative justify-between w-full responsive-container">
+            <div ref={elementRef} className={`w-full h-full self-end`}>
+              {isOnScreen && <div className="w-[120px] md:w-[240px] lg:w-[360px]">
                 <NavaLabsLogo animated />
-              </div>
+              </div>}
             </div>
 
             {images && (
-              <div className="w-full aspect-square">
-                <CrossfadeCarousel
-                  interval={2000}
-                  transition={1000}
-                  groupAltText={groupAltText}
-                  images={images.map((im) => {
-                    return { src: im.url, ...im };
-                  })}
-                />
+              <div className={`w-full aspect-square`}>
+                {isOnScreen ? (
+                  <div className="animate-dotOne">
+                    <CrossfadeCarousel
+                      interval={2000}
+                      transition={1000}
+                      groupAltText={groupAltText}
+                      images={images.map((im) => {
+                        return { src: im.url, ...im };
+                      })}
+                    />
+                  </div>
+                ) :
+                <div className="opacity-0 animate-fadeOut">
+                  <Image
+                    className=""
+                    src={images[0].url}
+                    layout="responsive"
+                    height={images[0].height}
+                    width={images[0].width}
+                    alt={images[0].description}
+                  ></Image>
+                </div>}
               </div>
             )}
           </div>
         </div>
-      </>
+      </div>
     );
   };
 

@@ -2,7 +2,7 @@ import type { StoryFn, Meta } from "@storybook/react";
 import { CheckBox, CheckBoxProps } from "./CheckBox";
 
 export default {
-  title: "Atoms/Form Input Button",
+  title: "Atoms/Form Input Checkbox",
   component: CheckBox,
   parameters: {
     docs: {
