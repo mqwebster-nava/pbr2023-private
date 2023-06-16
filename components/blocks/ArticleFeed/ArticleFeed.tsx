@@ -63,7 +63,76 @@ const ArticleFeed = ({
 
   const FilterButtons = () => {
     return (
-      <div className="flex gap-x-md">
+      <div className="flex">
+        <Button
+          onClick={() => {
+            var element_to_scroll_to = document.getElementById(id);
+            element_to_scroll_to.scrollIntoView();
+            setIsMenuOpen((prevState) => !prevState);
+          }}
+        >
+          {`Filter Insights`}
+
+          <svg
+            width="22"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="ml-lg"
+          >
+            <g clipPath="url(#clip0_2001_174)">
+              <path
+                d="M3.42857 5.99997C4.84873 5.99997 6 4.84871 6 3.42855C6 2.00838 4.84873 0.857117 3.42857 0.857117C2.00841 0.857117 0.857143 2.00838 0.857143 3.42855C0.857143 4.84871 2.00841 5.99997 3.42857 5.99997Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6 3.42853H23.1429"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 14.5714C13.4202 14.5714 14.5714 13.4201 14.5714 12C14.5714 10.5798 13.4202 9.42853 12 9.42853C10.5798 9.42853 9.42857 10.5798 9.42857 12C9.42857 13.4201 10.5798 14.5714 12 14.5714Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M0.857143 12H9.42857"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M14.5714 12H23.1429"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M20.5714 23.1429C21.9916 23.1429 23.1429 21.9916 23.1429 20.5714C23.1429 19.1513 21.9916 18 20.5714 18C19.1513 18 18 19.1513 18 20.5714C18 21.9916 19.1513 23.1429 20.5714 23.1429Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M18 20.5714H0.857143"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_2001_174">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </Button>
+
         {combineArrays(filterBarState).length > 0 && (
           <ResetFilterButton
             type={"tags"}
@@ -76,35 +145,6 @@ const ArticleFeed = ({
             isActive={true}
           />
         )}
-        <Button
-          height="slim"
-          onClick={() => {
-            var element_to_scroll_to = document.getElementById(id);
-            element_to_scroll_to.scrollIntoView();
-            setIsMenuOpen((prevState) => !prevState);
-          }}
-        >
-          {`Filters ${
-            combineArrays(filterBarState).length > 0
-              ? "(" + combineArrays(filterBarState).length + ")"
-              : ""
-          }`}
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="20"
-            viewBox="0 0 26 24"
-            fill="none"
-            className="ml-sm"
-          >
-            <path
-              d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
-              stroke="white"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Button>
       </div>
     );
   };
@@ -112,11 +152,11 @@ const ArticleFeed = ({
   return (
     <section key={id} id={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
-        {title && <HorizontalLine variant="light" />}
+        {/* {title && <HorizontalLine variant="light" />} */}
         <div className={`w-full pt-md flex justify-between items-center `}>
-          <div className="md:w-2/3 ">
+          {/* <div className="md:w-2/3 ">
             {title && (
-              <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
+              <h2 className="font-sans type-preset-3 font-bold">{title} </h2>
             )}
 
             {body && (
@@ -126,7 +166,7 @@ const ArticleFeed = ({
                 {body}
               </p>
             )}
-          </div>
+          </div> */}
 
           <div className="hidden md:inline-block">
             {buttonPath != null ? (
@@ -166,7 +206,7 @@ const ArticleFeed = ({
         )}
       </div>
 
-      <div className="pt-xl">
+      <div className="pt-2xl">
         <ContentGrid
           id={"id"}
           items={displayedPosts}
@@ -174,7 +214,7 @@ const ArticleFeed = ({
           layout={layout}
         />
 
-        <div className="responsive-container md:hidden  py-lg flex justify-end">
+        <div className="responsive-container md:hidden py-lg flex justify-end">
           {buttonPath != null && (
             <LinkText
               href={buttonPath}

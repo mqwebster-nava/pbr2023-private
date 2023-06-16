@@ -57,7 +57,7 @@ const FilterModal = ({
     <div
       className={`${
         !isOpen && "hidden"
-      } bg-white p-xl min-h-[200px] border-2 border-sage-base`}
+      } bg-white pt-xl pb-3xl px-2xl min-h-[200px] border-2 border-sage-base`}
     >
       <div className="flex flex-row gap-12 justify-between">
         {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
@@ -86,10 +86,10 @@ const FilterTypeCol = ({
 }) => {
   return (
     <div
-      className="w-full pt-sm pb-2xl"
+      className="w-full"
       aria-labelledby="dropdownCheckboxButton"
     >
-      <p className="py-sm font-bold type-preset-6">{capitalize(catName)}</p>
+      <p className="pb-md font-bold type-preset-6">{capitalize(catName)}</p>
 
       {catTags.map((item, i) => {
         const analyticsLabel = "filterTag"

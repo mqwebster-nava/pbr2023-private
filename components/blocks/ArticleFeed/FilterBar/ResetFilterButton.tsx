@@ -9,7 +9,7 @@ const ResetFilterButton = ({ type, onClick, title, isActive }) => {
   return (
     <button
       disabled={!isActive}
-      className={`${styles} type-preset-6 text-black type-preset-6 pr-md py-sm text-center inline-flex items-center gap-2`}
+      className={`${styles} type-preset-6 text-black type-preset-6 py-sm px-2xl text-center inline-flex items-center justify-center gap-2`}
       onClick={() => {
         Array.from(document.getElementsByClassName(`${type}CheckBox`)).forEach(
           (el) => {
