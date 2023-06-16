@@ -45,7 +45,7 @@ const ArticleFeed = ({
       "Working at Nava",
       "Events",
       "Toolkit",
-      "Public Benefit Report"
+      "Public Benefit Report",
     ],
   };
   tags.forEach((t) => {
@@ -75,41 +75,37 @@ const ArticleFeed = ({
           />
         )}
         <Button
-        height="slim"
+          height="slim"
           onClick={() => {
             var element_to_scroll_to = document.getElementById(id);
             element_to_scroll_to.scrollIntoView();
-           setIsMenuOpen((prevState)=> !prevState);
-            
+            setIsMenuOpen((prevState) => !prevState);
           }}
-          >
-           {`Filters ${
+        >
+          {`Filters ${
             combineArrays(filterBarState).length > 0
               ? "(" + combineArrays(filterBarState).length + ")"
               : ""
           }`}
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="22"
-  height="20"
-  viewBox="0 0 26 24"
-  fill="none"
-  className="ml-sm"
->
-  <path
-    d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
-    stroke="white"
-    strokeLinejoin="round"
-  />
-</svg>
-          </Button>
-       
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="20"
+            viewBox="0 0 26 24"
+            fill="none"
+            className="ml-sm"
+          >
+            <path
+              d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
+              stroke="white"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Button>
       </div>
-    )
-  }
-
-
+    );
+  };
 
   return (
     <section key={id} id={id} className="pt-xl pb-4xl">
@@ -138,31 +134,32 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) : filterable ? <FilterButtons/> : null}
+            ) : filterable ? (
+              <FilterButtons />
+            ) : null}
           </div>
         </div>
         {filterable && (
           <>
             <div className="md:hidden  pt-lg ">
-            <FilterButtons/>
-          </div>
-          <FilterBar
-            categories={categories}
-            filterBarState={filterBarState}
-            setFilterBarState={setFilterBarState}
-            getCount={getCount}
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={(_isOpen)=>{
-              var element_to_scroll_to = document.getElementById(id);
-              element_to_scroll_to.scrollIntoView();
-              setIsMenuOpen(_isOpen)
-            }}
-          />
+              <FilterButtons />
+            </div>
+            <FilterBar
+              categories={categories}
+              filterBarState={filterBarState}
+              setFilterBarState={setFilterBarState}
+              getCount={getCount}
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={(_isOpen) => {
+                var element_to_scroll_to = document.getElementById(id);
+                element_to_scroll_to.scrollIntoView();
+                setIsMenuOpen(_isOpen);
+              }}
+            />
           </>
         )}
       </div>
       <div className="pt-xl">
-      
         <ContentGrid
           id={"id"}
           items={displayedPosts}
@@ -179,62 +176,10 @@ const ArticleFeed = ({
             >
               {buttonText ?? "See more"}
             </LinkText>
-          ) }
+          )}
         </div>
       </div>
     </section>
   );
 };
 export default ArticleFeed;
-
-// const handleClear = (type) => {
-//   setFilterBarState((previousState) => {
-//     let v = { ...previousState };
-//     v[type] = [];
-//     return v;
-//   });
-// };
-
-//   filterable== true ?    <div className="flex gap-x-md">
-//     { filterBarState.tags.length > 0 &&
-//  <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-// }
-// <FilterButton
-//   isOpen={isTagsOpen}
-//   setIsOpen={(open) => {
-//     setIsTagsOpen(open);
-//     //setIsContentTypeOpen(false)
-//   }}
-//   title={`Filters ${
-//     filterBarState.tags.length > 0
-//       ? "(" + filterBarState.tags.length + ")"
-//       : ""
-//   }`}
-// />
-
-// </div>: null
-
-// if (filterBarState.tags.length > 0) {
-//   _items = _items.filter((it) => {
-//     return (
-//       it.contentTags &&
-//       it.contentTags.some((tag) => filterBarState.tags.includes(tag))
-//     );
-//   });
-// }
-
-//  if(filterBarState.sector.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
-//   })
-//  }
-//  if(filterBarState.capability.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
-//   })
-//  }
-//  if(filterBarState.contentType.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentType && filterBarState.contentType.includes(it.contentType)
-//   })
-//  }
