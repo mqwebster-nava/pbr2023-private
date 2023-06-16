@@ -152,9 +152,9 @@ const ArticleFeed = ({
   return (
     <section key={id} id={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
-        {/* {title && <HorizontalLine variant="light" />} */}
+        {title && !filterable && <HorizontalLine variant="light" />}
         <div className={`w-full pt-md flex justify-between items-center `}>
-          {/* <div className="md:w-2/3 ">
+          {!filterable && <div className="md:w-2/3 ">
             {title && (
               <h2 className="font-sans type-preset-3 font-bold">{title} </h2>
             )}
@@ -166,7 +166,7 @@ const ArticleFeed = ({
                 {body}
               </p>
             )}
-          </div> */}
+          </div>}
 
           <div className="hidden md:inline-block">
             {buttonPath != null ? (
