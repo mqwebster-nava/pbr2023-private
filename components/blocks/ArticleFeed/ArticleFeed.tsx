@@ -70,7 +70,9 @@ const ArticleFeed = ({
             onClick={() => {
               setFilterBarState(clearArrays(filterBarState));
             }}
-            title={"Clear all"}
+            title={`Clear ${displayedPosts.length} insight${
+              displayedPosts.length > 1 ? "s" : ""
+            }`}
             isActive={true}
           />
         )}
@@ -116,6 +118,7 @@ const ArticleFeed = ({
             {title && (
               <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
             )}
+
             {body && (
               <p
                 className={`font-sans pt-lg type-preset-5 text-gray-700 mb-sm`}
@@ -124,6 +127,7 @@ const ArticleFeed = ({
               </p>
             )}
           </div>
+
           <div className="hidden md:inline-block">
             {buttonPath != null ? (
               <LinkText
@@ -139,11 +143,13 @@ const ArticleFeed = ({
             ) : null}
           </div>
         </div>
+
         {filterable && (
           <>
-            <div className="md:hidden  pt-lg ">
+            <div className="md:hidden pt-lg">
               <FilterButtons />
             </div>
+
             <FilterBar
               categories={categories}
               filterBarState={filterBarState}
@@ -159,6 +165,7 @@ const ArticleFeed = ({
           </>
         )}
       </div>
+
       <div className="pt-xl">
         <ContentGrid
           id={"id"}
@@ -166,6 +173,7 @@ const ArticleFeed = ({
           contentType={"posts"}
           layout={layout}
         />
+
         <div className="responsive-container md:hidden  py-lg flex justify-end">
           {buttonPath != null && (
             <LinkText
