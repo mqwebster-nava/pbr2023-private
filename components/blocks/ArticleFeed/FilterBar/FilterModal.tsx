@@ -58,6 +58,27 @@ const FilterModal = ({
     );
 
   }, [isOpen, currentlyActive]);
+
+  useEffect(() => {
+    const filterRows = document.querySelectorAll("details");
+
+    const filterRowIsOpen = (target: HTMLDetailsElement) => {
+      filterRows.forEach((currentRow: HTMLDetailsElement) => {
+        if (currentRow != target) currentRow.removeAttribute("open");
+      })
+    }
+
+    filterRows.forEach((targetRow) => {
+      targetRow.addEventListener('click', () => filterRowIsOpen(targetRow));
+    })
+
+    return (
+      filterRows.forEach((targetRow) => {
+        targetRow.removeEventListener('click', () => filterRowIsOpen(targetRow));
+      })
+    )
+  }, []);
+
   return (
     <div
       className={`${
@@ -74,7 +95,7 @@ const FilterModal = ({
             setIsOpen(false)
             }}>Close</button>
         </div>
-        <div className="overflow-y-scroll grow ">
+        <div className="">
           {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
             <FilterTypeRow
             key={catName}
