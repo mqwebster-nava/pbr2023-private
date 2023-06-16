@@ -31,7 +31,7 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
 
 
   return (
-    <div className="md:pt-xl " >
+    <div className="relative z-10" >
        {/* <div className="w-full grid md:grid-cols-12">
          <div className="flex gap-md py-sm flex-wrap w-full divide-x-[1px] divide-black md:col-span-10">
           {
@@ -49,7 +49,7 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
         </div>
       </div> */}
 
-      <div className="pt-sm">
+      <div className="md:absolute w-full">
         <FilterModal
           title={"Filters"}
           isOpen={isMenuOpen}
