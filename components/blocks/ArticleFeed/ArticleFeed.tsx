@@ -22,6 +22,7 @@ interface ArticleFeedInterface {
   layout?: ListLayout;
   filterable?: boolean;
   tags?: Array<ContentTagInterface>;
+  posts: any;
 }
 
 const ArticleFeed = ({
@@ -35,6 +36,7 @@ const ArticleFeed = ({
   layout,
   filterable = false,
   tags = [],
+  posts,
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
   let categories = {
@@ -57,7 +59,7 @@ const ArticleFeed = ({
   });
 
   const [displayedPosts, filterBarState, setFilterBarState, getCount] =
-    useFilteredPosts(items, categories, filterable);
+    useFilteredPosts(posts, categories, filterable);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -207,9 +209,22 @@ const ArticleFeed = ({
       </div>
 
       <div className="pt-2xl">
+        {filterable && items.length > 0 && !combineArrays(filterBarState).length && (
+          <div className="responsive-container flex flex-col gap-4 pb-2xl">
+            <h3 className="font-sans type-preset-3 font-bold">Featured Insights</h3>
+            <ContentGrid
+              id={"id"}
+              items={items}
+              contentType={"posts"}
+              layout="1 large 2 small cards row"
+            />
+            <HorizontalLine variant="light" />
+          </div>
+        )}
+
         <ContentGrid
           id={"id"}
-          items={displayedPosts}
+          items={filterable ? displayedPosts : items}
           contentType={"posts"}
           layout={layout}
         />
