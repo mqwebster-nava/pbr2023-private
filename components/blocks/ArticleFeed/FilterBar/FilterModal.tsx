@@ -12,18 +12,6 @@ export interface FILTER_CHANGE {
   name: string;
 }
 
-
-// This assumes length greater than 3
-function splitIntoColumns(arr, size) {
-  const len = arr.length;
-  var myArray = [
-    arr.slice(0, Math.ceil(len / 3)),
-    arr.slice(Math.ceil(len / 3), Math.ceil((2 * len) / 3)),
-    arr.slice(Math.ceil((2 * len) / 3), len),
-  ];
-  return myArray;
-}
-
 const FilterModal = ({
   title,
   isOpen,
@@ -176,47 +164,45 @@ const FilterTypeRow = ({
       </summary>
 
       <div
-        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg divide-y-[1px] md:divide-y-0 pb-2xl"
+        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg pb-2xl"
         aria-labelledby="dropdownCheckboxButton"
       >
-        {splitIntoColumns(catTags, 3).map((column, j) => {
-          return (
-            <div className="flex flex-col divide-y-[1px]" key={`filter-col-${j}`}>
-              {column.map((item, i) => {
-               const analyticsLabel = "filterTag"
-               let isActive = currentlyActive.includes(item)
-                let resultNum = getCount({type:catName, item});
-                const styles = classNames({
-                  "bg-sage-50 text-gray-900": isActive,
-                  "bg-white text-gray-600 hover:bg-white ":
-                    !isActive && resultNum != 0,
-                  "bg-gray-100 text-gray-400 ": resultNum == 0,
-                });
-                return (
-                  <div
-                    key={`filter-${i}-${j}`}
-                    className={`flex group items-center p-sm type-preset-6 ${styles} ${analyticsLabel}`}
-                  >
-                    <label
-                      htmlFor={`${item}-checkbox`}
-                      className="font-medium w-full "
-                    >
-                      {`${item} (${resultNum})`}
-                    </label>
+        {catTags.map((item, i) => {
+          const analyticsLabel = "filterTag"
+          let isActive = currentlyActive.includes(item)
+          let resultNum = getCount({type:catName, item});
+          const styles = classNames({
+            "bg-sage-50 text-gray-900": isActive,
+            "bg-white text-gray-600 hover:bg-white ":
+              !isActive && resultNum != 0,
+            "bg-gray-100 text-gray-400 ": resultNum == 0,
+          });
 
-                    <input
-                      onChange={(e) => {
-                        handleChange({type:catName,checkboxElement: e.target, name:item});
-                      }}
-                      disabled={resultNum == 0}
-                      id={`${item}-checkbox`}
-                      type="checkbox"
-                      value={item}
-                      className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
-                    />
-                  </div>
-                );
-              })}
+          if (!resultNum) return;
+
+          return (
+            <div
+              key={`filter-${i}`}
+              className={`flex gap-2 group items-center p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+            >
+
+              <input
+                onChange={(e) => {
+                  handleChange({type:catName,checkboxElement: e.target, name:item});
+                }}
+                disabled={resultNum == 0}
+                id={`${item}-checkbox`}
+                type="checkbox"
+                value={item}
+                className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
+              />
+
+              <label
+                htmlFor={`${item}-checkbox`}
+                className="font-medium w-full"
+              >
+                {`${item}`}
+              </label>
             </div>
           );
         })}
