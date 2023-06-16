@@ -57,32 +57,79 @@ const FilterModal = ({
     <div
       className={`${
         !isOpen && "hidden"
-      }  bg-white  pt-lg min-h-[200px] pb-xl `}
+      }  bg-white p-xl min-h-[200px] border-2 border-sage-500`}
     >
-      <div className=" flex flex-col ">
-        <div className="flex justify-between ">
-          <div>
-            <h3 className="type-preset-5 font-bold">Filter by</h3>
-          </div>
-          <button onClick={() => {
-            //setChangeLog([]);
-            setIsOpen(false)
-            }}>Close</button>
-        </div>
-        <div className="">
-          {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
-            <FilterTypeRow
+      <div className="flex flex-row gap-12 justify-between">
+        {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
+          <FilterTypeCol
             key={catName}
-              catName={catName}
-              catTags={categories[catName]}
-              getCount={getCount}
-              handleChange={handleChange}
-              currentlyActive={currentlyActive}
-              //changeLog={changeLog}
-            />
-          ))}
-        </div>
+            catName={catName}
+            catTags={categories[catName]}
+            getCount={getCount}
+            handleChange={handleChange}
+            currentlyActive={currentlyActive}
+            //changeLog={changeLog}
+          />
+        ))}
       </div>
+    </div>
+  );
+};
+
+const FilterTypeCol = ({
+  catName,
+  catTags,
+  getCount,
+  handleChange,
+  currentlyActive
+  //changeLog
+}) => {
+  return (
+    <div
+      className="w-full pt-sm pb-2xl"
+      aria-labelledby="dropdownCheckboxButton"
+    >
+      <p className="py-sm font-bold type-preset-6">{capitalize(catName)}</p>
+
+      {catTags.map((item, i) => {
+        const analyticsLabel = "filterTag"
+        let isActive = currentlyActive.includes(item)
+        let resultNum = getCount({type:catName, item});
+        const styles = classNames({
+          "bg-sage-50 text-gray-900": isActive,
+          "bg-white text-gray-600 hover:bg-white ":
+            !isActive && resultNum != 0,
+          "bg-gray-100 text-gray-400 ": resultNum == 0,
+        });
+
+        if (!resultNum) return;
+
+        return (
+          <div
+            key={`filter-${i}`}
+            className={`flex gap-2 group items-center p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+          >
+
+            <input
+              onChange={(e) => {
+                handleChange({type:catName,checkboxElement: e.target, name:item});
+              }}
+              disabled={resultNum == 0}
+              id={`${item}-checkbox`}
+              type="checkbox"
+              value={item}
+              className={`filterCheckBox h-[14px] w-[14px] accent-sage-600`}
+            />
+
+            <label
+              htmlFor={`${item}-checkbox`}
+              className="font-medium w-full"
+            >
+              {`${item}`}
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
