@@ -71,8 +71,7 @@ export async function getPageDataFromContentful({
         if (
           block["__typename"] == "ContentBlockArticleList" &&
           block.type == "Filterable List All Posts"
-        ) {
-         
+        ){
           let _posts = await getPosts();
           let tags = await getAllTags();
           let posts: Array<BasicPostInterface> = formatPosts(_posts);
@@ -82,7 +81,7 @@ export async function getPageDataFromContentful({
             if (p.contentTags == undefined) p.contentTags = [];
             return p;
           });
-          formattedPage.contentBlocks[i] = { ...block, filterable:true, items:posts, tags };
+          formattedPage.contentBlocks[i] = { ...block, filterable:true, posts, tags };
         }
       })
     );
