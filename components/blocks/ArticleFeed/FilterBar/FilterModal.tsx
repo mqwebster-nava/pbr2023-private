@@ -57,7 +57,7 @@ const FilterModal = ({
     <div
       className={`${
         !isOpen && "hidden"
-      }  bg-white p-xl min-h-[200px] border-2 border-sage-500`}
+      } bg-white p-xl min-h-[200px] border-2 border-sage-base`}
     >
       <div className="flex flex-row gap-12 justify-between">
         {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
