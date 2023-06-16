@@ -22,20 +22,6 @@ const FilterModal = ({
   categories,
   currentlyActive = [],
 }) => {
-  
-
-
-  //const [changeLog, setChangeLog] = useState<Array<FILTER_CHANGE> | undefined>([]);
-
-  // const handleChange = (type, checkboxElement, name ) => {
-  //   const change:FILTER_CHANGE = {type, checkboxElement, name};
-  //   let changes = [...changeLog];
-  //   if (!changeLog.filter((c) => c.name == change.name).length) 
-  //     changes.push(change);
-  //   setChangeLog(changes)
-    
-  // }
-
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
@@ -95,34 +81,6 @@ const FilterModal = ({
               //changeLog={changeLog}
             />
           ))}
-        </div>
-        <div className=" flex justify-between w-full my-2xl gap-x-md items-center">
-          <div>
-          {/* {getCount()==1? `${getCount()} found post`: `${getCount()} found posts`} */}
-            {/* {getCount({changeLog})==1? `${getCount({changeLog})} found post`: `${getCount({changeLog})} found posts`} */}
-          </div>
-          {/* <div className="flex gap-md">
-            <ResetFilterButton
-              type={undefined}
-              onClick={() => {
-                //setChangeLog([]);
-                handleClearClick();
-              }}
-              title={"Clear all"}
-              isActive={true}
-            />
-            <Button
-              height="slim"
-              onClick={() => {
-                handleChanges(changeLog);
-                setChangeLog([]);
-                setIsOpen(false);
-              }}
-              
-            >
-              {"Apply"}
-            </Button>
-          </div> */}
         </div>
       </div>
     </div>
@@ -212,9 +170,3 @@ const FilterTypeRow = ({
 };
 
 export default FilterModal;
-
-  //   setChangeLog([...changeLog, change]);
-    //   // Add an event here to track the filter
-    // } else {
-    //   setChangeLog(changeLog.filter((c) => c.name != change.name));
-    // }
