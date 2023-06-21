@@ -210,15 +210,17 @@ const ArticleFeed = ({
 
       <div className="pt-2xl">
         {filterable && items.length > 0 && !combineArrays(filterBarState).length && (
-          <div className="responsive-container flex flex-col gap-4 pb-2xl">
-            <h3 className="font-sans type-preset-3 font-bold">Featured Insights</h3>
+          <div className="flex flex-col gap-4 pb-2xl">
+            <h3 className="responsive-container w-full font-sans type-preset-3 font-bold">Featured Insights</h3>
             <ContentGrid
               id={"id"}
               items={items}
               contentType={"posts"}
               layout="1 large 2 small cards row"
             />
-            <HorizontalLine variant="light" />
+            <div className="responsive-container h-full w-full">
+              <HorizontalLine variant="light" />
+            </div>
           </div>
         )}
 
