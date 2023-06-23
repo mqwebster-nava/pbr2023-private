@@ -49,7 +49,7 @@ const FilterBar = ({ categories, filterBarState, setFilterBarState, getCount, is
         </div>
       </div> */}
 
-      <div className="md:absolute top-[-2px] w-full">
+      <div className="md:absolute top-[-2px] w-full shadow-2xl">
         <FilterModal
           title={"Filters"}
           isOpen={isMenuOpen}
