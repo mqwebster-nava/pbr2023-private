@@ -57,11 +57,25 @@ const FilterModal = ({
     <div
       className={`${
         !isOpen && "hidden"
-      } bg-white pt-xl pb-3xl px-2xl min-h-[200px] border-2 border-sage-base`}
+      } bg-white overflow-clip pt-xl pb-3xl px-2xl min-h-[200px] border-2 border-sage-base`}
     >
-      <div className="flex flex-row gap-12 justify-between">
+      <div className="hidden md:flex flex-row gap-6">
         {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
           <FilterTypeCol
+            key={catName}
+            catName={catName}
+            catTags={categories[catName]}
+            getCount={getCount}
+            handleChange={handleChange}
+            currentlyActive={currentlyActive}
+            //changeLog={changeLog}
+          />
+        ))}
+      </div>
+
+      <div className="md:hidden flex-col gap-2 justify-between">
+        {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
+          <FilterTypeRow
             key={catName}
             catName={catName}
             catTags={categories[catName]}
@@ -107,7 +121,7 @@ const FilterTypeCol = ({
         return (
           <div
             key={`filter-${i}`}
-            className={`flex gap-2 group items-center p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+            className={`flex items-center gap-2 p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
           >
 
             <input
@@ -123,7 +137,7 @@ const FilterTypeCol = ({
 
             <label
               htmlFor={`${item}-checkbox`}
-              className="font-medium w-full"
+              className="font-medium"
             >
               {`${item}`}
             </label>
