@@ -74,7 +74,7 @@ const ArticleFeed = ({
           }}
           variant="dark"
         >
-          {`Filter Insights`}
+          {`Filter Library`}
 
           <svg
             width="22"
@@ -212,7 +212,7 @@ const ArticleFeed = ({
       <div className="pt-2xl">
         {filterable && items.length > 0 && !combineArrays(filterBarState).length && (
           <div className="flex flex-col gap-4 pb-2xl">
-            <h3 className="responsive-container w-full font-sans type-preset-3 font-bold">Featured Insights</h3>
+            <h2 className="responsive-container w-full font-sans type-preset-3 font-bold">Featured</h2>
             <ContentGrid
               id={"id"}
               items={items}
