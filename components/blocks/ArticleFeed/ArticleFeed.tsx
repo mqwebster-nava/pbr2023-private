@@ -72,6 +72,7 @@ const ArticleFeed = ({
             element_to_scroll_to.scrollIntoView();
             setIsMenuOpen((prevState) => !prevState);
           }}
+          variant="dark"
         >
           {`Filter Insights`}
 
