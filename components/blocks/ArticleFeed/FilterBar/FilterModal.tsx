@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { capitalize } from "utils/utils";
 import ResetFilterButton from "./ResetFilterButton";
 import SlideDown from "react-slidedown";
@@ -46,18 +46,35 @@ const FilterModal = ({
       targetRow.addEventListener('click', () => filterRowIsOpen(targetRow));
     })
 
-    return (
+    return () => {
       filterRows.forEach((targetRow) => {
         targetRow.removeEventListener('click', () => filterRowIsOpen(targetRow));
       })
-    )
+    }
   }, []);
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (isOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('click', checkIfClickedOutside)
+
+    return () => {
+      document.removeEventListener('click', checkIfClickedOutside)
+    }
+  }, [isOpen]);
 
   return (
     <div
       className={`${
         !isOpen && "hidden"
       } bg-white overflow-clip pt-xl pb-3xl px-2xl min-h-[200px] border-2 border-sage-900`}
+      ref={ref}
     >
       <div className="hidden md:flex flex-row gap-6">
         {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
