@@ -138,7 +138,7 @@ const FilterTypeCol = ({
         return (
           <div
             key={`filter-${i}`}
-            className={`flex items-center gap-2 p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+            className={`flex items-center gap-2 px-sm py-md type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
           >
 
             <input
@@ -149,12 +149,12 @@ const FilterTypeCol = ({
               id={`${item}-checkbox`}
               type="checkbox"
               value={item}
-              className={`filterCheckBox h-[14px] w-[14px] accent-sage-600`}
+              className={`filterCheckBox accent-sage-600`}
             />
 
             <label
               htmlFor={`${item}-checkbox`}
-              className="font-medium"
+              className="font-medium w-full"
             >
               {`${item}`}
             </label>
