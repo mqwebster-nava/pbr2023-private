@@ -146,10 +146,10 @@ const FilterTypeCol = ({
                 handleChange({type:catName,checkboxElement: e.target, name:item});
               }}
               disabled={resultNum == 0}
-              id={`${item}-checkbox`}
+              id={`${item}-checkbox--col`}
               type="checkbox"
               value={item}
-              className={`filterCheckBox accent-sage-600`}
+              className={`filterCheckBox h-[14px] w-[14px] accent-sage-600`}
             />
 
             <label
@@ -227,7 +227,7 @@ const FilterTypeRow = ({
                   handleChange({type:catName,checkboxElement: e.target, name:item});
                 }}
                 disabled={resultNum == 0}
-                id={`${item}-checkbox`}
+                id={`${item}-checkbox--row`}
                 type="checkbox"
                 value={item}
                 className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
