@@ -74,7 +74,7 @@ const ArticleFeed = ({
           }}
           variant="dark"
         >
-          {`Filter Library`}
+          {`Filter`}
 
           <svg
             width="22"
