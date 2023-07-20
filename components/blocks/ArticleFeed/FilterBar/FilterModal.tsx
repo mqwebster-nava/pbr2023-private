@@ -153,7 +153,7 @@ const FilterTypeCol = ({
             />
 
             <label
-              htmlFor={`${item}-checkbox`}
+              htmlFor={`${item}-checkbox--col`}
               className="font-medium w-full"
             >
               {`${item}`}
@@ -234,7 +234,7 @@ const FilterTypeRow = ({
               />
 
               <label
-                htmlFor={`${item}-checkbox`}
+                htmlFor={`${item}-checkbox--row`}
                 className="font-medium w-full"
               >
                 {`${item}`}
