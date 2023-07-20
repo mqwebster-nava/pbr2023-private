@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import HorizontalLine from "components/atom/HorizontalLine/HorizontalLine";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { capitalize } from "utils/utils";
 import ResetFilterButton from "./ResetFilterButton";
 import SlideDown from "react-slidedown";
@@ -10,18 +10,6 @@ export interface FILTER_CHANGE {
   type: string;
   checkboxElement:any;
   name: string;
-}
-
-
-// This assumes length greater than 3
-function splitIntoColumns(arr, size) {
-  const len = arr.length;
-  var myArray = [
-    arr.slice(0, Math.ceil(len / 3)),
-    arr.slice(Math.ceil(len / 3), Math.ceil((2 * len) / 3)),
-    arr.slice(Math.ceil((2 * len) / 3), len),
-  ];
-  return myArray;
 }
 
 const FilterModal = ({
@@ -34,20 +22,6 @@ const FilterModal = ({
   categories,
   currentlyActive = [],
 }) => {
-  
-
-
-  //const [changeLog, setChangeLog] = useState<Array<FILTER_CHANGE> | undefined>([]);
-
-  // const handleChange = (type, checkboxElement, name ) => {
-  //   const change:FILTER_CHANGE = {type, checkboxElement, name};
-  //   let changes = [...changeLog];
-  //   if (!changeLog.filter((c) => c.name == change.name).length) 
-  //     changes.push(change);
-  //   setChangeLog(changes)
-    
-  // }
-
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
@@ -58,64 +32,135 @@ const FilterModal = ({
     );
 
   }, [isOpen, currentlyActive]);
+
+  useEffect(() => {
+    const filterRows = document.querySelectorAll("details");
+
+    const filterRowIsOpen = (target: HTMLDetailsElement) => {
+      filterRows.forEach((currentRow: HTMLDetailsElement) => {
+        if (currentRow != target) currentRow.removeAttribute("open");
+      })
+    }
+
+    filterRows.forEach((targetRow) => {
+      targetRow.addEventListener('click', () => filterRowIsOpen(targetRow));
+    })
+
+    return () => {
+      filterRows.forEach((targetRow) => {
+        targetRow.removeEventListener('click', () => filterRowIsOpen(targetRow));
+      })
+    }
+  }, []);
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      if (isOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('click', checkIfClickedOutside)
+
+    return () => {
+      document.removeEventListener('click', checkIfClickedOutside)
+    }
+  }, [isOpen]);
+
   return (
     <div
       className={`${
         !isOpen && "hidden"
-      }  bg-white  pt-lg min-h-[200px] pb-xl `}
+      } bg-white overflow-clip pt-xl pb-3xl px-2xl min-h-[200px] border-2 border-sage-900`}
+      ref={ref}
     >
-      <div className=" flex flex-col ">
-        <div className="flex justify-between ">
-          <div>
-            <h3 className="type-preset-5 font-bold">Filter by</h3>
-          </div>
-          <button onClick={() => {
-            //setChangeLog([]);
-            setIsOpen(false)
-            }}>Close</button>
-        </div>
-        <div className="overflow-y-scroll grow ">
-          {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
-            <FilterTypeRow
+      <div className="hidden md:flex flex-row gap-6">
+        {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
+          <FilterTypeCol
             key={catName}
-              catName={catName}
-              catTags={categories[catName]}
-              getCount={getCount}
-              handleChange={handleChange}
-              currentlyActive={currentlyActive}
-              //changeLog={changeLog}
-            />
-          ))}
-        </div>
-        <div className=" flex justify-between w-full my-2xl gap-x-md items-center">
-          <div>
-          {/* {getCount()==1? `${getCount()} found post`: `${getCount()} found posts`} */}
-            {/* {getCount({changeLog})==1? `${getCount({changeLog})} found post`: `${getCount({changeLog})} found posts`} */}
-          </div>
-          {/* <div className="flex gap-md">
-            <ResetFilterButton
-              type={undefined}
-              onClick={() => {
-                //setChangeLog([]);
-                handleClearClick();
-              }}
-              title={"Clear all"}
-              isActive={true}
-            />
-            <Button
-              height="slim"
-              onClick={() => {
-                handleChanges(changeLog);
-                setChangeLog([]);
-                setIsOpen(false);
-              }}
-              
-            >
-              {"Apply"}
-            </Button>
-          </div> */}
-        </div>
+            catName={catName}
+            catTags={categories[catName]}
+            getCount={getCount}
+            handleChange={handleChange}
+            currentlyActive={currentlyActive}
+            //changeLog={changeLog}
+          />
+        ))}
       </div>
+
+      <div className="md:hidden flex-col gap-2 justify-between">
+        {Object.keys(categories).sort((a,b)=>a.localeCompare(b)).map((catName) => (
+          <FilterTypeRow
+            key={catName}
+            catName={catName}
+            catTags={categories[catName]}
+            getCount={getCount}
+            handleChange={handleChange}
+            currentlyActive={currentlyActive}
+            //changeLog={changeLog}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const FilterTypeCol = ({
+  catName,
+  catTags,
+  getCount,
+  handleChange,
+  currentlyActive
+  //changeLog
+}) => {
+  return (
+    <div
+      className="w-full"
+      aria-labelledby="dropdownCheckboxButton"
+    >
+      <p className="pb-md font-bold type-preset-6">{capitalize(catName)}</p>
+
+      {catTags.map((item, i) => {
+        const analyticsLabel = "filterTag"
+        let isActive = currentlyActive.includes(item)
+        let resultNum = getCount({type:catName, item});
+        const styles = classNames({
+          "bg-sage-50 text-gray-900": isActive,
+          "bg-white text-gray-600 hover:bg-white ":
+            !isActive && resultNum != 0,
+          "bg-gray-100 text-gray-400 ": resultNum == 0,
+        });
+
+        if (!resultNum) return;
+
+        return (
+          <div
+            key={`filter-${i}`}
+            className={`flex items-center gap-2 px-sm py-md type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+          >
+
+            <input
+              onChange={(e) => {
+                handleChange({type:catName,checkboxElement: e.target, name:item});
+              }}
+              disabled={resultNum == 0}
+              id={`${item}-checkbox--col`}
+              type="checkbox"
+              value={item}
+              className={`filterCheckBox h-[14px] w-[14px] accent-sage-600`}
+            />
+
+            <label
+              htmlFor={`${item}-checkbox--col`}
+              className="font-medium w-full"
+            >
+              {`${item}`}
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -155,47 +200,45 @@ const FilterTypeRow = ({
       </summary>
 
       <div
-        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg divide-y-[1px] md:divide-y-0 pb-2xl"
+        className="pt-sm md:grid md:grid-cols-3 w-full gap-lg pb-2xl"
         aria-labelledby="dropdownCheckboxButton"
       >
-        {splitIntoColumns(catTags, 3).map((column, j) => {
-          return (
-            <div className="flex flex-col divide-y-[1px]" key={`filter-col-${j}`}>
-              {column.map((item, i) => {
-               const analyticsLabel = "filterTag"
-               let isActive = currentlyActive.includes(item)
-                let resultNum = getCount({type:catName, item});
-                const styles = classNames({
-                  "bg-sage-50 text-gray-900": isActive,
-                  "bg-white text-gray-600 hover:bg-white ":
-                    !isActive && resultNum != 0,
-                  "bg-gray-100 text-gray-400 ": resultNum == 0,
-                });
-                return (
-                  <div
-                    key={`filter-${i}-${j}`}
-                    className={`flex group items-center p-sm type-preset-6 ${styles} ${analyticsLabel}`}
-                  >
-                    <label
-                      htmlFor={`${item}-checkbox`}
-                      className="font-medium w-full "
-                    >
-                      {`${item} (${resultNum})`}
-                    </label>
+        {catTags.map((item, i) => {
+          const analyticsLabel = "filterTag"
+          let isActive = currentlyActive.includes(item)
+          let resultNum = getCount({type:catName, item});
+          const styles = classNames({
+            "bg-sage-50 text-gray-900": isActive,
+            "bg-white text-gray-600 hover:bg-white ":
+              !isActive && resultNum != 0,
+            "bg-gray-100 text-gray-400 ": resultNum == 0,
+          });
 
-                    <input
-                      onChange={(e) => {
-                        handleChange({type:catName,checkboxElement: e.target, name:item});
-                      }}
-                      disabled={resultNum == 0}
-                      id={`${item}-checkbox`}
-                      type="checkbox"
-                      value={item}
-                      className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
-                    />
-                  </div>
-                );
-              })}
+          if (!resultNum) return;
+
+          return (
+            <div
+              key={`filter-${i}`}
+              className={`flex gap-2 group items-center p-sm type-preset-6 border-b-[1px] border-gray-200 ${styles} ${analyticsLabel}`}
+            >
+
+              <input
+                onChange={(e) => {
+                  handleChange({type:catName,checkboxElement: e.target, name:item});
+                }}
+                disabled={resultNum == 0}
+                id={`${item}-checkbox--row`}
+                type="checkbox"
+                value={item}
+                className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
+              />
+
+              <label
+                htmlFor={`${item}-checkbox--row`}
+                className="font-medium w-full"
+              >
+                {`${item}`}
+              </label>
             </div>
           );
         })}
@@ -205,9 +248,3 @@ const FilterTypeRow = ({
 };
 
 export default FilterModal;
-
-  //   setChangeLog([...changeLog, change]);
-    //   // Add an event here to track the filter
-    // } else {
-    //   setChangeLog(changeLog.filter((c) => c.name != change.name));
-    // }

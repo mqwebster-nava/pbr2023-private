@@ -22,6 +22,7 @@ interface ArticleFeedInterface {
   layout?: ListLayout;
   filterable?: boolean;
   tags?: Array<ContentTagInterface>;
+  posts: any;
 }
 
 const ArticleFeed = ({
@@ -35,6 +36,7 @@ const ArticleFeed = ({
   layout,
   filterable = false,
   tags = [],
+  posts,
 }: ArticleFeedInterface) => {
   layout ??= "1 large 2 small cards row";
   let categories = {
@@ -45,7 +47,7 @@ const ArticleFeed = ({
       "Working at Nava",
       "Events",
       "Toolkit",
-      "Public Benefit Report"
+      "Public Benefit Report",
     ],
   };
   tags.forEach((t) => {
@@ -57,69 +59,109 @@ const ArticleFeed = ({
   });
 
   const [displayedPosts, filterBarState, setFilterBarState, getCount] =
-    useFilteredPosts(items, categories, filterable);
+    useFilteredPosts(posts, categories, filterable);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const FilterButtons = () => {
     return (
-      <div className="flex gap-x-md">
+      <div className="flex">
+        <Button
+          onClick={() => {
+            var element_to_scroll_to = document.getElementById(id);
+            element_to_scroll_to.scrollIntoView();
+            setIsMenuOpen((prevState) => !prevState);
+          }}
+          variant="dark"
+        >
+          {`Filter Library`}
+
+          <svg
+            width="22"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="ml-lg"
+          >
+            <g clipPath="url(#clip0_2001_174)">
+              <path
+                d="M3.42857 5.99997C4.84873 5.99997 6 4.84871 6 3.42855C6 2.00838 4.84873 0.857117 3.42857 0.857117C2.00841 0.857117 0.857143 2.00838 0.857143 3.42855C0.857143 4.84871 2.00841 5.99997 3.42857 5.99997Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6 3.42853H23.1429"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M12 14.5714C13.4202 14.5714 14.5714 13.4201 14.5714 12C14.5714 10.5798 13.4202 9.42853 12 9.42853C10.5798 9.42853 9.42857 10.5798 9.42857 12C9.42857 13.4201 10.5798 14.5714 12 14.5714Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M0.857143 12H9.42857"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M14.5714 12H23.1429"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M20.5714 23.1429C21.9916 23.1429 23.1429 21.9916 23.1429 20.5714C23.1429 19.1513 21.9916 18 20.5714 18C19.1513 18 18 19.1513 18 20.5714C18 21.9916 19.1513 23.1429 20.5714 23.1429Z"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M18 20.5714H0.857143"
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_2001_174">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </Button>
+
         {combineArrays(filterBarState).length > 0 && (
           <ResetFilterButton
             type={"tags"}
             onClick={() => {
               setFilterBarState(clearArrays(filterBarState));
             }}
-            title={"Clear all"}
+            title={`Clear ${displayedPosts.length} insight${
+              displayedPosts.length > 1 ? "s" : ""
+            }`}
             isActive={true}
           />
         )}
-        <Button
-        height="slim"
-          onClick={() => {
-            var element_to_scroll_to = document.getElementById(id);
-            element_to_scroll_to.scrollIntoView();
-           setIsMenuOpen((prevState)=> !prevState);
-            
-          }}
-          >
-           {`Filters ${
-            combineArrays(filterBarState).length > 0
-              ? "(" + combineArrays(filterBarState).length + ")"
-              : ""
-          }`}
-
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="22"
-  height="20"
-  viewBox="0 0 26 24"
-  fill="none"
-  className="ml-sm"
->
-  <path
-    d="M10.1747 11.952L1 1H25.2096L15.8908 11.952V20.1179L10.1747 23V11.952Z"
-    stroke="white"
-    strokeLinejoin="round"
-  />
-</svg>
-          </Button>
-       
       </div>
-    )
-  }
-
-
+    );
+  };
 
   return (
     <section key={id} id={id} className="pt-xl pb-4xl">
       <div className="responsive-container" key={id}>
-        {title && <HorizontalLine variant="light" />}
+        {title && !filterable && <HorizontalLine variant="light" />}
         <div className={`w-full pt-md flex justify-between items-center `}>
-          <div className="md:w-2/3 ">
+          {!filterable && <div className="md:w-2/3 ">
             {title && (
-              <h2 className="font-sans type-preset-3  font-bold">{title} </h2>
+              <h2 className="font-sans type-preset-3 font-bold">{title} </h2>
             )}
+
             {body && (
               <p
                 className={`font-sans pt-lg type-preset-5 text-gray-700 mb-sm`}
@@ -127,7 +169,8 @@ const ArticleFeed = ({
                 {body}
               </p>
             )}
-          </div>
+          </div>}
+
           <div className="hidden md:inline-block">
             {buttonPath != null ? (
               <LinkText
@@ -138,38 +181,58 @@ const ArticleFeed = ({
               >
                 {buttonText ?? "See more"}
               </LinkText>
-            ) : filterable ? <FilterButtons/> : null}
+            ) : filterable ? (
+              <FilterButtons />
+            ) : null}
           </div>
         </div>
+
         {filterable && (
           <>
-            <div className="md:hidden  pt-lg ">
-            <FilterButtons/>
-          </div>
-          <FilterBar
-            categories={categories}
-            filterBarState={filterBarState}
-            setFilterBarState={setFilterBarState}
-            getCount={getCount}
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={(_isOpen)=>{
-              var element_to_scroll_to = document.getElementById(id);
-              element_to_scroll_to.scrollIntoView();
-              setIsMenuOpen(_isOpen)
-            }}
-          />
+            <div className="md:hidden pt-lg">
+              <FilterButtons />
+            </div>
+
+            <FilterBar
+              categories={categories}
+              filterBarState={filterBarState}
+              setFilterBarState={setFilterBarState}
+              getCount={getCount}
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={(_isOpen) => {
+                var element_to_scroll_to = document.getElementById(id);
+                element_to_scroll_to.scrollIntoView();
+                setIsMenuOpen(_isOpen);
+              }}
+            />
           </>
         )}
       </div>
-      <div className="pt-xl">
-      
+
+      <div className="pt-2xl">
+        {filterable && items.length > 0 && !combineArrays(filterBarState).length && (
+          <div className="flex flex-col gap-4 pb-2xl">
+            <h2 className="responsive-container w-full font-sans type-preset-3 font-bold">Featured</h2>
+            <ContentGrid
+              id={"id"}
+              items={items}
+              contentType={"posts"}
+              layout="1 large 2 small cards row"
+            />
+            <div className="responsive-container h-full w-full">
+              <HorizontalLine variant="light" />
+            </div>
+          </div>
+        )}
+
         <ContentGrid
           id={"id"}
-          items={displayedPosts}
+          items={filterable ? displayedPosts : items}
           contentType={"posts"}
           layout={layout}
         />
-        <div className="responsive-container md:hidden  py-lg flex justify-end">
+
+        <div className="responsive-container md:hidden py-lg flex justify-end">
           {buttonPath != null && (
             <LinkText
               href={buttonPath}
@@ -179,62 +242,10 @@ const ArticleFeed = ({
             >
               {buttonText ?? "See more"}
             </LinkText>
-          ) }
+          )}
         </div>
       </div>
     </section>
   );
 };
 export default ArticleFeed;
-
-// const handleClear = (type) => {
-//   setFilterBarState((previousState) => {
-//     let v = { ...previousState };
-//     v[type] = [];
-//     return v;
-//   });
-// };
-
-//   filterable== true ?    <div className="flex gap-x-md">
-//     { filterBarState.tags.length > 0 &&
-//  <ResetFilterButton type={"tags"} onClick={() => handleClear("tags")} title={"Clear all"} isActive={true}/>
-// }
-// <FilterButton
-//   isOpen={isTagsOpen}
-//   setIsOpen={(open) => {
-//     setIsTagsOpen(open);
-//     //setIsContentTypeOpen(false)
-//   }}
-//   title={`Filters ${
-//     filterBarState.tags.length > 0
-//       ? "(" + filterBarState.tags.length + ")"
-//       : ""
-//   }`}
-// />
-
-// </div>: null
-
-// if (filterBarState.tags.length > 0) {
-//   _items = _items.filter((it) => {
-//     return (
-//       it.contentTags &&
-//       it.contentTags.some((tag) => filterBarState.tags.includes(tag))
-//     );
-//   });
-// }
-
-//  if(filterBarState.sector.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.sector.includes(tag))
-//   })
-//  }
-//  if(filterBarState.capability.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentTags && it.contentTags.some((tag)=>filterBarState.capability.includes(tag))
-//   })
-//  }
-//  if(filterBarState.contentType.length>0){
-//   _items = _items.filter((it)=> {
-//     return it.contentType && filterBarState.contentType.includes(it.contentType)
-//   })
-//  }
