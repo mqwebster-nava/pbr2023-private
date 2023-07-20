@@ -22,11 +22,12 @@ const FilterModal = ({
   categories,
   currentlyActive = [],
 }) => {
+
+  //List of checked tag checkbox inputs
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
         const itemName = el.id.replace("-checkbox", "");
-        console.log(itemName)
         // @ts-ignore // would ned to change to a button
         el.checked = currentlyActive.includes(itemName);
       }
@@ -34,6 +35,7 @@ const FilterModal = ({
 
   }, [isOpen, currentlyActive]);
 
+  //Close open row when new row selected in FilterTypeRow view
   useEffect(() => {
     const filterRows = document.querySelectorAll("details");
 
@@ -54,8 +56,8 @@ const FilterModal = ({
     }
   }, []);
 
+  //Close Filter Modal when outside element clicked
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const checkIfClickedOutside = e => {
       if (isOpen && ref.current && !ref.current.contains(e.target)) {
