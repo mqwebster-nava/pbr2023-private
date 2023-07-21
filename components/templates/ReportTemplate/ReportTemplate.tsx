@@ -40,7 +40,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
 
   let reportSections = getSectionsInfo(contentBlocks);
-  let reportYear = slug.includes("2021")?"2021": slug.includes("2020")?"2020":slug.includes("2019")?"2019":slug.includes("2018")?"2018":null;
+  let reportYear = slug.includes("2022")?"2022": slug.includes("2021")?"2021": slug.includes("2020")?"2020":slug.includes("2019")?"2019":slug.includes("2018")?"2018":null;
 
 
   let links2020 = [
@@ -55,6 +55,44 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
 
     const componentMap = {
+      "2022":{
+       ReportIllustrationOverlaySubsection: (entry) => (
+        <div  key={`${entry.anchor}-${index}`}>
+          <SectionIntro section={entry} key={entry.anchor} i={entry.themeNum}   />
+          {entry.storiesCollection.items.filter((story)=>story.hideStory!==true).map((story, j) => {
+          // If another story next
+          const shownStories = entry.storiesCollection.items.filter((story)=>story.hideStory!==true)
+
+          let nextSection = shownStories.length>j+1 ? `${entry.anchor}--${shownStories[j+1].anchor}` : null;
+          let nextSectionTitle =  shownStories.length>j+1 ? shownStories[j+1].title : null;
+          let nextSectionType = "story";
+          // if no other story left but 
+          if(!nextSection && contentBlocks.length > index && "anchor" in contentBlocks[index+1]) {
+            nextSection = contentBlocks[index+1].anchor;
+            nextSectionTitle = contentBlocks[index+1].title;
+            nextSectionType="section"
+          }
+           
+          return (
+            <StorySection
+              key={story.anchor}
+              story={story}
+              colorTheme={entry.colorTheme}
+              sectionAnchor={entry.anchor}
+              nextSection={nextSection}
+              nextSectionTitle={nextSectionTitle}
+              nextSectionType={nextSectionType}
+            />
+          )})}
+        </div>
+      ),
+      ReportSectionCustom: (entry) => 
+      (entry.type=='Table of Contents') ?<TableOfContentsSection key={index} {...entry} contentBlocks={contentBlocks} /> 
+      :(entry.type=='Introduction 2021') ? <ReportIntroduction2021  key={index} {...entry} signatures={entry.signaturesCollection?.items}/>
+      :(entry.type=='Conclusion 2021') ? <ReportConclusion2021 key={index} {...entry}/>
+      
+      :null //contentBlocks={contentBlocks}
+    },
       "2021":{
        ReportIllustrationOverlaySubsection: (entry) => (
         <div  key={`${entry.anchor}-${index}`}>
@@ -114,16 +152,18 @@ const ReportTemplate: React.FC<PageInterface> = ({
     );
   };
 
+  const reportSlug = slug=="/public-benefit-reports/2021" ? true : slug=="/public-benefit-reports/2022" ? true : false;
   return (
     <main id="main">
-   { slug=="/public-benefit-reports/2021" && <ReportNavbar
+   { reportSlug && <ReportNavbar
         contentBlocks={contentBlocks}
         reportSections={reportSections}
-      />}
+      /> }
        {(reportYear==="2018"? <ReportHero2018 {...pageHeader}/>
          : reportYear==="2019" ? <ReportHero2019  {...pageHeader}/>
          : reportYear==="2020" ?  <ReportHero2020  {...pageHeader}/>
          : reportYear==="2021" ? <ReportHero2021  {...pageHeader}/>
+         : reportYear==="2022" ? <ReportHero2021  {...pageHeader}/>
          : null )}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
