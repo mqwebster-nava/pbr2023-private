@@ -152,10 +152,9 @@ const ReportTemplate: React.FC<PageInterface> = ({
     );
   };
 
-  const reportSlug = slug=="/public-benefit-reports/2021" ? true : slug=="/public-benefit-reports/2022" ? true : false;
   return (
     <main id="main">
-   { reportSlug && <ReportNavbar
+   { ((slug=="/public-benefit-reports/2021") || (slug=="/public-benefit-reports/2022")) && <ReportNavbar
         contentBlocks={contentBlocks}
         reportSections={reportSections}
       /> }
