@@ -16,6 +16,9 @@ const ReportNavbar2022 = dynamic(
 const ReportHero2022 = dynamic(
   () => import("components/blocks_reports/report_2022/ReportHero2022")
 );
+const SectionIntro2022 = dynamic(
+  () => import("components/blocks_reports/report_2022/SectionIntro")
+);
 
 // 2021
 const ReportNavbar2021 = dynamic(
@@ -28,7 +31,7 @@ const ReportHero2021 = dynamic(
 const ReportIntroduction2021 = dynamic(
   () => import("components/blocks_reports/report_2021/ReportIntroduction2021")
 );
-const SectionIntro = dynamic(
+const SectionIntro2021 = dynamic(
   () => import("components/blocks_reports/report_2021/SectionIntro")
 );
 const StorySection = dynamic(
@@ -114,7 +117,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       "2022": {
         ReportIllustrationOverlaySubsection: (entry) => (
           <div key={`${entry.anchor}-${index}`}>
-            <SectionIntro
+            <SectionIntro2022
               section={entry}
               key={entry.anchor}
               i={entry.themeNum}
@@ -181,7 +184,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       "2021": {
         ReportIllustrationOverlaySubsection: (entry) => (
           <div key={`${entry.anchor}-${index}`}>
-            <SectionIntro
+            <SectionIntro2021
               section={entry}
               key={entry.anchor}
               i={entry.themeNum}
