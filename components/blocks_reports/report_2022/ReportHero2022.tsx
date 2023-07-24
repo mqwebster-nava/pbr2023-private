@@ -5,7 +5,7 @@ const ReportHero2022 = ({}: PageHeaderInterface) => {
 
   return (
     <header
-      className={`w-full bg-sage-50`}
+      className={`w-full`}
       id="reportHeader"
     >
       <div className="responsive-container pt-8">
