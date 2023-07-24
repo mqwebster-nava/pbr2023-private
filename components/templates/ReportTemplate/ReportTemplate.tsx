@@ -13,6 +13,9 @@ const ReportNavbar2022 = dynamic(
   () =>
     import("components/blocks_reports/report_2022/ReportNavbar/ReportNavbar")
 );
+const ReportHero2022 = dynamic(
+  () => import("components/blocks_reports/report_2022/ReportHero2022")
+);
 
 // 2021
 const ReportNavbar2021 = dynamic(
@@ -313,7 +316,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2021 {...pageHeader} />
+        <ReportHero2022 {...pageHeader} />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
