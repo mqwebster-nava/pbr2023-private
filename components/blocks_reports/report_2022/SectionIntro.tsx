@@ -9,11 +9,19 @@ const SectionIntro = ({ section, i }) => {
   const textColor = "white";
 
   return (
-    <section
+    <>
+      <section
       id={`${section.anchor}`}
-      className="h-auto md:h-[140vh] scroll-mt-[70px]"
+      className="h-auto md:h-[140vh] scroll-mt-[70px] border-t-2 border-gray-200"
       tabIndex={0}
-    ></section>
+      >
+      </section>
+
+      {section.title}
+      <br />
+      <br />
+      <div>{Object.keys(section).map(function(k){return k}).join(", ")}</div>
+    </>
   );
 };
 
