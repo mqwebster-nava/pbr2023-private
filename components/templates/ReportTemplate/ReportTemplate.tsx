@@ -122,46 +122,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
               key={entry.anchor}
               i={entry.themeNum}
             />
-            {entry.storiesCollection.items
-              .filter((story) => story.hideStory !== true)
-              .map((story, j) => {
-                // If another story next
-                const shownStories = entry.storiesCollection.items.filter(
-                  (story) => story.hideStory !== true
-                );
-
-                let nextSection =
-                  shownStories.length > j + 1
-                    ? `${entry.anchor}--${shownStories[j + 1].anchor}`
-                    : null;
-                let nextSectionTitle =
-                  shownStories.length > j + 1
-                    ? shownStories[j + 1].title
-                    : null;
-                let nextSectionType = "story";
-                // if no other story left but
-                if (
-                  !nextSection &&
-                  contentBlocks.length > index &&
-                  "anchor" in contentBlocks[index + 1]
-                ) {
-                  nextSection = contentBlocks[index + 1].anchor;
-                  nextSectionTitle = contentBlocks[index + 1].title;
-                  nextSectionType = "section";
-                }
-
-                return (
-                  <StorySection
-                    key={story.anchor}
-                    story={story}
-                    colorTheme={entry.colorTheme}
-                    sectionAnchor={entry.anchor}
-                    nextSection={nextSection}
-                    nextSectionTitle={nextSectionTitle}
-                    nextSectionType={nextSectionType}
-                  />
-                );
-              })}
           </div>
         ),
         ReportSectionCustom: (entry) =>
