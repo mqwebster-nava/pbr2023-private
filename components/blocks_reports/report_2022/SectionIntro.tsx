@@ -9,19 +9,15 @@ const SectionIntro = ({ section, i }) => {
   const textColor = "white";
 
   return (
-    <>
-      <section
-      id={`${section.anchor}`}
-      className="h-auto md:h-[140vh] scroll-mt-[70px] border-t-2 border-gray-200"
-      tabIndex={0}
-      >
-      </section>
-
-      {section.title}
-      <br />
-      <br />
-      <div>{Object.keys(section).map(function(k){return k}).join(", ")}</div>
-    </>
+    <section
+    id={`${section.anchor}`}
+    className="pb-8 border-t-2 border-gray-200"
+    tabIndex={0}
+    >
+      <div className="responsive-container">
+        <div className=" w-[1048px]"><span className="text-7xl font-sans font-black spacing-y-sm text-gray-300">{section.title}</span></div>
+      </div>
+    </section>
   );
 };
 
