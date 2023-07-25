@@ -8,22 +8,26 @@ const SectionIntro = ({ section, i }) => {
       ? `bg-${colorTheme}-dark`
       : `bg-${colorTheme}-900`;
 
-    const hoverStyles = classNames({
-      "hover:text-gold-900": section.colorTheme == "gold",
-      "hover:text-plum-500": section.colorTheme == "plum",
-      "hover:text-sage-600": section.colorTheme == "sage",
-      "hover:text-purple-600": section.colorTheme == "purple",
-      "hover:text-navy-600": section.colorTheme == "navy",
-    });
+  const hoverStyles = classNames({
+    "hover:text-gold-900": section.colorTheme == "gold",
+    "hover:text-plum-500": section.colorTheme == "plum",
+    "hover:text-sage-600": section.colorTheme == "sage",
+    "hover:text-purple-600": section.colorTheme == "purple",
+    "hover:text-navy-600": section.colorTheme == "navy",
+  });
 
   return (
     <section
-    id={`${section.anchor}`}
-    className="pb-8 border-t-2 border-gray-200"
-    tabIndex={0}
+      id={`${section.anchor}`}
+      className="pb-8 border-t-2 border-gray-200"
+      tabIndex={0}
     >
       <div className="responsive-container">
-        <div className={` w-[1048px] text-gray-300 ${hoverStyles}`}><span className="text-7xl font-sans font-black spacing-y-sm">{section.title}</span></div>
+        <div className={` w-[1048px] text-gray-300 ${hoverStyles}`}>
+          <span className="text-7xl font-sans font-black spacing-y-sm">
+            {section.title}
+          </span>
+        </div>
       </div>
     </section>
   );
