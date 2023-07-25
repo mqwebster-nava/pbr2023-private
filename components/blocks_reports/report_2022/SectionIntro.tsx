@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 const SectionIntro = ({ section, i }) => {
-  const colorTheme = section.colorTheme ?? "purple";
+  const colorTheme = section.colorTheme;
   const bg =
     section.colorTheme === "gold"
       ? `bg-${colorTheme}-dark`
       : `bg-${colorTheme}-900`;
-  const textColor = "white";
+
+    const hoverStyles = classNames({
+      "hover:text-gold-900": section.colorTheme == "gold",
+      "hover:text-plum-500": section.colorTheme == "plum",
+      "hover:text-sage-600": section.colorTheme == "sage",
+      "hover:text-purple-600": section.colorTheme == "purple",
+      "hover:text-navy-600": section.colorTheme == "navy",
+    });
 
   return (
     <section
@@ -15,7 +23,7 @@ const SectionIntro = ({ section, i }) => {
     tabIndex={0}
     >
       <div className="responsive-container">
-        <div className=" w-[1048px]"><span className="text-7xl font-sans font-black spacing-y-sm text-gray-300">{section.title}</span></div>
+        <div className={` w-[1048px] text-gray-300 ${hoverStyles}`}><span className="text-7xl font-sans font-black spacing-y-sm">{section.title}</span></div>
       </div>
     </section>
   );
