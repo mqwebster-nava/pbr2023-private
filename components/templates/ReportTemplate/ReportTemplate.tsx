@@ -291,6 +291,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       {slug == "/public-benefit-reports/2022" && (
         <ReportFooter2022
           reportSections={reportSections}
+          contentBlocks={contentBlocks}
         />
       )}
     </main>
