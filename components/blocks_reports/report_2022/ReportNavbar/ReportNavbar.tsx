@@ -157,8 +157,8 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
           );
         })}
       </div> */}
-      <div className="absolute w-full h-full">
-        <div className="bg-white">
+      <div className="absolute w-full">
+        <div className="h-[100vh] bg-white">
           <SlideDown>
             {isShowingMenu ? (
               <ReportMenu

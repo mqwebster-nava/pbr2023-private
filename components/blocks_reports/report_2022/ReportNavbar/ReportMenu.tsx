@@ -9,7 +9,7 @@ TODO navbar spacing
 
 const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
   return (
-    <section className={`w-full h-[100vh] `}>
+    <section className={`w-full`}>
       <div className="responsive-container w-full flex flex-row gap-8 pt-12">
         {contentBlocks
           .filter(
