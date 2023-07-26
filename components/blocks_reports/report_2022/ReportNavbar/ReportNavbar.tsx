@@ -158,15 +158,17 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
         })}
       </div> */}
       <div className="absolute w-full h-full">
-        <SlideDown>
-          {isShowingMenu ? (
-            <ReportMenu
-              activeSection={activeSection}
-              contentBlocks={contentBlocks}
-              onClick={() => setIsShowingMenu(false)}
-            />
-          ) : null}
-        </SlideDown>
+        <div className="bg-white">
+          <SlideDown>
+            {isShowingMenu ? (
+              <ReportMenu
+                activeSection={activeSection}
+                contentBlocks={contentBlocks}
+                onClick={() => setIsShowingMenu(false)}
+              />
+            ) : null}
+          </SlideDown>
+        </div>
       </div>
     </div>
   );
