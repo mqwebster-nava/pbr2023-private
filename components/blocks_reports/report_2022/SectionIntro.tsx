@@ -23,12 +23,12 @@ const SectionIntro = ({ section, i }) => {
       tabIndex={0}
     >
       <div className="responsive-container">
-        <div className={`flex flex-row justify-between w-full text-gray-300 ${hoverStyles}`}>
+        <div className={`flex flex-row justify-between w-full text-gray-300 ${hoverStyles} hover:cursor-pointer group`}>
           <span className="text-7xl font-sans font-black spacing-y-sm">
             {section.title}
           </span>
 
-          <span className="min-w-max min-h-full font-serif text-lg pt-11">See all stories</span>
+          <span className={`opacity-0 group-hover:opacity-100 min-w-max min-h-full font-serif text-lg pt-11`}>See all stories</span>
         </div>
       </div>
     </section>
