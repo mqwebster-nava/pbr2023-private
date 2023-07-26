@@ -1,7 +1,7 @@
 // TODO Paddign on menu should match TOC
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
-import { LinkListItem } from "components/blocks_reports/report_2021/Atoms/LinkListItem";
+import { LinkListItem } from "components/blocks_reports/report_2022/Atoms/LinkListItem";
 import { dividerColor } from "components/blocks_reports/report_2021/_utils";
 /*
 TODO navbar spacing
