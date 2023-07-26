@@ -13,6 +13,10 @@ const ReportNavbar2022 = dynamic(
   () =>
     import("components/blocks_reports/report_2022/ReportNavbar/ReportNavbar")
 );
+const ReportFooter2022 = dynamic(
+  () =>
+    import("components/blocks_reports/report_2022/ReportFooter2022")
+);
 const ReportHero2022 = dynamic(
   () => import("components/blocks_reports/report_2022/ReportHero2022")
 );
@@ -284,6 +288,11 @@ const ReportTemplate: React.FC<PageInterface> = ({
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
       </div>
+      {slug == "/public-benefit-reports/2022" && (
+        <ReportFooter2022
+          reportSections={reportSections}
+        />
+      )}
     </main>
   );
 };
