@@ -96,7 +96,7 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
       }`}
     >
       <div className="responsive-container flex flex-wrap items-center h-full ">
-        <div className="w-1/3">
+        <div className="w-[22%]">
           <Logo isMobile={true} />
         </div>
         <a
