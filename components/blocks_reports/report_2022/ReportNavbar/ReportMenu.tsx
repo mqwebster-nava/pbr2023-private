@@ -1,4 +1,4 @@
-// TODO Paddign on menu should match TOC
+import classNames from "classnames";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
 import { LinkListItem } from "components/blocks_reports/report_2022/Atoms/LinkListItem";
@@ -18,7 +18,14 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
           .map((section, i) => {
             const color = section.colorTheme ?? "purple";
             const bg = `bg-${color}-50`
-            const textColor = `${color}-600`;
+            const textColor = classNames({
+              "text-gold-900": section.colorTheme == "gold",
+              "text-plum-500": section.colorTheme == "plum",
+              "text-sage-600": section.colorTheme == "sage",
+              "text-purple-600": section.colorTheme == "purple",
+              "text-navy-600": section.colorTheme == "navy",
+            });
+            
             console.log(color)
             return (
               <ReportMenuCol
@@ -106,16 +113,16 @@ const ReportMenuCol = ({
   ) : (
     <div className={``}>
       <div
-        className={`w-full grid grid-cols-1 grid-rows-2 bg-navy-50 text-${textColor}`}
+        className={`w-full h-[480px] grid grid-cols-1 grid-rows-4 ${textColor}`}
       >
         <a
           onClick={onClick}
-          className={`block py-lg group bg-sage-50`}
+          className={`block py-lg group`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
+            className={`type-preset-5 ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
           >
             Envisioning {title}
           </h2>
@@ -124,9 +131,6 @@ const ReportMenuCol = ({
         <ul
           className={`pt-lg pb-xl`}
         >
-            <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
-              Stories
-            </p>
           {stories.filter((story)=>story.hideStory!==true).map((story) => {
             const anch2 = `#${anchor}--${story.anchor}`;
             const title = story.title;
@@ -147,79 +151,6 @@ const ReportMenuCol = ({
           })}
         </ul>
       </div>
-
-      <details
-        className={` md:hidden block responsive-container ${styles.details} `}
-      >
-        <summary
-          className={` relative  text-${textColor}  pr-sm   cursor-pointer`}
-        >
-          <div className="flex flex-row justify-between items-center pt-md pb-3xl">
-            <div>
-              {themeNum && (
-                <p className="type-preset-6 font-serif font-light">
-                  Theme {themeNum}
-                </p>
-              )}
-              <h3
-                className={`${fontStyle} text-${textColor} pr-sm type-preset-3`}
-              >
-                {title}
-              </h3>
-            </div>
-
-            <div className={`chevron`}>
-              <svg
-                width="24"
-                height="12"
-                viewBox="0 0 20 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M19 1L10 10L1 1"
-                  stroke={textColor}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-          </div>
-        </summary>
-        <SlideDown className={`${styles.mobileSlideDown} pb-lg`}>
-          <ul className={` divide-y-[1px] ${dividerColor(colorTheme)}`}>
-            <LinkListItem
-              href={`#${anchor}`}
-              variant={"default"}
-              hoverStyle={"underlined"}
-              ariaLabel={`Theme ${themeNum}, Section ${title} Introduction`}
-              onClick={onClick}
-              color={textColor}
-            >
-              Introduction
-            </LinkListItem>
-
-            {stories &&
-              stories.filter((story)=>story.hideStory!==true).map((story) => {
-                const anch2 = `#${anchor}--${story.anchor}`;
-                const title = story.title;
-                return (
-                  <LinkListItem
-                    key={`${anch2}-story-report-menu`}
-                    href={anch2}
-                    variant={"default"}
-                    hoverStyle={"underlined"}
-                    ariaLabel={`Theme ${themeNum}, Story ${title}`}
-                    onClick={onClick}
-                    color={textColor}
-                  >
-                    {title}
-                  </LinkListItem>
-                );
-              })}
-          </ul>
-        </SlideDown>
-      </details>
     </div>
   );
 };
