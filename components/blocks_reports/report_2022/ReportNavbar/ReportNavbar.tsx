@@ -8,8 +8,8 @@ import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
 
 import { CloseSVG, OpenSVG } from "./SVGs";
-// import ReportMenu from "./ReportMenu";
-// import SlideDown from "react-slidedown";
+import ReportMenu from "./ReportMenu";
+import SlideDown from "react-slidedown";
 
 const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
 const getBottom = (el, extraOffset) =>
@@ -50,52 +50,52 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
   };
 
   //const checkSection
-  useEffect(() => {
-    const onScroll = (e) => {
-      if (isShowingMenu) {
-        e.preventDefault();
-        return;
-      }
-      const offset = window.pageYOffset;
-      reportSections.forEach((section, i) => {
-        checkIfSectionIsActive(section, offset, i);
-      });
+  // useEffect(() => {
+  //   const onScroll = (e) => {
+  //     if (isShowingMenu) {
+  //       e.preventDefault();
+  //       return;
+  //     }
+  //     const offset = window.pageYOffset;
+  //     reportSections.forEach((section, i) => {
+  //       checkIfSectionIsActive(section, offset, i);
+  //     });
 
-      if (!activeSection) return;
-      const secElement = document.getElementById(activeSection);
-      if (!secElement) return;
+  //     if (!activeSection) return;
+  //     const secElement = document.getElementById(activeSection);
+  //     if (!secElement) return;
 
-      const topTrigger = getTop(secElement, 30);
-      // TODO add a way to adjust bottom for last element, IT should be the offset from the
-      const isEnd =
-        reportSections.findIndex((sec) => sec.anchor === activeSection) ===
-        reportSections.length - 1;
+  //     const topTrigger = getTop(secElement, 30);
+  //     // TODO add a way to adjust bottom for last element, IT should be the offset from the
+  //     const isEnd =
+  //       reportSections.findIndex((sec) => sec.anchor === activeSection) ===
+  //       reportSections.length - 1;
 
-      const bottomTrigger = isEnd
-        ? getBottomEnd(secElement, 30)
-        : getBottom(secElement, 30);
+  //     const bottomTrigger = isEnd
+  //       ? getBottomEnd(secElement, 30)
+  //       : getBottom(secElement, 30);
 
-      let offsetPct = Math.round(
-        (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
-      );
+  //     let offsetPct = Math.round(
+  //       (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
+  //     );
 
-      if (isEnd && offsetPct > 90) offsetPct = 100;
-      if (offsetPct < 0 || offsetPct > 100) return;
-      setSectionPct(offsetPct);
-    };
+  //     if (isEnd && offsetPct > 90) offsetPct = 100;
+  //     if (offsetPct < 0 || offsetPct > 100) return;
+  //     setSectionPct(offsetPct);
+  //   };
 
-    window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  });
+  //   window.removeEventListener("scroll", onScroll);
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // });
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full bg-white ${
+      className={`block sticky top-0 z-50 w-full bg-white border-b-[1px] border-black ${
         !isShowingMenu && "h-[70px] overflow-clip"
       }`}
     >
-      <div className="responsive-container flex flex-wrap items-center  h-[60px] ">
+      <div className="responsive-container flex flex-wrap items-center h-full ">
         <div className="w-1/3">
           <Logo isMobile={true} />
         </div>
@@ -122,7 +122,7 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
           </button>
         </div>
       </div>
-      <div className="h-[10px]  flex basis-6">
+      {/* <div className="h-[10px]  flex basis-6">
         {reportSections.map((section, i) => {
           let s = `bg-white`;
           const bg =
@@ -156,8 +156,8 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
             </div>
           );
         })}
-      </div>
-      {/* <div className="overflow-scroll">
+      </div> */}
+      <div className="absolute w-full h-full">
         <SlideDown>
           {isShowingMenu ? (
             <ReportMenu
@@ -167,7 +167,7 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
             />
           ) : null}
         </SlideDown>
-      </div> */}
+      </div>
     </div>
   );
 };
