@@ -8,65 +8,53 @@ TODO navbar spacing
 */
 
 const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
-  // Have the bottom rule not have a hr
   return (
-    <section className={` w-full flex flex-col h-[calc(100vh_-_70px)]`}>
-      <ReportMenuRow
-        title={"Letter from leadership"}
-        anchor={"intro"}
-        themeNum={null}
-        bgColor={`bg-purple-50`}
-        textColor={"purple-900"}
-        fontStyle={"font-serif"}
-        stories={null}
-        onClick={onClick}
-        activeSection={activeSection}
-      />
-      {contentBlocks
-        .filter(
-          (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
-        )
-        .map((section, i) => {
-          const color = section.colorTheme ?? "purple";
-          const bg =
-            section.colorTheme === "gold"
-              ? `bg-${color}-dark`
-              : `bg-${color}-900`;
-          const textColor = "white"; //section.colorTheme === "gold" ? "black" : "white";
-          return (
-            <ReportMenuRow
-              key={section.anchor}
-              title={section.title}
-              anchor={section.anchor}
-              themeNum={i + 1}
-              bgColor={bg}
-              colorTheme={color}
-              textColor={textColor}
-              fontStyle={"font-bold"}
-              stories={section.items.filter((story)=>story.hideStory!==true)}
-              onClick={onClick}
-              activeSection={activeSection}
-            />
-          );
-        })}
-      <ReportMenuRow
-        title={"Conclusion"}
-        anchor={"reportConclusion"}
-        themeNum={null}
-        bgColor={`bg-gold-50`}
-        textColor={"black"}
-        fontStyle={"font-serif"}
-        stories={null}
-        onClick={onClick}
-        activeSection={activeSection}
-      />
+    <section className={`w-full h-[100vh] bg-white`}>
+      <div className="responsive-container w-full flex flex-row gap-8 pt-12">
+        {contentBlocks
+          .filter(
+            (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
+          )
+          .map((section, i) => {
+            const color = section.colorTheme ?? "purple";
+            const bg = `bg-${color}-50`
+            const textColor = `${color}-600`;
+            console.log(color)
+            return (
+              <ReportMenuCol
+                key={section.anchor}
+                title={section.title}
+                anchor={section.anchor}
+                themeNum={i + 1}
+                bgColor={bg}
+                colorTheme={color}
+                textColor={textColor}
+                fontStyle={"font-bold"}
+                stories={section.items.filter((story)=>story.hideStory!==true)}
+                onClick={onClick}
+                activeSection={activeSection}
+              />
+            );
+          })}
+        <ReportMenuCol
+          title={"Conclusion"}
+          anchor={"reportConclusion"}
+          themeNum={null}
+          bgColor={`bg-purple-50`}
+          textColor={`purple-600`}
+          fontStyle={"font-bold"}
+          stories={null}
+          onClick={onClick}
+          activeSection={activeSection}
+        />
+      </div>
     </section>
   );
 };
 
 export default ReportMenu;
 
-const ReportMenuRow = ({
+const ReportMenuCol = ({
   title,
   anchor,
   themeNum,
@@ -83,11 +71,11 @@ const ReportMenuRow = ({
   const simpleRow = () => {
    
     return (
-      <div className={`w-full flex-1 ${bgColor}`}>
+      <div className={''}>
         <a
           className={`hidden ${
             stories !== null ? "md:grid" : "md:block h-full"
-          }  responsive-container  text-${textColor} grid-cols-12 gap-lg py-lg group `}
+          } text-${textColor} gap-lg py-lg group `}
           onClick={onClick}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
@@ -104,7 +92,7 @@ const ReportMenuRow = ({
           className="responsive-container group md:hidden block pt-md pb-3xl"
         >
           <h2
-            className={`${fontStyle} text-${textColor} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`${fontStyle} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}
           >
             {title}
           </h2>
@@ -116,30 +104,25 @@ const ReportMenuRow = ({
   return stories == null ? (
     simpleRow()
   ) : (
-    <div className={`w-full flex-1 ${bgColor}`}>
+    <div className={``}>
       <div
-        className={`hidden  md:grid  responsive-container  text-${textColor} grid-cols-12 gap-lg`}
+        className={`w-full grid grid-cols-1 grid-rows-2 bg-navy-50 text-${textColor}`}
       >
         <a
           onClick={onClick}
-          className={`col-span-4 block py-lg group my-0 divide-y ${dividerColor(colorTheme)}`}
+          className={`block py-lg group bg-sage-50`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
-          {themeNum && (
-            <p className="type-preset-6 font-serif font-light tracking-[0.015em] pb-sm">
-              Theme {themeNum}
-            </p>
-          )}
           <h2
             className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
           >
-            {title}
+            Envisioning {title}
           </h2>
         </a>
 
         <ul
-          className={`col-span-8 pt-lg  divide-y ${dividerColor(colorTheme)} pb-xl`}
+          className={`pt-lg pb-xl`}
         >
             <p className="type-preset-6 font-serif font-normal tracking-[0.015em] pb-sm">
               Stories

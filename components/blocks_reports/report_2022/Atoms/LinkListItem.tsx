@@ -36,12 +36,12 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
       variant == "underlined",
   });
 
-  const colorStyles = classNames({
-    "text-sage-700": color == "sage",
-    "text-gray-900": color == "black",
-    "text-gray-600": color == "gray",
-    "text-white": color == "white",
-  });
+  // const colorStyles = classNames({
+  //   "text-sage-700": color == "sage",
+  //   "text-gray-900": color == "black",
+  //   "text-gray-600": color == "gray",
+  //   "text-white": color == "white",
+  // });
   const hoverStyles = classNames({
     "hover:text-sage-900 hover:underline decoration-1": color == "sage",
     "hover:text-sage-700":
@@ -59,7 +59,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
     >
       <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
         <p
-          className={`font-serif ${isBolded?"font-bold":"font-light"} type-preset-6  ${colorStyles} ${variantStyles} ${hoverStyles} ${analyticsLabel}`}
+          className={`font-serif ${isBolded?"font-bold":"font-light"} type-preset-6 ${variantStyles} ${hoverStyles} ${analyticsLabel}`}
         >
           {children}
         </p>
