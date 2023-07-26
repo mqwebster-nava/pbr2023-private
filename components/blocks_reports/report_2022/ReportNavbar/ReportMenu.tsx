@@ -25,8 +25,7 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
               "text-purple-600": section.colorTheme == "purple",
               "text-navy-600": section.colorTheme == "navy",
             });
-            
-            console.log(color)
+
             return (
               <ReportMenuCol
                 key={section.anchor}

@@ -16,8 +16,6 @@ const SectionIntro = ({ section, i }) => {
     "hover:text-navy-600": section.colorTheme == "navy",
   });
 
-  console.log(section)
-
   return (
     <section
       id={`${section.anchor}`}
