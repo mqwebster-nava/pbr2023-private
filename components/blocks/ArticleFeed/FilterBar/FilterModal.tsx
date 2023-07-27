@@ -22,6 +22,8 @@ const FilterModal = ({
   categories,
   currentlyActive = [],
 }) => {
+
+  //List of checked tag checkbox inputs
   useEffect(() => {
     Array.from(document.getElementsByClassName(`filterCheckBox`)).forEach(
       (el) => {
@@ -33,6 +35,7 @@ const FilterModal = ({
 
   }, [isOpen, currentlyActive]);
 
+  //Close open row when new row selected in FilterTypeRow view
   useEffect(() => {
     const filterRows = document.querySelectorAll("details");
 
@@ -53,8 +56,8 @@ const FilterModal = ({
     }
   }, []);
 
+  //Close Filter Modal when outside element clicked
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const checkIfClickedOutside = e => {
       if (isOpen && ref.current && !ref.current.contains(e.target)) {
@@ -146,14 +149,14 @@ const FilterTypeCol = ({
                 handleChange({type:catName,checkboxElement: e.target, name:item});
               }}
               disabled={resultNum == 0}
-              id={`${item}-checkbox--col`}
+              id={`${item}-checkbox`}
               type="checkbox"
               value={item}
               className={`filterCheckBox h-[14px] w-[14px] accent-sage-600`}
             />
 
             <label
-              htmlFor={`${item}-checkbox--col`}
+              htmlFor={`${item}-checkbox`}
               className="font-medium w-full"
             >
               {`${item}`}
@@ -227,14 +230,14 @@ const FilterTypeRow = ({
                   handleChange({type:catName,checkboxElement: e.target, name:item});
                 }}
                 disabled={resultNum == 0}
-                id={`${item}-checkbox--row`}
+                id={`${item}-checkbox`}
                 type="checkbox"
                 value={item}
                 className={`filterCheckBox h-[14px] w-[14px] accent-sage-600 `}
               />
 
               <label
-                htmlFor={`${item}-checkbox--row`}
+                htmlFor={`${item}-checkbox`}
                 className="font-medium w-full"
               >
                 {`${item}`}
