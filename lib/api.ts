@@ -75,8 +75,7 @@ export async function getPageDataFromContentful({
           let _posts = await getPosts();
           let tags = await getAllTags();
           let posts: Array<BasicPostInterface> = formatPosts(_posts);
-          posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .filter((a) => new Date(a.date).getTime() < new Date().getTime());
+          posts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).filter((post) => post.contentType !== 'Events');
           posts = posts.map((p) => {
             if (p.contentTags == undefined) p.contentTags = [];
             return p;
