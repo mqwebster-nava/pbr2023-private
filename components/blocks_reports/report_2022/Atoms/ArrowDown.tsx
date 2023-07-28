@@ -22,8 +22,6 @@ const ArrowDown = ({size="default", color, sectionId, isAnimated=false, isMobile
         "stroke-navy-600": color == "navy",
     });
 
-    console.log(color)
-
   return (
       <div className={`w-[${w}px] h-[${h}px]`}>
           <svg
@@ -36,13 +34,13 @@ const ArrowDown = ({size="default", color, sectionId, isAnimated=false, isMobile
           >
             <path
               d="M4 11.6328L11.9992 19.632L19.9984 11.6328"
-              stroke-width="2"
-              stroke-linecap="square"
+              strokeWidth="2"
+              strokeLinecap="square"
             />
             <path
               d="M11.998 18.9965V2.82031"
-              stroke-width="2"
-              stroke-linecap="square"
+              strokeWidth="2"
+              strokeLinecap="square"
             />
           </svg>
       </div>
