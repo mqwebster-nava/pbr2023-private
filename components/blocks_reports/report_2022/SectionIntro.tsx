@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import MarkdownComponent from "utils/MarkdownComponent";
 
@@ -6,6 +6,29 @@ import { LinkListItem } from "./Atoms/LinkListItem";
 import ArrowDown from "./Atoms/ArrowDown";
 
 const SectionIntro = ({ section, i }) => {
+  const refSection = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const sectionIntros = document.querySelectorAll('details');
+
+    const sectionIntroIsOpen = (target: HTMLDetailsElement) => {
+      sectionIntros.forEach((current: HTMLDetailsElement) => {
+        if (current != target) {
+          current.removeAttribute("open");
+        }
+      })
+    }
+
+    sectionIntros.forEach((target) => {
+      target.addEventListener('click', () => sectionIntroIsOpen(target));
+    })
+
+    return () => {
+      sectionIntros.forEach((target) => {
+        target.removeEventListener('click', () => sectionIntroIsOpen(target));
+      })
+    }
+  }, [])
+
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
     "text-plum-500": section.colorTheme == "plum",
@@ -46,7 +69,7 @@ const SectionIntro = ({ section, i }) => {
       } border-gray-200 ${borderStyles}`}
       tabIndex={0}
     >
-      <details open={false} className="responsive-container w-full">
+      <details open={false} ref={refSection} className="responsive-container w-full">
         <summary className="list-none">
           <div
             className={`flex flex-row justify-between items-baseline text-gray-300 ${hoverStyles} group-hover:cursor-pointer`}
