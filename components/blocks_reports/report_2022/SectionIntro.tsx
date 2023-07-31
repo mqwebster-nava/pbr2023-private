@@ -53,7 +53,7 @@ const SectionIntro = ({ section, i }) => {
         <div
           className={`flex flex-row justify-between items-baseline ${isOpen ? openStyles : 'text-gray-300'} ${hoverStyles} group-hover:cursor-pointer`}
         >
-          <span className="text-7xl font-sans font-black spacing-y-sm">
+          <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
             {section.title}
           </span>
 
