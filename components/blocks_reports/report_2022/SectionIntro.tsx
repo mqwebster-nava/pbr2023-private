@@ -67,15 +67,17 @@ const SectionIntro = ({ section, i }) => {
 
         <div className={`h-[100vh]`}>
           <div className={`responsive-container`}>
-            <div className={`w-full font-serif text-3xl font-light ${openStyles}`}>
+            <div
+              className={`w-full font-serif text-3xl font-light ${openStyles}`}
+            >
               <MarkdownComponent content={section.body} />
             </div>
-            <ul
-                  className={``}
-                >
-                  {section.items.filter((story)=>story.hideStory!==true).map((story) => {
-                    return (
-                      <LinkListItem
+            <ul className={``}>
+              {section.items
+                .filter((story) => story.hideStory !== true)
+                .map((story) => {
+                  return (
+                    <LinkListItem
                       key={`sectionIntro-${story.anchor}`}
                       href={`#${section.anchor}--${story.anchor}`}
                       variant={"default"}
@@ -85,9 +87,9 @@ const SectionIntro = ({ section, i }) => {
                     >
                       {story.title}
                     </LinkListItem>
-                    );
-                  })}
-                </ul>
+                  );
+                })}
+            </ul>
           </div>
         </div>
       </details>
