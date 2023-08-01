@@ -45,8 +45,8 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
     <section
       id={`${section.anchor}`}
       className={`${isHidden ? "hidden" : "group pb-8"} ${
-        i == 1 ? "" : "border-t-2"
-      } border-gray-200 ${borderStyles}`}
+        isOpen ? "mt-2" : i == 1 ? "mt-2" : "border-t-2 border-gray-200"
+      } ${borderStyles}`}
       tabIndex={0}
       onClick={() => setOpenSection(isOpen ? null : section.anchor)}
     >
