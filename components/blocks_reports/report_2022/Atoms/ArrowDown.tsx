@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-type ArrowSize = 'large' | "default";
+type ArrowSize = 'large' | "default" | "";
 
 export interface ArrowDownInterface {
     size?: ArrowSize;
