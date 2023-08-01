@@ -47,6 +47,14 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
     "bg-navy-50": section.colorTheme == "navy",
   });
 
+  const dividerStyles = classNames({
+    "divide-y-[1px] divide-gold-900": section.colorTheme == "gold",
+    "divide-y-[1px] divide-plum-500": section.colorTheme == "plum",
+    "divide-y-[1px] divide-sage-600": section.colorTheme == "sage",
+    "divide-y-[1px] divide-purple-600": section.colorTheme == "purple",
+    "divide-y-[1px] divide-navy-600": section.colorTheme == "navy",
+  });
+
   return (
     <section
       id={`${section.anchor}`}
@@ -82,14 +90,17 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
       </div>
 
       {isOpen && (
-        <div className={`h-full`}>
-          <div className={``}>
+        <div className={`h-full mt-8`}>
+          <div className={`flex flex-col gap-8`}>
             <div
-              className={`responsive-container w-full font-serif text-3xl font-light ${openStyles}`}
+              className={`responsive-container w-full flex justify-end font-serif text-3xl font-light ${openStyles}`}
             >
-              <MarkdownComponent content={section.body} />
+              <div className={'w-2/3'}>
+                <MarkdownComponent content={section.body} />
+              </div>
             </div>
-            <ul className={``}>
+
+            <ul className={`${dividerStyles}`}>
               {section.items
                 .filter((story) => story.hideStory !== true)
                 .map((story) => {
@@ -100,7 +111,7 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
                       variant={"intro"}
                       hoverStyle={"underlined"}
                       ariaLabel={`Skip to ${story.title}`}
-                      color={"white"}
+                      color={section.colorTheme}
                       isBolded
                     >
                       {story.title}
