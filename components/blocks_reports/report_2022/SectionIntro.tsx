@@ -48,9 +48,8 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
         isOpen ? "mt-2" : i == 1 ? "mt-2" : "border-t-2 border-gray-200"
       } ${borderStyles}`}
       tabIndex={0}
-      onClick={() => setOpenSection(isOpen ? null : section.anchor)}
     >
-      <div className="responsive-container w-full">
+      <div className="responsive-container w-full" onClick={() => setOpenSection(isOpen ? null : section.anchor)}>
         <div
           className={`flex flex-row justify-between items-baseline ${isOpen ? openStyles : 'text-gray-300'} ${hoverStyles} group-hover:cursor-pointer`}
         >
@@ -71,8 +70,8 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
 
       {isOpen &&
         <div className={`h-full`}>
-          <div className={`responsive-container`}>
-            <div className={`w-full font-serif text-3xl font-light ${openStyles}`}>
+          <div className={``}>
+            <div className={`responsive-container w-full font-serif text-3xl font-light ${openStyles}`}>
               <MarkdownComponent content={section.body} />
             </div>
             <ul
@@ -83,10 +82,11 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
                       <LinkListItem
                       key={`sectionIntro-${story.anchor}`}
                       href={`#${section.anchor}--${story.anchor}`}
-                      variant={"default"}
+                      variant={"intro"}
                       hoverStyle={"underlined"}
                       ariaLabel={`Skip to ${story.title}`}
                       color={"white"}
+                      isBolded
                     >
                       {story.title}
                     </LinkListItem>
