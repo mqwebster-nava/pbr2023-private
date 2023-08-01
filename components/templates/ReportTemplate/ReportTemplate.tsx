@@ -94,6 +94,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
+  const [openSectionId, setOpenSectionId] = useState(null)
+
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
     ? "2022"
@@ -121,17 +123,14 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const componentMap = {
       "2022": {
         ReportIllustrationOverlaySubsection: (entry) => {
-          const [openSectionId, setOpenSectionId] = useState(null)
-          useEffect(() => console.log(openSectionId), [openSectionId])
-
           return (
             <div key={`${entry.anchor}-${index}`}>
               <SectionIntro2022
-                section={entry}
                 key={entry.anchor}
+                section={entry}
                 i={entry.themeNum}
-                openSectionId={openSectionId}
-                setOpenSectionId={(id) => setOpenSectionId(id)}
+                currentlyOpenSection={openSectionId}
+                setOpenSection={setOpenSectionId}
               />
             </div>
           )
