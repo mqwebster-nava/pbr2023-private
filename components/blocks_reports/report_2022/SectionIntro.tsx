@@ -47,14 +47,6 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
     "bg-navy-50": section.colorTheme == "navy",
   });
 
-  const dividerStyles = classNames({
-    "divide-y-[1px] divide-gold-900": section.colorTheme == "gold",
-    "divide-y-[1px] divide-plum-500": section.colorTheme == "plum",
-    "divide-y-[1px] divide-sage-600": section.colorTheme == "sage",
-    "divide-y-[1px] divide-purple-600": section.colorTheme == "purple",
-    "divide-y-[1px] divide-navy-600": section.colorTheme == "navy",
-  });
-
   return (
     <section
       id={`${section.anchor}`}
@@ -100,7 +92,7 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
               </div>
             </div>
 
-            <ul className={`${dividerStyles}`}>
+            <ul className={``}>
               {section.items
                 .filter((story) => story.hideStory !== true)
                 .map((story) => {
