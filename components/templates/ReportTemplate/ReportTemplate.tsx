@@ -7,6 +7,7 @@ they need special logic to set up full page navs so that logic is done here
 
 import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 // 2022
 const ReportNavbar2022 = dynamic(
@@ -119,15 +120,22 @@ const ReportTemplate: React.FC<PageInterface> = ({
 
     const componentMap = {
       "2022": {
-        ReportIllustrationOverlaySubsection: (entry) => (
-          <div key={`${entry.anchor}-${index}`}>
-            <SectionIntro2022
-              section={entry}
-              key={entry.anchor}
-              i={entry.themeNum}
-            />
-          </div>
-        ),
+        ReportIllustrationOverlaySubsection: (entry) => {
+          const [openSectionId, setOpenSectionId] = useState(null)
+          useEffect(() => console.log(openSectionId), [openSectionId])
+
+          return (
+            <div key={`${entry.anchor}-${index}`}>
+              <SectionIntro2022
+                section={entry}
+                key={entry.anchor}
+                i={entry.themeNum}
+                openSectionId={openSectionId}
+                setOpenSectionId={(id) => setOpenSectionId(id)}
+              />
+            </div>
+          )
+        },
         ReportSectionCustom: (entry) =>
           entry.type == "Table of Contents" ? (
             <TableOfContentsSection
