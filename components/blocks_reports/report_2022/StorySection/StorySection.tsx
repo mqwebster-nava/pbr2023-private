@@ -46,7 +46,7 @@ const StorySection = ({
     <div className={`py-md w-full type-preset-3 ${textStyles} ${borderStyles} ${hoverBgStyles}`}>
         <div className={`responsive-container flex items-center justify-between`}>
           <p
-            className={`font-serif font-bold`}
+            className={`font-serif font-semibold`}
           >
             {story.title}
           </p>
