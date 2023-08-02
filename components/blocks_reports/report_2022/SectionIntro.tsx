@@ -15,6 +15,14 @@ const SectionIntro = ({
   openStory,
   setOpenStory,
 }) => {
+  const [isStoryOpen, setIsStoryOpen] = useState(false)
+  useEffect(() => {
+    if (openStory !== null) {
+      setIsStoryOpen(true);
+      console.log(isStoryOpen)
+    }
+  }, [openStory])
+
   const isOpen = section.anchor == openSection;
   const isHidden = section.anchor !== openSection && openSection !== null;
 
@@ -63,49 +71,53 @@ const SectionIntro = ({
       } ${borderStyles}`}
       tabIndex={0}
     >
-      <div
-        className="responsive-container w-full"
-        onClick={() => setOpenSection(isOpen ? null : section.anchor)}
-      >
+      {!isStoryOpen &&
         <div
-          className={`flex flex-row justify-between items-baseline ${
-            isOpen ? openStyles : "text-gray-300"
-          } ${hoverStyles} group-hover:cursor-pointer`}
+          className="responsive-container w-full"
+          onClick={() => setOpenSection(isOpen ? null : section.anchor)}
         >
-          <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
-            {section.title}
-          </span>
-
-          <span
-            className={`opacity-0 ${
-              !isOpen && "group-hover:opacity-100"
-            } min-w-max font-serif text-lg`}
+          <div
+            className={`flex flex-row justify-between items-baseline ${
+              isOpen ? openStyles : "text-gray-300"
+            } ${hoverStyles} group-hover:cursor-pointer`}
           >
-            <div className="flex flex-row items-center gap-1">
-              {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-              <ArrowDown color={section.colorTheme} size="default" />
-            </div>
-          </span>
+            <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+              {section.title}
+            </span>
+
+            <span
+              className={`opacity-0 ${
+                !isOpen && "group-hover:opacity-100"
+              } min-w-max font-serif text-lg`}
+            >
+              <div className="flex flex-row items-center gap-1">
+                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+                <ArrowDown color={section.colorTheme} size="default" />
+              </div>
+            </span>
+          </div>
         </div>
-      </div>
+      }
 
       {isOpen && (
         <div className={`h-full mt-8`}>
           <div className={`flex flex-col gap-8`}>
-            <div
-              className={`responsive-container w-full flex justify-end font-serif text-3xl font-light ${openStyles}`}
-            >
-              <div className={"w-2/3"}>
-                <MarkdownComponent content={section.body} />
+            {!isStoryOpen &&
+              <div
+                className={`responsive-container w-full flex justify-end font-serif text-3xl font-light ${openStyles}`}
+              >
+                <div className={"w-2/3"}>
+                  <MarkdownComponent content={section.body} />
+                </div>
               </div>
-            </div>
+            }
 
             <ul className={``}>
               {section.items
                 .filter((story) => story.hideStory !== true)
                 .map((story) => {
                   return (
-                    <li>
+                    <li key={story.anchor}>
                       <StorySection
                         key={story.anchor}
                         story={story}

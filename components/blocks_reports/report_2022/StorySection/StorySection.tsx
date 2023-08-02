@@ -17,6 +17,13 @@ const StorySection = ({
   openStory,
   setOpenStory
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(openStory !== null)
+    console.log(storyId, isOpen)
+  }, [openStory])
+
   const storyId = `${sectionAnchor}--${story.anchor}`
   const nextId = nextSection
 
@@ -46,7 +53,7 @@ const StorySection = ({
 
   return (
     <div className={`py-md w-full type-preset-3 ${textStyles} ${borderStyles} ${hoverBgStyles}`}>
-        <div className={`responsive-container flex items-center justify-between`}>
+        <div className={`responsive-container flex items-center justify-between`} onClick={() => setOpenStory(openStory !== null && story.anchor)}>
           <p
             className={`font-serif font-semibold`}
           >
