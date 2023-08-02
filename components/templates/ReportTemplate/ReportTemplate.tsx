@@ -98,6 +98,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   children,
 }) => {
   const [openSectionId, setOpenSectionId] = useState(null)
+  const [openStoryId, setOpenStoryId] = useState(null)
 
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
@@ -291,7 +292,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2022 {...pageHeader} />
+        <ReportHero2022 {...pageHeader} currentlyOpenStory={openStoryId} setOpenStoryId={setOpenStoryId} />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
