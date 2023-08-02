@@ -7,10 +7,16 @@ import StorySection from "./StorySection/StorySection";
 import { LinkListItem } from "./Atoms/LinkListItem";
 import ArrowDown from "./Atoms/ArrowDown";
 
-const SectionIntro = ({ section, i, openSection, setOpenSection, openStory, setOpenStory }) => {
+const SectionIntro = ({
+  section,
+  i,
+  openSection,
+  setOpenSection,
+  openStory,
+  setOpenStory,
+}) => {
   const isOpen = section.anchor == openSection;
-  const isHidden =
-    section.anchor !== openSection && openSection !== null;
+  const isHidden = section.anchor !== openSection && openSection !== null;
 
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
@@ -89,7 +95,7 @@ const SectionIntro = ({ section, i, openSection, setOpenSection, openStory, setO
             <div
               className={`responsive-container w-full flex justify-end font-serif text-3xl font-light ${openStyles}`}
             >
-              <div className={'w-2/3'}>
+              <div className={"w-2/3"}>
                 <MarkdownComponent content={section.body} />
               </div>
             </div>
@@ -105,9 +111,9 @@ const SectionIntro = ({ section, i, openSection, setOpenSection, openStory, setO
                         story={story}
                         colorTheme={section.colorTheme}
                         sectionAnchor={section.anchor}
-                        nextSection={''}
-                        nextSectionTitle={''}
-                        nextSectionType={''}
+                        nextSection={""}
+                        nextSectionTitle={""}
+                        nextSectionType={""}
                       />
                     </li>
                   );
