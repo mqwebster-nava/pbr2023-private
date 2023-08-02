@@ -132,8 +132,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 key={entry.anchor}
                 section={entry}
                 i={entry.themeNum}
-                currentlyOpenSection={openSectionId}
+                openSection={openSectionId}
                 setOpenSection={setOpenSectionId}
+                openStory={openStoryId}
+                setOpenStory={setOpenStoryId}
               />
             </div>
           ),

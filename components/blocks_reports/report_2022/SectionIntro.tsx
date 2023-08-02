@@ -7,10 +7,10 @@ import StorySection from "./StorySection/StorySection";
 import { LinkListItem } from "./Atoms/LinkListItem";
 import ArrowDown from "./Atoms/ArrowDown";
 
-const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
-  const isOpen = section.anchor == currentlyOpenSection;
+const SectionIntro = ({ section, i, openSection, setOpenSection, openStory, setOpenStory }) => {
+  const isOpen = section.anchor == openSection;
   const isHidden =
-    section.anchor !== currentlyOpenSection && currentlyOpenSection !== null;
+    section.anchor !== openSection && openSection !== null;
 
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
