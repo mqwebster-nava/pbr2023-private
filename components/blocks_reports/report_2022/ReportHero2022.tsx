@@ -1,7 +1,7 @@
 import { useEffect, } from "react";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
-const ReportHero2022 = ({}: PageHeaderInterface) => {
+const ReportHero2022 = ({currentlyOpenStory, setOpenStoryId}, {}: PageHeaderInterface) => {
 
   return (
     <header
