@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import classNames from "classnames";
 import MarkdownComponent from "utils/MarkdownComponent";
 
+import StorySection from "./StorySection/StorySection";
 import { LinkListItem } from "./Atoms/LinkListItem";
 import ArrowDown from "./Atoms/ArrowDown";
 
@@ -97,17 +98,17 @@ const SectionIntro = ({ section, i, currentlyOpenSection, setOpenSection }) => {
                 .filter((story) => story.hideStory !== true)
                 .map((story) => {
                   return (
-                    <LinkListItem
-                      key={`sectionIntro-${story.anchor}`}
-                      href={`#${section.anchor}--${story.anchor}`}
-                      variant={"intro"}
-                      hoverStyle={"underlined"}
-                      ariaLabel={`Skip to ${story.title}`}
-                      color={section.colorTheme}
-                      isBolded
-                    >
-                      {story.title}
-                    </LinkListItem>
+                    <li>
+                      <StorySection
+                        key={story.anchor}
+                        story={story}
+                        colorTheme={section.colorTheme}
+                        sectionAnchor={section.anchor}
+                        nextSection={''}
+                        nextSectionTitle={''}
+                        nextSectionType={''}
+                      />
+                    </li>
                   );
                 })}
             </ul>
