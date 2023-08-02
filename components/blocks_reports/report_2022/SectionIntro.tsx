@@ -114,6 +114,8 @@ const SectionIntro = ({
                         nextSection={""}
                         nextSectionTitle={""}
                         nextSectionType={""}
+                        openStory={openStory}
+                        setOpenStory={setOpenStory}
                       />
                     </li>
                   );
