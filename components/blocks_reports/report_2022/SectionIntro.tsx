@@ -28,9 +28,9 @@ const SectionIntro = ({
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
     "text-plum-500": section.colorTheme == "plum",
-    "text-sage-600": section.colorTheme == "sage",
-    "text-purple-600": section.colorTheme == "purple",
-    "text-navy-600": section.colorTheme == "navy",
+    "text-sage-500": section.colorTheme == "sage",
+    "text-purple-500": section.colorTheme == "purple",
+    "text-navy-500": section.colorTheme == "navy",
   });
 
   const hoverStyles =
@@ -38,9 +38,9 @@ const SectionIntro = ({
     classNames({
       "group-hover:text-gold-900": section.colorTheme == "gold",
       "group-hover:text-plum-500": section.colorTheme == "plum",
-      "group-hover:text-sage-600": section.colorTheme == "sage",
-      "group-hover:text-purple-600": section.colorTheme == "purple",
-      "group-hover:text-navy-600": section.colorTheme == "navy",
+      "group-hover:text-sage-500": section.colorTheme == "sage",
+      "group-hover:text-purple-500": section.colorTheme == "purple",
+      "group-hover:text-navy-500": section.colorTheme == "navy",
     });
 
   const borderStyles =
@@ -48,10 +48,9 @@ const SectionIntro = ({
     classNames({
       // "hover:border-t-2 hover:border-gold-900": section.colorTheme == "gold",
       "hover:border-t-2 hover:border-plum-500": section.colorTheme == "plum",
-      "hover:border-t-2 hover:border-sage-600": section.colorTheme == "sage",
-      "hover:border-t-2 hover:border-purple-600":
-        section.colorTheme == "purple",
-      "hover:border-t-2 hover:border-navy-600": section.colorTheme == "navy",
+      "hover:border-t-2 hover:border-sage-500": section.colorTheme == "sage",
+      "hover:border-t-2 hover:border-purple-500": section.colorTheme == "purple",
+      "hover:border-t-2 hover:border-navy-500": section.colorTheme == "navy",
     });
 
   const bgStyles = classNames({
