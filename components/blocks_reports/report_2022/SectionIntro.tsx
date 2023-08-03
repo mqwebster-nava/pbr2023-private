@@ -87,7 +87,7 @@ const SectionIntro = ({
             <span
               className={`opacity-0 ${
                 !isOpen && "group-hover:opacity-100"
-              } min-w-max font-serif text-lg`}
+              } min-w-max font-sans font-semibold type-preset-6`}
             >
               <div className="flex flex-row items-center gap-1">
                 {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
