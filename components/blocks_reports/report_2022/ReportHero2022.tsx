@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
 const ReportHero2022 = (
-  { openStory, setOpenStory },
+  { openStory },
   {}: PageHeaderInterface
 ) => {
   return (

@@ -294,7 +294,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2022 {...pageHeader} openStory={openStoryId} setOpenStory={setOpenStoryId} />
+        <ReportHero2022 {...pageHeader} openStory={openStoryId} />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
