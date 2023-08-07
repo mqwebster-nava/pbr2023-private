@@ -64,14 +64,14 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`${isHidden ? "hidden" : "group pb-8"} ${
-        isOpen ? "mt-2" : i == 1 ? "mt-2" : "border-t-2 border-gray-200"
+      className={`${isHidden ? "hidden" : "group"} ${
+        isOpen ? isStoryOpen ? "" : "mt-2" : i == 1 ? "mt-2" : "border-t-2 border-gray-200"
       } ${borderStyles}`}
       tabIndex={0}
     >
       {!isStoryOpen &&
         <div
-          className="responsive-container w-full"
+          className="responsive-container w-full pb-8"
           onClick={() => setOpenSection(isOpen ? null : section.anchor)}
         >
           <div
@@ -98,11 +98,11 @@ const SectionIntro = ({
       }
 
       {isOpen && (
-        <div className={`h-full mt-8`}>
+        <div className={`h-full`}>
           <div className={`flex flex-col gap-8`}>
             {!isStoryOpen &&
               <div
-                className={`responsive-container w-full flex justify-end font-serif text-3xl font-light ${openStyles}`}
+                className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
               >
                 <div className={"w-2/3"}>
                   <MarkdownComponent content={section.body} />
