@@ -21,7 +21,6 @@ const StorySection = ({
 
   useEffect(() => {
     setIsOpen(openStory !== null)
-    console.log(storyId, isOpen)
   }, [openStory])
 
   const storyId = `${sectionAnchor}--${story.anchor}`
@@ -51,7 +50,8 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
-  console.log(story)
+  const statistic = `${story.featuredCallOut.body}`;
+  const statNumber = statistic.match(/(\d+)/g)
 
   return (
     <div className={`py-md w-full ${textStyles} ${borderStyles} ${hoverBgStyles}`}>
@@ -68,27 +68,34 @@ const StorySection = ({
         </div>
 
         {isOpen &&
-          <>
-            <div className={`responsive-container font-serif font-semibold`}>
-              <ReportContent
-                docData={story.intro?.json}
-                docLinks={story.intro?.links}
-                variant={"report"}
-                reportYear={"2022"}
-                isMobileLandscape={false}
-              />
+          <div className={`responsive-container flex flex-row gap-28`}>
+            <div className="flex flex-col flex-shrink gap-0">
+              <div className={`font-serif font-semibold`}>
+                <ReportContent
+                  docData={story.intro?.json}
+                  docLinks={story.intro?.links}
+                  variant={"report"}
+                  reportYear={"2022"}
+                  isMobileLandscape={false}
+                />
+              </div>
+              <div className={`font-serif font-normal`}>
+                <ReportContent
+                  docData={story.body.json}
+                  docLinks={story.body.links}
+                  variant={"report"}
+                  reportYear={"2022"}
+                  isMobileLandscape={false}
+                />
+              </div>
             </div>
 
-            <div className={`responsive-container font-serif font-normal`}>
-              <ReportContent
-                docData={story.body.json}
-                docLinks={story.body.links}
-                variant={"report"}
-                reportYear={"2022"}
-                isMobileLandscape={false}
-              />
+            <div className={`bg-purple-50 w-full`}>
+              <div className={``}>
+                {story.featuredCallOut.body}
+              </div>
             </div>
-          </>
+          </div>
         }
     </div>
   )
