@@ -51,6 +51,8 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
+  console.log(story)
+
   return (
     <div className={`py-md w-full type-preset-3 ${textStyles} ${borderStyles} ${hoverBgStyles}`}>
         <div className={`responsive-container flex items-center justify-between`} onClick={() => setOpenStory(openStory !== null && story.anchor)}>
@@ -64,6 +66,18 @@ const StorySection = ({
             <ArrowDown color={colorTheme} />
           </div>
         </div>
+
+        {isOpen &&
+          <div className={`responsive-container text-sm`}>
+            <ReportContent
+              docData={story.body.json}
+              docLinks={story.body.links}
+              variant={"report"}
+              reportYear={"2022"}
+              isMobileLandscape={false}
+            />
+          </div>
+        }
     </div>
   )
 }
