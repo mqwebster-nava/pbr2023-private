@@ -62,7 +62,7 @@ const StorySection = ({
     <div className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
         <div className={`relative ${hoverBgStyles}`}>
           <div className={`sticky top-[70px] z-10 ${isOpen && `bg-${colorTheme}-50`} ${borderStyles}`}>
-            <div className={`responsive-container flex items-center justify-between h-full py-md`} onClick={() => setOpenStory(openStory !== null && story.anchor)}>
+            <div className={`responsive-container flex items-center justify-between h-full py-md`} onClick={() => setOpenStory(openStory ? null : story.anchor)}>
               <p
                 className={`font-serif font-semibold type-preset-3`}
               >

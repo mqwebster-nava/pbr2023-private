@@ -19,6 +19,8 @@ const SectionIntro = ({
   useEffect(() => {
     if (openStory !== null) {
       setIsStoryOpen(true);
+    } else {
+      setIsStoryOpen(false)
     }
   }, [openStory])
 
