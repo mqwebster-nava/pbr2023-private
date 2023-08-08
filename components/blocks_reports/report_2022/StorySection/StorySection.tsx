@@ -63,7 +63,6 @@ const StorySection = ({
 
   if (calloutText.includes('//images')) {
     calloutText = <img src={story.featuredCallOut.body} alt="" />
-    console.log(calloutText)
   }
 
   return (
