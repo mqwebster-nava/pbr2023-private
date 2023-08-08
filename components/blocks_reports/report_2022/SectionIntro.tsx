@@ -72,31 +72,32 @@ const SectionIntro = ({
       tabIndex={0}
     >
       {!isStoryOpen &&
-        <div
-          className="responsive-container w-full pb-8"
-          onClick={() => setOpenSection(isOpen ? null : section.anchor)}
-        >
+        <a href={`#${section.anchor}`}>
           <div
-            className={`flex flex-row justify-between items-baseline ${
-              isOpen ? openStyles : "text-gray-300"
-            } ${hoverStyles} group-hover:cursor-pointer`}
+            className="responsive-container w-full pb-8"
+            onClick={() => setOpenSection(isOpen ? null : section.anchor)}
           >
-            <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
-              {section.title}
-            </span>
-
-            <span
-              className={`opacity-0 ${
-                !isOpen && "group-hover:opacity-100"
-              } min-w-max font-sans font-semibold type-preset-6`}
+            <div
+              className={`flex flex-row justify-between items-baseline ${
+                isOpen ? openStyles : "text-gray-300"
+              } ${hoverStyles} group-hover:cursor-pointer`}
             >
-              <div className="flex flex-row items-center gap-1">
-                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                <ArrowDown color={section.colorTheme} size="default" />
-              </div>
-            </span>
+              <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+                {section.title}
+              </span>
+              <span
+                className={`opacity-0 ${
+                  !isOpen && "group-hover:opacity-100"
+                } min-w-max font-sans font-semibold type-preset-6`}
+              >
+                <div className="flex flex-row items-center gap-1">
+                  {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+                  <ArrowDown color={section.colorTheme} size="default" />
+                </div>
+              </span>
+            </div>
           </div>
-        </div>
+        </a>
       }
 
         <div className={isOpen ? `h-full` : `hidden`}>
