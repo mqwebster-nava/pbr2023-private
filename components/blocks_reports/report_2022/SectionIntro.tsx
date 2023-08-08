@@ -99,8 +99,7 @@ const SectionIntro = ({
         </div>
       }
 
-      {isOpen && (
-        <div className={`h-full`}>
+        <div className={isOpen ? `h-full` : `hidden`}>
           <div className={`flex flex-col gap-8`}>
             {!isStoryOpen &&
               <div
@@ -135,7 +134,6 @@ const SectionIntro = ({
             </ul>
           </div>
         </div>
-      )}
     </section>
   );
 };

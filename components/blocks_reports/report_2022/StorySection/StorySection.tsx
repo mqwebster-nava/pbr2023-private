@@ -87,9 +87,8 @@ const StorySection = ({
           </div>
         </div>
 
-        {isOpen && (
           <div
-            className={`responsive-container flex flex-row gap-24 relative pb-28`}
+            className={isOpen ? `responsive-container flex flex-row gap-24 relative pb-28` : `hidden`}
           >
             <div className="flex flex-col gap-0 w-5/12 pt-4">
               <div className={`font-serif font-semibold`}>
@@ -121,7 +120,6 @@ const StorySection = ({
               <div>{calloutText}</div>
             </div>
           </div>
-        )}
       </div>
     </div>
   );
