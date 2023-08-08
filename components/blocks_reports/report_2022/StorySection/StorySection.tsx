@@ -34,12 +34,20 @@ const StorySection = ({
     "text-navy-900": colorTheme == "navy",
   });
 
-  const borderStyles = classNames({
+  const borderStyles = !isOpen ?
+  classNames({
     "border-t-[1px] border-gold-900": colorTheme == "gold",
     "border-t-[1px] border-plum-500": colorTheme == "plum",
     "border-t-[1px] border-sage-600": colorTheme == "sage",
     "border-t-[1px] border-purple-600": colorTheme == "purple",
     "border-t-[1px] border-navy-600": colorTheme == "navy",
+  }) :
+  classNames({
+    "border-t-[1px] border-b-[1px] border-gold-900": colorTheme == "gold",
+    "border-t-[1px] border-b-[1px] border-plum-500": colorTheme == "plum",
+    "border-t-[1px] border-b-[1px] border-sage-600": colorTheme == "sage",
+    "border-t-[1px] border-b-[1px] border-purple-600": colorTheme == "purple",
+    "border-t-[1px] border-b-[1px] border-navy-600": colorTheme == "navy",
   });
 
   const hoverBgStyles = classNames({
@@ -50,53 +58,56 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
-  const statistic = `${story.featuredCallOut.body}`;
-  const statNumber = statistic.match(/(\d+)/g)
-
   return (
-    <div className={`py-md w-full ${textStyles} ${borderStyles} ${hoverBgStyles}`}>
-        <div className={`responsive-container flex items-center justify-between`} onClick={() => setOpenStory(openStory !== null && story.anchor)}>
-          <p
-            className={`font-serif font-semibold type-preset-3`}
-          >
-            {story.title}
-          </p>
-
-          <div className={``}>
-            <ArrowDown color={colorTheme} />
-          </div>
-        </div>
-
-        {isOpen &&
-          <div className={`responsive-container flex flex-row gap-28`}>
-            <div className="flex flex-col flex-shrink gap-0">
-              <div className={`font-serif font-semibold`}>
-                <ReportContent
-                  docData={story.intro?.json}
-                  docLinks={story.intro?.links}
-                  variant={"report"}
-                  reportYear={"2022"}
-                  isMobileLandscape={false}
-                />
-              </div>
-              <div className={`font-serif font-normal`}>
-                <ReportContent
-                  docData={story.body.json}
-                  docLinks={story.body.links}
-                  variant={"report"}
-                  reportYear={"2022"}
-                  isMobileLandscape={false}
-                />
-              </div>
-            </div>
-
-            <div className={`bg-purple-50 w-full`}>
+    <div className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
+        <div className={`relative ${hoverBgStyles}`}>
+          <div className={`sticky top-[70px] z-10 ${isOpen && `bg-${colorTheme}-50`} ${borderStyles}`}>
+            <div className={`responsive-container flex items-center justify-between h-full py-md`} onClick={() => setOpenStory(openStory !== null && story.anchor)}>
+              <p
+                className={`font-serif font-semibold type-preset-3`}
+              >
+                {story.title}
+              </p>
               <div className={``}>
-                {story.featuredCallOut.body}
+                <ArrowDown color={colorTheme} />
               </div>
             </div>
           </div>
-        }
+
+          {isOpen &&
+            <div className={`responsive-container flex flex-row gap-24 relative pb-16`}>
+              <div className="flex flex-col gap-0 w-5/12">
+                <div className={`font-serif font-semibold`}>
+                  <ReportContent
+                    docData={story.intro?.json}
+                    docLinks={story.intro?.links}
+                    variant={"report"}
+                    reportYear={"2022"}
+                    isMobileLandscape={false}
+                  />
+                </div>
+                <div className={`font-serif font-normal`}>
+                  <ReportContent
+                    docData={story.body.json}
+                    docLinks={story.body.links}
+                    variant={"report"}
+                    reportYear={"2022"}
+                    isMobileLandscape={false}
+                  />
+                </div>
+              </div>
+
+              <div className={`flex flex-col w-7/12 h-fit sticky top-[142px]`}>
+                <div className={`bg-navy-50`}>
+                  <img src={story.illustration?.url} alt="" />
+                </div>
+                <div>
+                  {story.featuredCallOut.body}
+                </div>
+              </div>
+            </div>
+          }
+        </div>
     </div>
   )
 }
