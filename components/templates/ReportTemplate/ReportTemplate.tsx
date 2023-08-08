@@ -303,6 +303,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
         <ReportFooter2022
           reportSections={reportSections}
           contentBlocks={contentBlocks}
+          openStory={openStoryId}
         />
       )}
     </main>
