@@ -127,7 +127,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const componentMap = {
       "2022": {
         ReportIllustrationOverlaySubsection: (entry) => (
-            <div key={`${entry.anchor}-${index}`}>
+            <a key={`${entry.anchor}-${index}`} href={`#${entry.anchor}`}>
               <SectionIntro2022
                 key={entry.anchor}
                 section={entry}
@@ -137,7 +137,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 openStory={openStoryId}
                 setOpenStory={setOpenStoryId}
               />
-            </div>
+            </a>
           ),
         ReportSectionCustom: (entry) =>
           entry.type == "Table of Contents" ? (
