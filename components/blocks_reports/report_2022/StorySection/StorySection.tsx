@@ -15,16 +15,16 @@ const StorySection = ({
   nextSectionTitle,
   nextSectionType = "story",
   openStory,
-  setOpenStory
+  setOpenStory,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setIsOpen(openStory !== null)
-  }, [openStory])
+    setIsOpen(openStory !== null);
+  }, [openStory]);
 
-  const storyId = `${sectionAnchor}--${story.anchor}`
-  const nextId = nextSection
+  const storyId = `${sectionAnchor}--${story.anchor}`;
+  const nextId = nextSection;
 
   const textStyles = classNames({
     "text-gold-900": colorTheme == "gold",
@@ -34,21 +34,22 @@ const StorySection = ({
     "text-navy-900": colorTheme == "navy",
   });
 
-  const borderStyles = !isOpen ?
-  classNames({
-    "border-t-[1px] border-gold-900": colorTheme == "gold",
-    "border-t-[1px] border-plum-500": colorTheme == "plum",
-    "border-t-[1px] border-sage-600": colorTheme == "sage",
-    "border-t-[1px] border-purple-600": colorTheme == "purple",
-    "border-t-[1px] border-navy-600": colorTheme == "navy",
-  }) :
-  classNames({
-    "border-t-[1px] border-b-[1px] border-gold-900": colorTheme == "gold",
-    "border-t-[1px] border-b-[1px] border-plum-500": colorTheme == "plum",
-    "border-t-[1px] border-b-[1px] border-sage-600": colorTheme == "sage",
-    "border-t-[1px] border-b-[1px] border-purple-600": colorTheme == "purple",
-    "border-t-[1px] border-b-[1px] border-navy-600": colorTheme == "navy",
-  });
+  const borderStyles = !isOpen
+    ? classNames({
+        "border-t-[1px] border-gold-900": colorTheme == "gold",
+        "border-t-[1px] border-plum-500": colorTheme == "plum",
+        "border-t-[1px] border-sage-600": colorTheme == "sage",
+        "border-t-[1px] border-purple-600": colorTheme == "purple",
+        "border-t-[1px] border-navy-600": colorTheme == "navy",
+      })
+    : classNames({
+        "border-t-[1px] border-b-[1px] border-gold-900": colorTheme == "gold",
+        "border-t-[1px] border-b-[1px] border-plum-500": colorTheme == "plum",
+        "border-t-[1px] border-b-[1px] border-sage-600": colorTheme == "sage",
+        "border-t-[1px] border-b-[1px] border-purple-600":
+          colorTheme == "purple",
+        "border-t-[1px] border-b-[1px] border-navy-600": colorTheme == "navy",
+      });
 
   const hoverBgStyles = classNames({
     "hover:bg-gold-50": colorTheme == "gold",
@@ -60,57 +61,64 @@ const StorySection = ({
 
   return (
     <div className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
-        <div className={`relative ${hoverBgStyles}`}>
-          <div className={`sticky top-[70px] z-10 ${isOpen && `bg-${colorTheme}-50`} ${borderStyles}`}>
-            <div className={`responsive-container flex items-center justify-between h-full py-md`} onClick={() => setOpenStory(openStory ? null : story.anchor)}>
-              <p
-                className={`font-serif font-semibold type-preset-3`}
-              >
-                {story.title}
-              </p>
-              <div className={``}>
-                <ArrowDown color={colorTheme} />
-              </div>
+      <div className={`relative ${hoverBgStyles}`}>
+        <div
+          className={`sticky top-[70px] z-10 ${
+            isOpen && `bg-${colorTheme}-50`
+          } ${borderStyles}`}
+        >
+          <div
+            className={`responsive-container flex items-center justify-between h-full py-md`}
+            onClick={() => setOpenStory(openStory ? null : story.anchor)}
+          >
+            <p className={`font-serif font-semibold type-preset-3`}>
+              {story.title}
+            </p>
+            <div className={``}>
+              <ArrowDown color={colorTheme} />
             </div>
           </div>
+        </div>
 
-          {isOpen &&
-            <div className={`responsive-container flex flex-row gap-24 relative pb-28`}>
-              <div className="flex flex-col gap-0 w-5/12 pt-4">
-                <div className={`font-serif font-semibold`}>
-                  <ReportContent
-                    docData={story.intro?.json}
-                    docLinks={story.intro?.links}
-                    variant={"report"}
-                    reportYear={"2022"}
-                    isMobileLandscape={false}
-                  />
-                </div>
-                <div className={`font-serif font-normal`}>
-                  <ReportContent
-                    docData={story.body.json}
-                    docLinks={story.body.links}
-                    variant={"report"}
-                    reportYear={"2022"}
-                    isMobileLandscape={false}
-                  />
-                </div>
+        {isOpen && (
+          <div
+            className={`responsive-container flex flex-row gap-24 relative pb-28`}
+          >
+            <div className="flex flex-col gap-0 w-5/12 pt-4">
+              <div className={`font-serif font-semibold`}>
+                <ReportContent
+                  docData={story.intro?.json}
+                  docLinks={story.intro?.links}
+                  variant={"report"}
+                  reportYear={"2022"}
+                  isMobileLandscape={false}
+                />
               </div>
-
-              <div className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}>
-                <div className={``}>
-                  <img src={story.illustration?.url} alt="" />
-                </div>
-                <div>
-                  {story.featuredCallOut.body}
-                </div>
+              <div className={`font-serif font-normal`}>
+                <ReportContent
+                  docData={story.body.json}
+                  docLinks={story.body.links}
+                  variant={"report"}
+                  reportYear={"2022"}
+                  isMobileLandscape={false}
+                />
               </div>
             </div>
-          }
-        </div>
+
+            <div
+              className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}
+            >
+              <div className={``}>
+                <img src={story.illustration?.url} alt="" />
+              </div>
+              <div>{story.featuredCallOut.body}</div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 // const StorySection = ({
 //   story,
@@ -138,95 +146,95 @@ const StorySection = ({
 //     return (<p className={`type-preset-6 font-bold font-serif pt-md`}>To learn more, read our <LinkText href={url} variant={"underlined"} color={"inherit"} hoverStyle={"sage"}>{linkText}</LinkText></p>)
 //   }
 
-  // return (
-  //   <section className="" id={`${sectionAnchor}--${story.anchor}`}>
-  //     <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
-  //       <ImageBackgroundContainerDesktop
-  //         story={story}
-  //         colorTheme={colorTheme}
-  //       ></ImageBackgroundContainerDesktop>
-  //       <div
-  //         className={` h-auto  z-30 relative  
-  //         -mt-[calc(100vw_*_9_/_16_+_100px)]
-  //         landscape:-mt-[calc(100vh_-_70px)] `}
-  //       >
-  //         <div
-  //           className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}
-  //         >
-  //           <div
-  //             className={`lg:landscape:col-start-5 lg:landscape:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}
-  //             id={`storyTitleDiv-${story.anchor}`}
-  //           >
-  //             <h3
-  //               id={`storyTitle-${story.anchor}`}
-  //               className={`font-black ${textColor} pt-md pb-xl  opacity-100 `}
-  //             >
-  //               {story.title}
-  //             </h3>
-  //           </div>
-  //         </div>
-  //         <div className={`portrait:h-[50vh] landscape:h-[80vh]`}></div>
+// return (
+//   <section className="" id={`${sectionAnchor}--${story.anchor}`}>
+//     <div className={`bg-${colorTheme}-50 relative min-h-[200vh] `}>
+//       <ImageBackgroundContainerDesktop
+//         story={story}
+//         colorTheme={colorTheme}
+//       ></ImageBackgroundContainerDesktop>
+//       <div
+//         className={` h-auto  z-30 relative
+//         -mt-[calc(100vw_*_9_/_16_+_100px)]
+//         landscape:-mt-[calc(100vh_-_70px)] `}
+//       >
+//         <div
+//           className={` grid grid-cols-12 responsive-container z-20 sticky top-[70px]`}
+//         >
+//           <div
+//             className={`lg:landscape:col-start-5 lg:landscape:col-span-8 col-start-0 col-span-12 pr-xl  bg-${colorTheme}-50  pt-md`}
+//             id={`storyTitleDiv-${story.anchor}`}
+//           >
+//             <h3
+//               id={`storyTitle-${story.anchor}`}
+//               className={`font-black ${textColor} pt-md pb-xl  opacity-100 `}
+//             >
+//               {story.title}
+//             </h3>
+//           </div>
+//         </div>
+//         <div className={`portrait:h-[50vh] landscape:h-[80vh]`}></div>
 
-  //         <div
-  //           className={`w-full bg-${colorTheme}-50 lg:landscape:bg-transparent`}
-  //         >
-  //           <div className="grid grid-cols-12 responsive-container h-auto relative">
-  //             <div
-  //               className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl `}
-  //             >
-  //               <div
-  //                 id={`storySummary-${story.anchor}`}
-  //                 className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
-  //               >
-  //                 <div
-  //                   className={`font-serif font-bold ${textColor} border-t-[2px] ${borderColor} type-preset-6`}
-  //                 >
-  //                   <ReportContent
-  //                     docData={story.intro.json}
-  //                     docLinks={story.intro.links}
-  //                     variant={"report"}
-  //                     reportYear={"2021"}
-  //                     isMobileLandscape={false}
-  //                   />
-  //                 </div>
-  //               </div>
+//         <div
+//           className={`w-full bg-${colorTheme}-50 lg:landscape:bg-transparent`}
+//         >
+//           <div className="grid grid-cols-12 responsive-container h-auto relative">
+//             <div
+//               className={`lg:landscape:col-start-5 lg:landscape:col-span-7 col-start-0 col-span-11 row-start-1 pr-xl `}
+//             >
+//               <div
+//                 id={`storySummary-${story.anchor}`}
+//                 className={` lg:landscape:opacity-0 motion-reduce:opacity-100 bg-${colorTheme}-50  -mx-sm px-sm `}
+//               >
+//                 <div
+//                   className={`font-serif font-bold ${textColor} border-t-[2px] ${borderColor} type-preset-6`}
+//                 >
+//                   <ReportContent
+//                     docData={story.intro.json}
+//                     docLinks={story.intro.links}
+//                     variant={"report"}
+//                     reportYear={"2021"}
+//                     isMobileLandscape={false}
+//                   />
+//                 </div>
+//               </div>
 
-  //               <div
-  //                 id={`storyCallOut-${story.anchor}`}
-  //                 className={`bg-${colorTheme}-50 lg:landscape:opacity-0 motion-reduce:opacity-100  -mx-sm px-sm`}
-  //               >
-  //                 <Callout
-  //                   body={story.featuredCallOut.body}
-  //                   attribution={story.featuredCallOut.attribution}
-  //                   colorTheme={colorTheme}
-  //                   variant={story.featuredCallOut.variant}
-  //                   attributionRole={story.featuredCallOut.attributionRole}
-  //                   isMobileLandscape={false}
-  //                 ></Callout>
-  //               </div>
-  //               <div
-  //                 id={`storyContent-${story.anchor}`}
-  //                 className={` font-serif type-preset-6 tracking-[0.015em] font-light ${textColor} bg-${colorTheme}-50 
-  //             block pb-[200px] -mx-sm px-sm
-  //           `}
-  //               >
-  //                 <ReportContent
-  //                   docData={story.body.json}
-  //                   docLinks={story.body.links}
-  //                   variant={"report"}
-  //                   reportYear={"2021"}
-  //                   isMobileLandscape={false}
-  //                 />
-  //                   {story.linkedPostUrl && <LinkedPost url={story.linkedPostUrl}/>}
-  //               </div>
-              
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </section>
-  // );
+//               <div
+//                 id={`storyCallOut-${story.anchor}`}
+//                 className={`bg-${colorTheme}-50 lg:landscape:opacity-0 motion-reduce:opacity-100  -mx-sm px-sm`}
+//               >
+//                 <Callout
+//                   body={story.featuredCallOut.body}
+//                   attribution={story.featuredCallOut.attribution}
+//                   colorTheme={colorTheme}
+//                   variant={story.featuredCallOut.variant}
+//                   attributionRole={story.featuredCallOut.attributionRole}
+//                   isMobileLandscape={false}
+//                 ></Callout>
+//               </div>
+//               <div
+//                 id={`storyContent-${story.anchor}`}
+//                 className={` font-serif type-preset-6 tracking-[0.015em] font-light ${textColor} bg-${colorTheme}-50
+//             block pb-[200px] -mx-sm px-sm
+//           `}
+//               >
+//                 <ReportContent
+//                   docData={story.body.json}
+//                   docLinks={story.body.links}
+//                   variant={"report"}
+//                   reportYear={"2021"}
+//                   isMobileLandscape={false}
+//                 />
+//                   {story.linkedPostUrl && <LinkedPost url={story.linkedPostUrl}/>}
+//               </div>
+
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </section>
+// );
 // };
 
 // const ImageBackgroundContainerDesktop = ({ story, colorTheme }) => {
