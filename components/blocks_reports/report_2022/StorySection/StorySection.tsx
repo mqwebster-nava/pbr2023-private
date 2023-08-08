@@ -75,8 +75,8 @@ const StorySection = ({
           </div>
 
           {isOpen &&
-            <div className={`responsive-container flex flex-row gap-24 relative pb-16`}>
-              <div className="flex flex-col gap-0 w-5/12">
+            <div className={`responsive-container flex flex-row gap-24 relative pb-28`}>
+              <div className="flex flex-col gap-0 w-5/12 pt-4">
                 <div className={`font-serif font-semibold`}>
                   <ReportContent
                     docData={story.intro?.json}
@@ -97,8 +97,8 @@ const StorySection = ({
                 </div>
               </div>
 
-              <div className={`flex flex-col w-7/12 h-fit sticky top-[142px]`}>
-                <div className={`bg-navy-50`}>
+              <div className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}>
+                <div className={``}>
                   <img src={story.illustration?.url} alt="" />
                 </div>
                 <div>
