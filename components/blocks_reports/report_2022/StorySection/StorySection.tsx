@@ -59,6 +59,13 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
+  let calloutText = story.featuredCallOut.body
+
+  if (calloutText.includes('//images')) {
+    calloutText = <img src={story.featuredCallOut.body} alt="" />
+    console.log(calloutText)
+  }
+
   return (
     <div className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
       <div className={`relative ${hoverBgStyles}`}>
@@ -111,7 +118,7 @@ const StorySection = ({
               <div className={``}>
                 <img src={story.illustration?.url} alt="" />
               </div>
-              <div>{story.featuredCallOut.body}</div>
+              <div>{calloutText}</div>
             </div>
           </div>
         )}
