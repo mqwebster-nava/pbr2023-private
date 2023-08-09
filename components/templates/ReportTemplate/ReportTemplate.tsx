@@ -7,6 +7,7 @@ they need special logic to set up full page navs so that logic is done here
 
 import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // 2022
@@ -97,8 +98,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-  const [openSectionId, setOpenSectionId] = useState(null)
-  const [openStoryId, setOpenStoryId] = useState(null)
+  const [openSectionId, setOpenSectionId] = useState(null);
+  const [openStoryId, setOpenStoryId] = useState(null);
+
+  const router = useRouter();
 
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
@@ -132,6 +135,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 key={entry.anchor}
                 section={entry}
                 i={entry.themeNum}
+                url={router}
                 openSection={openSectionId}
                 setOpenSection={setOpenSectionId}
                 openStory={openStoryId}

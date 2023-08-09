@@ -10,6 +10,7 @@ import ArrowDown from "./Atoms/ArrowDown";
 const SectionIntro = ({
   section,
   i,
+  url,
   openSection,
   setOpenSection,
   openStory,
@@ -23,6 +24,12 @@ const SectionIntro = ({
       setIsStoryOpen(false)
     }
   }, [openStory])
+
+  useEffect(() => {
+    if (url.asPath.includes(section.anchor)) {
+      setOpenSection(section.anchor)
+    }
+  }, [url])
 
   const isOpen = section.anchor == openSection;
   const isHidden = section.anchor !== openSection && openSection !== null;
@@ -72,10 +79,16 @@ const SectionIntro = ({
       tabIndex={0}
     >
       {!isStoryOpen &&
-        <a href={`#${section.anchor}`}>
           <div
             className="responsive-container w-full pb-8"
-            onClick={() => setOpenSection(isOpen ? null : section.anchor)}
+            onClick={() => {
+              setOpenSection(isOpen ? null : section.anchor)
+              if (isOpen) {
+                url.push('/public-benefit-reports/2022')
+              } else {
+                url.push(`#${section.anchor}`)
+              }
+            }}
           >
             <div
               className={`flex flex-row justify-between items-baseline ${
@@ -97,7 +110,6 @@ const SectionIntro = ({
               </span>
             </div>
           </div>
-        </a>
       }
 
         <div className={isOpen ? `h-full` : `hidden`}>
