@@ -59,10 +59,10 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
-  let calloutText = story.featuredCallOut.body
+  let calloutText = story.featuredCallOut.body;
 
-  if (calloutText.includes('//images')) {
-    calloutText = <img src={story.featuredCallOut.body} alt="" />
+  if (calloutText.includes("//images")) {
+    calloutText = <img src={story.featuredCallOut.body} alt="" />;
   }
 
   return (
@@ -86,39 +86,43 @@ const StorySection = ({
           </div>
         </div>
 
-          <div
-            className={isOpen ? `responsive-container flex flex-row gap-24 relative pb-28` : `hidden`}
-          >
-            <div className="flex flex-col gap-0 w-5/12 pt-4">
-              <div className={`font-serif font-semibold`}>
-                <ReportContent
-                  docData={story.intro?.json}
-                  docLinks={story.intro?.links}
-                  variant={"report"}
-                  reportYear={"2022"}
-                  isMobileLandscape={false}
-                />
-              </div>
-              <div className={`font-serif font-normal`}>
-                <ReportContent
-                  docData={story.body.json}
-                  docLinks={story.body.links}
-                  variant={"report"}
-                  reportYear={"2022"}
-                  isMobileLandscape={false}
-                />
-              </div>
+        <div
+          className={
+            isOpen
+              ? `responsive-container flex flex-row gap-24 relative pb-28`
+              : `hidden`
+          }
+        >
+          <div className="flex flex-col gap-0 w-5/12 pt-4">
+            <div className={`font-serif font-semibold`}>
+              <ReportContent
+                docData={story.intro?.json}
+                docLinks={story.intro?.links}
+                variant={"report"}
+                reportYear={"2022"}
+                isMobileLandscape={false}
+              />
             </div>
-
-            <div
-              className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}
-            >
-              <div className={``}>
-                <img src={story.illustration?.url} alt="" />
-              </div>
-              <div>{calloutText}</div>
+            <div className={`font-serif font-normal`}>
+              <ReportContent
+                docData={story.body.json}
+                docLinks={story.body.links}
+                variant={"report"}
+                reportYear={"2022"}
+                isMobileLandscape={false}
+              />
             </div>
           </div>
+
+          <div
+            className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}
+          >
+            <div className={``}>
+              <img src={story.illustration?.url} alt="" />
+            </div>
+            <div>{calloutText}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
