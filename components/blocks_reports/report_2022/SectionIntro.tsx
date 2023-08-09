@@ -73,7 +73,7 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`${isHidden ? "hidden" : "group"} ${
+      className={`scroll-mt-[100vh] ${isHidden ? "hidden" : "group"} ${
         isOpen ? isStoryOpen ? "" : "mt-2" : i == 1 ? "mt-2" : "border-t-2 border-gray-200"
       } ${borderStyles}`}
       tabIndex={0}
