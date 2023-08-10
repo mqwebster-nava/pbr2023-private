@@ -108,15 +108,17 @@ const ImageGalleryBlock = ({
       <div>
         <div className={`flex flex-col justify-center w-full bg-plum-900`}>
           <div className="flex flex-col md:flex-row gap-8 relative justify-between w-full responsive-container">
-            <div ref={elementRef} className={`w-full h-full self-end pt-4`}>
-              {isOnScreen && <div className="w-[240px] md:w-[360px]">
-                <NavaLabsLogo animated />
-              </div>}
+            <div className={`w-full h-full min-h-[72px] self-end pt-16`}>
+              {isOnScreen &&
+                <div className="w-[240px] md:w-[360px] animate-fadeIn">
+                  <NavaLabsLogo animated />
+                </div>
+              }
             </div>
 
             {images && (
               <div className={`w-full aspect-square`}>
-                {isOnScreen ? (
+                {isOnScreen &&
                   <div className="animate-dotOne">
                     <CrossfadeCarousel
                       interval={2000}
@@ -127,19 +129,11 @@ const ImageGalleryBlock = ({
                       })}
                     />
                   </div>
-                ) :
-                <div className="opacity-0 animate-fadeOut">
-                  <Image
-                    className=""
-                    src={images[0].url}
-                    layout="responsive"
-                    height={images[0].height}
-                    width={images[0].width}
-                    alt={images[0].description}
-                  ></Image>
-                </div>}
+                }
               </div>
             )}
+
+            <div ref={elementRef} className={`absolute bottom-0 left-0 w-full h-2/3`}></div>
           </div>
         </div>
       </div>
