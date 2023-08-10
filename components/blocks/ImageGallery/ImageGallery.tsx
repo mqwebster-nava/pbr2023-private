@@ -107,9 +107,9 @@ const ImageGalleryBlock = ({
     return (
       <div>
         <div className={`flex flex-col justify-center w-full bg-plum-900`}>
-          <div className="flex flex-row relative justify-between w-full responsive-container">
-            <div ref={elementRef} className={`w-full h-full self-end`}>
-              {isOnScreen && <div className="w-[120px] md:w-[240px] lg:w-[360px]">
+          <div className="flex flex-col md:flex-row gap-8 relative justify-between w-full responsive-container">
+            <div ref={elementRef} className={`w-full h-full self-end pt-4`}>
+              {isOnScreen && <div className="w-[240px] md:w-[360px]">
                 <NavaLabsLogo animated />
               </div>}
             </div>
