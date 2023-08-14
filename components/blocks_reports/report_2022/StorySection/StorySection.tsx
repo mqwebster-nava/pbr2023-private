@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useOnScreen } from "utils/useOnScreen";
 import Image from "next/image";
 
 import Callout from "components/blocks_reports/ReportContent/Callout";
@@ -6,6 +7,7 @@ import ReportContent from "components/blocks_reports/ReportContent/ReportContent
 import classNames from "classnames";
 import { LinkText } from "components/atom/LinkText/LinkText";
 import ArrowDown from "../Atoms/ArrowDown";
+import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 
 const StorySection = ({
   story,
@@ -18,6 +20,16 @@ const StorySection = ({
   setOpenStory,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const elementRef = useRef(null);
+  const isOnScreen = useOnScreen(elementRef);
+
+  useEffect(() => {
+    if (isOpen && isOnScreen) {
+      setOpenStory(story.anchor);
+      console.log(openStory)
+    }
+  }, [isOnScreen]);
 
   useEffect(() => {
     setIsOpen(openStory !== null);
@@ -65,10 +77,14 @@ const StorySection = ({
     calloutText = <img src={story.featuredCallOut.body} alt="" />;
   }
 
+  console.log(story.illustration)
+
+  const images = story.illustration && story.contextIllustration ? [story.illustration, story.contextIllustration] : [];
+
   return (
-    <div className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
+    <div id={storyId} ref={elementRef} className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
       <div className={`relative ${hoverBgStyles}`}>
-        <div
+        {!isOpen && <div
           className={`sticky top-[70px] z-10 ${
             isOpen && `bg-${colorTheme}-50`
           } ${borderStyles}`}
@@ -84,7 +100,7 @@ const StorySection = ({
               <ArrowDown color={colorTheme} />
             </div>
           </div>
-        </div>
+        </div>}
 
         <div
           className={
@@ -117,8 +133,16 @@ const StorySection = ({
           <div
             className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}
           >
-            <div className={``}>
-              <img src={story.illustration?.url} alt="" />
+            <div className={`min-h-[400px]`}>
+              {/* <img src={story.illustration?.url} alt="" /> */}
+              <CrossfadeCarousel
+                interval={2000}
+                transition={1000}
+                groupAltText={``}
+                images={images.map((im) => {
+                  return { src: im.url, ...im }
+                })}
+              />
             </div>
             <div>{calloutText}</div>
           </div>
