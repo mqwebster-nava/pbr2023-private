@@ -126,7 +126,7 @@ const SectionIntro = ({
 
             <div className={`sticky top-[70px] z-10`}>
               {isStoryOpen &&
-                <DropdownMenu items={section.items} colorTheme={section.colorTheme} sectionAnchor={section.anchor} openStory={openStory} />
+                <DropdownMenu items={section.items} colorTheme={section.colorTheme} sectionAnchor={section.anchor} openStory={openStory} setOpenStory={setOpenStory} />
               }
             </div>
 
@@ -159,7 +159,7 @@ const SectionIntro = ({
 
 export default SectionIntro;
 
-const DropdownMenu = ({items, colorTheme, sectionAnchor, openStory}) => {
+const DropdownMenu = ({items, colorTheme, sectionAnchor, openStory, setOpenStory}) => {
   const [selectedOption, setSelectedOption] = useState(items[0].title);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -169,6 +169,7 @@ const DropdownMenu = ({items, colorTheme, sectionAnchor, openStory}) => {
 
   const selectOption = (option) => {
     setSelectedOption(option);
+    setOpenStory(option);
     setIsOpen(false);
   };
 
@@ -195,9 +196,8 @@ const DropdownMenu = ({items, colorTheme, sectionAnchor, openStory}) => {
         <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900`}>
           <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
             {availableOptions.map((option, index) => (
-              <div className={`w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
+              <div key={index} className={`w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
                 <a
-                  key={index}
                   href={`2022#${sectionAnchor}--${option.anchor}`}
                   className="flex w-full py-md responsive-container"
                   role="menuitem"
