@@ -21,16 +21,6 @@ const StorySection = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const elementRef = useRef(null);
-  const isOnScreen = useOnScreen(elementRef);
-
-  useEffect(() => {
-    if (isOpen && isOnScreen) {
-      setOpenStory(story.anchor);
-      console.log(openStory)
-    }
-  }, [isOnScreen]);
-
   useEffect(() => {
     setIsOpen(openStory !== null);
   }, [openStory]);
@@ -77,12 +67,10 @@ const StorySection = ({
     calloutText = <img src={story.featuredCallOut.body} alt="" />;
   }
 
-  console.log(story.illustration)
-
   const images = story.illustration && story.contextIllustration ? [story.illustration, story.contextIllustration] : [];
 
   return (
-    <div id={storyId} ref={elementRef} className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
+    <div id={storyId} className={`${textStyles} ${isOpen && `bg-${colorTheme}-50`}`}>
       <div className={`relative ${hoverBgStyles}`}>
         {!isOpen && <div
           className={`sticky top-[70px] z-10 ${
