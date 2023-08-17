@@ -97,6 +97,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
+  // 2022 State Management
+  const [activeSection, setActiveSection] = useState(null);
+  const [activeStory, setActiveStory] = useState(null);
+
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
     ? "2022"
@@ -129,6 +133,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 key={entry.anchor}
                 section={entry}
                 i={entry.themeNum}
+                activeSection={activeSection}
+                setActiveSection={setActiveSection}
+                activeStory={activeStory}
+                setActiveStory={setActiveStory}
               />
             </div>
           ),

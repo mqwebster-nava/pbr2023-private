@@ -16,6 +16,8 @@ const StorySection = ({
   nextSection,
   nextSectionTitle,
   nextSectionType = "story",
+  activeStory,
+  setActiveStory,
 }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection;

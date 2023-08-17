@@ -11,6 +11,10 @@ import StoriesDropdownMenu from "./Atoms/StoriesDropdownMenu";
 const SectionIntro = ({
   section,
   i,
+  activeSection,
+  setActiveSection,
+  activeStory,
+  setActiveStory,
 }) => {
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
@@ -93,6 +97,8 @@ const SectionIntro = ({
                       nextSection={""}
                       nextSectionTitle={""}
                       nextSectionType={""}
+                      activeStory={activeStory}
+                      setActiveStory={setActiveStory}
                     />
                   </li>
                 );
