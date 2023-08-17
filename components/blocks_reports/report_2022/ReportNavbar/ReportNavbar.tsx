@@ -96,17 +96,21 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
       }`}
     >
       <div className="responsive-container flex flex-wrap items-center h-full ">
-        <div className="w-[22%]">
+        <div className="w-[16%]">
           <Logo isMobile={true} />
         </div>
         <a
-          href="#reportHeader"
+          href="/public-benefit-reports/2022"
+          className="type-preset-7 font-sans text-black tracking-[0.015em]"
           onClick={() => {
             if (isShowingMenu) setIsShowingMenu(false);
           }}
         >
-          <h2 className="type-preset-6 font-serif text-black tracking-[0.015em]">
+          <h2 className="font-semibold">
             Public Benefit Report
+          </h2>
+          <h2 className="">
+            2022
           </h2>
         </a>
         <div className="block ml-auto ">
