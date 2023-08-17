@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor}) => {
+const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
     const [selectedOption, setSelectedOption] = useState(items[0].title);
     const [isOpen, setIsOpen] = useState(false);
   
@@ -14,6 +14,14 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor}) => {
     };
   
     const availableOptions = items.filter((option) => option.title !== selectedOption);
+
+    useEffect(() => {
+      items.forEach((item) => {
+        if (activeStory === `${sectionAnchor}--${item.anchor}`) {
+          setSelectedOption(item.title);
+        }
+      })
+    }, [activeStory]);
   
     return (
       <div className={`relative z-40 w-full font-serif font-semibold type-preset-3 text-${colorTheme}-900 border-y-[1px] border-${colorTheme}-900`}>

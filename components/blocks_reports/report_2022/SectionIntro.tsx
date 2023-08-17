@@ -80,6 +80,8 @@ const SectionIntro = ({
                 items={section.items}
                 colorTheme={section.colorTheme}
                 sectionAnchor={section.anchor}
+                activeStory={activeStory}
+                setActiveStory={setActiveStory}
               />
           </div>
 

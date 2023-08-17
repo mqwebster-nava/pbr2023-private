@@ -22,6 +22,14 @@ const StorySection = ({
   const storyId = `${sectionAnchor}--${story.anchor}`;
   const nextId = nextSection;
 
+  const storyRef = useRef(null);
+  const isOnScreen = useOnScreen(storyRef);
+  useEffect(() => {
+    if (isOnScreen) {
+      setActiveStory(storyId);
+    }
+  }, [isOnScreen]);
+
   const textStyles = classNames({
     "text-gold-900": colorTheme == "gold",
     "text-plum-900": colorTheme == "plum",
@@ -55,7 +63,7 @@ const StorySection = ({
   const images = story.illustration && story.contextIllustration ? [story.illustration, story.contextIllustration] : [];
 
   return (
-    <div id={storyId} className={`${textStyles}`}>
+    <div id={storyId} ref={storyRef} className={`${textStyles}`}>
       <div className={`relative ${hoverBgStyles}`}>
         <div
           className={`responsive-container flex flex-row gap-24 relative pb-28`}
