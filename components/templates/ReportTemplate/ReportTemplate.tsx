@@ -7,7 +7,6 @@ they need special logic to set up full page navs so that logic is done here
 
 import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // 2022
@@ -98,11 +97,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-  const [openSectionId, setOpenSectionId] = useState(null);
-  const [openStoryId, setOpenStoryId] = useState(null);
-
-  const router = useRouter();
-
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
     ? "2022"
@@ -135,11 +129,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 key={entry.anchor}
                 section={entry}
                 i={entry.themeNum}
-                url={router}
-                openSection={openSectionId}
-                setOpenSection={setOpenSectionId}
-                openStory={openStoryId}
-                setOpenStory={setOpenStoryId}
               />
             </div>
           ),
@@ -298,7 +287,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2022 {...pageHeader} openStory={openStoryId} />
+        <ReportHero2022 {...pageHeader} />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
@@ -307,7 +296,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
         <ReportFooter2022
           reportSections={reportSections}
           contentBlocks={contentBlocks}
-          openStory={openStoryId}
         />
       )}
     </main>

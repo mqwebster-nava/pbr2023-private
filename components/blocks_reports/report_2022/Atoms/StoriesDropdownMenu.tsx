@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, openStory, setOpenStory}) => {
+const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor}) => {
     const [selectedOption, setSelectedOption] = useState(items[0].title);
     const [isOpen, setIsOpen] = useState(false);
   
@@ -10,7 +10,6 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, openStory, setOp
   
     const selectOption = (option) => {
       setSelectedOption(option);
-      setOpenStory(option);
       setIsOpen(false);
     };
   

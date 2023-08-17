@@ -11,30 +11,7 @@ import StoriesDropdownMenu from "./Atoms/StoriesDropdownMenu";
 const SectionIntro = ({
   section,
   i,
-  url,
-  openSection,
-  setOpenSection,
-  openStory,
-  setOpenStory,
 }) => {
-  const [isStoryOpen, setIsStoryOpen] = useState(false);
-  useEffect(() => {
-    if (openStory !== null) {
-      setIsStoryOpen(true);
-    } else {
-      setIsStoryOpen(false);
-    }
-  }, [openStory]);
-
-  useEffect(() => {
-    if (url.asPath.includes(section.anchor)) {
-      setOpenSection(section.anchor);
-    }
-  }, [url]);
-
-  const isOpen = section.anchor == openSection;
-  const isHidden = section.anchor !== openSection && openSection !== null;
-
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
     "text-plum-500": section.colorTheme == "plum",
@@ -43,9 +20,7 @@ const SectionIntro = ({
     "text-navy-500": section.colorTheme == "navy",
   });
 
-  const hoverStyles =
-    !isOpen &&
-    classNames({
+  const hoverStyles = classNames({
       "group-hover:text-gold-900": section.colorTheme == "gold",
       "group-hover:text-plum-500": section.colorTheme == "plum",
       "group-hover:text-sage-500": section.colorTheme == "sage",
@@ -53,9 +28,7 @@ const SectionIntro = ({
       "group-hover:text-navy-500": section.colorTheme == "navy",
     });
 
-  const borderStyles =
-    !isOpen &&
-    classNames({
+  const borderStyles = classNames({
       // "hover:border-t-2 hover:border-gold-900": section.colorTheme == "gold",
       "hover:border-t-2 hover:border-plum-500": section.colorTheme == "plum",
       "hover:border-t-2 hover:border-sage-500": section.colorTheme == "sage",
@@ -67,41 +40,18 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`scroll-mt-[100vh] ${isHidden ? "hidden" : "group"} ${
-        isOpen
-          ? isStoryOpen
-            ? ""
-            : "mt-2"
-          : i == 1
-          ? "mt-2"
-          : "border-t-2 border-gray-200"
-      } ${borderStyles}`}
+      className={`scroll-mt-[100vh] group ${borderStyles}`}
       tabIndex={0}
     >
-      {!isStoryOpen && (
-        <div
-          className="responsive-container w-full pb-8"
-          onClick={() => {
-            setOpenSection(isOpen ? null : section.anchor);
-            if (isOpen) {
-              url.push("/public-benefit-reports/2022");
-            } else {
-              url.push(`#${section.anchor}`);
-            }
-          }}
-        >
+        <div className="responsive-container w-full pb-8">
           <div
-            className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer ${
-              isOpen ? openStyles : "text-gray-300"
-            } ${hoverStyles}`}
+            className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer text-gray-300 ${hoverStyles}`}
           >
             <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
               {section.title}
             </span>
             <span
-              className={`opacity-0 ${
-                !isOpen && "group-hover:opacity-100"
-              } min-w-max font-sans font-semibold type-preset-6`}
+              className={`opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`}
             >
               <div className="flex flex-row items-center gap-1">
                 {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
@@ -110,11 +60,9 @@ const SectionIntro = ({
             </span>
           </div>
         </div>
-      )}
 
-      <div className={isOpen ? `h-full relative` : `hidden`}>
-        <div className={`flex flex-col ${isStoryOpen ? `gap-0` : `gap-8`}`}>
-          {!isStoryOpen && (
+      <div className={`h-full relative`}>
+        <div className={`flex flex-col gap-8`}>
             <div
               className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
             >
@@ -122,18 +70,13 @@ const SectionIntro = ({
                 <MarkdownComponent content={section.body} />
               </div>
             </div>
-          )}
 
           <div className={`sticky top-[70px] z-10`}>
-            {isStoryOpen && (
               <StoriesDropdownMenu
                 items={section.items}
                 colorTheme={section.colorTheme}
                 sectionAnchor={section.anchor}
-                openStory={openStory}
-                setOpenStory={setOpenStory}
               />
-            )}
           </div>
 
           <ul className={``}>
@@ -150,8 +93,6 @@ const SectionIntro = ({
                       nextSection={""}
                       nextSectionTitle={""}
                       nextSectionType={""}
-                      openStory={openStory}
-                      setOpenStory={setOpenStory}
                     />
                   </li>
                 );
