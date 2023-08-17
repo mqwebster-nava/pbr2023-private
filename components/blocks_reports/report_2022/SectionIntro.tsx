@@ -40,7 +40,7 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`scroll-mt-[100vh] group ${borderStyles}`}
+      className={`scroll-mt-[100vh] group mt-2 ${borderStyles}`}
       tabIndex={0}
     >
         <div className="responsive-container w-full pb-8">
