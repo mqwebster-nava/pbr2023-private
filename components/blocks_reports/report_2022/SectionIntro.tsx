@@ -27,6 +27,14 @@ const SectionIntro = ({
     }
   }, [activeSection]);
 
+  useEffect(() => {
+    if (activeSection && activeSection !== section.anchor) {
+      setIsSectionHidden(true);
+    } else {
+      setIsSectionHidden(false);
+    }
+  }, [activeSection]);
+
   const toggleSection = () => {
     if (activeSection === section.anchor) {
       setActiveSection(null);
@@ -63,11 +71,10 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`scroll-mt-[100vh] group mt-2 ${borderStyles}`}
+      className={`scroll-mt-[100vh] w-full group mt-2 ${borderStyles} ${isSectionHidden && `hidden`}`}
       tabIndex={0}
-      onClick={toggleSection}
     >
-        <div className="responsive-container w-full pb-8">
+        <div className="responsive-container w-full pb-8" onClick={toggleSection}>
           <div
             className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer text-gray-300 ${hoverStyles}`}
           >
