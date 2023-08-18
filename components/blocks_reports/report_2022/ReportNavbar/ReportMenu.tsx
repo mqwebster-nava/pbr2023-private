@@ -4,7 +4,7 @@ import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
 import { LinkListItem } from "components/blocks_reports/report_2022/Atoms/LinkListItem";
 import { dividerColor } from "components/blocks_reports/report_2021/_utils";
 /*
-TODO navbar spacing
+TODO use active story and active section setters on list item click instead of a tag href
 */
 
 const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
