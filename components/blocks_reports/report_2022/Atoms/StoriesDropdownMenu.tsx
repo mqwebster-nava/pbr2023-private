@@ -9,8 +9,9 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
     };
   
     const selectOption = (option) => {
-      setSelectedOption(option);
+      setSelectedOption(option.title);
       setIsOpen(false);
+      setActiveStory(option.anchor)
     };
   
     const availableOptions = items.filter((option) => option.title !== selectedOption);
@@ -23,7 +24,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
       })
     }, [activeStory]);
 
-    const StoriesMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
+    const StoriesMenu = () => {
       return (
         <div className={`w-full border-b-[1px] border-${colorTheme}-900`}>
           <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
@@ -33,7 +34,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
                   href={`2022#${sectionAnchor}--${option.anchor}`}
                   className="flex w-full py-md responsive-container"
                   role="menuitem"
-                  onClick={() => selectOption(option.title)}
+                  onClick={() => selectOption(option)}
                 >
                   {option.title}
                 </a>
@@ -44,7 +45,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
       )
     };
 
-    const StoriesDropdown = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
+    const StoriesDropdown = () => {
       return (
         <div className={`relative z-40 w-full border-y-[1px] border-${colorTheme}-900`}>
         <div className={`w-full bg-white hover:bg-${colorTheme}-50`}>
@@ -70,7 +71,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
                   href={`2022#${sectionAnchor}--${option.anchor}`}
                   className="flex w-full py-md responsive-container"
                   role="menuitem"
-                  onClick={() => selectOption(option.title)}
+                  onClick={() => selectOption(option)}
                 >
                   {option.title}
                 </a>
@@ -85,7 +86,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
     return (
       <div className={`font-serif font-semibold type-preset-3 text-${colorTheme}-900`}>
         {
-          parentSectionOpen && activeStory == null ? <StoriesMenu items={items} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeStory={activeStory} setActiveStory={setActiveStory} /> : <StoriesDropdown items={items} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeStory={activeStory} setActiveStory={setActiveStory} />
+          parentSectionOpen && activeStory == null ? <StoriesMenu /> : <StoriesDropdown />
         }
       </div>
     );
