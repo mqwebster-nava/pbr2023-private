@@ -63,8 +63,10 @@ const StorySection = ({
   const images = story.illustration && story.contextIllustration ? [story.illustration, story.contextIllustration] : [];
 
   return (
-    <div id={storyId} ref={storyRef} className={`${textStyles}`}>
-      <div className={`relative ${hoverBgStyles}`}>
+    <div id={storyId} className={`text-${colorTheme}-900 bg-${colorTheme}-50`}>
+      <div className={`relative`}>
+        <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
+
         <div
           className={`responsive-container flex flex-row gap-24 relative pb-28`}
         >

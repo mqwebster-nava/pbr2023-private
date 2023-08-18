@@ -65,7 +65,7 @@ const SectionIntro = ({
           </div>
         </div>
 
-      <div className={`h-full relative`}>
+      <div className={`h-full`}>
         <div className={`flex flex-col gap-8`}>
             <div
               className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
@@ -75,37 +75,38 @@ const SectionIntro = ({
               </div>
             </div>
 
-          <div className={`sticky top-[70px] z-10`}>
-              <StoriesDropdownMenu
-                items={section.items}
-                colorTheme={section.colorTheme}
-                sectionAnchor={section.anchor}
-                activeStory={activeStory}
-                setActiveStory={setActiveStory}
-              />
+          <div className={`relative`}>
+            <div className={`sticky top-[70px] z-10`}>
+                <StoriesDropdownMenu
+                  items={section.items}
+                  colorTheme={section.colorTheme}
+                  sectionAnchor={section.anchor}
+                  activeStory={activeStory}
+                  setActiveStory={setActiveStory}
+                />
+            </div>
+            <ul className={``}>
+              {section.items
+                .filter((story) => story.hideStory !== true)
+                .map((story) => {
+                  return (
+                    <li key={story.anchor}>
+                      <StorySection
+                        key={story.anchor}
+                        story={story}
+                        colorTheme={section.colorTheme}
+                        sectionAnchor={section.anchor}
+                        nextSection={""}
+                        nextSectionTitle={""}
+                        nextSectionType={""}
+                        activeStory={activeStory}
+                        setActiveStory={setActiveStory}
+                      />
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
-
-          <ul className={``}>
-            {section.items
-              .filter((story) => story.hideStory !== true)
-              .map((story) => {
-                return (
-                  <li key={story.anchor}>
-                    <StorySection
-                      key={story.anchor}
-                      story={story}
-                      colorTheme={section.colorTheme}
-                      sectionAnchor={section.anchor}
-                      nextSection={""}
-                      nextSectionTitle={""}
-                      nextSectionType={""}
-                      activeStory={activeStory}
-                      setActiveStory={setActiveStory}
-                    />
-                  </li>
-                );
-              })}
-          </ul>
         </div>
       </div>
     </section>
