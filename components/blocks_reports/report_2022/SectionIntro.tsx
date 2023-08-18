@@ -36,14 +36,11 @@ const SectionIntro = ({
   }, [activeSection]);
 
   const toggleSection = () => {
-    if (activeSection === section.anchor) {
-      setActiveSection(null);
-    } else {
-      setActiveSection(section.anchor);
-    }
+    setActiveSection(activeSection === section.anchor ? null : section.anchor);
+    setActiveStory(null);
   };
 
-  const openStyles = classNames({
+  const openStyles = isSectionOpen && classNames({
     "text-gold-900": section.colorTheme == "gold",
     "text-plum-500": section.colorTheme == "plum",
     "text-sage-500": section.colorTheme == "sage",
@@ -51,7 +48,7 @@ const SectionIntro = ({
     "text-navy-500": section.colorTheme == "navy",
   });
 
-  const hoverStyles = classNames({
+  const hoverStyles = !isSectionOpen && classNames({
       "group-hover:text-gold-900": section.colorTheme == "gold",
       "group-hover:text-plum-500": section.colorTheme == "plum",
       "group-hover:text-sage-500": section.colorTheme == "sage",
@@ -59,48 +56,48 @@ const SectionIntro = ({
       "group-hover:text-navy-500": section.colorTheme == "navy",
     });
 
-  const borderStyles = classNames({
+  const borderStyles = !isSectionOpen && classNames({
       // "hover:border-t-2 hover:border-gold-900": section.colorTheme == "gold",
-      "hover:border-t-2 hover:border-plum-500": section.colorTheme == "plum",
-      "hover:border-t-2 hover:border-sage-500": section.colorTheme == "sage",
-      "hover:border-t-2 hover:border-purple-500":
-        section.colorTheme == "purple",
-      "hover:border-t-2 hover:border-navy-500": section.colorTheme == "navy",
+      "border-gray-100 border-t-2 hover:border-plum-500": section.colorTheme == "plum",
+      "border-gray-100 border-t-2 hover:border-sage-500": section.colorTheme == "sage",
+      "border-gray-100 border-t-2 hover:border-purple-500":
+       section.colorTheme == "purple",
+      "border-gray-100 border-t-2 hover:border-navy-500": section.colorTheme == "navy",
     });
 
   return (
     <section
       id={`${section.anchor}`}
-      className={`scroll-mt-[100vh] w-full group mt-2 ${borderStyles} ${isSectionHidden && `hidden`}`}
+      className={`w-full group mt-2 ${borderStyles} ${isSectionHidden && `hidden`}`}
       tabIndex={0}
     >
-        <div className="responsive-container w-full pb-8" onClick={toggleSection}>
-          <div
-            className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer text-gray-300 ${hoverStyles}`}
+      {!activeStory && <div className="responsive-container w-full pb-8" onClick={toggleSection}>
+        <div
+          className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer ${hoverStyles} ${isSectionOpen ? openStyles : `text-gray-300`}`}
+        >
+          <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+            {section.title}
+          </span>
+          <span
+            className={isSectionOpen ? `opacity-0` : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`}
           >
-            <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
-              {section.title}
-            </span>
-            <span
-              className={`opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`}
-            >
-              <div className="flex flex-row items-center gap-1">
-                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                <ArrowDown color={section.colorTheme} size="default" />
-              </div>
-            </span>
-          </div>
+            <div className="flex flex-row items-center gap-1">
+              {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+              <ArrowDown color={section.colorTheme} size="default" />
+            </div>
+          </span>
         </div>
+      </div>}
 
       <div className={`h-full ${!isSectionOpen && `hidden`}`}>
         <div className={`flex flex-col gap-8`}>
-            <div
+            {!activeStory && <div
               className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
             >
               <div className={"w-2/3"}>
                 <MarkdownComponent content={section.body} />
               </div>
-            </div>
+            </div>}
 
           <div className={`relative`}>
             <div className={`sticky top-[70px] z-10`}>
@@ -113,7 +110,8 @@ const SectionIntro = ({
                   parentSectionOpen={isSectionOpen}
                 />
             </div>
-            <ul className={``}>
+
+            {(isSectionOpen && activeStory) && <ul className={``}>
               {section.items
                 .filter((story) => story.hideStory !== true)
                 .map((story) => {
@@ -133,7 +131,7 @@ const SectionIntro = ({
                     </li>
                   );
                 })}
-            </ul>
+            </ul>}
           </div>
         </div>
       </div>
