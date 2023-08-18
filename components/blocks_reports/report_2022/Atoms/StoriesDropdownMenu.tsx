@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
+const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory, parentSectionOpen}) => {
     const [selectedOption, setSelectedOption] = useState(items[0].title);
     const [isOpen, setIsOpen] = useState(false);
   
@@ -22,9 +22,31 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
         }
       })
     }, [activeStory]);
-  
-    return (
-      <div className={`relative z-40 w-full font-serif font-semibold type-preset-3 text-${colorTheme}-900 border-y-[1px] border-${colorTheme}-900`}>
+
+    const StoriesMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
+      return (
+        <div className={`w-full border-b-[1px] border-${colorTheme}-900`}>
+          <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
+            {items.map((option, index) => (
+              <div key={index} className={`w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
+                <a
+                  href={`2022#${sectionAnchor}--${option.anchor}`}
+                  className="flex w-full py-md responsive-container"
+                  role="menuitem"
+                  onClick={() => selectOption(option.title)}
+                >
+                  {option.title}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    };
+
+    const StoriesDropdown = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory}) => {
+      return (
+        <div className={`relative z-40 w-full border-y-[1px] border-${colorTheme}-900`}>
         <div className={`w-full bg-white hover:bg-${colorTheme}-50`}>
           <div className={`responsive-container`}>
             <button
@@ -39,7 +61,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
             </button>
           </div>
         </div>
-
+  
         {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900`}>
           <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
             {availableOptions.map((option, index) => (
@@ -56,6 +78,15 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
             ))}
           </div>
         </div>}
+      </div>
+      )
+    };
+
+    return (
+      <div className={`font-serif font-semibold type-preset-3 text-${colorTheme}-900`}>
+        {
+          parentSectionOpen && activeStory == null ? <StoriesMenu items={items} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeStory={activeStory} setActiveStory={setActiveStory} /> : <StoriesDropdown items={items} colorTheme={colorTheme} sectionAnchor={sectionAnchor} activeStory={activeStory} setActiveStory={setActiveStory} />
+        }
       </div>
     );
   };

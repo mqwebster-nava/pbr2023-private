@@ -16,6 +16,25 @@ const SectionIntro = ({
   activeStory,
   setActiveStory,
 }) => {
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+  const [isSectionHidden, setIsSectionHidden] = useState(false);
+
+  useEffect(() => {
+    if (activeSection === section.anchor) {
+      setIsSectionOpen(true);
+    } else {
+      setIsSectionOpen(false);
+    }
+  }, [activeSection]);
+
+  const toggleSection = () => {
+    if (activeSection === section.anchor) {
+      setActiveSection(null);
+    } else {
+      setActiveSection(section.anchor);
+    }
+  };
+
   const openStyles = classNames({
     "text-gold-900": section.colorTheme == "gold",
     "text-plum-500": section.colorTheme == "plum",
@@ -46,6 +65,7 @@ const SectionIntro = ({
       id={`${section.anchor}`}
       className={`scroll-mt-[100vh] group mt-2 ${borderStyles}`}
       tabIndex={0}
+      onClick={toggleSection}
     >
         <div className="responsive-container w-full pb-8">
           <div
@@ -65,7 +85,7 @@ const SectionIntro = ({
           </div>
         </div>
 
-      <div className={`h-full`}>
+      <div className={`h-full ${!isSectionOpen && `hidden`}`}>
         <div className={`flex flex-col gap-8`}>
             <div
               className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
@@ -83,6 +103,7 @@ const SectionIntro = ({
                   sectionAnchor={section.anchor}
                   activeStory={activeStory}
                   setActiveStory={setActiveStory}
+                  parentSectionOpen={isSectionOpen}
                 />
             </div>
             <ul className={``}>
