@@ -25,7 +25,7 @@ const StorySection = ({
   const storyRef = useRef(null);
   const isOnScreen = useOnScreen(storyRef);
   useEffect(() => {
-    if (isOnScreen) {
+    if (isOnScreen && activeStory !== null) {
       setActiveStory(storyId);
     }
   }, [isOnScreen]);
