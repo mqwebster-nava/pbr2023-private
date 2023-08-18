@@ -95,7 +95,7 @@ const PostContent = ({docData, docLinks, variant="post" }) =>{
 
 
 
-export const ListContent = ({docData }) =>{
+export const ListContent = ({docData, docLinks }) =>{
   const options = {
       renderMark: {
         [MARKS.BOLD]: (text) => <span className=" font-bold ">{text}</span>,
@@ -111,7 +111,11 @@ export const ListContent = ({docData }) =>{
         [BLOCKS.LIST_ITEM]: (node, children) => <li className="pb-sm">{children}</li>,
        
         [INLINES.HYPERLINK]: (node, children) => (<LinkText href={node.data.uri} variant={"underlined"}>{children}</LinkText> ),
-      
+        [INLINES.ASSET_HYPERLINK]: (node, children) =>{
+          const id = node.data.target.sys.id;
+          const assets = docLinks.assets.hyperlink;
+          const asset = assets.find((element) => element.sys.id === id);
+           return (asset&&<LinkText href={asset.url} variant={"underlined"}>{children}</LinkText>)},
       },
   };
   return (<>
