@@ -41,38 +41,30 @@ const SectionIntro = ({
   };
 
   const openStyles = isSectionOpen ? classNames({
-    "text-gold-900": section.colorTheme == "gold",
-    "text-plum-500": section.colorTheme == "plum",
-    "text-sage-500": section.colorTheme == "sage",
-    "text-purple-500": section.colorTheme == "purple",
-    "text-navy-500": section.colorTheme == "navy",
+    "text-white bg-gold-900": section.colorTheme == "gold",
+    "text-white bg-plum-900": section.colorTheme == "plum",
+    "text-white bg-sage-900": section.colorTheme == "sage",
+    "text-white bg-purple-900": section.colorTheme == "purple",
+    "text-white bg-navy-900": section.colorTheme == "navy",
   }) : `text-gray-300`;
 
-  const hoverStyles = !isSectionOpen ? classNames({
-      "group-hover:text-gold-900": section.colorTheme == "gold",
-      "group-hover:text-plum-500": section.colorTheme == "plum",
-      "group-hover:text-sage-500": section.colorTheme == "sage",
-      "group-hover:text-purple-500": section.colorTheme == "purple",
-      "group-hover:text-navy-500": section.colorTheme == "navy",
-    }) : ``;
-
-  const borderStyles = !isSectionOpen ? section.themeNum == 1 ? `border-none` : classNames({
-      "border-gray-300 border-t-2 hover:border-gold-900": section.colorTheme == "gold",
-      "border-gray-300 border-t-2 hover:border-plum-500": section.colorTheme == "plum",
-      "border-gray-300 border-t-2 hover:border-sage-500": section.colorTheme == "sage",
-      "border-gray-300 border-t-2 hover:border-purple-500": section.colorTheme == "purple",
-      "border-gray-300 border-t-2 hover:border-navy-500": section.colorTheme == "navy",
+  const bgStyles = !isSectionOpen ? classNames({
+      "hover:bg-gold-900": section.colorTheme == "gold",
+      "hover:bg-plum-900": section.colorTheme == "plum",
+      "hover:bg-sage-900": section.colorTheme == "sage",
+      "hover:bg-purple-900": section.colorTheme == "purple",
+      "hover:bg-navy-900": section.colorTheme == "navy",
     }) : ``;
 
   return (
     <section
       id={`${section.anchor}`}
-      className={`w-full group ${borderStyles} ${isSectionHidden ? `hidden` : ``}`}
+      className={`w-full group ${!activeSection ? section.themeNum == 1 ? `border-none` : `border-t-2 border-gray-300 hover:border-none` : `bg-${section.colorTheme}-900`} ${bgStyles} ${isSectionHidden ? `hidden` : ``}`}
       tabIndex={0}
     >
-      {!activeStory && <div className="responsive-container w-full pb-8" onClick={toggleSection}>
+      {!activeStory && <div className="responsive-container w-full pt-1 pb-8" onClick={toggleSection}>
         <div
-          className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer ${hoverStyles} ${openStyles}`}
+          className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer group-hover:text-white ${openStyles}`}
         >
           <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
             {section.title}
@@ -82,7 +74,7 @@ const SectionIntro = ({
           >
             <div className="flex flex-row items-center gap-1">
               {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-              <ArrowDown color={section.colorTheme} size="default" />
+              <ArrowDown color={'white'} size="default" />
             </div>
           </span>
         </div>

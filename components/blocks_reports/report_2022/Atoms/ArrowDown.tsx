@@ -20,6 +20,7 @@ const ArrowDown = ({size="default", color, sectionId, isAnimated=false, isMobile
         "stroke-sage-600": color == "sage",
         "stroke-purple-600": color == "purple",
         "stroke-navy-600": color == "navy",
+        "stroke-white": color == undefined || color == "" || color == "white",
     });
 
   return (
