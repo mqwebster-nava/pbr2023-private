@@ -47,7 +47,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
 
     const StoriesDropdown = () => {
       return (
-        <div className={`relative z-40 w-full border-y-[1px] border-${colorTheme}-900`}>
+        <div className={`relative z-40 w-full border-b-[1px] border-${colorTheme}-900`}>
         <div className={`w-full bg-white hover:bg-${colorTheme}-50`}>
           <div className={`responsive-container`}>
             <button
