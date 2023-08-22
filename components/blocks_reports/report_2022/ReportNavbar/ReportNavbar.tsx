@@ -24,9 +24,9 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
       let section = document.getElementById(currentSection.anchor);
       let sectionTop = section.offsetTop;
       let sectionH = section.offsetHeight - 70;
-      let sectionBot = section.getBoundingClientRect().bottom - sectionTop - 70;
+      let sectionBot = Math.max((section.getBoundingClientRect().bottom - sectionTop - 70), 0);
 
-      setSectionPct(sectionBot > 0 ? (((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100) : 0);
+      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
     }
 
     if (activeStory) {
