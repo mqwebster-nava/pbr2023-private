@@ -67,7 +67,7 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`w-full group mt-2 ${borderStyles} ${isSectionHidden ? `hidden` : ``}`}
+      className={`w-full group ${borderStyles} ${isSectionHidden ? `hidden` : ``}`}
       tabIndex={0}
     >
       {!activeStory && <div className="responsive-container w-full pb-8" onClick={toggleSection}>

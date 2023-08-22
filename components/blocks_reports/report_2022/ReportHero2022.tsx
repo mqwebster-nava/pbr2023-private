@@ -5,7 +5,7 @@ const ReportHero2022 = ({activeStory}, {}: PageHeaderInterface) => {
   return (
     <header className={`w-full ${activeStory ? 'hidden' : ''}`} id="reportHeader">
       {!activeStory &&
-        <div className="responsive-container pt-8">
+        <div className="responsive-container pt-8 pb-2">
           <span className=" text-7xl font-sans font-black spacing-y-sm">
             Envisioning...
           </span>
