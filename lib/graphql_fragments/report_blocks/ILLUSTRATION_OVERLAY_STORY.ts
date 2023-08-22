@@ -23,6 +23,11 @@ illustration{
 contextIllustration{
     ${IMAGE_FIELDS}
 }
+storyImageStepsCollection(limit: 7) {
+    items{
+        ${IMAGE_FIELDS}
+    }
+}
 featuredCallOut {
     ${CALLOUT}
 }
