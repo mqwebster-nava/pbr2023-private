@@ -76,7 +76,7 @@ const SectionIntro = ({
         }
       }}
     >
-      {!activeStory && <div className="responsive-container w-full pt-1 pb-8" onClick={toggleSection}>
+      {!activeStory && <div className="responsive-container w-full pb-8" onClick={toggleSection}>
         <div
           className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer group-hover:text-white ${openStyles}`}
         >
