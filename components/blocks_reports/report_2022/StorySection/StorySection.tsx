@@ -54,13 +54,13 @@ const StorySection = ({
     "hover:bg-navy-50": colorTheme == "navy",
   });
 
-  let calloutText = story.featuredCallOut.body;
+  let calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
-  if (calloutText.includes("//images")) {
+  if (calloutText && calloutText.includes("//images")) {
     calloutText = <img src={story.featuredCallOut.body} alt="" />;
   }
 
-  const images = story.illustration && story.contextIllustration ? [story.illustration, story.contextIllustration] : [];
+  const images = story.illustration && story.contextIllustration ? story.storyImageStepsCollection ? [story.illustration, story.contextIllustration, ...story.storyImageStepsCollection.items] : [story.illustration, story.contextIllustration] : [];
 
   return (
     <div id={storyId} className={`text-${colorTheme}-900 bg-${colorTheme}-50`}>
@@ -92,11 +92,11 @@ const StorySection = ({
           </div>
 
           <div
-            className={`flex flex-col gap-12 w-7/12 h-fit sticky top-[142px]`}
+            className={`flex flex-col gap-12 w-7/12 h-full sticky top-[142px]`}
           >
-            <div className={`min-h-[400px]`}>
+            <div className={`min-h-full aspect-video`}>
               <CrossfadeCarousel
-                interval={2000}
+                interval={1500}
                 transition={1000}
                 groupAltText={``}
                 images={images.map((im) => {
