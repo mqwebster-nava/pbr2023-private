@@ -13,27 +13,35 @@ import SlideDown from "react-slidedown";
 
 const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStory }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
-  const [activeSectionId, setActiveSectionId] = useState(null);
-
-  useEffect(() => {
-    if (activeSection) {
-      setActiveSectionId(activeSection);
-    }
-  }, [activeSection]);
+  const [sectionPct, setSectionPct] = useState(0);
 
   let currentSection = reportSections.find((section) => {
-    if (section.anchor === activeSectionId) {
-      return section;
-    }
+    return activeStory && (section.anchor === activeSection) ? section : null;
   });
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      let section = document.getElementById(currentSection.anchor);
+      let sectionTop = section.offsetTop;
+      let sectionH = section.offsetHeight - 70;
+      let sectionBot = section.getBoundingClientRect().bottom - sectionTop - 70;
+
+      setSectionPct(sectionBot > 0 ? (((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100) : 0);
+    }
+
+    if (activeStory) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+  }, [activeStory, sectionPct])
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full h-[100px] bg-white border-b-[1px] border-black ${
+      className={`block sticky top-0 z-50 w-full h-full bg-white border-b-[1px] border-black ${
         !isShowingMenu && "overflow-clip"
       }`}
     >
-      <div className="responsive-container flex flex-wrap items-center h-full ">
+      <div className="responsive-container flex flex-wrap items-center h-[100px] ">
         <div className="w-[16%]">
           <Logo isMobile={true} />
         </div>
@@ -65,7 +73,13 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
         </div>
       </div>
 
-      <div className="absolute w-full border-black border-t-[1px]">
+      {activeStory &&
+        <div className={`w-full h-2 ${currentSection ? `bg-${currentSection.colorTheme}-50` : `bg-white`}`}>
+          <div className={`h-full ${currentSection ? `bg-${currentSection.colorTheme}-900` : `bg-white`}`} style={{width: `${sectionPct}%`}}></div>
+        </div>
+      }
+
+      <div className={`absolute w-full border-black border-t-[1px] ${isShowingMenu ? `top-[100px]` : ``}`}>
         <div className="h-[100vh] bg-white">
           <SlideDown>
             {isShowingMenu ? (
