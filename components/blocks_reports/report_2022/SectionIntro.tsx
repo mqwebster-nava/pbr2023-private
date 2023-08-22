@@ -61,6 +61,20 @@ const SectionIntro = ({
       id={`${section.anchor}`}
       className={`w-full group ${!activeSection ? section.themeNum == 1 ? `border-none` : `border-t-2 border-gray-300 hover:border-none` : `bg-${section.colorTheme}-900`} ${bgStyles} ${isSectionHidden ? `hidden` : ``}`}
       tabIndex={0}
+      onMouseEnter={() => {
+        let hero = document.getElementById("reportHeader");
+
+        if (section.themeNum == 1) {
+          hero.classList.add(`bg-${section.colorTheme}-900`, `text-white`);
+        }
+      }}
+      onMouseLeave={() => {
+        let hero = document.getElementById("reportHeader");
+
+        if (section.themeNum == 1) {
+          hero.classList.remove(`bg-${section.colorTheme}-900`, `text-white`);
+        }
+      }}
     >
       {!activeStory && <div className="responsive-container w-full pt-1 pb-8" onClick={toggleSection}>
         <div
