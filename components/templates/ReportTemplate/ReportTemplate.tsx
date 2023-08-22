@@ -284,6 +284,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
         <ReportNavbar2022
           contentBlocks={contentBlocks}
           reportSections={reportSections}
+          activeSection={activeSection}
+          activeStory={activeStory}
         />
       )}
       {reportYear === "2018" ? (

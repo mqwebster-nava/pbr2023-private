@@ -11,88 +11,26 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 import SlideDown from "react-slidedown";
 
-const getTop = (el, extraOffset) => el.offsetTop - extraOffset;
-const getBottom = (el, extraOffset) =>
-  getTop(el, extraOffset) + el.offsetHeight - extraOffset;
-
-const getBottomEnd = (el, extraOffset) =>
-  getTop(el, extraOffset) + el.offsetHeight - window.innerHeight;
-
-const ReportNavbar = ({ reportSections, contentBlocks }) => {
-  //
-
-  const [activeSection, setActiveSection] = useState(null);
-  const [sectionPct, setSectionPct] = useState(null);
+const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStory }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
-  //  let navBG = "purple"
+  const [activeSectionId, setActiveSectionId] = useState(null);
 
-  const checkIfSectionIsActive = (section, offset, sectionIndex) => {
-    const secElement = document.getElementById(section.anchor);
-    if (
-      secElement &&
-      offset > getTop(secElement, 30) &&
-      offset < getBottom(secElement, 30) &&
-      activeSection != section.anchor
-    ) {
-      let oldSec = reportSections.find((sec) => sec.anchor === activeSection);
-      setActiveSection(section.anchor);
-      // Will need to figure out
-      const startPct =
-        oldSec &&
-        reportSections.findIndex((sec) => sec.anchor === activeSection) >
-          sectionIndex
-          ? 100
-          : 0;
-
-      setSectionPct(startPct);
-      return;
+  useEffect(() => {
+    if (activeSection) {
+      setActiveSectionId(activeSection);
     }
-  };
+  }, [activeSection]);
 
-  //const checkSection
-  // useEffect(() => {
-  //   const onScroll = (e) => {
-  //     if (isShowingMenu) {
-  //       e.preventDefault();
-  //       return;
-  //     }
-  //     const offset = window.pageYOffset;
-  //     reportSections.forEach((section, i) => {
-  //       checkIfSectionIsActive(section, offset, i);
-  //     });
-
-  //     if (!activeSection) return;
-  //     const secElement = document.getElementById(activeSection);
-  //     if (!secElement) return;
-
-  //     const topTrigger = getTop(secElement, 30);
-  //     // TODO add a way to adjust bottom for last element, IT should be the offset from the
-  //     const isEnd =
-  //       reportSections.findIndex((sec) => sec.anchor === activeSection) ===
-  //       reportSections.length - 1;
-
-  //     const bottomTrigger = isEnd
-  //       ? getBottomEnd(secElement, 30)
-  //       : getBottom(secElement, 30);
-
-  //     let offsetPct = Math.round(
-  //       (100 * (offset - topTrigger)) / (bottomTrigger - topTrigger)
-  //     );
-
-  //     if (isEnd && offsetPct > 90) offsetPct = 100;
-  //     if (offsetPct < 0 || offsetPct > 100) return;
-  //     setSectionPct(offsetPct);
-  //   };
-
-  //   window.removeEventListener("scroll", onScroll);
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // });
+  let currentSection = reportSections.find((section) => {
+    if (section.anchor === activeSectionId) {
+      return section;
+    }
+  });
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full bg-white border-b-[1px] border-black ${
-        !isShowingMenu && "h-[70px] overflow-clip"
+      className={`block sticky top-0 z-50 w-full h-[100px] bg-white border-b-[1px] border-black ${
+        !isShowingMenu && "overflow-clip"
       }`}
     >
       <div className="responsive-container flex flex-wrap items-center h-full ">
@@ -126,42 +64,8 @@ const ReportNavbar = ({ reportSections, contentBlocks }) => {
           </button>
         </div>
       </div>
-      {/* <div className="h-[10px]  flex basis-6">
-        {reportSections.map((section, i) => {
-          let s = `bg-white`;
-          const bg =
-            section.colorTheme === "gold"
-              ? `bg-${section.colorTheme}-dark`
-              : `bg-${section.colorTheme}-900`;
 
-          if (
-            activeSection &&
-            reportSections.findIndex(
-              (section) => section.anchor === activeSection
-            ) > i
-          ) {
-            s = bg;
-          }
-          return (
-            <div
-              className={`h-full w-[150px] ${s}`}
-              key={`${section.anchor}-${i}-nav`}
-            >
-              {
-                <div
-                  style={{
-                    width: `${
-                      activeSection === section.anchor ? sectionPct : 0
-                    }%`,
-                  }}
-                  className={`h-full ${bg}`}
-                ></div>
-              }
-            </div>
-          );
-        })}
-      </div> */}
-      <div className="absolute w-full">
+      <div className="absolute w-full border-black border-t-[1px]">
         <div className="h-[100vh] bg-white">
           <SlideDown>
             {isShowingMenu ? (

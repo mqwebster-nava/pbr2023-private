@@ -99,7 +99,7 @@ const SectionIntro = ({
             </div>}
 
           <div className={`relative`}>
-            <div className={`sticky top-[70px] z-10`}>
+            <div className={`sticky top-[100px] z-10`}>
                 <StoriesDropdownMenu
                   items={section.items}
                   colorTheme={section.colorTheme}
