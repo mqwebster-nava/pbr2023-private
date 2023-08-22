@@ -92,7 +92,7 @@ const StorySection = ({
           </div>
 
           <div
-            className={`flex flex-col gap-12 w-7/12 h-full sticky top-[142px]`}
+            className={`flex flex-col gap-12 w-7/12 h-full sticky top-[180px]`}
           >
             <div className={`min-h-full aspect-video`}>
               <CrossfadeCarousel
