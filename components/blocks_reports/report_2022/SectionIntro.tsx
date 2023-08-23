@@ -19,6 +19,25 @@ const SectionIntro = ({
 }) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
+  const [sectionPct, setSectionPct] = useState(0);
+
+  let currentSection = section.anchor == activeSection;
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      let sectionEl = document.getElementById(section.anchor);
+      let sectionTop = sectionEl.offsetTop;
+      let sectionH = sectionEl.offsetHeight - 70;
+      let sectionBot = Math.max((sectionEl.getBoundingClientRect().bottom - sectionTop - 70), 0);
+
+      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
+    }
+
+    if (activeStory) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+  }, [activeStory, sectionPct])
 
   useEffect(() => {
     if (activeSection === section.anchor) {
@@ -100,15 +119,20 @@ const SectionIntro = ({
             </div>}
 
           <div className={`relative`}>
-            <div className={`sticky top-[109px] z-10`}>
-                <StoriesDropdownMenu
-                  items={section.items}
-                  colorTheme={section.colorTheme}
-                  sectionAnchor={section.anchor}
-                  activeStory={activeStory}
-                  setActiveStory={setActiveStory}
-                  parentSectionOpen={isSectionOpen}
-                />
+            <div className={`sticky top-[100px] z-10`}>
+              {activeStory &&
+                <div className={`w-full h-2 ${currentSection ? `bg-${section.colorTheme}-50` : `bg-white`}`}>
+                  <div className={`h-full ${currentSection ? `bg-${section.colorTheme}-900` : `bg-white`}`} style={{width: `${sectionPct}%`}}></div>
+                </div>
+              }
+              <StoriesDropdownMenu
+                items={section.items}
+                colorTheme={section.colorTheme}
+                sectionAnchor={section.anchor}
+                activeStory={activeStory}
+                setActiveStory={setActiveStory}
+                parentSectionOpen={isSectionOpen}
+              />
             </div>
 
             {(isSectionOpen && activeStory) &&
