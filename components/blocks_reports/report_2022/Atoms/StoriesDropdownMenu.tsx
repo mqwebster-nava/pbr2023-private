@@ -48,7 +48,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
     const StoriesDropdown = () => {
       return (
         <div className={`relative z-40 w-full border-b-[1px] border-${colorTheme}-900`}>
-        <div className={`w-full bg-white hover:bg-${colorTheme}-50`}>
+        <div className={`w-full ${isOpen ? `bg-white hover:bg-${colorTheme}-50` : `bg-${colorTheme}-50`}`}>
           <div className={`responsive-container`}>
             <button
               type="button"
@@ -63,7 +63,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
           </div>
         </div>
   
-        {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900`}>
+        {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-lg`}>
           <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
             {availableOptions.map((option, index) => (
               <div key={index} className={`w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
