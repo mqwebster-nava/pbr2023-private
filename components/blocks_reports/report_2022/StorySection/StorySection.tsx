@@ -13,14 +13,10 @@ const StorySection = ({
   story,
   colorTheme,
   sectionAnchor,
-  nextSection,
-  nextSectionTitle,
-  nextSectionType = "story",
   activeStory,
   setActiveStory,
 }) => {
   const storyId = `${sectionAnchor}--${story.anchor}`;
-  const nextId = nextSection;
 
   const storyRef = useRef(null);
   const isOnScreen = useOnScreen(storyRef);
@@ -29,30 +25,6 @@ const StorySection = ({
       setActiveStory(storyId);
     }
   }, [isOnScreen]);
-
-  const textStyles = classNames({
-    "text-gold-900": colorTheme == "gold",
-    "text-plum-900": colorTheme == "plum",
-    "text-sage-900": colorTheme == "sage",
-    "text-purple-900": colorTheme == "purple",
-    "text-navy-900": colorTheme == "navy",
-  });
-
-  const borderStyles = classNames({
-        "border-t-[1px] border-gold-900": colorTheme == "gold",
-        "border-t-[1px] border-plum-500": colorTheme == "plum",
-        "border-t-[1px] border-sage-600": colorTheme == "sage",
-        "border-t-[1px] border-purple-600": colorTheme == "purple",
-        "border-t-[1px] border-navy-600": colorTheme == "navy",
-      })
-
-  const hoverBgStyles = classNames({
-    "hover:bg-gold-50": colorTheme == "gold",
-    "hover:bg-plum-50": colorTheme == "plum",
-    "hover:bg-sage-50": colorTheme == "sage",
-    "hover:bg-purple-50": colorTheme == "purple",
-    "hover:bg-navy-50": colorTheme == "navy",
-  });
 
   let calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
@@ -63,7 +35,7 @@ const StorySection = ({
   const images = story.illustration && story.contextIllustration ? story.storyImageStepsCollection ? [story.illustration, story.contextIllustration, ...story.storyImageStepsCollection.items] : [story.illustration, story.contextIllustration] : [];
 
   return (
-    <div id={storyId} className={`text-${colorTheme}-900 bg-${colorTheme}-50`}>
+    <div id={storyId} className={``}>
       <div className={`relative`}>
         <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
 
