@@ -63,7 +63,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
           </div>
         </div>
   
-        {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-lg`}>
+        {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-2xl`}>
           <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
             {availableOptions.map((option, index) => (
               <div key={index} className={`w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
