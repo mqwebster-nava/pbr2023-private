@@ -112,7 +112,7 @@ const SectionIntro = ({
             </div>
 
             {(isSectionOpen && activeStory) &&
-              <ul className={``}>
+              <ul className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
                 {section.items
                   .filter((story) => story.hideStory !== true)
                   .map((story) => {
@@ -123,9 +123,6 @@ const SectionIntro = ({
                           story={story}
                           colorTheme={section.colorTheme}
                           sectionAnchor={section.anchor}
-                          nextSection={""}
-                          nextSectionTitle={""}
-                          nextSectionType={""}
                           activeStory={activeStory}
                           setActiveStory={setActiveStory}
                         />
