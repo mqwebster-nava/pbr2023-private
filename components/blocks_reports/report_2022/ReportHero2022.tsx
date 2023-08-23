@@ -14,7 +14,7 @@ const ReportHero2022 = (
   return (
     <header
       className={`w-full ${
-        activeSection ? currentSection.colorTheme == 'gold' ? `bg-gold-900 text-white` : `bg-${currentSection.colorTheme}-500 text-white` : ''
+        activeSection ? currentSection.colorTheme == 'gold' ? `bg-gold-pbrcustomdark text-white` : `bg-${currentSection.colorTheme}-900 text-white` : ''
       } ${activeStory ? "hidden" : ""}`}
       id="reportHeader"
     >
