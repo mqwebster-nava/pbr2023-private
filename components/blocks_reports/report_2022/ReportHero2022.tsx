@@ -14,13 +14,13 @@ const ReportHero2022 = (
   return (
     <header
       className={`w-full ${
-        activeSection ? currentSection.colorTheme == 'gold' ? `bg-gold-pbrcustomdark text-white` : `bg-${currentSection.colorTheme}-900 text-white` : ''
+        activeSection ? currentSection.colorTheme == 'gold' ? `bg-gold-900 text-white` : `bg-${currentSection.colorTheme}-500 text-white` : ''
       } ${activeStory ? "hidden" : ""}`}
       id="reportHeader"
     >
       {!activeStory && (
         <div className="responsive-container pt-8 pb-2">
-          <span className=" text-7xl font-sans font-black spacing-y-sm">
+          <span className="text-7xl font-sans font-black spacing-y-sm">
             Envisioning...
           </span>
         </div>

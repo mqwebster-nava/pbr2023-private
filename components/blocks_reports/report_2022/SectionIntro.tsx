@@ -42,21 +42,21 @@ const SectionIntro = ({
 
   const openStyles = isSectionOpen
     ? classNames({
-        "text-white bg-gold-pbrcustomdark": section.colorTheme == "gold",
-        "text-white bg-plum-900": section.colorTheme == "plum",
-        "text-white bg-sage-900": section.colorTheme == "sage",
-        "text-white bg-purple-900": section.colorTheme == "purple",
-        "text-white bg-navy-900": section.colorTheme == "navy",
+        "text-white bg-gold-900": section.colorTheme == "gold",
+        "text-white bg-plum-500": section.colorTheme == "plum",
+        "text-white bg-sage-500": section.colorTheme == "sage",
+        "text-white bg-purple-500": section.colorTheme == "purple",
+        "text-white bg-navy-500": section.colorTheme == "navy",
       })
     : `text-gray-300`;
 
   const bgStyles = !isSectionOpen
     ? classNames({
-        "hover:bg-gold-pbrcustomdark": section.colorTheme == "gold",
-        "hover:bg-plum-900": section.colorTheme == "plum",
-        "hover:bg-sage-900": section.colorTheme == "sage",
-        "hover:bg-purple-900": section.colorTheme == "purple",
-        "hover:bg-navy-900": section.colorTheme == "navy",
+        "hover:bg-gold-900": section.colorTheme == "gold",
+        "hover:bg-plum-500": section.colorTheme == "plum",
+        "hover:bg-sage-500": section.colorTheme == "sage",
+        "hover:bg-purple-500": section.colorTheme == "purple",
+        "hover:bg-navy-500": section.colorTheme == "navy",
       })
     : ``;
 
@@ -68,23 +68,21 @@ const SectionIntro = ({
           ? section.themeNum == 1
             ? `border-none`
             : `border-t-2 border-gray-300 hover:border-none`
-          : section.colorTheme == 'gold' ?
-            `bg-gold-pbrcustomdark`
-            : `bg-${section.colorTheme}-900`
+          : section.colorTheme == 'gold' ? `bg-gold-900` : `bg-${section.colorTheme}-500`
       } ${bgStyles} ${isSectionHidden ? `hidden` : ``}`}
       tabIndex={0}
       onMouseEnter={() => {
         let hero = document.getElementById("reportHeader");
 
         if (!activeSection && section.themeNum == 1) {
-          hero.classList.add(`bg-gold-pbrcustomdark`, `text-white`);
+          hero.classList.add(`bg-${section.colorTheme}-900`, `text-white`);
         }
       }}
       onMouseLeave={() => {
         let hero = document.getElementById("reportHeader");
 
         if (!activeSection && section.themeNum == 1) {
-          hero.classList.remove(`bg-gold-pbrcustomdark`, `text-white`);
+          hero.classList.remove(`bg-${section.colorTheme}-900`, `text-white`);
         }
       }}
     >
