@@ -286,6 +286,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
           reportSections={reportSections}
           activeSection={activeSection}
           activeStory={activeStory}
+          setActiveSection={setActiveSection}
+          setActiveStory={setActiveStory}
         />
       )}
       {reportYear === "2018" ? (
