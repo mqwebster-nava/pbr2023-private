@@ -52,7 +52,7 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveS
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full h-full bg-white border-b-[1px] border-black ${
+      className={`block sticky top-0 z-50 w-full h-full bg-white ${!activeStory && `border-b-[1px] border-black`} ${
         !isShowingMenu && "overflow-clip"
       }`}
     >
