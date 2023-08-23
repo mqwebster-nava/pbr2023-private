@@ -4,7 +4,7 @@ import ReportMenu from "./ReportNavbar/ReportMenu";
 const ReportFooter2022 = ({reportSections, contentBlocks}) => {
     return (
         <footer className={`bg-gray-100`}>
-            <ReportMenu activeSection={reportSections} contentBlocks={contentBlocks} />
+            <ReportMenu activeSection={reportSections} contentBlocks={contentBlocks} onClick={() => {}} />
         </footer>
     )
 }
