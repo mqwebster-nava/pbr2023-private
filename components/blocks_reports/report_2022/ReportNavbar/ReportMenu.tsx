@@ -7,7 +7,7 @@ import { dividerColor } from "components/blocks_reports/report_2021/_utils";
 TODO use active story and active section setters on list item click instead of a tag href
 */
 
-const ReportMenu = ({ contentBlocks, activeSection, onClick = () => {} }) => {
+const ReportMenu = ({ contentBlocks, activeSection, onClick }) => {
   return (
     <section className={`w-full`}>
       <div className="responsive-container w-full flex flex-row gap-8 pt-12">
@@ -72,10 +72,7 @@ const ReportMenuCol = ({
   activeSection = null,
   colorTheme=null
 }) => {
-
-
   const simpleRow = () => {
-   
     return (
       <div className={''}>
         <a
@@ -122,6 +119,7 @@ const ReportMenuCol = ({
         >
           <h2
             className={`type-preset-5 ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
+            data-refid={anchor}
           >
             Envisioning {title}
           </h2>

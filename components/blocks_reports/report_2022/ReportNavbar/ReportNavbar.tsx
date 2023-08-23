@@ -11,7 +11,7 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 import SlideDown from "react-slidedown";
 
-const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStory }) => {
+const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveSection, activeStory, setActiveStory }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
 
@@ -24,9 +24,9 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
       let section = document.getElementById(currentSection.anchor);
       let sectionTop = section.offsetTop;
       let sectionH = section.offsetHeight - 70;
-      let sectionBot = section.getBoundingClientRect().bottom - sectionTop - 70;
+      let sectionBot = Math.max((section.getBoundingClientRect().bottom - sectionTop - 70), 0);
 
-      setSectionPct(sectionBot > 0 ? (((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100) : 0);
+      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
     }
 
     if (activeStory) {
@@ -34,6 +34,21 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
       return () => window.removeEventListener("scroll", onScroll);
     }
   }, [activeStory, sectionPct])
+
+  const menuItemClick = (e) => {
+    let clickedItem = reportSections.find((section) => section.anchor === e.target.dataset.refid);
+
+    if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
+      setActiveStory(null);
+      setActiveSection(clickedItem.anchor);
+    } else if (clickedItem.type === "story") {
+      // removes the --story from the anchor to show only section anchor
+      let storySection = clickedItem.anchor.replace(/--.*/, '')
+      setActiveSection(storySection);
+      setActiveStory(clickedItem.anchor);
+    }
+    setIsShowingMenu(false);
+  }
 
   return (
     <div
@@ -86,7 +101,7 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
               <ReportMenu
                 activeSection={activeSection}
                 contentBlocks={contentBlocks}
-                onClick={() => setIsShowingMenu(false)}
+                onClick={(e) => menuItemClick(e)}
               />
             ) : null}
           </SlideDown>
