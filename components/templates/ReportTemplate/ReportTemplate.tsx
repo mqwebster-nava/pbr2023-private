@@ -98,8 +98,19 @@ const ReportTemplate: React.FC<PageInterface> = ({
   children,
 }) => {
   // 2022 State Management
+  const [sectionList, setSectionList] = useState([]);
   const [activeSection, setActiveSection] = useState(null);
   const [activeStory, setActiveStory] = useState(null);
+
+  useEffect(() => {
+    contentBlocks.forEach((block) => {
+      if (block.__typename == 'ReportIllustrationOverlaySubsection') {
+        setSectionList((prevState) => {
+          return [...prevState, block.anchor]
+        })
+      }
+    })
+  }, [contentBlocks]);
 
   let reportSections = getSectionsInfo(contentBlocks);
   let reportYear = slug.includes("2022")
@@ -137,25 +148,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
                 setActiveSection={setActiveSection}
                 activeStory={activeStory}
                 setActiveStory={setActiveStory}
+                sectionList={sectionList}
               />
             </div>
           ),
-        ReportSectionCustom: (entry) =>
-          entry.type == "Table of Contents" ? (
-            <TableOfContentsSection
-              key={index}
-              {...entry}
-              contentBlocks={contentBlocks}
-            />
-          ) : entry.type == "Introduction 2021" ? (
-            <ReportIntroduction2021
-              key={index}
-              {...entry}
-              signatures={entry.signaturesCollection?.items}
-            />
-          ) : entry.type == "Conclusion 2021" ? (
-            <ReportConclusion2021 key={index} {...entry} />
-          ) : null, //contentBlocks={contentBlocks}
       },
       "2021": {
         ReportIllustrationOverlaySubsection: (entry) => (

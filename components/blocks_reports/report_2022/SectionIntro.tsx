@@ -15,6 +15,7 @@ const SectionIntro = ({
   setActiveSection,
   activeStory,
   setActiveStory,
+  sectionList,
 }) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
