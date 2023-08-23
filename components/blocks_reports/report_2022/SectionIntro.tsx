@@ -41,7 +41,7 @@ const SectionIntro = ({
   };
 
   const openStyles = isSectionOpen ? classNames({
-    "text-white bg-gold-900": section.colorTheme == "gold",
+    "text-white bg-gold-pbrcustomdark": section.colorTheme == "gold",
     "text-white bg-plum-900": section.colorTheme == "plum",
     "text-white bg-sage-900": section.colorTheme == "sage",
     "text-white bg-purple-900": section.colorTheme == "purple",
@@ -49,7 +49,7 @@ const SectionIntro = ({
   }) : `text-gray-300`;
 
   const bgStyles = !isSectionOpen ? classNames({
-      "hover:bg-gold-900": section.colorTheme == "gold",
+      "hover:bg-gold-pbrcustomdark": section.colorTheme == "gold",
       "hover:bg-plum-900": section.colorTheme == "plum",
       "hover:bg-sage-900": section.colorTheme == "sage",
       "hover:bg-purple-900": section.colorTheme == "purple",
@@ -65,14 +65,14 @@ const SectionIntro = ({
         let hero = document.getElementById("reportHeader");
 
         if (section.themeNum == 1) {
-          hero.classList.add(`bg-${section.colorTheme}-900`, `text-white`);
+          hero.classList.add(`bg-gold-pbrcustomdark`, `text-white`);
         }
       }}
       onMouseLeave={() => {
         let hero = document.getElementById("reportHeader");
 
         if (section.themeNum == 1) {
-          hero.classList.remove(`bg-${section.colorTheme}-900`, `text-white`);
+          hero.classList.remove(`bg-gold-pbrcustomdark`, `text-white`);
         }
       }}
     >
