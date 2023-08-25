@@ -20,11 +20,32 @@ const SectionIntro = ({
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
+  const [prevSection, setPrevSection] = useState(null);
+  const [nextSection, setNextSection] = useState(null);
 
   let currentSection = section.anchor == activeSection;
 
   useEffect(() => {
-    const onScroll = (e) => {
+    if (activeSection && activeSection == section.anchor && activeStory) {
+      let sectionIndex = sectionList.indexOf(section.anchor);
+
+      if (sectionIndex == 0) {
+        setPrevSection(null);
+        setNextSection(sectionList[sectionIndex + 1]);
+      }
+      if (sectionIndex > 0 && sectionIndex < sectionList.length - 1) {
+        setPrevSection(sectionList[sectionIndex - 1]);
+        setNextSection(sectionList[sectionIndex + 1]);
+      }
+      if (sectionIndex == sectionList.length - 1) {
+        setPrevSection(sectionList[sectionIndex - 1]);
+        setNextSection(null);
+      }
+    }
+  }, [activeSection, activeStory]);
+
+  useEffect(() => {
+    const onScroll = () => {
       let sectionEl = document.getElementById(section.anchor);
       let sectionTop = sectionEl.offsetTop;
       let sectionH = sectionEl.offsetHeight - 70;
