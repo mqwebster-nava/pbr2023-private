@@ -19,12 +19,19 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveS
 
     if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
       setActiveStory(null);
+
       setActiveSection(clickedItem.anchor);
     } else if (clickedItem.type === "story") {
-      // removes the --story from the anchor to show only section anchor
-      let storySection = clickedItem.anchor.replace(/--.*/, '')
-      setActiveSection(storySection);
+      setActiveSection(clickedItem.parentAnchor);
+
       setActiveStory(clickedItem.anchor);
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.getElementById(clickedItem.anchor)?.offsetTop,
+          behavior: "smooth",
+        });
+      }, 50)
     }
     setIsShowingMenu(false);
   }

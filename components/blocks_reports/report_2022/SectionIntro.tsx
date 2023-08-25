@@ -108,7 +108,7 @@ const SectionIntro = ({
         </div>
       </div>}
 
-      <div className={`h-full ${!isSectionOpen ? `hidden` : ``}`}>
+      <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-8`}>
             {!activeStory && <div
               className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
@@ -136,7 +136,7 @@ const SectionIntro = ({
             </div>
 
             {(isSectionOpen && activeStory) &&
-              <ul className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
+              <ul className={`relative text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
                 {section.items
                   .filter((story) => story.hideStory !== true)
                   .map((story) => {

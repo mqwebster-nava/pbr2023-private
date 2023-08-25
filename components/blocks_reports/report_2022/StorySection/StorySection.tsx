@@ -35,12 +35,12 @@ const StorySection = ({
   const images = story.illustration && story.contextIllustration ? story.storyImageStepsCollection ? [story.illustration, story.contextIllustration, ...story.storyImageStepsCollection.items] : [story.illustration, story.contextIllustration] : [];
 
   return (
-    <div id={storyId} className={``}>
+    <div id={storyId} className={`scroll-mt-[180px]`}>
       <div className={`relative`}>
         <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
 
         <div
-          className={`responsive-container flex flex-row gap-24 relative pb-28`}
+          className={`responsive-container flex flex-row gap-24 pb-28`}
         >
           <div className="flex flex-col gap-0 w-5/12 pt-4">
             <div className={`font-serif font-semibold`}>
