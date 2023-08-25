@@ -11,41 +11,27 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 import SlideDown from "react-slidedown";
 
-const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStory, setActiveSection, setActiveStory }) => {
+const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveSection, activeStory, setActiveStory }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
-  const [sectionPct, setSectionPct] = useState(0);
-
-  let currentSection = reportSections.find((section) => {
-    return activeStory && (section.anchor === activeSection) ? section : null;
-  });
-
-  useEffect(() => {
-    const onScroll = (e) => {
-      let section = document.getElementById(currentSection.anchor);
-      let sectionTop = section.offsetTop;
-      let sectionH = section.offsetHeight - 70;
-      let sectionBot = Math.max((section.getBoundingClientRect().bottom - sectionTop - 70), 0);
-
-      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
-    }
-
-    if (activeStory) {
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
-    }
-  }, [activeStory, sectionPct])
 
   const menuItemClick = (e) => {
     let clickedItem = reportSections.find((section) => section.anchor === e.target.dataset.refid);
 
     if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
       setActiveStory(null);
+
       setActiveSection(clickedItem.anchor);
     } else if (clickedItem.type === "story") {
-      // removes the --story from the anchor to show only section anchor
-      let storySection = clickedItem.anchor.replace(/--.*/, '')
-      setActiveSection(storySection);
+      setActiveSection(clickedItem.parentAnchor);
+
       setActiveStory(clickedItem.anchor);
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.getElementById(clickedItem.anchor)?.offsetTop,
+          behavior: "smooth",
+        });
+      }, 50)
     }
     setIsShowingMenu(false);
   }
@@ -58,7 +44,7 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
     >
       <div className="responsive-container flex flex-wrap items-center h-[100px] ">
         <div className="w-[16%]">
-          <Logo isMobile={true} />
+          <Logo isMobile={false} />
         </div>
         <a
           href="/public-benefit-reports/2022"
@@ -87,12 +73,6 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, activeStor
           </button>
         </div>
       </div>
-
-      {activeStory &&
-        <div className={`w-full h-2 ${currentSection ? `bg-${currentSection.colorTheme}-50` : `bg-white`}`}>
-          <div className={`h-full ${currentSection ? `bg-${currentSection.colorTheme}-900` : `bg-white`}`} style={{width: `${sectionPct}%`}}></div>
-        </div>
-      }
 
       <div className={`absolute w-full border-black border-t-[1px] ${isShowingMenu ? `top-[100px]` : ``}`}>
         <div className="h-[100vh] bg-white">

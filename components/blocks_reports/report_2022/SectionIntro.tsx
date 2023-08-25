@@ -15,9 +15,29 @@ const SectionIntro = ({
   setActiveSection,
   activeStory,
   setActiveStory,
+  sectionList,
 }) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
+  const [sectionPct, setSectionPct] = useState(0);
+
+  let currentSection = section.anchor == activeSection;
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      let sectionEl = document.getElementById(section.anchor);
+      let sectionTop = sectionEl.offsetTop;
+      let sectionH = sectionEl.offsetHeight - 70;
+      let sectionBot = Math.max((sectionEl.getBoundingClientRect().bottom - sectionTop - 70), 0);
+
+      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
+    }
+
+    if (activeStory) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+  }, [activeStory, sectionPct])
 
   useEffect(() => {
     if (activeSection === section.anchor) {
@@ -113,7 +133,7 @@ const SectionIntro = ({
         </div>
       )}
 
-      <div className={`h-full ${!isSectionOpen ? `hidden` : ``}`}>
+      <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-8`}>
           {!activeStory && (
             <div
@@ -126,7 +146,12 @@ const SectionIntro = ({
           )}
 
           <div className={`relative`}>
-            <div className={`sticky top-[109px] z-10`}>
+            <div className={`sticky top-[100px] z-10`}>
+              {activeStory &&
+                <div className={`w-full h-2 ${currentSection ? `bg-${section.colorTheme}-50` : `bg-white`}`}>
+                  <div className={`h-full ${currentSection ? `bg-${section.colorTheme}-900` : `bg-white`}`} style={{width: `${sectionPct}%`}}></div>
+                </div>
+              }
               <StoriesDropdownMenu
                 items={section.items}
                 colorTheme={section.colorTheme}
@@ -137,8 +162,8 @@ const SectionIntro = ({
               />
             </div>
 
-            {isSectionOpen && activeStory && (
-              <ul className={``}>
+            {(isSectionOpen && activeStory) &&
+              <ul className={`relative text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
                 {section.items
                   .filter((story) => story.hideStory !== true)
                   .map((story) => {
@@ -149,9 +174,6 @@ const SectionIntro = ({
                           story={story}
                           colorTheme={section.colorTheme}
                           sectionAnchor={section.anchor}
-                          nextSection={""}
-                          nextSectionTitle={""}
-                          nextSectionType={""}
                           activeStory={activeStory}
                           setActiveStory={setActiveStory}
                         />
@@ -159,7 +181,7 @@ const SectionIntro = ({
                     );
                   })}
               </ul>
-            )}
+            }
           </div>
         </div>
       </div>
