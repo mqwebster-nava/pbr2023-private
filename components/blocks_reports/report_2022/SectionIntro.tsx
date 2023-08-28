@@ -20,29 +20,19 @@ const SectionIntro = ({
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
-  const [prevSection, setPrevSection] = useState(null);
   const [nextSection, setNextSection] = useState(null);
 
   let currentSection = section.anchor == activeSection;
 
   useEffect(() => {
-    if (activeSection && activeSection == section.anchor && activeStory) {
-      let sectionIndex = sectionList.indexOf(section.anchor);
-
-      if (sectionIndex == 0) {
-        setPrevSection(null);
-        setNextSection(sectionList[sectionIndex + 1]);
-      }
-      if (sectionIndex > 0 && sectionIndex < sectionList.length - 1) {
-        setPrevSection(sectionList[sectionIndex - 1]);
-        setNextSection(sectionList[sectionIndex + 1]);
-      }
-      if (sectionIndex == sectionList.length - 1) {
-        setPrevSection(sectionList[sectionIndex - 1]);
-        setNextSection(null);
+    let index = i - 1
+    if (currentSection && activeStory) {
+      if (index < sectionList.length - 1) {
+        setNextSection(sectionList[index + 1]);
       }
     }
-  }, [activeSection, activeStory]);
+    console.log(nextSection)
+  }, [activeStory]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -62,7 +52,7 @@ const SectionIntro = ({
 
   useEffect(() => {
     setSectionPct(0);
-    if (activeSection === section.anchor) {
+    if (currentSection) {
       setIsSectionOpen(true);
     } else {
       setIsSectionOpen(false);
@@ -70,7 +60,7 @@ const SectionIntro = ({
   }, [activeSection]);
 
   useEffect(() => {
-    if (activeSection && activeSection !== section.anchor) {
+    if (activeSection && !currentSection) {
       setIsSectionHidden(true);
     } else {
       setIsSectionHidden(false);
@@ -78,7 +68,7 @@ const SectionIntro = ({
   }, [activeSection]);
 
   const toggleSection = () => {
-    setActiveSection(activeSection === section.anchor ? null : section.anchor);
+    setActiveSection(currentSection ? null : section.anchor);
     setActiveStory(null);
   };
 
