@@ -25,47 +25,41 @@ const SectionIntro = ({
   let currentSection = section.anchor == activeSection;
 
   useEffect(() => {
-    let index = i - 1
-    if (currentSection && activeStory) {
-      if (index < sectionList.length - 1) {
-        setNextSection(sectionList[index + 1]);
-      }
+    if (currentSection) {
+      let index = i - 1;
+      setNextSection(
+        index < sectionList.length - 1 ? sectionList[index + 1] : null
+      );
     }
-    console.log(nextSection)
-  }, [activeStory]);
+    if (!activeSection) {
+      setNextSection(null);
+    }
+
+    setSectionPct(0);
+    setIsSectionOpen(currentSection);
+    setIsSectionHidden(activeSection && !currentSection);
+  }, [activeSection]);
 
   useEffect(() => {
     const onScroll = () => {
-      let sectionEl = document.getElementById(section.anchor).querySelector('ul');
+      let sectionEl = document
+        .getElementById(section.anchor)
+        .querySelector("ul");
 
-      let sectionBot = Math.max(Math.round(sectionEl?.getBoundingClientRect().bottom), 0);
+      let sectionBot = Math.max(
+        Math.round(sectionEl?.getBoundingClientRect().bottom),
+        0
+      );
       let sectionH = sectionEl?.offsetHeight;
 
-      setSectionPct((100 - ((sectionBot / sectionH) * 100)))
-    }
+      setSectionPct(100 - (sectionBot / sectionH) * 100);
+    };
 
     if (activeStory) {
       window.addEventListener("scroll", onScroll);
       return () => window.removeEventListener("scroll", onScroll);
     }
-  }, [activeStory, sectionPct])
-
-  useEffect(() => {
-    setSectionPct(0);
-    if (currentSection) {
-      setIsSectionOpen(true);
-    } else {
-      setIsSectionOpen(false);
-    }
-  }, [activeSection]);
-
-  useEffect(() => {
-    if (activeSection && !currentSection) {
-      setIsSectionHidden(true);
-    } else {
-      setIsSectionHidden(false);
-    }
-  }, [activeSection]);
+  }, [activeStory, sectionPct]);
 
   const toggleSection = () => {
     setActiveSection(currentSection ? null : section.anchor);
@@ -100,7 +94,9 @@ const SectionIntro = ({
           ? section.themeNum == 1
             ? `border-none`
             : `border-t-2 border-gray-300 hover:border-none`
-          : section.colorTheme == 'gold' ? `bg-gold-pbrcustomdark` : `bg-${section.colorTheme}-900`
+          : section.colorTheme == "gold"
+          ? `bg-gold-pbrcustomdark`
+          : `bg-${section.colorTheme}-900`
       } ${bgStyles} ${isSectionHidden ? `hidden` : ``}`}
       tabIndex={0}
       onMouseEnter={() => {
@@ -159,11 +155,22 @@ const SectionIntro = ({
 
           <div className={`relative`}>
             <div className={`sticky top-[100px] z-10`}>
-              {activeStory &&
-                <div className={`w-full h-2 ${currentSection ? `bg-${section.colorTheme}-50` : `bg-white`}`}>
-                  <div className={`h-full ${currentSection ? `bg-${section.colorTheme}-900` : `bg-white`}`} style={{width: `${sectionPct}%`}}></div>
+              {activeStory && (
+                <div
+                  className={`w-full h-2 ${
+                    currentSection ? `bg-${section.colorTheme}-50` : `bg-white`
+                  }`}
+                >
+                  <div
+                    className={`h-full ${
+                      currentSection
+                        ? `bg-${section.colorTheme}-900`
+                        : `bg-white`
+                    }`}
+                    style={{ width: `${sectionPct}%` }}
+                  ></div>
                 </div>
-              }
+              )}
               <StoriesDropdownMenu
                 items={section.items}
                 colorTheme={section.colorTheme}
@@ -174,8 +181,10 @@ const SectionIntro = ({
               />
             </div>
 
-            {(isSectionOpen && activeStory) &&
-              <div className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
+            {isSectionOpen && activeStory && (
+              <div
+                className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}
+              >
                 <ul className={`relative`}>
                   {section.items
                     .filter((story) => story.hideStory !== true)
@@ -197,7 +206,7 @@ const SectionIntro = ({
 
                 <div className={`w-full h-[100vh]`}></div>
               </div>
-            }
+            )}
           </div>
         </div>
       </div>
