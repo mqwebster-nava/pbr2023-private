@@ -46,12 +46,12 @@ const SectionIntro = ({
 
   useEffect(() => {
     const onScroll = () => {
-      let sectionEl = document.getElementById(section.anchor);
-      let sectionTop = sectionEl.offsetTop;
-      let sectionH = sectionEl.offsetHeight - 70;
-      let sectionBot = Math.max((sectionEl.getBoundingClientRect().bottom - sectionTop - 70), 0);
+      let sectionEl = document.getElementById(section.anchor).querySelector('ul');
 
-      setSectionPct(((sectionH - Math.round(sectionBot) + 70) / (sectionH - sectionTop)) * 100);
+      let sectionBot = Math.max(Math.round(sectionEl?.getBoundingClientRect().bottom), 0);
+      let sectionH = sectionEl?.offsetHeight;
+
+      setSectionPct((100 - ((sectionBot / sectionH) * 100)))
     }
 
     if (activeStory) {
@@ -61,6 +61,7 @@ const SectionIntro = ({
   }, [activeStory, sectionPct])
 
   useEffect(() => {
+    setSectionPct(0);
     if (activeSection === section.anchor) {
       setIsSectionOpen(true);
     } else {
@@ -184,24 +185,28 @@ const SectionIntro = ({
             </div>
 
             {(isSectionOpen && activeStory) &&
-              <ul className={`relative text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
-                {section.items
-                  .filter((story) => story.hideStory !== true)
-                  .map((story) => {
-                    return (
-                      <li key={story.anchor}>
-                        <StorySection
-                          key={story.anchor}
-                          story={story}
-                          colorTheme={section.colorTheme}
-                          sectionAnchor={section.anchor}
-                          activeStory={activeStory}
-                          setActiveStory={setActiveStory}
-                        />
-                      </li>
-                    );
-                  })}
-              </ul>
+              <div className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
+                <ul className={`relative`}>
+                  {section.items
+                    .filter((story) => story.hideStory !== true)
+                    .map((story) => {
+                      return (
+                        <li key={story.anchor}>
+                          <StorySection
+                            key={story.anchor}
+                            story={story}
+                            colorTheme={section.colorTheme}
+                            sectionAnchor={section.anchor}
+                            activeStory={activeStory}
+                            setActiveStory={setActiveStory}
+                          />
+                        </li>
+                      );
+                    })}
+                </ul>
+
+                <div className={`w-full h-[100vh]`}></div>
+              </div>
             }
           </div>
         </div>
