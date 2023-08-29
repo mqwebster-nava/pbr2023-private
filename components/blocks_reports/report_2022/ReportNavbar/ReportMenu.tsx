@@ -10,7 +10,7 @@ TODO use active story and active section setters on list item click instead of a
 const ReportMenu = ({ contentBlocks, activeSection, onClick }) => {
   return (
     <section className={`w-full`}>
-      <div className="responsive-container w-full flex flex-row gap-8 pt-12">
+      <div className="responsive-container w-full flex flex-row gap-8">
         {contentBlocks
           .filter(
             (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
