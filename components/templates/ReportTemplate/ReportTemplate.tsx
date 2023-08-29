@@ -304,7 +304,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
         <ReportFooter2022
           reportSections={reportSections}
           contentBlocks={contentBlocks}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
           activeStory={activeStory}
+          setActiveStory={setActiveStory}
         />
       )}
     </main>
