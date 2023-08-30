@@ -114,11 +114,11 @@ const SectionIntro = ({
     >
       {!activeStory && (
         <div
-          className="responsive-container w-full pb-8"
+          className="responsive-container w-full min-h-[170px] pb-8 group-hover:cursor-pointer"
           onClick={toggleSection}
         >
           <div
-            className={`flex flex-row justify-between items-baseline group-hover:cursor-pointer group-hover:text-white ${openStyles}`}
+            className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
           >
             <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
               {section.title}

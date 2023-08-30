@@ -39,7 +39,7 @@ const ReportFooter2022 = ({
 
   return (
     <footer
-      className={`flex flex-col divide-y-[1px] divide-black w-full h-full bg-gray-100 ${
+      className={`flex flex-col divide-y-[1px] divide-gray-900 w-full h-full bg-gray-100 ${
         activeStory && `hidden`
       }`}
     >
@@ -51,9 +51,9 @@ const ReportFooter2022 = ({
         />
       </div>
 
-      <div className="py-2xl bg-gray-300">
-        <div className="responsive-container font-sans text-black">
-          <div className=" w-full flex pb-2xl flex-col md:flex-row">
+      <div className="py-2xl bg-gray-200">
+        <div className="font-sans text-black">
+          <div className="responsive-container w-full flex pb-2xl flex-col md:flex-row">
             <div className="w-full md:w-1/2 ">
               <h3 className="font-sans type-preset-6 font-bold pb-lg">
                 Stay in touch
@@ -108,7 +108,7 @@ const ReportFooter2022 = ({
             </div>
           </div>
 
-          <div className="py-2xl">
+          <div className="w-full border-t-[1px] border-gray-400 pt-2xl">
             <div
               className={
                 "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
