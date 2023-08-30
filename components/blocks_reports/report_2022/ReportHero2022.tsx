@@ -21,7 +21,7 @@ const ReportHero2022 = (
       {!activeStory && (
         <div className="responsive-container pt-8 pb-2">
           <span className="text-7xl font-sans font-black spacing-y-sm">
-            Envisioning...
+            {activeSection ? `Envisioning` : `Envisioning...`}
           </span>
         </div>
       )}
