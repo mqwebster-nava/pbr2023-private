@@ -269,7 +269,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
   };
 
   return (
-    <main id="main">
+    <main id="main" className="relative">
       {slug == "/public-benefit-reports/2021" && (
         <ReportNavbar2021
           contentBlocks={contentBlocks}
@@ -295,7 +295,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2022 {...pageHeader} reportSections={reportSections} activeSection={activeSection} activeStory={activeStory} />
+        <ReportHero2022 {...pageHeader} reportSections={reportSections} activeSection={activeSection} setActiveSection={setActiveSection} activeStory={activeStory} setActiveStory={setActiveStory} />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
