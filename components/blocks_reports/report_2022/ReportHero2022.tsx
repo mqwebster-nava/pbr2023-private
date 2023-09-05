@@ -24,14 +24,15 @@ const ReportHero2022 = (
     let nextSection = index < sectionList.length - 1 ? sectionList[index + 1].anchor : 'Conclusion';
 
     setActiveSection(nextSection);
-    setActiveStory(null);
   }
 
   let handlePrevSection = () => {
     let index = sectionList.indexOf(currentSection);
     let prevSection = index == 0 ? null : sectionList[index - 1].anchor;
 
-    setActiveStory(null);
+    if (index == 0) {
+      setActiveStory(null);
+    }
     setActiveSection(prevSection);
   }
 

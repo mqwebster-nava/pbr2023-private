@@ -141,15 +141,11 @@ const SectionIntro = ({
 
       <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-8`}>
-          {!activeStory && (
-            <div
-              className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
-            >
-              <div className={"w-2/3"}>
-                <MarkdownComponent content={section.body} />
-              </div>
+          <div className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}>
+            <div className={"w-2/3"}>
+              <MarkdownComponent content={section.body} />
             </div>
-          )}
+          </div>
 
           <div className={`relative`}>
             <div className={`sticky top-[100px] z-10`}>
