@@ -10,7 +10,7 @@ export interface ArrowDownInterface {
     isMobileHidden?: boolean;
 }
 
-const ArrowDown = ({size="default", color, sectionId, isAnimated=false, isMobileHidden=false} : ArrowDownInterface) => {
+const Arrow = ({size="default", color, sectionId, isAnimated=false, isMobileHidden=false} : ArrowDownInterface) => {
     const w = size == "default" ? "24" : "48";
     const h = w;
 
@@ -48,4 +48,4 @@ const ArrowDown = ({size="default", color, sectionId, isAnimated=false, isMobile
   );
 };
 
-export default ArrowDown
+export default Arrow
