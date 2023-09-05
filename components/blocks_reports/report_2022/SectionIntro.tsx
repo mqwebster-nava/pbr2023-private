@@ -112,32 +112,30 @@ const SectionIntro = ({
         }
       }}
     >
-      {!activeStory && (
+      <div
+        className={`responsive-container w-full min-h-[170px] pb-8 ${!activeSection && `group-hover:cursor-pointer`}`}
+        onClick={e => activeSection ? e.preventDefault() : toggleSection()}
+      >
         <div
-          className={`responsive-container w-full min-h-[170px] pb-8 ${!activeSection && `group-hover:cursor-pointer`}`}
-          onClick={e => activeSection ? e.preventDefault() : toggleSection()}
+          className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
         >
-          <div
-            className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
+          <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+            {section.title}
+          </span>
+          <span
+            className={
+              isSectionOpen
+                ? `opacity-0`
+                : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`
+            }
           >
-            <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
-              {section.title}
-            </span>
-            <span
-              className={
-                isSectionOpen
-                  ? `opacity-0`
-                  : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`
-              }
-            >
-              <div className="flex flex-row items-center gap-1">
-                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                <ArrowDown color={"white"} size="default" />
-              </div>
-            </span>
-          </div>
+            <div className="flex flex-row items-center gap-1">
+              {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+              <ArrowDown color={"white"} size="default" />
+            </div>
+          </span>
         </div>
-      )}
+      </div>
 
       <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-8`}>
