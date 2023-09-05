@@ -60,7 +60,7 @@ const SectionIntro = ({
   }, [activeStory, sectionPct]);
 
   const toggleSection = () => {
-    setActiveSection(currentSection ? null : section.anchor);
+    setActiveSection(section.anchor);
     setActiveStory(null);
   };
 
@@ -114,8 +114,8 @@ const SectionIntro = ({
     >
       {!activeStory && (
         <div
-          className="responsive-container w-full min-h-[170px] pb-8 group-hover:cursor-pointer"
-          onClick={toggleSection}
+          className={`responsive-container w-full min-h-[170px] pb-8 ${!activeSection && `group-hover:cursor-pointer`}`}
+          onClick={e => activeSection ? e.preventDefault() : toggleSection()}
         >
           <div
             className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
