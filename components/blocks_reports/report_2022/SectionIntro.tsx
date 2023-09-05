@@ -3,7 +3,7 @@ import classNames from "classnames";
 import MarkdownComponent from "utils/MarkdownComponent";
 
 import StorySection from "./StorySection/StorySection";
-import ArrowDown from "./Atoms/ArrowDown";
+import ArrowDown from "./Atoms/Arrow";
 import StoriesDropdownMenu from "./Atoms/StoriesDropdownMenu";
 
 const SectionIntro = ({

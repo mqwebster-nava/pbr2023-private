@@ -6,7 +6,7 @@ import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
 import classNames from "classnames";
 import { LinkText } from "components/atom/LinkText/LinkText";
-import ArrowDown from "../Atoms/ArrowDown";
+import ArrowDown from "../Atoms/Arrow";
 import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 
 const StorySection = ({

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { AnalyticsLabelType } from "utils/Analytics";
-import ArrowDown from "./ArrowDown";
+import ArrowDown from "./Arrow";
 
 type LinkTextVariant = "default" | "" | "underlined" | "intro";
 type LinkColor = "black" | "white" | "gray" | "gold" | "plum" | "sage" | "navy" | "purple" | "";

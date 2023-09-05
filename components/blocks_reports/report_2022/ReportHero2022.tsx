@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
-import ArrowDown from "./Atoms/ArrowDown";
+import ArrowDown from "./Atoms/Arrow";
 
 const ReportHero2022 = (
   { reportSections, activeSection, setActiveSection, activeStory, setActiveStory },
