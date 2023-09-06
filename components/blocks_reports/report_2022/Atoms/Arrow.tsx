@@ -16,10 +16,10 @@ const Arrow = ({size="default", color, sectionId, isAnimated=false, isMobileHidd
 
     const strokeStyles = classNames({
         "stroke-gold-900": color == "gold",
-        "stroke-plum-500": color == "plum",
-        "stroke-sage-600": color == "sage",
-        "stroke-purple-600": color == "purple",
-        "stroke-navy-600": color == "navy",
+        "stroke-plum-900": color == "plum",
+        "stroke-sage-900": color == "sage",
+        "stroke-purple-900": color == "purple",
+        "stroke-navy-900": color == "navy",
         "stroke-white": color == undefined || color == "" || color == "white",
     });
 
