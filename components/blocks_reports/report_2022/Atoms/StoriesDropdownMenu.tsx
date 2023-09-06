@@ -65,7 +65,7 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
                 {selectedOption}
               </div>
 
-              <div className={isOpen && `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100`}>
+              <div className={isOpen ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100` : ``}>
                 <Arrow color={colorTheme} />
               </div>
             </button>
