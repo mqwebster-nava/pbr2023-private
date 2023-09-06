@@ -5,6 +5,7 @@ import MarkdownComponent from "utils/MarkdownComponent";
 import StorySection from "./StorySection/StorySection";
 import ArrowDown from "./Atoms/Arrow";
 import StoriesDropdownMenu from "./Atoms/StoriesDropdownMenu";
+import NavigationArrows from "./Atoms/NavigationArrows";
 
 const SectionIntro = ({
   section,
@@ -23,16 +24,6 @@ const SectionIntro = ({
   let currentSection = section.anchor == activeSection;
 
   useEffect(() => {
-    if (currentSection) {
-      let index = i - 1;
-      setNextSection(
-        index < sectionList.length - 1 ? sectionList[index + 1] : null
-      );
-    }
-    if (!activeSection) {
-      setNextSection(null);
-    }
-
     setSectionPct(0);
     setIsSectionOpen(currentSection);
     setIsSectionHidden(activeSection && !currentSection);
@@ -63,6 +54,27 @@ const SectionIntro = ({
     setActiveSection(section.anchor);
     setActiveStory(null);
   };
+
+  let handleNextSection = () => {
+    let index = sectionList.indexOf(activeSection);
+    console.log(index);
+    let nextSection = index < sectionList.length - 1 ? sectionList[index + 1] : 'Conclusion';
+
+    setActiveSection(nextSection);
+    window.scrollTo(0, 0);
+  }
+
+  let handlePrevSection = () => {
+    let index = sectionList.indexOf(activeSection);
+    console.log(index);
+    let prevSection = index == 0 ? null : sectionList[index - 1];
+
+    if (index == 0) {
+      setActiveStory(null);
+    }
+    setActiveSection(prevSection);
+    window.scrollTo(0, 0);
+  }
 
   const openStyles = isSectionOpen
     ? classNames({
@@ -196,7 +208,11 @@ const SectionIntro = ({
                     })}
                 </ul>
 
-                <div className={`w-full h-[100vh]`}></div>
+                <div className={`w-full h-[100vh]`}>
+                  <div className="responsive-container">
+                    <NavigationArrows color={section.colorTheme} handleNextSection={handleNextSection} handlePrevSection={handlePrevSection} />
+                  </div>
+                </div>
               </div>
             )}
           </div>

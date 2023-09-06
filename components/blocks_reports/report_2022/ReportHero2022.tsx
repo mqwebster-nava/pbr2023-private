@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
-import ArrowDown from "./Atoms/Arrow";
+import NavigationArrows from "./Atoms/NavigationArrows";
 
 const ReportHero2022 = (
   { reportSections, activeSection, setActiveSection, activeStory, setActiveStory },
@@ -43,7 +43,7 @@ const ReportHero2022 = (
       }`}
       id="reportHeader"
     >
-      <div className={`responsive-container w-full flex flex-row justify-between pt-8 pb-4 relative`}>
+      <div className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-4 relative`}>
         <div className="">
           <span className="text-7xl font-sans font-black spacing-y-sm">
             {activeSection ? `Envisioning` : `Envisioning...`}
@@ -51,20 +51,9 @@ const ReportHero2022 = (
         </div>
 
         {activeSection &&
-          <div className={`w-full flex flex-row justify-end gap-8 absolute top-4`}>
-            <button className="flex flex-row items-center gap-4" onClick={handlePrevSection}>
-              <div className={`rotate-180`}>
-                <ArrowDown color={`${sectionList.colorTheme}`} size="default" />
-              </div>
-              {activeSection == sectionList[0].anchor ? `Home` : `Previous Section`}
-            </button>
-
-            <button className="flex flex-row items-center gap-4" onClick={handleNextSection}>
-            {activeSection == sectionList[sectionList.length - 1].anchor ? `Conclusion` : `Next Section`}
-              <ArrowDown color={`${sectionList.colorTheme}`} size="default" />
-            </button>
-          </div>
-        }
+        <div>
+          <NavigationArrows handleNextSection={handleNextSection} handlePrevSection={handlePrevSection} />
+        </div>}
       </div>
     </header>
   );
