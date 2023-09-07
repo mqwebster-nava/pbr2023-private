@@ -51,8 +51,13 @@ const SectionIntro = ({
   }, [activeStory, sectionPct]);
 
   const toggleSection = () => {
-    setActiveSection(section.anchor);
-    setActiveStory(null);
+    if (section.themeNum == 1) {
+      setActiveSection(section.anchor)
+      setActiveStory(section.storiesCollection.items[0].anchor)
+    } else {
+      setActiveSection(section.anchor);
+      setActiveStory(null);
+    }
   };
 
   let handleNextSection = () => {
