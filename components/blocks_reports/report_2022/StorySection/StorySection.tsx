@@ -26,11 +26,33 @@ const StorySection = ({
     }
   }, [isOnScreen]);
 
-  let calloutText = story.featuredCallOut && story.featuredCallOut.body;
+  const calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
-  if (calloutText && calloutText.includes("//images")) {
-    calloutText = <img src={story.featuredCallOut.body} alt="" />;
-  }
+    const statList = calloutText.split('\n\n---\n\n');
+    const color = colorTheme;
+
+    let statEl = () => (
+      <div className={`flex flex-col gap-8 divide-y-[1px] divide-${color}-900`}>
+        {statList.map((stat, i) => {
+        let stats = stat.split('\n');
+        return (
+          <div key={`${story.anchor}-statGroup-${i}`} className={`flex flex-col gap-0 py-8`}>
+            {stats.map((statItem, j) => {
+              const statistic = statItem.split('__')[1]
+              const statisticBefore = statItem.split('__')[0]
+              const statisticAfter = statItem.split('__')[2]
+              return (
+                <div key={`${story.anchor}-statGroupItem-${j}`} className={`inline-flex flex-col gap-0 text-xs`}>
+                  <span>{statisticBefore}</span>
+                  <span className={`w-20 text-5xl leading-tight font-serif font-light pb-2`}>{statistic}</span>
+                  <span>{statisticAfter}</span>
+                </div>
+              )
+            })}
+          </div>
+        )
+            })}
+      </div>)
 
   const images = story.illustration && story.contextIllustration ? story.storyImageStepsCollection ? [story.illustration, story.contextIllustration, ...story.storyImageStepsCollection.items] : [story.illustration, story.contextIllustration] : [];
 
@@ -40,9 +62,9 @@ const StorySection = ({
         <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
 
         <div
-          className={`responsive-container flex flex-row gap-24 pb-28`}
+          className={`responsive-container flex flex-row gap-4 pb-28`}
         >
-          <div className="flex flex-col gap-0 w-5/12 pt-4">
+          <div className="flex flex-col w-[46%] gap-0 pt-4">
             <div className={`font-serif font-semibold`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -63,10 +85,14 @@ const StorySection = ({
             </div>
           </div>
 
+          <div className={`w-44 h-full sticky top-[180px]`}>
+            {statEl()}
+          </div>
+
           <div
-            className={`flex flex-col gap-12 w-7/12 h-full sticky top-[180px]`}
+            className={`flex flex-col grow gap-12 w-7/12 h-full sticky top-[180px]`}
           >
-            <div className={`min-h-full aspect-video`}>
+            <div className={`w-full min-h-full aspect-video`}>
               <CrossfadeCarousel
                 interval={1500}
                 transition={1000}
@@ -76,7 +102,6 @@ const StorySection = ({
                 })}
               />
             </div>
-            <div>{calloutText}</div>
           </div>
         </div>
       </div>
