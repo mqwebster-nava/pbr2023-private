@@ -13,11 +13,12 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick }) => {
       <div className="responsive-container w-full flex flex-row gap-8">
         {contentBlocks
           .filter(
-            (entry) => entry.__typename === "ReportIllustrationOverlaySubsection"
+            (entry) =>
+              entry.__typename === "ReportIllustrationOverlaySubsection"
           )
           .map((section, i) => {
             const color = section.colorTheme ?? "purple";
-            const bg = `bg-${color}-50`
+            const bg = `bg-${color}-50`;
             const textColor = classNames({
               "text-gold-900": section.colorTheme == "gold",
               "text-plum-500": section.colorTheme == "plum",
@@ -36,7 +37,9 @@ const ReportMenu = ({ contentBlocks, activeSection, onClick }) => {
                 colorTheme={color}
                 textColor={textColor}
                 fontStyle={"font-bold"}
-                stories={section.items.filter((story)=>story.hideStory!==true)}
+                stories={section.items.filter(
+                  (story) => story.hideStory !== true
+                )}
                 onClick={onClick}
                 activeSection={activeSection}
               />
@@ -70,11 +73,11 @@ const ReportMenuCol = ({
   fontStyle,
   onClick,
   activeSection = null,
-  colorTheme=null
+  colorTheme = null,
 }) => {
   const simpleRow = () => {
     return (
-      <div className={''}>
+      <div className={""}>
         <a
           className={`hidden ${
             stories !== null ? "md:grid" : "md:block h-full"
@@ -125,27 +128,27 @@ const ReportMenuCol = ({
           </h2>
         </a>
 
-        <ul
-          className={`pt-lg pb-xl`}
-        >
-          {stories.filter((story)=>story.hideStory!==true).map((story) => {
-            const anch2 = `#${anchor}--${story.anchor}`;
-            const title = story.title;
-            return (
-              <LinkListItem
-                key={`${anch2}-menu`}
-                href={anch2}
-                variant={"default"}
-                hoverStyle={"underlined"}
-                ariaLabel={`Theme ${themeNum}, Story ${title}`}
-                onClick={onClick}
-                color={textColor}
-                isBolded={`#${activeSection}`==anch2}
-              >
-                {title}
-              </LinkListItem>
-            );
-          })}
+        <ul className={`pt-lg pb-xl`}>
+          {stories
+            .filter((story) => story.hideStory !== true)
+            .map((story) => {
+              const anch2 = `#${anchor}--${story.anchor}`;
+              const title = story.title;
+              return (
+                <LinkListItem
+                  key={`${anch2}-menu`}
+                  href={anch2}
+                  variant={"default"}
+                  hoverStyle={"underlined"}
+                  ariaLabel={`Theme ${themeNum}, Story ${title}`}
+                  onClick={onClick}
+                  color={textColor}
+                  isBolded={`#${activeSection}` == anch2}
+                >
+                  {title}
+                </LinkListItem>
+              );
+            })}
         </ul>
       </div>
     </div>

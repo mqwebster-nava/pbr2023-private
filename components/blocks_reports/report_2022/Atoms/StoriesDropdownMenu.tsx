@@ -1,59 +1,86 @@
 import { useEffect, useState } from "react";
 import Arrow from "./Arrow";
 
-const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, setActiveStory, parentSectionOpen}) => {
-    const [selectedOption, setSelectedOption] = useState(items[0].title);
-    const [isOpen, setIsOpen] = useState(false);
-  
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const selectOption = (option) => {
-      setSelectedOption(option.title);
-      setIsOpen(false);
-      setActiveStory(option.anchor)
-    };
-  
-    const availableOptions = items.filter((option) => option.title !== selectedOption);
+const StoriesDropdownMenu = ({
+  items,
+  colorTheme,
+  sectionAnchor,
+  activeStory,
+  setActiveStory,
+  parentSectionOpen,
+}) => {
+  const [selectedOption, setSelectedOption] = useState(items[0].title);
+  const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-      items.forEach((item) => {
-        if (activeStory === `${sectionAnchor}--${item.anchor}`) {
-          setSelectedOption(item.title);
-        }
-      })
-    }, [activeStory]);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const StoriesMenu = () => {
-      return (
-        <div className={`w-full border-b-[1px] border-${colorTheme}-900`}>
-          <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
-            {items.map((option, index) => (
-              <div key={index} className={`group/story-menu w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
-                <a
-                  href={`2022#${sectionAnchor}--${option.anchor}`}
-                  className="flex justify-between items-center w-full py-md responsive-container"
-                  role="menuitem"
-                  onClick={() => selectOption(option)}
+  const selectOption = (option) => {
+    setSelectedOption(option.title);
+    setIsOpen(false);
+    setActiveStory(option.anchor);
+  };
+
+  const availableOptions = items.filter(
+    (option) => option.title !== selectedOption
+  );
+
+  useEffect(() => {
+    items.forEach((item) => {
+      if (activeStory === `${sectionAnchor}--${item.anchor}`) {
+        setSelectedOption(item.title);
+      }
+    });
+  }, [activeStory]);
+
+  const StoriesMenu = () => {
+    return (
+      <div className={`w-full border-b-[1px] border-${colorTheme}-900`}>
+        <div
+          className={``}
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="dropdown-menu-button"
+        >
+          {items.map((option, index) => (
+            <div
+              key={index}
+              className={`group/story-menu w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
+            >
+              <a
+                href={`2022#${sectionAnchor}--${option.anchor}`}
+                className="flex justify-between items-center w-full py-md responsive-container"
+                role="menuitem"
+                onClick={() => selectOption(option)}
+              >
+                {option.title}
+
+                <div
+                  className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}
                 >
-                  {option.title}
-
-                  <div className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}>
-                    <Arrow color={colorTheme} />
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
+                  <Arrow color={colorTheme} />
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
-      )
-    };
+      </div>
+    );
+  };
 
-    const StoriesDropdown = () => {
-      return (
-        <div className={`relative z-40 w-full border-b-[1px] border-${colorTheme}-900`}>
-        <div className={`group/story-dropdown-active w-full ${isOpen ? `bg-white hover:bg-${colorTheme}-50` : `bg-${colorTheme}-50`}`}>
+  const StoriesDropdown = () => {
+    return (
+      <div
+        className={`relative z-40 w-full border-b-[1px] border-${colorTheme}-900`}
+      >
+        <div
+          className={`group/story-dropdown-active w-full ${
+            isOpen
+              ? `bg-white hover:bg-${colorTheme}-50`
+              : `bg-${colorTheme}-50`
+          }`}
+        >
           <div className={`responsive-container`}>
             <button
               type="button"
@@ -61,48 +88,70 @@ const StoriesDropdownMenu = ({items, colorTheme, sectionAnchor, activeStory, set
               id="dropdown-menu-button"
               onClick={toggleDropdown}
             >
-              <div className={``}>
-                {selectedOption}
-              </div>
+              <div className={``}>{selectedOption}</div>
 
-              <div className={isOpen ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100` : ``}>
+              <div
+                className={
+                  isOpen
+                    ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100`
+                    : ``
+                }
+              >
                 <Arrow color={colorTheme} />
               </div>
             </button>
           </div>
         </div>
-  
-        {isOpen && <div className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-2xl`}>
-          <div className={``} role="menu" aria-orientation="vertical" aria-labelledby="dropdown-menu-button">
-            {availableOptions.map((option, index) => (
-              <div key={index} className={`group/story-dropdown-item w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}>
-                <a
-                  href={`2022#${sectionAnchor}--${option.anchor}`}
-                  className="flex justify-between items-center w-full py-md responsive-container"
-                  role="menuitem"
-                  onClick={() => selectOption(option)}
+
+        {isOpen && (
+          <div
+            className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-2xl`}
+          >
+            <div
+              className={``}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="dropdown-menu-button"
+            >
+              {availableOptions.map((option, index) => (
+                <div
+                  key={index}
+                  className={`group/story-dropdown-item w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
                 >
-                  {option.title}
+                  <a
+                    href={`2022#${sectionAnchor}--${option.anchor}`}
+                    className="flex justify-between items-center w-full py-md responsive-container"
+                    role="menuitem"
+                    onClick={() => selectOption(option)}
+                  >
+                    {option.title}
 
-                  <div className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}>
-                    <Arrow color={colorTheme} />
-                  </div>
-                </a>
-              </div>
-            ))}
+                    <div
+                      className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}
+                    >
+                      <Arrow color={colorTheme} />
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>}
-      </div>
-      )
-    };
-
-    return (
-      <div className={`font-serif font-semibold type-preset-3 text-${colorTheme}-900`}>
-        {
-          parentSectionOpen && activeStory == null ? <StoriesMenu /> : <StoriesDropdown />
-        }
+        )}
       </div>
     );
   };
 
-  export default StoriesDropdownMenu;
+  return (
+    <div
+      className={`font-serif font-semibold type-preset-3 text-${colorTheme}-900`}
+    >
+      {parentSectionOpen && activeStory == null ? (
+        <StoriesMenu />
+      ) : (
+        <StoriesDropdown />
+      )}
+    </div>
+  );
+};
+
+export default StoriesDropdownMenu;

@@ -70,10 +70,10 @@ const SectionIntro = ({
 
   const toggleSection = () => {
     if (section.themeNum == 1) {
-      setActiveSection(section.anchor)
-      setActiveStory(section.storiesCollection.items[0].anchor)
+      setActiveSection(section.anchor);
+      setActiveStory(section.storiesCollection.items[0].anchor);
     } else {
-      makeSlideUpAnimation(section.anchor, 0)
+      makeSlideUpAnimation(section.anchor, 0);
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
@@ -81,11 +81,12 @@ const SectionIntro = ({
 
   let handleNextSection = () => {
     let index = sectionList.indexOf(activeSection);
-    let nextSection = index < sectionList.length - 1 ? sectionList[index + 1] : 'Conclusion';
+    let nextSection =
+      index < sectionList.length - 1 ? sectionList[index + 1] : "Conclusion";
 
     setActiveSection(nextSection);
     window.scrollTo(0, 0);
-  }
+  };
 
   let handlePrevSection = () => {
     let index = sectionList.indexOf(activeSection);
@@ -96,7 +97,7 @@ const SectionIntro = ({
     }
     setActiveSection(prevSection);
     window.scrollTo(0, 0);
-  }
+  };
 
   const openStyles = isSectionOpen
     ? classNames({
@@ -147,8 +148,10 @@ const SectionIntro = ({
       }}
     >
       <div
-        className={`responsive-container w-full min-h-[170px] pb-8 ${!activeSection && `group-hover:cursor-pointer`}`}
-        onClick={e => activeSection ? e.preventDefault() : toggleSection()}
+        className={`responsive-container w-full min-h-[170px] pb-8 ${
+          !activeSection && `group-hover:cursor-pointer`
+        }`}
+        onClick={(e) => (activeSection ? e.preventDefault() : toggleSection())}
       >
         <div
           className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
@@ -173,7 +176,9 @@ const SectionIntro = ({
 
       <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-8`}>
-          <div className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}>
+          <div
+            className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
+          >
             <div className={"w-2/3"}>
               <MarkdownComponent content={section.body} />
             </div>
@@ -232,7 +237,11 @@ const SectionIntro = ({
 
                 <div className={`w-full h-[100vh]`}>
                   <div className="responsive-container">
-                    <NavigationArrows color={section.colorTheme} handleNextSection={handleNextSection} handlePrevSection={handlePrevSection} />
+                    <NavigationArrows
+                      color={section.colorTheme}
+                      handleNextSection={handleNextSection}
+                      handlePrevSection={handlePrevSection}
+                    />
                   </div>
                 </div>
               </div>

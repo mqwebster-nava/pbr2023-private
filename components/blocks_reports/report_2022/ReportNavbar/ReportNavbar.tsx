@@ -11,11 +11,20 @@ import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
 import SlideDown from "react-slidedown";
 
-const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveSection, activeStory, setActiveStory }) => {
+const ReportNavbar = ({
+  reportSections,
+  contentBlocks,
+  activeSection,
+  setActiveSection,
+  activeStory,
+  setActiveStory,
+}) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
 
   const menuItemClick = (e) => {
-    let clickedItem = reportSections.find((section) => section.anchor === e.target.dataset.refid);
+    let clickedItem = reportSections.find(
+      (section) => section.anchor === e.target.dataset.refid
+    );
 
     if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
       setActiveStory(null);
@@ -31,16 +40,16 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveS
           top: document.getElementById(clickedItem.anchor)?.offsetTop,
           behavior: "smooth",
         });
-      }, 50)
+      }, 50);
     }
     setIsShowingMenu(false);
-  }
+  };
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full h-full bg-white ${!activeStory && `border-b-[1px] border-black`} ${
-        !isShowingMenu && "overflow-clip"
-      }`}
+      className={`block sticky top-0 z-50 w-full h-full bg-white ${
+        !activeStory && `border-b-[1px] border-black`
+      } ${!isShowingMenu && "overflow-clip"}`}
     >
       <div className="responsive-container flex flex-wrap items-center h-[100px] ">
         <div className="w-[16%]">
@@ -53,12 +62,8 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveS
             if (isShowingMenu) setIsShowingMenu(false);
           }}
         >
-          <h2 className="font-semibold">
-            Public Benefit Report
-          </h2>
-          <h2 className="">
-            2022
-          </h2>
+          <h2 className="font-semibold">Public Benefit Report</h2>
+          <h2 className="">2022</h2>
         </a>
         <div className="block ml-auto ">
           <button
@@ -74,7 +79,11 @@ const ReportNavbar = ({ reportSections, contentBlocks, activeSection, setActiveS
         </div>
       </div>
 
-      <div className={`absolute w-full border-black border-t-[1px] ${isShowingMenu ? `top-[100px]` : ``}`}>
+      <div
+        className={`absolute w-full border-black border-t-[1px] ${
+          isShowingMenu ? `top-[100px]` : ``
+        }`}
+      >
         <div className="h-[100vh] bg-white">
           <SlideDown>
             {isShowingMenu ? (

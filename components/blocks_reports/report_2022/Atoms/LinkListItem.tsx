@@ -3,7 +3,16 @@ import { AnalyticsLabelType } from "utils/Analytics";
 import ArrowDown from "./Arrow";
 
 type LinkTextVariant = "default" | "" | "underlined" | "intro";
-type LinkColor = "black" | "white" | "gray" | "gold" | "plum" | "sage" | "navy" | "purple" | "";
+type LinkColor =
+  | "black"
+  | "white"
+  | "gray"
+  | "gold"
+  | "plum"
+  | "sage"
+  | "navy"
+  | "purple"
+  | "";
 type LinkHover = "underlined" | "sage";
 
 export interface LinkTextProps {
@@ -14,7 +23,7 @@ export interface LinkTextProps {
   hoverStyle?: LinkHover;
   analyticsLabel?: AnalyticsLabelType;
   ariaLabel?: string;
-  isBolded?: boolean
+  isBolded?: boolean;
 }
 
 export const LinkListItem: React.FC<LinkTextProps> = ({
@@ -26,7 +35,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
   hoverStyle = null,
   analyticsLabel = "",
   ariaLabel = null,
-  isBolded = false
+  isBolded = false,
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
   const loc = href.substr(0, 1);
@@ -35,7 +44,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
   const variantStyles = classNames({
     "underline decoration-1 whitespace-pre-wrap underline-offset-2 type-preset-6":
       variant == "underlined",
-    "type-preset-3": variant == "intro"
+    "type-preset-3": variant == "intro",
   });
 
   const textStyles = classNames({
@@ -65,13 +74,15 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
     "border-t-[1px] border-navy-600": color == "navy",
   });
 
-  const hoverBgStyles = variant == "intro" && classNames({
-    "hover:bg-gold-50": color == "gold",
-    "hover:bg-plum-50": color == "plum",
-    "hover:bg-sage-50": color == "sage",
-    "hover:bg-purple-50": color == "purple",
-    "hover:bg-navy-50": color == "navy",
-  });
+  const hoverBgStyles =
+    variant == "intro" &&
+    classNames({
+      "hover:bg-gold-50": color == "gold",
+      "hover:bg-plum-50": color == "plum",
+      "hover:bg-sage-50": color == "sage",
+      "hover:bg-purple-50": color == "purple",
+      "hover:bg-navy-50": color == "navy",
+    });
 
   return (
     <li
@@ -81,7 +92,9 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
         <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
           <div className={`flex items-center justify-between`}>
             <p
-              className={`font-serif ${isBolded?"font-bold":"font-light"} ${analyticsLabel}`}
+              className={`font-serif ${
+                isBolded ? "font-bold" : "font-light"
+              } ${analyticsLabel}`}
               data-refid={`${href.replace("#", "")}`}
             >
               {children}
