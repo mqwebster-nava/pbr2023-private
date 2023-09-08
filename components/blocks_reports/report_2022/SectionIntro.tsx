@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import MarkdownComponent from "utils/MarkdownComponent";
+import SlideDown from "react-slidedown";
 
 import StorySection from "./StorySection/StorySection";
 import ArrowDown from "./Atoms/Arrow";
@@ -19,7 +20,6 @@ const SectionIntro = ({
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
-  const [nextSection, setNextSection] = useState(null);
 
   let currentSection = section.anchor == activeSection;
 
@@ -50,11 +50,30 @@ const SectionIntro = ({
     }
   }, [activeStory, sectionPct]);
 
+  const makeSlideUpAnimation = (elementId, delay) => {
+    let el = document.getElementById(elementId);
+    let an = el.animate(
+      [
+        { transform: `translateY(${el.offsetTop}px)` },
+        { transform: `translateY(0px)` },
+      ],
+      {
+        duration: 600,
+        iterations: 1,
+        fill: "forwards",
+        easing: "ease",
+        delay: delay,
+      }
+    );
+    return an;
+  };
+
   const toggleSection = () => {
     if (section.themeNum == 1) {
       setActiveSection(section.anchor)
       setActiveStory(section.storiesCollection.items[0].anchor)
     } else {
+      makeSlideUpAnimation(section.anchor, 0)
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
@@ -62,7 +81,6 @@ const SectionIntro = ({
 
   let handleNextSection = () => {
     let index = sectionList.indexOf(activeSection);
-    console.log(index);
     let nextSection = index < sectionList.length - 1 ? sectionList[index + 1] : 'Conclusion';
 
     setActiveSection(nextSection);
@@ -71,7 +89,6 @@ const SectionIntro = ({
 
   let handlePrevSection = () => {
     let index = sectionList.indexOf(activeSection);
-    console.log(index);
     let prevSection = index == 0 ? null : sectionList[index - 1];
 
     if (index == 0) {
