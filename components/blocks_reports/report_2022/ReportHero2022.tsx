@@ -13,13 +13,6 @@ const ReportHero2022 = (
   },
   {}: PageHeaderInterface
 ) => {
-  const [isSectionOpen, setIsSectionOpen] = useState(false);
-  useEffect(() => {
-    if (activeSection !== null) {
-      setIsSectionOpen(true);
-    }
-  }, [activeSection])
-
   const currentSection = reportSections.find((section) => {
     if (section.anchor == activeSection) {
       return section;
