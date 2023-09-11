@@ -94,7 +94,10 @@ const SectionIntro = ({
 
     if (index == 0) {
       setActiveStory(null);
+    } else if (index == 1) {
+      setActiveStory("gov-services--pbr-2022-intro");
     }
+
     setActiveSection(prevSection);
     window.scrollTo(0, 0);
   };
@@ -119,33 +122,16 @@ const SectionIntro = ({
       })
     : ``;
 
+  const borderStyles = !isSectionOpen && classNames({
+    "border-none": section.themeNum == 1,
+    "border-t-2 border-gray-300 hover:border-transparent": section.themeNum != 1,
+  })
+
   return (
     <section
       id={`${section.anchor}`}
-      className={`w-full group ${
-        !activeSection
-          ? section.themeNum == 1
-            ? `border-none`
-            : `border-t-2 border-gray-300 hover:border-none`
-          : section.colorTheme == "gold"
-          ? `bg-gold-pbrcustomdark`
-          : `bg-${section.colorTheme}-900`
-      } ${bgStyles} ${isSectionHidden ? `hidden` : ``}`}
+      className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-500`}`}
       tabIndex={0}
-      onMouseEnter={() => {
-        let hero = document.getElementById("reportHeader");
-
-        if (!activeSection && section.themeNum == 1) {
-          hero.classList.add(`bg-${section.colorTheme}-900`, `text-white`);
-        }
-      }}
-      onMouseLeave={() => {
-        let hero = document.getElementById("reportHeader");
-
-        if (!activeSection && section.themeNum == 1) {
-          hero.classList.remove(`bg-${section.colorTheme}-900`, `text-white`);
-        }
-      }}
     >
       <div
         className={`responsive-container w-full min-h-[170px] pb-8 ${
@@ -154,12 +140,21 @@ const SectionIntro = ({
         onClick={(e) => (activeSection ? e.preventDefault() : toggleSection())}
       >
         <div
-          className={`flex flex-row justify-between items-baseline group-hover:text-white ${openStyles}`}
+          className={`relative flex flex-row justify-between items-baseline group-hover:text-white`}
         >
-          <span className="text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+          <span className="max-w-[1096px] text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
             {section.title}
           </span>
-          <span
+
+          {isSectionOpen ? (
+            <div className="absolute top-4 right-0 responsive-container">
+              <NavigationArrows
+                handleNextSection={handleNextSection}
+                handlePrevSection={handlePrevSection}
+              />
+            </div>
+          ) : (
+            <span
             className={
               isSectionOpen
                 ? `opacity-0`
@@ -171,6 +166,7 @@ const SectionIntro = ({
               <ArrowDown color={"white"} size="default" />
             </div>
           </span>
+          )}
         </div>
       </div>
 
@@ -178,7 +174,7 @@ const SectionIntro = ({
           <div className={`flex flex-col gap-8`}>
             <SlideDown className={`delay-[800ms]`}>
               <div
-                className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light ${openStyles}`}
+                className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light`}
               >
                 <div className={"w-2/3"}>
                   <MarkdownComponent content={section.body} />
@@ -187,7 +183,7 @@ const SectionIntro = ({
             </SlideDown>
 
             <div className="bg-white">
-              <div className={`relative animate-fadeIn3 opacity-0`}>
+              <div className={`relative animate-fadeIn3 opacity-0 bg-${section.colorTheme}-50`}>
                 <div className={`sticky top-[100px] z-10`}>
                   {activeStory && (
                     <div
@@ -205,6 +201,7 @@ const SectionIntro = ({
                       ></div>
                     </div>
                   )}
+
                   <StoriesDropdownMenu
                     items={section.items}
                     colorTheme={section.colorTheme}
@@ -214,35 +211,37 @@ const SectionIntro = ({
                     parentSectionOpen={isSectionOpen}
                   />
                 </div>
+
                 {isSectionOpen && activeStory && (
-                  <div
-                    className={`text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}
-                  >
-                    <ul className={`relative`}>
-                      {section.items
-                        .filter((story) => story.hideStory !== true)
-                        .map((story) => {
-                          return (
-                            <li key={story.anchor}>
-                              <StorySection
-                                key={story.anchor}
-                                story={story}
-                                colorTheme={section.colorTheme}
-                                sectionAnchor={section.anchor}
-                                activeStory={activeStory}
-                                setActiveStory={setActiveStory}
-                              />
-                            </li>
-                          );
-                        })}
-                    </ul>
-                    <div className={`w-full h-[100vh]`}>
-                      <div className="responsive-container">
-                        <NavigationArrows
-                          color={section.colorTheme}
-                          handleNextSection={handleNextSection}
-                          handlePrevSection={handlePrevSection}
-                        />
+                  <div className={`pb-28`}>
+                    <div className={`relative responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
+                      <ul className={`relative w-full flex flex-col gap-40`}>
+                        {section.items
+                          .filter((story) => story.hideStory !== true)
+                          .map((story) => {
+                            return (
+                              <li key={story.anchor}>
+                                <StorySection
+                                  key={story.anchor}
+                                  story={story}
+                                  colorTheme={section.colorTheme}
+                                  sectionAnchor={section.anchor}
+                                  activeStory={activeStory}
+                                  setActiveStory={setActiveStory}
+                                />
+                              </li>
+                            );
+                          })}
+                      </ul>
+
+                      <div className={`absolute bottom-0 right-0`}>
+                        <div className="">
+                          <NavigationArrows
+                            color={section.colorTheme}
+                            handleNextSection={handleNextSection}
+                            handlePrevSection={handlePrevSection}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>

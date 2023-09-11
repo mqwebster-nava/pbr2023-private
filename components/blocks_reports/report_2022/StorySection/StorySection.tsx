@@ -81,7 +81,7 @@ const StorySection = ({
       <div className={`relative`}>
         <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
 
-        <div className={`responsive-container flex flex-row gap-4 pb-28`}>
+        <div className={`responsive-container flex flex-row gap-4`}>
           <div className="flex flex-col w-[46%] gap-0 pt-4">
             <div className={`font-serif font-semibold`}>
               <ReportContent
