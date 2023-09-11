@@ -13,6 +13,13 @@ const ReportHero2022 = (
   },
   {}: PageHeaderInterface
 ) => {
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+  useEffect(() => {
+    if (activeSection !== null) {
+      setIsSectionOpen(true);
+    }
+  }, [activeSection])
+
   const currentSection = reportSections.find((section) => {
     if (section.anchor == activeSection) {
       return section;
@@ -60,7 +67,7 @@ const ReportHero2022 = (
         activeSection
           ? currentSection.colorTheme == "gold"
             ? `bg-gold-pbrcustomdark text-white`
-            : `bg-${currentSection.colorTheme}-900 text-white`
+            : `transition-colors delay-1000 duration-1000 bg-${currentSection.colorTheme}-900 text-white`
           : ``
       }`}
       id="reportHeader"
