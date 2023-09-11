@@ -54,7 +54,7 @@ const SectionIntro = ({
     let el = document.getElementById(elementId);
     let an = el.animate(
       [
-        { transform: `translateY(${el.offsetTop}px)`, marginBottom: "100vh" },
+        { transform: `translateY(calc(${el.offsetTop}px - 170px))`, marginBottom: "100vh" },
         { transform: `translateY(0px)`, marginBottom: "0vh" },
       ],
       {
