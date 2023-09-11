@@ -31,23 +31,22 @@ const SectionIntro = ({
 
   useEffect(() => {
     const onScroll = () => {
-      let sectionEl = document
+      const sectionEl = document
         .getElementById(section.anchor)
-        .querySelector("ul");
+      if (!sectionEl) return;
 
-      let sectionBot = Math.max(
-        Math.round(sectionEl?.getBoundingClientRect().bottom),
-        0
-      );
-      let sectionH = sectionEl?.offsetHeight;
+      const offset = window.scrollY
 
-      setSectionPct(100 - (sectionBot / sectionH) * 100);
+      const sectionTop = sectionEl.offsetTop - (window.innerHeight / 2)
+      const sectionBot2 = sectionTop + sectionEl.offsetHeight
+      const sectionBotEnd = sectionBot2 - window.innerHeight
+      setSectionPct((offset - sectionTop) / (sectionBotEnd + 120) * 100);
     };
 
     if (activeStory) {
       window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
     }
+    return () => window.removeEventListener("scroll", onScroll);
   }, [activeStory, sectionPct]);
 
   const makeSlideUpAnimation = (elementId, delay) => {
@@ -187,7 +186,7 @@ const SectionIntro = ({
                 <div className={`sticky top-[100px] z-10`}>
                   {activeStory && (
                     <div
-                      className={`w-full h-2 ${
+                      className={`w-full h-2 overflow-hidden ${
                         currentSection ? `bg-${section.colorTheme}-50` : `bg-white`
                       }`}
                     >
