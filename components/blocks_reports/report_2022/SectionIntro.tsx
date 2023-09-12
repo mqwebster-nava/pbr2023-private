@@ -37,10 +37,10 @@ const SectionIntro = ({
 
       const offset = window.scrollY
 
-      const sectionTop = sectionEl.offsetTop - (window.innerHeight / 2)
+      const sectionTop = sectionEl.offsetTop
       const sectionBot2 = sectionTop + sectionEl.offsetHeight
       const sectionBotEnd = sectionBot2 - window.innerHeight
-      setSectionPct((offset - sectionTop) / (sectionBotEnd + 120) * 100);
+      setSectionPct((offset - sectionTop) / (sectionBotEnd - sectionTop) * 100);
     };
 
     if (activeStory) {
