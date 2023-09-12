@@ -171,18 +171,28 @@ const SectionIntro = ({
 
         <div className={`${!isSectionOpen ? `hidden` : ``}`}>
           <div className={`flex flex-col gap-8`}>
-            <SlideDown className={`delay-[800ms]`}>
+            {section.themeNum == 1 ? (
+              <SlideDown>
+                <div
+                  className={`responsive-container animate-fadeIn2 w-full flex justify-end font-serif mt-8 text-3xl font-light`}
+                >
+                  <div className={"w-2/3"}>
+                    <MarkdownComponent content={section.body} />
+                  </div>
+                </div>
+              </SlideDown>
+            ) : (
               <div
-                className={`responsive-container w-full flex justify-end font-serif mt-8 text-3xl font-light`}
+                className={`responsive-container animate-fadeIn2 w-full flex justify-end font-serif mt-8 text-3xl font-light`}
               >
                 <div className={"w-2/3"}>
                   <MarkdownComponent content={section.body} />
                 </div>
               </div>
-            </SlideDown>
+            )}
 
             <div className="bg-white">
-              <div className={`relative animate-fadeIn3 opacity-0 bg-${section.colorTheme}-50`}>
+              <div className={`relative animate-fadeIn2 bg-${section.colorTheme}-50`}>
                 <div className={`sticky top-[100px] z-10`}>
                   {activeStory && (
                     <div
