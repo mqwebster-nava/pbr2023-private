@@ -101,7 +101,7 @@ const StorySection = ({
 
         <div className={`responsive-container flex flex-row gap-4`}>
           <div className="flex flex-col w-[46%] gap-0 pt-4">
-            <div className={`font-serif font-semibold`}>
+            <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
                 docLinks={story.intro?.links}
@@ -126,7 +126,7 @@ const StorySection = ({
           </div>
 
           <div
-            className={`flex flex-col grow gap-12 w-7/12 h-full sticky top-[180px]`}
+            className={`flex flex-col py-8 grow gap-12 w-7/12 h-full sticky top-[180px]`}
           >
             <div className={`w-full min-h-full aspect-video`}>
               {/* TODO: convert into scroll animation component */}
