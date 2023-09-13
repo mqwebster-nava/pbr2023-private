@@ -16,10 +16,29 @@ const StorySection = ({
   activeStory,
   setActiveStory,
 }) => {
-  const storyId = `${sectionAnchor}--${story.anchor}`;
-
+  const [storyPct, setStoryPct] = useState(0);
   const storyRef = useRef(null);
   const isOnScreen = useOnScreen(storyRef);
+
+  const storyId = `${sectionAnchor}--${story.anchor}`;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const storyEl = document
+        .getElementById(storyId)
+      if (!storyEl) return;
+
+      const storyH = storyEl.offsetHeight
+      const storyTop = Math.max(Math.round(storyEl.getBoundingClientRect().top - 180) * -1, 0)
+      setStoryPct(Math.min(Math.round((storyTop / storyH) * 100), 100));
+    };
+
+    if (isOnScreen && activeStory !== null) {
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+  }, [isOnScreen, storyPct])
+
   useEffect(() => {
     if (isOnScreen && activeStory !== null) {
       setActiveStory(storyId);
@@ -31,7 +50,7 @@ const StorySection = ({
   const statList = calloutText.split("\n\n---\n\n");
   const color = colorTheme;
 
-  let statEl = () => (
+  const StatEl = () => (
     <div className={`flex flex-col gap-8 divide-y-[1px] divide-${color}-900`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
@@ -76,10 +95,12 @@ const StorySection = ({
         : [story.illustration, story.contextIllustration]
       : [];
 
+  if (activeStory == storyId) console.log(storyPct / (100 / images.length))
+
   return (
-    <div id={storyId} className={`scroll-mt-[180px]`}>
-      <div className={`relative`}>
-        <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div>
+    <div ref={storyRef} id={storyId} className={`scroll-mt-[180px]`}>
+      <div className={``}>
+        {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
         <div className={`responsive-container flex flex-row gap-4`}>
           <div className="flex flex-col w-[46%] gap-0 pt-4">
@@ -103,20 +124,33 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`w-44 h-full sticky top-[180px]`}>{statEl()}</div>
+          <div className={`w-44 h-full sticky top-[180px]`}>
+            <StatEl />
+          </div>
 
           <div
             className={`flex flex-col grow gap-12 w-7/12 h-full sticky top-[180px]`}
           >
             <div className={`w-full min-h-full aspect-video`}>
-              <CrossfadeCarousel
+              {/* <CrossfadeCarousel
                 interval={1500}
                 transition={1000}
                 groupAltText={``}
                 images={images.map((im) => {
                   return { src: im.url, ...im };
                 })}
-              />
+              /> */}
+              {images.map((image, i) => (
+                <div className={`absolute object-cover transition-opacity duration-500 ease-linear ${(storyPct / (100 / images.length)) > i - 1 ? `opacity-100` : `opacity-0`}`}>
+                  <Image
+                    src={image.url}
+                    width={image.width}
+                    height={image.height}
+                    alt=""
+                    className={``}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

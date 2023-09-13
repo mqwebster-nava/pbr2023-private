@@ -38,8 +38,8 @@ const SectionIntro = ({
       const offset = window.scrollY
 
       const sectionTop = sectionEl.offsetTop
-      const sectionBot2 = sectionTop + sectionEl.offsetHeight
-      const sectionBotEnd = sectionBot2 - window.innerHeight
+      const sectionBot = sectionTop + sectionEl.offsetHeight
+      const sectionBotEnd = sectionBot - window.innerHeight
       setSectionPct((offset - sectionTop) / (sectionBotEnd - sectionTop) * 100);
     };
 
@@ -224,7 +224,7 @@ const SectionIntro = ({
                 {isSectionOpen && activeStory && (
                   <div className={`pb-28`}>
                     <div className={`relative responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
-                      <ul className={`relative w-full flex flex-col gap-40`}>
+                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-40`}>
                         {section.items
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
