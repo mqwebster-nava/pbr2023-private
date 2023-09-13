@@ -4,10 +4,6 @@ import Image from "next/image";
 
 import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
-import classNames from "classnames";
-import { LinkText } from "components/atom/LinkText/LinkText";
-import ArrowDown from "../Atoms/Arrow";
-import CrossfadeCarousel from "components/atom/CrossfadeCarousel/CrossfadeCarousel";
 
 const StorySection = ({
   story,
@@ -24,12 +20,14 @@ const StorySection = ({
 
   useEffect(() => {
     const onScroll = () => {
-      const storyEl = document
-        .getElementById(storyId)
+      const storyEl = document.getElementById(storyId);
       if (!storyEl) return;
 
-      const storyH = storyEl.offsetHeight
-      const storyTop = Math.max(Math.round(storyEl.getBoundingClientRect().top - 180) * -1, 0)
+      const storyH = storyEl.offsetHeight;
+      const storyTop = Math.max(
+        Math.round(storyEl.getBoundingClientRect().top - 180) * -1,
+        0
+      );
       setStoryPct(Math.min(Math.round((storyTop / storyH) * 100), 100));
     };
 
@@ -37,7 +35,7 @@ const StorySection = ({
       window.addEventListener("scroll", onScroll);
       return () => window.removeEventListener("scroll", onScroll);
     }
-  }, [isOnScreen, storyPct])
+  }, [isOnScreen, storyPct]);
 
   useEffect(() => {
     if (isOnScreen && activeStory !== null) {
@@ -84,6 +82,7 @@ const StorySection = ({
     </div>
   );
 
+  // TODO: convert into scroll animation component
   const images =
     story.illustration && story.contextIllustration
       ? story.storyImageStepsCollection
@@ -94,8 +93,6 @@ const StorySection = ({
           ]
         : [story.illustration, story.contextIllustration]
       : [];
-
-  if (activeStory == storyId) console.log(storyPct / (100 / images.length))
 
   return (
     <div ref={storyRef} id={storyId} className={`scroll-mt-[180px]`}>
@@ -132,16 +129,15 @@ const StorySection = ({
             className={`flex flex-col grow gap-12 w-7/12 h-full sticky top-[180px]`}
           >
             <div className={`w-full min-h-full aspect-video`}>
-              {/* <CrossfadeCarousel
-                interval={1500}
-                transition={1000}
-                groupAltText={``}
-                images={images.map((im) => {
-                  return { src: im.url, ...im };
-                })}
-              /> */}
+              {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
-                <div className={`absolute object-cover transition-opacity duration-500 ease-linear ${(storyPct / (100 / images.length)) > i - 1 ? `opacity-100` : `opacity-0`}`}>
+                <div
+                  className={`absolute object-cover transition-opacity duration-500 ease-linear ${
+                    storyPct / (100 / images.length) > i - 1
+                      ? `opacity-100`
+                      : `opacity-0`
+                  }`}
+                >
                   <Image
                     src={image.url}
                     width={image.width}
