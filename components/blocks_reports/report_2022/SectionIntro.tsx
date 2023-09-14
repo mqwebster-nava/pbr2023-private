@@ -129,7 +129,7 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-500`}`}
+      className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
       tabIndex={0}
     >
       <div
@@ -196,7 +196,7 @@ const SectionIntro = ({
                 <div className={`sticky top-[100px] z-10`}>
                   {activeStory && (
                     <div
-                      className={`w-full h-2 overflow-hidden ${
+                      className={`w-full h-1 overflow-hidden ${
                         currentSection ? `bg-${section.colorTheme}-50` : `bg-white`
                       }`}
                     >
@@ -224,7 +224,7 @@ const SectionIntro = ({
                 {isSectionOpen && activeStory && (
                   <div className={`pb-28`}>
                     <div className={`relative responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
-                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-40`}>
+                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-20`}>
                         {section.items
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {

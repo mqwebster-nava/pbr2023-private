@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useOnScreen } from "utils/useOnScreen";
 import Image from "next/image";
+import classNames from "classnames";
 
 import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
@@ -46,16 +47,23 @@ const StorySection = ({
   const calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
   const statList = calloutText.split("\n\n---\n\n");
-  const color = colorTheme;
+
+  const dividerStyles = classNames({
+      "divide-gold-pbrcustomdark": colorTheme == "gold",
+      "divide-plum-900": colorTheme == "plum",
+      "divide-sage-900": colorTheme == "sage",
+      "divide-purple-900": colorTheme == "purple",
+      "divide-navy-900": colorTheme == "navy",
+    });
 
   const StatEl = () => (
-    <div className={`flex flex-col gap-8 divide-y-[1px] divide-${color}-900`}>
+    <div className={`flex flex-col gap-8 divide-y-2 ${dividerStyles}`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
         return (
           <div
             key={`${story.anchor}-statGroup-${i}`}
-            className={`flex flex-col gap-0 py-8`}
+            className={`flex flex-col gap-0 last:pt-8`}
           >
             {stats.map((statItem, j) => {
               const statistic = statItem.split("__")[1];
@@ -99,8 +107,8 @@ const StorySection = ({
       <div className={``}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
-        <div className={`responsive-container flex flex-row gap-4`}>
-          <div className="flex flex-col w-[46%] gap-0 pt-4">
+        <div className={`responsive-container pt-8 grid grid-cols-12 gap-8`}>
+          <div className="col-span-5">
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -121,27 +129,27 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`w-44 h-full sticky top-[180px]`}>
+          <div className={`col-span-2 h-max sticky top-[212px]`}>
             <StatEl />
           </div>
 
           <div
-            className={`flex flex-col py-8 grow gap-12 w-7/12 h-full sticky top-[180px]`}
+            className={`col-span-5 h-max sticky top-[212px]`}
           >
-            <div className={`w-full min-h-full aspect-video`}>
+            <div className={`relative min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
-                  className={`absolute object-cover transition-opacity duration-500 ease-linear ${
-                    storyPct / (100 / images.length) > i - 1
+                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear ${
+                    (storyPct / 100) + (1 / images.length) > i / images.length
                       ? `opacity-100`
                       : `opacity-0`
                   }`}
                 >
                   <Image
                     src={image.url}
-                    width={image.width}
-                    height={image.height}
+                    width={616}
+                    height={435}
                     alt=""
                     className={``}
                   />
