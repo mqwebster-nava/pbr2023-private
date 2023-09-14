@@ -140,6 +140,7 @@ const StorySection = ({
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
+                  key={`${storyId}-image-${i}`}
                   className={`w-full absolute object-cover transition-opacity duration-500 ease-linear ${
                     (storyPct / 100) + (1 / images.length) > i / images.length
                       ? `opacity-100`
