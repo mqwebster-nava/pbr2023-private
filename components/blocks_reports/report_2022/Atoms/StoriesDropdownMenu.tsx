@@ -19,7 +19,7 @@ const StoriesDropdownMenu = ({
   const selectOption = (option) => {
     setSelectedOption(option.title);
     setIsOpen(false);
-    setActiveStory(option.anchor);
+    setActiveStory(`${sectionAnchor}--${option.anchor}`);
   };
 
   const availableOptions = items.filter(
