@@ -152,28 +152,29 @@ const SectionIntro = ({
               {section.title}
             </span>
 
-          {isSectionOpen ? (
-            <div className="absolute top-4 right-0 responsive-container">
-              <NavigationArrows
-                handleNextSection={handleNextSection}
-                handlePrevSection={handlePrevSection}
-              />
-            </div>
-          ) : (
-            <span
-            className={
-              isSectionOpen
-                ? `opacity-0`
-                : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`
-            }
-          >
-            <div className="flex flex-row items-center gap-1">
-              {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-              <ArrowDown color={"white"} size="default" />
-            </div>
-          </span>
-          )}
-        </div>
+            {isSectionOpen ? (
+              <div className="absolute top-4 right-0 responsive-container">
+                <NavigationArrows
+                  handleNextSection={handleNextSection}
+                  handlePrevSection={handlePrevSection}
+                />
+              </div>
+            ) : (
+              <span
+              className={
+                isSectionOpen
+                  ? `opacity-0`
+                  : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`
+              }
+            >
+              <div className="flex flex-row items-center gap-1">
+                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+                <ArrowDown color={"white"} size="default" />
+              </div>
+            </span>
+            )}
+          </div>
+        </a>
       </div>
 
         <div className={`${!isSectionOpen ? `hidden` : ``}`}>
