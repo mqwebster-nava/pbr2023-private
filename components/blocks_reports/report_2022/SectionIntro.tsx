@@ -70,12 +70,13 @@ const SectionIntro = ({
   const toggleSection = () => {
     if (section.themeNum == 1) {
       setActiveSection(section.anchor);
-      setActiveStory(section.storiesCollection.items[0].anchor);
+      setActiveStory(`${section.anchor}--${section.storiesCollection.items[0].anchor}`);
     } else {
       makeSlideUpAnimation(section.anchor, 0);
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
+    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   let handleNextSection = () => {
@@ -84,7 +85,13 @@ const SectionIntro = ({
       index < sectionList.length - 1 ? sectionList[index + 1] : "Conclusion";
 
     setActiveSection(nextSection);
-    window.scrollTo(0, 0);
+    setActiveStory((prevStory) => {
+      if (prevStory) {
+        let sectionIndex = reportSections.findIndex((section) => section.anchor == nextSection);
+        return reportSections[sectionIndex + 1].anchor;
+      }
+    });
+    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   let handlePrevSection = () => {
@@ -98,7 +105,7 @@ const SectionIntro = ({
     }
 
     setActiveSection(prevSection);
-    window.scrollTo(0, 0);
+    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   const openStyles = isSectionOpen
