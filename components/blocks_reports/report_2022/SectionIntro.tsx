@@ -139,18 +139,18 @@ const SectionIntro = ({
       className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
       tabIndex={0}
     >
-      <div
-        className={`responsive-container w-full ${
-          !activeSection && `group-hover:cursor-pointer`
-        }`}
-        onClick={(e) => (activeSection ? e.preventDefault() : toggleSection())}
-      >
-        <div
-          className={`relative min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+      <div className={`responsive-container w-full`}>
+        <a
+          href={`2022#${section.anchor}`}
+          className={`${activeSection ? `cursor-default` : `cursor-pointer`}`}
+          onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >
-          <span className="max-w-[1096px] text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
-            {section.title}
-          </span>
+          <div
+            className={`relative min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+          >
+            <span className="max-w-[1096px] text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+              {section.title}
+            </span>
 
           {isSectionOpen ? (
             <div className="absolute top-4 right-0 responsive-container">
