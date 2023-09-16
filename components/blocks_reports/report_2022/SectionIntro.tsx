@@ -113,7 +113,7 @@ const SectionIntro = ({
 
   const bgStyles = !isSectionOpen
     ? classNames({
-        "hover:bg-gold-900": section.colorTheme == "gold",
+        "hover:bg-gold-pbrcustomdark": section.colorTheme == "gold",
         "hover:bg-plum-500": section.colorTheme == "plum",
         "hover:bg-sage-500": section.colorTheme == "sage",
         "hover:bg-purple-500": section.colorTheme == "purple",
