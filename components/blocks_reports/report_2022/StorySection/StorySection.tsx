@@ -5,44 +5,32 @@ import classNames from "classnames";
 
 import Callout from "components/blocks_reports/ReportContent/Callout";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
+import { getOffsetPct } from "../_utils";
 
 const StorySection = ({
   story,
   colorTheme,
   sectionAnchor,
-  activeStory,
-  setActiveStory,
 }) => {
   const [storyPct, setStoryPct] = useState(0);
   const storyRef = useRef(null);
-  const isOnScreen = useOnScreen(storyRef);
 
   const storyId = `${sectionAnchor}--${story.anchor}`;
 
-  useEffect(() => {
-    const onScroll = () => {
-      const storyEl = document.getElementById(storyId);
-      if (!storyEl) return;
-
-      const storyH = storyEl.offsetHeight;
-      const storyTop = Math.max(
-        Math.round(storyEl.getBoundingClientRect().top - 180) * -1,
-        0
-      );
-      setStoryPct(Math.min(Math.round((storyTop / storyH) * 100), 100));
-    };
-
-    if (isOnScreen && activeStory !== null) {
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
-    }
-  }, [isOnScreen, storyPct]);
+  const onScroll = () => {
+    const offsetPct = getOffsetPct(storyId)
+    if (offsetPct < -10 || offsetPct >= 100) return;
+    setStoryPct(offsetPct);
+  };
 
   useEffect(() => {
-    if (isOnScreen && activeStory !== null) {
-      setActiveStory(storyId);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
     }
-  }, [isOnScreen]);
+  }, [storyPct]);
 
   const calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
@@ -142,7 +130,7 @@ const StorySection = ({
                 <div
                   key={`${storyId}-image-${i}`}
                   className={`w-full absolute object-cover transition-opacity duration-500 ease-linear ${
-                    (storyPct / 100) + (1 / images.length) > i / images.length
+                    (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
                       ? `opacity-100`
                       : `opacity-0`
                   }`}
