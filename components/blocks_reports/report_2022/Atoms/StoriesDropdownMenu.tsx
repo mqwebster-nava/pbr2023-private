@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Arrow from "./Arrow";
+import { getOffsetPct } from "../_utils";
 
 const StoriesDropdownMenu = ({
   items,
@@ -11,6 +12,7 @@ const StoriesDropdownMenu = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState(items[0].title);
   const [isOpen, setIsOpen] = useState(false);
+  const [storyPct, setStoryPct] = useState(0);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -33,6 +35,29 @@ const StoriesDropdownMenu = ({
       }
     });
   }, [activeStory]);
+
+  const onScroll = () => {
+    items.forEach((item) => {
+      const id = `${sectionAnchor}--${item.anchor}`;
+      const offsetPct = getOffsetPct(id)
+      if (offsetPct < 5 || offsetPct >= 200) return;
+      if (offsetPct >= 5 && offsetPct < 200) {
+        setSelectedOption(item.title);
+      }
+      setStoryPct(offsetPct);
+    })
+  };
+
+  useEffect(() => {
+    if (activeStory !== null) {
+      window.removeEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    }
+  }, [storyPct, activeStory]);
 
   const StoriesMenu = () => {
     return (
