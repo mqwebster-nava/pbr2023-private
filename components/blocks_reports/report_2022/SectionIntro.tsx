@@ -51,14 +51,6 @@ const SectionIntro = ({
   useEffect(() => {
     const url = router.asPath.split('#')[1];
     window.addEventListener('load', () => {updateActive(url)})
-    // window.addEventListener('hashchange', () => {updateActive(url)})
-
-    // if (url !== undefined) {
-    //   window.addEventListener('hashchange', () => {updateActive(url)})
-    // }
-    // if (url == '') {
-    //   window.addEventListener('load', () => {updateActive(url)})
-    // }
   }, [router.asPath])
 
   const [sectionList, setSectionList] = useState([]);
@@ -139,18 +131,22 @@ const SectionIntro = ({
     setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
-  let handleNextSection = () => {
+  let handleNextSection = (position) => {
     let index = sectionList.indexOf(activeSection);
     let nextSection =
       index < sectionList.length - 1 ? sectionList[index + 1] : "Conclusion";
 
     setActiveSection(nextSection);
-    setActiveStory((prevStory) => {
-      if (prevStory) {
-        let sectionIndex = reportSections.findIndex((section) => section.anchor == nextSection);
-        return reportSections[sectionIndex + 1].anchor;
-      } else return null
-    });
+    if (index == 0 && position == "top") {
+      setActiveStory(null);
+    } else {
+      setActiveStory((prevStory) => {
+        if (prevStory) {
+          let sectionIndex = reportSections.findIndex((section) => section.anchor == nextSection);
+          return reportSections[sectionIndex + 1].anchor;
+        } else return null
+      });
+    }
     setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
@@ -160,6 +156,7 @@ const SectionIntro = ({
 
     if (index == 0) {
       setActiveStory(null);
+      router.push({hash: ''})
     } else if (index == 1) {
       setActiveStory("gov-services--pbr-2022-intro");
     }
@@ -215,7 +212,7 @@ const SectionIntro = ({
             {isSectionOpen ? (
               <div className="absolute top-4 right-0 responsive-container">
                 <NavigationArrows
-                  handleNextSection={handleNextSection}
+                  handleNextSection={() => handleNextSection("top")}
                   handlePrevSection={handlePrevSection}
                 />
               </div>
@@ -303,8 +300,6 @@ const SectionIntro = ({
                                   story={story}
                                   colorTheme={section.colorTheme}
                                   sectionAnchor={section.anchor}
-                                  activeStory={activeStory}
-                                  setActiveStory={setActiveStory}
                                 />
                               </li>
                             );
@@ -315,7 +310,7 @@ const SectionIntro = ({
                         <div className="">
                           <NavigationArrows
                             color={section.colorTheme}
-                            handleNextSection={handleNextSection}
+                            handleNextSection={() => handleNextSection("bottom")}
                             handlePrevSection={handlePrevSection}
                           />
                         </div>
