@@ -194,7 +194,6 @@ const SectionIntro = ({
     <section
       id={`${section.anchor}`}
       className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
-      tabIndex={0}
     >
       <div className={`responsive-container w-full`}>
         <a
