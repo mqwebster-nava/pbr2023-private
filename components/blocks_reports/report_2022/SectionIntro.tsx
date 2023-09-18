@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import MarkdownComponent from "utils/MarkdownComponent";
 import SlideDown from "react-slidedown";
@@ -15,13 +16,72 @@ const SectionIntro = ({
   setActiveSection,
   activeStory,
   setActiveStory,
-  sectionList,
+  reportSections,
 }) => {
+  const router = useRouter();
+
+  const updateActive = (url) => {
+    if (url == undefined) return;
+
+    let section
+    let story
+    const isStory = url.includes("--");
+
+    if (isStory) {
+      section = url.split("--")[0];
+      story = url;
+    } else {
+      section = url;
+      story = null;
+    }
+
+    setActiveSection(section);
+    setActiveStory(story);
+
+    setTimeout(() => {
+      if (isStory) {
+        const storyEl = document.getElementById(story);
+        if (storyEl) {
+          storyEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else window.scrollTo(0, 0);
+    }, isStory ? 50 : 0)
+  }
+
+  useEffect(() => {
+    const url = router.asPath.split('#')[1];
+    window.addEventListener('load', () => {updateActive(url)})
+    // window.addEventListener('hashchange', () => {updateActive(url)})
+
+    // if (url !== undefined) {
+    //   window.addEventListener('hashchange', () => {updateActive(url)})
+    // }
+    // if (url == '') {
+    //   window.addEventListener('load', () => {updateActive(url)})
+    // }
+  }, [router.asPath])
+
+  const [sectionList, setSectionList] = useState([]);
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
 
   let currentSection = section.anchor == activeSection;
+
+  useEffect(() => {
+    reportSections.forEach((block) => {
+      if (block.type == 'ReportIllustrationOverlaySubsection') {
+        setSectionList((prevState) => {
+          return [...prevState, block.anchor]
+        })
+      }
+    })
+  }, [reportSections])
+
+  useEffect(() => {
+    if (currentSection) {
+      router.push({hash: activeStory ? activeStory : activeSection})
+  }}, [activeSection, activeStory])
 
   useEffect(() => {
     setSectionPct(0);
@@ -89,7 +149,7 @@ const SectionIntro = ({
       if (prevStory) {
         let sectionIndex = reportSections.findIndex((section) => section.anchor == nextSection);
         return reportSections[sectionIndex + 1].anchor;
-      }
+      } else return null
     });
     setTimeout(() => window.scrollTo(0, 0), 50)
   };
@@ -232,12 +292,12 @@ const SectionIntro = ({
                 {isSectionOpen && activeStory && (
                   <div className={`pb-28`}>
                     <div className={`relative responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
-                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-20`}>
+                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-96`}>
                         {section.items
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
                             return (
-                              <li key={story.anchor}>
+                              <li key={story.anchor} className={`border-t-2 border-${section.colorTheme}-200 first:border-none`}>
                                 <StorySection
                                   key={story.anchor}
                                   story={story}
