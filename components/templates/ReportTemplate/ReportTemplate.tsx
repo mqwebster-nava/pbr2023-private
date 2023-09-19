@@ -24,6 +24,9 @@ const ReportHero2022 = dynamic(
 const SectionIntro2022 = dynamic(
   () => import("components/blocks_reports/report_2022/SectionIntro")
 );
+const ReportConclusion2022 = dynamic(
+  () => import("components/blocks_reports/report_2022/ReportConclusion2022")
+)
 
 // 2021
 const ReportNavbar2021 = dynamic(
@@ -138,6 +141,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
               />
             </div>
           ),
+          ReportSectionCustom: (entry) =>
+          entry.type == "Conclusion 2021" ? (
+            <ReportConclusion2022 key={index} activeSection={activeSection} setActiveSection={setActiveSection} activeStory={activeStory} setActiveStory={setActiveStory} {...entry} />
+          ) : null,
       },
       "2021": {
         ReportIllustrationOverlaySubsection: (entry) => (
