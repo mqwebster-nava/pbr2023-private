@@ -129,7 +129,7 @@ const SectionIntro = ({
       index < sectionList.length - 1 ? sectionList[index + 1] : "conclusion";
 
     setActiveSection(nextSection);
-    if (index == 0 && position == "top") {
+    if ((index == 0 && position == "top") || nextSection == "conclusion") {
       setActiveStory(null);
     } else {
       setActiveStory((prevStory) => {
