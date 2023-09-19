@@ -39,7 +39,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandsca
   
    const headerStyle = classNames({
     "font-bold pt-xl pb-md tracking-normal": true,
-    "font-serif":reportYear == "2021",
+    "font-serif":reportYear == "2021" || reportYear == "2022",
     "font-sans":reportYear != "2021",
    });
 
