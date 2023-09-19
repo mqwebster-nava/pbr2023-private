@@ -26,15 +26,15 @@ const ReportNavbar = ({
       (section) => section.anchor === e.target.dataset.refid
     );
 
-    if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
-      setActiveStory(null);
-
+    if (clickedItem?.type === "ReportIllustrationOverlaySubsection") {
       setActiveSection(clickedItem.anchor);
+
+      setActiveStory(null);
 
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 50)
-    } else if (clickedItem.type === "story") {
+    } else if (clickedItem?.type === "story") {
       setActiveSection(clickedItem.parentAnchor);
 
       setActiveStory(clickedItem.anchor);
@@ -45,6 +45,14 @@ const ReportNavbar = ({
           behavior: "smooth",
         });
       }, 50);
+    } else {
+      setActiveSection('conclusion');
+
+      setActiveStory(null);
+
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 50)
     }
     setIsShowingMenu(false);
   };
