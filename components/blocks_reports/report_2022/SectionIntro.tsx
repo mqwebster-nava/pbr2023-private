@@ -53,22 +53,14 @@ const SectionIntro = ({
     window.addEventListener('load', () => {updateActive(url)})
   }, [router.asPath])
 
-  const [sectionList, setSectionList] = useState([]);
   const [isSectionOpen, setIsSectionOpen] = useState(false);
   const [isSectionHidden, setIsSectionHidden] = useState(false);
   const [sectionPct, setSectionPct] = useState(0);
 
   let currentSection = section.anchor == activeSection;
-
-  useEffect(() => {
-    reportSections.forEach((block) => {
-      if (block.type == 'ReportIllustrationOverlaySubsection') {
-        setSectionList((prevState) => {
-          return [...prevState, block.anchor]
-        })
-      }
-    })
-  }, [reportSections])
+  let sectionList = reportSections.filter((block) => {
+    if (block.type == 'ReportIllustrationOverlaySubsection') return block
+  }).map((block) => block.anchor)
 
   useEffect(() => {
     if (currentSection) {
@@ -134,7 +126,7 @@ const SectionIntro = ({
   let handleNextSection = (position) => {
     let index = sectionList.indexOf(activeSection);
     let nextSection =
-      index < sectionList.length - 1 ? sectionList[index + 1] : "Conclusion";
+      index < sectionList.length - 1 ? sectionList[index + 1] : "conclusion";
 
     setActiveSection(nextSection);
     if (index == 0 && position == "top") {
