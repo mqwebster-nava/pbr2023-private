@@ -24,9 +24,6 @@ const ReportHero2022 = dynamic(
 const SectionIntro2022 = dynamic(
   () => import("components/blocks_reports/report_2022/SectionIntro")
 );
-const StorySection2022 = dynamic(
-  () => import("components/blocks_reports/report_2022/StorySection/StorySection")
-)
 
 // 2021
 const ReportNavbar2021 = dynamic(
