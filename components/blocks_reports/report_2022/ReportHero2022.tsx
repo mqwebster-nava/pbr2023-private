@@ -7,7 +7,7 @@ const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: P
 
   return (
     <header
-      className={`w-full bg-white text-black`}
+      className={`${activeSection == 'conclusion' ? `opacity-0 h-0` : `opacity-100 h-[136px]`} w-full bg-white text-black transition-all origin-top-left duration-[800ms] relative`}
       id="reportHeader"
     >
       <div
