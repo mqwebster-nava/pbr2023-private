@@ -15,8 +15,7 @@ const ReportNavbar2022 = dynamic(
     import("components/blocks_reports/report_2022/ReportNavbar/ReportNavbar")
 );
 const ReportFooter2022 = dynamic(
-  () =>
-    import("components/blocks_reports/report_2022/ReportFooter2022")
+  () => import("components/blocks_reports/report_2022/ReportFooter2022")
 );
 const ReportHero2022 = dynamic(
   () => import("components/blocks_reports/report_2022/ReportHero2022")
@@ -26,7 +25,7 @@ const SectionIntro2022 = dynamic(
 );
 const ReportConclusion2022 = dynamic(
   () => import("components/blocks_reports/report_2022/ReportConclusion2022")
-)
+);
 
 // 2021
 const ReportNavbar2021 = dynamic(
@@ -128,22 +127,29 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const componentMap = {
       "2022": {
         ReportIllustrationOverlaySubsection: (entry) => (
-            <div key={`${entry.anchor}-${index}`}>
-              <SectionIntro2022
-                key={entry.anchor}
-                section={entry}
-                i={entry.themeNum}
-                activeSection={activeSection}
-                setActiveSection={setActiveSection}
-                activeStory={activeStory}
-                setActiveStory={setActiveStory}
-                reportSections={reportSections}
-              />
-            </div>
-          ),
-          ReportSectionCustom: (entry) =>
+          <div key={`${entry.anchor}-${index}`}>
+            <SectionIntro2022
+              key={entry.anchor}
+              section={entry}
+              i={entry.themeNum}
+              activeSection={activeSection}
+              setActiveSection={setActiveSection}
+              activeStory={activeStory}
+              setActiveStory={setActiveStory}
+              reportSections={reportSections}
+            />
+          </div>
+        ),
+        ReportSectionCustom: (entry) =>
           entry.type == "Conclusion 2021" ? (
-            <ReportConclusion2022 key={index} activeSection={activeSection} setActiveSection={setActiveSection} activeStory={activeStory} setActiveStory={setActiveStory} {...entry} />
+            <ReportConclusion2022
+              key={index}
+              activeSection={activeSection}
+              setActiveSection={setActiveSection}
+              activeStory={activeStory}
+              setActiveStory={setActiveStory}
+              {...entry}
+            />
           ) : null,
       },
       "2021": {
@@ -288,7 +294,12 @@ const ReportTemplate: React.FC<PageInterface> = ({
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
       ) : reportYear === "2022" ? (
-        <ReportHero2022 {...pageHeader} activeSection={activeSection} setActiveSection={setActiveSection} setActiveStory={setActiveStory} />
+        <ReportHero2022
+          {...pageHeader}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          setActiveStory={setActiveStory}
+        />
       ) : null}
       <div className="animate-fadeIn2">
         {contentBlocks.map((block, i) => getComponent(block, i))}
