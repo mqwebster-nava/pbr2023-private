@@ -106,7 +106,7 @@ const StorySection = ({
                 isMobileLandscape={false}
               />
             </div>
-            <div className={`font-serif font-normal`}>
+            <div className={`font-serif font-light`}>
               <ReportContent
                 docData={story.body.json}
                 docLinks={story.body.links}
