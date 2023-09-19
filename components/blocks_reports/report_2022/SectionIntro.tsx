@@ -159,6 +159,13 @@ const SectionIntro = ({
       router.push({hash: ''})
     } else if (index == 1) {
       setActiveStory("gov-services--pbr-2022-intro");
+    } else {
+      setActiveStory((prevStory) => {
+        if (prevStory) {
+          let sectionIndex = reportSections.findIndex((section) => section.anchor == prevSection);
+          return reportSections[sectionIndex + 1].anchor;
+        } else return null
+      });
     }
 
     setActiveSection(prevSection);
