@@ -55,13 +55,15 @@ const ReportFooter2022 = ({
         activeStory && `hidden`
       }`}
     >
-      <div className="py-4xl">
-        <ReportMenu
-          activeSection={reportSections}
-          contentBlocks={contentBlocks}
-          onClick={(e) => menuItemClick(e)}
-        />
-      </div>
+      {activeSection !== "conclusion" && (
+        <div className="py-4xl">
+            <ReportMenu
+              activeSection={reportSections}
+              contentBlocks={contentBlocks}
+              onClick={(e) => menuItemClick(e)}
+            />
+        </div>
+      )}
 
       <div className="py-2xl bg-gray-200">
         <div className="font-sans text-black">
