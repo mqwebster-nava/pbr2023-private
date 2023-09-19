@@ -19,11 +19,15 @@ const ReportFooter2022 = ({
       (section) => section.anchor === e.target.dataset.refid
     );
 
-    if (clickedItem.type === "ReportIllustrationOverlaySubsection") {
+    if (clickedItem?.type === "ReportIllustrationOverlaySubsection") {
+      setActiveSection(clickedItem.anchor);
+
       setActiveStory(null);
 
-      setActiveSection(clickedItem.anchor);
-    } else if (clickedItem.type === "story") {
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 50)
+    } else if (clickedItem?.type === "story") {
       setActiveSection(clickedItem.parentAnchor);
 
       setActiveStory(clickedItem.anchor);
@@ -34,6 +38,14 @@ const ReportFooter2022 = ({
           behavior: "smooth",
         });
       }, 50);
+    } else {
+      setActiveSection('conclusion');
+
+      setActiveStory(null);
+
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 50)
     }
   };
 
