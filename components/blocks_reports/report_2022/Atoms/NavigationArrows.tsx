@@ -17,14 +17,36 @@ const NavigationArrows = ({
 
   return (
     <div className={`flex flex-col gap-8`}>
-      <button onMouseOver={() => prevArrowRef.current.style.opacity = "0.25"} onMouseLeave={() => prevArrowRef.current.style.opacity = "1"} ref={nextArrowRef} className={`group/nextArrow flex flex-col w-5`} onClick={handleNextSection}>
+      <button
+        disabled={handleNextSection ? false : true}
+        onMouseOver={() => {
+          if (handleNextSection && handlePrevSection) return prevArrowRef.current.style.opacity = "0.25"
+        }}
+        onMouseLeave={() => {
+          if (handleNextSection && handlePrevSection) return prevArrowRef.current.style.opacity = "1"
+        }}
+        ref={nextArrowRef}
+        className={`group/nextArrow flex flex-col w-5 disabled:opacity-25`}
+        onClick={handleNextSection}
+      >
         <div className={`-rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/nextArrow:underline`}>Next</div>
+        <div className={`group-hover/nextArrow:underline group-disabled/nextArrow:no-underline`}>Next</div>
       </button>
 
-      <button onMouseOver={() => nextArrowRef.current.style.opacity = "0.25"} onMouseLeave={() => nextArrowRef.current.style.opacity = "1"} ref={prevArrowRef} className={`group/prevArrow flex flex-col w-5`} onClick={handlePrevSection}>
+      <button
+        disabled={handlePrevSection ? false : true}
+        onMouseOver={() => {
+          if (handleNextSection && handlePrevSection) return nextArrowRef.current.style.opacity = "0.25"
+        }}
+        onMouseLeave={() => {
+          if (handleNextSection && handlePrevSection) return nextArrowRef.current.style.opacity = "1"
+        }}
+        ref={prevArrowRef}
+        className={`group/prevArrow flex flex-col w-5`}
+        onClick={handlePrevSection}
+      >
         <div className={`rotate-90`}>
           <Arrow color={color} />
         </div>
