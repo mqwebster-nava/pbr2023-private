@@ -92,7 +92,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
         <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
           <div className={`flex items-center justify-between`}>
             <p
-              className={`font-serif ${
+              className={`font-sans ${
                 isBolded ? "font-bold" : "font-light"
               } ${analyticsLabel}`}
               data-refid={`${href.replace("#", "")}`}
