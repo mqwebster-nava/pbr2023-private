@@ -207,6 +207,7 @@ const SectionIntro = ({
               {section.title}
             </span>
 
+            {/* TODO: Look into "Read Stories" arrow rotating 90deg into "Next" nav arrow */}
             {isSectionOpen ? (
               <div className="absolute top-4 right-0 responsive-container">
                 <NavigationArrows
