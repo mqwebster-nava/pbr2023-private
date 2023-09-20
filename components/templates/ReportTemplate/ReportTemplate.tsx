@@ -146,8 +146,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
               key={index}
               activeSection={activeSection}
               setActiveSection={setActiveSection}
-              activeStory={activeStory}
               setActiveStory={setActiveStory}
+              reportSections={reportSections}
               {...entry}
             />
           ) : null,
