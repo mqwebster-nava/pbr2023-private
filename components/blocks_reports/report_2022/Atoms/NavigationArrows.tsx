@@ -26,7 +26,7 @@ const NavigationArrows = ({
           if (handleNextSection && handlePrevSection) return prevArrowRef.current.style.opacity = "1"
         }}
         ref={nextArrowRef}
-        className={`group/nextArrow flex flex-col w-5 disabled:opacity-25`}
+        className={`group/nextArrow flex flex-col items-end disabled:opacity-25`}
         onClick={handleNextSection}
       >
         <div className={`-rotate-90`}>
@@ -44,13 +44,13 @@ const NavigationArrows = ({
           if (handleNextSection && handlePrevSection) return nextArrowRef.current.style.opacity = "1"
         }}
         ref={prevArrowRef}
-        className={`group/prevArrow flex flex-col w-5`}
+        className={`group/prevArrow flex flex-col items-end disabled:opacity-25`}
         onClick={handlePrevSection}
       >
         <div className={`rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/prevArrow:underline`}>Previous</div>
+        <div className={`group-hover/prevArrow:underline group-disabled/prevArrow:no-underline`}>Previous</div>
       </button>
     </div>
   );
