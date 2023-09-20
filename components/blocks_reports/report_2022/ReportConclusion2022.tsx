@@ -1,101 +1,141 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import ReportContent from "../ReportContent/ReportContent";
 import { LinkListItem } from "./Atoms/LinkListItem";
 import NavigationArrows from "./Atoms/NavigationArrows";
 
-const ReportConclusion2022 = ({ title, richBody, anchor, activeSection, setActiveSection, activeStory, setActiveStory }) => {
-  let currentYear = new Date().getFullYear();
+const ReportConclusion2022 = ({
+  title,
+  richBody,
+  anchor,
+  activeSection,
+  setActiveSection,
+  setActiveStory,
+  reportSections,
+}) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (activeSection == 'conclusion') {
-      router.push({hash: anchor});
+    if (activeSection == "conclusion") {
+      router.push({ hash: anchor });
     }
-  }, [activeSection])
+  }, [activeSection]);
+
+  // Find first story of last section in reportSections list
+  const sections = reportSections.filter((section) => {if (section.type == "ReportIllustrationOverlaySubsection") return section}).map((section) => section.anchor);
+  const lastSection = sections[sections.length - 1];
+  const reportSectionsLastSectionIndex = reportSections.findIndex((section) => section.anchor == lastSection);
+  const lastSectionFirstStory = reportSections[reportSectionsLastSectionIndex + 1].anchor
+
+  let handlePrevSection = () => {
+    setActiveStory(lastSectionFirstStory)
+    setActiveSection(lastSection);
+    setTimeout(() => window.scrollTo(0, 0), 50)
+  };
 
   return (
     <>
-      {activeSection == 'conclusion' ?
-        (
-          <section
-              id={anchor}
-              className={`w-full min-h-[125vh] bg-gold-700 relative scroll-mt-[70px]`}
-          >
-              <div className="responsive-container pt-2xl pb-4xl md:min-h-[calc(100vh_-_70px)] sticky top-[70px] overflow-hidden">
-              <div className="relative h-full">
-                  <div
-                  id="conclusion-box"
-                  className="absolute top-0 left-0 -z-10 h-full w-full "
-                  ></div>
-                  <h2 className="font-serif font-light md:text-7xl type-preset-1 pt-3xl">
+      {activeSection == "conclusion" ? (
+        <section
+          id={anchor}
+          className={`w-full text-white relative scroll-mt-[70px]`}
+        >
+          <div className="w-full bg-purple-900">
+            <div className="responsive-container pt-8 pb-16 grid grid-cols-12 gap-8">
+              <div className="relative col-span-11 h-full">
+                <h2 className="text-7xl tracking-[0.015em] font-sans font-black">
                   {title}
-                  </h2>
-                  <div
-                  id={"conclusion-text"}
-                  className="type-preset-6 font-serif font-light text-black pt-[70px] max-w-screen-md motion-reduce:opacity-100"
-                  >
-                  <ReportContent
-                      docData={richBody.json}
-                      docLinks={richBody.links}
-                      variant={"report"}
-                      reportYear={"2021"}
-                  />
-                  </div>
-                  <p
-                  id={"conclusion-next"}
-                  className="type-preset-5 font-bold pt-[70px] pb-md motion-reduce:opacity-100"
-                  >
-                  Where next?
-                  </p>
-                  <div className="flex gap-xl flex-col md:flex-row pb-2xl">
-                  {[
+                </h2>
+              </div>
+
+              <div className={`col-span-1 col-end-13`}>
+                <NavigationArrows color="" handleNextSection={undefined} handlePrevSection={handlePrevSection} />
+              </div>
+
+              <div
+                id={"conclusion-text"}
+                className="col-span-6 col-start-7 pt-8 font-serif text-3xl font-light"
+              >
+                {richBody.json.content[0].content[0].value}
+              </div>
+            </div>
+          </div>
+
+          <div className={`w-full min-h-[60vh] bg-purple-800`}>
+            <div className={`responsive-container pt-8 pb-16 grid grid-cols-12 gap-8`}>
+              <p
+                id={"conclusion-next"}
+                className="col-span-2 row-span-full type-preset-6 font-bold pt-2"
+              >
+                Where next
+              </p>
+
+              {[
+                [
+                  ["/public-benefit-reports/2022", "Back to top"],
+                  ["/careers", " Careers"],
+                  ["/case-studies", "Case Studies"],
                   [
-                      ["/files/2021NavaPublicBenefitReport.pdf", "Download PDF"],
-                      ["#reportHeader", "Back to top"],
+                    "/public-benefit-reports/2020",
+                    "2020 Public Benefit Report",
                   ],
+                ],
+                [
+                  ["/contact", "Get in touch"],
                   [
-                      ["/careers", " Careers"],
-                      ["/case-studies", "Case Studies"],
-                      ["/public-benefit-reports/2020", "2020 Public Benefit Report"],
+                    "https://navapbc.us10.list-manage.com/subscribe?u=c69eb1fd5475fa5122ef55965&id=a994830182",
+                    "Sign up for our newsletter",
                   ],
-                  [["/contact", "Get in touch"], ["https://navapbc.us10.list-manage.com/subscribe?u=c69eb1fd5475fa5122ef55965&id=a994830182","Sign up for our newsletter", ]],
-                  ].map((row, i) => (
-                  <ul
-                      id={`conclusion-footer${i + 1}`}
-                      key={`conclusion-footer${i + 1}`}
-                      className="w-full md:w-1/3 flex flex-col gap-md pt-xs font-serif font-light divide-y-[1px] divide-black border-t-[1px] border-black motion-reduce:opacity-100"
-                  >
-                      {row.map((link) => (
-                          <LinkListItem
-                          key={`${link[0]}-intro`}
-                          href={link[0]}
-                          variant={"default"}
-                          hoverStyle={"underlined"}
-                          color={"black"}
-                      >
-                          {link[1]}
-                      </LinkListItem>
-                      ))}
-                  </ul>
+                ],
+              ].map((row, i) => (
+                <ul
+                  id={`conclusion-footer${i + 1}`}
+                  key={`conclusion-footer${i + 1}`}
+                  className="col-span-2"
+                >
+                  {row.map((link) => (
+                    <LinkListItem
+                      key={`${link[0]}-intro`}
+                      href={link[0]}
+                      variant={"default"}
+                      hoverStyle={"underlined"}
+                      color={"black"}
+                    >
+                      {link[1]}
+                    </LinkListItem>
                   ))}
-              </div>
-              </div>
-              </div>
-              <div className=" py-xl absolute bottom-0 left-0 right-0  width-full">
-                  <div
-                  className={
-                      "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
-                  }
+                </ul>
+              ))}
+
+              <div className="col-span-2 col-end-13">
+                {[
+                  [
+                    ["/files/2021NavaPublicBenefitReport.pdf", "Download PDF"],
+                  ],
+                ].map((row, i) => (
+                  <ul
+                    id={`conclusion-footer${i + 1}`}
+                    key={`conclusion-footer${i + 1}`}
+                    className=""
                   >
-                  <p className="text-black font-sans type-preset-8 pt-md sm:pt-0">
-                      {`© ${currentYear} Nava PBC. All rights reserved.`}
-                  </p>
-                  </div>
+                    {row.map((link) => (
+                      <LinkListItem
+                        key={`${link[0]}-intro`}
+                        href={link[0]}
+                        variant={"default"}
+                        hoverStyle={"underlined"}
+                        color={"black"}
+                        isBolded={true}
+                      >
+                        {link[1]}
+                      </LinkListItem>
+                    ))}
+                  </ul>
+                ))}
               </div>
-          </section>
-        )
-      : null}
+            </div>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 };
