@@ -106,8 +106,8 @@ const StorySection = ({
       <div className={``}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
-        <div className={`pt-8 grid grid-cols-6 gap-[10px] md:grid-cols-12 md:gap-8`}>
-          <div className={`col-span-5 relative z-10 ${bgStyles}`}>
+        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`}>
+          <div className={`col-span-5 relative z-20 ${bgStyles}`}>
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -128,8 +128,10 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-2 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-0`}>
-            <StatEl />
+          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-10 ${bgStyles}`}>
+            <div className={`w-3/5 md:w-full`}>
+              <StatEl />
+            </div>
           </div>
 
           <div
@@ -140,7 +142,7 @@ const StorySection = ({
               {images.map((image, i) => (
                 <div
                   key={`${storyId}-image-${i}`}
-                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear ${
+                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear md:${
                     (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
                       ? `opacity-100`
                       : `opacity-0`
