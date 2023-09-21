@@ -16,7 +16,7 @@ const NavigationArrows = ({
   const prevArrowRef = useRef(null);
 
   return (
-    <div className={`flex flex-col gap-8`}>
+    <div className={`flex flex-col gap-4 md:gap-8`}>
       <button
         disabled={handleNextSection ? false : true}
         onMouseOver={() => {
@@ -32,7 +32,7 @@ const NavigationArrows = ({
         <div className={`-rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/nextArrow:underline group-disabled/nextArrow:no-underline font-serif`}>Next</div>
+        <div className={`hidden md:block group-hover/nextArrow:underline group-disabled/nextArrow:no-underline font-serif`}>Next</div>
       </button>
 
       <button
@@ -50,7 +50,7 @@ const NavigationArrows = ({
         <div className={`rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/prevArrow:underline group-disabled/prevArrow:no-underline font-serif`}>Previous</div>
+        <div className={`hidden md:block group-hover/prevArrow:underline group-disabled/prevArrow:no-underline font-serif`}>Previous</div>
       </button>
     </div>
   );
