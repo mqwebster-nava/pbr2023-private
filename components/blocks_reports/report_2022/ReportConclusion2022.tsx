@@ -39,15 +39,15 @@ const ReportConclusion2022 = ({
           id={anchor}
           className={`w-full text-white relative scroll-mt-[70px]`}
         >
-          <div className="w-full bg-purple-900">
-            <div className="responsive-container pt-8 pb-16 grid grid-cols-12 gap-8">
+          <div className={`w-full bg-purple-900`}>
+            <div className="responsive-container pt-4 pb-16 grid grid-cols-12 gap-8">
               <div className="relative col-span-11 h-full hidden">
                 <h2 className="text-7xl tracking-[0.015em] font-sans font-black">
                   {title}
                 </h2>
               </div>
 
-              <div className={`col-span-1 col-end-13 -mt-5xl mb-5xl`}>
+              <div className={`col-span-1 col-end-13`}>
                 <NavigationArrows color="" handleNextSection={undefined} handlePrevSection={handlePrevSection} />
               </div>
 
