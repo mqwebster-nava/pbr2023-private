@@ -38,14 +38,14 @@ const StorySection = ({
 
   const dividerStyles = classNames({
       "divide-gold-pbrcustomdark": colorTheme == "gold",
-      "divide-plum-900": colorTheme == "plum",
-      "divide-sage-900": colorTheme == "sage",
-      "divide-purple-900": colorTheme == "purple",
-      "divide-navy-900": colorTheme == "navy",
+      "divide-plum-200": colorTheme == "plum",
+      "divide-sage-200": colorTheme == "sage",
+      "divide-purple-200": colorTheme == "purple",
+      "divide-navy-200": colorTheme == "navy",
     });
 
   const StatEl = () => (
-    <div className={`flex flex-col gap-8 divide-y-2 ${dividerStyles}`}>
+    <div className={`flex flex-col gap-8 divide-y-2 ${dividerStyles} px-4`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
         return (
@@ -64,7 +64,7 @@ const StorySection = ({
                 >
                   <span>{statisticBefore}</span>
                   <span
-                    className={`w-20 text-5xl leading-tight font-serif font-light pb-2`}
+                    className={`text-3xl font-serif font-light`}
                   >
                     {statistic}
                   </span>
@@ -122,7 +122,7 @@ const StorySection = ({
           </div>
 
           <div
-            className={`col-span-5 h-max sticky top-[212px]`}
+            className={`col-span-5 flex flex-col gap-5 h-max sticky top-[212px]`}
           >
             <div className={`relative min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
@@ -145,6 +145,12 @@ const StorySection = ({
                 </div>
               ))}
             </div>
+
+            {story.imageCaption &&
+              <div className={`w-2/5 type-preset-8 font-serif`}>
+                {story.imageCaption}
+              </div>
+            }
           </div>
         </div>
       </div>
