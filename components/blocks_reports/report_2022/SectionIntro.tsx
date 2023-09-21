@@ -308,7 +308,7 @@ const SectionIntro = ({
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
                             return (
-                              <li key={story.anchor} className={`border-t-2 ${storyBorderStyles} first:border-none`}>
+                              <li key={story.anchor} className={`border-t-2 ${storyBorderStyles} first:border-transparent`}>
                                 <StorySection
                                   key={story.anchor}
                                   story={story}
