@@ -26,6 +26,7 @@ const Arrow = ({
     "stroke-sage-900": color == "sage",
     "stroke-purple-900": color == "purple",
     "stroke-navy-900": color == "navy",
+    "stroke-gray-300": color == "gray",
     "stroke-white": color == undefined || color == "" || color == "white",
   });
 

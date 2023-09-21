@@ -202,7 +202,7 @@ const SectionIntro = ({
       id={`${section.anchor}`}
       className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
     >
-      <div className={`responsive-container w-full`}>
+      <div className={`responsive-container w-full relative`}>
         <a
           href={`2022#${section.anchor}`}
           className={`${activeSection ? `cursor-default` : `cursor-pointer`}`}
@@ -211,31 +211,39 @@ const SectionIntro = ({
           <div
             className={`relative sm:min-h-full md:min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] sm:text-2xl md:text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+            <span className="max-w-[1096px] text-2xl md:text-7xl tracking-[0.015em] font-sans font-black relative top-[-0.64rem] md:top-[-0.89rem]">
               {section.title}
             </span>
 
             {/* TODO: Look into "Read Stories" arrow rotating 90deg into "Next" nav arrow */}
             {isSectionOpen ? (
-              <div className="absolute top-4 right-0 responsive-container">
+              <div className="">
                 <NavigationArrows
                   handleNextSection={() => handleNextSection("top")}
                   handlePrevSection={handlePrevSection}
                 />
               </div>
             ) : (
-              <span
-              className={
-                isSectionOpen
-                  ? `opacity-0`
-                  : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-semibold type-preset-6`
-              }
-            >
-              <div className="flex flex-row items-center gap-1">
-                {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                <ArrowDown color={"white"} size="default" />
-              </div>
-            </span>
+              <>
+                <span
+                  className={`block md:hidden ${isSectionOpen ? `opacity-0` : `opacity-100`}`}
+                >
+                  <ArrowDown color={"gray"} size="default" />
+                </span>
+                <span
+                className={`
+                  hidden md:block
+                  ${isSectionOpen
+                    ? `opacity-0`
+                    : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-semibold type-preset-6`}`
+                }
+                >
+                  <div className="flex flex-row items-center gap-1">
+                    {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
+                    <ArrowDown color={"white"} size="default" />
+                  </div>
+                </span>
+              </>
             )}
           </div>
         </a>

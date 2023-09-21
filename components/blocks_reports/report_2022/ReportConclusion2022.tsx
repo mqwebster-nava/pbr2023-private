@@ -40,7 +40,7 @@ const ReportConclusion2022 = ({
           className={`w-full text-white relative scroll-mt-[70px]`}
         >
           <div className={`w-full bg-purple-900`}>
-            <div className="responsive-container pt-4 pb-16 grid grid-cols-12 gap-8">
+            <div className="responsive-container pt-8 pb-16 grid grid-cols-12 gap-8">
               <div className="relative col-span-11 h-full hidden">
                 <h2 className="text-7xl tracking-[0.015em] font-sans font-black">
                   {title}
