@@ -103,7 +103,7 @@ const StorySection = ({
 
   return (
     <div ref={storyRef} id={storyId} className={`scroll-mt-[148px]`}>
-      <div className={`relative z-0`}>
+      <div className={`relative z-10`}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
         <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`}>

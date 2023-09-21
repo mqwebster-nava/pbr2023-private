@@ -271,7 +271,7 @@ const SectionIntro = ({
             </div>
 
             <div className="bg-white">
-              <div className={`relative animate-fadeIn2 bg-${section.colorTheme}-50`}>
+              <div className={`relative z-0 animate-fadeIn2 bg-${section.colorTheme}-50`}>
                 <div className={`sticky top-[100px] z-10`}>
                   {activeStory && (
                     <div
