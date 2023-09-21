@@ -120,7 +120,6 @@ const SectionIntro = ({
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
-    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   let handleNextSection = (position) => {
@@ -139,7 +138,6 @@ const SectionIntro = ({
         } else return null
       });
     }
-    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   let handlePrevSection = () => {
@@ -161,7 +159,6 @@ const SectionIntro = ({
     }
 
     setActiveSection(prevSection);
-    setTimeout(() => window.scrollTo(0, 0), 50)
   };
 
   const openStyles = isSectionOpen
@@ -200,7 +197,7 @@ const SectionIntro = ({
   return (
     <section
       id={`${section.anchor}`}
-      className={`w-full transition-colors group ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
+      className={`w-full transition-colors group scroll-mt-[100vh] ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
     >
       <div className={`responsive-container w-full relative`}>
         <a
@@ -211,7 +208,7 @@ const SectionIntro = ({
           <div
             className={`relative sm:min-h-full md:min-h-[170px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] text-2xl md:text-7xl tracking-[0.015em] font-sans font-black relative top-[-0.64rem] md:top-[-0.89rem]">
+            <span className="max-w-[1096px] text-2xl md:text-7xl tracking-[0.015em] font-sans font-black relative top-[-0.64rem] md:top-[-0.84rem]">
               {section.title}
             </span>
 
