@@ -107,7 +107,7 @@ const StorySection = ({
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
         <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`}>
-          <div className={`col-span-5 relative z-30 ${bgStyles}`}>
+          <div className={`col-span-5 row-start-3 md:row-start-auto relative z-30 ${bgStyles}`}>
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -137,7 +137,7 @@ const StorySection = ({
           <div
             className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px] z-10`}
           >
-            <div className={`relative min-h-[208px] md:min-h-[360px]`}>
+            <div className={`relative min-h-[320px] md:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
