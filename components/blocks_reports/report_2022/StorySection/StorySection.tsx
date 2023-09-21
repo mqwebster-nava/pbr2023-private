@@ -36,42 +36,45 @@ const StorySection = ({
 
   const statList = calloutText.split("\n\n---\n\n");
 
-  const dividerStyles = classNames({
-      "divide-gold-pbrcustomdark": colorTheme == "gold",
-      "divide-plum-200": colorTheme == "plum",
-      "divide-sage-200": colorTheme == "sage",
-      "divide-purple-200": colorTheme == "purple",
-      "divide-navy-200": colorTheme == "navy",
+  const borderStyles = classNames({
+      "border-gold-pbrcustomdark": colorTheme == "gold",
+      "border-plum-200": colorTheme == "plum",
+      "border-sage-200": colorTheme == "sage",
+      "border-purple-200": colorTheme == "purple",
+      "border-navy-200": colorTheme == "navy",
     });
 
   const StatEl = () => (
-    <div className={`flex flex-col gap-8 divide-y-2 ${dividerStyles} px-4`}>
+    <div className={`flex flex-col px-4`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
         return (
           <div
             key={`${story.anchor}-statGroup-${i}`}
-            className={`flex flex-col gap-0 last:pt-8`}
+            className={`flex flex-col`}
           >
-            {stats.map((statItem, j) => {
-              const statistic = statItem.split("__")[1];
-              const statisticBefore = statItem.split("__")[0];
-              const statisticAfter = statItem.split("__")[2];
-              return (
-                <div
-                  key={`${story.anchor}-statGroupItem-${j}`}
-                  className={`inline-flex flex-col gap-0 text-xs`}
-                >
-                  <span>{statisticBefore}</span>
-                  <span
-                    className={`text-3xl font-serif font-light`}
+            {i > 0 && <hr className={`my-8 w-3/5 border-b-2 ${borderStyles}`} />}
+            <div className={`flex flex-col gap-2`}>
+              {stats.map((statItem, j) => {
+                const statistic = statItem.split("__")[1];
+                const statisticBefore = statItem.split("__")[0];
+                const statisticAfter = statItem.split("__")[2];
+                return (
+                  <div
+                    key={`${story.anchor}-statGroupItem-${j}`}
+                    className={`inline-flex flex-col gap-0 text-xs`}
                   >
-                    {statistic}
-                  </span>
-                  <span>{statisticAfter}</span>
-                </div>
-              );
-            })}
+                    <span>{statisticBefore}</span>
+                    <span
+                      className={`text-3xl font-serif font-light`}
+                    >
+                      {statistic}
+                    </span>
+                    <span>{statisticAfter}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         );
       })}
