@@ -228,7 +228,7 @@ const SectionIntro = ({
               className={
                 isSectionOpen
                   ? `opacity-0`
-                  : `opacity-0 group-hover:opacity-100 min-w-max font-sans font-semibold type-preset-6`
+                  : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-semibold type-preset-6`
               }
             >
               <div className="flex flex-row items-center gap-1">

@@ -32,7 +32,7 @@ const NavigationArrows = ({
         <div className={`-rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/nextArrow:underline group-disabled/nextArrow:no-underline`}>Next</div>
+        <div className={`group-hover/nextArrow:underline group-disabled/nextArrow:no-underline font-serif`}>Next</div>
       </button>
 
       <button
@@ -50,7 +50,7 @@ const NavigationArrows = ({
         <div className={`rotate-90`}>
           <Arrow color={color} />
         </div>
-        <div className={`group-hover/prevArrow:underline group-disabled/prevArrow:no-underline`}>Previous</div>
+        <div className={`group-hover/prevArrow:underline group-disabled/prevArrow:no-underline font-serif`}>Previous</div>
       </button>
     </div>
   );
