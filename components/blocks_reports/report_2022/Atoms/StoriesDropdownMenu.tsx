@@ -75,7 +75,7 @@ const StoriesDropdownMenu = ({
             >
               <a
                 href={`2022#${sectionAnchor}--${option.anchor}`}
-                className="flex justify-between items-center w-full py-md responsive-container"
+                className="flex justify-between items-center w-full py-md responsive-container text-left"
                 role="menuitem"
                 onClick={() => selectOption(option)}
               >
@@ -113,7 +113,7 @@ const StoriesDropdownMenu = ({
               id="dropdown-menu-button"
               onClick={toggleDropdown}
             >
-              <div className={``}>{selectedOption}</div>
+              <div className={` text-left`}>{selectedOption}</div>
 
               <div
                 className={
@@ -145,7 +145,7 @@ const StoriesDropdownMenu = ({
                 >
                   <a
                     href={`2022#${sectionAnchor}--${option.anchor}`}
-                    className="flex justify-between items-center w-full py-md responsive-container"
+                    className="flex justify-between items-center w-full py-md responsive-container text-left"
                     role="menuitem"
                     onClick={() => selectOption(option)}
                   >
@@ -168,7 +168,7 @@ const StoriesDropdownMenu = ({
 
   return (
     <div
-      className={`font-serif font-semibold type-preset-3 text-${colorTheme}-900`}
+      className={`font-serif font-semibold text-base leading-5 md:text-3xl md:leading-tight text-${colorTheme}-900`}
     >
       {parentSectionOpen && activeStory == null ? (
         <StoriesMenu />

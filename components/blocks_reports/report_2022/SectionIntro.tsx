@@ -209,7 +209,7 @@ const SectionIntro = ({
           onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >
           <div
-            className={`relative sm:min-h-full md:min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+            className={`relative sm:min-h-full md:min-h-[170px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
             <span className="max-w-[1096px] text-2xl md:text-7xl tracking-[0.015em] font-sans font-black relative top-[-0.64rem] md:top-[-0.89rem]">
               {section.title}
@@ -250,26 +250,28 @@ const SectionIntro = ({
       </div>
 
         <div className={`${!isSectionOpen ? `hidden` : ``}`}>
-          <div className={`flex flex-col gap-8`}>
-            {section.themeNum == 1 ? (
-              <SlideDown>
+          <div className={`flex flex-col gap-4 md:gap-8`}>
+            <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-normal font-light pr-12 md:pr-0`}>
+              {section.themeNum == 1 ? (
+                <SlideDown>
+                  <div
+                    className={`responsive-container animate-fadeIn2 w-full flex justify-end`}
+                  >
+                    <div className={"w-full md:w-2/3"}>
+                      <MarkdownComponent content={section.body} />
+                    </div>
+                  </div>
+                </SlideDown>
+              ) : (
                 <div
-                  className={`responsive-container animate-fadeIn2 w-full flex justify-end font-serif mt-8 text-3xl font-light`}
+                  className={`responsive-container animate-fadeIn2 w-full flex justify-end`}
                 >
-                  <div className={"w-2/3"}>
+                  <div className={"w-full md:w-2/3"}>
                     <MarkdownComponent content={section.body} />
                   </div>
                 </div>
-              </SlideDown>
-            ) : (
-              <div
-                className={`responsive-container animate-fadeIn2 w-full flex justify-end font-serif mt-8 text-3xl font-light`}
-              >
-                <div className={"w-2/3"}>
-                  <MarkdownComponent content={section.body} />
-                </div>
-              </div>
-            )}
+              )}
+            </div>
 
             <div className="bg-white">
               <div className={`relative animate-fadeIn2 bg-${section.colorTheme}-50`}>
@@ -321,7 +323,7 @@ const SectionIntro = ({
                           })}
                       </ul>
 
-                      <div className={`absolute bottom-0 right-0`}>
+                      <div className={`relative ml-auto w-fit`}>
                         <div className="">
                           <NavigationArrows
                             color={section.colorTheme}

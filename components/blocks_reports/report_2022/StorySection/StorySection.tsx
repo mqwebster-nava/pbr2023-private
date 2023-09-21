@@ -44,8 +44,16 @@ const StorySection = ({
       "border-navy-200": colorTheme == "navy",
     });
 
+  const bgStyles = classNames({
+    "bg-gold-50": colorTheme == "gold",
+    "bg-plum-50": colorTheme == "plum",
+    "bg-sage-50": colorTheme == "sage",
+    "bg-purple-50": colorTheme == "purple",
+    "bg-navy-50": colorTheme == "navy",
+  })
+
   const StatEl = () => (
-    <div className={`flex flex-col px-4`}>
+    <div className={`flex flex-col md:px-4`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
         return (
@@ -94,12 +102,12 @@ const StorySection = ({
       : [];
 
   return (
-    <div ref={storyRef} id={storyId} className={`scroll-mt-[180px]`}>
+    <div ref={storyRef} id={storyId} className={`scroll-mt-[180px] relative z-0`}>
       <div className={``}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
-        <div className={`responsive-container pt-8 grid grid-cols-12 gap-8`}>
-          <div className="col-span-5">
+        <div className={`pt-8 grid grid-cols-6 gap-[10px] md:grid-cols-12 md:gap-8`}>
+          <div className={`col-span-5 relative z-10 ${bgStyles}`}>
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -120,14 +128,14 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-2 h-max sticky top-[212px]`}>
+          <div className={`col-span-2 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-0`}>
             <StatEl />
           </div>
 
           <div
-            className={`col-span-5 flex flex-col gap-5 h-max sticky top-[212px]`}
+            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px] z-0`}
           >
-            <div className={`relative min-h-[360px]`}>
+            <div className={`relative min-h-[208px] md:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
@@ -150,7 +158,7 @@ const StorySection = ({
             </div>
 
             {story.imageCaption &&
-              <div className={`w-2/5 type-preset-8 font-serif`}>
+              <div className={`w-3/5 md:w-2/5 type-preset-8 font-serif`}>
                 {story.imageCaption}
               </div>
             }
