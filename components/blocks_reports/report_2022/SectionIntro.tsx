@@ -209,9 +209,9 @@ const SectionIntro = ({
           onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >
           <div
-            className={`relative min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+            className={`relative sm:min-h-full md:min-h-[170px] pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
+            <span className="max-w-[1096px] sm:text-2xl md:text-7xl tracking-[0.015em] font-sans font-black mt-[-15px]">
               {section.title}
             </span>
 

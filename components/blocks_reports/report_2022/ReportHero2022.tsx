@@ -15,7 +15,7 @@ const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: P
       id="reportHeader"
     >
       <div
-        className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-4 relative`}
+        className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-4 relative sm:text-2xl md:text-7xl font-sans font-black spacing-y-sm`}
       >
         <a href={`/public-benefit-reports/2022`} className={``} onClick={(e) => {
           if (activeSection !== 'conclusion') {
@@ -36,10 +36,10 @@ const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: P
           </span> */}
   
           {activeSection == 'conclusion' ?
-            <span className={`text-7xl font-sans font-black spacing-y-sm`}>
+            <span className={``}>
               Conclusion
             </span> :
-            (<span className=" transition-all duration-500 text-7xl font-sans font-black spacing-y-sm">
+            (<span className=" transition-all duration-500">
               Envisioning<span className={`transition-all duration-1000 ${activeSection ? `opacity-0` : `opacity-100`}`}>...</span>
             </span>)
           }
