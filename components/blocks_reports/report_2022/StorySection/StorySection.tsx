@@ -107,7 +107,7 @@ const StorySection = ({
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
         <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`}>
-          <div className={`col-span-5 relative z-20 ${bgStyles}`}>
+          <div className={`col-span-5 relative z-30 ${bgStyles}`}>
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
                 docData={story.intro?.json}
@@ -128,14 +128,14 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-10 ${bgStyles}`}>
+          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-20 ${bgStyles}`}>
             <div className={`w-3/5 md:w-full`}>
               <StatEl />
             </div>
           </div>
 
           <div
-            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px] z-0`}
+            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px] z-10`}
           >
             <div className={`relative min-h-[208px] md:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
