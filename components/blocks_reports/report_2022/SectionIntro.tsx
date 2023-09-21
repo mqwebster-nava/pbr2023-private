@@ -189,6 +189,14 @@ const SectionIntro = ({
     "border-t-2 border-gray-300 hover:border-transparent": section.themeNum != 1,
   })
 
+  const storyBorderStyles = classNames({
+    "border-gold-pbrcustomdark": section.colorTheme == "gold",
+    "border-plum-200": section.colorTheme == "plum",
+    "border-sage-200": section.colorTheme == "sage",
+    "border-purple-200": section.colorTheme == "purple",
+    "border-navy-200": section.colorTheme == "navy",
+  });
+
   return (
     <section
       id={`${section.anchor}`}
@@ -293,7 +301,7 @@ const SectionIntro = ({
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
                             return (
-                              <li key={story.anchor} className={`border-t-2 border-${section.colorTheme}-200 first:border-none`}>
+                              <li key={story.anchor} className={`border-t-2 ${storyBorderStyles} first:border-none`}>
                                 <StorySection
                                   key={story.anchor}
                                   story={story}
