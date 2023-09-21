@@ -32,6 +32,7 @@ featuredCallOut {
     ${CALLOUT}
 }
 linkedPostUrl
+imageCaption
 `;
 
 export default REPORT_ILLUSTRATION_OVERLAY_STORY;
