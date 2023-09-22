@@ -56,7 +56,7 @@ const ReportFooter2022 = ({
       }`}
     >
       {activeSection !== "conclusion" && (
-        <div className="py-4xl">
+        <div className="hidden md:block py-4xl">
             <ReportMenu
               activeSection={reportSections}
               contentBlocks={contentBlocks}
@@ -125,13 +125,13 @@ const ReportFooter2022 = ({
           <div className="w-full border-t-[1px] border-gray-400 pt-2xl">
             <div
               className={
-                "responsive-container flex items-center justify-between flex-col-reverse sm:flex-row"
+                "responsive-container flex md:items-center md:justify-between flex-col-reverse sm:flex-row gap-2xl md:gap-0"
               }
             >
               <p className="type-preset-8">
                 {`© ${currentYear} Nava PBC. All rights reserved.`}
               </p>
-              <div className="flex gap-2xl type-preset-7">
+              <div className="flex flex-col sm:flex-row gap-2xl type-preset-7">
                 <LinkText
                   href={"https://twitter.com/NavaPBC"}
                   variant={"default"}
