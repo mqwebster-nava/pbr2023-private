@@ -82,7 +82,7 @@ const StoriesDropdownMenu = ({
                 {option.title}
 
                 <div
-                  className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}
+                  className={`pl-6 transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}
                 >
                   <Arrow color={colorTheme} />
                 </div>
@@ -116,10 +116,10 @@ const StoriesDropdownMenu = ({
               <div className={` text-left`}>{selectedOption}</div>
 
               <div
-                className={
-                  isOpen
-                    ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100`
-                    : ``
+                className={`pl-6
+                  ${isOpen
+                  ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100`
+                  : ``}`
                 }
               >
                 <Arrow color={colorTheme} />
@@ -152,7 +152,7 @@ const StoriesDropdownMenu = ({
                     {option.title}
 
                     <div
-                      className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}
+                      className={`pl-6 transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}
                     >
                       <Arrow color={colorTheme} />
                     </div>

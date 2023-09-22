@@ -206,7 +206,7 @@ const SectionIntro = ({
           onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >
           <div
-            className={`relative sm:min-h-full md:min-h-[170px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+            className={`relative min-h-[72px] md:min-h-[200px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
             <span className="max-w-[1096px] text-2xl md:text-7xl tracking-[0.015em] font-sans font-black relative top-[-0.64rem] md:top-[-0.84rem]">
               {section.title}
@@ -223,7 +223,7 @@ const SectionIntro = ({
             ) : (
               <>
                 <span
-                  className={`block md:hidden ${isSectionOpen ? `opacity-0` : `opacity-100`}`}
+                  className={`pl-6 block md:hidden ${isSectionOpen ? `opacity-0` : `opacity-100`}`}
                 >
                   <ArrowDown color={"gray"} size="default" />
                 </span>
