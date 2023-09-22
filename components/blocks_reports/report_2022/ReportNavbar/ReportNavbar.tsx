@@ -1,9 +1,3 @@
-/*
-TODO 
-- test out the sections being clickable
-- having the progress bar start a little after 0% so doesn't look like a glitch
-*/
-
 import Logo from "components/wrapper/Navbar/Logo";
 import { useEffect, useRef, useState } from "react";
 
@@ -38,13 +32,6 @@ const ReportNavbar = ({
       setActiveSection(clickedItem.parentAnchor);
 
       setActiveStory(clickedItem.anchor);
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: document.getElementById(clickedItem.anchor)?.offsetTop,
-          behavior: "smooth",
-        });
-      }, 50);
     } else {
       setActiveSection('conclusion');
 
@@ -59,11 +46,9 @@ const ReportNavbar = ({
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full h-full bg-white ${
-        !activeStory && `border-b-[1px] border-black`
-      } ${!isShowingMenu && "overflow-clip"}`}
+      className={`block sticky top-0 z-50 w-full h-full bg-white ${!isShowingMenu && "overflow-clip"}`}
     >
-      <div className="responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
+      <div className="min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
         <div className="col-span-2">
           <Logo isMobile={true} />
         </div>
@@ -92,11 +77,9 @@ const ReportNavbar = ({
       </div>
 
       <div
-        className={`absolute w-full border-black border-t-[1px] ${
-          isShowingMenu ? `top-[100px]` : ``
-        }`}
+        className={`absolute w-full h-[100vh] transition-all duration-100 ${isShowingMenu ? `border-t-[1px] border-black overflow-scroll` : `border-none`}`}
       >
-        <div className="h-[100vh] bg-white">
+        <div className="h-full bg-white py-4xl">
           <SlideDown>
             {isShowingMenu ? (
               <ReportMenu
