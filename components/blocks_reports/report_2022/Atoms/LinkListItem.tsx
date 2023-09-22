@@ -99,10 +99,6 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
             >
               {children}
             </p>
-
-            <div className={``}>
-              <ArrowDown color={color} />
-            </div>
           </div>
         </a>
       </div>
