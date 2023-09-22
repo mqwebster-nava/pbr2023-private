@@ -303,7 +303,7 @@ const SectionIntro = ({
                 {isSectionOpen && activeStory && (
                   <div className={`pb-28`}>
                     <div className={`responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
-                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-96`}>
+                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-48`}>
                         {section.items
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
