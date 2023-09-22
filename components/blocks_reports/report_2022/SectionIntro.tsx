@@ -272,7 +272,7 @@ const SectionIntro = ({
 
             <div className="bg-white">
               <div className={`relative z-0 animate-fadeIn2 bg-${section.colorTheme}-50`}>
-                <div className={`sticky top-[100px] z-10`}>
+                <div className={`sticky top-[100px] z-50`}>
                   {activeStory && (
                     <div
                       className={`w-full h-1 overflow-hidden ${
@@ -301,7 +301,7 @@ const SectionIntro = ({
                 </div>
 
                 {isSectionOpen && activeStory && (
-                  <div className={`pb-28 relative z-0`}>
+                  <div className={`pb-28 relative z-40`}>
                     <div className={`responsive-container text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
                       <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-96`}>
                         {section.items
