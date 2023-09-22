@@ -63,13 +63,13 @@ const ReportNavbar = ({
         !activeStory && `border-b-[1px] border-black`
       } ${!isShowingMenu && "overflow-clip"}`}
     >
-      <div className="responsive-container flex flex-wrap items-center h-[100px] ">
-        <div className="w-[16%]">
+      <div className="responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
+        <div className="col-span-2">
           <Logo isMobile={true} />
         </div>
         <a
           href="/public-benefit-reports/2022"
-          className="flex flex-col !type-preset-8 font-sans text-black tracking-[0.015em]"
+          className="col-span-2 flex flex-col type-preset-8 font-sans text-black tracking-[0.015em]"
           onClick={() => {
             if (isShowingMenu) setIsShowingMenu(false);
           }}
@@ -77,14 +77,14 @@ const ReportNavbar = ({
           <span className="font-semibold">Public Benefit Report</span>
           <span className="">2022</span>
         </a>
-        <div className="block ml-auto ">
+        <div className="col-span-1 col-start-6 md:col-start-12 flex justify-end">
           <button
             aria-label="menu"
             aria-expanded={isShowingMenu ? "true" : "false"}
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="h-[60px] flex justify-center items-center px-xl -mr-xl"
+            className="h-[60px] pl-auto"
           >
             {isShowingMenu ? <CloseSVG /> : <OpenSVG />}
           </button>
