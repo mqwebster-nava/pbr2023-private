@@ -37,23 +37,23 @@ const ReportConclusion2022 = ({
       {activeSection == "conclusion" ? (
         <section
           id={anchor}
-          className={`w-full text-white relative scroll-mt-[70px]`}
+          className={`text-white relative scroll-mt-[70px]`}
         >
           <div className={`w-full bg-purple-900`}>
-            <div className="responsive-container pt-8 pb-16 grid grid-cols-12 gap-8">
-              <div className="relative col-span-11 h-full hidden">
+            <div className="responsive-container pt-8 pb-16 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
+              <div className="relative col-span-full h-full hidden">
                 <h2 className="text-7xl tracking-[0.015em] font-sans font-black">
                   {title}
                 </h2>
               </div>
 
-              <div className={`col-span-1 col-end-13`}>
+              <div className={`col-span-1 col-end-7 md:col-end-13`}>
                 <NavigationArrows color="" handleNextSection={undefined} handlePrevSection={handlePrevSection} />
               </div>
 
               <div
                 id={"conclusion-text"}
-                className="col-span-6 col-start-7 pt-8 font-serif text-3xl font-light"
+                className="col-span-5 md:col-span-6 md:col-start-7 pt-8 font-serif text-base leading-5 md:text-3xl md:leading-normal font-light"
               >
                 {richBody.json.content[0].content[0].value}
               </div>
@@ -61,10 +61,10 @@ const ReportConclusion2022 = ({
           </div>
 
           <div className={`w-full min-h-[60vh] bg-purple-800`}>
-            <div className={`responsive-container pt-8 pb-16 grid grid-cols-12 gap-8`}>
+            <div className={`responsive-container pt-8 pb-16 grid grid-cols-6 gap-x-2.5 md:grid-cols-12 md:gap-8`}>
               <p
                 id={"conclusion-next"}
-                className="col-span-2 row-span-full type-preset-6 font-bold pt-2"
+                className="col-span-full md:col-span-2 md:row-span-full type-preset-6 font-bold pt-2"
               >
                 Where next
               </p>
@@ -90,7 +90,7 @@ const ReportConclusion2022 = ({
                 <ul
                   id={`conclusion-footer${i + 1}`}
                   key={`conclusion-footer${i + 1}`}
-                  className="col-span-2"
+                  className="-ml-[22px] md:ml-0 col-span-full md:col-span-2"
                 >
                   {row.map((link) => (
                     <LinkListItem
@@ -106,7 +106,7 @@ const ReportConclusion2022 = ({
                 </ul>
               ))}
 
-              <div className="col-span-2 col-end-13">
+              <div className="-ml-[22px] md:ml-0 col-span-full md:col-span-2 md:col-end-13">
                 {[
                   [
                     ["/files/2021NavaPublicBenefitReport.pdf", "Download PDF"],
