@@ -49,11 +49,11 @@ const ReportNavbar = ({
     >
       <div className="min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
         <div className="col-span-2">
-          <Logo isMobile={false} />
+          <Logo isMobile={true} />
         </div>
         <a
           href="/public-benefit-reports/2022"
-          className="col-span-2 flex flex-col type-preset-6 font-sans text-black tracking-[0.015em]"
+          className="col-span-3 flex flex-col -ml-2.5 md:ml-0 type-preset-8 md:type-preset-6 font-sans text-black tracking-[0.015em]"
           onClick={() => {
             if (isShowingMenu) setIsShowingMenu(false);
           }}
