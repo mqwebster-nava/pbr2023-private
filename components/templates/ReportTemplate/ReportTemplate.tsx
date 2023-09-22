@@ -281,7 +281,6 @@ const ReportTemplate: React.FC<PageInterface> = ({
           reportSections={reportSections}
           activeSection={activeSection}
           setActiveSection={setActiveSection}
-          activeStory={activeStory}
           setActiveStory={setActiveStory}
         />
       )}

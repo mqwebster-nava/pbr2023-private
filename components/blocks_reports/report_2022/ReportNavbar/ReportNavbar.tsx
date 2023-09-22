@@ -1,5 +1,5 @@
 import Logo from "components/wrapper/Navbar/Logo";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { CloseSVG, OpenSVG } from "./SVGs";
 import ReportMenu from "./ReportMenu";
@@ -10,7 +10,6 @@ const ReportNavbar = ({
   contentBlocks,
   activeSection,
   setActiveSection,
-  activeStory,
   setActiveStory,
 }) => {
   const [isShowingMenu, setIsShowingMenu] = useState(false);
@@ -50,11 +49,11 @@ const ReportNavbar = ({
     >
       <div className="min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
         <div className="col-span-2">
-          <Logo isMobile={true} />
+          <Logo isMobile={false} />
         </div>
         <a
           href="/public-benefit-reports/2022"
-          className="col-span-2 flex flex-col type-preset-8 font-sans text-black tracking-[0.015em]"
+          className="col-span-2 flex flex-col type-preset-6 font-sans text-black tracking-[0.015em]"
           onClick={() => {
             if (isShowingMenu) setIsShowingMenu(false);
           }}
