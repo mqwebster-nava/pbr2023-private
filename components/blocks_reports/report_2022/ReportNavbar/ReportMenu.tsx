@@ -9,7 +9,7 @@ TODO use active story and active section setters on list item click instead of a
 const ReportMenu = ({ contentBlocks, activeSection, onClick }) => {
   return (
     <section className={`w-full`}>
-      <div className="responsive-container w-full flex flex-row gap-8">
+      <div className="responsive-container grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
         {contentBlocks
           .filter(
             (entry) =>
@@ -76,28 +76,15 @@ const ReportMenuCol = ({
 }) => {
   const simpleRow = () => {
     return (
-      <div className={""}>
+      <div className={"col-span-2"}>
         <a
-          className={`hidden ${
-            stories !== null ? "md:grid" : "md:block h-full"
-          } text-${textColor} gap-lg py-lg group `}
+          className={`text-${textColor} gap-lg py-lg group `}
           onClick={onClick}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-5 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
-          >
-            {title}
-          </h2>
-        </a>
-        <a
-          href={`#${anchor}`}
-          onClick={onClick}
-          className="responsive-container group md:hidden block pt-md pb-3xl"
-        >
-          <h2
-            className={`${fontStyle} type-preset-3 group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`type-preset-6 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
           >
             {title}
           </h2>
@@ -109,25 +96,25 @@ const ReportMenuCol = ({
   return stories == null ? (
     simpleRow()
   ) : (
-    <div className={``}>
+    <div className={`col-span-2 row-span-full`}>
       <div
-        className={`w-full h-[480px] grid grid-cols-1 grid-rows-4 ${textColor}`}
+        className={`${textColor}`}
       >
         <a
           onClick={onClick}
-          className={`block py-lg group`}
+          className={`group`}
           href={`#${anchor}`}
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-5 ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2 pt-sm`}
+            className={`type-preset-6 min-h-[100px] ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
             data-refid={`${anchor}`}
           >
             Envisioning {title}
           </h2>
         </a>
 
-        <ul className={`pt-lg pb-xl`}>
+        <ul className={`row-span-3`}>
           {stories
             .filter((story) => story.hideStory !== true)
             .map((story) => {
