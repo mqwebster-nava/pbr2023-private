@@ -128,14 +128,14 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] z-20 ${bgStyles}`}>
+          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] ${bgStyles}`}>
             <div className={`w-3/5 md:w-full`}>
               <StatEl />
             </div>
           </div>
 
           <div
-            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px] z-10`}
+            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px]`}
           >
             <div className={`relative min-h-[320px] md:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
