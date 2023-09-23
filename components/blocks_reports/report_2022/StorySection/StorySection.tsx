@@ -61,7 +61,7 @@ const StorySection = ({
             key={`${story.anchor}-statGroup-${i}`}
             className={`flex flex-col`}
           >
-            {i > 0 && <hr className={`my-8 w-3/5 border-b-2 ${borderStyles}`} />}
+            {i > 0 && <hr className={`my-8 w-3/5 border-b-[1px] ${borderStyles}`} />}
             <div className={`flex flex-col gap-2`}>
               {stats.map((statItem, j) => {
                 const statistic = statItem.split("__")[1];
