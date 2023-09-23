@@ -75,14 +75,14 @@ const StoriesDropdownMenu = ({
             >
               <a
                 href={`2022#${sectionAnchor}--${option.anchor}`}
-                className="flex justify-between items-center w-full py-md responsive-container text-left"
+                className="flex justify-between items-center w-full py-md responsive-container"
                 role="menuitem"
                 onClick={() => selectOption(option)}
               >
-                {option.title}
+                <div className="text-left pr-6">{option.title}</div>
 
                 <div
-                  className={`pl-6 transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}
+                  className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-menu:-rotate-180 group-hover/story-menu:opacity-100`}
                 >
                   <Arrow color={colorTheme} />
                 </div>
@@ -113,10 +113,10 @@ const StoriesDropdownMenu = ({
               id="dropdown-menu-button"
               onClick={toggleDropdown}
             >
-              <div className={` text-left`}>{selectedOption}</div>
+              <div className={`pr-6 text-left`}>{selectedOption}</div>
 
               <div
-                className={`pl-6
+                className={`
                   ${isOpen
                   ? `transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-active:-rotate-180 group-hover/story-dropdown-active:opacity-100`
                   : ``}`
@@ -149,10 +149,10 @@ const StoriesDropdownMenu = ({
                     role="menuitem"
                     onClick={() => selectOption(option)}
                   >
-                    {option.title}
+                    <div className="text-left pr-6">{option.title}</div>
 
                     <div
-                      className={`pl-6 transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}
+                      className={`transition-all duration-200 ease-linear opacity-20 group-hover/story-dropdown-item:-rotate-180 group-hover/story-dropdown-item:opacity-100`}
                     >
                       <Arrow color={colorTheme} />
                     </div>
