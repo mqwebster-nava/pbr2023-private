@@ -45,7 +45,7 @@ const ReportNavbar = ({
 
   return (
     <div
-      className={`block sticky top-0 z-50 w-full h-full bg-white ${!isShowingMenu && "overflow-clip"}`}
+      className={`block sticky top-0 z-50 w-full h-full bg-white transition-all duration-100 ${activeSection ? `` : `border-b-2 border-gray-300`} ${!isShowingMenu && "overflow-clip"}`}
     >
       <div className="min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
         <div className="col-span-2">
