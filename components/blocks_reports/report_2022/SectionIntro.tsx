@@ -120,6 +120,7 @@ const SectionIntro = ({
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   let handleNextSection = (position) => {
@@ -138,6 +139,8 @@ const SectionIntro = ({
         } else return null
       });
     }
+
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   let handlePrevSection = () => {
@@ -159,6 +162,7 @@ const SectionIntro = ({
     }
 
     setActiveSection(prevSection);
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   const openStyles = isSectionOpen
@@ -308,7 +312,7 @@ const SectionIntro = ({
                           .filter((story) => story.hideStory !== true)
                           .map((story) => {
                             return (
-                              <li key={story.anchor} className={`border-t-2 ${storyBorderStyles} first:border-transparent`}>
+                              <li key={story.anchor} className={`border-t-[1px] ${storyBorderStyles} first:border-transparent`}>
                                 <StorySection
                                   key={story.anchor}
                                   story={story}

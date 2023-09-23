@@ -300,7 +300,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
           setActiveStory={setActiveStory}
         />
       ) : null}
-      <div className={`animate-fadeIn2 ${reportYear == '2022' ? `min-h-[calc(60vh)]` : ``}`}>
+      <div className={`animate-fadeIn2 ${reportYear == '2022' ? `min-h-[calc(60vh)] md:min-h-0` : ``}`}>
         {contentBlocks.map((block, i) => getComponent(block, i))}
       </div>
       {slug == "/public-benefit-reports/2022" && (
