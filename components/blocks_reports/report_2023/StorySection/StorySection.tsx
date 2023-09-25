@@ -36,12 +36,12 @@ const StorySection = ({
 
   const statList = calloutText.split("\n\n---\n\n");
 
-  const hRuleStyles = classNames({
-      "bg-gold-pbrcustomdark": colorTheme == "gold",
-      "bg-plum-200": colorTheme == "plum",
-      "bg-sage-200": colorTheme == "sage",
-      "bg-purple-200": colorTheme == "purple",
-      "bg-navy-200": colorTheme == "navy",
+  const borderStyles = classNames({
+      "border-gold-pbrcustomdark": colorTheme == "gold",
+      "border-plum-200": colorTheme == "plum",
+      "border-sage-200": colorTheme == "sage",
+      "border-purple-200": colorTheme == "purple",
+      "border-navy-200": colorTheme == "navy",
     });
 
   const bgStyles = classNames({
@@ -53,15 +53,19 @@ const StorySection = ({
   })
 
   const StatEl = () => (
-    <div className={`flex flex-col md:px-4`}>
+    <div className={`flex flex-col min-h-[360px] md:px-4`}>
       {statList.map((stat, i) => {
         let stats = stat.split("\n");
         return (
           <div
             key={`${story.anchor}-statGroup-${i}`}
-            className={`flex flex-col`}
+            className={`w-full h-full flex flex-col bg-${colorTheme}-50 absolute md:relative md:opacity-100 transition-opacity duration-1000 ease-linear ${
+              (storyPct / 100) * 10 > i * 2.5
+                ? `opacity-100`
+                : `opacity-0`
+            } ${storyPct > 50 ? `opacity-0` : ``}`}
           >
-            {i > 0 && <hr className={`my-8 w-3/5 h-[1px] ${hRuleStyles}`} />}
+            {i > 0 && <hr className={`hidden md:block my-8 w-3/5 h-[1px] border-t-[1px] ${borderStyles}`} />}
             <div className={`flex flex-col gap-2`}>
               {stats.map((statItem, j) => {
                 const statistic = statItem.split("__")[1];
@@ -69,7 +73,7 @@ const StorySection = ({
                 const statisticAfter = statItem.split("__")[2];
                 return (
                   <div
-                    key={`${story.anchor}-statGroupItem-${j}`}
+                    key={`${story.anchor}-statGroup${i}Item-${j}`}
                     className={`inline-flex flex-col gap-0 text-xs`}
                   >
                     <span>{statisticBefore}</span>
@@ -106,9 +110,9 @@ const StorySection = ({
       <div className={``}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
-        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8 relative z-0`}>
+        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-40 md:grid-cols-12 md:gap-8 relative z-0`}>
           <div className={`col-span-5 row-start-3 md:row-start-auto relative z-30 ${bgStyles}`}>
-            <div className={`font-serif font-light text-lg`}>
+            <div className={`font-serif font-semibold text-base md:font-light md:text-lg md:leading-normal`}>
               <ReportContent
                 docData={story.intro?.json}
                 docLinks={story.intro?.links}
@@ -117,7 +121,7 @@ const StorySection = ({
                 isMobileLandscape={false}
               />
             </div>
-            <div className={`font-serif font-light`}>
+            <div className={`font-serif font-normal`}>
               <ReportContent
                 docData={story.body.json}
                 docLinks={story.body.links}
@@ -128,8 +132,8 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky -z-10 top-[352px] xxs:top-[464px] xs:top-[396px] sm:top-[644px] md:top-[212px] ${bgStyles}`}>
-            <div className={`w-3/5 md:w-full`}>
+          <div className={`col-span-3 md:col-span-2 row-start-2 md:row-start-auto h-max sticky -z-10 top-[352px] xxs:top-[464px] xs:top-[396px] sm:top-[644px] md:top-[212px] ${bgStyles}`}>
+            <div className={`w-2/3 md:w-full relative`}>
               <StatEl />
             </div>
           </div>
@@ -164,10 +168,6 @@ const StorySection = ({
                       (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
                         ? `opacity-100`
                         : `opacity-0`
-                  } ${
-                    (storyPct / 100) + (4 / images.length) > (i + 1) / images.length
-                      ? `opacity-100`
-                      : `opacity-0`
                     }`}
                   >
                     <Image
