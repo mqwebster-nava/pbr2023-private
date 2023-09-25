@@ -36,12 +36,12 @@ const StorySection = ({
 
   const statList = calloutText.split("\n\n---\n\n");
 
-  const borderStyles = classNames({
-      "border-gold-pbrcustomdark": colorTheme == "gold",
-      "border-plum-200": colorTheme == "plum",
-      "border-sage-200": colorTheme == "sage",
-      "border-purple-200": colorTheme == "purple",
-      "border-navy-200": colorTheme == "navy",
+  const hRuleStyles = classNames({
+      "bg-gold-pbrcustomdark": colorTheme == "gold",
+      "bg-plum-200": colorTheme == "plum",
+      "bg-sage-200": colorTheme == "sage",
+      "bg-purple-200": colorTheme == "purple",
+      "bg-navy-200": colorTheme == "navy",
     });
 
   const bgStyles = classNames({
@@ -61,7 +61,7 @@ const StorySection = ({
             key={`${story.anchor}-statGroup-${i}`}
             className={`flex flex-col`}
           >
-            {i > 0 && <hr className={`my-8 w-3/5 border-b-[1px] ${borderStyles}`} />}
+            {i > 0 && <hr className={`my-8 w-3/5 h-[1px] ${hRuleStyles}`} />}
             <div className={`flex flex-col gap-2`}>
               {stats.map((statItem, j) => {
                 const statistic = statItem.split("__")[1];

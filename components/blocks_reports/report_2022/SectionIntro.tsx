@@ -236,12 +236,14 @@ const SectionIntro = ({
                   hidden md:block
                   ${isSectionOpen
                     ? `opacity-0`
-                    : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-semibold type-preset-6`}`
+                    : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-medium type-preset-6`}`
                 }
                 >
                   <div className="flex flex-row items-center gap-1">
                     {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                    <ArrowDown color={"white"} size="default" />
+                    <div className="rotate-180">
+                      <ArrowDown color={"white"} size="default" />
+                    </div>
                   </div>
                 </span>
               </>
