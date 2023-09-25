@@ -151,7 +151,7 @@ const SectionIntro = ({
       setActiveStory(null);
       router.push({hash: ''})
     } else if (index == 1) {
-      setActiveStory("gov-services--pbr-2022-intro");
+      setActiveStory("gov-services--pbr-2023-intro");
     } else {
       setActiveStory((prevStory) => {
         if (prevStory) {
@@ -205,7 +205,7 @@ const SectionIntro = ({
     >
       <div className={`responsive-container w-full relative`}>
         <a
-          href={`2022#${section.anchor}`}
+          href={`#${section.anchor}`}
           className={`${activeSection ? `cursor-default` : `cursor-pointer`}`}
           onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >

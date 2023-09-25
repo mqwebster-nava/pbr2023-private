@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { PageHeaderInterface } from "components/blocks/PageHeaders/PageHeader";
 
-const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: PageHeaderInterface) => {
+const ReportHero2023 = ({activeSection, setActiveSection, setActiveStory}, {}: PageHeaderInterface) => {
   const router = useRouter();
 
   return (
@@ -12,12 +12,12 @@ const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: P
       <div
         className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-2 md:pt-8 md:pb-4 relative text-2xl md:text-7xl font-sans font-black`}
       >
-        <a href={`/public-benefit-reports/2022`} className={``} onClick={(e) => {
+        <a href={`/public-benefit-reports/2023`} className={``} onClick={(e) => {
           if (activeSection !== 'conclusion') {
             e.preventDefault();
             setActiveSection(null);
             setActiveStory(null);
-            router.push(`/public-benefit-reports/2022`);
+            router.push(`/public-benefit-reports/2023`);
           } else {
             e.preventDefault();
           }
@@ -36,4 +36,4 @@ const ReportHero2022 = ({activeSection, setActiveSection, setActiveStory}, {}: P
   );
 };
 
-export default ReportHero2022;
+export default ReportHero2023;

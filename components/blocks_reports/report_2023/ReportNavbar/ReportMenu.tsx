@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import SlideDown from "react-slidedown";
 import styles from "../../../wrapper/Navbar/MobileNav/mobilenav.module.css";
-import { LinkListItem } from "components/blocks_reports/report_2022/Atoms/LinkListItem";
+import { LinkListItem } from "components/blocks_reports/report_2023/Atoms/LinkListItem";
 /*
 TODO use active story and active section setters on list item click instead of a tag href
 */

@@ -25,7 +25,7 @@ import MarkdownComponent from "utils/MarkdownComponent";
 import { CONTENT_VARIANT } from "components/blocks/PostBody/PostContent";
 import classNames from "classnames";
 
-export type REPORT_YEAR = "2022" | "2021" | "2020" | "2019" | "2018";
+export type REPORT_YEAR = "2023" | "2021" | "2020" | "2019" | "2018";
 export interface ReportContentInterface {
   docData: any;
   docLinks: any;
@@ -39,7 +39,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandsca
   
    const headerStyle = classNames({
     "font-bold pt-xl pb-md tracking-normal": true,
-    "font-serif":reportYear == "2021" || reportYear == "2022",
+    "font-serif":reportYear == "2021" || reportYear == "2023",
     "font-sans":reportYear != "2021",
    });
 

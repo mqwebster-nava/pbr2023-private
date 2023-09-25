@@ -113,7 +113,7 @@ const StorySection = ({
                 docData={story.intro?.json}
                 docLinks={story.intro?.links}
                 variant={"report"}
-                reportYear={"2022"}
+                reportYear={"2023"}
                 isMobileLandscape={false}
               />
             </div>
@@ -122,7 +122,7 @@ const StorySection = ({
                 docData={story.body.json}
                 docLinks={story.body.links}
                 variant={"report"}
-                reportYear={"2022"}
+                reportYear={"2023"}
                 isMobileLandscape={false}
               />
             </div>

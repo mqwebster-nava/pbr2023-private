@@ -88,7 +88,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
     <li
       className={`py-md w-full ${variantStyles} ${textStyles} ${borderStyles} ${hoverBgStyles} ${hoverStyles}`}
     >
-      <div className={`responsive-container`}>
+      <div className={``}>
         <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
           <div className={`flex items-center justify-between`}>
             <p

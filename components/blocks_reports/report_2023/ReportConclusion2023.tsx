@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { LinkListItem } from "./Atoms/LinkListItem";
 import NavigationArrows from "./Atoms/NavigationArrows";
 
-const ReportConclusion2022 = ({
+const ReportConclusion2023 = ({
   title,
   richBody,
   anchor,
@@ -71,7 +71,7 @@ const ReportConclusion2022 = ({
 
               {[
                 [
-                  ["/public-benefit-reports/2022", "Back to top"],
+                  ["/public-benefit-reports/2023", "Back to top"],
                   ["/careers", " Careers"],
                   ["/case-studies", "Case Studies"],
                   [
@@ -109,7 +109,7 @@ const ReportConclusion2022 = ({
               <div className="-ml-[22px] md:ml-0 col-span-full md:col-span-2 md:col-end-13">
                 {[
                   [
-                    ["/files/2021NavaPublicBenefitReport.pdf", "Download PDF"],
+                    ["/files/2023NavaPublicBenefitReport.pdf", "Download PDF"],
                   ],
                 ].map((row, i) => (
                   <ul
@@ -140,4 +140,4 @@ const ReportConclusion2022 = ({
   );
 };
 
-export default ReportConclusion2022;
+export default ReportConclusion2023;

@@ -3,7 +3,7 @@ import ReportMenu from "./ReportNavbar/ReportMenu";
 import FormInputButton from "components/atom/FormInputButton/FormInputButton";
 import { LinkText } from "components/atom/LinkText/LinkText";
 
-const ReportFooter2022 = ({
+const ReportFooter2023 = ({
   reportSections,
   contentBlocks,
   activeSection,
@@ -169,4 +169,4 @@ const ReportFooter2022 = ({
   );
 };
 
-export default ReportFooter2022;
+export default ReportFooter2023;

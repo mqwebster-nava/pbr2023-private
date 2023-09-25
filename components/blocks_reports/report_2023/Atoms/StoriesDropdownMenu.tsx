@@ -74,7 +74,7 @@ const StoriesDropdownMenu = ({
               className={`group/story-menu w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
             >
               <a
-                href={`2022#${sectionAnchor}--${option.anchor}`}
+                href={`#${sectionAnchor}--${option.anchor}`}
                 className="flex justify-between items-center w-full py-md responsive-container"
                 role="menuitem"
                 onClick={() => selectOption(option)}
@@ -144,7 +144,7 @@ const StoriesDropdownMenu = ({
                   className={`group/story-dropdown-item w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
                 >
                   <a
-                    href={`2022#${sectionAnchor}--${option.anchor}`}
+                    href={`#${sectionAnchor}--${option.anchor}`}
                     className="flex justify-between items-center w-full py-md responsive-container text-left"
                     role="menuitem"
                     onClick={() => selectOption(option)}

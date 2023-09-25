@@ -9,22 +9,22 @@ import { PageInterface } from "lib/data_models/page_interface";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-// 2022
-const ReportNavbar2022 = dynamic(
+// 2023
+const ReportNavbar2023 = dynamic(
   () =>
-    import("components/blocks_reports/report_2022/ReportNavbar/ReportNavbar")
+    import("components/blocks_reports/report_2023/ReportNavbar/ReportNavbar")
 );
-const ReportFooter2022 = dynamic(
-  () => import("components/blocks_reports/report_2022/ReportFooter2022")
+const ReportFooter2023 = dynamic(
+  () => import("components/blocks_reports/report_2023/ReportFooter2023")
 );
-const ReportHero2022 = dynamic(
-  () => import("components/blocks_reports/report_2022/ReportHero2022")
+const ReportHero2023 = dynamic(
+  () => import("components/blocks_reports/report_2023/ReportHero2023")
 );
-const SectionIntro2022 = dynamic(
-  () => import("components/blocks_reports/report_2022/SectionIntro")
+const SectionIntro2023 = dynamic(
+  () => import("components/blocks_reports/report_2023/SectionIntro")
 );
-const ReportConclusion2022 = dynamic(
-  () => import("components/blocks_reports/report_2022/ReportConclusion2022")
+const ReportConclusion2023 = dynamic(
+  () => import("components/blocks_reports/report_2023/ReportConclusion2023")
 );
 
 // 2021
@@ -96,13 +96,13 @@ const ReportTemplate: React.FC<PageInterface> = ({
   contentBlocks,
   children,
 }) => {
-  // 2022 State Management
+  // 2023 State Management
   const [activeSection, setActiveSection] = useState(null);
   const [activeStory, setActiveStory] = useState(null);
 
   let reportSections = getSectionsInfo(contentBlocks);
-  let reportYear = slug.includes("2022")
-    ? "2022"
+  let reportYear = slug.includes("2023")
+    ? "2023"
     : slug.includes("2021")
     ? "2021"
     : slug.includes("2020")
@@ -125,10 +125,10 @@ const ReportTemplate: React.FC<PageInterface> = ({
     const typename = entry.__typename;
 
     const componentMap = {
-      "2022": {
+      "2023": {
         ReportIllustrationOverlaySubsection: (entry) => (
           <div key={`${entry.anchor}-${index}`}>
-            <SectionIntro2022
+            <SectionIntro2023
               key={entry.anchor}
               section={entry}
               i={entry.themeNum}
@@ -142,7 +142,7 @@ const ReportTemplate: React.FC<PageInterface> = ({
         ),
         ReportSectionCustom: (entry) =>
           entry.type == "Conclusion 2021" ? (
-            <ReportConclusion2022
+            <ReportConclusion2023
               key={index}
               activeSection={activeSection}
               setActiveSection={setActiveSection}
@@ -275,8 +275,8 @@ const ReportTemplate: React.FC<PageInterface> = ({
           reportSections={reportSections}
         />
       )}
-      {slug == "/public-benefit-reports/2022" && (
-        <ReportNavbar2022
+      {slug == "/public-benefit-reports/2023" && (
+        <ReportNavbar2023
           contentBlocks={contentBlocks}
           reportSections={reportSections}
           activeSection={activeSection}
@@ -292,19 +292,19 @@ const ReportTemplate: React.FC<PageInterface> = ({
         <ReportHero2020 {...pageHeader} />
       ) : reportYear === "2021" ? (
         <ReportHero2021 {...pageHeader} />
-      ) : reportYear === "2022" ? (
-        <ReportHero2022
+      ) : reportYear === "2023" ? (
+        <ReportHero2023
           {...pageHeader}
           activeSection={activeSection}
           setActiveSection={setActiveSection}
           setActiveStory={setActiveStory}
         />
       ) : null}
-      <div className={`animate-fadeIn2 ${reportYear == '2022' ? `min-h-[calc(60vh)] md:min-h-0` : ``}`}>
+      <div className={`animate-fadeIn2 ${reportYear == '2023' ? `min-h-[calc(60vh)] md:min-h-0` : ``}`}>
         {contentBlocks.map((block, i) => getComponent(block, i))}
       </div>
-      {slug == "/public-benefit-reports/2022" && (
-        <ReportFooter2022
+      {slug == "/public-benefit-reports/2023" && (
+        <ReportFooter2023
           reportSections={reportSections}
           contentBlocks={contentBlocks}
           activeSection={activeSection}
