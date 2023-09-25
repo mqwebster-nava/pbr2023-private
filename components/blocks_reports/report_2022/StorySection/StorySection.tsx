@@ -106,7 +106,7 @@ const StorySection = ({
       <div className={``}>
         {/* <div ref={storyRef} className={`absolute top-0 w-full h-4/5`}></div> */}
 
-        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`}>
+        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8 relative z-0`}>
           <div className={`col-span-5 row-start-3 md:row-start-auto relative z-30 ${bgStyles}`}>
             <div className={`font-serif font-light text-lg`}>
               <ReportContent
@@ -128,16 +128,16 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky top-[420px] md:top-[212px] ${bgStyles}`}>
+          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky z-20 top-[420px] md:top-[212px] ${bgStyles}`}>
             <div className={`w-3/5 md:w-full`}>
               <StatEl />
             </div>
           </div>
 
           <div
-            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky top-[212px]`}
+            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky -z-10 top-[212px]`}
           >
-            <div className={`relative min-h-[320px] md:min-h-[360px]`}>
+            <div className={`relative min-h-[280px] sm:min-h-[400px] md:min-h-[220px] lg:min-h-[300px] xl:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
