@@ -24,6 +24,7 @@ export interface LinkTextProps {
   analyticsLabel?: AnalyticsLabelType;
   ariaLabel?: string;
   isBolded?: boolean;
+  font?: string;
 }
 
 export const LinkListItem: React.FC<LinkTextProps> = ({
@@ -36,6 +37,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
   analyticsLabel = "",
   ariaLabel = null,
   isBolded = false,
+  font = "sans",
 }) => {
   // checks id external link and adds blank target it is so url opens in another tab
   const loc = href.substr(0, 1);
@@ -92,7 +94,7 @@ export const LinkListItem: React.FC<LinkTextProps> = ({
         <a href={href} aria-label={ariaLabel} target={target} onClick={onClick}>
           <div className={`flex items-center justify-between`}>
             <p
-              className={`font-sans ${
+              className={`${font == 'sans' ? `font-sans` : `font-serif`} ${
                 isBolded ? "font-bold" : "font-light"
               } ${analyticsLabel}`}
               data-refid={`${href.replace("#", "")}`}

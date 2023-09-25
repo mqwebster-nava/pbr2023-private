@@ -56,7 +56,7 @@ const ReportFooter2023 = ({
       }`}
     >
       {activeSection !== "conclusion" && (
-        <div className="hidden md:block py-4xl">
+        <div className="hidden lg:block py-4xl">
             <ReportMenu
               activeSection={reportSections}
               contentBlocks={contentBlocks}

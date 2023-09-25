@@ -21,7 +21,7 @@ const Arrow = ({
   const h = w;
 
   const strokeStyles = classNames({
-    "stroke-gold-900": color == "gold",
+    "stroke-gold-pbrcustomdark": color == "gold",
     "stroke-plum-900": color == "plum",
     "stroke-sage-900": color == "sage",
     "stroke-purple-900": color == "purple",
