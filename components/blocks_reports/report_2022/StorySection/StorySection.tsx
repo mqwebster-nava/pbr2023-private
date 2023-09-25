@@ -128,22 +128,30 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky z-20 top-[420px] md:top-[212px] ${bgStyles}`}>
+          <div className={`col-span-5 md:col-span-2 row-start-2 md:row-start-auto h-max sticky -z-10 top-[352px] xxs:top-[464px] xs:top-[396px] sm:top-[644px] md:top-[212px] ${bgStyles}`}>
             <div className={`w-3/5 md:w-full`}>
               <StatEl />
             </div>
           </div>
 
           <div
-            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky -z-10 top-[212px]`}
+            className={`col-span-5 row-start-1 md:row-start-auto md:order-last flex flex-col gap-2 md:gap-5 h-max sticky -z-20 top-[212px]`}
           >
-            <div className={`relative min-h-[280px] sm:min-h-[400px] md:min-h-[220px] lg:min-h-[300px] xl:min-h-[360px]`}>
+            <div className={`relative min-h-[140px] xxs:min-h-[252px] xs:min-h-[284px] sm:min-h-[432px] md:min-h-[244px] lg:min-h-[320px] xl:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
                 <div
                   key={`${storyId}-image-${i}`}
-                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear md:${
+                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear lg:${
                     (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
+                      ? `opacity-100`
+                      : `opacity-0`
+                  } md:${
+                    (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
+                      ? `opacity-100`
+                      : `opacity-0`
+                  } ${
+                    (storyPct / 100) + (4 / images.length) > (i + 1) / images.length
                       ? `opacity-100`
                       : `opacity-0`
                   }`}
