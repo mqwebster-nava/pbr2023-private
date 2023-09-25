@@ -140,29 +140,44 @@ const StorySection = ({
             <div className={`relative min-h-[140px] xxs:min-h-[252px] xs:min-h-[284px] sm:min-h-[432px] md:min-h-[244px] lg:min-h-[320px] xl:min-h-[360px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
-                <div
-                  key={`${storyId}-image-${i}`}
-                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear lg:${
-                    (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
-                      ? `opacity-100`
-                      : `opacity-0`
-                  } md:${
-                    (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
-                      ? `opacity-100`
-                      : `opacity-0`
+                <div key={`${storyId}-image-${i}`} className={``}>
+                  <div
+                    key={`${storyId}-image-sm-${i}`}
+                    className={`block md:hidden w-full absolute object-cover transition-opacity duration-500 ease-linear ${
+                      (storyPct / 100) + (4 / images.length) > (i + 1) / images.length
+                        ? `opacity-100`
+                        : `opacity-0`
+                    }`}
+                  >
+                    <Image
+                      src={image.url}
+                      width={616}
+                      height={435}
+                      alt=""
+                      className={``}
+                    />
+                  </div>
+
+                  <div
+                    key={`${storyId}-image-lg-${i}`}
+                    className={`hidden md:block w-full absolute object-cover transition-opacity duration-500 ease-linear ${
+                      (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
+                        ? `opacity-100`
+                        : `opacity-0`
                   } ${
                     (storyPct / 100) + (4 / images.length) > (i + 1) / images.length
                       ? `opacity-100`
                       : `opacity-0`
-                  }`}
-                >
-                  <Image
-                    src={image.url}
-                    width={616}
-                    height={435}
-                    alt=""
-                    className={``}
-                  />
+                    }`}
+                  >
+                    <Image
+                      src={image.url}
+                      width={616}
+                      height={435}
+                      alt=""
+                      className={``}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
