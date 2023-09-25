@@ -112,7 +112,7 @@ const StorySection = ({
 
         <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-40 md:grid-cols-12 md:gap-8 relative z-0`}>
           <div className={`col-span-5 row-start-3 md:row-start-auto relative z-30 ${bgStyles}`}>
-            <div className={`font-serif font-semibold text-base md:font-light md:text-lg md:leading-normal`}>
+            <div className={`font-serif font-light text-base leading-[20px] md:font-light md:text-lg md:leading-7`}>
               <ReportContent
                 docData={story.intro?.json}
                 docLinks={story.intro?.links}
@@ -121,7 +121,7 @@ const StorySection = ({
                 isMobileLandscape={false}
               />
             </div>
-            <div className={`font-serif font-normal`}>
+            <div className={`font-serif font-light leading-[18px]`}>
               <ReportContent
                 docData={story.body.json}
                 docLinks={story.body.links}

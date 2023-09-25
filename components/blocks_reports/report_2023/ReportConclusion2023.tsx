@@ -90,7 +90,7 @@ const ReportConclusion2023 = ({
                 <ul
                   id={`conclusion-footer${i + 1}`}
                   key={`conclusion-footer${i + 1}`}
-                  className="-ml-[22px] md:ml-0 col-span-full md:col-span-2"
+                  className="col-span-full md:col-span-2"
                 >
                   {row.map((link) => (
                     <LinkListItem
@@ -106,7 +106,7 @@ const ReportConclusion2023 = ({
                 </ul>
               ))}
 
-              <div className="-ml-[22px] md:ml-0 col-span-full md:col-span-2 md:col-end-13">
+              <div className="col-span-full md:col-span-2 md:col-end-13">
                 {[
                   [
                     ["/files/2023NavaPublicBenefitReport.pdf", "Download PDF"],

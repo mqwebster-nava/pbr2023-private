@@ -43,7 +43,7 @@ const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandsca
     "font-sans":reportYear != "2021",
    });
 
-   const pSize = isMobileLandscape? "type-preset-6": "type-preset-5";
+   const pSize = isMobileLandscape || reportYear == '2023' ? "type-preset-6": "type-preset-5";
   
   const options = {
     renderMark: {
