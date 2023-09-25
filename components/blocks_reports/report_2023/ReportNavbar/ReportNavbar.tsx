@@ -81,7 +81,7 @@ const ReportNavbar = ({
       <div
         className={`absolute w-full h-[100vh] transition-all duration-100 ${isShowingMenu ? `border-t-[1px] border-black overflow-scroll` : `border-none`}`}
       >
-        <div className="h-full bg-white py-4xl">
+        <div className="h-full bg-white lg:py-4xl">
           <SlideDown>
             {isShowingMenu ? (
               <ReportMenu
