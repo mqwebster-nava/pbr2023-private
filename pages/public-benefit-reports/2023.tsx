@@ -9,7 +9,7 @@ import { getPageDataFromContentful } from "lib/api";
 
 
 
-export default function PBR2022(props: PageInterface) {
+export default function PBR2023(props: PageInterface) {
 
   return (
         <ReportTemplate {...props}> </ReportTemplate>
@@ -19,7 +19,7 @@ export default function PBR2022(props: PageInterface) {
 export async function getStaticProps({ params, preview = false }) {
   //const report = getMarkdownByFilename("public-benefit-reports", 2020);
   let formattedPage: PageInterface = await getPageDataFromContentful(
-    {slug:"/public-benefit-reports/2022", 
+    {slug:"/public-benefit-reports/2023",
     preview: preview,
     variant:"report"
     });
