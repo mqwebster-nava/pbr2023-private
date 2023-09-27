@@ -17,12 +17,14 @@ const StorySection = ({
   const storyRef = useRef(null);
   const imageRef = useRef(null);
 
-  const handleResize = () => setImageHeight(Math.round(imageRef.current.offsetWidth * (435/616)))
+  const handleResize = () => setImageHeight(Math.round(imageRef.current?.offsetWidth * (435/616)))
 
-  useEffect(() => {handleResize()}, [])
   useEffect(() => {
-    // console.log(imageRef.current.id, Math.round(imageRef.current.offsetWidth * (435/616)))
+    handleResize()
     window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
   }, [])
 
   const storyId = `${sectionAnchor}--${story.anchor}`;

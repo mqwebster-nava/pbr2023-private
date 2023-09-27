@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import classNames from "classnames";
 import Arrow from "./Arrow";
 import { getOffsetPct } from "../_utils";
 
@@ -59,9 +60,17 @@ const StoriesDropdownMenu = ({
     }
   }, [storyPct, activeStory]);
 
+  const borderStyles = classNames({
+    "border-gold-pbrcustomdark": colorTheme == "gold",
+    "border-plum-900": colorTheme == "plum",
+    "border-sage-900": colorTheme == "sage",
+    "border-purple-900": colorTheme == "purple",
+    "border-navy-900": colorTheme == "navy",
+  });
+
   const StoriesMenu = () => {
     return (
-      <div className={`w-full border-b-[1px] border-${colorTheme}-900`}>
+      <div className={`w-full`}>
         <div
           className={``}
           role="menu"
@@ -71,7 +80,7 @@ const StoriesDropdownMenu = ({
           {items.map((option, index) => (
             <div
               key={index}
-              className={`group/story-menu w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
+              className={`group/story-menu w-full border-t-[1px] ${borderStyles} bg-white hover:bg-${colorTheme}-50`}
             >
               <a
                 href={`#${sectionAnchor}--${option.anchor}`}
@@ -97,7 +106,7 @@ const StoriesDropdownMenu = ({
   const StoriesDropdown = () => {
     return (
       <div
-        className={`relative z-40 w-full border-b-[1px] border-${colorTheme}-900`}
+        className={`relative z-40 w-full border-b-[1px] ${borderStyles}`}
       >
         <div
           className={`group/story-dropdown-active w-full ${
@@ -130,7 +139,7 @@ const StoriesDropdownMenu = ({
 
         {isOpen && (
           <div
-            className={`absolute w-full border-b-[1px] border-${colorTheme}-900 drop-shadow-2xl`}
+            className={`absolute w-full border-b-[1px] ${borderStyles} drop-shadow-2xl`}
           >
             <div
               className={``}
@@ -141,7 +150,7 @@ const StoriesDropdownMenu = ({
               {availableOptions.map((option, index) => (
                 <div
                   key={index}
-                  className={`group/story-dropdown-item w-full border-t-[1px] border-${colorTheme}-900 bg-white hover:bg-${colorTheme}-50`}
+                  className={`group/story-dropdown-item w-full border-t-[1px] ${borderStyles} bg-white hover:bg-${colorTheme}-50`}
                 >
                   <a
                     href={`#${sectionAnchor}--${option.anchor}`}
@@ -168,7 +177,7 @@ const StoriesDropdownMenu = ({
 
   return (
     <div
-      className={`font-serif font-semibold text-base leading-5 md:text-3xl md:leading-tight text-${colorTheme}-900`}
+      className={`font-serif font-semibold text-base leading-5 md:text-3xl md:leading-tight ${colorTheme == "gold" ? `text-gold-pbrcustomdark` : `text-${colorTheme}-900`}`}
     >
       {parentSectionOpen && activeStory == null ? (
         <StoriesMenu />
