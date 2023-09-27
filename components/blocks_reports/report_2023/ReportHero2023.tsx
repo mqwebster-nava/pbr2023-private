@@ -10,7 +10,7 @@ const ReportHero2023 = ({activeSection, setActiveSection, setActiveStory}, {}: P
       id="reportHeader"
     >
       <div
-        className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-2 md:pt-8 md:pb-4 relative font-sans font-black text-3xl leading-none tracking-[0.015em] sm:text-5xl lg:text-7xl`}
+        className={`responsive-container w-full max-h-32 flex flex-row justify-between pt-8 pb-2 md:pt-8 md:pb-4 relative font-sans font-black text-3xl !leading-none tracking-[0.015em] sm:text-5xl md:text-6xl lg:text-7xl`}
       >
         <a href={`/public-benefit-reports/2023`} className={``} onClick={(e) => {
           if (activeSection !== 'conclusion') {

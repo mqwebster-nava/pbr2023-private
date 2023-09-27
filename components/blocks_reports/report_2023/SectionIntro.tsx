@@ -188,7 +188,7 @@ const SectionIntro = ({
 
   const borderStyles = !isSectionOpen && classNames({
     "border-none": section.themeNum == 1,
-    "border-t-2 border-gray-300 hover:border-transparent": section.themeNum != 1,
+    "border-t-2 border-gray-300 hover:border-white": section.themeNum != 1,
   })
 
   const storyBorderStyles = classNames({
@@ -213,7 +213,7 @@ const SectionIntro = ({
           <div
             className={`relative min-h-[72px] lg:min-h-[200px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] pr-0 sm:pr-6 font-sans font-black text-3xl leading-none tracking-[0.015em] sm:text-5xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.72rem] lg:top-[-0.84rem]">
+            <span className="max-w-[1096px] pr-0 sm:pr-6 font-sans font-black text-3xl !leading-none tracking-[0.015em] sm:text-5xl md:text-6xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
               {section.title}
             </span>
 
@@ -227,11 +227,11 @@ const SectionIntro = ({
               </div>
             ) : (
               <>
-                <span
+                {/* <span
                   className={`pl-6 block md:hidden ${isSectionOpen ? `opacity-0` : `opacity-100`}`}
                 >
                   <ArrowDown color={"gray"} size="default" />
-                </span>
+                </span> */}
                 <span
                 className={`
                   hidden md:block
@@ -240,11 +240,11 @@ const SectionIntro = ({
                     : `opacity-0 group-hover:opacity-100 min-w-max font-serif font-medium type-preset-6`}`
                 }
                 >
-                  <div className="flex flex-row items-center gap-1">
+                  <div className="flex flex-row items-center gap-1 relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
                     {section.themeNum == "1" ? "Read Introduction" : "Read Stories"}
-                    <div className="rotate-180">
+                    {/* <div className="rotate-180">
                       <ArrowDown color={"white"} size="default" />
-                    </div>
+                    </div> */}
                   </div>
                 </span>
               </>
@@ -255,7 +255,7 @@ const SectionIntro = ({
 
         <div className={`${!isSectionOpen ? `hidden` : ``}`}>
           <div className={`flex flex-col gap-4 md:gap-8`}>
-            <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-normal font-light pr-12 md:pr-0`}>
+            <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-snug font-light pr-12 md:pr-0`}>
               {section.themeNum == 1 ? (
                 <SlideDown>
                   <div

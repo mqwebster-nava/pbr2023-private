@@ -116,9 +116,9 @@ const StorySection = ({
   return (
     <div ref={storyRef} id={storyId} className={`scroll-mt-[148px]`}>
       <div className={``}>
-        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-20 lg:grid-cols-12 lg:gap-8 relative z-0`}>
+        <div className={`pt-8 grid grid-cols-6 gap-x-2.5 gap-y-10 lg:grid-cols-12 lg:gap-8 relative z-0`}>
           <div className={`col-span-full md:col-span-5 row-start-3 md:row-start-auto relative z-30 ${bgStyles}`}>
-            <div className={`font-serif font-light text-base leading-[20px] md:text-lg md:leading-[28px]`}>
+            <div className={`font-serif font-light text-base leading-[20px] md:text-lg md:leading-[28px] ${colorTheme == 'gold' ? `text-black` : ``}`}>
               <ReportContent
                 docData={story.intro?.json}
                 docLinks={story.intro?.links}
