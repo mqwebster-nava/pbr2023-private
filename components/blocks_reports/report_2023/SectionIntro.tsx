@@ -120,7 +120,7 @@ const SectionIntro = ({
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
-    setTimeout(() => {window.scrollTo(0, 0)}, 50)
+    setTimeout(() => {window.scrollTo(0, 0)}, 75)
   };
 
   let handleNextSection = (position) => {
@@ -140,7 +140,7 @@ const SectionIntro = ({
       });
     }
 
-    setTimeout(() => {window.scrollTo(0, 0)}, 50)
+    setTimeout(() => {window.scrollTo(0, 0)}, 75)
   };
 
   let handlePrevSection = () => {
@@ -162,7 +162,7 @@ const SectionIntro = ({
     }
 
     setActiveSection(prevSection);
-    setTimeout(() => {window.scrollTo(0, 0)}, 50)
+    setTimeout(() => {window.scrollTo(0, 0)}, 75)
   };
 
   const openStyles = isSectionOpen
@@ -258,18 +258,18 @@ const SectionIntro = ({
               {section.themeNum == 1 ? (
                 <SlideDown>
                   <div
-                    className={`responsive-container animate-fadeIn2 w-full flex justify-end`}
+                    className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
                   >
-                    <div className={"w-full md:w-2/3"}>
+                    <div className={"w-full md:w-4/5 lg:w-2/3"}>
                       <MarkdownComponent content={section.body} />
                     </div>
                   </div>
                 </SlideDown>
               ) : (
                 <div
-                  className={`responsive-container animate-fadeIn2 w-full flex justify-end`}
+                  className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
                 >
-                  <div className={"w-full md:w-2/3"}>
+                  <div className={"w-full md:w-4/5 lg:w-2/3"}>
                     <MarkdownComponent content={section.body} />
                   </div>
                 </div>
@@ -278,7 +278,7 @@ const SectionIntro = ({
 
             <div className="bg-white">
               <div className={`relative z-0 animate-fadeIn2 bg-${section.colorTheme}-50`}>
-                <div className={`sticky top-[100px] z-40`}>
+                <div className={`sticky top-[60px] md:top-[80px] lg:top-[100px] z-40`}>
                   {activeStory && (
                     <div
                       className={`w-full h-1 overflow-hidden ${
@@ -326,12 +326,13 @@ const SectionIntro = ({
                           })}
                       </ul>
 
-                      <div className={`relative ml-auto w-fit`}>
+                      <div className={`mt-8 relative ml-auto w-full md:w-fit`}>
                         <div className="">
                           <NavigationArrows
                             color={section.colorTheme}
                             handleNextSection={() => handleNextSection("bottom")}
                             handlePrevSection={handlePrevSection}
+                            layout="horizontal"
                           />
                         </div>
                       </div>
