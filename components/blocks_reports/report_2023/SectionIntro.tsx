@@ -289,7 +289,7 @@ const SectionIntro = ({
                       <div
                         className={`h-full ${
                           currentSection
-                            ? `bg-${section.colorTheme}-900`
+                            ? `${section.themeNum == 1 ? `bg-gold-pbrcustomdark` : `bg-${section.colorTheme}-900`}`
                             : `bg-white`
                         }`}
                         style={{ width: `${sectionPct}%` }}
