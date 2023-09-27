@@ -44,7 +44,7 @@ const StorySection = ({
 
   const calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
-  const statList = calloutText.split("\n\n---\n\n");
+  const statList = calloutText?.split("\n\n---\n\n");
 
   const borderStyles = classNames({
       "border-gold-pbrcustomdark": colorTheme == "gold",
@@ -55,49 +55,51 @@ const StorySection = ({
     });
 
   const bgStyles = classNames({
-    "bg-gold-50": colorTheme == "gold",
+    "bg-white": colorTheme == "gold",
     "bg-plum-50": colorTheme == "plum",
     "bg-sage-50": colorTheme == "sage",
     "bg-purple-50": colorTheme == "purple",
     "bg-navy-50": colorTheme == "navy",
   })
 
-  const StatEl = () => (
-    <div className={`flex flex-col lg:px-4`}>
-      {statList.map((stat, i) => {
-        let stats = stat.split("\n");
-        return (
-          <div
-            key={`${story.anchor}-statGroup-${i}`}
-            className={`w-full h-full flex flex-col bg-${colorTheme}-50 relative`}
-          >
-            {i > 0 && <hr className={`my-8 w-3/5 h-[1px] border-t-[1px] ${borderStyles}`} />}
-            <div className={`flex flex-col gap-2`}>
-              {stats.map((statItem, j) => {
-                const statistic = statItem.split("__")[1];
-                const statisticBefore = statItem.split("__")[0];
-                const statisticAfter = statItem.split("__")[2];
-                return (
-                  <div
-                    key={`${story.anchor}-statGroup${i}Item-${j}`}
-                    className={`inline-flex flex-col gap-0 text-xs`}
-                  >
-                    <span>{statisticBefore}</span>
-                    <span
-                      className={`text-3xl font-serif font-light`}
+  const StatEl = () => {return (
+    <div>
+      {statList && <div className={`flex flex-col lg:px-4`}>
+        {statList.map((stat, i) => {
+          let stats = stat.split("\n");
+          return (
+            <div
+              key={`${story.anchor}-statGroup-${i}`}
+              className={`w-full h-full flex flex-col bg-${colorTheme}-50 relative`}
+            >
+              {i > 0 && <hr className={`my-8 w-3/5 h-[1px] border-t-[1px] ${borderStyles}`} />}
+              <div className={`flex flex-col gap-2`}>
+                {stats.map((statItem, j) => {
+                  const statistic = statItem.split("__")[1];
+                  const statisticBefore = statItem.split("__")[0];
+                  const statisticAfter = statItem.split("__")[2];
+                  return (
+                    <div
+                      key={`${story.anchor}-statGroup${i}Item-${j}`}
+                      className={`inline-flex flex-col gap-0 text-xs`}
                     >
-                      {statistic}
-                    </span>
-                    <span>{statisticAfter}</span>
-                  </div>
-                );
-              })}
+                      <span>{statisticBefore}</span>
+                      <span
+                        className={`text-3xl font-serif font-light`}
+                      >
+                        {statistic}
+                      </span>
+                      <span>{statisticAfter}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>}
     </div>
-  );
+  )};
 
   // TODO: convert into scroll animation component
   const images =
@@ -136,14 +138,16 @@ const StorySection = ({
             </div>
           </div>
 
-          <div className={`col-span-4 md:col-span-2 row-start-2 lg:row-start-auto h-max lg:sticky -z-10 lg:top-[212px] ${bgStyles}`}>
-            <div className={`relative`}>
-              <StatEl />
+          {colorTheme !== 'gold' &&
+            <div className={`col-span-4 md:col-span-2 row-start-2 lg:row-start-auto h-max lg:sticky -z-10 lg:top-[212px] ${bgStyles}`}>
+              <div className={`relative`}>
+                <StatEl />
+              </div>
             </div>
-          </div>
+          }
 
           <div
-            className={`col-span-full lg:col-span-5 row-start-1 lg:row-start-auto lg:order-last flex flex-col gap-5 h-max sticky -z-20 lg:top-[212px]`}
+            className={`col-span-full ${colorTheme == 'gold' ? `lg:col-span-6 lg:col-start-7` : `lg:col-span-5 lg:row-start-auto`} row-start-1 lg:order-last flex flex-col gap-5 h-max sticky -z-20 lg:top-[212px]`}
           >
             <div ref={imageRef} style={{height: `${imageHeight}px`}} className={`relative max-w-[616px]`}>
               {/* TODO: convert into scroll animation component */}

@@ -75,6 +75,12 @@ const ReportContent = ({ docData, docLinks, variant, reportYear, isMobileLandsca
       [BLOCKS.HEADING_4]: (node, children) => (
         <h4 className={`type-preset-5 ${headerStyle}`}>{children}</h4>
       ),
+      [BLOCKS.HEADING_5]: (node, children) => (
+        <p className={`${pSize} font-bold text-black mt-4`}>{children}</p>
+      ),
+      [BLOCKS.HEADING_6]: (node, children) => (
+        <p className={`${pSize} mb-4`}>{children}</p>
+      ),
 
       [BLOCKS.QUOTE]: (node, children) => {
         return <PostPullQuote body={children} variant={variant} />;

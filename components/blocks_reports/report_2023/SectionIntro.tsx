@@ -58,9 +58,10 @@ const SectionIntro = ({
   const [sectionPct, setSectionPct] = useState(0);
 
   let currentSection = section.anchor == activeSection;
-  let sectionList = reportSections.filter((block) => {
+  let allSections = reportSections.filter((block) => {
     if (block.type == 'ReportIllustrationOverlaySubsection') return block
-  }).map((block) => block.anchor)
+  })
+  let sectionAnchorsList = allSections.map((block) => block.anchor)
 
   useEffect(() => {
     if (currentSection) {
@@ -124,9 +125,9 @@ const SectionIntro = ({
   };
 
   let handleNextSection = (position) => {
-    let index = sectionList.indexOf(activeSection);
+    let index = sectionAnchorsList.indexOf(activeSection);
     let nextSection =
-      index < sectionList.length - 1 ? sectionList[index + 1] : "conclusion";
+      index < sectionAnchorsList.length - 1 ? sectionAnchorsList[index + 1] : "conclusion";
 
     setActiveSection(nextSection);
     if ((index == 0 && position == "top") || nextSection == "conclusion") {
@@ -144,14 +145,14 @@ const SectionIntro = ({
   };
 
   let handlePrevSection = () => {
-    let index = sectionList.indexOf(activeSection);
-    let prevSection = index == 0 ? null : sectionList[index - 1];
+    let index = sectionAnchorsList.indexOf(activeSection);
+    let prevSection = index == 0 ? null : sectionAnchorsList[index - 1];
 
     if (index == 0) {
       setActiveStory(null);
       router.push({hash: ''})
     } else if (index == 1) {
-      setActiveStory("gov-services--pbr-2023-intro");
+      setActiveStory("future--intro");
     } else {
       setActiveStory((prevStory) => {
         if (prevStory) {
@@ -277,7 +278,7 @@ const SectionIntro = ({
             </div>
 
             <div className="bg-white">
-              <div className={`relative z-0 animate-fadeIn2 bg-${section.colorTheme}-50`}>
+              <div className={`relative z-0 animate-fadeIn2 ${section.themeNum == 1 ? `` : `bg-${section.colorTheme}-50`}`}>
                 <div className={`sticky top-[60px] md:top-[80px] lg:top-[100px] z-40`}>
                   {activeStory && (
                     <div
@@ -308,7 +309,7 @@ const SectionIntro = ({
 
                 {isSectionOpen && activeStory && (
                   <div className={`pb-28 relative z-30`}>
-                    <div className={`responsive-container relative text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}>
+                    <div className={`responsive-container relative ${section.themeNum == 1 ? `text-gold-pbrcustomdark bg-white` : `text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}`}>
                       <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-48 relative`}>
                         {section.items
                           .filter((story) => story.hideStory !== true)
