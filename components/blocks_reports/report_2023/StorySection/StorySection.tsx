@@ -193,7 +193,7 @@ const StorySection = ({
             </div>
 
             {story.imageCaption &&
-              <div className={`w-full md:w-2/5 type-preset-8 font-serif`}>
+              <div className={`w-full md:w-2/5 text-xs font-serif`}>
                 {story.imageCaption}
               </div>
             }

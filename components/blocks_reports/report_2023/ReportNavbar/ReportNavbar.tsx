@@ -47,16 +47,17 @@ const ReportNavbar = ({
     <div
       className={`block sticky top-0 z-50 w-full h-full bg-white transition-all duration-100 ${activeSection ? `` : `border-b-2 border-gray-300`} ${!isShowingMenu && "overflow-clip"}`}
     >
-      <div className="min-h-[50px] md:min-h-[80px] lg:min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
+      <div className="h-[50px] md:min-h-[80px] lg:min-h-[100px] responsive-container grid items-center grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8`">
         <div className="hidden md:block col-span-2">
           <Logo isMobile={false} />
         </div>
-        <div className="block md:hidden col-span-2">
+        <div className="block md:hidden col-span-1">
           <Logo isMobile={true} />
         </div>
+
         <a
           href="/public-benefit-reports/2023"
-          className="col-span-3 md:col-span-4 w-[120%] md:w-full flex flex-col -ml-3.5 md:ml-0 type-preset-8 md:type-preset-6 font-sans text-black tracking-[0.015em]"
+          className="ml-8 md:ml-0 col-span-3 md:col-span-4 w-[120%] md:w-full flex flex-col text-xs md:type-preset-6 font-sans text-black tracking-[0.015em]"
           onClick={() => {
             if (isShowingMenu) setIsShowingMenu(false);
           }}
@@ -64,6 +65,7 @@ const ReportNavbar = ({
           <span className="font-semibold">Public Benefit Report</span>
           <span className="">2023</span>
         </a>
+
         <div className="col-span-1 col-start-6 md:col-start-12 flex justify-end">
           <button
             aria-label="menu"
@@ -71,7 +73,7 @@ const ReportNavbar = ({
             onClick={() => {
               setIsShowingMenu(!isShowingMenu);
             }}
-            className="h-[60px] pl-auto"
+            className="pl-auto"
           >
             {isShowingMenu ? <CloseSVG /> : <OpenSVG />}
           </button>

@@ -253,20 +253,11 @@ const SectionIntro = ({
         </a>
       </div>
 
-        <div className={`${!isSectionOpen ? `hidden` : ``}`}>
-          <div className={`flex flex-col gap-4 md:gap-8`}>
-            <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-snug font-light pr-12 md:pr-0`}>
-              {section.themeNum == 1 ? (
-                <SlideDown>
-                  <div
-                    className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
-                  >
-                    <div className={"w-full md:w-4/5 lg:w-2/3"}>
-                      <MarkdownComponent content={section.body} />
-                    </div>
-                  </div>
-                </SlideDown>
-              ) : (
+      <div className={`${!isSectionOpen ? `hidden` : ``}`}>
+        <div className={`flex flex-col gap-4 md:gap-8`}>
+          <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-snug font-light pr-12 md:pr-0`}>
+            {section.themeNum == 1 ? (
+              <SlideDown>
                 <div
                   className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
                 >
@@ -274,76 +265,85 @@ const SectionIntro = ({
                     <MarkdownComponent content={section.body} />
                   </div>
                 </div>
-              )}
-            </div>
-
-            <div className="bg-white">
-              <div className={`relative z-0 animate-fadeIn2 ${section.themeNum == 1 ? `` : `bg-${section.colorTheme}-50`}`}>
-                <div className={`sticky top-[60px] md:top-[80px] lg:top-[100px] z-40`}>
-                  {activeStory && (
-                    <div
-                      className={`w-full h-1 overflow-hidden ${
-                        currentSection ? `bg-${section.colorTheme}-50` : `bg-white`
-                      }`}
-                    >
-                      <div
-                        className={`h-full ${
-                          currentSection
-                            ? `${section.themeNum == 1 ? `bg-gold-pbrcustomdark` : `bg-${section.colorTheme}-900`}`
-                            : `bg-white`
-                        }`}
-                        style={{ width: `${sectionPct}%` }}
-                      ></div>
-                    </div>
-                  )}
-
-                  <StoriesDropdownMenu
-                    items={section.items}
-                    colorTheme={section.colorTheme}
-                    sectionAnchor={section.anchor}
-                    activeStory={activeStory}
-                    setActiveStory={setActiveStory}
-                    parentSectionOpen={isSectionOpen}
-                  />
+              </SlideDown>
+            ) : (
+              <div
+                className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
+              >
+                <div className={"w-full md:w-4/5 lg:w-2/3"}>
+                  <MarkdownComponent content={section.body} />
                 </div>
+              </div>
+            )}
+          </div>
 
-                {isSectionOpen && activeStory && (
-                  <div className={`pb-28 relative z-30`}>
-                    <div className={`responsive-container relative ${section.themeNum == 1 ? `text-gold-pbrcustomdark bg-white` : `text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}`}>
-                      <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-48 relative`}>
-                        {section.items
-                          .filter((story) => story.hideStory !== true)
-                          .map((story) => {
-                            return (
-                              <li key={story.anchor} className={`border-t-[1px] ${storyBorderStyles} first:border-transparent`}>
-                                <StorySection
-                                  key={story.anchor}
-                                  story={story}
-                                  colorTheme={section.colorTheme}
-                                  sectionAnchor={section.anchor}
-                                />
-                              </li>
-                            );
-                          })}
-                      </ul>
+          <div className="bg-white">
+            <div className={`relative z-0 animate-fadeIn2 ${section.themeNum == 1 ? `` : `bg-${section.colorTheme}-50`}`}>
+              <div className={`sticky top-[50px] md:top-[80px] lg:top-[100px] z-40`}>
+                {activeStory && (
+                  <div
+                    className={`w-full h-1 overflow-hidden ${
+                      currentSection ? `bg-${section.colorTheme}-50` : `bg-white`
+                    }`}
+                  >
+                    <div
+                      className={`h-full ${
+                        currentSection
+                          ? `${section.themeNum == 1 ? `bg-gold-pbrcustomdark` : `bg-${section.colorTheme}-900`}`
+                          : `bg-white`
+                      }`}
+                      style={{ width: `${sectionPct}%` }}
+                    ></div>
+                  </div>
+                )}
 
-                      <div className={`mt-8 relative ml-auto w-full md:w-fit`}>
-                        <div className="">
-                          <NavigationArrows
-                            color={section.colorTheme}
-                            handleNextSection={() => handleNextSection("bottom")}
-                            handlePrevSection={handlePrevSection}
-                            layout="horizontal"
-                          />
-                        </div>
+                <StoriesDropdownMenu
+                  items={section.items}
+                  colorTheme={section.colorTheme}
+                  sectionAnchor={section.anchor}
+                  activeStory={activeStory}
+                  setActiveStory={setActiveStory}
+                  parentSectionOpen={isSectionOpen}
+                />
+              </div>
+
+              {isSectionOpen && activeStory && (
+                <div className={`pb-28 relative z-30`}>
+                  <div className={`responsive-container relative ${section.themeNum == 1 ? `text-gold-pbrcustomdark bg-white` : `text-${section.colorTheme}-900 bg-${section.colorTheme}-50`}`}>
+                    <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-48 relative`}>
+                      {section.items
+                        .filter((story) => story.hideStory !== true)
+                        .map((story) => {
+                          return (
+                            <li key={story.anchor} className={`border-t-[1px] ${storyBorderStyles} first:border-transparent`}>
+                              <StorySection
+                                key={story.anchor}
+                                story={story}
+                                colorTheme={section.colorTheme}
+                                sectionAnchor={section.anchor}
+                              />
+                            </li>
+                          );
+                        })}
+                    </ul>
+
+                    <div className={`mt-8 relative ml-auto w-full md:w-fit`}>
+                      <div className="">
+                        <NavigationArrows
+                          color={section.colorTheme}
+                          handleNextSection={() => handleNextSection("bottom")}
+                          handlePrevSection={handlePrevSection}
+                          layout="horizontal"
+                        />
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };
