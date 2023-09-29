@@ -121,7 +121,7 @@ const ReportFooter2023 = ({
             </div>
           </div>
 
-          <div className="w-full pt-2xl">
+          <div className="w-full border-t-[1px] border-gray-400 pt-2xl">
             <div
               className={
                 "responsive-container flex md:items-center md:justify-between flex-col-reverse sm:flex-row gap-2xl md:gap-0"

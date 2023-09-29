@@ -123,7 +123,8 @@ const SectionIntro = ({
     setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
-  let handleNextSection = (position) => {
+  let handleNextSection = (position, e) => {
+    e.preventDefault()
     let index = sectionAnchorsList.indexOf(activeSection);
     let nextSection =
       index < sectionAnchorsList.length - 1 ? sectionAnchorsList[index + 1] : "conclusion";
@@ -143,7 +144,8 @@ const SectionIntro = ({
     setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
-  let handlePrevSection = () => {
+  let handlePrevSection = (e) => {
+    e.preventDefault();
     let index = sectionAnchorsList.indexOf(activeSection);
     let prevSection = index == 0 ? null : sectionAnchorsList[index - 1];
 
@@ -220,7 +222,7 @@ const SectionIntro = ({
             {isSectionOpen ? (
               <div className="lg:absolute top-4 right-0">
                 <NavigationArrows
-                  handleNextSection={() => handleNextSection("top")}
+                  handleNextSection={(e) => handleNextSection("top", e)}
                   handlePrevSection={handlePrevSection}
                 />
               </div>
@@ -312,7 +314,7 @@ const SectionIntro = ({
                     <ul id={`${section.anchor}--stories-list`} className={`w-full flex flex-col gap-48 relative`}>
                       {section.items
                         .filter((story) => story.hideStory !== true)
-                        .map((story) => {
+                        .map((story, i) => {
                           return (
                             <li key={story.anchor} className={`border-t-[1px] ${storyBorderStyles} first:border-transparent`}>
                               <StorySection
@@ -330,7 +332,7 @@ const SectionIntro = ({
                       <div className="">
                         <NavigationArrows
                           color={section.colorTheme}
-                          handleNextSection={() => handleNextSection("bottom")}
+                          handleNextSection={(e) => handleNextSection("bottom", e)}
                           handlePrevSection={handlePrevSection}
                           layout="horizontal"
                         />

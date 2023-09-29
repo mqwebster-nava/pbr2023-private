@@ -37,7 +37,7 @@ const ReportConclusion2023 = ({
       {activeSection == "conclusion" ? (
         <section
           id={anchor}
-          className={`text-white relative scroll-mt-[70px]`}
+          className={`text-white relative scroll-mt-[100vh]`}
         >
           <div className={`w-full bg-purple-900`}>
             <div className="responsive-container pt-8 pb-16 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
