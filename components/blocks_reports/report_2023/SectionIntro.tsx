@@ -202,15 +202,6 @@ const SectionIntro = ({
     <section
       id={`${section.anchor}`}
       className={`w-full transition-colors group scroll-mt-[100vh] ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
-      // onMouseOver={(e) => {
-      //   console.log(e.currentTarget.id)
-      //   const sections = document.querySelectorAll('section')
-      //   console.log(sections)
-      //   sections.forEach((section) => {
-          
-      //   })
-      // }}
-      // onMouseLeave={() => {}}
     >
       <div className={`responsive-container w-full relative`}>
         <a

@@ -3,7 +3,7 @@ import { useOnScreen } from "utils/useOnScreen";
 import Image from "next/image";
 import classNames from "classnames";
 
-import Callout from "components/blocks_reports/ReportContent/Callout";
+import Callout2023 from "components/blocks_reports/ReportContent/Callout2023";
 import ReportContent from "components/blocks_reports/ReportContent/ReportContent";
 import { getOffsetPct } from "../_utils";
 
@@ -46,16 +46,6 @@ const StorySection = ({
 
   const calloutText = story.featuredCallOut && story.featuredCallOut.body;
 
-  const statList = calloutText?.split("\n\n---\n\n");
-
-  const borderStyles = classNames({
-      "border-gold-pbrcustomdark": colorTheme == "gold",
-      "border-plum-200": colorTheme == "plum",
-      "border-sage-200": colorTheme == "sage",
-      "border-purple-200": colorTheme == "purple",
-      "border-navy-200": colorTheme == "navy",
-    });
-
   const bgStyles = classNames({
     "bg-white": colorTheme == "gold",
     "bg-plum-50": colorTheme == "plum",
@@ -63,45 +53,6 @@ const StorySection = ({
     "bg-purple-50": colorTheme == "purple",
     "bg-navy-50": colorTheme == "navy",
   })
-
-  const StatEl = () => {return (
-    <div>
-      {statList && <div className={`flex flex-col lg:px-4`}>
-        {statList.map((stat, i) => {
-          let stats = stat.split("\n");
-          return (
-            <div
-              key={`${story.anchor}-statGroup-${i}`}
-              className={`w-full h-full flex flex-col bg-${colorTheme}-50 relative`}
-            >
-              {i > 0 && <hr className={`my-8 w-3/5 h-[1px] border-t-[1px] ${borderStyles}`} />}
-              <div className={`flex flex-col gap-2`}>
-                {stats.map((statItem, j) => {
-                  const statistic = statItem.split("__")[1];
-                  const statisticBefore = statItem.split("__")[0];
-                  const statisticAfter = statItem.split("__")[2];
-                  return (
-                    <div
-                      key={`${story.anchor}-statGroup${i}Item-${j}`}
-                      className={`inline-flex flex-col gap-0 text-xs`}
-                    >
-                      <span>{statisticBefore}</span>
-                      <span
-                        className={`text-5xl leading-[1.125] font-serif font-light`}
-                      >
-                        {statistic}
-                      </span>
-                      <span className="pt-2">{statisticAfter}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>}
-    </div>
-  )};
 
   // TODO: convert into scroll animation component
   const images =
@@ -141,9 +92,9 @@ const StorySection = ({
           </div>
 
           {colorTheme !== 'gold' &&
-            <div className={`col-span-4 md:col-span-2 row-start-2 lg:row-start-auto h-max lg:sticky -z-10 lg:top-[212px] ${bgStyles}`}>
+            <div className={`col-span-full md:col-span-2 row-start-2 lg:row-start-auto h-max lg:sticky -z-10 lg:top-[212px] ${bgStyles}`}>
               <div className={`relative`}>
-                <StatEl />
+                <Callout2023 variant={story.featuredCallOut.variant} body={calloutText} anchor={story.anchor} colorTheme={colorTheme} attribution={story.featuredCallOut.attribution} attributionRole={story.featuredCallOut.attributionRole} />
               </div>
             </div>
           }

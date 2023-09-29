@@ -12,7 +12,6 @@ const ReportFooter2023 = ({
   setActiveStory,
 }) => {
   let currentYear = new Date().getFullYear();
-  const SignupBrand = "/images/Sign-up-Brand-pattern-V02.svg";
 
   const menuItemClick = (e) => {
     let clickedItem = reportSections.find(
