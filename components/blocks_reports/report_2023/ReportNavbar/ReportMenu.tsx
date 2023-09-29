@@ -33,7 +33,7 @@ const ReportMenuCol = ({
 }) => {
   const simpleRow = () => {
     return (
-      <div className={"col-span-2"}>
+      <div className={"col-span-1 row-span-full"}>
         <a
           className={`text-${textColor} gap-lg py-lg group `}
           onClick={onClick}
@@ -41,11 +41,24 @@ const ReportMenuCol = ({
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-6 ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`type-preset-6 min-h-[100px] ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
           >
             {title}
           </h2>
         </a>
+
+        <ul className={`row-span-3 text-sm`}>
+          <LinkListItem
+            key={`/files/2023NavaPublicBenefitReport.pdf-menu`}
+            href={`/files/2023NavaPublicBenefitReport.pdf`}
+            variant={"default"}
+            hoverStyle={"underlined"}
+            color={"black"}
+            isBolded={true}
+          >
+            Download PDF
+          </LinkListItem>
+        </ul>
       </div>
     );
   };
@@ -53,7 +66,7 @@ const ReportMenuCol = ({
   return stories == null ? (
     simpleRow()
   ) : (
-    <div className={`col-span-2 row-span-full`}>
+    <div className={`col-span-1 row-span-full`}>
       <div
         className={`${textColor}`}
       >
@@ -71,7 +84,7 @@ const ReportMenuCol = ({
           </h2>
         </a>
 
-        <ul className={`row-span-3`}>
+        <ul className={`row-span-3 text-sm`}>
           {stories
             .filter((story) => story.hideStory !== true)
             .map((story) => {
@@ -100,52 +113,53 @@ const ReportMenuCol = ({
 
 const DesktopMenu = ({ contentBlocks, activeSection, onClick }) => {
   return (
-    <div className="responsive-container hidden lg:grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
-      {contentBlocks
-        .filter(
-          (entry) =>
-            entry.__typename === "ReportIllustrationOverlaySubsection"
-        )
-        .map((section, i) => {
-          const color = section.colorTheme ?? "purple";
-          const bg = `bg-${color}-50`;
-          const textColor = classNames({
-            "text-gold-pbrcustomdark": section.colorTheme == "gold",
-            "text-plum-500": section.colorTheme == "plum",
-            "text-sage-500": section.colorTheme == "sage",
-            "text-purple-500": section.colorTheme == "purple",
-            "text-navy-500": section.colorTheme == "navy",
-          });
-
-          return (
-            <ReportMenuCol
-              key={section.anchor}
-              title={section.title}
-              anchor={section.anchor}
-              themeNum={i + 1}
-              bgColor={bg}
-              colorTheme={color}
-              textColor={textColor}
-              fontStyle={"font-bold"}
-              stories={section.items.filter(
-                (story) => story.hideStory !== true
-              )}
-              onClick={onClick}
-              activeSection={activeSection}
-            />
-          );
-        })}
-      <ReportMenuCol
-        title={"Conclusion"}
-        anchor={"conclusion"}
-        themeNum={null}
-        bgColor={`bg-purple-50`}
-        textColor={`purple-600`}
-        fontStyle={"font-bold"}
-        stories={null}
-        onClick={onClick}
-        activeSection={activeSection}
-      />
+    <div className="responsive-container hidden lg:grid grid-cols-12 ">
+      <div className={`grid grid-cols-5 gap-8 col-span-full`}>
+        {contentBlocks
+          .filter(
+            (entry) =>
+              entry.__typename === "ReportIllustrationOverlaySubsection"
+          )
+          .map((section, i) => {
+            const color = section.colorTheme ?? "purple";
+            const bg = `bg-${color}-50`;
+            const textColor = classNames({
+              "text-gold-pbrcustomdark": section.colorTheme == "gold",
+              "text-plum-900": section.colorTheme == "plum",
+              "text-sage-900": section.colorTheme == "sage",
+              "text-purple-900": section.colorTheme == "purple",
+              "text-navy-900": section.colorTheme == "navy",
+            });
+            return (
+              <ReportMenuCol
+                key={section.anchor}
+                title={section.title}
+                anchor={section.anchor}
+                themeNum={i + 1}
+                bgColor={bg}
+                colorTheme={color}
+                textColor={textColor}
+                fontStyle={"font-bold"}
+                stories={section.items.filter(
+                  (story) => story.hideStory !== true
+                )}
+                onClick={onClick}
+                activeSection={activeSection}
+              />
+            );
+          })}
+        <ReportMenuCol
+          title={"Conclusion"}
+          anchor={"conclusion"}
+          themeNum={null}
+          bgColor={`bg-purple-50`}
+          textColor={`purple-600`}
+          fontStyle={"font-bold"}
+          stories={null}
+          onClick={onClick}
+          activeSection={activeSection}
+        />
+      </div>
     </div>
   )
 }
@@ -172,10 +186,10 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
         });
         const borderStyles = classNames({
           "border-gold-pbrcustomdark": section.colorTheme == "gold",
-          "border-plum-500": section.colorTheme == "plum",
-          "border-sage-500": section.colorTheme == "sage",
-          "border-purple-500": section.colorTheme == "purple",
-          "border-navy-500": section.colorTheme == "navy",
+          "border-plum-900": section.colorTheme == "plum",
+          "border-sage-900": section.colorTheme == "sage",
+          "border-purple-900": section.colorTheme == "purple",
+          "border-navy-900": section.colorTheme == "navy",
         });
 
         return (

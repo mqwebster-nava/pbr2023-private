@@ -53,7 +53,7 @@ const ReportConclusion2023 = ({
 
               <div
                 id={"conclusion-text"}
-                className="col-span-5 md:col-span-6 md:col-start-7 pt-8 font-serif text-base leading-5 md:text-3xl md:leading-normal font-light"
+                className="col-span-5 md:col-span-8 pt-8 font-serif text-base leading-5 md:text-3xl md:leading-normal font-light"
               >
                 {richBody.json.content[0].content[0].value}
               </div>

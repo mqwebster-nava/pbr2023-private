@@ -87,11 +87,11 @@ const StorySection = ({
                     >
                       <span>{statisticBefore}</span>
                       <span
-                        className={`text-3xl font-serif font-light`}
+                        className={`text-5xl leading-[1.125] font-serif font-light`}
                       >
                         {statistic}
                       </span>
-                      <span>{statisticAfter}</span>
+                      <span className="pt-2">{statisticAfter}</span>
                     </div>
                   );
                 })}
@@ -193,7 +193,7 @@ const StorySection = ({
             </div>
 
             {story.imageCaption &&
-              <div className={`w-full md:w-2/5 text-xs font-serif`}>
+              <div className={`w-full md:w-3/5 text-xs font-serif`}>
                 {story.imageCaption}
               </div>
             }

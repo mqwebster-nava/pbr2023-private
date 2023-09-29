@@ -51,7 +51,7 @@ const ReportFooter2023 = ({
 
   return (
     <footer
-      className={`flex flex-col divide-y-[1px] divide-gray-900 w-full h-full bg-gray-100 ${
+      className={`flex flex-col w-full h-full bg-gray-100 ${
         activeStory && `hidden`
       }`}
     >
@@ -68,17 +68,17 @@ const ReportFooter2023 = ({
       <div className="py-2xl bg-gray-200">
         <div className="font-sans text-black">
           <div className="responsive-container w-full flex pb-2xl flex-col md:flex-row">
-            <div className="w-full md:w-1/2 ">
+            <div className="w-full md:w-1/2">
               <h3 className="font-sans type-preset-6 font-bold pb-lg">
                 Stay in touch
               </h3>
-              <p className={`2 font-sans mr-3xl type-preset-6  mb-md`}>
+              <p className={`font-sans mr-3xl type-preset-6 mb-md`}>
                 Sign up for our newsletter to find out about career
                 opportunities, new partnerships, and news from the broader civic
                 tech community.
               </p>
             </div>
-            <div className="w-full md:w-1/2 ">
+            <div className="w-full md:w-1/2">
               <form
                 action="https://navapbc.us10.list-manage.com/subscribe/post"
                 method="post"
@@ -122,7 +122,7 @@ const ReportFooter2023 = ({
             </div>
           </div>
 
-          <div className="w-full border-t-[1px] border-gray-400 pt-2xl">
+          <div className="w-full pt-2xl">
             <div
               className={
                 "responsive-container flex md:items-center md:justify-between flex-col-reverse sm:flex-row gap-2xl md:gap-0"

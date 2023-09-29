@@ -18,7 +18,7 @@ const NavigationArrows = ({
   const prevArrowRef = useRef(null);
 
   return (
-    <div className={`w-full flex md:flex-col md:gap-8 ${layout == 'vertical' ? `flex-col gap-4` : `flex-row-reverse justify-between`}`}>
+    <div className={`w-full md:relative flex md:flex-col md:gap-8 ${layout == 'vertical' ? `flex-col gap-8` : `flex-row-reverse justify-between`}`}>
       <button
         disabled={handleNextSection ? false : true}
         onMouseOver={() => {

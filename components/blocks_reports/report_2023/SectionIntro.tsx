@@ -19,6 +19,15 @@ const SectionIntro = ({
   reportSections,
 }) => {
   const router = useRouter();
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
+  const [isSectionHidden, setIsSectionHidden] = useState(false);
+  const [sectionPct, setSectionPct] = useState(0);
+
+  let currentSection = section.anchor == activeSection;
+  let allSections = reportSections.filter((block) => {
+    if (block.type == 'ReportIllustrationOverlaySubsection') return block
+  })
+  let sectionAnchorsList = allSections.map((block) => block.anchor)
 
   const updateActive = (url) => {
     if (url == undefined) return;
@@ -52,16 +61,6 @@ const SectionIntro = ({
     const url = router.asPath.split('#')[1];
     window.addEventListener('load', () => {updateActive(url)})
   }, [router.asPath])
-
-  const [isSectionOpen, setIsSectionOpen] = useState(false);
-  const [isSectionHidden, setIsSectionHidden] = useState(false);
-  const [sectionPct, setSectionPct] = useState(0);
-
-  let currentSection = section.anchor == activeSection;
-  let allSections = reportSections.filter((block) => {
-    if (block.type == 'ReportIllustrationOverlaySubsection') return block
-  })
-  let sectionAnchorsList = allSections.map((block) => block.anchor)
 
   useEffect(() => {
     if (currentSection) {
@@ -121,7 +120,7 @@ const SectionIntro = ({
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
-    setTimeout(() => {window.scrollTo(0, 0)}, 75)
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   let handleNextSection = (position) => {
@@ -141,7 +140,7 @@ const SectionIntro = ({
       });
     }
 
-    setTimeout(() => {window.scrollTo(0, 0)}, 75)
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   let handlePrevSection = () => {
@@ -163,7 +162,7 @@ const SectionIntro = ({
     }
 
     setActiveSection(prevSection);
-    setTimeout(() => {window.scrollTo(0, 0)}, 75)
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   const openStyles = isSectionOpen
@@ -203,6 +202,15 @@ const SectionIntro = ({
     <section
       id={`${section.anchor}`}
       className={`w-full transition-colors group scroll-mt-[100vh] ${borderStyles} ${openStyles} ${bgStyles} ${isSectionHidden ? `hidden` : ``} ${activeSection ? `duration-[2000ms]` : ` duration-[0ms]`}`}
+      // onMouseOver={(e) => {
+      //   console.log(e.currentTarget.id)
+      //   const sections = document.querySelectorAll('section')
+      //   console.log(sections)
+      //   sections.forEach((section) => {
+          
+      //   })
+      // }}
+      // onMouseLeave={() => {}}
     >
       <div className={`responsive-container w-full relative`}>
         <a
@@ -211,15 +219,15 @@ const SectionIntro = ({
           onClick={(e) => activeSection ? e.preventDefault() : toggleSection()}
         >
           <div
-            className={`relative min-h-[72px] lg:min-h-[200px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
+            className={`relative min-h-[72px] md:min-h-[144px] lg:min-h-[200px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] pr-0 sm:pr-6 font-sans font-black text-3xl !leading-none tracking-[0.015em] sm:text-5xl md:text-6xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
+            <span className="max-w-[1096px] pr-6 font-sans font-black text-3xl !leading-none tracking-[0px] md:tracking-[-0.5px] sm:text-5xl md:text-6xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
               {section.title}
             </span>
 
             {/* TODO: Look into "Read Stories" arrow rotating 90deg into "Next" nav arrow */}
             {isSectionOpen ? (
-              <div className="">
+              <div className="lg:absolute top-4 right-0">
                 <NavigationArrows
                   handleNextSection={() => handleNextSection("top")}
                   handlePrevSection={handlePrevSection}
@@ -255,7 +263,7 @@ const SectionIntro = ({
 
       <div className={`${!isSectionOpen ? `hidden` : ``}`}>
         <div className={`flex flex-col gap-4 md:gap-8`}>
-          <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-snug font-light pr-12 md:pr-0`}>
+          <div className={`font-serif mt-8 text-base leading-5 md:text-3xl md:leading-tight font-light pr-12 md:pr-0`}>
             {section.themeNum == 1 ? (
               <SlideDown>
                 <div
@@ -268,7 +276,7 @@ const SectionIntro = ({
               </SlideDown>
             ) : (
               <div
-                className={`responsive-container animate-fadeIn2 w-full flex lg:justify-end`}
+                className={`responsive-container min-h-[124px] lg:min-h-[188px] animate-fadeIn2 w-full flex lg:justify-end`}
               >
                 <div className={"w-full md:w-4/5 lg:w-2/3"}>
                   <MarkdownComponent content={section.body} />
@@ -289,7 +297,7 @@ const SectionIntro = ({
                     <div
                       className={`h-full ${
                         currentSection
-                          ? `${section.themeNum == 1 ? `bg-gold-pbrcustomdark` : `bg-${section.colorTheme}-900`}`
+                          ? `bg-${section.colorTheme}-900`
                           : `bg-white`
                       }`}
                       style={{ width: `${sectionPct}%` }}
