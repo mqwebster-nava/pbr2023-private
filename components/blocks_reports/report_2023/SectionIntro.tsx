@@ -141,7 +141,7 @@ const SectionIntro = ({
       });
     }
 
-    setTimeout(() => {window.scrollTo(0, 0)}, 100)
+    setTimeout(() => {window.scrollTo(0, 0)}, 75)
   };
 
   let handlePrevSection = (e) => {
