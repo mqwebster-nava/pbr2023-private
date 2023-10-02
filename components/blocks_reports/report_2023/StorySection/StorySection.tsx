@@ -8,6 +8,7 @@ import ReportContent from "components/blocks_reports/ReportContent/ReportContent
 import { getOffsetPct } from "../_utils";
 
 const StorySection = ({
+  i,
   story,
   colorTheme,
   sectionAnchor,
@@ -16,6 +17,8 @@ const StorySection = ({
   const [imageHeight, setImageHeight] = useState(0);
   const storyRef = useRef(null);
   const imageRef = useRef(null);
+
+  const storyIndex = i;
 
   const handleResize = () => setImageHeight(Math.round(imageRef.current?.offsetWidth * (435/616)))
 
@@ -80,7 +83,7 @@ const StorySection = ({
                 isMobileLandscape={false}
               />
             </div>
-            <div className={`font-serif font-light text-sm leading-[18px] md:text-base md:leading-[25.2px]`}>
+            <div className={`font-serif font-light leading-[18px] md:leading-[25.2px]`}>
               <ReportContent
                 docData={story.body.json}
                 docLinks={story.body.links}
@@ -105,40 +108,29 @@ const StorySection = ({
             <div ref={imageRef} style={{height: `${imageHeight}px`}} className={`relative max-w-[616px]`}>
               {/* TODO: convert into scroll animation component */}
               {images.map((image, i) => (
-                <div key={`${storyId}-image-${i}`} className={``}>
-                  <div
-                    key={`${storyId}-image-sm-${i}`}
-                    className={`block lg:hidden w-full absolute object-cover transition-opacity duration-500 ease-linear ${
-                      (storyPct / 100) + (4 / images.length) > (i + 1) / images.length
-                        ? `opacity-100`
-                        : `opacity-0`
-                    }`}
-                  >
-                    <Image
-                      src={image.url}
-                      width={616}
-                      height={435}
-                      alt=""
-                      className={``}
-                    />
-                  </div>
-
-                  <div
-                    key={`${storyId}-image-lg-${i}`}
-                    className={`hidden lg:block w-full absolute object-cover transition-opacity duration-500 ease-linear ${
-                      (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
-                        ? `opacity-100`
-                        : `opacity-0`
-                    }`}
-                  >
-                    <Image
-                      src={image.url}
-                      width={616}
-                      height={435}
-                      alt=""
-                      className={``}
-                    />
-                  </div>
+                <div
+                  key={`${storyId}-image-${i}`}
+                  className={`w-full absolute object-cover transition-opacity duration-500 ease-linear ${
+                    storyIndex == 0 ?
+                    (storyPct / 100) + (3.825 / images.length) > (i + 1) / images.length
+                      ? `opacity-100`
+                      : `opacity-0` :
+                    (storyPct / 100) + (4.25 / images.length) > (i + 1) / images.length
+                      ? `opacity-100`
+                      : `opacity-0`
+                  } lg:${
+                    (storyPct / 100) + (1 / images.length) > (i + 1) / images.length
+                      ? `opacity-100`
+                      : `opacity-0`
+                  }`}
+                >
+                  <Image
+                    src={image.url}
+                    width={616}
+                    height={435}
+                    alt=""
+                    className={``}
+                  />
                 </div>
               ))}
             </div>

@@ -141,7 +141,7 @@ const SectionIntro = ({
       });
     }
 
-    setTimeout(() => {window.scrollTo(0, 0)}, 75)
+    setTimeout(() => {window.scrollTo(0, 0)}, 50)
   };
 
   let handlePrevSection = (e) => {
@@ -319,6 +319,7 @@ const SectionIntro = ({
                             <li key={story.anchor} className={`border-t-[1px] ${storyBorderStyles} first:border-transparent`}>
                               <StorySection
                                 key={story.anchor}
+                                i={i}
                                 story={story}
                                 colorTheme={section.colorTheme}
                                 sectionAnchor={section.anchor}
