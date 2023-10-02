@@ -6,11 +6,12 @@ export interface FormInputButtonProps {
   id: string;
   onClick?: any;
   isFullWidth?: boolean;
+  color?: string;
 }
 
 
 const FormInputButton = ({
-    value, name, id, onClick=null, isFullWidth=false
+    value, name, id, onClick=null, isFullWidth=false, color="default"
   }: FormInputButtonProps) => {
     
     const isFullW = classNames({
@@ -30,8 +31,8 @@ const FormInputButton = ({
             type-preset-6 leading-6
             transition duration-150 ease-in-out flex-col
             cursor-pointer
-            text-white  bg-sage-900 hover:bg-black
-            ${isFullW}
+            text-white hover:bg-black
+            ${isFullW} ${color == 'default' ? `bg-sage-900` : `bg-gray-700`}
       `}/>
     );
   };
