@@ -40,20 +40,20 @@ const ReportConclusion2023 = ({
           className={`text-white relative scroll-mt-[100vh]`}
         >
           <div className={`w-full bg-purple-900`}>
-            <div className="responsive-container pt-8 pb-16 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
+            <div className="responsive-container relative pt-8 pb-16 grid grid-cols-6 gap-x-2.5 gap-y-8 md:grid-cols-12 md:gap-8">
               <div className="relative col-span-full h-full hidden">
                 <h2 className="text-7xl tracking-[0.015em] font-sans font-black">
                   {title}
                 </h2>
               </div>
 
-              <div className={`col-span-1 col-end-7 md:col-end-13`}>
+              <div className={`col-span-1 col-end-7 md:col-end-13 absolute top-4 right-0`}>
                 <NavigationArrows color="" handleNextSection={undefined} handlePrevSection={handlePrevSection} />
               </div>
 
               <div
                 id={"conclusion-text"}
-                className="col-span-5 md:col-span-8 pt-8 font-serif text-base leading-5 md:text-3xl md:leading-normal font-light"
+                className="col-span-5 md:col-span-8 font-serif text-base leading-5 md:text-3xl md:leading-normal font-light"
               >
                 {richBody.json.content[0].content[0].value}
               </div>

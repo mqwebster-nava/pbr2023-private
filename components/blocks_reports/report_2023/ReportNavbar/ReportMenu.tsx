@@ -41,13 +41,14 @@ const ReportMenuCol = ({
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-6 min-h-[100px] ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`type-preset-6 min-h-[88px] ${fontStyle} text-${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            data-refid={`${anchor}`}
           >
             {title}
           </h2>
         </a>
 
-        <ul className={`row-span-3 text-sm`}>
+        <ul className={`row-span-3`}>
           <LinkListItem
             key={`/files/2023NavaPublicBenefitReport.pdf-menu`}
             href={`/files/2023NavaPublicBenefitReport.pdf`}
@@ -77,14 +78,14 @@ const ReportMenuCol = ({
           aria-label={`Theme ${themeNum}, Section ${title}`}
         >
           <h2
-            className={`type-preset-6 min-h-[100px] ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
+            className={`type-preset-6 min-h-[88px] ${fontStyle} ${textColor} group-hover:underline decoration-1 group-hover:underline-offset-2`}
             data-refid={`${anchor}`}
           >
             Envisioning {title}
           </h2>
         </a>
 
-        <ul className={`row-span-3 text-sm`}>
+        <ul className={`row-span-3 border-t-[1px] border-${colorTheme}-900 divide-y-[1px] divide-${colorTheme}-900`}>
           {stories
             .filter((story) => story.hideStory !== true)
             .map((story) => {
@@ -113,7 +114,7 @@ const ReportMenuCol = ({
 
 const DesktopMenu = ({ contentBlocks, activeSection, onClick }) => {
   return (
-    <div className="responsive-container hidden lg:grid grid-cols-12 ">
+    <div className="responsive-container hidden lg:grid grid-cols-12 gap-8">
       <div className={`grid grid-cols-5 gap-8 col-span-full`}>
         {contentBlocks
           .filter(
@@ -233,7 +234,7 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
                   aria-labelledby="dropdown-menu-button"
                 >
                   <ul
-                    className={`w-full text-sm !leading-[1.1] border-t-[1px] ${borderStyles} divide-y-[1px] ${dividerStyles}`}
+                    className={`w-full !leading-[1.1] border-t-[1px] ${borderStyles} divide-y-[1px] ${dividerStyles}`}
                   >
                     {section.items.filter(
                     (story) => story.hideStory !== true
@@ -251,7 +252,7 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
                             onClick={onClick}
                             color={option.colorTheme}
                             isBolded={`#${activeSection}` == anch2}
-                            font="serif"
+                            font="sans"
                           >
                             {option.title}
                           </LinkListItem>

@@ -214,7 +214,7 @@ const SectionIntro = ({
           <div
             className={`relative min-h-[72px] md:min-h-[144px] lg:min-h-[200px] md:pb-8 flex flex-row justify-between items-baseline group-hover:text-white`}
           >
-            <span className="max-w-[1096px] pr-6 font-sans font-black text-3xl !leading-none tracking-[0px] md:tracking-[-0.5px] sm:text-5xl md:text-6xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
+            <span className="max-w-[1096px] pr-16 font-sans font-black text-3xl !leading-none tracking-[0px] md:tracking-[-0.5px] sm:text-5xl md:text-6xl lg:text-7xl relative top-[-0.4rem] sm:top-[-0.54rem] md:top-[-0.6rem] lg:top-[-0.84rem]">
               {section.title}
             </span>
 
@@ -278,9 +278,9 @@ const SectionIntro = ({
             )}
           </div>
 
-          <div className="bg-white">
+          <div className={`bg-white ${activeStory ? `` : `pb-20 md:pb-0`}`}>
             <div className={`relative z-0 animate-fadeIn2 ${section.themeNum == 1 ? `` : `bg-${section.colorTheme}-50`}`}>
-              <div className={`sticky top-[50px] md:top-[80px] lg:top-[100px] z-40`}>
+              <div className={`sticky top-[60px] md:top-[80px] lg:top-[100px] z-40`}>
                 {activeStory && (
                   <div
                     className={`w-full h-1 overflow-hidden ${

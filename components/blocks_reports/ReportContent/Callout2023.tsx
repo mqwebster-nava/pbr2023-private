@@ -86,7 +86,7 @@ const StatEl = ({body, anchor, colorTheme}) => {
                       key={`${anchor}-statGroup${i}Item-${j}`}
                       className={`inline-flex flex-col gap-0 text-xs`}
                     >
-                      <span>{statisticBefore}</span>
+                      <span className="pt-md">{statisticBefore}</span>
                       <span
                         className={`text-4xl md:text-[48px] !leading-none font-serif font-light`}
                       >
