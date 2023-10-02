@@ -31,7 +31,16 @@ const ReportNavbar = ({
       setActiveSection(clickedItem.parentAnchor);
 
       setActiveStory(clickedItem.anchor);
-    } else {
+      setTimeout(() => {
+        if (window.innerWidth < 768) {
+          window.scrollTo({ top: document.getElementById(clickedItem.anchor).offsetTop + 336, behavior: 'smooth' })
+        } else if (window.innerWidth > 1024) {
+          window.scrollTo({ top: document.getElementById(clickedItem.anchor).offsetTop + 620, behavior: 'smooth' })
+        } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+          window.scrollTo({ top: document.getElementById(clickedItem.anchor).offsetTop + 552, behavior: 'smooth' })
+        }
+      }, 50)
+    } else if (clickedItem?.anchor == "conclusion") {
       setActiveSection('conclusion');
 
       setActiveStory(null);
@@ -39,6 +48,8 @@ const ReportNavbar = ({
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 50)
+    } else {
+      setIsShowingMenu(false);
     }
     setIsShowingMenu(false);
   };
