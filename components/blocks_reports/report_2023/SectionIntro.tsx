@@ -120,7 +120,11 @@ const SectionIntro = ({
       setActiveSection(section.anchor);
       setActiveStory(null);
     }
-    setTimeout(() => {window.scrollTo(0, 0)}, 50)
+    if (i > 2) {
+      setTimeout(() => {window.scrollTo(0, 0)}, 80)
+    } else {
+      setTimeout(() => {window.scrollTo(0, 0)}, 50)
+    }
   };
 
   let handleNextSection = (position, e) => {
