@@ -171,7 +171,7 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
 
   return (
     <div
-      className={`block lg:hidden relative w-full`}
+      className={`lg:hidden relative w-full h-[calc(100vh-50px)] md:h-[calc(100vh-80px)] flex flex-col `}
     >
       {sections.map((section, i) => {
         const [isShowingMenu, setIsShowingMenu] = useState(false);
@@ -191,11 +191,18 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
           "border-purple-900": section.colorTheme == "purple",
           "border-navy-900": section.colorTheme == "navy",
         });
+        const dividerStyles = classNames({
+          "divide-gold-pbrcustomdark": section.colorTheme == "gold",
+          "divide-plum-900": section.colorTheme == "plum",
+          "divide-sage-900": section.colorTheme == "sage",
+          "divide-purple-900": section.colorTheme == "purple",
+          "divide-navy-900": section.colorTheme == "navy",
+        });
 
         return (
           <div
             key={`${section.anchor}-menu`}
-            className={`w-full border-t-2 ${borderStyles}`}
+            className={`w-full border-t-[1px] ${borderStyles}`}
           >
             <div className={`responsive-container`}>
               <button
@@ -221,12 +228,12 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
               <SlideDown>
                 <div
                   className={`relative w-full`}
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="dropdown-menu-button"
                 >
-                  <div
-                    className={``}
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="dropdown-menu-button"
+                  <ul
+                    className={`w-full text-sm !leading-[1.1] border-t-[1px] ${borderStyles} divide-y-[1px] ${dividerStyles}`}
                   >
                     {section.items.filter(
                     (story) => story.hideStory !== true
@@ -234,35 +241,69 @@ const MobileMenu = ({ contentBlocks, activeSection, onClick }) => {
                       const anch2 = `#${section.anchor}--${option.anchor}`;
 
                       return (
-                        <div
-                          key={index}
-                          className={`py-2 w-full border-t-[1px] ${borderStyles} ${textColor}`}
-                        >
-                          <ul className="responsive-container text-sm !leading-[1.1]">
-                            <LinkListItem
-                              key={`${anch2}-menu`}
-                              href={anch2}
-                              variant={"default"}
-                              hoverStyle={"underlined"}
-                              ariaLabel={`Theme ${section.themeNum}, Story ${option.title}`}
-                              onClick={onClick}
-                              color={option.colorTheme}
-                              isBolded={`#${activeSection}` == anch2}
-                              font="serif"
-                            >
-                              {option.title}
-                            </LinkListItem>
-                          </ul>
+                        <div key={`${anch2}--mobile-menu-list-items`} className={`responsive-container ${textColor}`}>
+                          <LinkListItem
+                            key={`${anch2}-menu`}
+                            href={anch2}
+                            variant={"default"}
+                            hoverStyle={"underlined"}
+                            ariaLabel={`Theme ${section.themeNum}, Story ${option.title}`}
+                            onClick={onClick}
+                            color={option.colorTheme}
+                            isBolded={`#${activeSection}` == anch2}
+                            font="serif"
+                          >
+                            {option.title}
+                          </LinkListItem>
                         </div>
                       )
                     })}
-                  </div>
+                  </ul>
                 </div>
               </SlideDown>
             )}
           </div>
         )
       })}
+
+      <div
+        className={`w-full border-t-[1px] border-purple-900`}
+      >
+        <div className={`responsive-container`}>
+          <button
+            type="button"
+            className={`inline-flex justify-between items-center w-full py-6 focus:outline-none focus:ring-none`}
+            id="dropdown-menu-button"
+            onClick={onClick}
+          >
+            <div
+              className={`pr-6 text-left font-sans font-bold type-preset-6 text-purple-900`}
+              data-refid={`conclusion`}
+            >
+              Conclusion
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div
+        className={`relative mt-auto self-end w-full border-t-[1px] border-gray-900 bg-gray-200`}
+      >
+        <div className={`responsive-container`}>
+          <a
+            type="button"
+            className={`inline-flex justify-between items-center w-full py-6 focus:outline-none focus:ring-none`}
+            id="dropdown-menu-button"
+            href="/files/2023NavaPublicBenefitReport.pdf"
+          >
+            <div
+              className={`pr-6 text-left font-sans font-bold type-preset-6 text-gray-900`}
+            >
+              Download the report
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
