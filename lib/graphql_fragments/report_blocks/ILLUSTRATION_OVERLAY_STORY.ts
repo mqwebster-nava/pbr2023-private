@@ -23,10 +23,16 @@ illustration{
 contextIllustration{
     ${IMAGE_FIELDS}
 }
+storyImageStepsCollection(limit: 7) {
+    items{
+        ${IMAGE_FIELDS}
+    }
+}
 featuredCallOut {
     ${CALLOUT}
 }
 linkedPostUrl
+imageCaption
 `;
 
 export default REPORT_ILLUSTRATION_OVERLAY_STORY;

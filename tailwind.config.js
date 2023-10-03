@@ -42,6 +42,7 @@ module.exports = {
         titleSlideC: "slideDelayButton 0.6s ease-out",
         fadeIn: "fadeIn 0.7s ease-out",
         fadeIn2: "fadeIn2 1.0s ease-out",
+        fadeIn3: "fadeIn2 1.0s ease-out 1.0s forwards",
         fadeOut: "fadeOut 0.7s ease-out",
         dotOne: "fadeIn 1000ms ease-in-out forwards",
         dotTwo: "fadeIn 1000ms ease-in-out 2000ms forwards",

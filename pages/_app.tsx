@@ -86,14 +86,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <div className="flex flex-col h-screen ">
-        {(!pageData || pageData.slug !== "/public-benefit-reports/2021") && (
+        {(!pageData || ((pageData.slug !== "/public-benefit-reports/2021") && (pageData.slug !== "/public-benefit-reports/2023"))) && (
           <Navbar experiments={experiments} />
         )}
 
         <div className="flex-grow ">
           <Component {...pageProps} experiments={experiments} DEIpageColor={DEIpageColor} />
         </div>
-        {(!pageData || pageData.slug !== "/public-benefit-reports/2021") && (
+        {(!pageData || ((pageData.slug !== "/public-benefit-reports/2021") && (pageData.slug !== "/public-benefit-reports/2023"))) && (
           <Footer isBottomGapRemoved={pageProps.isBottomGapRemoved??false} experiments={experiments} />
         )}
       </div>
